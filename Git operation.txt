@@ -14,3 +14,6 @@ git branch  //create a local branch
 git branch -r  //see remote branchs
 
 git checkout 
+
+Git - fatal the current branch master has no upstream branch:
+ git push -u origin dev  // dev: local branch
