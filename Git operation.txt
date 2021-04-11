@@ -1,0 +1,16 @@
+git init   //turn here as  a repository
+
+git add .  //add all the file to local (don't miss the dot)
+
+git commit -m "  "
+
+git push
+
+
+Branch operation
+
+git branch  //create a local branch
+
+git branch -r  //see remote branchs
+
+git checkout 
