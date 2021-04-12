@@ -9,11 +9,15 @@ void LED_Init(void)
 	
 	GPIO_Config.GPIO_Mode = GPIO_Mode_OUT;
 	GPIO_Config.GPIO_OType= GPIO_OType_PP;
-	GPIO_Config.GPIO_Pin  = GPIO_Pin_9 | GPIO_Pin_10;
+	GPIO_Config.GPIO_Pin  = GPIO_Pin_1 | GPIO_Pin_3 | GPIO_Pin_5 | GPIO_Pin_7 | GPIO_Pin_9 | GPIO_Pin_10;
 	GPIO_Config.GPIO_PuPd = GPIO_PuPd_UP;
 	GPIO_Config.GPIO_Speed= GPIO_Speed_2MHz; //related to the power consumption and reaction speed;
 	GPIO_Init(GPIOF, &GPIO_Config);
+	GPIO_ResetBits(GPIOF, GPIO_Pin_1);
+	GPIO_ResetBits(GPIOF, GPIO_Pin_3);
+	GPIO_ResetBits(GPIOF, GPIO_Pin_5);
 	GPIO_ResetBits(GPIOF, GPIO_Pin_9);
+	GPIO_SetBits(GPIOF, GPIO_Pin_7);
 	GPIO_SetBits(GPIOF, GPIO_Pin_10);
 	
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOE, ENABLE);
