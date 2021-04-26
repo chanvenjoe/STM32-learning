@@ -2,7 +2,7 @@
 .\objects\main.o: .\FUNCTIONS\inc\sys.h
 .\objects\main.o: .\USER\stm32f4xx.h
 .\objects\main.o: .\CORE\core_cm4.h
-.\objects\main.o: D:\mdk5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\main.o: .\CORE\core_cmInstr.h
 .\objects\main.o: .\CORE\core_cmFunc.h
 .\objects\main.o: .\CORE\core_cm4_simd.h
@@ -37,5 +37,5 @@
 .\objects\main.o: .\FWLIB\inc\stm32f4xx_fsmc.h
 .\objects\main.o: .\FUNCTIONS\inc\delay.h
 .\objects\main.o: .\FUNCTIONS\inc\usart.h
-.\objects\main.o: D:\mdk5\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\main.o: .\FUNCTIONS\inc\led.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\main.o: .\FUNCTIONS\inc\gpio_init.h

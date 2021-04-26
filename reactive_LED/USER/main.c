@@ -1,27 +1,29 @@
 #include "sys.h"
 #include "delay.h"
 #include "usart.h"
-#include "led.h"
+#include "gpio_init.h"
 
 int main(void)
-{ 
- 
-	delay_init(168);		  //初始化延时函数
-	LED_Init();		        //初始化LED端口
-
+{
+	u16 pwm = 0;
+	u8 dir = 1;
+	//NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
+	GPIO_Conf();
+	delay_init(168);
+	Timer14_PWM_Init(500-1,84-1);
 	while(1)
 	{
-		u8 read = GPIO_ReadInputDataBit(GPIOE, GPIO_Pin_2);
-		u8 read1= GPIO_ReadInputDataBit(GPIOE, GPIO_Pin_3);
-		if(read == 1)
-		{
-			GPIO_ResetBits(GPIOF, GPIO_Pin_10); //light up yellow led
-		}
-		else if(read1 == 1)
-		{
-			GPIO_SetBits(GPIOF, GPIO_Pin_10);
-		}
+		delay_ms(5);
+		if(dir)pwm++;
+		else pwm--;
+		if(pwm>500)dir=0;
+		if(pwm==0)dir=1;
+		
+		TIM_SetCompare1(TIM14, pwm);// high value percentage
+		TIM_SetCompare1(TIM2, pwm);
 	}
+
+
 }
 
 

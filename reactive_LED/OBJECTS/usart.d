@@ -2,7 +2,7 @@
 .\objects\usart.o: .\FUNCTIONS\inc\sys.h
 .\objects\usart.o: .\USER\stm32f4xx.h
 .\objects\usart.o: .\CORE\core_cm4.h
-.\objects\usart.o: D:\mdk5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\usart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\usart.o: .\CORE\core_cmInstr.h
 .\objects\usart.o: .\CORE\core_cmFunc.h
 .\objects\usart.o: .\CORE\core_cm4_simd.h
@@ -36,4 +36,4 @@
 .\objects\usart.o: .\FWLIB\inc\stm32f4xx_dcmi.h
 .\objects\usart.o: .\FWLIB\inc\stm32f4xx_fsmc.h
 .\objects\usart.o: .\FUNCTIONS\inc\usart.h
-.\objects\usart.o: D:\mdk5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\usart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
