@@ -36,3 +36,5 @@
 .\objects\gpio_init.o: .\FWLIB\inc\stm32f4xx_dac.h
 .\objects\gpio_init.o: .\FWLIB\inc\stm32f4xx_dcmi.h
 .\objects\gpio_init.o: .\FWLIB\inc\stm32f4xx_fsmc.h
+.\objects\gpio_init.o: .\FUNCTIONS\inc\usart.h
+.\objects\gpio_init.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

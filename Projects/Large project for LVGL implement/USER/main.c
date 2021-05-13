@@ -5,24 +5,10 @@
 
 int main(void)
 {
-	u16 pwm = 0;
-	u8 dir = 1;
-	//NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
-	GPIO_Conf();
-	delay_init(168);
-	Timer_PWM_Init(500-1,84-1); //contains timer2 initialization
-	while(1)
-	{
-		delay_ms(5);
-		if(dir)pwm++;
-		else pwm--;
-		if(pwm>500)dir=0;
-		if(pwm==0)dir=1;
-		
-		TIM_SetCompare1(TIM14, pwm);// high value percentage
-		TIM_SetCompare1(TIM2, pwm);
-	}
-
+	
+	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
+	usart_init(115200);
+	while(1);
 
 }
 

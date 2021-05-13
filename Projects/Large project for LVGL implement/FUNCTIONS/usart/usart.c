@@ -69,7 +69,7 @@ u16 USART_RX_STA=0;       //接收状态标记
 
 //初始化IO 串口1 
 //bound:波特率
-void uart_init(u32 bound){
+void usart_init(u32 baud_rate){
    //GPIO端口设置
   GPIO_InitTypeDef GPIO_InitStructure;
 	USART_InitTypeDef USART_InitStructure;
@@ -91,7 +91,7 @@ void uart_init(u32 bound){
 	GPIO_Init(GPIOA,&GPIO_InitStructure); //初始化PA9，PA10
 
    //USART1 初始化设置
-	USART_InitStructure.USART_BaudRate = bound;//波特率设置
+	USART_InitStructure.USART_BaudRate = baud_rate;//波特率设置
 	USART_InitStructure.USART_WordLength = USART_WordLength_8b;//字长为8位数据格式
 	USART_InitStructure.USART_StopBits = USART_StopBits_1;//一个停止位
 	USART_InitStructure.USART_Parity = USART_Parity_No;//无奇偶校验位
@@ -114,7 +114,7 @@ void uart_init(u32 bound){
 	NVIC_Init(&NVIC_InitStructure);	//根据指定的参数初始化VIC寄存器、
 
 #endif
-	
+
 }
 
 

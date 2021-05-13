@@ -1,9 +1,12 @@
 #include "gpio_init.h"
 #include "stm32f4xx.h"
+#include "usart.h"	
 
 GPIO_InitTypeDef GPIO_Config;
 TIM_OCInitTypeDef Timer_init;
 TIM_TimeBaseInitTypeDef TimeBase_Init;
+USART_InitTypeDef Usart_init;
+NVIC_InitTypeDef NVIC_init;
 void GPIO_Conf(void)
 {
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOF, ENABLE);
@@ -67,9 +70,50 @@ void Timer_PWM_Init(u32 arr, u16 psc)
 	TIM_OC1PreloadConfig(TIM2, TIM_OCPreload_Enable);
 	TIM_ARRPreloadConfig(TIM2, ENABLE);
 	TIM_Cmd(TIM2, ENABLE);
+}
+
+void usart_init(u32 baud_rate)
+{
+	//Open necessary clock
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE);
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
+	GPIO_PinAFConfig(GPIOA, GPIO_PinSource9, GPIO_AF_USART1);
+	GPIO_PinAFConfig(GPIOA, GPIO_PinSource10, GPIO_AF_USART1);
 	
+	GPIO_Config.GPIO_Mode = GPIO_Mode_AF;
+	GPIO_Config.GPIO_Pin  = GPIO_Pin_9|GPIO_Pin_10;
+	GPIO_Config.GPIO_OType= GPIO_OType_PP;
+	GPIO_Config.GPIO_Speed= GPIO_Speed_50MHz;
+	GPIO_Config.GPIO_PuPd = GPIO_PuPd_UP; //the down pulse means star transmition
+	GPIO_Init(GPIOF, &GPIO_Config);
 	
+	Usart_init.USART_BaudRate = baud_rate;
+	Usart_init.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
+	Usart_init.USART_Mode = USART_Mode_Rx|USART_Mode_Tx;
+	Usart_init.USART_Parity = USART_Parity_No;
+	Usart_init.USART_StopBits = USART_StopBits_1;
+	Usart_init.USART_WordLength = USART_WordLength_8b;
+	USART_Init(USART1, &Usart_init);
+	USART_Cmd(USART1, ENABLE);
 	
+
+#if EN_USART1_RX
+	 
+	USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);
 	
-	
+	NVIC_init.NVIC_IRQChannel = USART1_IRQn;//fount from Stm32f4xx.h
+	NVIC_init.NVIC_IRQChannelCmd = ENABLE;
+	NVIC_init.NVIC_IRQChannelPreemptionPriority =1;
+	NVIC_init.NVIC_IRQChannelSubPriority = 1;
+	NVIC_Init(&NVIC_init);
+#endif
+}
+
+void USART1_IRQHandler(void)
+{
+	if(USART_GetITStatus(USART1, USART_IT_RXNE))
+	{
+		u8 res = USART_ReceiveData(USART1);
+		USART_SendData(USART1, res);
+	}
 }
