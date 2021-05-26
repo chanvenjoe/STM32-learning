@@ -1,12 +1,17 @@
 #include "gpio_init.h"
 #include "stm32f4xx.h"
 #include "usart.h"	
+#include "sys.h"
 
+/***********TYPE DEFINE****************/
 GPIO_InitTypeDef GPIO_Config;
 TIM_OCInitTypeDef Timer_init;
 TIM_TimeBaseInitTypeDef TimeBase_Init;
 USART_InitTypeDef Usart_init;
 NVIC_InitTypeDef NVIC_init;
+EXTI_InitTypeDef EXTI_init;
+/**************************************/
+
 void GPIO_Conf(void)
 {
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOF, ENABLE);
@@ -101,7 +106,7 @@ void usart_init(u32 baud_rate)
 	 
 	USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);
 	
-	NVIC_init.NVIC_IRQChannel = USART1_IRQn;//fount from Stm32f4xx.h
+	NVIC_init.NVIC_IRQChannel = USART1_IRQn;//found from Stm32f4xx.h
 	NVIC_init.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_init.NVIC_IRQChannelPreemptionPriority =1;
 	NVIC_init.NVIC_IRQChannelSubPriority = 1;
@@ -117,3 +122,35 @@ void USART1_IRQHandler(void)
 		USART_SendData(USART1, res);
 	}
 }
+
+void External_Interrupt_init()
+{
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOF, ENABLE);
+	GPIO_Config.GPIO_Mode = GPIO_Mode_IN;
+	GPIO_Config.GPIO_Pin  = GPIO_Pin_9;
+	GPIO_Config.GPIO_OType= GPIO_OType_PP;
+	GPIO_Config.GPIO_PuPd = GPIO_PuPd_UP;
+	GPIO_Init(GPIOF, &GPIO_Config);
+	
+	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOF,EXTI_PinSource9);
+	EXTI_init.EXTI_Line = EXTI_Line4;
+	EXTI_init.EXTI_Mode = EXTI_Mode_Interrupt;
+	EXTI_init.EXTI_Trigger = EXTI_Trigger_Rising;
+	EXTI_Init(&EXTI_init);
+	
+	//NVIC_InitStructure.NVIC_IRQChannel = EXTI0_IRQn;
+}
+
+void EXTI0_IRQHandler(void)	// change the LED (the one without timer)
+{
+	delay_ms(10);
+	if(!GPIO_ReadInputDataBit(GPIOE,GPIO_Pin_4))
+	{
+		u8 t = 0;
+		t = !t;
+		if(t == 0)GPIO_ResetBits(GPIOE,GPIO_Pin_0);
+		else GPIO_SetBits(GPIOE,GPIO_Pin_0);
+	}
+	EXTI_ClearITPendingBit(EXTI_Line4);
+}
+		

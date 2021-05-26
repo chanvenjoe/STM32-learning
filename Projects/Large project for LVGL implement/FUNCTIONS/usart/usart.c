@@ -150,7 +150,22 @@ void USART1_IRQHandler(void)                	//串口1中断服务程序
 #if SYSTEM_SUPPORT_OS 	//如果SYSTEM_SUPPORT_OS为真，则需要支持OS.
 	OSIntExit();  											 
 #endif
-} 
+}
+void Usart_action(u8 t, u8 len)
+{
+	if(USART_RX_STA&0X8000)
+	{					   
+		len=USART_RX_STA&0x3fff;//得到此次接收到的数据长度
+		printf("\r\nYou send:\r\n");
+		for(t=0;t<len;t++)
+		{
+			USART_SendData(USART1, USART_RX_BUF[t]);         //向串口1发送数据
+			while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束
+		}
+		printf("\r\n\r\n");//插入换行
+		USART_RX_STA=0;
+	}	
+}
 #endif	
 
  
