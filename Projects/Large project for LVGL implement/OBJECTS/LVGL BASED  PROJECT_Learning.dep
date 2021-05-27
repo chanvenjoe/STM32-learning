@@ -1,5 +1,5 @@
 Dependencies for Project 'LVGL BASED  PROJECT', Target 'Learning': (DO NOT MODIFY !)
-F (.\USER\main.c)(0x60AE19E5)(--c99 -c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\CORE -I .\FWLIB\inc -I .\USER -I .\FUNCTIONS\inc -I .\LVGL-I.\RTE\_Learning-IC:\Users\kzhou\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Users\kzhou\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Device\Include-D__UVISION_VERSION="527" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+F (.\USER\main.c)(0x60AF6E44)(--c99 -c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\CORE -I .\FWLIB\inc -I .\USER -I .\FUNCTIONS\inc -I .\LVGL-I.\RTE\_Learning-IC:\Users\kzhou\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Users\kzhou\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Device\Include-D__UVISION_VERSION="527" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
 I (.\FUNCTIONS\inc\sys.h)(0x60AE04D9)
 I (.\USER\stm32f4xx.h)(0x60AE04DA)
 I (.\CORE\core_cm4.h)(0x60AE04D9)
@@ -1415,7 +1415,7 @@ I (.\FWLIB\inc\stm32f4xx_can.h)(0x60AE04D9)
 I (.\FWLIB\inc\stm32f4xx_dac.h)(0x60AE04D9)
 I (.\FWLIB\inc\stm32f4xx_dcmi.h)(0x60AE04D9)
 I (.\FWLIB\inc\stm32f4xx_fsmc.h)(0x60AE04D9)
-F (.\FUNCTIONS\led\gpio_init.c)(0x60AE1A3E)(--c99 -c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\CORE -I .\FWLIB\inc -I .\USER -I .\FUNCTIONS\inc -I .\LVGL-I.\RTE\_Learning-IC:\Users\kzhou\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Users\kzhou\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Device\Include-D__UVISION_VERSION="527" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o .\objects\gpio_init.o --omf_browse .\objects\gpio_init.crf --depend .\objects\gpio_init.d)
+F (.\FUNCTIONS\led\gpio_init.c)(0x60AF6EAD)(--c99 -c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\CORE -I .\FWLIB\inc -I .\USER -I .\FUNCTIONS\inc -I .\LVGL-I.\RTE\_Learning-IC:\Users\kzhou\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Users\kzhou\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Device\Include-D__UVISION_VERSION="527" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o .\objects\gpio_init.o --omf_browse .\objects\gpio_init.crf --depend .\objects\gpio_init.d)
 I (.\FUNCTIONS\inc\gpio_init.h)(0x60AE19E5)
 I (.\FUNCTIONS\inc\sys.h)(0x60AE04D9)
 I (.\USER\stm32f4xx.h)(0x60AE04DA)
@@ -1454,6 +1454,7 @@ I (.\FWLIB\inc\stm32f4xx_dcmi.h)(0x60AE04D9)
 I (.\FWLIB\inc\stm32f4xx_fsmc.h)(0x60AE04D9)
 I (.\FUNCTIONS\inc\usart.h)(0x60AE065A)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5E53505C)
+I (.\FUNCTIONS\inc\delay.h)(0x60AE04D9)
 F (.\FUNCTIONS\usart\usart.c)(0x60AE065A)(--c99 -c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\CORE -I .\FWLIB\inc -I .\USER -I .\FUNCTIONS\inc -I .\LVGL-I.\RTE\_Learning-IC:\Users\kzhou\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Users\kzhou\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Device\Include-D__UVISION_VERSION="527" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o .\objects\usart.o --omf_browse .\objects\usart.crf --depend .\objects\usart.d)
 I (.\FUNCTIONS\inc\sys.h)(0x60AE04D9)
 I (.\USER\stm32f4xx.h)(0x60AE04DA)

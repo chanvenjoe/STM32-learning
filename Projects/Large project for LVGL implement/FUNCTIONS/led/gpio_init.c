@@ -2,6 +2,7 @@
 #include "stm32f4xx.h"
 #include "usart.h"	
 #include "sys.h"
+#include "delay.h"
 
 /***********TYPE DEFINE****************/
 GPIO_InitTypeDef GPIO_Config;
@@ -18,7 +19,7 @@ void GPIO_Conf(void)
 	
 	GPIO_Config.GPIO_Mode = GPIO_Mode_OUT;
 	GPIO_Config.GPIO_OType= GPIO_OType_PP;
-	GPIO_Config.GPIO_Pin  = GPIO_Pin_1 | GPIO_Pin_3 | GPIO_Pin_5 | GPIO_Pin_7 | GPIO_Pin_8;
+	GPIO_Config.GPIO_Pin  = GPIO_Pin_1 | GPIO_Pin_3 | GPIO_Pin_5 | GPIO_Pin_7 | GPIO_Pin_8 | GPIO_Pin_9 | GPIO_Pin_10;
 	GPIO_Config.GPIO_PuPd = GPIO_PuPd_UP;
 	GPIO_Config.GPIO_Speed= GPIO_Speed_100MHz; //related to the power consumption and reaction speed;
 	GPIO_Init(GPIOF, &GPIO_Config);
@@ -47,7 +48,7 @@ void Timer_PWM_Init(u32 arr, u16 psc)
 	GPIO_PinAFConfig(GPIOF, GPIO_PinSource9, GPIO_AF_TIM14);
 	
 	GPIO_Config.GPIO_Pin = GPIO_Pin_10| GPIO_Pin_9;
-	GPIO_Config.GPIO_Mode = GPIO_Mode_AF;
+	GPIO_Config.GPIO_Mode = GPIO_Mode_OUT;//need to change to AF
 	GPIO_Config.GPIO_OType= GPIO_OType_PP;
 	GPIO_Config.GPIO_PuPd = GPIO_PuPd_UP;
 	GPIO_Config.GPIO_Speed= GPIO_Speed_100MHz; //related to the power consumption and reaction speed;
@@ -123,24 +124,6 @@ void USART1_IRQHandler(void)
 	}
 }
 
-void External_Interrupt_init()
-{
-	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOF, ENABLE);
-	GPIO_Config.GPIO_Mode = GPIO_Mode_IN;
-	GPIO_Config.GPIO_Pin  = GPIO_Pin_9;
-	GPIO_Config.GPIO_OType= GPIO_OType_PP;
-	GPIO_Config.GPIO_PuPd = GPIO_PuPd_UP;
-	GPIO_Init(GPIOF, &GPIO_Config);
-	
-	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOF,EXTI_PinSource9);
-	EXTI_init.EXTI_Line = EXTI_Line4;
-	EXTI_init.EXTI_Mode = EXTI_Mode_Interrupt;
-	EXTI_init.EXTI_Trigger = EXTI_Trigger_Rising;
-	EXTI_Init(&EXTI_init);
-	
-	//NVIC_InitStructure.NVIC_IRQChannel = EXTI0_IRQn;
-}
-
 void EXTI0_IRQHandler(void)	// change the LED (the one without timer)
 {
 	delay_ms(10);
@@ -148,9 +131,37 @@ void EXTI0_IRQHandler(void)	// change the LED (the one without timer)
 	{
 		u8 t = 0;
 		t = !t;
-		if(t == 0)GPIO_ResetBits(GPIOE,GPIO_Pin_0);
-		else GPIO_SetBits(GPIOE,GPIO_Pin_0);
+		if(t == 0)GPIO_ResetBits(GPIOF,GPIO_Pin_10);
+		else GPIO_SetBits(GPIOF,GPIO_Pin_10);
 	}
 	EXTI_ClearITPendingBit(EXTI_Line4);
 }
+
+void External_Interrupt_init()
+{
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOE, ENABLE);
+	GPIO_Config.GPIO_Mode = GPIO_Mode_IN;
+	GPIO_Config.GPIO_Pin  = GPIO_Pin_4;
+	GPIO_Config.GPIO_OType= GPIO_OType_PP;
+	GPIO_Config.GPIO_PuPd = GPIO_PuPd_UP;
+	GPIO_Init(GPIOE, &GPIO_Config);
+	
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG, ENABLE);
+	
+	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE,EXTI_PinSource4);
+	
+	EXTI_init.EXTI_Line = EXTI_Line4;
+	EXTI_init.EXTI_Mode = EXTI_Mode_Interrupt;
+	EXTI_init.EXTI_Trigger = EXTI_Trigger_Falling;
+	EXTI_init.EXTI_LineCmd = ENABLE;
+	EXTI_Init(&EXTI_init);
+	
+//	NVIC_init.NVIC_IRQChannel = EXTI4_IRQn;//found from Stm32f4xx.h
+//	NVIC_init.NVIC_IRQChannelPreemptionPriority =1;
+//	NVIC_init.NVIC_IRQChannelSubPriority = 1;
+//	NVIC_init.NVIC_IRQChannelCmd = ENABLE;
+//	NVIC_Init(&NVIC_init);
+	
+}
+
 		
