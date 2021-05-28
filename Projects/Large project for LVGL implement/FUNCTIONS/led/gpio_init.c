@@ -23,10 +23,6 @@ void GPIO_Conf(void)
 	GPIO_Config.GPIO_PuPd = GPIO_PuPd_UP;
 	GPIO_Config.GPIO_Speed= GPIO_Speed_100MHz; //related to the power consumption and reaction speed;
 	GPIO_Init(GPIOF, &GPIO_Config);
-	GPIO_ResetBits(GPIOF, GPIO_Pin_1);
-	GPIO_ResetBits(GPIOF, GPIO_Pin_3);
-	GPIO_ResetBits(GPIOF, GPIO_Pin_5);
-	GPIO_ResetBits(GPIOF, GPIO_Pin_8);
 	GPIO_SetBits(GPIOF, GPIO_Pin_7);
 	
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOE, ENABLE);
@@ -34,7 +30,7 @@ void GPIO_Conf(void)
 	GPIO_Config.GPIO_OType= GPIO_OType_PP;
 	GPIO_Config.GPIO_Pin  = GPIO_Pin_2 | GPIO_Pin_3 |GPIO_Pin_4;
 	GPIO_Config.GPIO_PuPd = GPIO_PuPd_UP;
-	GPIO_Config.GPIO_Speed= GPIO_Speed_2MHz; //related to the power consumption and reaction speed;
+	GPIO_Config.GPIO_Speed= GPIO_Speed_100MHz; //related to the power consumption and reaction speed;
 	GPIO_Init(GPIOE, &GPIO_Config);
 }
 
@@ -124,7 +120,7 @@ void USART1_IRQHandler(void)
 	}
 }
 
-void EXTI0_IRQHandler(void)	// change the LED (the one without timer)
+void EXTI4_IRQHandler(void)	// change the LED (the one without timer)
 {
 	delay_ms(10);
 	if(!GPIO_ReadInputDataBit(GPIOE,GPIO_Pin_4))
@@ -150,17 +146,17 @@ void External_Interrupt_init()
 	
 	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE,EXTI_PinSource4);
 	
-	EXTI_init.EXTI_Line = EXTI_Line4;
+	EXTI_init.EXTI_Line = EXTI_Line2|EXTI_Line3|EXTI_Line4;
 	EXTI_init.EXTI_Mode = EXTI_Mode_Interrupt;
 	EXTI_init.EXTI_Trigger = EXTI_Trigger_Falling;
 	EXTI_init.EXTI_LineCmd = ENABLE;
 	EXTI_Init(&EXTI_init);
 	
-//	NVIC_init.NVIC_IRQChannel = EXTI4_IRQn;//found from Stm32f4xx.h
-//	NVIC_init.NVIC_IRQChannelPreemptionPriority =1;
-//	NVIC_init.NVIC_IRQChannelSubPriority = 1;
-//	NVIC_init.NVIC_IRQChannelCmd = ENABLE;
-//	NVIC_Init(&NVIC_init);
+	NVIC_init.NVIC_IRQChannel = EXTI4_IRQn;//found from Stm32f4xx.h
+	NVIC_init.NVIC_IRQChannelPreemptionPriority =1;
+	NVIC_init.NVIC_IRQChannelSubPriority = 1;
+	NVIC_init.NVIC_IRQChannelCmd = ENABLE;
+	NVIC_Init(&NVIC_init);
 	
 }
 
