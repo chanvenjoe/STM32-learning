@@ -10,7 +10,6 @@ int main(void)
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
 	usart_init(115200);
 	External_Interrupt_init();
-	GPIO_ResetBits(GPIOF, GPIO_Pin_10);
 	while(1)
 	{
 		printf("OK\r\n");

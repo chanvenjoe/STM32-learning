@@ -125,7 +125,7 @@ void EXTI4_IRQHandler(void)	// change the LED (the one without timer)
 	delay_ms(10);
 	if(!GPIO_ReadInputDataBit(GPIOE,GPIO_Pin_4))
 	{
-		u8 t = 0;
+		static u8 t = 0;
 		t = !t;
 		if(t == 0)GPIO_ResetBits(GPIOF,GPIO_Pin_10);
 		else GPIO_SetBits(GPIOF,GPIO_Pin_10);
