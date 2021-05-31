@@ -17,3 +17,9 @@ git checkout
 
 Git - fatal the current branch master has no upstream branch:
  git push -u origin dev  // dev: local branch
+
+When error: The following untracked working tree files would be overwritten by merge
+
+git fetch origin master
+git clean -f
+git reset --hard origin/master

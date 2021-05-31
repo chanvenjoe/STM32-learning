@@ -10,11 +10,13 @@ int main(void)
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
 	usart_init(115200);
 	External_Interrupt_init();
+	IWDG_Init(8,1000);
+
 	while(1)
 	{
-		printf("OK\r\n");
-		delay_ms(1000);
-
+		if(GPIO_ReadInputDataBit(GPIOE,GPIO_Pin_3) == 0)
+		IWDG_ReloadCounter();
+		delay_ms(10);
 	}
 }
 

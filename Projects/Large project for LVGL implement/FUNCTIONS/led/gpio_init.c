@@ -160,4 +160,18 @@ void External_Interrupt_init()
 	
 }
 
+// #descreption: 
+//	1:cancel the wright protection 
+//  2:set the prescaller number to get a clock
+//	3:set iwdg reload value to confirm the reset time
+//	4:enable IWDG and wright a function to feed dog
+//	Time out = ((4*2^prer)*rlr)/32
+void IWDG_Init(u8 prer, u32 rlr)
+{
+	IWDG_WriteAccessCmd(IWDG_WriteAccess_Enable);
+	IWDG_SetPrescaler(prer);						//32K can be devided from 2^2-2^8
+	IWDG_SetReload(rlr);							//the reload value shoud < 0xfff (1111 1111 1111)=4096
+	IWDG_ReloadCounter();							//to wright AAAA to KR(feed dog)
+	IWDG_Enable();
+}
 		
