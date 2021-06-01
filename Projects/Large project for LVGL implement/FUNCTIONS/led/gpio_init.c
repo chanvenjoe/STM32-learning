@@ -11,6 +11,8 @@ TIM_TimeBaseInitTypeDef TimeBase_Init;
 USART_InitTypeDef Usart_init;
 NVIC_InitTypeDef NVIC_init;
 EXTI_InitTypeDef EXTI_init;
+/***********VARIABLE DEFINE************/
+u8 WWDG_CNT=0x7f;
 /**************************************/
 
 void GPIO_Conf(void)
@@ -23,7 +25,9 @@ void GPIO_Conf(void)
 	GPIO_Config.GPIO_PuPd = GPIO_PuPd_UP;
 	GPIO_Config.GPIO_Speed= GPIO_Speed_100MHz; //related to the power consumption and reaction speed;
 	GPIO_Init(GPIOF, &GPIO_Config);
-	GPIO_SetBits(GPIOF, GPIO_Pin_7);
+	//GPIO_SetBits(GPIOF, GPIO_Pin_7);
+	GPIO_SetBits(GPIOF, GPIO_Pin_9);
+	GPIO_SetBits(GPIOF, GPIO_Pin_10);
 	
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOE, ENABLE);
 	GPIO_Config.GPIO_Mode = GPIO_Mode_IN;
@@ -174,4 +178,32 @@ void IWDG_Init(u8 prer, u32 rlr)
 	IWDG_ReloadCounter();							//to wright AAAA to KR(feed dog)
 	IWDG_Enable();
 }
-		
+
+void WWDG_Init(u8 tr, u8 wr, u32 fprer)				//fWWDG=PCLK/(4096*2^fprer) PCLK1 = 42MHz generally  
+{													//tr= T[6:0], calculate value | wr= W[6,0] window value | fprer = WDGTB
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_WWDG, ENABLE);
+	
+	WWDG_CNT = tr&WWDG_CNT;		//the tr value tshould be small than 0x7f
+	WWDG_SetPrescaler(fprer);
+	WWDG_SetWindowValue(wr);	//the feed dog action must be between wr-0x40, or it will reset the system; 
+	//WWDG_SetCounter(WWDG_CNT);//(to prevent generating an immediate reset)
+	WWDG_Enable(WWDG_CNT);   	//0x7f = 0111 1111  0x40 = 0100 0000
+	
+	NVIC_init.NVIC_IRQChannel = WWDG_IRQn;
+	NVIC_init.NVIC_IRQChannelPreemptionPriority =1;
+	NVIC_init.NVIC_IRQChannelSubPriority = 1;
+	NVIC_init.NVIC_IRQChannelCmd = ENABLE;
+	NVIC_Init(&NVIC_init);
+	
+	WWDG_ClearFlag();
+	WWDG_EnableIT();//Enable the early interrupt  when the WWDG_CNT reduced to 0x40, then the early wake is triggerd
+}
+
+void WWDG_IRQHandler(void)
+{
+	WWDG_SetCounter(WWDG_CNT);
+	WWDG_ClearFlag();
+//	LED00;
+	delay_ms(1000);
+	LED01;
+}

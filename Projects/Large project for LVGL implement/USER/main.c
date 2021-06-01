@@ -8,15 +8,15 @@ int main(void)
 	GPIO_Conf();
 	delay_init(168);
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
-	usart_init(115200);
-	External_Interrupt_init();
-	IWDG_Init(8,1000);
-
+//	usart_init(115200);
+//	External_Interrupt_init();
+//	IWDG_Init(8,1000);
+	WWDG_Init(0x7f,0x5f,WWDG_Prescaler_8);
+	LED00; //light up the led
+	delay_ms(300);
 	while(1)
 	{
-		if(GPIO_ReadInputDataBit(GPIOE,GPIO_Pin_3) == 0)
-		IWDG_ReloadCounter();
-		delay_ms(10);
+		LED01;
 	}
 }
 
