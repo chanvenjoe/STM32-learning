@@ -4,32 +4,19 @@
 #include "Common.h"
 #include "Delay.h"
 
-UINT8 Voltage_Check(void)
+void Voltage_Check(void)
 {
-			int c;
 			long Voltage_Temp;
 			clr_ADCF;
 			set_ADCS;																	// Each time ADC start trig signal
       while(ADCF == 0);
-			Voltage_Temp = ADCRH * 4 + ADCRL;
-			if (Voltage_Temp < 0x40)
-				{
-					c=1;
-				}
-			else if (Voltage_Temp > 0x80)
-				{
-					c=2;
-				}
-			else
-				c=0;
-			return c;
-
+			Voltage_Temp |= ADCRL;
 
 }
 
 void System_Init(void)
 {
-		Enable_ADC_AIN0; 															//Set P17 as ADC input
+		Enable_ADC_AIN5; 															//Set P17 as ADC input
 		Enable_ADC_BandGap;													//Find in "Function_define.h" - "ADC INIT"
 
 }
@@ -38,4 +25,10 @@ void Self_Check(void)
 {
 
 		Voltage_Check();
+}
+
+void ADC_ISR (void) interrupt 11
+{
+		clr_ADCF;                               //clear ADC interrupt flag
+        printf ("\n Value = 0x%bx",ADCRH);
 }

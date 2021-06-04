@@ -56,13 +56,16 @@ void main (void)
 		System_Init();
 		Self_Check();
 
+		InitialUART0_Timer3(115200);
+			
 		while(1)
-    {
-
+		{
+			printf("ADC value:%d \n", ADCRH);
+//			Send_Data_To_UART0(0x55);
 			clr_GPIO1;
-			Timer0_Delay1ms(100);
+			Timer0_Delay1ms(1000);
 			set_GPIO1;
-    }
+		}
 }
 
 
