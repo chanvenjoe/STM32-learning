@@ -203,7 +203,7 @@ void WWDG_IRQHandler(void)
 {
 	WWDG_SetCounter(WWDG_CNT);
 	WWDG_ClearFlag();
-//	LED00;
-	delay_ms(1000);
 	LED01;
+	delay_ms(3000);
+	LED00;
 }

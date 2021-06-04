@@ -12,11 +12,10 @@ int main(void)
 //	External_Interrupt_init();
 //	IWDG_Init(8,1000);
 	WWDG_Init(0x7f,0x5f,WWDG_Prescaler_8);
-	LED00; //light up the led
-	delay_ms(300);
 	while(1)
 	{
-		LED01;
+		LED00;
+		delay_ms(5000);
 	}
 }
 
