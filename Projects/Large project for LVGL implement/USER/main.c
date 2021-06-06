@@ -8,10 +8,10 @@ int main(void)
 	GPIO_Conf();
 	delay_init(168);
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
-//	usart_init(115200);
+	usart_init(115200);
 //	External_Interrupt_init();
 //	IWDG_Init(8,1000);
-	WWDG_Init(0x7f,0x5f,WWDG_Prescaler_8);
+//	WWDG_Init(0x7f,0x5f,WWDG_Prescaler_8);
 	while(1)
 	{
 		LED00;
