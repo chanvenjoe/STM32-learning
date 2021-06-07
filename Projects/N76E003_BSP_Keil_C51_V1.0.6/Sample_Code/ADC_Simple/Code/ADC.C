@@ -55,17 +55,25 @@ here after stack initialization.
 ******************************************************************************/
 void main (void) 
 {
+	  UINT16 ADC;
+	  UINT16 ADCH;
+	  UINT16 ADCL;
 		InitialUART0_Timer1(115200);
- 
-		Enable_ADC_AIN3;						// Enable AIN0 P1.7 as ADC input, Find in "Function_define.h" - "ADC INIT"
+		Enable_ADC_AIN5;						// Enable AIN5 P04 as ADC input, Find in "Function_define.h" - "ADC INIT"
 		while(1)
     {
 			clr_ADCF;
 			set_ADCS;									// ADC start trig signal
       while(ADCF == 0);
-			printf ("\n Value = 0x%bx",ADCRH);
-			printf ("\n Value = 0x%bx",ADCRL);
+			ADCH = ADCRH;
+			ADCL = ADCRL;
+			ADC  = ADCH<<4 | ADCL;
+			printf ("\n HValue = 0x%x",ADCH);
 			Timer0_Delay1ms(100);
+			printf ("\n LValue = 0x%x\n\n",ADCL);
+			Timer0_Delay1ms(100);
+			printf ("\n Hall value = %d",ADC);
+			Timer0_Delay1ms(1000);
     }
 }
 
