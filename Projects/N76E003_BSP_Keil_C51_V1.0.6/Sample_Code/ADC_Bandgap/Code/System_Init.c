@@ -10,8 +10,8 @@ void Voltage_Check(void)
 			clr_ADCF;
 			set_ADCS;																	// Each time ADC start trig signal
       while(ADCF == 0);
-			Voltage_Temp |= ADCRL;
-
+			Voltage_Temp = ADCRL;
+			
 }
 
 void System_Init(void)

@@ -6,7 +6,7 @@
 
 /***********TYPE DEFINE****************/
 GPIO_InitTypeDef GPIO_Config;
-TIM_OCInitTypeDef Timer_init;
+TIM_OCInitTypeDef Timer_OCInit;
 TIM_TimeBaseInitTypeDef TimeBase_Init;
 USART_InitTypeDef Usart_init;
 NVIC_InitTypeDef NVIC_init;
@@ -61,12 +61,12 @@ void Timer_PWM_Init(u32 arr, u16 psc)
 	TIM_TimeBaseInit(TIM14, &TimeBase_Init);
 	TIM_TimeBaseInit(TIM2, &TimeBase_Init);
 	
-	Timer_init.TIM_OCMode =  TIM_OCMode_PWM1; //PWM1:when up-counting TIMx_CNT<TIMx_CCR1, it is valid PWM2:oppsite
-	Timer_init.TIM_OCPolarity = TIM_OCPolarity_High;//  valid value is High
-	Timer_init.TIM_OutputState = TIM_OutputState_Enable;
+	Timer_OCInit.TIM_OCMode =  TIM_OCMode_PWM1; //PWM1:when up-counting TIMx_CNT<TIMx_CCR1, it is valid PWM2:oppsite
+	Timer_OCInit.TIM_OCPolarity = TIM_OCPolarity_High;//  valid value is High
+	Timer_OCInit.TIM_OutputState = TIM_OutputState_Enable;
 	//Timer_init.TIM_Pulse = 100;
-	TIM_OC1Init(TIM14, &Timer_init);
-	TIM_OC1Init(TIM2, &Timer_init);
+	TIM_OC1Init(TIM14, &Timer_OCInit);
+	TIM_OC1Init(TIM2, &Timer_OCInit);
 	
 	
 	TIM_OC1PreloadConfig(TIM14, TIM_OCPreload_Enable);
@@ -206,4 +206,39 @@ void WWDG_IRQHandler(void)
 	LED01;
 	delay_ms(3000);
 	LED00;
+}
+
+void General_Timer_Interrupt(u16 arr, u16 psc)  // cnt ARR
+{
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3,ENABLE);
+	
+	TimeBase_Init.TIM_CounterMode = TIM_CounterMode_Up;
+	TimeBase_Init.TIM_ClockDivision = TIM_CKD_DIV1;
+	TimeBase_Init.TIM_Period = arr;
+	TimeBase_Init.TIM_Prescaler = psc; //change the TIM clock divition
+	//TimeBase_Init.TIM_RepetitionCounter = 0; //which=1 means 1 more counting then the interrupt triggered
+	TIM_TimeBaseInit(TIM13, &TimeBase_Init);
+	
+	TIM_ITConfig(TIM3,TIM_IT_Update, ENABLE);
+	
+	NVIC_init.NVIC_IRQChannel = TIM3_IRQn;//found from Stm32f4xx.h
+	NVIC_init.NVIC_IRQChannelPreemptionPriority =1;
+	NVIC_init.NVIC_IRQChannelSubPriority = 1;
+	NVIC_init.NVIC_IRQChannelCmd = ENABLE;
+	NVIC_Init(&NVIC_init);
+	
+	TIM_Cmd(TIM3,ENABLE);
+}
+
+void TIM3_IRQHandler(void)
+{
+	if(TIM_GetITStatus(TIM3,TIM_IT_Update))
+	{
+		LED00;
+		delay_ms(1000);
+	}
+	else LED01;
+	
+	TIM_ClearITPendingBit(TIM3,TIM_IT_Update);
+	
 }

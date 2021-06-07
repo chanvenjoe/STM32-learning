@@ -11,10 +11,13 @@ int main(void)
 //	usart_init(115200);
 //	External_Interrupt_init();
 //	IWDG_Init(8,1000);
-	WWDG_Init(0x7f,0x5f,WWDG_Prescaler_8);
+//	Timer_PWM_Init(u32 arr, u16 psc);
+//	WWDG_Init(0x7f,0x5f,WWDG_Prescaler_8);
+	General_Timer_Interrupt(4999,8399);
+	
 	while(1)
-	{
-		LED00;
+	 {
+		LED01;
 		delay_ms(5000);
 	}
 }
