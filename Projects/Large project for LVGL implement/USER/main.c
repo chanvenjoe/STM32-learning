@@ -16,9 +16,11 @@ int main(void)
 	General_Timer_Interrupt(4999,8399);
 
 	while(1)
-	 {
-		LED01;
-		delay_ms(5000);
+	{
+		LED11;
+		delay_ms(1000);
+		LED10;
+		delay_ms(1000);
 	}
 }
 

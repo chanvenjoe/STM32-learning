@@ -11,5 +11,7 @@ void General_Timer_Interrupt(u16 arr, u16 psc);
 
 #define LED00  GPIO_ResetBits(GPIOF, GPIO_Pin_9);
 #define LED01  GPIO_SetBits(GPIOF, GPIO_Pin_9);
+#define LED10  GPIO_ResetBits(GPIOF, GPIO_Pin_10);
+#define LED11  GPIO_SetBits(GPIOF, GPIO_Pin_10);
 
 #endif

@@ -26,8 +26,6 @@ void GPIO_Conf(void)
 	GPIO_Config.GPIO_Speed= GPIO_Speed_100MHz; //related to the power consumption and reaction speed;
 	GPIO_Init(GPIOF, &GPIO_Config);
 	//GPIO_SetBits(GPIOF, GPIO_Pin_7);
-	GPIO_SetBits(GPIOF, GPIO_Pin_9);
-	GPIO_SetBits(GPIOF, GPIO_Pin_10);
 	
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOE, ENABLE);
 	GPIO_Config.GPIO_Mode = GPIO_Mode_IN;
@@ -91,7 +89,7 @@ void usart_init(u32 baud_rate)
 	GPIO_Config.GPIO_OType= GPIO_OType_PP;
 	GPIO_Config.GPIO_Speed= GPIO_Speed_50MHz;
 	GPIO_Config.GPIO_PuPd = GPIO_PuPd_UP; //the down pulse means star transmition
-	GPIO_Init(GPIOF, &GPIO_Config);
+	GPIO_Init(GPIOA, &GPIO_Config);
 	
 	Usart_init.USART_BaudRate = baud_rate;
 	Usart_init.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
@@ -217,7 +215,7 @@ void General_Timer_Interrupt(u16 arr, u16 psc)  // cnt ARR
 	TimeBase_Init.TIM_Period = arr;
 	TimeBase_Init.TIM_Prescaler = psc; //change the TIM clock divition
 	//TimeBase_Init.TIM_RepetitionCounter = 0; //which=1 means 1 more counting then the interrupt triggered
-	TIM_TimeBaseInit(TIM13, &TimeBase_Init);
+	TIM_TimeBaseInit(TIM3, &TimeBase_Init);
 	
 	TIM_ITConfig(TIM3,TIM_IT_Update, ENABLE);
 	
@@ -235,7 +233,8 @@ void TIM3_IRQHandler(void)
 	if(TIM_GetITStatus(TIM3,TIM_IT_Update))
 	{
 		LED00;
-		delay_ms(1000);
+		delay_ms(500);
+		LED01;
 	}
 	else LED01;
 	
