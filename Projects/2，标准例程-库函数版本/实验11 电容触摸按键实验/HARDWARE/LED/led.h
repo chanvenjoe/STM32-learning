@@ -17,8 +17,9 @@
 
 
 //LED端口定义
+#define PF7  PFout(7)
+#define BEEP PFout(8)
 #define LED0 PFout(9)	// DS0
 #define LED1 PFout(10)	// DS1	 
-
 void LED_Init(void);//初始化		 				    
 #endif

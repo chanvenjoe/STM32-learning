@@ -126,7 +126,7 @@ u8 TPAD_Scan(u8 mode)
 		{
 			res=1;
 		}	   
-		//printf("r:%d\r\n",rval);		     	    					   
+		printf("r:%d\r\n",rval);		     	    					   
 		keyen=3;				//至少要再过3次之后才能按键有效   
 	} 
 	if(keyen)keyen--;		   							   		     	    					   

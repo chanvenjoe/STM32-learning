@@ -24,7 +24,14 @@ int main(void)
 	{					  						  		 
  		if(TPAD_Scan(0))	//成功捕获到了一次上升沿(此函数执行时间至少15ms)
 		{
+			
 			LED1=!LED1;		//LED1取反
+			BEEP=!BEEP;
+			PF7=!PF7;
+			delay_ms(300);
+			LED1=!LED1;
+			BEEP=!BEEP;
+			PF7=!PF7;
 		}
 		t++;
 		if(t==15)		 

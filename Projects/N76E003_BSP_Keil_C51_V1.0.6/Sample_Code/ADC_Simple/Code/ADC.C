@@ -70,9 +70,11 @@ void main (void)
 			ADC  = ADCH<<4 | ADCL;
 			printf ("\n HValue = 0x%x",ADCH);
 			Timer0_Delay1ms(100);
-			printf ("\n LValue = 0x%x\n\n",ADCL);
+			printf ("\n LValue = 0x%x\n",ADCL);
 			Timer0_Delay1ms(100);
-			printf ("\n Hall value = %d",ADC);
+			printf ("\n Hall value = %d\n",ADC);
+			Timer0_Delay1ms(100);
+			Send_Data_To_UART0("~hC4~hE3~hBA~hC3");
 			Timer0_Delay1ms(1000);
     }
 }
