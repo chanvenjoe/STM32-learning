@@ -8,6 +8,11 @@ void External_Interrupt_init(void);
 void IWDG_Init(u8 prer, u32 rlr);
 void WWDG_Init(u8 tr, u8 wr, u32 fprer); 
 void General_Timer_Interrupt(u16 arr, u16 psc);
+void TPAD_Reset(void);
+u16 TPAD_Get_Val(void);
+void CapacitiveTouch_Init(u16 psc);
+u16 TPAD_Get_MaxVal(u8 sampt);
+u8 TPAD_Scan(u8 mode);
 
 #define LED00  GPIO_ResetBits(GPIOF, GPIO_Pin_9);
 #define LED01  GPIO_SetBits(GPIOF, GPIO_Pin_9);
