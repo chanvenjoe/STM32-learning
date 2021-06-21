@@ -5,22 +5,25 @@
 
 int main(void)
 {
-	GPIO_Conf();
+//	GPIO_Conf();
 	delay_init(168);
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
-	usart_init(115200);
+//	usart_init(115200);
 //	External_Interrupt_init();
 //	IWDG_Init(8,1000);
 //	Timer_PWM_Init(u32 arr, u16 psc);
 //	WWDG_Init(0x7f,0x5f,WWDG_Prescaler_8);
-	General_Timer_Interrupt(4999,8399);
-
+//	General_Timer_Interrupt(4999,8399);
+	CapacitiveTouch_Init(84);
 	while(1)
 	{
-		LED11;
-		delay_ms(1000);
-		LED10;
-		delay_ms(1000);
+		if(TPAD_Scan(0))
+		{
+			LED11;
+			delay_ms(1000);
+			LED10;
+			delay_ms(1000);
+		}
 	}
 }
 

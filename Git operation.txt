@@ -23,3 +23,5 @@ When error: The following untracked working tree files would be overwritten by m
 git fetch origin master
 git clean -f
 git reset --hard origin/master
+
+git push origin HEAD --force    //force to realign local and remote
