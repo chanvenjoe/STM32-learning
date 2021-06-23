@@ -112,52 +112,24 @@ void main (void)
 {
 //	unsigned char temp;
 	Set_All_GPIO_Quasi_Mode;					// Define in Function_define.h
-	
-#if 0
-	InitialUART0_Timer3(115200);
-//	set_CLOEN;  										// For clock out from P1.1
-  
-  while(1)
-  {
-		clr_GPIO1;											// Tiny board GPIO1 LED define
-		P0 = 0x00;
-		P2 = 0x00;
-		P1 = 0x00;
-		Timer0_Delay1ms(30);
-		P0 = 0xff;
-		P2 = 0xff;
-		P1 = 0xff;
-		set_GPIO1;	
 
-		Send_Data_To_UART0(0x35);					//UART0 send ascii "U"
-		temp = 0x31 + P0;
-		Send_Data_To_UART0(temp);
-		temp = 0x31 + P1;
-		Send_Data_To_UART0(temp);
+	Timer0_Delay1ms(2000);
+	while(1)
+	{
+		uint16_t i;
+		P0 = 1;
+		P12 = 0;
 
-		Timer0_Delay1ms(30);
-  }
-#endif
-
-#if 1
-  
-  while(1)
-  {
-		clr_GPIO1;											// Tiny board GPIO1 LED define
-		P0 = 0x00;
-		P2 = 0x00;
-		P1 = 0x00;
-		Timer0_Delay1ms(30);
-		P0 = 0xff;
-		P2 = 0xff;
-		P1 = 0xff;
-		set_GPIO1;	
-		Timer0_Delay1ms(30);
-  }
-#endif
-	
+		for(i=0; i<199;i++)
+		{
+		Timer0_Delay1ms(6000);
+		}
+		P0 = 0;
+		P12 = 1;
+		for( i=0; i<99;i++)
+		{
+		Timer0_Delay1ms(6000);
+		}
+	}
 
 }
-
-
-
