@@ -222,6 +222,20 @@ void delay_ms(u16 nms)
 	}
 	if(remain)delay_xms(remain);
 } 
+//Delay n 47.6ns
+void delay_47_6ns(u16 nns )
+{
+	u32 temp;		   
+	SysTick->LOAD=(u32)nns*fac_ms;			//时间加载 n *47.6ns
+	SysTick->VAL =0x00;           			//清空计数器
+	SysTick->CTRL|=SysTick_CTRL_ENABLE_Msk ;          //开始倒数 
+	do
+	{
+		temp=SysTick->CTRL;
+	}while((temp&0x01)&&!(temp&(1<<16)));	//等待时间到达   
+	SysTick->CTRL&=~SysTick_CTRL_ENABLE_Msk;       //关闭计数器
+	SysTick->VAL =0X00;     		  		//清空计数器
+}	
 #endif
 			 
 

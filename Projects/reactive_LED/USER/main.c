@@ -3,34 +3,37 @@
 #include "usart.h"
 #include "gpio_init.h"
 
+#define T0H GPIO_SetBits(GPIOF,GPIO_Pin_10);		delay_47_6ns(5);
+#define T0L GPIO_ResetBits(GPIOF,GPIO_Pin_10); delay_47_6ns(20);
+#define T1H GPIO_SetBits(GPIOF,GPIO_Pin_10);		delay_47_6ns(20);
+#define T1L GPIO_ResetBits(GPIOF,GPIO_Pin_10);		delay_47_6ns(5);
+#define RES GPIO_ResetBits(GPIOF,GPIO_Pin_10);		delay_47_6ns(8);
+#define CODE_0 T0H T0L
+#define CODE_1 T1H T1L
+
 int main(void)
 {
-	u16 pwm = 0;
-	//u16 pwm1= 500;
-	u8 dir = 1;
 	//NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
 	GPIO_Conf();
 	delay_init(168);
-	Timer_PWM_Init(500-1,84-1); //contains timer2 initialization
+	GPIO_SetBits(GPIOF, GPIO_Pin_9);
+	GPIO_SetBits(GPIOF, GPIO_Pin_10);
+
 	while(1)
 	{
+		u8 i;
+		u32 dat = 0xff; //green light
+		for(i=0;i<8;i++)
+		{
+			if(dat&0x80)
+			{
+				CODE_1
+			}
+			else CODE_0
+			dat<<=1;
+		}
+		RES
 		
-//		delay_ms(5);
-//		if(dir)
-//		{
-//			pwm++;
-//		}
-//		else
-//		{
-//			pwm--;
-//		}
-//		if(pwm>500)
-//		{
-//			dir=0;
-//		}
-//		if(pwm==0)dir=1;
-//		
-//		TIM_SetCompare1(TIM14, pwm);// high value percentage
 	}
 
 
