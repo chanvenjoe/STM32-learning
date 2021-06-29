@@ -3,11 +3,12 @@
 #include "usart.h"
 #include "gpio_init.h"
 
-#define T0H GPIO_SetBits(GPIOF,GPIO_Pin_10);		delay_47_6ns(5);
-#define T0L GPIO_ResetBits(GPIOF,GPIO_Pin_10); delay_47_6ns(20);
-#define T1H GPIO_SetBits(GPIOF,GPIO_Pin_10);		delay_47_6ns(20);
-#define T1L GPIO_ResetBits(GPIOF,GPIO_Pin_10);		delay_47_6ns(5);
-#define RES GPIO_ResetBits(GPIOF,GPIO_Pin_10);		delay_47_6ns(8);
+#define T0H GPIO_SetBits(GPIOF,GPIO_Pin_10);		delay_47_6ns(3);
+#define T0L GPIO_ResetBits(GPIOF,GPIO_Pin_10); 		delay_47_6ns(34);
+#define T1H GPIO_SetBits(GPIOF,GPIO_Pin_10);		delay_47_6ns(34);
+#define T1L GPIO_ResetBits(GPIOF,GPIO_Pin_10);		delay_47_6ns(3);
+#define RES GPIO_ResetBits(GPIOF,GPIO_Pin_10);		delay_47_6ns(1300);
+#define TEST_delay delay_47_6ns(1)
 #define CODE_0 T0H T0L
 #define CODE_1 T1H T1L
 
@@ -19,20 +20,27 @@ int main(void)
 	GPIO_SetBits(GPIOF, GPIO_Pin_9);
 	GPIO_SetBits(GPIOF, GPIO_Pin_10);
 
+
 	while(1)
 	{
 		u8 i;
-		u32 dat = 0xff; //green light
-		for(i=0;i<8;i++)
+		u8 w=2;
+		u32 c = 0x00800000;
+		u32 dat = 0x0000f0; 
+		RES
+		while(w--)
 		{
-			if(dat&0x80)
+		for(i=0;i<24;i++)
+		{
+			if(dat&c)
 			{
 				CODE_1
 			}
 			else CODE_0
 			dat<<=1;
 		}
-		RES
+		}
+		//RES
 		
 	}
 
