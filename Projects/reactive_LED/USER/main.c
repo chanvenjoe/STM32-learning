@@ -2,15 +2,7 @@
 #include "delay.h"
 #include "usart.h"
 #include "gpio_init.h"
-
-#define T0H GPIO_SetBits(GPIOF,GPIO_Pin_10);		delay_47_6ns(3);
-#define T0L GPIO_ResetBits(GPIOF,GPIO_Pin_10); 		delay_47_6ns(34);
-#define T1H GPIO_SetBits(GPIOF,GPIO_Pin_10);		delay_47_6ns(34);
-#define T1L GPIO_ResetBits(GPIOF,GPIO_Pin_10);		delay_47_6ns(3);
-#define RES GPIO_ResetBits(GPIOF,GPIO_Pin_10);		delay_47_6ns(1300);
-#define TEST_delay delay_47_6ns(1)
-#define CODE_0 T0H T0L
-#define CODE_1 T1H T1L
+#include "WS2811.h"
 
 int main(void)
 {
@@ -27,7 +19,7 @@ int main(void)
 		u8 w=2;
 		u32 c = 0x00800000;
 		u32 dat = 0x0000f0; 
-		RES
+		//RES
 		while(w--)
 		{
 		for(i=0;i<24;i++)
@@ -39,8 +31,8 @@ int main(void)
 			else CODE_0
 			dat<<=1;
 		}
+				RES
 		}
-		//RES
 		
 	}
 
