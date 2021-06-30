@@ -17,12 +17,4 @@ void GPIO_Conf(void)
 	
 }
 
-void delay_60ns(u32 n)//5.9ns nop
-{
-	u8 i;
-	for(i=0;i<99*n;i++)
-	{
-		__nop();
-	}
-}
 

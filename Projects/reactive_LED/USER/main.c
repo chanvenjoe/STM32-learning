@@ -9,31 +9,17 @@ int main(void)
 	//NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
 	GPIO_Conf();
 	delay_init(168);
-	GPIO_SetBits(GPIOF, GPIO_Pin_9);
-	GPIO_SetBits(GPIOF, GPIO_Pin_10);
 
 
 	while(1)
 	{
 		u8 i;
-		u8 w=2;
-		u32 c = 0x00800000;
-		u32 dat = 0x0000f0; 
-		//RES
-		while(w--)
+		for( i=0;i<10;i++)
 		{
-		for(i=0;i<24;i++)
-		{
-			if(dat&c)
-			{
-				CODE_1
-			}
-			else CODE_0
-			dat<<=1;
+			WS_Send24bits(Red);
 		}
-				RES
-		}
-		
+		RES
+
 	}
 
 
