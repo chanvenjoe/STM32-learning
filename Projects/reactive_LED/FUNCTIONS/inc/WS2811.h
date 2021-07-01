@@ -11,7 +11,15 @@
 #define TEST_delay delay_47_6ns(1)
 #define CODE_0 T0H T0L
 #define CODE_1 T1H T1L
-#define LEDNUM 		10	
+#define LEDNUM 		10
+
+typedef struct color
+{
+	u32 RGB;
+	u8 R;
+	u8 G;
+	u8 B;
+}Color_Typedef;
 
 #define White       0xFFFFFF
 #define Black       0x000000
@@ -21,5 +29,7 @@
 #define cmp = 		0x00800000;
 
 void WS_Send24bits(unsigned long color);
-
+void WS_ColorSet_LED(u8 from, u8 to, u32 color);
+void WS_Color_copy(u8 No, u32 color);
+void WS_Refresh(void);
 #endif
