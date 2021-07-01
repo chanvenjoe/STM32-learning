@@ -9,10 +9,9 @@ int main(void)
 	//NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
 	GPIO_Conf();
 	delay_init(168);
-	WS_ColorSet_LED(2, 5, Red);
 	while(1)
 	{
-		WS_Refresh();
+		 WS_Key_RGB();
 	}
 
 
