@@ -125,13 +125,8 @@ u8 TPAD_Scan(u8 mode)
 		if((keyen==0)&&(rval>(tpad_default_val+TPAD_GATE_VAL)))	//大于tpad_default_val+TPAD_GATE_VAL,有效
 		{
 			res=1;
-<<<<<<< Updated upstream
 		}	   
 		printf("r:%d\r\n",rval);		     	    					   
-=======
-		}
-		//printf("r:%d\r\n",rval);		     	    					   
->>>>>>> Stashed changes
 		keyen=3;				//至少要再过3次之后才能按键有效   
 	} 
 	if(keyen)keyen--;		   							   		     	    					   

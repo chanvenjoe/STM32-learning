@@ -247,33 +247,10 @@ void TIM3_IRQHandler(void)
 	
 }
 
-void CapacitiveTouch_Init(u16 psc)
+u32 CapacitiveTouch_Init(u16 psc)
 {
 	u16 array[10];
 	u16 temp;
-	u8 i,j;
-	for(i=0;i<10;i++)
-	{
-		array[i] = TPAD_Get_Val();
-		delay_ms(10);
-	}
-	for(i=0;i<9;i++)
-	{
-		for(j=i+1;j<10;j++)
-		{
-			if(array[i]>array[j])
-			{
-				temp = array[j];
-				array[j] = array[i];
-				array[i] = temp;
-			}
-		}
-	}
-	temp = 0;
-	for(i=2;i<8;i++) temp+=array[i];
-	tpad_average = temp/6;
-	printf("tpad value is:%d\n", tpad_average);
-	if(tpad_average >TPAD_ARR_MAX_VAL/2) printf("initialization faild");
 
 	//GPIOA init
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
@@ -281,11 +258,11 @@ void CapacitiveTouch_Init(u16 psc)
 	
 	GPIO_Config.GPIO_Mode = GPIO_Mode_AF;
 	GPIO_Config.GPIO_OType= GPIO_OType_PP;
-	GPIO_Config.GPIO_Pin  = GPIO_Pin_5;
+	GPIO_Config.GPIO_Pin  = GPIO_Pin_5 | GPIO_Pin_0;
 	GPIO_Config.GPIO_PuPd = GPIO_PuPd_NOPULL;
 	GPIO_Config.GPIO_Speed= GPIO_Speed_100MHz; //related to the power consumption and reaction speed;
 	GPIO_Init(GPIOA, &GPIO_Config);
-	GPIO_PinAFConfig(GPIOA, GPIO_PinSource0,GPIO_AF_TIM2);
+	GPIO_PinAFConfig(GPIOA, GPIO_PinSource5,GPIO_AF_TIM2);
 	
 	//TIMER2_Init
 	TimeBase_Init.TIM_ClockDivision = TIM_CKD_DIV1;
@@ -313,7 +290,31 @@ void CapacitiveTouch_Init(u16 psc)
 	NVIC_init.NVIC_IRQChannelSubPriority = 1;
 	NVIC_init.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&NVIC_init);
-
+	
+	u8 i,j;
+	for(i=0;i<10;i++)
+	{
+		array[i] = TPAD_Get_Val();
+		delay_ms(10);
+	}
+	for(i=0;i<9;i++)
+	{
+		for(j=i+1;j<10;j++)
+		{
+			if(array[i]>array[j])
+			{
+				temp = array[j];
+				array[j] = array[i];
+				array[i] = temp;
+			}
+		}
+	}
+	temp = 0;
+	for(i=2;i<8;i++) temp+=array[i];
+	tpad_average = temp/6;
+	printf("tpad value is:%d\n", tpad_average);
+	if(tpad_average >TPAD_ARR_MAX_VAL/2) printf("initialization faild");
+	return tpad_average;
 }
 
 void TIM2_IRQHandler(void)
@@ -349,7 +350,7 @@ u16 TPAD_Get_Val(void)
 	return TIM_GetCapture1(TIM2);
 }
 
-u8 TPAD_Scan(u8 mode)
+u8 TPAD_Scan(u8 mode,u32 tpad_average1)
 {
 	static u8 keyen=0; //enable touch
 	u8 res=0;
@@ -361,7 +362,7 @@ u8 TPAD_Scan(u8 mode)
 		keyen=0;
 	}
 	rval=TPAD_Get_MaxVal(sample);
-	if(rval>(tpad_average+TPAD_GATE_VAL)&&(keyen==0))
+	if(rval>(tpad_average1+TPAD_GATE_VAL)&&(keyen==0))
 	{
 		res=1;
 		keyen = 0;

@@ -14,10 +14,10 @@ int main(void)
 //	Timer_PWM_Init(u32 arr, u16 psc);
 //	WWDG_Init(0x7f,0x5f,WWDG_Prescaler_8);
 //	General_Timer_Interrupt(4999,8399);
-	CapacitiveTouch_Init(84);
+	u32 temp=CapacitiveTouch_Init(84);
 	while(1)
 	{
-		if(TPAD_Scan(0))
+		if(TPAD_Scan(0,temp))
 		{
 			LED11;
 			delay_ms(1000);

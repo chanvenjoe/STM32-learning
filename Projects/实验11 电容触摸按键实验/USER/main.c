@@ -26,18 +26,12 @@ int main(void)
 		{
 			
 			LED1=!LED1;		//LED1È¡·´
-<<<<<<< Updated upstream
 			BEEP=!BEEP;
 			PF7=!PF7;
 			delay_ms(300);
 			LED1=!LED1;
 			BEEP=!BEEP;
 			PF7=!PF7;
-=======
-			delay_ms(300);
-			LED1=!LED1;
-			
->>>>>>> Stashed changes
 		}
 		t++;
 		if(t==15)		 
