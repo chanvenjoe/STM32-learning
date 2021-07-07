@@ -13,10 +13,13 @@ u16 TPAD_Get_Val(void);
 u32 CapacitiveTouch_Init(u16 psc);
 u16 TPAD_Get_MaxVal(u8 sampt);
 u8 TPAD_Scan(u8 mode,u32 tpad_average1);
+void Tpad_IOInit(u16 psc);
 
-#define LED00  GPIO_ResetBits(GPIOF, GPIO_Pin_9);
-#define LED01  GPIO_SetBits(GPIOF, GPIO_Pin_9);
-#define LED10  GPIO_ResetBits(GPIOF, GPIO_Pin_10);
-#define LED11  GPIO_SetBits(GPIOF, GPIO_Pin_10);
+#define LED00   GPIO_ResetBits(GPIOF, GPIO_Pin_9);
+#define LED01   GPIO_SetBits(GPIOF, GPIO_Pin_9);
+#define LED10   GPIO_ResetBits(GPIOF, GPIO_Pin_10);
+#define LED11   GPIO_SetBits(GPIOF, GPIO_Pin_10);
+#define BEEP0   GPIO_SetBits(GPIOF, GPIO_Pin_8);
+#define BEEP1   GPIO_ResetBits(GPIOF, GPIO_Pin_8);
 
 #endif

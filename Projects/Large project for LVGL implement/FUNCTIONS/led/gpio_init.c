@@ -249,48 +249,10 @@ void TIM3_IRQHandler(void)
 
 u32 CapacitiveTouch_Init(u16 psc)
 {
-	u16 array[10];
+	u32 array[10];
 	u16 temp;
 
-	//GPIOA init
-	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
-	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
-	
-	GPIO_Config.GPIO_Mode = GPIO_Mode_AF;
-	GPIO_Config.GPIO_OType= GPIO_OType_PP;
-	GPIO_Config.GPIO_Pin  = GPIO_Pin_5 | GPIO_Pin_0;
-	GPIO_Config.GPIO_PuPd = GPIO_PuPd_NOPULL;
-	GPIO_Config.GPIO_Speed= GPIO_Speed_100MHz; //related to the power consumption and reaction speed;
-	GPIO_Init(GPIOA, &GPIO_Config);
-	GPIO_PinAFConfig(GPIOA, GPIO_PinSource5,GPIO_AF_TIM2);
-	
-	//TIMER2_Init
-	TimeBase_Init.TIM_ClockDivision = TIM_CKD_DIV1;
-	TimeBase_Init.TIM_CounterMode = TIM_CounterMode_Up;
-	TimeBase_Init.TIM_Period = TPAD_ARR_MAX_VAL;
-	TimeBase_Init.TIM_Prescaler = psc-1;
-	TimeBase_Init.TIM_RepetitionCounter = 0;
-	TIM_TimeBaseInit(TIM2,&TimeBase_Init);
-	TIM_Cmd(TIM2,ENABLE);
-	
-	TIM_ITConfig(TIM2,TIM_IT_Update|TIM_IT_CC1,ENABLE);//Enable the interrupt and capture
-	
-	//Input capture init
-	InputCapture_init.TIM_Channel = TIM_Channel_1;
-	InputCapture_init.TIM_ICFilter= 0x00;
-	InputCapture_init.TIM_ICPolarity= TIM_ICPolarity_Rising;
-	InputCapture_init.TIM_ICPrescaler = TIM_ICPSC_DIV1;
-	InputCapture_init.TIM_ICSelection = TIM_ICSelection_DirectTI;
-	TIM_ICInit(TIM2, &InputCapture_init);
-
-	
-	//Timer priority setting
-	NVIC_init.NVIC_IRQChannel = TIM2_IRQn;//found from Stm32f4xx.h
-	NVIC_init.NVIC_IRQChannelPreemptionPriority =1;
-	NVIC_init.NVIC_IRQChannelSubPriority = 1;
-	NVIC_init.NVIC_IRQChannelCmd = ENABLE;
-	NVIC_Init(&NVIC_init);
-	
+	Tpad_IOInit(psc);
 	u8 i,j;
 	for(i=0;i<10;i++)
 	{
@@ -325,15 +287,18 @@ void TIM2_IRQHandler(void)
 
 void TPAD_Reset(void)
 {
+	GPIO_Config.GPIO_Pin = GPIO_Pin_5;
 	GPIO_Config.GPIO_Mode = GPIO_Mode_OUT;
 	GPIO_Config.GPIO_PuPd = GPIO_PuPd_DOWN; 
 	GPIO_Init(GPIOA, &GPIO_Config);
+	LED00
 	GPIO_ResetBits(GPIOA, GPIO_Pin_5);
 	
-	delay_ms(5);
+	delay_ms(50);
 	TIM_ClearITPendingBit(TIM2, TIM_IT_CC1|TIM_IT_Update);
 	TIM_SetCounter(TIM2,0);
 	
+	GPIO_Config.GPIO_Pin = GPIO_Pin_5;
 	GPIO_Config.GPIO_Mode = GPIO_Mode_AF;
 	GPIO_Config.GPIO_PuPd = GPIO_PuPd_NOPULL;
 	GPIO_Init(GPIOA,&GPIO_Config);
@@ -381,4 +346,46 @@ u16 TPAD_Get_MaxVal(u8 sampt)
 		if(temp>res) res = temp;
 	}
 	return res;
+}
+
+void Tpad_IOInit(u16 psc)
+{
+	//GPIOA init
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
+	
+	GPIO_Config.GPIO_Mode = GPIO_Mode_AF;
+	GPIO_Config.GPIO_OType= GPIO_OType_PP;
+	GPIO_Config.GPIO_Pin  = GPIO_Pin_5 | GPIO_Pin_0;
+	GPIO_Config.GPIO_PuPd = GPIO_PuPd_NOPULL;
+	GPIO_Config.GPIO_Speed= GPIO_Speed_100MHz; //related to the power consumption and reaction speed;
+	GPIO_Init(GPIOA, &GPIO_Config);
+	GPIO_PinAFConfig(GPIOA, GPIO_PinSource5,GPIO_AF_TIM2);
+	
+	//TIMER2_Init
+	TimeBase_Init.TIM_ClockDivision = TIM_CKD_DIV1;
+	TimeBase_Init.TIM_CounterMode = TIM_CounterMode_Up;
+	TimeBase_Init.TIM_Period = TPAD_ARR_MAX_VAL;
+	TimeBase_Init.TIM_Prescaler = psc-1;
+	TimeBase_Init.TIM_RepetitionCounter = 0;
+	TIM_TimeBaseInit(TIM2,&TimeBase_Init);
+	TIM_Cmd(TIM2,ENABLE);
+	
+//	TIM_ITConfig(TIM2,TIM_IT_Update|TIM_IT_CC1,ENABLE);//Enable the interrupt and capture
+	
+	//Input capture init
+	InputCapture_init.TIM_Channel = TIM_Channel_1;
+	InputCapture_init.TIM_ICFilter= 0x00;
+	InputCapture_init.TIM_ICPolarity= TIM_ICPolarity_Rising;
+	InputCapture_init.TIM_ICPrescaler = TIM_ICPSC_DIV1;
+	InputCapture_init.TIM_ICSelection = TIM_ICSelection_DirectTI;
+	TIM_ICInit(TIM2, &InputCapture_init);
+
+	
+//	//Timer priority setting
+//	NVIC_init.NVIC_IRQChannel = TIM2_IRQn;//found from Stm32f4xx.h
+//	NVIC_init.NVIC_IRQChannelPreemptionPriority =1;
+//	NVIC_init.NVIC_IRQChannelSubPriority = 1;
+//	NVIC_init.NVIC_IRQChannelCmd = ENABLE;
+//	NVIC_Init(&NVIC_init);
 }
