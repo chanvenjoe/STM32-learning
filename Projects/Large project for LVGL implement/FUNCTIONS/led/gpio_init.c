@@ -3,7 +3,7 @@
 #include "usart.h"	
 #include "sys.h"
 #include "delay.h"
-#include "lvgl.h"
+//#include "lvgl.h"
 
 /***********TYPE DEFINE****************/
 GPIO_InitTypeDef GPIO_Config;

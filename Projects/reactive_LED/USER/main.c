@@ -7,11 +7,19 @@
 int main(void)
 {
 	//NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
+	u32 temp;
 	GPIO_Conf();
 	delay_init(168);
+	temp=CapacitiveTouch_Init(8);
 	while(1)
 	{
-		 WS_Key_RGB();
+		while(TPAD_Scan(0,temp))
+		{	
+			WS_Key_RGB();
+			GPIO_ResetBits(GPIOF,GPIO_Pin_5);
+			delay_ms(100);
+			GPIO_SetBits(GPIOF,GPIO_Pin_5);
+		}
 	}
 
 

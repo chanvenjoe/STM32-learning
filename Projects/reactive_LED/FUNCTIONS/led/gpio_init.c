@@ -3,7 +3,7 @@
 
 GPIO_InitTypeDef GPIO_Config;
 TIM_OCInitTypeDef Timer_init;
-TIM_TimeBaseInitTypeDef TimeBase_Init;
+TIM_TimeBaseInitTypeDef TimeBase_Initt;
 void GPIO_Conf(void)
 {
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOF, ENABLE);
