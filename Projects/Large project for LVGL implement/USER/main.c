@@ -13,25 +13,12 @@ int main(void)
 //	IWDG_Init(8,1000);
 //	Timer_PWM_Init(u32 arr, u16 psc);
 //	WWDG_Init(0x7f,0x5f,WWDG_Prescaler_8);
-//	General_Timer_Interrupt(4999,8399);
-	u32 temp=CapacitiveTouch_Init(8);
-	delay_ms(1000);
-	printf("Initialization finished:%d",temp);
+	General_Timer_Interrupt(9,8399);//timer3 84M   time=arr*psc/84M = 1ms =>psc=8400 arr = 10
+//	u32 temp=CapacitiveTouch_Init(8);
+	lv_init();
 	while(1)
 	{
-		if(TPAD_Scan(0,temp))
-		{
-			LED11;
-	//		BEEP0
-			delay_ms(1000);
-			LED10;
-		//	BEEP1;
-			delay_ms(1000);
-		}
-		LED00;
-		delay_ms(100);
-		LED01;
-		delay_ms(100);
+
 	}
 }
 
