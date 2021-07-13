@@ -3,7 +3,7 @@
 #include "usart.h"	
 #include "sys.h"
 #include "delay.h"
-//#include "lvgl.h"
+#include "lvgl.h"
 
 /***********TYPE DEFINE****************/
 GPIO_InitTypeDef GPIO_Config;
@@ -91,6 +91,11 @@ struct __FILE
 };
 
 FILE __stdout;
+//__use_no_semihosting was requested, but _ttywrch was
+void _ttywrch(int ch)
+{
+ch = ch;
+}
 //定义_sys_exit()以避免使用半主机模式
 void _sys_exit(int x)
 {
@@ -103,6 +108,7 @@ int fputc(int ch, FILE *f)
 	USART1->DR = (u8) ch;
 	return ch;
 }
+
 #endif
 
 void usart_init(u32 baud_rate)
