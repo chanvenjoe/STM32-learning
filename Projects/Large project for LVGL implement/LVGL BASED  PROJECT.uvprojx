@@ -1394,7 +1394,7 @@
                   <RVCTZI>0</RVCTZI>
                   <RVCTOtherData>0</RVCTOtherData>
                   <ModuleSelection>0</ModuleSelection>
-                  <IncludeInBuild>0</IncludeInBuild>
+                  <IncludeInBuild>1</IncludeInBuild>
                   <AlwaysBuild>2</AlwaysBuild>
                   <GenerateAssemblyFile>2</GenerateAssemblyFile>
                   <AssembleAssemblyFile>2</AssembleAssemblyFile>
@@ -1438,6 +1438,36 @@
                   </Cads>
                 </FileArmAds>
               </FileOption>
+            </File>
+            <File>
+              <FileName>24cxx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\FUNCTIONS\24CXX\24cxx.c</FilePath>
+            </File>
+            <File>
+              <FileName>ft5206.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\FUNCTIONS\TOUCH\ft5206.c</FilePath>
+            </File>
+            <File>
+              <FileName>ctiic.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\FUNCTIONS\TOUCH\ctiic.c</FilePath>
+            </File>
+            <File>
+              <FileName>gt9147.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\FUNCTIONS\TOUCH\gt9147.c</FilePath>
+            </File>
+            <File>
+              <FileName>ott2001a.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\FUNCTIONS\TOUCH\ott2001a.c</FilePath>
+            </File>
+            <File>
+              <FileName>myiic.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\FUNCTIONS\IIC\myiic.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3450,9 +3480,9 @@
           <GroupName>GUI_APP</GroupName>
           <Files>
             <File>
-              <FileName>lv_example_get_started_1.c</FileName>
+              <FileName>lv_example_arc_1.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\LVGL\lvgl\examples\get_started\lv_example_get_started_1.c</FilePath>
+              <FilePath>.\LVGL\lvgl\examples\widgets\arc\lv_example_arc_1.c</FilePath>
             </File>
           </Files>
         </Group>

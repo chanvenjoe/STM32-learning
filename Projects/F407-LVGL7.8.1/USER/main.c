@@ -32,7 +32,7 @@ int main(void)
 	lv_port_disp_init();	//lvgl显示接口初始化,放在lv_init()的后面
 	lv_port_indev_init();	//lvgl输入接口初始化,放在lv_init()的后面
 	
-	lv_demo_benchmark();
+	//lv_demo_benchmark();
 	
 	while(1)
 	{

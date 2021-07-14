@@ -21,15 +21,16 @@ int main(void)
 //	WWDG_Init(0x7f,0x5f,WWDG_Prescaler_8);
 	General_Timer_Interrupt(999,83);//timer3 84M   time=arr*psc/84M = 1ms =>psc=8400 arr = 10
 	u32 temp=CapacitiveTouch_Init(8);
+	
 	LCD_Init();
-//	tp_dev.init();
+	tp_dev.init();//calibration the screen
 	lv_init();
 	lv_port_disp_init();//example3 is too big, surpass the size
 	lv_port_indev_init();
-	lv_example_get_started_1();
+
 	while(1)
 	{
-//		tp_dev.scan(0);
+		tp_dev.scan(0);
 		lv_task_handler();
 	}
 }
