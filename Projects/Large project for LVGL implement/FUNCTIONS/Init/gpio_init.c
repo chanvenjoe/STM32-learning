@@ -267,7 +267,7 @@ void TIM3_IRQHandler(void)
 {
 	if(TIM3->SR&TIM_IT_Update)
 	{
-		lv_tick_inc(1);							 //	if(TIM_GetITStatus(TIM3,TIM_IT_Update))
+//		lv_tick_inc(1);							 //	if(TIM_GetITStatus(TIM3,TIM_IT_Update))
 		TIM3->SR = (uint16_t)~TIM_IT_Update;//	TIM_ClearITPendingBit(TIM3,TIM_IT_Update);
 	}
 }

@@ -4,10 +4,8 @@
 #include "gpio_init.h"
 #include "lcd.h"
 #include "touch.h"
-#include "lvgl.h"
 #include "lv_port_disp.h"
 #include "lv_port_indev.h"
-#include "lv_examples.h"
 
 int main(void)
 {
@@ -19,19 +17,15 @@ int main(void)
 //	IWDG_Init(8,1000);
 //	Timer_PWM_Init(u32 arr, u16 psc);
 //	WWDG_Init(0x7f,0x5f,WWDG_Prescaler_8);
-	General_Timer_Interrupt(999,83);//timer3 84M   time=arr*psc/84M = 1ms =>psc=8400 arr = 10
+//	General_Timer_Interrupt(999,83);//timer3 84M   time=arr*psc/84M = 1ms =>psc=8400 arr = 10 for LVGL
 	u32 temp=CapacitiveTouch_Init(8);
-	
-	LCD_Init();
-	tp_dev.init();//calibration the screen
-	lv_init();
-	lv_port_disp_init();//example3 is too big, surpass the size
-	lv_port_indev_init();
 
 	while(1)
 	{
-		tp_dev.scan(0);
-		lv_task_handler();
+		LED00;
+		delay_ms(1000);
+		LED01;
+		delay_ms(1000);
 	}
 }
 
