@@ -109,7 +109,6 @@ typedef struct
 #define LCD_BASE        ((u32)(0x6C000000 | 0x0000007E))
 #define LCD             ((LCD_TypeDef *) LCD_BASE)
 //////////////////////////////////////////////////////////////////////////////////
-	 
 //扫描方向定义
 #define L2R_U2D  0 //从左到右,从上到下
 #define L2R_D2U  1 //从左到右,从下到上

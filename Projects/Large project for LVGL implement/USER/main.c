@@ -2,7 +2,7 @@
 #include "delay.h"
 #include "usart.h"
 #include "gpio_init.h"
-#include "lcd.h"
+#include "LCD_init.h"
 #include "touch.h"
 #include "lv_port_disp.h"
 #include "lv_port_indev.h"
@@ -19,6 +19,7 @@ int main(void)
 //	WWDG_Init(0x7f,0x5f,WWDG_Prescaler_8);
 //	General_Timer_Interrupt(999,83);//timer3 84M   time=arr*psc/84M = 1ms =>psc=8400 arr = 10 for LVGL
 	u32 temp=CapacitiveTouch_Init(8);
+//	LCD_Init();
 
 	while(1)
 	{
