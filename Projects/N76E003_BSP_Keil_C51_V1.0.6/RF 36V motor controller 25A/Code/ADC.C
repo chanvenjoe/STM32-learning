@@ -55,20 +55,10 @@ void main (void)
 {
 		Set_All_GPIO_Quasi_Mode;															//For GPIO1 output, Find in "Function_define.h" - "GPIO INIT"
 		InitialUART0_Timer1(115200);
-		Enable_ADC_BandGap;													//Find in "Function_define.h" - "ADC INIT"
-		Enable_ADC_AIN4;		//P05 A_Det
-		Enable_ADC_AIN0;			//P17 Hall pedal
-		Enable_ADC_AIN1;		//P30 Speed
 		while(1)
     {
-			clr_ADCF;
-			set_ADCS;																	// Each time ADC start trig signal
-      while(ADCF == 0);
-			printf ("\n Value = 0x%bx",ADCRH);
-			printf ("\n Value = 0x%bx",ADCRL);
-			clr_GPIO1;
-//			Timer0_Delay1ms(100);
-			set_GPIO1;
+
+
     }
 }
 
