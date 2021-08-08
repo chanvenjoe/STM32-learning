@@ -20,6 +20,7 @@
 #include "Delay.h"
 #include "Motor_control.h"
 
+
 //*****************  The Following is in define in Fucntion_define.h  ***************************
 //****** Always include Function_define.h call the define you want, detail see main(void) *******
 //***********************************************************************************************
@@ -51,15 +52,22 @@
 The main C function.  Program execution starts
 here after stack initialization.
 ******************************************************************************/
+
 void main (void) 
 {
-		Set_All_GPIO_Quasi_Mode;															//For GPIO1 output, Find in "Function_define.h" - "GPIO INIT"
-		InitialUART0_Timer1(115200);
-		while(1)
-    {
+	uint8_t i;
+	Set_All_GPIO_Quasi_Mode;				//For GPIO1 output, Find in "Function_define.h" - "GPIO INIT"
+	InitialUART0_Timer1(115200);
+	ADC_Init();							//
+											//reverved for timer_init   Sleep
+	while(1)
+	{
+		while(i>1)
+		{
+			UINT8 pwm_step = i;
+		}
 
-
-    }
+	}
 }
 
 
