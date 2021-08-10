@@ -1,3 +1,4 @@
+#define u8 unsigned char
 void ADC_Init(void);
-//UINT8 Get_HallValue(void);
+u8 Get_HallValue(void);
 

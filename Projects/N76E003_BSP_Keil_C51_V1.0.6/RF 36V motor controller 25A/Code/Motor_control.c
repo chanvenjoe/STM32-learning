@@ -9,18 +9,19 @@
 #define set_IAPEN BIT_TMP=EA;EA=0;TA=0xAA;TA=0x55;CHPCON|=SET_BIT0 ;EA=BIT_TMP
 #define set_IAPGO BIT_TMP=EA;EA=0;TA=0xAA;TA=0x55;IAPTRG|=SET_BIT0 ;EA=BIT_TMP
 #define clr_IAPEN BIT_TMP=EA;EA=0;TA=0xAA;TA=0x55;CHPCON&=~SET_BIT0;EA=BIT_TMP
-
+////////////Variables////////////////
 uint32_t bgvalue;
+uint32_t ADCValue;
 static uint16_t bgvol;
-uint32_t temp;
+static uint16_t ADC_Vol;
 uint16_t  bgh;
 uint16_t  bgl;
-static uint16_t ADCValue;
-static double ADC_Vol;
+
 
 
 void ADC_Init(void)
 {
+	uint32_t temp;
 	Enable_ADC_BandGap;													//Find in "Function_define.h" - "ADC INIT"
 	set_IAPEN;
 	IAPAL = 0x0c; IAPAH = 0x00; IAPCN = 0x04;
@@ -42,17 +43,21 @@ void ADC_Init(void)
 //	Enable_ADC_AIN1;		//P30 Speed
 }
 
-//UINT8 Get_HallValue()
-//{
-//	Enable_ADC_AIN0;			//P17 Hall pedal
-//	clr_ADCF;
-//	set_ADCS;
-//	ADCValue = ADCRH<<4|ADCRL;
-// 	ADC_Vol = 1.2 * ADCValue/bgvalue;
-//	if(ADC_Vol>1)
-//	{
-//		UINT8 i = ADCValue/34;
-//		return i;
-//	}
-//	return 0;
-//}
+UINT8 Get_HallValue()
+{
+	uint32_t temp1;
+	Enable_ADC_AIN0;			//P17 Hall pedal
+	clr_ADCF;
+	set_ADCS;
+	ADCValue = (ADCRH<<4)+ADCRL;
+	temp1 = bgvol*ADCValue;
+	temp1 /= bgvalue;
+ 	ADC_Vol = temp1;
+	printf("ADC_voltage:%dmV\n",ADC_Vol);
+	if(ADC_Vol>1000)
+	{
+		UINT8 i = ADCValue/34;
+		return i;
+	}
+	return 0;
+}
