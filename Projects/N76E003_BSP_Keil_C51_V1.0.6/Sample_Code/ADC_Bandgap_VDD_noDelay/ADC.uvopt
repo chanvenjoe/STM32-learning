@@ -128,24 +128,7 @@
           <Name>-S1 -B115200 -O805308160</Name>
         </SetRegEntry>
       </TargetDriverDllRegistry>
-      <Breakpoint>
-        <Bp>
-          <Number>0</Number>
-          <Type>0</Type>
-          <LineNumber>128</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>-16773634</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>C:\Users\Daddy CHOU\Desktop\Git project\STM32-learning\Projects\N76E003_BSP_Keil_C51_V1.0.6\Sample_Code UNtouched\ADC_Bandgap_VDD_noDelay\Code\ADC_BG_VDD_AVG_NEW.C</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\ADC_Bandgap_VDD\ADC_BG_VDD_AVG_NEW\128</Expression>
-        </Bp>
-      </Breakpoint>
+      <Breakpoint/>
       <WatchWindow1>
         <Ww>
           <count>0</count>

@@ -45,6 +45,7 @@ void main (void)
 	InitialUART0_Timer1(115200);
 	ADC_Init();							//
 										//reverved for timer_init   Sleep
+	PWM_Init();
 	while(1)
 	{
 		while(Get_HallValue())

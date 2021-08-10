@@ -64,7 +64,7 @@ void main (void)
 			printf ("\n Value = 0x%bx",ADCRH);
 			printf ("\n Value = 0x%bx",ADCRL);
 			clr_GPIO1;
-//			Timer0_Delay1ms(100);
+			Timer0_Delay1ms(100);
 			set_GPIO1;
     }
 }

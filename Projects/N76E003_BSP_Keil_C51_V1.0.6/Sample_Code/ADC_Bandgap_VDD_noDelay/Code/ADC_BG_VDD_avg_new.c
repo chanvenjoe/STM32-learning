@@ -84,7 +84,7 @@ void READ_BANDGAP()
 		clr_IAPEN;
 //			printf ("\n BG High = %bX",BandgapHigh); 
 //			printf ("\n BG Low = %bX",BandgapLow); 
-//			printf ("\n BG ROMMAP = %e",Bandgap_Voltage); 
+			printf ("\n BG ROMMAP = %e",Bandgap_Voltage); 
 }
 		
 		
