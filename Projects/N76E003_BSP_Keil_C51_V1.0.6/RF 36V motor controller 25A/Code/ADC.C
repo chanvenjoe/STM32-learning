@@ -6,7 +6,7 @@
 #include "Motor_control.h"
 #include "Delay.h"
 
-
+#define threshold 1000;
 //*****************  The Following is in define in Fucntion_define.h  ***************************
 //****** Always include Function_define.h call the define you want, detail see main(void) *******
 //***********************************************************************************************
@@ -48,13 +48,15 @@ void main (void)
 	PWM_Init();
 	while(1)
 	{
-		while(Get_HallValue())
-		{
-//			UINT8 pwm_step = Get_HallValue();
-//			printf("PWM_STEP =%d",Get_HallValue());
-			Timer0_Delay1ms(1);
+
+//		while(Get_HallValue()>1000)
+//		{
+			double pwm_step = (Get_HallValue()-1000)/28;
+			printf("PWM:%d %",pwm_step);
+			PWM_Setting(pwm_step);
+			Timer0_Delay1ms(10);
 			
-		}
+//		}
 
 	}
 }

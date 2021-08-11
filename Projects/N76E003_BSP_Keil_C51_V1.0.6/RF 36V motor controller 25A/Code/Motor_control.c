@@ -18,6 +18,7 @@ uint8_t  bgl;
 
 void ADC_Init(void)
 {
+	set_P14; //Enable DCDC
 	set_IAPEN;
 	IAPAL = 0x0c; IAPAH = 0x00; IAPCN = 0x04;
 	set_IAPGO;
@@ -53,22 +54,45 @@ UINT8 Get_HallValue(void)
 
 void PWM_Init()
 {
+	PWM3_P04_OUTPUT_ENABLE;//Upper bridge
 	PWM4_P01_OUTPUT_ENABLE;
-	PWM5_P03_OUTPUT_ENABLE;
-	PWM_COMPLEMENTARY_MODE;
-	PWMPH = 0x01;  //Period setting;
-	PWMPL = 0x83;	//14KHz
+	PWM_CLOCK_DIV_8;
+	PWM_IMDEPENDENT_MODE;
+	PWMPH = 0x00;  //Period setting;
+	PWMPL = 0x7a;	//14KHz
+	PWM3_OUTPUT_INVERSE;
+	PWM3H = 0x00;
+	PWM3L = 0x00;
+	PWM4H = 0x00;
+	PWM4L = 0x00;
 	/**********************************************************************
 	PWM frequency = Fpwm/((PWMPH,PWMPL) + 1) <Fpwm = Fsys/PWM_CLOCK_DIV> 
 								= (16MHz/8)/(0x7CF + 1)
 								= 1KHz (1ms)
 ***********************************************************************/
-	set_SFRPAGE;						//PWM4 and PWM5 duty seting is in SFP page 1
-	PWM4H = 0x03;						
-	PWM4L = 0xCF;
-	PWM5H = 0x05;						
-	PWM5L = 0xCF;
-	clr_SFRPAGE;
-    set_LOAD;
-    set_PWMRUN;	
+}
+
+void PWM_Setting(double n)	//1n = 1%
+{
+	set_SFRPAGE; //PWM4\5 SETTING
+	if(n>=20)
+	{
+		UINT16 i = n;
+		PWM4H = (0xff00|i)>>8;
+		PWM4L = (0xff|i);
+//		PWM5H = 0x05;
+//		PWM5L = 0xCF;
+	}
+	else if(n>=100)
+	{
+		PWM4H = 0x00; PWM4L = 0x7a; //100%PWM
+		PWM3H = 0x00; PWM3L = 0x7a;
+	}
+	else
+	{
+		PWM4H = 0x00; PWM4L = 0x00; //
+		PWM3H = 0x00; PWM3L = 0x00;
+	}
+	set_LOAD;
+	set_PWMRUN;
 }
