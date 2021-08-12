@@ -3,7 +3,8 @@
 #include "Function_define.h"
 #include "N76E003.h"
 #include "SFR_Macro.h"
-#include "Delay.h"
+#include "Delay.h" 
+#include "SFR_Macro.h"
 
 #define Vref  3072;
 #define set_IAPEN BIT_TMP=EA;EA=0;TA=0xAA;TA=0x55;CHPCON|=SET_BIT0 ;EA=BIT_TMP
@@ -18,6 +19,17 @@ uint8_t  bgl;
 
 void ADC_Init(void)
 {
+	set_EA;
+	set_EPI;//Enable Pin interrupt
+	P13_Input_Mode;
+	
+	clr_PIPS1;
+	clr_PIPS0;//pin1.
+	set_PIT3;//cHANNEL 3 Edge triggered
+	clr_PIPEN3;//P13 falling triggered
+	set_PINEN3;
+	
+	
 	set_P14; //Enable DCDC
 	set_IAPEN;
 	IAPAL = 0x0c; IAPAH = 0x00; IAPCN = 0x04;
@@ -33,36 +45,46 @@ void ADC_Init(void)
 	printf("\nBandgap value:%x\n", bgvalue);
 	printf("\nBandgap voltage:%dmV\n",bgvol);
 	clr_IAPEN;		// turn off IAP
+	Enable_ADC_AIN0;		//P17 Hall pedal
 //	Enable_ADC_AIN4;		//P05 A_Det
 //	Enable_ADC_AIN1;		//P30 Speed
+	for(bgh =0;bgh<3;bgh++)
+	{
+		clr_ADCF;
+		set_ADCS;
+		ADCValue = (ADCRH<<4)+ADCRL;
+		Timer0_Delay1ms(10);
+	}
 }
 
-UINT8 Get_HallValue(void)
+UINT16 Get_HallValue(void)
 {
-	Enable_ADC_AIN0;			//P17 Hall pedal
+
 	clr_ADCF;
 	set_ADCS;
 	ADCValue = (ADCRH<<4)+ADCRL;
-	ADC_Vol = bgvol*ADCValue/bgvalue;
+	printf("ADC value:%d",ADCValue);
+	ADC_Vol = (bgvol*ADCValue/bgvalue);//All are decimal
 	printf("ADC_voltage:%gmV\n",ADC_Vol);//%g don't print no meaning 0
 	if(ADC_Vol>1000)
 	{
 		return ADC_Vol;
+
 	}
 	else return 0;
 }
 
 void PWM_Init()
 {
-	PWM3_P04_OUTPUT_ENABLE;//Upper bridge
-	PWM4_P01_OUTPUT_ENABLE;
+	PWM5_P03_OUTPUT_ENABLE;
+	PWM4_P01_OUTPUT_ENABLE;//Upper bridge
 	PWM_CLOCK_DIV_8;
 	PWM_IMDEPENDENT_MODE;
+	PWM4_OUTPUT_INVERSE;
 	PWMPH = 0x00;  //Period setting;
-	PWMPL = 0x7a;	//14KHz
-	PWM3_OUTPUT_INVERSE;
-	PWM3H = 0x00;
-	PWM3L = 0x00;
+	PWMPL = 0xc8;	//14KHz
+	PWM5H = 0x00;
+	PWM5L = 0x00;
 	PWM4H = 0x00;
 	PWM4L = 0x00;
 	/**********************************************************************
@@ -72,27 +94,20 @@ void PWM_Init()
 ***********************************************************************/
 }
 
-void PWM_Setting(double n)	//1n = 1%
+void PWM_Setting(UINT16 n)	//1n = 1%
 {
 	set_SFRPAGE; //PWM4\5 SETTING
-	if(n>=20)
-	{
-		UINT16 i = n;
-		PWM4H = (0xff00|i)>>8;
-		PWM4L = (0xff|i);
-//		PWM5H = 0x05;
-//		PWM5L = 0xCF;
-	}
-	else if(n>=100)
-	{
-		PWM4H = 0x00; PWM4L = 0x7a; //100%PWM
-		PWM3H = 0x00; PWM3L = 0x7a;
-	}
-	else
-	{
-		PWM4H = 0x00; PWM4L = 0x00; //
-		PWM3H = 0x00; PWM3L = 0x00;
-	}
+
+	PWM4H = (0xff00&n)>>8;//Lower bridge P01
+	PWM4L = 0x28+(0xff&n)*2;
+	PWM5H = PWM4H;
+	PWM5L = PWM4L;
+
 	set_LOAD;
 	set_PWMRUN;
+}
+
+void PinInterrupt (void) interrupt 7
+{
+	printf("Falling edge intterrupt triggered");
 }

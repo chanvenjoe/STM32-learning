@@ -48,15 +48,12 @@ void main (void)
 	PWM_Init();
 	while(1)
 	{
-
-//		while(Get_HallValue()>1000)
-//		{
-			double pwm_step = (Get_HallValue()-1000)/28;
-			printf("PWM:%d %",pwm_step);
-			PWM_Setting(pwm_step);
-			Timer0_Delay1ms(10);
+		UINT16 i = Get_HallValue();
+		UINT16 pwm_step = (i-1000)/0x1c;
+//		printf("PWM:%d %",pwm_step);
+		PWM_Setting(pwm_step);
+//			Timer0_Delay1ms(10);
 			
-//		}
 
 	}
 }
