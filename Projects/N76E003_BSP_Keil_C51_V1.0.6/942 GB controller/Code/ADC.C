@@ -49,19 +49,10 @@ void main (void)
 	while(1)
 	{
 		UINT16 i = Get_HallValue();
-		if(i>1000)
-		{
-			UINT16 pwm_step = (i-1000)/0x1E; //1.0->4.0
-			set_P00;		//Relay open
-	//		printf("PWM:%d %",pwm_step);
-			PWM_Setting(pwm_step);
-	//			Timer0_Delay1ms(10);
-		}
-		else
-		{
-			PWM_Setting(0x00);
-			clr_P00;
-		}
+		UINT16 pwm_step = (i-1000)/0x1c;
+//		printf("PWM:%d %",pwm_step);
+		PWM_Setting(pwm_step);
+//			Timer0_Delay1ms(10);
 			
 
 	}

@@ -59,7 +59,7 @@ void main (void)
 	  UINT16 ADCH;
 	  UINT16 ADCL;
 		InitialUART0_Timer1(115200);
-		Enable_ADC_AIN5;						// Enable AIN5 P04 as ADC input, Find in "Function_define.h" - "ADC INIT"
+		Enable_ADC_AIN0;						// Enable AIN5 P04 as ADC input, Find in "Function_define.h" - "ADC INIT"
 		while(1)
     {
 			clr_ADCF;
