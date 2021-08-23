@@ -61,6 +61,7 @@ void main (void)
 		{
 			PWM_Setting(0x00);
 			clr_P00;
+			PWM4_P01_OUTPUT_DISABLE;//Upper bridge is low when nothing triggered
 		}
 			
 

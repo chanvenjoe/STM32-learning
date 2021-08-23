@@ -121,15 +121,16 @@ void PWM_Init()
 								= (16MHz/8)/(0x7CF + 1)
 								= 1KHz (1ms)
 ***********************************************************************/
-}
+}s
 
 void PWM_Setting(UINT16 n)	//1n = 1%
 {
 	set_SFRPAGE; //PWM4\5 SETTING
+	PWM4_P01_OUTPUT_ENABLE;
 	printf("ADC value:%d",ADCValue);
 	printf("ADC_voltage:%gmV\n",ADC_Vol);
 	PWM4H = (0xff00&n)>>8;//Lower bridge P01
-	if(n>100) PWM4L = 0x8d ;
+	if(n>100) PWM4L = 0x96 ;
 	else PWM4L = (n*3/2);
 
 	PWM5H = PWM4H;
