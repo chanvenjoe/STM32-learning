@@ -51,7 +51,7 @@ void main (void)
 		UINT16 i = Get_HallValue();
 		if(i>1000)
 		{
-			UINT16 pwm_step = (i-1000)/0x1E; //1.0->4.0
+			UINT16 pwm_step = (i-0x3e8)/0x1E; //1.0->4.0
 			set_P00;		//Relay open
 	//		printf("PWM:%d %",pwm_step);
 			PWM_Setting(pwm_step);
