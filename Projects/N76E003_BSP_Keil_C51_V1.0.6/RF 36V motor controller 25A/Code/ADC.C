@@ -53,8 +53,9 @@ void main (void)
 		{
 			UINT16 pwm_step = (i-0x3e8)/0x1E; //1.0->4.0
 			set_P00;		//Relay open
+			set_P03; 		//Open lower bridge
 	//		printf("PWM:%d %",pwm_step);
-			PWM_Setting(pwm_step);
+	//		PWM_Setting(pwm_step);
 	//			Timer0_Delay1ms(10);
 		}
 		else
