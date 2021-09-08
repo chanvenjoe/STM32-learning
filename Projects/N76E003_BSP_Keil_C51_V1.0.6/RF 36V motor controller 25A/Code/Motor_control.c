@@ -20,15 +20,15 @@ uint8_t  bgl;
 
 void ADC_Init(void)
 {
-	set_EA;
-	set_EPI;//Enable Pin interrupt
-	P13_Input_Mode;
-	
-	clr_PIPS1;
-	clr_PIPS0;//pin1.
-	set_PIT3;//cHANNEL 3 Edge triggered
-	clr_PIPEN3;//P13 falling triggered
-	set_PINEN3;
+//	set_EA;
+//	set_EPI;//Enable Pin interrupt
+//	P13_Input_Mode;
+//	
+//	clr_PIPS1;
+//	clr_PIPS0;//pin1.
+//	set_PIT3;//cHANNEL 3 Edge triggered
+//	clr_PIPEN3;//P13 falling triggered
+//	set_PINEN3;
 	clr_P00, clr_P10;
 	clr_P12; //LED on
 	
@@ -133,7 +133,7 @@ void PWM_Setting(UINT16 n)	//1n = 1%
 	printf("ADC_voltage:%gmV\n",ADC_Vol);
 	PWM4H = (0xff00&n)>>8;//Lower bridge P01
 	if(n>100) PWM4L = 0x96 ;
-	else if(n==0) 	PWM4L = 0X97;  //Upper bridge set to low when pedal lower than 1.0V
+	else if(n==0) 	PWM4L = 0X96;  //Upper bridge set to low when pedal lower than 1.0V
 	else PWM4L = (n*3/2);
 
 	PWM5H = PWM4H;
