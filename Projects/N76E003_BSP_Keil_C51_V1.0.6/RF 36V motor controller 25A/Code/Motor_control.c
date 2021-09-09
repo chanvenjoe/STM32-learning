@@ -130,11 +130,14 @@ void PWM_Setting(UINT16 n)	//1n = 1%
 	set_SFRPAGE; //PWM4\5 SETTING
 //	PWM4_P01_OUTPUT_ENABLE; // Upper bridge
 	printf("ADC value:%d",ADCValue);
-	printf("ADC_voltage:%gmV\n",ADC_Vol);
+//	printf("ADC_voltage:%gmV\n",ADC_Vol);//It seems this will cause pulse issue
 	PWM4H = (0xff00&n)>>8;//Lower bridge P01
-	if(n>100) PWM4L = 0x96 ;
-	else if(n==0) 	PWM4L = 0X96;  //Upper bridge set to low when pedal lower than 1.0V
-	else PWM4L = (n*3/2);
+	if(n>100)
+		PWM4L = 0x97;
+	else if(n==0)
+		PWM4L = 0X97;  //Upper bridge set to low when pedal lower than 1.0V
+	else
+		PWM4L = (n*3/2);
 
 	PWM5H = PWM4H;
 	PWM5L = PWM4L;

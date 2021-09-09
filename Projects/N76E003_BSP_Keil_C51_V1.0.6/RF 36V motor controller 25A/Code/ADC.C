@@ -42,6 +42,9 @@ here after stack initialization.
 void main (void) 
 {
 	Set_All_GPIO_Quasi_Mode;				//For GPIO1 output, Find in "Function_define.h" - "GPIO INIT"
+//	P01_PushPull_Mode;
+	P17_Input_Mode;
+	clr_P10;	
 	InitialUART0_Timer1(115200);
 	ADC_Init();							//
 										//reverved for timer_init   Sleep2
@@ -52,16 +55,14 @@ void main (void)
 		if(i>1000)
 		{
 			UINT16 pwm_step = (i-0x3e8)/0x1E; //1.0->4.0
-			set_P00;		//Relay open
-//			set_P03; 		//Open lower bridge
-//			printf("PWM:%g%",pwm_step);
+			set_P00;		//Relay open 
 			PWM_Setting(pwm_step);
 			Timer0_Delay1ms(10);
 		}
 		else
 		{
-			PWM_Setting(0x00);
 			clr_P00;
+			PWM_Setting(0x00);
 		}
 			
 
