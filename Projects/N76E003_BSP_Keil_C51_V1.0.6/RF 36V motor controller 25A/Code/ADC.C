@@ -52,12 +52,13 @@ void main (void)
 	while(1)
 	{
 		UINT16 i = Get_HallValue();
-		if(i>1000)
+		if(i>0x51)
 		{
-			UINT16 pwm_step = (i-0x3e8)/0x1E; //1.0->4.0
+			UINT16 pwm_step = (i-51)*2/3;
+			//UINT16 pwm_step = (i-0x3e8)/0x1E; //1.0->4.0
 			set_P00;		//Relay open 
 			PWM_Setting(pwm_step);
-			Timer0_Delay1ms(10);
+			Timer0_Delay1ms(20);
 		}
 		else
 		{

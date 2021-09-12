@@ -89,7 +89,7 @@ void ADC_Init(void)
 		set_ADCS;
 		while(ADCF==0);
 		ADCValue = (ADCRH<<4)+ADCRL;
-		Timer0_Delay1ms(10);
+		printf("ADC value:%d",ADCValue);
 	}
 }
 
@@ -98,11 +98,12 @@ UINT16 Get_HallValue(void)
 
 	clr_ADCF;
 	set_ADCS;
-	ADCValue = (ADCRH<<4)+ADCRL;
-//	printf("ADC value:%d",ADCValue);
-	ADC_Vol = (bgvol*ADCValue/bgvalue);//All are decimal
+//	ADCValue = (ADCRH<<4)+ADCRL
+//	ADC_Vol = (bgvol*ADCValue/bgvalue);//All are decimal
+	printf("ADCRH:%x\n",ADCRH);
+//	printf("ADCRL:%d",ADCRL);
 //	printf("ADC_voltage:%gmV\n",ADC_Vol);//%g don't print no meaning 0
-	return ADC_Vol;
+	return ADCRH;
 }
 
 void PWM_Init()
@@ -128,9 +129,8 @@ void PWM_Init()
 void PWM_Setting(UINT16 n)	//1n = 1%
 {
 	set_SFRPAGE; //PWM4\5 SETTING
-//	PWM4_P01_OUTPUT_ENABLE; // Upper bridge
-	printf("ADC value:%d",ADCValue);
-//	printf("ADC_voltage:%gmV\n",ADC_Vol);//It seems this will cause pulse issue
+//	printf("ADC value:%d\n",ADCValue);
+//	printf("ADC_voltage:%gmV\n",ADC_Vol);/
 	PWM4H = (0xff00&n)>>8;//Lower bridge P01
 	if(n>100)
 		PWM4L = 0x97;
