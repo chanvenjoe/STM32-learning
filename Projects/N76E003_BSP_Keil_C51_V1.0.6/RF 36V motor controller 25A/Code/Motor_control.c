@@ -135,7 +135,7 @@ void PWM_Setting(UINT16 n)	//1n = 1%
 	if(n>100)
 		PWM4L = 0x97;
 	else if(n==0)
-		PWM4L = 0X97;  //Upper bridge set to low when pedal lower than 1.0V
+		PWM4L = 0X00;  //Upper bridge set to high when pedal lower than 1.0V
 	else
 		PWM4L = (n*3/2);
 
