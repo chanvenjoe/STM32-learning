@@ -103,7 +103,7 @@ UINT16 Get_HallValue(void)
 	printf("ADCRH:%x\n",ADCRH);
 //	printf("ADCRL:%d",ADCRL);
 //	printf("ADC_voltage:%gmV\n",ADC_Vol);//%g don't print no meaning 0
-	return ADCRH;
+	return ADCRH; //High 8 bits+ low 4 bits
 }
 
 void PWM_Init()
@@ -113,8 +113,10 @@ void PWM_Init()
 	PWM_CLOCK_DIV_8;
 	PWM_IMDEPENDENT_MODE;
 	PWM4_OUTPUT_INVERSE;
-	PWMPH = 0x00;  //Period setting;
-	PWMPL = 0x96;	//13.3KHz
+	PWMPH = 0x07;
+	PWMPL = 0xcf;	//1K
+//	PWMPH = 0x00;   //Period setting;
+//	PWMPL = 0x96;	//13.3KHz
 	PWM5H = 0x00;
 	PWM5L = 0x00;
 	PWM4H = 0x00;
@@ -123,6 +125,8 @@ void PWM_Init()
 	PWM frequency = Fpwm/((PWMPH,PWMPL) + 1) <Fpwm = Fsys/PWM_CLOCK_DIV> 
 								= (16MHz/8)/(0x7CF + 1)
 								= 1KHz (1ms)
+	=(16MHz/8)/(0x96+1)
+
 ***********************************************************************/
 }
 
@@ -132,12 +136,25 @@ void PWM_Setting(UINT16 n)	//1n = 1%
 //	printf("ADC value:%d\n",ADCValue);
 //	printf("ADC_voltage:%gmV\n",ADC_Vol);/
 	PWM4H = (0xff00&n)>>8;//Lower bridge P01
-	if(n>100)
-		PWM4L = 0x97;
+	if(n>0x7cf)
+	//if(n>100)
+	{
+		PWM4H = 0x07;
+		PWM4L = 0xcf;
+		//PWM4L = 0x97;
+	}
 	else if(n==0)
-		PWM4L = 0X00;  //Upper bridge set to high when pedal lower than 1.0V
+	{
+		PWM4H = 0X00;
+		PWM4L = 0X00;
+	}
+		//PWM4L = 0X00;  //Upper bridge set to high when pedal lower than 1.0V
 	else
-		PWM4L = (n*3/2);
+	{
+		PWM4H = n>>4;
+		PWM4L = n&&0xf;
+	}
+		//PWM4L = (n*3/2);
 
 	PWM5H = PWM4H;
 	PWM5L = PWM4L;
