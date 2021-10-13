@@ -39,22 +39,34 @@ The main C function.  Program execution starts
 here after stack initialization.
 ******************************************************************************/
 
-void main (void) 
+void main (void)
 {
 	Set_All_GPIO_Quasi_Mode;				//For GPIO1 output, Find in "Function_define.h" - "GPIO INIT"
+//	P01_PushPull_Mode;
+	P17_Input_Mode;
+	clr_P10;	
 	InitialUART0_Timer1(115200);
 	ADC_Init();							//
-										//reverved for timer_init   Sleep
+	GPIO_Init();
+										//reverved for timer_init   Sleep2
 	PWM_Init();
 	while(1)
 	{
 		UINT16 i = Get_HallValue();
-		UINT16 pwm_step = (i-1000)/0x1c;
-//		printf("PWM:%d %",pwm_step);
-		PWM_Setting(pwm_step);
-//			Timer0_Delay1ms(10);
-			
-
+		UINT16 c = Get_CurrentValue();
+		if(i>1000)
+		{
+			UINT16 pwm_step = (i-1000)/30;  //13.3KHz
+			set_P00;		//Forward Relay open 
+			Timer0_Delay1ms(20);
+			PWM_Setting(pwm_step);
+		}
+		else
+		{
+			PWM_Setting(0x00);
+			Timer0_Delay1ms(1000);
+			clr_P00;
+		}
 	}
 }
 

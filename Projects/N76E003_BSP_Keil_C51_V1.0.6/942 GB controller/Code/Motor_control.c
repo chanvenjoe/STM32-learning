@@ -15,21 +15,37 @@ double bgvalue, ADCValue, bgvol, ADC_Vol;
 uint8_t  bgh;
 uint8_t  bgl;
 
+// PWM+=KP[e(k) -e(k-1)]+Ki*e(k)+Kd[e(k)-2e(k-1)+e(k-2)]
+// e(k) the value difference of actual and setting e(k-1) the last time difference
+// In this motor control we use P
+// PWM = Kp[e(k) - e(k-1)]
 
+UINT8 Incremental_P(UINT8 Cbat, UINT8 CC_20)
+{
+	float Kp=20;
+	static int Bias, PWM,Last_bias;
+	Bias= Cbat-CC_20;
+	PWM-=Kp*(Bias-Last_bias);// Decreasement output
+	Last_bias = Bias;
+	return PWM;
+}
+	
+	
 
 void ADC_Init(void)
 {
 	set_EA;
-	set_EPI;//Enable Pin interrupt
+	set_EPI;//Enable Pin interrup
 	P13_Input_Mode;
 	
-	clr_PIPS1;
-	clr_PIPS0;//pin1.
+	clr_PIPS1;		//Power switch
+	clr_PIPS0;//pin1. pin 
 	set_PIT3;//cHANNEL 3 Edge triggered
 	clr_PIPEN3;//P13 falling triggered
 	set_PINEN3;
 	
-	
+	P14_PushPull_Mode;
+	P00_PushPull_Mode;
 	set_P14; //Enable DCDC
 	set_IAPEN;
 	IAPAL = 0x0c; IAPAH = 0x00; IAPCN = 0x04;
@@ -59,7 +75,7 @@ void ADC_Init(void)
 
 UINT16 Get_HallValue(void)
 {
-
+	Enable_ADC_AIN0;
 	clr_ADCF;
 	set_ADCS;
 	ADCValue = (ADCRH<<4)+ADCRL;
@@ -69,9 +85,18 @@ UINT16 Get_HallValue(void)
 	if(ADC_Vol>1000)
 	{
 		return ADC_Vol;
-
 	}
 	else return 0;
+}
+
+UINT16 Get_CurrentValue(void)
+{
+	Enable_ADC_AIN4;
+	clr_ADCF;
+	set_ADCS;
+	ADCValue = (ADCRH<<4)+ADCRL;
+	printf("ADC value:%d",ADCValue);
+	return ADCValue;
 }
 
 void PWM_Init()
@@ -82,7 +107,7 @@ void PWM_Init()
 	PWM_IMDEPENDENT_MODE;
 	PWM4_OUTPUT_INVERSE;
 	PWMPH = 0x00;  //Period setting;
-	PWMPL = 0xc8;	//14KHz
+	PWMPL = 0x96;	//14KHz
 	PWM5H = 0x00;
 	PWM5L = 0x00;
 	PWM4H = 0x00;
@@ -97,17 +122,38 @@ void PWM_Init()
 void PWM_Setting(UINT16 n)	//1n = 1%
 {
 	set_SFRPAGE; //PWM4\5 SETTING
-
-	PWM4H = (0xff00&n)>>8;//Lower bridge P01
-	PWM4L = 0x28+(0xff&n)*2;
+//	printf("ADC value:%d\n",ADCValue);
+//	printf("ADC_voltage:%gmV\n",ADC_Vol);/
+	if(n>100)
+	{
+		PWM4L = 0x97;
+	}
+	else if(n==0)
+	{
+		PWM4L = 0X00;
+	}
+		//PWM4L = 0X00;  //Upper bridge set to high when pedal lower than 1.0V
+	else
+	{
+		PWM4L = (n*3/2);
+	}
+	
 	PWM5H = PWM4H;
 	PWM5L = PWM4L;
 
-	set_LOAD;
+ 	set_LOAD;
 	set_PWMRUN;
 }
 
-void PinInterrupt (void) interrupt 7
+void GPIO_Init()
 {
-	printf("Falling edge intterrupt triggered");
+	set_P13;//LED on
+	set_P14; //Enable the DCDC
+	P05_Input_Mode; //Current sensing
+	
 }
+
+//void PinInterrupt (void) interrupt 7
+//{
+//	printf("Falling edge intterrupt triggered");
+//}
