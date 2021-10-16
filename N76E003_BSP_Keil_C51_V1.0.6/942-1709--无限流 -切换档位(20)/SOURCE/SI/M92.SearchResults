@@ -1,0 +1,7 @@
+---- DanWei_AD Matches (6 in 1 files) ----
+MAIN.c (d:\m50\m92\m92_n76e003 程序\source):unsigned char AD_CH,Voltage_AD,DanWei_AD;//PWM_HallSet;
+MAIN.c (d:\m50\m92\m92_n76e003 程序\source):  if(DanWei_AD>=Vol_4_5V)
+MAIN.c (d:\m50\m92\m92_n76e003 程序\source):  if(DanWei_AD>Vol_3_5V)
+MAIN.c (d:\m50\m92\m92_n76e003 程序\source):   if(DanWei_AD>Vol_2_5V)
+MAIN.c (d:\m50\m92\m92_n76e003 程序\source):   if(DanWei_AD>Vol_1V)
+MAIN.c (d:\m50\m92\m92_n76e003 程序\source):           DanWei_AD=volHand_add>>6;//??

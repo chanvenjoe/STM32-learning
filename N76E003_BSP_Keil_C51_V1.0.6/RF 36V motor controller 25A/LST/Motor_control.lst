@@ -1,0 +1,173 @@
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     08/24/2021 08:14:50 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MOTOR_CONTROL
+OBJECT MODULE PLACED IN .\Output\Motor_control.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE Code\Motor_control.c COMPACT OPTIMIZE(8,SPEED) BROWSE INCDIR(..\Include)
+                    - DEFINE(FOSC_160000) DEBUG OBJECTEXTEND PRINT(.\LST\Motor_control.lst) TABS(2) OBJECT(.\Output\Motor_control.obj)
+
+line level    source
+
+   1          #include "Motor_control.h"
+   2          #include "common.h"
+   3          #include "Function_define.h"
+   4          #include "N76E003.h"
+   5          #include "SFR_Macro.h"
+   6          #include "Delay.h" 
+   7          #include "SFR_Macro.h"
+   8          
+   9          #define Vref  3072;
+  10          #define set_IAPEN BIT_TMP=EA;EA=0;TA=0xAA;TA=0x55;CHPCON|=SET_BIT0 ;EA=BIT_TMP
+  11          #define set_IAPGO BIT_TMP=EA;EA=0;TA=0xAA;TA=0x55;IAPTRG|=SET_BIT0 ;EA=BIT_TMP
+  12          #define clr_IAPEN BIT_TMP=EA;EA=0;TA=0xAA;TA=0x55;CHPCON&=~SET_BIT0;EA=BIT_TMP
+  13          ////////////Variables////////////////
+  14          double bgvalue, ADCValue, bgvol, ADC_Vol;
+  15          uint8_t  bgmark;
+  16          uint8_t  bgh;
+  17          uint8_t  bgl;
+  18          
+  19          
+  20          
+  21          void ADC_Init(void)
+  22          {
+  23   1        set_EA;
+  24   1        set_EPI;//Enable Pin interrupt
+  25   1        P13_Input_Mode;
+  26   1        
+  27   1        clr_PIPS1;
+  28   1        clr_PIPS0;//pin1.
+  29   1        set_PIT3;//cHANNEL 3 Edge triggered
+  30   1        clr_PIPEN3;//P13 falling triggered
+  31   1        set_PINEN3;
+  32   1        
+  33   1        
+  34   1        set_P14; //Enable DCDC
+  35   1        
+  36   1        set_IAPEN;
+  37   1        IAPAL = 0x0d; IAPAH = 0x00; IAPCN = 0x04;//0x04 =Read UID
+  38   1        set_IAPGO;
+  39   1        bgl = IAPFD;
+  40   1        bgmark = bgl&0xf0;
+  41   1        
+  42   1        if(bgmark == 0x80)
+  43   1        {
+  44   2          bgl = bgl&0x0f;     
+  45   2          IAPAL = 0x0c;
+  46   2          IAPAH = 0x00; 
+  47   2          set_IAPGO;
+  48   2          bgh = IAPFD;
+  49   2          bgvalue = (bgh<<4)+bgl;
+  50   2          bgvol = bgvalue*3/4;
+  51   2          bgvol = bgvol- 33;
+  52   2        }
+  53   1        if(bgmark==0x00)
+  54   1        {
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     08/24/2021 08:14:50 PAGE 2   
+
+  55   2          bgl = bgl&0x0f;
+  56   2          IAPAL = 0X0C;
+  57   2          IAPAH = 0X00;
+  58   2          set_IAPGO;
+  59   2          bgh = IAPFD;
+  60   2          bgvalue = (bgh<<4)+bgl;
+  61   2          bgvol = bgvalue*3/4;
+  62   2        }
+  63   1        if(bgmark==0x90)
+  64   1        {
+  65   2          IAPAL = 0x0E;
+  66   2          IAPAH = 0x00;
+  67   2          set_IAPGO;
+  68   2          bgh   = IAPFD;
+  69   2          IAPAL = 0x0F;
+  70   2          IAPAH = 0x00;
+  71   2          set_IAPGO;
+  72   2          bgl = IAPFD;
+  73   2          bgl = bgl&0x0f; 
+  74   2          bgvalue = (bgh<<4)+bgl;
+  75   2          bgvol = bgvalue*3/4;
+  76   2        }
+  77   1        printf("\nBandgap value:%d\n", bgvalue);
+  78   1        printf("\nBandgap vo ltage:%dmV\n",bgvol);
+  79   1        clr_IAPEN;    // turn off IAP
+  80   1        
+  81   1        Enable_ADC_AIN0;    //P17 Hall pedal
+  82   1      //  Enable_ADC_AIN4;    //P05 A_Det
+  83   1      //  Enable_ADC_AIN1;    //P30 Speed
+  84   1        for(bgh =0;bgh<3;bgh++)
+  85   1        {
+  86   2          clr_ADCF;
+  87   2          set_ADCS;
+  88   2          while(ADCF==0);
+  89   2          ADCValue = (ADCRH<<4)+ADCRL;
+  90   2          Timer0_Delay1ms(10);
+  91   2        }
+  92   1      }
+  93          
+  94          UINT16 Get_HallValue(void)
+  95          {
+  96   1      
+  97   1        clr_ADCF;
+  98   1        set_ADCS;
+  99   1        ADCValue = (ADCRH<<4)+ADCRL;
+ 100   1      //  printf("ADC value:%d",ADCValue);
+ 101   1        ADC_Vol = (bgvol*ADCValue/bgvalue);//All are decimal
+ 102   1      //  printf("ADC_voltage:%gmV\n",ADC_Vol);//%g don't print no meaning 0
+ 103   1        return ADC_Vol;
+ 104   1      }
+ 105          
+ 106          void PWM_Init()
+ 107          {
+ 108   1        PWM5_P03_OUTPUT_ENABLE;
+ 109   1        PWM4_P01_OUTPUT_ENABLE;//Upper bridge
+ 110   1        PWM_CLOCK_DIV_8;
+ 111   1        PWM_IMDEPENDENT_MODE;
+ 112   1        PWM4_OUTPUT_INVERSE;
+ 113   1        PWMPH = 0x00;  //Period setting;
+ 114   1        PWMPL = 0x96; //13.3KHz
+ 115   1        PWM5H = 0x00;
+ 116   1        PWM5L = 0x00;
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     08/24/2021 08:14:50 PAGE 3   
+
+ 117   1        PWM4H = 0x00;
+ 118   1        PWM4L = 0x00;
+ 119   1        /**********************************************************************
+ 120   1        PWM frequency = Fpwm/((PWMPH,PWMPL) + 1) <Fpwm = Fsys/PWM_CLOCK_DIV> 
+ 121   1                      = (16MHz/8)/(0x7CF + 1)
+ 122   1                      = 1KHz (1ms)
+ 123   1      ***********************************************************************/
+ 124   1      }
+ 125          
+ 126          void PWM_Setting(UINT16 n)  //1n = 1%
+ 127          {
+ 128   1        set_SFRPAGE; //PWM4\5 SETTING
+ 129   1        printf("ADC value:%d",ADCValue);
+ 130   1        printf("ADC_voltage:%gmV\n",ADC_Vol);
+ 131   1        PWM4H = (0xff00&n)>>8;//Upper bridge P01
+ 132   1        if(n>100) PWM4L = 0x96 ;
+ 133   1        else PWM4L = (n*3/2);
+ 134   1      
+ 135   1        PWM5H = PWM4H;
+ 136   1        PWM5L = PWM4L;
+ 137   1      
+ 138   1        set_LOAD;
+ 139   1        set_PWMRUN;
+ 140   1      }
+ 141          
+ 142          //void PinInterrupt (void) interrupt 7
+ 143          //{
+ 144          //  printf("Falling edge intterrupt triggered");
+ 145          //}
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    881    ----
+   CONSTANT SIZE    =     74    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =     19       2
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
