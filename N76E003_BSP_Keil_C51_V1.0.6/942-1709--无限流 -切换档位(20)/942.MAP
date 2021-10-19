@@ -1,8 +1,8 @@
-LX51 LINKER/LOCATER V4.66.97.0                                                          10/16/2021  15:52:06  PAGE 1
+LX51 LINKER/LOCATER V4.66.97.0                                                          10/19/2021  16:00:26  PAGE 1
 
 
 LX51 LINKER/LOCATER V4.66.97.0, INVOKED BY:
-C:\KEIL_V5\C51\BIN\LX51.EXE STARTUP.obj, MAIN.obj TO 942
+C:\KEIL5\C51\BIN\LX51.EXE STARTUP.obj, MAIN.obj TO 942
 
 
 CPU MODE:     8051 MODE
@@ -14,9 +14,9 @@ INPUT MODULES INCLUDED:
          COMMENT TYPE 0: AX51 V3.15.3.0
   MAIN.obj (MAIN)
          COMMENT TYPE 0: C51 V9.60.0.0
-  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_INIT)
+  C:\KEIL5\C51\LIB\C51S.LIB (?C_INIT)
          COMMENT TYPE 1: A51 / ASM51 Assembler
-  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?UIDIV)
+  C:\KEIL5\C51\LIB\C51S.LIB (?C?UIDIV)
          COMMENT TYPE 1: A51 / ASM51 Assembler
 
 
@@ -67,7 +67,7 @@ START     STOP      LENGTH    ALIGN  RELOC    MEMORY CLASS   SEGMENT NAME
 OVERLAY MAP OF MODULE:   942 (?C_STARTUP)
 
 
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/16/2021  15:52:06  PAGE 2
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/19/2021  16:00:26  PAGE 2
 
 
 FUNCTION/MODULE                 BIT_GROUP   DATA_GROUP 
@@ -135,7 +135,7 @@ PUBLIC SYMBOLS OF MODULE:  942 (?C_STARTUP)
 *SFR* 000000E2H   DATA     BYTE      ADCCON2
 *SFR* 000000E3H   DATA     BYTE      ADCDLY
 *SFR* 000000E8H.7 DATA     BIT       ADCF
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/16/2021  15:52:06  PAGE 3
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/19/2021  16:00:26  PAGE 3
 
 
 *SFR* 000000E8H.0 DATA     BIT       ADCHS0
@@ -203,7 +203,7 @@ PUBLIC SYMBOLS OF MODULE:  942 (?C_STARTUP)
 *SFR* 000000F7H   DATA     BYTE      EIPH
 *SFR* 000000FFH   DATA     BYTE      EIPH1
       0000003EH   DATA     BYTE      ELE12_BIG_ct
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/16/2021  15:52:06  PAGE 4
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/19/2021  16:00:26  PAGE 4
 
 
       00000024H.0 BIT      BIT       ELE12_BIG_FL
@@ -271,7 +271,7 @@ PUBLIC SYMBOLS OF MODULE:  942 (?C_STARTUP)
       0000006AH   DATA     BYTE      guangji_1mintimer
       00000033H   DATA     BYTE      guangji_1stimer
       00000028H   DATA     BYTE      guanji_timer
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/16/2021  15:52:06  PAGE 5
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/19/2021  16:00:26  PAGE 5
 
 
       0000006BH   DATA     WORD      Hall_Add
@@ -339,7 +339,7 @@ PUBLIC SYMBOLS OF MODULE:  942 (?C_STARTUP)
 *SFR* 00000090H.4 DATA     BIT       P14
 *SFR* 00000090H.5 DATA     BIT       P15
 *SFR* 00000090H.6 DATA     BIT       P16
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/16/2021  15:52:06  PAGE 6
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/19/2021  16:00:26  PAGE 6
 
 
 *SFR* 00000090H.7 DATA     BIT       P17
@@ -407,7 +407,7 @@ PUBLIC SYMBOLS OF MODULE:  942 (?C_STARTUP)
 *SFR* 000000B8H.0 DATA     BIT       PX0
 *SFR* 000000B8H.2 DATA     BIT       PX1
       00000023H.5 BIT      BIT       qudiao_shache_FL
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/16/2021  15:52:06  PAGE 7
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/19/2021  16:00:26  PAGE 7
 
 
 *SFR* 00000098H.2 DATA     BIT       RB8
@@ -475,7 +475,7 @@ PUBLIC SYMBOLS OF MODULE:  942 (?C_STARTUP)
 *SFR* 000000C8H.7 DATA     BIT       TF2
 *SFR* 0000008CH   DATA     BYTE      TH0
 *SFR* 0000008DH   DATA     BYTE      TH1
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/16/2021  15:52:06  PAGE 8
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/19/2021  16:00:26  PAGE 8
 
 
 *SFR* 000000CDH   DATA     BYTE      TH2
@@ -543,7 +543,7 @@ SYMBOL TABLE OF MODULE:  942 (?C_STARTUP)
       01000CBFH   SYMBOL    CODE     NEAR LAB  XDATALOOP
       00000000H   SYMBOL    NUMBER   ---       XDATASTART
 
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/16/2021  15:52:06  PAGE 9
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/19/2021  16:00:26  PAGE 9
 
 
       01000000H   BLOCK     CODE     NEAR LAB  LVL=0
@@ -611,7 +611,7 @@ SYMBOL TABLE OF MODULE:  942 (?C_STARTUP)
       00000061H   PUBLIC    DATA     BYTE      LED_TM
       00000060H   PUBLIC    DATA     BYTE      ELE_Wait_5s
       0000005FH   PUBLIC    DATA     BYTE      ELE28_Small_ct
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/16/2021  15:52:06  PAGE 10
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/19/2021  16:00:26  PAGE 10
 
 
       0000005EH   PUBLIC    DATA     BYTE      RELYDelayTM
@@ -679,7 +679,7 @@ SYMBOL TABLE OF MODULE:  942 (?C_STARTUP)
       00000020H.7 PUBLIC    BIT      BIT       ELE_ERR_FL
       00000033H   PUBLIC    DATA     BYTE      guangji_1stimer
       00000032H   PUBLIC    DATA     BYTE      DanWei_PWM
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/16/2021  15:52:06  PAGE 11
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/19/2021  16:00:26  PAGE 11
 
 
       00000031H   PUBLIC    DATA     BYTE      Count1S
@@ -747,7 +747,7 @@ SYMBOL TABLE OF MODULE:  942 (?C_STARTUP)
       000000E8H.1 SFRSYM    DATA     BIT       ADCHS1
       000000E8H.2 SFRSYM    DATA     BIT       ADCHS2
       000000A8H.4 SFRSYM    DATA     BIT       ES
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/16/2021  15:52:06  PAGE 12
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/19/2021  16:00:26  PAGE 12
 
 
       000000E8H.3 SFRSYM    DATA     BIT       ADCHS3
@@ -815,7 +815,7 @@ SYMBOL TABLE OF MODULE:  942 (?C_STARTUP)
       0000009FH   SFRSYM    DATA     BYTE      CHPCON
       00000088H.1 SFRSYM    DATA     BIT       IE0
       00000088H.3 SFRSYM    DATA     BIT       IE1
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/16/2021  15:52:06  PAGE 13
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/19/2021  16:00:26  PAGE 13
 
 
       000000E4H   SFRSYM    DATA     BYTE      C0L
@@ -883,7 +883,7 @@ SYMBOL TABLE OF MODULE:  942 (?C_STARTUP)
       000000F8H.2 SFRSYM    DATA     BIT       RB8_1
       000000EFH   SFRSYM    DATA     BYTE      EIP
       000000F8H.3 SFRSYM    DATA     BIT       TB8_1
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/16/2021  15:52:06  PAGE 14
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/19/2021  16:00:26  PAGE 14
 
 
       000000ECH   SFRSYM    DATA     BYTE      PIF
@@ -951,7 +951,7 @@ SYMBOL TABLE OF MODULE:  942 (?C_STARTUP)
       000000F9H   SFRSYM    DATA     BYTE      PDTEN
       000000AAH   SFRSYM    DATA     BYTE      WDCON
       000000EBH   SFRSYM    DATA     BYTE      PIPEN
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/16/2021  15:52:06  PAGE 15
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/19/2021  16:00:26  PAGE 15
 
 
       000000BAH   SFRSYM    DATA     BYTE      SADEN_1
@@ -1019,7 +1019,7 @@ SYMBOL TABLE OF MODULE:  942 (?C_STARTUP)
       01000AD5H   LINE      CODE     ---       #487
       01000ADBH   LINE      CODE     ---       #488
       01000AE1H   LINE      CODE     ---       #492
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/16/2021  15:52:06  PAGE 16
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/19/2021  16:00:26  PAGE 16
 
 
       01000AE4H   LINE      CODE     ---       #493
@@ -1087,7 +1087,7 @@ SYMBOL TABLE OF MODULE:  942 (?C_STARTUP)
       01000BB6H   LINE      CODE     ---       #579
       01000BBCH   LINE      CODE     ---       #580
       01000BBCH   LINE      CODE     ---       #581
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/16/2021  15:52:06  PAGE 17
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/19/2021  16:00:26  PAGE 17
 
 
       01000BBFH   LINE      CODE     ---       #582
@@ -1155,7 +1155,7 @@ SYMBOL TABLE OF MODULE:  942 (?C_STARTUP)
       01000C9BH   LINE      CODE     ---       #661
       01000C9DH   LINE      CODE     ---       #662
       01000C9FH   LINE      CODE     ---       #663
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/16/2021  15:52:06  PAGE 18
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/19/2021  16:00:26  PAGE 18
 
 
       01000CA1H   LINE      CODE     ---       #665
@@ -1223,7 +1223,7 @@ SYMBOL TABLE OF MODULE:  942 (?C_STARTUP)
       01000112H   LINE      CODE     ---       #748
       01000115H   LINE      CODE     ---       #749
       01000115H   LINE      CODE     ---       #750
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/16/2021  15:52:06  PAGE 19
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/19/2021  16:00:26  PAGE 19
 
 
       01000117H   LINE      CODE     ---       #751
@@ -1291,7 +1291,7 @@ SYMBOL TABLE OF MODULE:  942 (?C_STARTUP)
       010001E0H   LINE      CODE     ---       #843
       010001E2H   LINE      CODE     ---       #844
       010001E2H   LINE      CODE     ---       #846
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/16/2021  15:52:06  PAGE 20
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/19/2021  16:00:26  PAGE 20
 
 
       010001E6H   LINE      CODE     ---       #847
@@ -1359,7 +1359,7 @@ SYMBOL TABLE OF MODULE:  942 (?C_STARTUP)
       0100027AH   LINE      CODE     ---       #931
       0100027DH   LINE      CODE     ---       #932
       0100027DH   LINE      CODE     ---       #933
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/16/2021  15:52:06  PAGE 21
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/19/2021  16:00:26  PAGE 21
 
 
       01000280H   LINE      CODE     ---       #934
@@ -1427,7 +1427,7 @@ SYMBOL TABLE OF MODULE:  942 (?C_STARTUP)
       01000374H   LINE      CODE     ---       #1012
       01000376H   LINE      CODE     ---       #1013
       01000376H   LINE      CODE     ---       #1015
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/16/2021  15:52:06  PAGE 22
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/19/2021  16:00:26  PAGE 22
 
 
       0100038BH   LINE      CODE     ---       #1016
@@ -1495,7 +1495,7 @@ SYMBOL TABLE OF MODULE:  942 (?C_STARTUP)
       01000442H   LINE      CODE     ---       #1104
       01000444H   LINE      CODE     ---       #1106
       0100044FH   LINE      CODE     ---       #1107
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/16/2021  15:52:06  PAGE 23
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/19/2021  16:00:26  PAGE 23
 
 
       0100044FH   LINE      CODE     ---       #1108
@@ -1563,7 +1563,7 @@ SYMBOL TABLE OF MODULE:  942 (?C_STARTUP)
       01000506H   LINE      CODE     ---       #1189
       01000508H   LINE      CODE     ---       #1190
       0100050BH   LINE      CODE     ---       #1191
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/16/2021  15:52:06  PAGE 24
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/19/2021  16:00:26  PAGE 24
 
 
       0100050EH   LINE      CODE     ---       #1192
@@ -1631,7 +1631,7 @@ SYMBOL TABLE OF MODULE:  942 (?C_STARTUP)
       010005BDH   LINE      CODE     ---       #1264
       010005BDH   LINE      CODE     ---       #1266
       010005BFH   LINE      CODE     ---       #1268
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/16/2021  15:52:06  PAGE 25
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/19/2021  16:00:26  PAGE 25
 
 
       010005BFH   LINE      CODE     ---       #1269
@@ -1699,7 +1699,7 @@ SYMBOL TABLE OF MODULE:  942 (?C_STARTUP)
       01000665H   LINE      CODE     ---       #1374
       01000667H   LINE      CODE     ---       #1375
       01000669H   LINE      CODE     ---       #1376
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/16/2021  15:52:06  PAGE 26
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/19/2021  16:00:26  PAGE 26
 
 
       0100066CH   LINE      CODE     ---       #1377
@@ -1767,7 +1767,7 @@ SYMBOL TABLE OF MODULE:  942 (?C_STARTUP)
       0100071CH   LINE      CODE     ---       #1456
       0100071EH   LINE      CODE     ---       #1459
       01000720H   LINE      CODE     ---       #1460
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/16/2021  15:52:06  PAGE 27
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/19/2021  16:00:26  PAGE 27
 
 
       0100072BH   LINE      CODE     ---       #1461
@@ -1835,7 +1835,7 @@ SYMBOL TABLE OF MODULE:  942 (?C_STARTUP)
       010007F7H   LINE      CODE     ---       #1561
       010007F9H   LINE      CODE     ---       #1562
       01000804H   LINE      CODE     ---       #1563
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/16/2021  15:52:06  PAGE 28
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/19/2021  16:00:26  PAGE 28
 
 
       01000806H   LINE      CODE     ---       #1564
@@ -1903,7 +1903,7 @@ SYMBOL TABLE OF MODULE:  942 (?C_STARTUP)
       010008DCH   LINE      CODE     ---       #1645
       010008DCH   LINE      CODE     ---       #1647
       010008DCH   LINE      CODE     ---       #1648
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/16/2021  15:52:06  PAGE 29
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/19/2021  16:00:26  PAGE 29
 
 
       010008DDH   LINE      CODE     ---       #1650
@@ -1971,7 +1971,7 @@ SYMBOL TABLE OF MODULE:  942 (?C_STARTUP)
       010009F0H   LINE      CODE     ---       #1740
       010009F0H   LINE      CODE     ---       #1741
       010009F3H   LINE      CODE     ---       #1742
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/16/2021  15:52:06  PAGE 30
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/19/2021  16:00:26  PAGE 30
 
 
       01000A07H   LINE      CODE     ---       #1743
@@ -2039,7 +2039,7 @@ SYMBOL TABLE OF MODULE:  942 (?C_STARTUP)
       01000D83H   LINE      CODE     ---       #1816
       01000D86H   LINE      CODE     ---       #1817
       01000D86H   LINE      CODE     ---       #1818
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/16/2021  15:52:06  PAGE 31
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/19/2021  16:00:26  PAGE 31
 
 
       01000D89H   LINE      CODE     ---       #1819
@@ -2107,7 +2107,7 @@ SYMBOL TABLE OF MODULE:  942 (?C_STARTUP)
       0100005DH   LINE      CODE     ---       #1891
       01000060H   LINE      CODE     ---       #1892
       01000063H   LINE      CODE     ---       #1893
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/16/2021  15:52:06  PAGE 32
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/19/2021  16:00:26  PAGE 32
 
 
       01000065H   LINE      CODE     ---       #1894

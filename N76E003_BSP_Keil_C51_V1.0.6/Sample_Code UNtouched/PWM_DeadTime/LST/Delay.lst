@@ -1,10 +1,10 @@
-C51 COMPILER V9.60.0.0   DELAY                                                             10/19/2021 18:11:06 PAGE 1   
+C51 COMPILER V9.60.0.0   DELAY                                                             10/19/2021 18:08:20 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE DELAY
 OBJECT MODULE PLACED IN .\Output\Delay.obj
-COMPILER INVOKED BY: C:\keil5\C51\BIN\C51.EXE ..\Common\Delay.c COMPACT OPTIMIZE(8,SPEED) BROWSE INCDIR(..\Include) DEFI
-                    -NE(FOSC_160000) DEBUG OBJECTEXTEND PRINT(.\LST\Delay.lst) OBJECT(.\Output\Delay.obj)
+COMPILER INVOKED BY: C:\keil5\C51\BIN\C51.EXE ..\..\Common\Delay.c OPTIMIZE(7,SPEED) BROWSE INCDIR(..\..\Include) DEFINE
+                    -(FOSC_160000) DEBUG OBJECTEXTEND PRINT(.\LST\Delay.lst) OBJECT(.\Output\Delay.obj)
 
 line level    source
 
@@ -62,7 +62,7 @@ line level    source
   45   2              TL0 = LOBYTE(TIMER_DIV12_VALUE_1ms);            //Find  define in "Function_define.h" "TIMER VALUE"
   46   2              TH0 = HIBYTE(TIMER_DIV12_VALUE_1ms);
   47   2              while (TF0 != 1);                               //Check Timer0 Time-Out Flag
-C51 COMPILER V9.60.0.0   DELAY                                                             10/19/2021 18:11:06 PAGE 2   
+C51 COMPILER V9.60.0.0   DELAY                                                             10/19/2021 18:08:20 PAGE 2   
 
   48   2              clr_TF0;
   49   2              u32CNT --;
@@ -126,7 +126,7 @@ line level    source
  107   1          while (u32CNT != 0)
  108   1          {
  109   2              RL3 = LOBYTE(TIMER_DIV4_VALUE_10us); //Find  define in "Function_define.h" "TIMER VALUE"
-C51 COMPILER V9.60.0.0   DELAY                                                             10/19/2021 18:11:06 PAGE 3   
+C51 COMPILER V9.60.0.0   DELAY                                                             10/19/2021 18:08:20 PAGE 3   
 
  110   2              RH3 = HIBYTE(TIMER_DIV4_VALUE_10us);
  111   2              while ((T3CON&SET_BIT4) != SET_BIT4);           //Check Timer3 Time-Out Flag
@@ -138,11 +138,11 @@ line level    source
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    529    ----
+   CODE SIZE        =    463    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
-   PDATA SIZE       =   ----      24
-   DATA SIZE        =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      24
    IDATA SIZE       =   ----    ----
    BIT SIZE         =      1    ----
 END OF MODULE INFORMATION.

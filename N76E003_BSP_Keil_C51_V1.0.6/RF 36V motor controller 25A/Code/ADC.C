@@ -42,7 +42,6 @@ here after stack initialization.
 void main (void) 
 {
 	Set_All_GPIO_Quasi_Mode;				//For GPIO1 output, Find in "Function_define.h" - "GPIO INIT"
-//	P01_PushPull_Mode;
 	P17_Input_Mode;
 	clr_P10;	
 	InitialUART0_Timer1(115200);
@@ -52,10 +51,10 @@ void main (void)
 	while(1)
 	{
 		UINT16 i = Get_HallValue();
-		if(i>0x50)  //0x500 = 1280 = 1.56V
+		if(i>51)  //0x500 = 1280 = 1.56V
 		{
-			UINT16 pwm_step = i;
-			//UINT16 pwm_step = (i-50)*2/3;  //13.3KHz
+//			UINT16 pwm_step = i;
+			UINT16 pwm_step = (i-51)*2/3;  //13.3KHz
 			//UINT16 pwm_step = (i-0x3e8)/0x1E; //1.0->4.0
 			PWM_Setting(pwm_step);
 			set_P00;		//Forward Relay open 
