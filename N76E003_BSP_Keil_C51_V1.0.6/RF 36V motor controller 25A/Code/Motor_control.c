@@ -140,15 +140,22 @@ void PWM_Init()
 	PWM_CLOCK_DIV_8;
 	PWM_COMPLEMENTARY_MODE;//In this mode the dead time can work
 	//PWM_IMDEPENDENT_MODE;
-	PWM5_OUTPUT_INVERSE;
+	//PWM5_OUTPUT_INVERSE;
+	set_PDT45EN;
+	PWM_DEAD_TIME_VALUE(95); //6us dead time	
 //	PWMPH = 0x07;
 //	PWMPL = 0xcf;	//1K
 	PWMPH = 0x00;   //Period setting;
 	PWMPL = 0x96;	//13.3KHz
-	PWM5H = 0x00;
-	PWM5L = 0x00;
+//	PWM5H = 0x00;
+//	PWM5L = 0x00;
+	set_SFRPAGE;
 	PWM4H = 0x00;
 	PWM4L = 0x00;
+	clr_SFRPAGE;
+	
+	set_LOAD;
+	set_PWMRUN;
 	/**********************************************************************
 	PWM frequency = Fpwm/((PWMPH,PWMPL) + 1) <Fpwm = Fsys/PWM_CLOCK_DIV> 
 								= (16MHz/8)/(0x7CF + 1)
@@ -156,10 +163,6 @@ void PWM_Init()
 	=(16MHz/8)/(0x96+1)
 
 	***********************************************************************/
-
-	set_PDT45EN;
-	PWM_DEAD_TIME_VALUE(95); //6us dead time
-	
 }
 
 void PWM_Setting(UINT16 n)	//1n = 1%

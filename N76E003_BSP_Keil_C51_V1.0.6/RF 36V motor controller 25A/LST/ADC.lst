@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   ADC                                                               10/19/2021 18:11:06 PAGE 1   
+C51 COMPILER V9.60.0.0   ADC                                                               10/20/2021 16:10:44 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE ADC
@@ -62,7 +62,7 @@ line level    source
               #endif
   36          
   37          /******************************************************************************
-C51 COMPILER V9.60.0.0   ADC                                                               10/19/2021 18:11:06 PAGE 2   
+C51 COMPILER V9.60.0.0   ADC                                                               10/20/2021 16:10:44 PAGE 2   
 
   38          The main C function.  Program execution starts
   39          here after stack initialization.
