@@ -6,3 +6,4 @@
 TO ".\Output\ADC_Bandgap" 
 PRINT(".\LST\ADC_Bandgap.m51") RAMSIZE(256) 
 DISABLEWARNING (16) 
+XDATA( 0X0000-0X02FF )

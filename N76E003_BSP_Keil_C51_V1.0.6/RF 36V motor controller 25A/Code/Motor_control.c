@@ -111,8 +111,8 @@ UINT16 Get_HallValue(void)
 							Dead time setting
 						DT=PDTCNT+1/Fsys  >Ton+Toff
 						2us= 32/16M
-	**********************************************************************/
-void PWM_DEAD_TIME_VALUE(UINT16	DeadTimeData)
+	********************************** 3  5************************************/
+void PWM_DEAD_TIME_VALUE(UINT16	DeadTimeData) //problem:when the deadtemphigh!=1, there is no dead time
 {
 	UINT8 deadtmphigh,deadtmplow;
 	deadtmplow = DeadTimeData;
@@ -133,27 +133,23 @@ void PWM_DEAD_TIME_VALUE(UINT16	DeadTimeData)
 
 void PWM_Init()
 {
-	P01_PushPull_Mode;
-	P03_PushPull_Mode;
 	PWM5_P03_OUTPUT_ENABLE;
 	PWM4_P01_OUTPUT_ENABLE;//Upper bridge
-	PWM_CLOCK_DIV_8;
+	
 	PWM_COMPLEMENTARY_MODE;//In this mode the dead time can work
-	//PWM_IMDEPENDENT_MODE;
-	//PWM5_OUTPUT_INVERSE;
-	set_PDT45EN;
-	PWM_DEAD_TIME_VALUE(95); //6us dead time	
+	PWM_CLOCK_DIV_8;
 //	PWMPH = 0x07;
 //	PWMPL = 0xcf;	//1K
 	PWMPH = 0x00;   //Period setting;
 	PWMPL = 0x96;	//13.3KHz
-//	PWM5H = 0x00;
-//	PWM5L = 0x00;
+	
 	set_SFRPAGE;
 	PWM4H = 0x00;
-	PWM4L = 0x00;
+	PWM4L = 0x4b;
 	clr_SFRPAGE;
 	
+	PWM45_DEADTIME_ENABLE;
+	PWM_DEAD_TIME_VALUE(32); //32=2us dead time	
 	set_LOAD;
 	set_PWMRUN;
 	/**********************************************************************
@@ -171,11 +167,8 @@ void PWM_Setting(UINT16 n)	//1n = 1%
 //	printf("ADC value:%d\n",ADCValue);
 //	printf("ADC_voltage:%gmV\n",ADC_Vol);/
 	PWM4H = (0xff00&n)>>8;//Lower bridge P01
-//	if(n>0x7cf)
 	if(n>100)
 	{
-//		PWM4H = 0x07;
-//		PWM4L = 0xcf;
 		PWM4L = 0x97;
 	}
 	else if(n==0)
@@ -183,17 +176,12 @@ void PWM_Setting(UINT16 n)	//1n = 1%
 //		PWM4H = 0X00;
 		PWM4L = 0X00;
 	}
-		//PWM4L = 0X00;  //Upper bridge set to high when pedal lower than 1.0V
 	else
 	{
 //		PWM4H = n>>4;
 //		PWM4L = n&&0xf;
 		PWM4L = (n*3/2);
 	}
-
-
-//	PWM5H = PWM4H;
-	PWM5L = PWM4L;
 
  	set_LOAD;
 	set_PWMRUN;

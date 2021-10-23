@@ -4,9 +4,7 @@
 #include "Common.h"
 #include "Delay.h"
 #include "Motor_control.h"
-#include "Delay.h"
 
-#define threshold 1000;
 //*****************  The Following is in define in Fucntion_define.h  ***************************
 //****** Always include Function_define.h call the define you want, detail see main(void) *******
 //***********************************************************************************************
@@ -53,7 +51,6 @@ void main (void)
 		UINT16 i = Get_HallValue();
 		if(i>51)  //0x500 = 1280 = 1.56V
 		{
-//			UINT16 pwm_step = i;
 			UINT16 pwm_step = (i-51)*2/3;  //13.3KHz
 			//UINT16 pwm_step = (i-0x3e8)/0x1E; //1.0->4.0
 			PWM_Setting(pwm_step);

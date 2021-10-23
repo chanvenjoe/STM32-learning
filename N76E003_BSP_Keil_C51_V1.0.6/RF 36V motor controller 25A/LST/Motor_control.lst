@@ -1,10 +1,10 @@
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     10/20/2021 16:10:44 PAGE 1   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     10/23/2021 23:01:22 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MOTOR_CONTROL
 OBJECT MODULE PLACED IN .\Output\Motor_control.obj
-COMPILER INVOKED BY: C:\keil5\C51\BIN\C51.EXE Code\Motor_control.c COMPACT OPTIMIZE(8,SPEED) BROWSE INCDIR(..\Include) D
-                    -EFINE(FOSC_160000) DEBUG OBJECTEXTEND PRINT(.\LST\Motor_control.lst) OBJECT(.\Output\Motor_control.obj)
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE Code\Motor_control.c OPTIMIZE(2,SPEED) BROWSE INCDIR(..\Include) DEFINE(
+                    -FOSC_160000) DEBUG OBJECTEXTEND PRINT(.\LST\Motor_control.lst) OBJECT(.\Output\Motor_control.obj)
 
 line level    source
 
@@ -62,7 +62,7 @@ line level    source
   52   2                      bgvalue = (bgh<<4)+bgl;
   53   2                      bgvol = bgvalue*3/4;
   54   2                      bgvol = bgvol- 33;
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     10/20/2021 16:10:44 PAGE 2   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     10/23/2021 23:01:22 PAGE 2   
 
   55   2              }
   56   1              if(bgmark==0x00)
@@ -123,10 +123,10 @@ line level    source
  111                                                                  Dead time setting
  112                                                          DT=PDTCNT+1/Fsys  >Ton+Toff
  113                                                          2us= 32/16M
- 114                  **********************************************************************/
- 115          void PWM_DEAD_TIME_VALUE(UINT16 DeadTimeData)
+ 114                  ********************************** 3  5************************************/
+ 115          void PWM_DEAD_TIME_VALUE(UINT16 DeadTimeData) //problem:when the deadtemphigh!=1, there is no dead time
  116          {
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     10/20/2021 16:10:44 PAGE 3   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     10/23/2021 23:01:22 PAGE 3   
 
  117   1              UINT8 deadtmphigh,deadtmplow;
  118   1              deadtmplow = DeadTimeData;
@@ -147,86 +147,74 @@ line level    source
  133          
  134          void PWM_Init()
  135          {
- 136   1              P01_PushPull_Mode;
- 137   1              P03_PushPull_Mode;
- 138   1              PWM5_P03_OUTPUT_ENABLE;
- 139   1              PWM4_P01_OUTPUT_ENABLE;//Upper bridge
+ 136   1              PWM5_P03_OUTPUT_ENABLE;
+ 137   1              PWM4_P01_OUTPUT_ENABLE;//Upper bridge
+ 138   1              
+ 139   1              PWM_COMPLEMENTARY_MODE;//In this mode the dead time can work
  140   1              PWM_CLOCK_DIV_8;
- 141   1              PWM_COMPLEMENTARY_MODE;//In this mode the dead time can work
- 142   1              //PWM_IMDEPENDENT_MODE;
- 143   1              //PWM5_OUTPUT_INVERSE;
- 144   1              set_PDT45EN;
- 145   1              PWM_DEAD_TIME_VALUE(95); //6us dead time        
- 146   1      //      PWMPH = 0x07;
- 147   1      //      PWMPL = 0xcf;   //1K
- 148   1              PWMPH = 0x00;   //Period setting;
- 149   1              PWMPL = 0x96;   //13.3KHz
- 150   1      //      PWM5H = 0x00;
- 151   1      //      PWM5L = 0x00;
- 152   1              set_SFRPAGE;
- 153   1              PWM4H = 0x00;
- 154   1              PWM4L = 0x00;
- 155   1              clr_SFRPAGE;
- 156   1              
- 157   1              set_LOAD;
- 158   1              set_PWMRUN;
- 159   1              /**********************************************************************
- 160   1              PWM frequency = Fpwm/((PWMPH,PWMPL) + 1) <Fpwm = Fsys/PWM_CLOCK_DIV> 
- 161   1                                                                      = (16MHz/8)/(0x7CF + 1)
- 162   1                                                                      = 1KHz (1ms)
- 163   1              =(16MHz/8)/(0x96+1)
- 164   1      
- 165   1              ***********************************************************************/
- 166   1      }
- 167          
- 168          void PWM_Setting(UINT16 n)      //1n = 1%
- 169          {
- 170   1              set_SFRPAGE; //PWM4\5 SETTING
- 171   1      //      printf("ADC value:%d\n",ADCValue);
- 172   1      //      printf("ADC_voltage:%gmV\n",ADC_Vol);/
- 173   1              PWM4H = (0xff00&n)>>8;//Lower bridge P01
- 174   1      //      if(n>0x7cf)
- 175   1              if(n>100)
- 176   1              {
- 177   2      //              PWM4H = 0x07;
- 178   2      //              PWM4L = 0xcf;
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     10/20/2021 16:10:44 PAGE 4   
+ 141   1      //      PWMPH = 0x07;
+ 142   1      //      PWMPL = 0xcf;   //1K
+ 143   1              PWMPH = 0x00;   //Period setting;
+ 144   1              PWMPL = 0x96;   //13.3KHz
+ 145   1              
+ 146   1              set_SFRPAGE;
+ 147   1              PWM4H = 0x00;
+ 148   1              PWM4L = 0x4b;
+ 149   1              clr_SFRPAGE;
+ 150   1              
+ 151   1              PWM45_DEADTIME_ENABLE;
+ 152   1              PWM_DEAD_TIME_VALUE(32); //32=2us dead time     
+ 153   1              set_LOAD;
+ 154   1              set_PWMRUN;
+ 155   1              /**********************************************************************
+ 156   1              PWM frequency = Fpwm/((PWMPH,PWMPL) + 1) <Fpwm = Fsys/PWM_CLOCK_DIV> 
+ 157   1                                                                      = (16MHz/8)/(0x7CF + 1)
+ 158   1                                                                      = 1KHz (1ms)
+ 159   1              =(16MHz/8)/(0x96+1)
+ 160   1      
+ 161   1              ***********************************************************************/
+ 162   1      }
+ 163          
+ 164          void PWM_Setting(UINT16 n)      //1n = 1%
+ 165          {
+ 166   1              set_SFRPAGE; //PWM4\5 SETTING
+ 167   1      //      printf("ADC value:%d\n",ADCValue);
+ 168   1      //      printf("ADC_voltage:%gmV\n",ADC_Vol);/
+ 169   1              PWM4H = (0xff00&n)>>8;//Lower bridge P01
+ 170   1              if(n>100)
+ 171   1              {
+ 172   2                      PWM4L = 0x97;
+ 173   2              }
+ 174   1              else if(n==0)
+ 175   1              {
+ 176   2      //              PWM4H = 0X00;
+ 177   2                      PWM4L = 0X00;
+ 178   2              }
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     10/23/2021 23:01:22 PAGE 4   
 
- 179   2                      PWM4L = 0x97;
- 180   2              }
- 181   1              else if(n==0)
- 182   1              {
- 183   2      //              PWM4H = 0X00;
- 184   2                      PWM4L = 0X00;
- 185   2              }
- 186   1                      //PWM4L = 0X00;  //Upper bridge set to high when pedal lower than 1.0V
- 187   1              else
- 188   1              {
- 189   2      //              PWM4H = n>>4;
- 190   2      //              PWM4L = n&&0xf;
- 191   2                      PWM4L = (n*3/2);
- 192   2              }
- 193   1      
- 194   1      
- 195   1      //      PWM5H = PWM4H;
- 196   1              PWM5L = PWM4L;
- 197   1      
- 198   1              set_LOAD;
- 199   1              set_PWMRUN;
- 200   1      }
- 201          
- 202          //void PinInterrupt (void) interrupt 7
- 203          //{
- 204          //      printf("Falling edge intterrupt triggered");
- 205          //}
+ 179   1              else
+ 180   1              {
+ 181   2      //              PWM4H = n>>4;
+ 182   2      //              PWM4L = n&&0xf;
+ 183   2                      PWM4L = (n*3/2);
+ 184   2              }
+ 185   1      
+ 186   1              set_LOAD;
+ 187   1              set_PWMRUN;
+ 188   1      }
+ 189          
+ 190          //void PinInterrupt (void) interrupt 7
+ 191          //{
+ 192          //      printf("Falling edge intterrupt triggered");
+ 193          //}
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    854    ----
+   CODE SIZE        =    896    ----
    CONSTANT SIZE    =     66    ----
    XDATA SIZE       =   ----    ----
-   PDATA SIZE       =     19    ----
-   DATA SIZE        =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     19       6
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.

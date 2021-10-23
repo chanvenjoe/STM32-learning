@@ -135,7 +135,7 @@ void main(void)
 		PWM0_P12_OUTPUT_ENABLE;
 		PWM1_P11_OUTPUT_ENABLE;
 		PWM4_P01_OUTPUT_ENABLE;
-		PWM5_P15_OUTPUT_ENABLE;
+		PWM5_P03_OUTPUT_ENABLE;
 
 	
 		PWM_COMPLEMENTARY_MODE;					//Only this mode support deat time function
@@ -152,7 +152,7 @@ void main(void)
 		
 		PWM01_DEADTIME_ENABLE;
 		PWM45_DEADTIME_ENABLE;
-		PWM_DEAD_TIME_VALUE(0x1FF);			//value never over 0x1FF
+		PWM_DEAD_TIME_VALUE(0x1ff);			//value never over 0x1FF
 		
 //Please always setting Dead time if needed before PWM run.		
     set_LOAD;
