@@ -17,7 +17,24 @@ uint8_t  bgh;
 uint8_t  bgl;
 
 
-
+// PWM+=KP[e(k) -e(k-1)]+Ki*e(k)+Kd[e(k)-2e(k-1)+e(k-2)]
+// e(k) the value difference of actual and setting e(k-1) the last time difference
+// In this motor control we use P
+// PWM = Kp[e(k) - e(k-1)]
+// Cbat == the current value  IO:P05 ADC value
+UINT8 Incremental_P(UINT8 Cbat, UINT8 CC_Value)
+{
+	float Kp=1;
+	static UINT8 Bias, PWM,Last_bias;
+	Bias= Cbat-CC_Value;
+	PWM-=Kp*(Bias-Last_bias);// Decreasement output
+	Last_bias = Bias;
+	if(PWM>0)
+	{
+		return PWM; //The percentage of decreasment
+	}
+	else return 0;
+}
 
 void ADC_Init(void)
 {
@@ -93,10 +110,20 @@ void ADC_Init(void)
 		printf("ADC value:%d",ADCValue);
 	}
 }
+/* AD value= Voltage*255/5  20A=57*/
+UINT16 Get_CurrentValue(void)
+{
+	Enable_ADC_AIN4;
+	clr_ADCF;
+	set_ADCS;
+//	ADCValue = (ADCRH<<4)+ADCRL;
+	printf("ADC value:%d",ADCValue);
+	return ADCRH;
+}
 
 UINT16 Get_HallValue(void)
 {
-
+	Enable_ADC_AIN0;
 	clr_ADCF;
 	set_ADCS;
 //	ADCValue = (ADCRH<<4)+ADCRL
@@ -135,8 +162,10 @@ void PWM_Init()
 {
 	PWM5_P03_OUTPUT_ENABLE;
 	PWM4_P01_OUTPUT_ENABLE;//Upper bridge
-	
+	PWM4_OUTPUT_INVERSE;
+	PWM5_OUTPUT_INVERSE;	
 	PWM_COMPLEMENTARY_MODE;//In this mode the dead time can work
+	
 	PWM_CLOCK_DIV_8;
 //	PWMPH = 0x07;
 //	PWMPL = 0xcf;	//1K
@@ -144,8 +173,8 @@ void PWM_Init()
 	PWMPL = 0x96;	//13.3KHz
 	
 	set_SFRPAGE;
-	PWM4H = 0x00;
-	PWM4L = 0x4b;
+	PWM5H = 0x00;
+	PWM5L = 0x00;
 	clr_SFRPAGE;
 	
 	PWM45_DEADTIME_ENABLE;
@@ -164,8 +193,6 @@ void PWM_Init()
 void PWM_Setting(UINT16 n)	//1n = 1%
 {
 	set_SFRPAGE; //PWM4\5 SETTING
-//	printf("ADC value:%d\n",ADCValue);
-//	printf("ADC_voltage:%gmV\n",ADC_Vol);/
 	PWM4H = (0xff00&n)>>8;//Lower bridge P01
 	if(n>100)
 	{

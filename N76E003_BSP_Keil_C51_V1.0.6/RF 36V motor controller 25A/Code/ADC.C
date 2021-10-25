@@ -8,6 +8,7 @@
 //*****************  The Following is in define in Fucntion_define.h  ***************************
 //****** Always include Function_define.h call the define you want, detail see main(void) *******
 //***********************************************************************************************
+#define CCvalue 0x14; //change the current regulation value
 #if 0
 //#define Enable_ADC_AIN0			ADCCON0&=0xF0;P17_Input_Mode;AINDIDS=0x00;AINDIDS|=SET_BIT0;ADCCON1|=SET_BIT0									//P17
 //#define Enable_ADC_AIN1			ADCCON0&=0xF0;ADCCON0|=0x01;P30_Input_Mode;AINDIDS=0x00;AINDIDS|=SET_BIT1;ADCCON1|=SET_BIT0		//P30
@@ -41,29 +42,45 @@ void main (void)
 {
 	Set_All_GPIO_Quasi_Mode;				//For GPIO1 output, Find in "Function_define.h" - "GPIO INIT"
 	P17_Input_Mode;
-	clr_P10;	
+	clr_P10;
 	InitialUART0_Timer1(115200);
 	ADC_Init();							//
 										//reverved for timer_init   Sleep2
 	PWM_Init();
 	while(1)
 	{
-		UINT16 i = Get_HallValue();
-		if(i>51)  //0x500 = 1280 = 1.56V
+		UINT8 i = Get_HallValue();
+		UINT8 j = Get_CurrentValue();
+		switch(j>57)// current bigger than 20A
 		{
-			UINT16 pwm_step = (i-51)*2/3;  //13.3KHz
-			//UINT16 pwm_step = (i-0x3e8)/0x1E; //1.0->4.0
-			PWM_Setting(pwm_step);
-			set_P00;		//Forward Relay open 
-			Timer0_Delay1ms(20);
-		}
-		else
-		{
-			PWM_Setting(0x00);
-			//PWM4L = 0x97;
-			Timer0_Delay1ms(1000);
-			clr_P00;
-			
+			case 0:
+				if(i>51)  //0x500 = 1280 = 1.56V
+				{
+					UINT16 pwm_step = (i-51)*2/3;  //13.3KHz
+					//UINT16 pwm_step = (i-0x3e8)/0x1E; //1.0->4.0
+					PWM_Setting(pwm_step);
+					set_P00;		//Forward Relay open 
+					Timer0_Delay1ms(20);
+				}
+				else
+				{
+					PWM_Setting(0x00);
+					//PWM4L = 0x97;
+					Timer0_Delay1ms(1000);
+					clr_P00;
+				}
+				break;
+			case 1:
+				if(PWM4L>75)// PWM >50%
+				{
+					j=j/22.5/0.0025;
+					PWM_Setting(PWM4L-(Incremental_P(j, 20)*3/2));
+					set_P00;		//Forward Relay open 
+					Timer0_Delay1ms(20);
+				}
+				break;
+			default:
+				break;
 		}
 			
 
