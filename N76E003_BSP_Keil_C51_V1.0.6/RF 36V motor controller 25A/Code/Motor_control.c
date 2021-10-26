@@ -7,6 +7,7 @@
 #include "SFR_Macro.h"
 
 #define Vref  3072;
+#define Ramp_up Timer0_Delay1ms(10) //from 0->0x97 150 step, 10ms*150=1.5s
 #define set_IAPEN BIT_TMP=EA;EA=0;TA=0xAA;TA=0x55;CHPCON|=SET_BIT0 ;EA=BIT_TMP
 #define set_IAPGO BIT_TMP=EA;EA=0;TA=0xAA;TA=0x55;IAPTRG|=SET_BIT0 ;EA=BIT_TMP
 #define clr_IAPEN BIT_TMP=EA;EA=0;TA=0xAA;TA=0x55;CHPCON&=~SET_BIT0;EA=BIT_TMP
@@ -27,13 +28,9 @@ UINT8 Incremental_P(UINT8 Cbat, UINT8 CC_Value)
 	float Kp=1;
 	static UINT8 Bias, PWM,Last_bias;
 	Bias= Cbat-CC_Value;
-	PWM-=Kp*(Bias-Last_bias);// Decreasement output
+	PWM-= Bias>0? Kp*(Bias-Last_bias):0;// Decreasement output
 	Last_bias = Bias;
-	if(PWM>0)
-	{
-		return PWM; //The percentage of decreasment
-	}
-	else return 0;
+	return PWM; //The percentage of decreasment
 }
 
 void ADC_Init(void)
@@ -196,18 +193,41 @@ void PWM_Setting(UINT16 n)	//1n = 1%
 	PWM4H = (0xff00&n)>>8;//Lower bridge P01
 	if(n>100)
 	{
-		PWM4L = 0x97;
+//		PWM4L = 0x97;
+		for(PWM4L;PWM4L<0X97;PWM4L++)
+		{
+			Ramp_up;
+		}
+//		PWM4L = 0x00;  // In complementary mode it is inversed
 	}
 	else if(n==0)
 	{
-//		PWM4H = 0X00;
 		PWM4L = 0X00;
+//		PWM4L = 0x97;
 	}
 	else
 	{
-//		PWM4H = n>>4;
 //		PWM4L = n&&0xf;
-		PWM4L = (n*3/2);
+		UINT8 i = n*3/2;
+		if(PWM4L<i)
+		{
+			for(PWM4L;PWM4L<i;PWM4L++)
+			{
+				Ramp_up;
+				set_LOAD;
+				set_PWMRUN;
+			}
+		}
+		else
+		{
+			for(PWM4L;PWM4L>i;PWM4L--)
+			{
+				Ramp_up;
+				set_LOAD;
+				set_PWMRUN;
+			}
+		}
+//		PWM4L = (n*3/2);
 	}
 
  	set_LOAD;
