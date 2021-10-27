@@ -1,10 +1,10 @@
-C51 COMPILER V9.60.0.0   ADC                                                               10/26/2021 21:47:32 PAGE 1   
+C51 COMPILER V9.60.0.0   ADC                                                               10/27/2021 15:22:28 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE ADC
 OBJECT MODULE PLACED IN .\Output\ADC.obj
-COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE Code\ADC.C OPTIMIZE(2,SPEED) BROWSE INCDIR(..\Include) DEFINE(FOSC_16000
-                    -0) DEBUG OBJECTEXTEND PRINT(.\LST\ADC.lst) OBJECT(.\Output\ADC.obj)
+COMPILER INVOKED BY: C:\keil5\C51\BIN\C51.EXE Code\ADC.C OPTIMIZE(2,SPEED) BROWSE INCDIR(..\Include) DEFINE(FOSC_160000)
+                    - DEBUG OBJECTEXTEND PRINT(.\LST\ADC.lst) OBJECT(.\Output\ADC.obj)
 
 line level    source
 
@@ -62,7 +62,7 @@ line level    source
   35          
   36          /******************************************************************************
   37          The main C function.  Program execution starts
-C51 COMPILER V9.60.0.0   ADC                                                               10/26/2021 21:47:32 PAGE 2   
+C51 COMPILER V9.60.0.0   ADC                                                               10/27/2021 15:22:28 PAGE 2   
 
   38          here after stack initialization.
   39          ******************************************************************************/
@@ -126,7 +126,7 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----       4
    IDATA SIZE       =   ----    ----
-C51 COMPILER V9.60.0.0   ADC                                                               10/26/2021 21:47:32 PAGE 3   
+C51 COMPILER V9.60.0.0   ADC                                                               10/27/2021 15:22:28 PAGE 3   
 
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.

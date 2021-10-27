@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   MAIN                                                              10/19/2021 16:00:26 PAGE 1   
+C51 COMPILER V9.60.0.0   MAIN                                                              10/27/2021 14:54:20 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
@@ -62,7 +62,7 @@ line level    source
   47            //20190717 去掉PWM_EN  同时将PWN改为PWM互补模式（P00为下桥输出  P05为上桥输出）-----ok
   48                  //20190725  加入看门狗程序------------ok
   49                  //20190731  将倒档和一档在6A保护，保护时间由2min改为30s  且二档和三档任保持2min保护-----ok
-C51 COMPILER V9.60.0.0   MAIN                                                              10/19/2021 16:00:26 PAGE 2   
+C51 COMPILER V9.60.0.0   MAIN                                                              10/27/2021 14:54:20 PAGE 2   
 
   50           //20190802  倒档电压是：0V--1V 改为：0V--0.5V ---------ok
   51           //          一档电压是：1V--2.5V 改为: 0.5V--2.5V--------ok
@@ -126,7 +126,7 @@ line level    source
  106          
  107          #define  Vol_2_5V    128//255*2.5/5
  108          #define  Vol_2V     102//255*2/5
-C51 COMPILER V9.60.0.0   MAIN                                                              10/19/2021 16:00:26 PAGE 3   
+C51 COMPILER V9.60.0.0   MAIN                                                              10/27/2021 14:54:20 PAGE 3   
 
  109          #define  Vol_1V     26//255*1/5  51=1V   26=0.5V
  110          
@@ -190,7 +190,7 @@ line level    source
  167          
  168          
  169           #define  LED_IO                           P12
-C51 COMPILER V9.60.0.0   MAIN                                                              10/19/2021 16:00:26 PAGE 4   
+C51 COMPILER V9.60.0.0   MAIN                                                              10/27/2021 14:54:20 PAGE 4   
 
  170           #define  LED_SET              P12_PushPull_Mode     //故障指示灯--已改
  171          
@@ -254,7 +254,7 @@ line level    source
  229          #define  POWER_IO          P14
  230          #define  POWER_IO_SET       P14_PushPull_Mode
  231          
-C51 COMPILER V9.60.0.0   MAIN                                                              10/19/2021 16:00:26 PAGE 5   
+C51 COMPILER V9.60.0.0   MAIN                                                              10/27/2021 14:54:20 PAGE 5   
 
  232          
  233          
@@ -318,7 +318,7 @@ line level    source
  291                  
  292          bit ELE_ERR_FL;
  293           bit BIT_TMP;
-C51 COMPILER V9.60.0.0   MAIN                                                              10/19/2021 16:00:26 PAGE 6   
+C51 COMPILER V9.60.0.0   MAIN                                                              10/27/2021 14:54:20 PAGE 6   
 
  294           bit FRONT_FL;
  295           bit BACK_FL;
@@ -382,7 +382,7 @@ line level    source
  353          unsigned char  BeginMoveFrontTM;
  354          unsigned char  PWM_MAX_Set;               
  355                    
-C51 COMPILER V9.60.0.0   MAIN                                                              10/19/2021 16:00:26 PAGE 7   
+C51 COMPILER V9.60.0.0   MAIN                                                              10/27/2021 14:54:20 PAGE 7   
 
  356           unsigned char Count1S;
  357          
@@ -446,7 +446,7 @@ line level    source
  415          
  416          
  417          
-C51 COMPILER V9.60.0.0   MAIN                                                              10/19/2021 16:00:26 PAGE 8   
+C51 COMPILER V9.60.0.0   MAIN                                                              10/27/2021 14:54:20 PAGE 8   
 
  418          //------------------------------------------------------------------------------------
  419                  
@@ -510,7 +510,7 @@ line level    source
  477   1       BACK_CTRL_SET;                                            
  478   1       FRONT_CTRL_SET;
  479   1        BACK_CTRL=0 ;
-C51 COMPILER V9.60.0.0   MAIN                                                              10/19/2021 16:00:26 PAGE 9   
+C51 COMPILER V9.60.0.0   MAIN                                                              10/27/2021 14:54:20 PAGE 9   
 
  480   1        FRONT_CTRL=0;   
  481   1       PWMOUT_SET;     
@@ -574,7 +574,7 @@ line level    source
  538   1      PWM_MAX_Set=255;
  539   1      PWMold=1;
  540   1      POWER_ON_IO=1; 
-C51 COMPILER V9.60.0.0   MAIN                                                              10/19/2021 16:00:26 PAGE 10  
+C51 COMPILER V9.60.0.0   MAIN                                                              10/27/2021 14:54:20 PAGE 10  
 
  541   1      //PROT=0;
  542   1      //IO_1=0;
@@ -638,7 +638,7 @@ line level    source
  600   3                     {
  601   4                        if(MOS_DET_IO)              //如果检测到是高电平  
  602   4                        {                   
-C51 COMPILER V9.60.0.0   MAIN                                                              10/19/2021 16:00:26 PAGE 11  
+C51 COMPILER V9.60.0.0   MAIN                                                              10/27/2021 14:54:20 PAGE 11  
 
  603   5                             MOS_Err=1;                //则表明上桥是短路的   闪6下
  604   5                             G_S_State=0xff;
@@ -702,7 +702,7 @@ line level    source
  662   3                              P01=0;//换为IO      //上桥
  663   3                              P03=1;            // 下桥
  664   3                              //PWM_EN_IO=0;
-C51 COMPILER V9.60.0.0   MAIN                                                              10/19/2021 16:00:26 PAGE 12  
+C51 COMPILER V9.60.0.0   MAIN                                                              10/27/2021 14:54:20 PAGE 12  
 
  665   3                       }
  666   2                      else
@@ -766,7 +766,7 @@ line level    source
  724   4            }
  725   3                }
  726   2       ////////////////////////////////////////////////////           
-C51 COMPILER V9.60.0.0   MAIN                                                              10/19/2021 16:00:26 PAGE 13  
+C51 COMPILER V9.60.0.0   MAIN                                                              10/27/2021 14:54:20 PAGE 13  
 
  727   2                                                                                                  
  728   2       if((MOS_Err)||(A_DET_FL==0)/*(A_DET_IO==0)*/||ELE25_BIG_ERR_FL||ELE35_BIG_ERR_FL||ELE28_BIG_ERR_FL||ELE30
@@ -830,7 +830,7 @@ line level    source
  785   2      
  786   2       if(DanWei_AD>CurDanWei_AD)/*判断AD变化大不大*/
  787   2        temp= DanWei_AD-CurDanWei_AD; 
-C51 COMPILER V9.60.0.0   MAIN                                                              10/19/2021 16:00:26 PAGE 14  
+C51 COMPILER V9.60.0.0   MAIN                                                              10/27/2021 14:54:20 PAGE 14  
 
  788   2        else
  789   2        temp= CurDanWei_AD-DanWei_AD; 
@@ -894,7 +894,7 @@ line level    source
  847   2              {
  848   3                      
  849   3                  NO_Connet_FL=0;
-C51 COMPILER V9.60.0.0   MAIN                                                              10/19/2021 16:00:26 PAGE 15  
+C51 COMPILER V9.60.0.0   MAIN                                                              10/27/2021 14:54:20 PAGE 15  
 
  850   3           ELE_BIG_SET1=ELE10A;
  851   3           ELE_BIG_SET2=ELE15A;
@@ -958,7 +958,7 @@ line level    source
  909   2                else
  910   2                              
  911   2            if(FRONT_FL)
-C51 COMPILER V9.60.0.0   MAIN                                                              10/19/2021 16:00:26 PAGE 16  
+C51 COMPILER V9.60.0.0   MAIN                                                              10/27/2021 14:54:20 PAGE 16  
 
  912   2              {
  913   3               if(FRONT_CTRL)
@@ -1022,7 +1022,7 @@ line level    source
  970   5                                              PWM--;
  971   5                                                      
  972   5                                              if((PWM<PWM_HallSet)/*&&(ELEbig25A_FL==0)*/)
-C51 COMPILER V9.60.0.0   MAIN                                                              10/19/2021 16:00:26 PAGE 17  
+C51 COMPILER V9.60.0.0   MAIN                                                              10/27/2021 14:54:20 PAGE 17  
 
  973   5                                                      PWM++;
  974   5                                         
@@ -1086,7 +1086,7 @@ line level    source
 1031   3                      {
 1032   4                        LED_CT=14;
 1033   4      
-C51 COMPILER V9.60.0.0   MAIN                                                              10/19/2021 16:00:26 PAGE 18  
+C51 COMPILER V9.60.0.0   MAIN                                                              10/27/2021 14:54:20 PAGE 18  
 
 1034   4                      }
 1035   3                    else
@@ -1150,7 +1150,7 @@ line level    source
 1092   6                                                                       if(xiajiang_3dan_timer>=50)    //20*50=2s 
 1093   6                                                                       {
 1094   7                                                                              DanWei=3;               
-C51 COMPILER V9.60.0.0   MAIN                                                              10/19/2021 16:00:26 PAGE 19  
+C51 COMPILER V9.60.0.0   MAIN                                                              10/27/2021 14:54:20 PAGE 19  
 
 1095   7                                                                                dang_23fl=0;
 1096   7                                                                               xiajiang_3dan_timer=101;
@@ -1192,11 +1192,11 @@ line level    source
 1132   3                                                                      
 1133   3                                                       if(ELE60_BIG_FL)               //60A过流保护生效标志     三档堵转
 1134   3                                                       {
-1135   4                                                               if(++ELE60_BIG_TM>=60)       //0.02*60=1.2s
+1135   4                                                               if(++ELE60_BIG_TM>=30)       //0.02*60=1.2s
 1136   4                                                               {
 1137   5                                                                      ELE40_BIG_FL=1;          //灯快闪
 1138   5                                                                ELE60_BIG_TM=0;
-1139   5                                                                      ELE_Wait_5s=40;
+1139   5                                                                      ELE_Wait_5s=80;
 1140   5                                                               }
 1141   4                                                       }
 1142   3                                                              else
@@ -1214,7 +1214,7 @@ line level    source
 1154   4                          
 1155   4              //-----在这里更改2min保护   5s保护  2s保护设置---------
 1156   4                                      
-C51 COMPILER V9.60.0.0   MAIN                                                              10/19/2021 16:00:26 PAGE 20  
+C51 COMPILER V9.60.0.0   MAIN                                                              10/27/2021 14:54:20 PAGE 20  
 
 1157   4           //----------------------------2min保护-----------------------------------        
 1158   4                                 if(ELE30_BIG_FL)
@@ -1230,7 +1230,7 @@ line level    source
 1168   7                                                                                      {
 1169   8                                                                                              ELE30_BIG_ERR_FL=1;  //
 1170   8                                                                                              ELE30_BIG_TM=0;
-1171   8                                                                                              ELE_Wait_5s=40;//WAIT 20S
+1171   8                                                                                              ELE_Wait_5s=40;//40 = WAIT 20S
 1172   8                                                                                      }
 1173   7                                                                       }
 1174   6                                                              }
@@ -1278,7 +1278,7 @@ line level    source
 1216   5                                              
 1217   5                                                      if(DanWei==2)
 1218   5                                                      {
-C51 COMPILER V9.60.0.0   MAIN                                                              10/19/2021 16:00:26 PAGE 21  
+C51 COMPILER V9.60.0.0   MAIN                                                              10/27/2021 14:54:20 PAGE 21  
 
 1219   6                                                        if(++ELE28_BIG_TM>=60)//0.5s*60=30S
 1220   6                                                                      {
@@ -1338,13 +1338,13 @@ line level    source
 1274   4          //---------------------------------------------
 1275   4                                               if(ELE12_BIG_FL)                                   //一档堵转生效后  
 1276   4                                                       {                     
-1277   5                                                                      if(++ELE12_BIG_TM>=5)// 5S/0.5*5=2.5s        // 堵转时间保护设置
+1277   5                                                                      if(++ELE12_BIG_TM>=2)// 5S/0.5*5=2.5s        // 堵转时间保护设置
 1278   5                                                               {
 1279   6                                                                                       ELE25_BIG_ERR_FL=1;//
 1280   6                                                                                       ELE12_BIG_TM=0;
-C51 COMPILER V9.60.0.0   MAIN                                                              10/19/2021 16:00:26 PAGE 22  
+C51 COMPILER V9.60.0.0   MAIN                                                              10/27/2021 14:54:20 PAGE 22  
 
-1281   6                                                                                       ELE_Wait_5s=40;//WAIT 20S
+1281   6                                                                                       ELE_Wait_5s=100;//40==WAIT 20S
 1282   6                                                                       }
 1283   5                                                       }
 1284   4                                                       else
@@ -1357,12 +1357,12 @@ line level    source
 1291   4                                                       
 1292   4                                               if(ELE13_BIG_FL)                       //二档堵转生效后
 1293   4                                                       {                     
-1294   5                                                                      if(++ELE13_BIG_TM>=4)// 5S/0.5*4=2s      // 堵转时间保护设置
+1294   5                                                                      if(++ELE13_BIG_TM>=2)// 5S/0.5*4=2s      // 堵转时间保护设置
 1295   5                                                               {
 1296   6                                                                               ELE35_BIG_ERR_FL=1;//
 1297   6                                                                      
 1298   6                                                                               ELE13_BIG_TM=0;
-1299   6                                                                               ELE_Wait_5s=40;//WAIT 20S
+1299   6                                                                               ELE_Wait_5s=100;//40=WAIT 20S
 1300   6                                                               }
 1301   5                                                       }
 1302   4                                                       else
@@ -1406,7 +1406,7 @@ line level    source
 1340   4        if(G_S_old_FL)
 1341   4        {
 1342   5            G_S_old_FL=0;
-C51 COMPILER V9.60.0.0   MAIN                                                              10/19/2021 16:00:26 PAGE 23  
+C51 COMPILER V9.60.0.0   MAIN                                                              10/27/2021 14:54:20 PAGE 23  
 
 1343   5            G_S_L2H_FL=1;    
 1344   5      
@@ -1470,7 +1470,7 @@ line level    source
 1402   3            BackOFFTime=0;
 1403   3      /////////////////////////////////////////////////
 1404   3              if(DelayOffTM>1)
-C51 COMPILER V9.60.0.0   MAIN                                                              10/19/2021 16:00:26 PAGE 24  
+C51 COMPILER V9.60.0.0   MAIN                                                              10/27/2021 14:54:20 PAGE 24  
 
 1405   3                                 {
 1406   4                   DelayOffTM--;
@@ -1534,7 +1534,7 @@ line level    source
 1464   7                                                                                                       G_S_L2H_FL=0;
 1465   7                                                                                                      goto ESC_STOP8;
 1466   7                                                                                                      }
-C51 COMPILER V9.60.0.0   MAIN                                                              10/19/2021 16:00:26 PAGE 25  
+C51 COMPILER V9.60.0.0   MAIN                                                              10/27/2021 14:54:20 PAGE 25  
 
 1467   6                                                                                      }
 1468   5                                               
@@ -1598,7 +1598,7 @@ line level    source
 1526   3                         Cur_ResultNew=0;
 1527   3      
 1528   3               /*  if(Cur_ResultNew>=ELE25A)
-C51 COMPILER V9.60.0.0   MAIN                                                              10/19/2021 16:00:26 PAGE 26  
+C51 COMPILER V9.60.0.0   MAIN                                                              10/27/2021 14:54:20 PAGE 26  
 
 1529   3                 {
 1530   3                     ELEbig25A_FL=1;
@@ -1614,389 +1614,388 @@ line level    source
 1540   3                        */
 1541   3          
 1542   3               if((Cur_ResultNew>=73)&&(DanWei==1))     //25A=73    73=1.41V      
-1543   3                    {
-1544   4                          
-1545   4                      ELE12_BIG_ct++;
-1546   4                      ELE12_Small_ct=0;
-1547   4                      if(ELE12_BIG_ct>5)
-1548   4                          ELE12_BIG_FL=1;                //一档堵转生效标志
-1549   4                    }
-1550   3                    else
-1551   3                      {
-1552   4                                                                              ELE12_BIG_ct=0;
-1553   4                                                                              ELE12_Small_ct++;           
-1554   4                                                                              if(ELE12_Small_ct>5)
-1555   4                                                                              ELE12_BIG_FL=0;
-1556   4                      }  
-1557   3                                                                      
-1558   3                                              if((Cur_ResultNew>=115)&&(DanWei==2))     //35A=100   1.96V     40A=115
-1559   3                    {
-1560   4                      ELE13_BIG_ct++;
-1561   4                      ELE13_Small_ct=0;
-1562   4                      if(ELE13_BIG_ct>5)
-1563   4                       ELE13_BIG_FL=1;            //二档堵转生效标志
-1564   4                    }
-1565   3                    else
-1566   3                      {                                                               
-1567   4                                                                              ELE13_Small_ct++;           
-1568   4                                                                              if(ELE13_Small_ct>5)      //30
-1569   4                                                                              {
-1570   5                                                                                      ELE13_BIG_FL=0;
-1571   5                                                                                      ELE13_BIG_ct=0;
-1572   5                                                                              }
-1573   4                      }               
-1574   3      
-1575   3            if(Cur_ResultNew > ELE60A&&(DanWei==3))//ELE40A)       //60A过流保护    173=3.4V
-1576   3                              {               
-1577   4                               ELE40_BIG_ct++;
-1578   4                               ELE40_Small_ct=0;
-1579   4                               if(ELE40_BIG_ct>5)                   //三档堵转生效标志
-1580   4                               {
-1581   5                                       ELE60_BIG_FL=1;                                
-1582   5                               }
-1583   4                              }
-1584   3                              else
-1585   3                              {               
-1586   4                                      //  RELY=~ RELY;        //约500us自加一次   
-1587   4                                      ELE40_BIG_ct=0;
-1588   4                                      ELE40_Small_ct++;                       
-1589   4                                      if(ELE40_Small_ct>5)      //    3ms      
-1590   4                                       ELE60_BIG_FL=0;
-C51 COMPILER V9.60.0.0   MAIN                                                              10/19/2021 16:00:26 PAGE 27  
+1543   3               {
+1544   4                              ELE12_BIG_ct++;
+1545   4                                      ELE12_Small_ct=0;
+1546   4                                      if(ELE12_BIG_ct>5)
+1547   4                                              ELE12_BIG_FL=1;                //一档堵转生效标志
+1548   4               }
+1549   3                       else
+1550   3                       {
+1551   4                          ELE12_BIG_ct=0;
+1552   4                              ELE12_Small_ct++;           
+1553   4                              if(ELE12_Small_ct>5)
+1554   4                              ELE12_BIG_FL=0;
+1555   4                      }  
+1556   3                                                                      
+1557   3                                if((Cur_ResultNew>=115)&&(DanWei==2))     //35A=100   1.96V     40A=115
+1558   3                    {
+1559   4                      ELE13_BIG_ct++;
+1560   4                      ELE13_Small_ct=0;
+1561   4                      if(ELE13_BIG_ct>5)
+1562   4                       ELE13_BIG_FL=1;            //二档堵转生效标志
+1563   4                    }
+1564   3                    else
+1565   3                    {                                                         
+1566   4                                      ELE13_Small_ct++;           
+1567   4                                      if(ELE13_Small_ct>5)      //30
+1568   4                                      {
+1569   5                                              ELE13_BIG_FL=0;
+1570   5                                              ELE13_BIG_ct=0;
+1571   5                                      }
+1572   4                    }                 
+1573   3      
+1574   3            if(Cur_ResultNew > ELE60A&&(DanWei==3))//ELE40A)       //60A过流保护    173=3.4V
+1575   3                              {               
+1576   4                               ELE40_BIG_ct++;
+1577   4                               ELE40_Small_ct=0;
+1578   4                               if(ELE40_BIG_ct>5)                   //三档堵转生效标志
+1579   4                               {
+1580   5                                       ELE60_BIG_FL=1;                                
+1581   5                               }
+1582   4                              }
+1583   3                              else
+1584   3                              {               
+1585   4                                      //  RELY=~ RELY;        //约500us自加一次   
+1586   4                                      ELE40_BIG_ct=0;
+1587   4                                      ELE40_Small_ct++;                       
+1588   4                                      if(ELE40_Small_ct>5)      //    3ms      
+1589   4                                       ELE60_BIG_FL=0;
+1590   4                              }
+C51 COMPILER V9.60.0.0   MAIN                                                              10/27/2021 14:54:20 PAGE 27  
 
-1591   4                              }
-1592   3      
-1593   3                                                                      
-1594   3                                                                                                                      
-1595   3        if(Cur_ResultNew>ELE_BIG_SET2)
-1596   3            {
-1597   4                  
-1598   4                                      ELE50_BIG_ct++;
-1599   4                                      ELE50_Small_ct=0;
-1600   4                                      if(ELE50_BIG_ct>5)
-1601   4                                      ELE50_BIG_FL=1;
-1602   4            }
-1603   3            else
-1604   3              {            
-1605   4                ELE50_BIG_ct=0;
-1606   4                  ELE50_Small_ct++;           
-1607   4                  if(ELE50_Small_ct>5)
-1608   4                      ELE50_BIG_FL=0;
-1609   4              }
-1610   3      
-1611   3        
-1612   3        if(Cur_ResultNew>ELE_BIG_SET1)
-1613   3          {
-1614   4                
-1615   4            ELE30_BIG_ct++;
-1616   4            ELE30_Small_ct=0;
-1617   4          if(ELE30_BIG_ct>10)
-1618   4                ELE30_BIG_FL=1;
-1619   4          }
-1620   3          else
-1621   3            {
-1622   4                
-1623   4              ELE30_BIG_ct=0;
-1624   4                ELE30_Small_ct++;           
-1625   4                if(ELE30_Small_ct>5)
-1626   4                    ELE30_BIG_FL=0;
-1627   4            }
+1591   3      
+1592   3                                                                      
+1593   3                                                                                                                      
+1594   3        if(Cur_ResultNew>ELE_BIG_SET2)
+1595   3            {
+1596   4                  
+1597   4                                      ELE50_BIG_ct++;
+1598   4                                      ELE50_Small_ct=0;
+1599   4                                      if(ELE50_BIG_ct>5)
+1600   4                                      ELE50_BIG_FL=1;
+1601   4            }
+1602   3            else
+1603   3              {            
+1604   4                ELE50_BIG_ct=0;
+1605   4                  ELE50_Small_ct++;           
+1606   4                  if(ELE50_Small_ct>5)
+1607   4                      ELE50_BIG_FL=0;
+1608   4              }
+1609   3      
+1610   3        
+1611   3        if(Cur_ResultNew>ELE_BIG_SET1)
+1612   3          {
+1613   4                
+1614   4            ELE30_BIG_ct++;
+1615   4            ELE30_Small_ct=0;
+1616   4          if(ELE30_BIG_ct>10)
+1617   4                ELE30_BIG_FL=1;
+1618   4          }
+1619   3          else
+1620   3            {
+1621   4                
+1622   4              ELE30_BIG_ct=0;
+1623   4                ELE30_Small_ct++;           
+1624   4                if(ELE30_Small_ct>5)
+1625   4                    ELE30_BIG_FL=0;
+1626   4            }
+1627   3      
 1628   3      
-1629   3      
-1630   3                if(Cur_ResultNew>ELE_BIG_SET3)
-1631   3            {
-1632   4                  
-1633   4              ELE28_BIG_ct++;
-1634   4              ELE28_Small_ct=0;
-1635   4            if(ELE28_BIG_ct>5)
-1636   4                  ELE28_BIG_FL=1;
-1637   4            }
-1638   3            else
-1639   3              {
-1640   4                  
-1641   4                ELE28_BIG_ct=0;
-1642   4                  ELE28_Small_ct++;           
-1643   4                  if(ELE28_Small_ct>5)
-1644   4                      ELE28_BIG_FL=0;
-1645   4              }
-1646   3         
-1647   3        }
-1648   2       }
-1649   1        else
-1650   1               if(AD_CH==7)
-1651   1               {
-1652   2                  AD_CH=4;
-C51 COMPILER V9.60.0.0   MAIN                                                              10/19/2021 16:00:26 PAGE 28  
+1629   3                if(Cur_ResultNew>ELE_BIG_SET3)
+1630   3            {
+1631   4                  
+1632   4              ELE28_BIG_ct++;
+1633   4              ELE28_Small_ct=0;
+1634   4            if(ELE28_BIG_ct>5)
+1635   4                  ELE28_BIG_FL=1;
+1636   4            }
+1637   3            else
+1638   3              {
+1639   4                  
+1640   4                ELE28_BIG_ct=0;
+1641   4                  ELE28_Small_ct++;           
+1642   4                  if(ELE28_Small_ct>5)
+1643   4                      ELE28_BIG_FL=0;
+1644   4              }
+1645   3         
+1646   3        }
+1647   2       }
+1648   1        else
+1649   1               if(AD_CH==7)
+1650   1               {
+1651   2                  AD_CH=4;
+1652   2            Enable_ADC_AIN1;    //速度开关    P30
+C51 COMPILER V9.60.0.0   MAIN                                                              10/27/2021 14:54:20 PAGE 28  
 
-1653   2            Enable_ADC_AIN1;    //速度开关    P30
-1654   2            clr_ADCF;
-1655   2            set_ADCS; 
-1656   2            EADC=0;
-1657   2              // HallPWM=ADtemp;
-1658   2                       
-1659   2                              //---------油门大于4.8V  停止工作，显示故障灯闪4下
-1660   2                      
-1661   2                      if(ADtemp>HALL_4000MV) 
-1662   2                      {
-1663   3                        NO_Connet_FL1=1;
-1664   3                      }
-1665   2                                       
-1666   2                if(ADtemp>HALL_1000MV)    //踩下脚踏  1.33v
-1667   2                {
-1668   3                      
-1669   3                      G_S_HighCT_fanjiao=0;
-1670   3         //if(FRONT_CTRL==0&&BACK_CTRL==0)    //50ms生效后，判断继电器是否有吸合  没有才允许脚踏生效
-1671   3              //      {
-1672   3                  if(G_S_HighCT>=100) //10MS   0.5*20     100=50ms    200ms
-1673   3                        {
-1674   4                      //      if(FRONT_CTRL==0&&BACK_CTRL==0)    //50ms生效后，判断继电器是否有吸合  没有才允许脚踏生效
-1675   4                      //              {
-1676   4                      if(turn_zero_fl==1)/*&&(G_S_State==0))*/
-1677   4                  {
-1678   5                                                              if(G_S_State==0)        
-1679   5                     G_S_State=1;
-1680   5                                                                                                                        
-1681   5                    if(G_S_State==2)
-1682   5                                                         G_S_FL=1;         //脚踏板生效               
-1683   5                                                }     
-1684   4                                      //}
-1685   4                       //}
-1686   4                  }
-1687   3                              ADtemp=ADtemp-HALL_1000MV;      //
-1688   3                              if(ADtemp>HALL_DV)
-1689   3                              ADtemp=HALL_DV;
-1690   3      
-1691   3                              if((HIGH_LOWS_PEED_FL)&&(DanWei==3))    //高速档
-1692   3                              {
-1693   4                                      if(dang_23fl==0)
-1694   4                                 PWM_HallSet=ADtemp*PWM_98_DV/HALL_DV; 
-1695   4                              }
-1696   3                              
-1697   3      
-1698   3                      if((HIGH_LOWS_PEED_FL==0)&&(DanWei==2))    //二档
-1699   3                               PWM_HallSet=ADtemp*PWM_65_DV/HALL_DV; 
-1700   3      
-1701   3                              if((HIGH_LOWS_PEED_FL==0)&&(DanWei==1))    //一档
-1702   3                                      PWM_HallSet=80;
-1703   3                              //PWM_HallSet=ADtemp*PWM_40_DV/HALL_DV; 
-1704   3      
-1705   3                              if((HIGH_LOWS_PEED_FL==0)&&(DanWei==0))    //倒档
-1706   3                              PWM_HallSet=ADtemp*PWM_40_DV/HALL_DV; 
-1707   3      
-1708   3                        if(dang_23fl==0)
-1709   3                              PWM_HallSet+=PWM_15;    
-1710   3                       
-1711   3                }
-1712   2                else         //放开脚踏
-1713   2                {
-1714   3                  if(ADtemp>HALL_0500MV)     //且大于0.5V  小于1.33V  
-C51 COMPILER V9.60.0.0   MAIN                                                              10/19/2021 16:00:26 PAGE 29  
+1653   2            clr_ADCF;
+1654   2            set_ADCS; 
+1655   2            EADC=0;
+1656   2              // HallPWM=ADtemp;
+1657   2                       
+1658   2                              //---------油门大于4.8V  停止工作，显示故障灯闪4下
+1659   2                      
+1660   2                      if(ADtemp>HALL_4000MV) 
+1661   2                      {
+1662   3                        NO_Connet_FL1=1;
+1663   3                      }
+1664   2                                       
+1665   2                if(ADtemp>HALL_1000MV)    //踩下脚踏  1.33v
+1666   2                {
+1667   3                      
+1668   3                      G_S_HighCT_fanjiao=0;
+1669   3         //if(FRONT_CTRL==0&&BACK_CTRL==0)    //50ms生效后，判断继电器是否有吸合  没有才允许脚踏生效
+1670   3              //      {
+1671   3                  if(G_S_HighCT>=100) //10MS   0.5*20     100=50ms    200ms
+1672   3                        {
+1673   4                      //      if(FRONT_CTRL==0&&BACK_CTRL==0)    //50ms生效后，判断继电器是否有吸合  没有才允许脚踏生效
+1674   4                      //              {
+1675   4                      if(turn_zero_fl==1)/*&&(G_S_State==0))*/
+1676   4                  {
+1677   5                                                              if(G_S_State==0)        
+1678   5                     G_S_State=1;
+1679   5                                                                                                                        
+1680   5                    if(G_S_State==2)
+1681   5                                                         G_S_FL=1;         //脚踏板生效               
+1682   5                                                }     
+1683   4                                      //}
+1684   4                       //}
+1685   4                  }
+1686   3                              ADtemp=ADtemp-HALL_1000MV;      //
+1687   3                              if(ADtemp>HALL_DV)
+1688   3                              ADtemp=HALL_DV;
+1689   3      
+1690   3                              if((HIGH_LOWS_PEED_FL)&&(DanWei==3))    //高速档
+1691   3                              {
+1692   4                                      if(dang_23fl==0)
+1693   4                                 PWM_HallSet=ADtemp*PWM_98_DV/HALL_DV; 
+1694   4                              }
+1695   3                              
+1696   3      
+1697   3                      if((HIGH_LOWS_PEED_FL==0)&&(DanWei==2))    //二档
+1698   3                               PWM_HallSet=ADtemp*PWM_65_DV/HALL_DV; 
+1699   3      
+1700   3                              if((HIGH_LOWS_PEED_FL==0)&&(DanWei==1))    //一档
+1701   3                                      PWM_HallSet=80;
+1702   3                              //PWM_HallSet=ADtemp*PWM_40_DV/HALL_DV; 
+1703   3      
+1704   3                              if((HIGH_LOWS_PEED_FL==0)&&(DanWei==0))    //倒档
+1705   3                              PWM_HallSet=ADtemp*PWM_40_DV/HALL_DV; 
+1706   3      
+1707   3                        if(dang_23fl==0)
+1708   3                              PWM_HallSet+=PWM_15;    
+1709   3                       
+1710   3                }
+1711   2                else         //放开脚踏
+1712   2                {
+1713   3                  if(ADtemp>HALL_0500MV)     //且大于0.5V  小于1.33V  
+1714   3                              {
+C51 COMPILER V9.60.0.0   MAIN                                                              10/27/2021 14:54:20 PAGE 29  
 
-1715   3                              {
-1716   4                G_S_HighCT=0;      
-1717   4                NO_Connet_FL1=0;
-1718   4                               if(G_S_HighCT_fanjiao>=100)    //50ms   连续50ms为低  才认为是松开脚踏
-1719   4                               {
-1720   5                                  if((Stop_FL==0)&&(VoltageLowFL==0))
-1721   5                       turn_zero_fl=1;
-1722   5               
-1723   5                                               set_PWMRUN;       //PWM运行使能位开启
-1724   5                      G_S_FL=0;
-1725   5                G_S_State=0;
-1726   5                                              PWM_xianzhi_fl=0;
-1727   5                              
-1728   5                               }                                               
-1729   4            }
-1730   3                              else       //小于0.5V  故障灯闪    
-1731   3                              {                       
-1732   4                                  NO_Connet_FL1=1;                    
-1733   4                              }
-1734   3                                              
-1735   3                }
-1736   2                              
-1737   2               }
-1738   1               else
-1739   1                if(AD_CH==4)//速度和进退检测      
-1740   1               {
-1741   2                  AD_CH=6;
-1742   2            Enable_ADC_AIN7;     //电压检测   P11
-1743   2            clr_ADCF;
-1744   2            set_ADCS; 
-1745   2            EADC=0;
-1746   2                 CurDanWei_AD=ADtemp;
-1747   2                  volHand_add+=ADtemp;            
-1748   2                 volHand_addct++;
-1749   2                 if(volHand_addct>=64)//>=255)  
-1750   2                 {           
-1751   3                 volHand_addct=0;
-1752   3                 DanWei_AD=volHand_add>>6;              //档位值
-1753   3                 volHand_add=0;  
-1754   3                  }
-1755   2            
-1756   2                }
-1757   1                 else
-1758   1                if(AD_CH==6)//电压检测
-1759   1               {
-1760   2                  AD_CH=5;
-1761   2            Enable_ADC_AIN4;     //电流检测    P05        
-1762   2            clr_ADCF;
-1763   2            set_ADCS; 
-1764   2            EADC=0;
-1765   2            // Voltage_AD=ADtemp;
-1766   2      
-1767   2                         vol_add+=ADtemp;            
-1768   2                 vol_addct++;
-1769   2                 if(vol_addct==0)//>=64)//>=255)   //??32?,???? 64
-1770   2                 {
-1771   3                    
-1772   3                 vol_addct=0;
-1773   3                 Voltage_AD=vol_add>>8;//??
-1774   3                 vol_add=0;  
-1775   3                  }
-1776   2      
-C51 COMPILER V9.60.0.0   MAIN                                                              10/19/2021 16:00:26 PAGE 30  
+1715   4                G_S_HighCT=0;      
+1716   4                NO_Connet_FL1=0;
+1717   4                               if(G_S_HighCT_fanjiao>=100)    //50ms   连续50ms为低  才认为是松开脚踏
+1718   4                               {
+1719   5                                  if((Stop_FL==0)&&(VoltageLowFL==0))
+1720   5                       turn_zero_fl=1;
+1721   5               
+1722   5                                               set_PWMRUN;       //PWM运行使能位开启
+1723   5                      G_S_FL=0;
+1724   5                G_S_State=0;
+1725   5                                              PWM_xianzhi_fl=0;
+1726   5                              
+1727   5                               }                                               
+1728   4            }
+1729   3                              else       //小于0.5V  故障灯闪    
+1730   3                              {                       
+1731   4                                  NO_Connet_FL1=1;                    
+1732   4                              }
+1733   3                                              
+1734   3                }
+1735   2                              
+1736   2               }
+1737   1               else
+1738   1                if(AD_CH==4)//速度和进退检测      
+1739   1               {
+1740   2                  AD_CH=6;
+1741   2            Enable_ADC_AIN7;     //电压检测   P11
+1742   2            clr_ADCF;
+1743   2            set_ADCS; 
+1744   2            EADC=0;
+1745   2                 CurDanWei_AD=ADtemp;
+1746   2                  volHand_add+=ADtemp;            
+1747   2                 volHand_addct++;
+1748   2                 if(volHand_addct>=64)//>=255)  
+1749   2                 {           
+1750   3                 volHand_addct=0;
+1751   3                 DanWei_AD=volHand_add>>6;              //档位值
+1752   3                 volHand_add=0;  
+1753   3                  }
+1754   2            
+1755   2                }
+1756   1                 else
+1757   1                if(AD_CH==6)//电压检测
+1758   1               {
+1759   2                  AD_CH=5;
+1760   2            Enable_ADC_AIN4;     //电流检测    P05        
+1761   2            clr_ADCF;
+1762   2            set_ADCS; 
+1763   2            EADC=0;
+1764   2            // Voltage_AD=ADtemp;
+1765   2      
+1766   2                         vol_add+=ADtemp;            
+1767   2                 vol_addct++;
+1768   2                 if(vol_addct==0)//>=64)//>=255)   //??32?,???? 64
+1769   2                 {
+1770   3                    
+1771   3                 vol_addct=0;
+1772   3                 Voltage_AD=vol_add>>8;//??
+1773   3                 vol_add=0;  
+1774   3                  }
+1775   2      
+1776   2                }
+C51 COMPILER V9.60.0.0   MAIN                                                              10/27/2021 14:54:20 PAGE 30  
 
-1777   2                }
-1778   1      
-1779   1      }
-1780          
-1781          void zidongguangji()
-1782          {
-1783   1              if(FLAG_NMS)
-1784   1              {
-1785   2           FLAG_NMS=0;     //4ms自加一次
-1786   2              
-1787   2                              if(SW_FL)
-1788   2                                      {
-1789   3                                                      if(SW_IO)
-1790   3                                               {
-1791   4                                                       SW_yanshi++;
-1792   4                                                       if(SW_yanshi>=5)   //按键防抖20ms
-1793   4                                                       {                                               
-1794   5                                                         if(SW_IO)
-1795   5                                                               {
-1796   6                                                              POWER_IO=0;
-1797   6                                                                       SW_yanshi=5;
-1798   6                                                               }
-1799   5                                                 }             
-1800   4                                               }
-1801   3                                                                                                               
-1802   3                                      }
-1803   2      
-1804   2               if(SW_IO==0)
-1805   2                 {  
-1806   3                               
-1807   3                                SW_yanshi=0;      //清按键计数
-1808   3                             sw_timer++;
-1809   3                               
-1810   3                          if(sw_timer>=10)    //40ms     //上电40ms后才允许去关机
-1811   3                                              {
-1812   4                                                      sw_timer=0;
-1813   4                                                      SW_FL=1;        
-1814   4                                              }
-1815   3      
-1816   3                         if(G_S_IO==0)
-1817   3                         {
-1818   4                                      if(STOP_IO)        //不充电时进入待机计时    
-1819   4                                      {
-1820   5                                  guanji_timer++;
-1821   5                          
-1822   5                                       if(guanji_timer>=250)
-1823   5                                       {
-1824   6                                               guanji_timer=0;                                
-1825   6                                                      guangji_1stimer++;
-1826   6                                                 if(guangji_1stimer>=60)      //1min
-1827   6                                                 {
-1828   7                                                               guangji_1stimer=0;
-1829   7                                                                guangji_1mintimer++;
-1830   7                                                                  if(guangji_1mintimer>=10)
-1831   7                                                                              {
-1832   8                                                                               POWER_IO=0;   
-1833   8                                                                              }                               
-1834   7                                                 }
-1835   6                                       }
-1836   5                                }
-1837   4                         }
-1838   3                         else
-C51 COMPILER V9.60.0.0   MAIN                                                              10/19/2021 16:00:26 PAGE 31  
+1777   1      
+1778   1      }
+1779          
+1780          void zidongguangji()
+1781          {
+1782   1              if(FLAG_NMS)
+1783   1              {
+1784   2           FLAG_NMS=0;     //4ms自加一次
+1785   2              
+1786   2                              if(SW_FL)
+1787   2                                      {
+1788   3                                                      if(SW_IO)
+1789   3                                               {
+1790   4                                                       SW_yanshi++;
+1791   4                                                       if(SW_yanshi>=5)   //按键防抖20ms
+1792   4                                                       {                                               
+1793   5                                                         if(SW_IO)
+1794   5                                                               {
+1795   6                                                              POWER_IO=0;
+1796   6                                                                       SW_yanshi=5;
+1797   6                                                               }
+1798   5                                                 }             
+1799   4                                               }
+1800   3                                                                                                               
+1801   3                                      }
+1802   2      
+1803   2               if(SW_IO==0)
+1804   2                 {  
+1805   3                               
+1806   3                                SW_yanshi=0;      //清按键计数
+1807   3                             sw_timer++;
+1808   3                               
+1809   3                          if(sw_timer>=10)    //40ms     //上电40ms后才允许去关机
+1810   3                                              {
+1811   4                                                      sw_timer=0;
+1812   4                                                      SW_FL=1;        
+1813   4                                              }
+1814   3      
+1815   3                         if(G_S_IO==0)
+1816   3                         {
+1817   4                                      if(STOP_IO)        //不充电时进入待机计时    
+1818   4                                      {
+1819   5                                  guanji_timer++;
+1820   5                          
+1821   5                                       if(guanji_timer>=250)
+1822   5                                       {
+1823   6                                               guanji_timer=0;                                
+1824   6                                                      guangji_1stimer++;
+1825   6                                                 if(guangji_1stimer>=60)      //1min
+1826   6                                                 {
+1827   7                                                               guangji_1stimer=0;
+1828   7                                                                guangji_1mintimer++;
+1829   7                                                                  if(guangji_1mintimer>=10)
+1830   7                                                                              {
+1831   8                                                                               POWER_IO=0;   
+1832   8                                                                              }                               
+1833   7                                                 }
+1834   6                                       }
+1835   5                                }
+1836   4                         }
+1837   3                         else
+1838   3                         {                     
+C51 COMPILER V9.60.0.0   MAIN                                                              10/27/2021 14:54:20 PAGE 31  
 
-1839   3                         {                     
-1840   4                   guanji_timer=0;
-1841   4                                     guangji_1stimer=0;
-1842   4                                          guangji_1mintimer=0;
-1843   4                         }
-1844   3                      }
-1845   2      }
-1846   1      }
+1839   4                   guanji_timer=0;
+1840   4                                     guangji_1stimer=0;
+1841   4                                          guangji_1mintimer=0;
+1842   4                         }
+1843   3                      }
+1844   2      }
+1845   1      }
+1846          
 1847          
-1848          
-1849          //-----------------???-----------------------------
-1850          void main(void)
-1851          { 
-1852   1        init();
-1853   1       while(1)
-1854   1        {  
+1848          //-----------------???-----------------------------
+1849          void main(void)
+1850          { 
+1851   1        init();
+1852   1       while(1)
+1853   1        {  
+1854   2                      
 1855   2                      
-1856   2                      
-1857   2                      //--------看门狗设置------
-1858   2            TA=0xAA;
-1859   2            TA=0x55;
-1860   2            WDCON = 0x7; 
-1861   2           set_WDTR;
-1862   2           set_WDCLR;
-1863   2           set_EWDT;         //WDT看门狗使能位   
-1864   2          
-1865   2                      PICON=0X80;                       //边沿触发和IO选择   P06
-1866   2                      PINEN=0X40;                              //使能--下降沿触发
-1867   2                      EIE=0X02;
-1868   2                                              
-1869   2                       zidongguangji();   //自动关机程序
-1870   2                      //---------------------------           
-1871   2          time_dsp();  
-1872   2          MoveCtrl();
-1873   2          if(ADCF)
-1874   2          ADC_DSP();
-1875   2       
-1876   2        }
-1877   1      }
+1856   2                      //--------看门狗设置------
+1857   2            TA=0xAA;
+1858   2            TA=0x55;
+1859   2            WDCON = 0x7; 
+1860   2           set_WDTR;
+1861   2           set_WDCLR;
+1862   2           set_EWDT;         //WDT看门狗使能位   
+1863   2          
+1864   2                      PICON=0X80;                       //边沿触发和IO选择   P06
+1865   2                      PINEN=0X40;                              //使能--下降沿触发
+1866   2                      EIE=0X02;
+1867   2                                              
+1868   2                       zidongguangji();   //自动关机程序
+1869   2                      //---------------------------           
+1870   2          time_dsp();  
+1871   2          MoveCtrl();
+1872   2          if(ADCF)
+1873   2          ADC_DSP();
+1874   2       
+1875   2        }
+1876   1      }
+1877          
 1878          
-1879          
-1880          void init_ISR()  interrupt 7 
-1881          {
-1882   1          if(PIF==0X40)   //P06 管脚中断标志位   生效位 
-1883   1                      {                
-1884   2                                      Delay3us();
-1885   2                              if(A_DET_IO==0)
-1886   2                              {
-1887   3                        ELE_InterruptDISP_TM = 20;    //20
-1888   3                              ELE_ERR_FL=1;   
-1889   3                              TurnHighSpeed_FL=0;
-1890   3                              TurnHighSpeed_FL_New=0;                         
-1891   3                              PWM5_P03_OUTPUT_DISABLE;
-1892   3                              PWM4_P01_OUTPUT_DISABLE;
-1893   3                              FLAG_IO_PWM=1;
-1894   3                              P03=1;//换为IO    //下桥
-1895   3                              P01=0;         //上桥
-1896   3                              turn_zero_fl=0;
-1897   3                        clr_PWMRUN;                      //PWM运行使能位关闭
-1898   3                      // A_DET_FL=0;
-1899   3                              PWM=0;     
-1900   3                              
-C51 COMPILER V9.60.0.0   MAIN                                                              10/19/2021 16:00:26 PAGE 32  
+1879          void init_ISR()  interrupt 7 
+1880          {
+1881   1          if(PIF==0X40)   //P06 管脚中断标志位   生效位 
+1882   1                      {                
+1883   2                                      Delay3us();
+1884   2                              if(A_DET_IO==0)
+1885   2                              {
+1886   3                        ELE_InterruptDISP_TM = 20;    //20
+1887   3                              ELE_ERR_FL=1;   
+1888   3                              TurnHighSpeed_FL=0;
+1889   3                              TurnHighSpeed_FL_New=0;                         
+1890   3                              PWM5_P03_OUTPUT_DISABLE;
+1891   3                              PWM4_P01_OUTPUT_DISABLE;
+1892   3                              FLAG_IO_PWM=1;
+1893   3                              P03=1;//换为IO    //下桥
+1894   3                              P01=0;         //上桥
+1895   3                              turn_zero_fl=0;
+1896   3                        clr_PWMRUN;                      //PWM运行使能位关闭
+1897   3                      // A_DET_FL=0;
+1898   3                              PWM=0;     
+1899   3                              
+1900   3                              //      MoveCtrl();      
+C51 COMPILER V9.60.0.0   MAIN                                                              10/27/2021 14:54:20 PAGE 32  
 
-1901   3                              //      MoveCtrl();      
-1902   3                        qudiao_shache_FL=1;   //各保护起效后，允许--停止刹车占空比输出
-1903   3                                      
-1904   3                                      PIF=0X00;              //清零
-1905   3                              }
-1906   2                                PIF=0X00;            //清零
-1907   2                      }
-1908   1      }
+1901   3                        qudiao_shache_FL=1;   //各保护起效后，允许--停止刹车占空比输出
+1902   3                                      
+1903   3                                      PIF=0X00;              //清零
+1904   3                              }
+1905   2                                PIF=0X00;            //清零
+1906   2                      }
+1907   1      }
+1908          
 1909          
 1910          
 1911          
 1912          
-1913          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE

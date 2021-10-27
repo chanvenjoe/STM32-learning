@@ -1132,11 +1132,11 @@ if((CHANGE_Off_TM==0)&&G_S_FL&&(ELE_ERR_FL==0))           //脚踏板踏下
 								
 						 if(ELE60_BIG_FL)               //60A过流保护生效标志     三档堵转
 						 {
-							 if(++ELE60_BIG_TM>=60)       //0.02*60=1.2s
+							 if(++ELE60_BIG_TM>=30)       //0.02*60=1.2s
 							 {
 								ELE40_BIG_FL=1;  	 //灯快闪
 							  ELE60_BIG_TM=0;
-								ELE_Wait_5s=40;
+								ELE_Wait_5s=80;
 							 }
 						 }
 							else
@@ -1168,7 +1168,7 @@ if((CHANGE_Off_TM==0)&&G_S_FL&&(ELE_ERR_FL==0))           //脚踏板踏下
 										{
 											ELE30_BIG_ERR_FL=1;  //
 											ELE30_BIG_TM=0;
-											ELE_Wait_5s=40;//WAIT 20S
+											ELE_Wait_5s=40;//40 = WAIT 20S
 										}
 								 }
 							}
@@ -1274,11 +1274,11 @@ if((CHANGE_Off_TM==0)&&G_S_FL&&(ELE_ERR_FL==0))           //脚踏板踏下
     //---------------------------------------------
 					 if(ELE12_BIG_FL)                                   //一档堵转生效后  
 						 {                     
-								if(++ELE12_BIG_TM>=5)// 5S/0.5*5=2.5s        // 堵转时间保护设置
+								if(++ELE12_BIG_TM>=2)// 5S/0.5*5=2.5s        // 堵转时间保护设置
 							 {
 										 ELE25_BIG_ERR_FL=1;//
 										 ELE12_BIG_TM=0;
-										 ELE_Wait_5s=40;//WAIT 20S
+										 ELE_Wait_5s=100;//40==WAIT 20S
 								 }
 						 }
 						 else
@@ -1291,12 +1291,12 @@ if((CHANGE_Off_TM==0)&&G_S_FL&&(ELE_ERR_FL==0))           //脚踏板踏下
 						 
 					 if(ELE13_BIG_FL)                       //二档堵转生效后
 						 {                     
-								if(++ELE13_BIG_TM>=4)// 5S/0.5*4=2s      // 堵转时间保护设置
+								if(++ELE13_BIG_TM>=1)// 5S/0.5*4=2s      // 堵转时间保护设置
 							 {
 									 ELE35_BIG_ERR_FL=1;//
 								
 									 ELE13_BIG_TM=0;
-									 ELE_Wait_5s=40;//WAIT 20S
+									 ELE_Wait_5s=100;//40=WAIT 20S
 							 }
 						 }
 						 else
@@ -1540,22 +1540,21 @@ if(AD_CH==5)
 		  */
     
          if((Cur_ResultNew>=73)&&(DanWei==1))     //25A=73    73=1.41V      
-              {
-                    
-                ELE12_BIG_ct++;
-                ELE12_Small_ct=0;
-                if(ELE12_BIG_ct>5)
-                    ELE12_BIG_FL=1;                //一档堵转生效标志
-              }
-              else
-                {
-									ELE12_BIG_ct=0;
-									ELE12_Small_ct++;           
-									if(ELE12_Small_ct>5)
-									ELE12_BIG_FL=0;
-                }  
+         {
+		        ELE12_BIG_ct++;
+				ELE12_Small_ct=0;
+				if(ELE12_BIG_ct>5)
+					ELE12_BIG_FL=1;                //一档堵转生效标志
+         }
+		 else
+		 {
+		    ELE12_BIG_ct=0;
+			ELE12_Small_ct++;           
+			if(ELE12_Small_ct>5)
+			ELE12_BIG_FL=0;
+		}  
 								
-					if((Cur_ResultNew>=115)&&(DanWei==2))     //35A=100   1.96V     40A=115
+			  if((Cur_ResultNew>=115)&&(DanWei==2))     //35A=100   1.96V     40A=115
               {
                 ELE13_BIG_ct++;
                 ELE13_Small_ct=0;
@@ -1563,14 +1562,14 @@ if(AD_CH==5)
                  ELE13_BIG_FL=1;            //二档堵转生效标志
               }
               else
-                {								
-									ELE13_Small_ct++;           
-									if(ELE13_Small_ct>5)      //30
-									{
-										ELE13_BIG_FL=0;
-										ELE13_BIG_ct=0;
-									}
-                } 		
+              {								
+				ELE13_Small_ct++;           
+				if(ELE13_Small_ct>5)      //30
+				{
+					ELE13_BIG_FL=0;
+					ELE13_BIG_ct=0;
+				}
+              } 		
 
       if(Cur_ResultNew > ELE60A&&(DanWei==3))//ELE40A)       //60A过流保护    173=3.4V
 			{		

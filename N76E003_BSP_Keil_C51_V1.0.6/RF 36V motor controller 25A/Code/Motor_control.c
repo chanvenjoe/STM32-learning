@@ -47,7 +47,9 @@ void ADC_Init(void)
 	clr_P00, clr_P10;
 	clr_P12; //LED on
 	
-	
+	P14_PushPull_Mode;
+	P00_PushPull_Mode;//Forward relay
+	P10_PushPull_Mode;
 	set_P14; //Enable DCDC
 	
 	set_IAPEN;
