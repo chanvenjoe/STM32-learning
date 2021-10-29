@@ -132,39 +132,23 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>193</LineNumber>
+          <LineNumber>55</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>-16772860</Address>
+          <Address>-16773542</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>C:\Users\Admin\Desktop\Project\STM32-learning\N76E003_BSP_Keil_C51_V1.0.6\RF 36V motor controller 25A\Code\MOTOR_CONTROL.C</Filename>
+          <Filename>Code\ADC.C</Filename>
           <ExecCommand></ExecCommand>
           <Expression></Expression>
         </Bp>
         <Bp>
           <Number>1</Number>
           <Type>0</Type>
-          <LineNumber>27</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>-16773027</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>C:\Users\Admin\Desktop\Project\STM32-learning\N76E003_BSP_Keil_C51_V1.0.6\RF 36V motor controller 25A\Code\MOTOR_CONTROL.C</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression></Expression>
-        </Bp>
-        <Bp>
-          <Number>2</Number>
-          <Type>0</Type>
-          <LineNumber>28</LineNumber>
+          <LineNumber>67</LineNumber>
           <EnabledFlag>1</EnabledFlag>
           <Address>0</Address>
           <ByteObject>0</ByteObject>
@@ -173,39 +157,7 @@
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>0</BreakIfRCount>
-          <Filename>C:\Users\Daddy CHOU\Desktop\Git project\STM32-learning\N76E003_BSP_Keil_C51_V1.0.6\RF 36V motor controller 25A\Code\Motor_control.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression></Expression>
-        </Bp>
-        <Bp>
-          <Number>3</Number>
-          <Type>0</Type>
-          <LineNumber>194</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>0</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>0</BreakIfRCount>
-          <Filename>C:\Users\Daddy CHOU\Desktop\Git project\STM32-learning\N76E003_BSP_Keil_C51_V1.0.6\RF 36V motor controller 25A\Code\Motor_control.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression></Expression>
-        </Bp>
-        <Bp>
-          <Number>4</Number>
-          <Type>0</Type>
-          <LineNumber>195</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>0</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>0</BreakIfRCount>
-          <Filename>C:\Users\Admin\Desktop\Project\STM32-learning\N76E003_BSP_Keil_C51_V1.0.6\RF 36V motor controller 25A\Code\Motor_control.c</Filename>
+          <Filename>C:\Users\Admin\Desktop\Project\STM32-learning\N76E003_BSP_Keil_C51_V1.0.6\RF 36V motor controller 25A\Code\ADC.C</Filename>
           <ExecCommand></ExecCommand>
           <Expression></Expression>
         </Bp>
@@ -214,62 +166,42 @@
         <Ww>
           <count>0</count>
           <WinNumber>1</WinNumber>
-          <ItemText>pwm_step</ItemText>
+          <ItemText>PWM4L</ItemText>
         </Ww>
         <Ww>
           <count>1</count>
           <WinNumber>1</WinNumber>
-          <ItemText>ADC_Vol</ItemText>
+          <ItemText>i</ItemText>
         </Ww>
         <Ww>
           <count>2</count>
           <WinNumber>1</WinNumber>
-          <ItemText>PWMRUN</ItemText>
+          <ItemText>PWM,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>3</count>
           <WinNumber>1</WinNumber>
-          <ItemText>PWM4L</ItemText>
+          <ItemText>j,0x10</ItemText>
         </Ww>
         <Ww>
           <count>4</count>
           <WinNumber>1</WinNumber>
-          <ItemText>bgvol,0x0A</ItemText>
+          <ItemText>Bias,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>5</count>
           <WinNumber>1</WinNumber>
-          <ItemText>ADCValue</ItemText>
+          <ItemText>Last_bias</ItemText>
         </Ww>
         <Ww>
           <count>6</count>
           <WinNumber>1</WinNumber>
-          <ItemText>i</ItemText>
+          <ItemText>n,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>7</count>
           <WinNumber>1</WinNumber>
-          <ItemText>PDTCNT</ItemText>
-        </Ww>
-        <Ww>
-          <count>8</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>DeadTimeData</ItemText>
-        </Ww>
-        <Ww>
-          <count>9</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>deadtmphigh</ItemText>
-        </Ww>
-        <Ww>
-          <count>10</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>deadtmplow</ItemText>
-        </Ww>
-        <Ww>
-          <count>11</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>Cbat-CC_Value</ItemText>
+          <ItemText>pwm_step,0x0A</ItemText>
         </Ww>
       </WatchWindow1>
       <WatchWindow2>

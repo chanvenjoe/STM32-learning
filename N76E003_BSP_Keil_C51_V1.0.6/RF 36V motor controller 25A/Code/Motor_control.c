@@ -7,7 +7,7 @@
 #include "SFR_Macro.h"
 
 #define Vref  3072;
-#define Ramp_up Timer0_Delay1ms(10) //from 0->0x97 150 step, 10ms*150=1.5s
+#define Ramp_up Timer0_Delay1ms(10); set_LOAD;set_PWMRUN//from 0->0x97 150 step, 10ms*150=1.5s
 #define set_IAPEN BIT_TMP=EA;EA=0;TA=0xAA;TA=0x55;CHPCON|=SET_BIT0 ;EA=BIT_TMP
 #define set_IAPGO BIT_TMP=EA;EA=0;TA=0xAA;TA=0x55;IAPTRG|=SET_BIT0 ;EA=BIT_TMP
 #define clr_IAPEN BIT_TMP=EA;EA=0;TA=0xAA;TA=0x55;CHPCON&=~SET_BIT0;EA=BIT_TMP
@@ -25,10 +25,10 @@ uint8_t  bgl;
 // Cbat == the current value  IO:P05 ADC value
 UINT8 Incremental_P(UINT8 Cbat, UINT8 CC_Value)
 {
-	float Kp=1;
-	static UINT8 Bias, PWM,Last_bias;
+	UINT8 Kp=1, Bias,Last_bias;
+	static float PWM;
 	Bias= Cbat-CC_Value;
-	PWM-= Bias>0? Kp*(Bias-Last_bias):0;// Decreasement output
+	PWM-= Kp*(Bias-Last_bias);// Decreasement output
 	Last_bias = Bias;
 	return PWM; //The percentage of decreasment
 }
@@ -46,7 +46,10 @@ void ADC_Init(void)
 //	set_PINEN3;
 	clr_P00, clr_P10;
 	clr_P12; //LED on
-	
+	clr_P10;//BC
+	P17_Input_Mode;//Hall
+//	P05_Input_Mode; //current value
+	clr_P05;
 	P14_PushPull_Mode;
 	P00_PushPull_Mode;//Forward relay
 	P10_PushPull_Mode;
@@ -202,7 +205,7 @@ void PWM_Setting(UINT16 n)	//1n = 1%
 		}
 //		PWM4L = 0x00;  // In complementary mode it is inversed
 	}
-	else if(n==0)
+	else if(n<=0)
 	{
 		PWM4L = 0X00;
 //		PWM4L = 0x97;
@@ -216,8 +219,6 @@ void PWM_Setting(UINT16 n)	//1n = 1%
 			for(PWM4L;PWM4L<i;PWM4L++)
 			{
 				Ramp_up;
-				set_LOAD;
-				set_PWMRUN;
 			}
 		}
 		else
@@ -225,15 +226,11 @@ void PWM_Setting(UINT16 n)	//1n = 1%
 			for(PWM4L;PWM4L>i;PWM4L--)
 			{
 				Ramp_up;
-				set_LOAD;
-				set_PWMRUN;
 			}
 		}
 //		PWM4L = (n*3/2);
 	}
 
- 	set_LOAD;
-	set_PWMRUN;
 }
 
 //void PinInterrupt (void) interrupt 7

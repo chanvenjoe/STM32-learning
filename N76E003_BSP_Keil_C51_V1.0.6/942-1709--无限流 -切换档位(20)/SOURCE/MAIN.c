@@ -137,7 +137,7 @@
 #define  PWM_65				 168//255*60
 #define  PWM_65_DV           (PWM_65-PWM_15)//115
 
-#define  PWM_98				 243//255*98     255=100%     243=95%      248=97%
+#define  PWM_98				 243//255*98     255=100%     243=95%      248=97%  237=91.9%
 #define  PWM_98_DV           (PWM_98-PWM_15)//212  
 
 
@@ -1064,7 +1064,7 @@ if((CHANGE_Off_TM==0)&&G_S_FL&&(ELE_ERR_FL==0))           //脚踏板踏下
 							if(dang_23fl==0)
 							   DanWei=3;
 							
-						  if(Cur_ResultNew>=100&&PWM>=230)       //连续50ms  高于20A  减为2档  且PWM>90%    1.125V=20A=58
+						  if(Cur_ResultNew>=86)       //连续50ms  高于20A  减为2档  且PWM>90%    1.125V=20A=58 1.687V=30A=86
 							{								                                          //25A=1.41V=73     30A=1.68V=85   35A=1.96V=100
 							   xiajiang_2dan_timer++;
 								 	
@@ -1291,7 +1291,7 @@ if((CHANGE_Off_TM==0)&&G_S_FL&&(ELE_ERR_FL==0))           //脚踏板踏下
 						 
 					 if(ELE13_BIG_FL)                       //二档堵转生效后
 						 {                     
-								if(++ELE13_BIG_TM>=1)// 5S/0.5*4=2s      // 堵转时间保护设置
+								if(++ELE13_BIG_TM>=2)// 5S/0.5*4=2s      // 堵转时间保护设置
 							 {
 									 ELE35_BIG_ERR_FL=1;//
 								
@@ -1307,13 +1307,13 @@ if((CHANGE_Off_TM==0)&&G_S_FL&&(ELE_ERR_FL==0))           //脚踏板踏下
 						 }	 
 						 
 						 
-						/* if(ELE60_BIG_FL)               //60A过流保护生效标志     三档堵转
+						if(ELE60_BIG_FL)               //60A过流保护生效标志     三档堵转
 						 {
-							 if(++ELE60_BIG_TM>=2)       //0.5*2=1
+							 if(++ELE60_BIG_TM>=1)       //0.5*2=1
 							 {
 								ELE40_BIG_FL=1;  	 //灯快闪
 							  ELE60_BIG_TM=0;
-								ELE_Wait_5s=40;
+								ELE_Wait_5s=100;
 							 }
 						 }
 							else
@@ -1321,7 +1321,7 @@ if((CHANGE_Off_TM==0)&&G_S_FL&&(ELE_ERR_FL==0))           //脚踏板踏下
 								ELE60_BIG_TM=0;
 								if(ELE_Wait_5s==0)               
 								ELE40_BIG_FL=0;
-							} */
+							}
 						 
 						 
                  
@@ -1571,23 +1571,23 @@ if(AD_CH==5)
 				}
               } 		
 
-      if(Cur_ResultNew > ELE60A&&(DanWei==3))//ELE40A)       //60A过流保护    173=3.4V
-			{		
-			 ELE40_BIG_ct++;
-			 ELE40_Small_ct=0;
-			 if(ELE40_BIG_ct>5)                   //三档堵转生效标志
-			 {
-				 ELE60_BIG_FL=1;				
-			 }
-			}
-			else
-			{		
-				//  RELY=~ RELY;        //约500us自加一次   
-				ELE40_BIG_ct=0;
-				ELE40_Small_ct++;			
-				if(ELE40_Small_ct>5)      //    3ms      
-				 ELE60_BIG_FL=0;
-			}
+//      if(Cur_ResultNew > ELE60A&&(DanWei==3))//ELE40A)       //60A过流保护    173=3.4V
+//			{		
+//			 ELE40_BIG_ct++;
+//			 ELE40_Small_ct=0;
+//			 if(ELE40_BIG_ct>5)                   //三档堵转生效标志
+//			 {
+//				 ELE60_BIG_FL=1;				
+//			 }
+//			}
+//			else
+//			{		
+//				//  RELY=~ RELY;        //约500us自加一次   
+//				ELE40_BIG_ct=0;
+//				ELE40_Small_ct++;			
+//				if(ELE40_Small_ct>5)      //    3ms      
+//				 ELE60_BIG_FL=0;
+//			}
 
 								
 														
