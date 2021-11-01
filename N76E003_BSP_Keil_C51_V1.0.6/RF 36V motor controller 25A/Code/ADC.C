@@ -64,12 +64,14 @@ void main (void)
 				break;
 				case 1:
 				{
-//					j=j*0.35;
-//					j=(Incremental_P(j, 20)*3/2)+PWM4L>PWM4L? 0: PWM4L
-//					PWM_Setting(PWM4L+(Incremental_P(j, 20)*3/2));
-//					set_P00;		//Forward Relay open 
-					PWM4L=PWM4L>50?PWM4L-1:0;
+					j=j*0.35;// Current calculation from current shunt-> OA-> ADC j=actural current
+					PWM4L=(PWM4L+Incremental_P(j, 20)*3/2)>50? (PWM4L+Incremental_P(j, 20)*3/2):0;;//PWM delta value
 					set_LOAD;set_PWMRUN;
+					
+//					PWM_Setting(PWM4L+(Incremental_P(j, 20)*3/2));
+					set_P00;		//Forward Relay open 
+//					PWM4L=PWM4L>50?PWM4L-1:0;
+//					set_LOAD;set_PWMRUN;
 					Timer0_Delay1ms(20);
 					j=0;
 				}

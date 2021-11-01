@@ -6,4 +6,4 @@ u16 Get_CurrentValue(void);
 void PWM_Init(void);
 void PWM_Setting(u16 n);
 void GPIO_Init();
-u8 Incremental_P(u8 Cbat, u8 CC_value);
+int Incremental_P(u8 Cbat, u8 CC_value);

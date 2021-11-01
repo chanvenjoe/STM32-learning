@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     10/29/2021 17:12:47 PAGE 1   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     11/01/2021 16:02:36 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MOTOR_CONTROL
@@ -33,9 +33,9 @@ line level    source
   23          // In this motor control we use P
   24          // PWM = Kp[e(k) - e(k-1)]
   25          // Cbat == the current value  IO:P05 ADC value
-  26          UINT8 Incremental_P(UINT8 Cbat, UINT8 CC_Value)
+  26          int Incremental_P(UINT8 Cbat, UINT8 CC_Value)//int can have negative num
   27          {
-  28   1              UINT8 Kp=1, Bias,Last_bias;
+  28   1              static UINT8 Kp=1,Bias,Last_bias;
   29   1              static float PWM;
   30   1              Bias= Cbat-CC_Value;
   31   1              PWM-= Kp*(Bias-Last_bias);// Decreasement output
@@ -62,7 +62,7 @@ line level    source
   52   1              clr_P05;
   53   1              P14_PushPull_Mode;
   54   1              P00_PushPull_Mode;//Forward relay
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     10/29/2021 17:12:47 PAGE 2   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     11/01/2021 16:02:36 PAGE 2   
 
   55   1              P10_PushPull_Mode;
   56   1              set_P14; //Enable DCDC
@@ -126,7 +126,7 @@ line level    source
  114   1      }
  115          /* AD value= Voltage*255/5  20A=57*/
  116          UINT16 Get_CurrentValue(void)
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     10/29/2021 17:12:47 PAGE 3   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     11/01/2021 16:02:36 PAGE 3   
 
  117          {
  118   1              Enable_ADC_AIN4;
@@ -190,7 +190,7 @@ line level    source
  176   1              
  177   1              set_SFRPAGE;
  178   1              PWM5H = 0x00;
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     10/29/2021 17:12:47 PAGE 4   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     11/01/2021 16:02:36 PAGE 4   
 
  179   1              PWM5L = 0x00;
  180   1              clr_SFRPAGE;
@@ -254,15 +254,15 @@ line level    source
  238          //      printf("Falling edge intterrupt triggered");
  239          //}
 
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     10/29/2021 17:12:47 PAGE 5   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     11/01/2021 16:02:36 PAGE 5   
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =   1193    ----
+   CODE SIZE        =   1190    ----
    CONSTANT SIZE    =     66    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =     23      12
+   DATA SIZE        =     26       9
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.

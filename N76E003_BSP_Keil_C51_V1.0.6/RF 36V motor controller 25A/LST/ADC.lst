@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   ADC                                                               10/29/2021 17:12:47 PAGE 1   
+C51 COMPILER V9.60.0.0   ADC                                                               11/01/2021 16:02:35 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE ADC
@@ -62,7 +62,7 @@ line level    source
   35          
   36          /******************************************************************************
   37          The main C function.  Program execution starts
-C51 COMPILER V9.60.0.0   ADC                                                               10/29/2021 17:12:47 PAGE 2   
+C51 COMPILER V9.60.0.0   ADC                                                               11/01/2021 16:02:35 PAGE 2   
 
   38          here after stack initialization.
   39          ******************************************************************************/
@@ -93,41 +93,43 @@ line level    source
   64   4                                      break;
   65   4                                      case 1:
   66   4                                      {
-  67   5      //                                      j=j*0.35;
-  68   5      //                                      j=(Incremental_P(j, 20)*3/2)+PWM4L>PWM4L? 0: PWM4L
-  69   5      //                                      PWM_Setting(PWM4L+(Incremental_P(j, 20)*3/2));
-  70   5      //                                      set_P00;                //Forward Relay open 
-  71   5                                              PWM4L=PWM4L>50?PWM4L-1:0;
-  72   5                                              set_LOAD;set_PWMRUN;
-  73   5                                              Timer0_Delay1ms(20);
-  74   5                                              j=0;
-  75   5                                      }
-  76   4                                      break;
-  77   4                                      default:
-  78   4                                              break;
-  79   4                              }
-  80   3                      }
-  81   2                      else
-  82   2                      {
-  83   3                              PWM_Setting(0x00);
-  84   3                              //PWM4L = 0x97;
-  85   3                              Timer0_Delay1ms(1000);
-  86   3                              clr_P00;
-  87   3                      }               
-  88   2      
-  89   2              }
-  90   1      }
-  91          
-  92          
+  67   5                                              j=j*0.35;// Current calculation from current shunt-> OA-> ADC j=actural current
+  68   5                                              PWM4L=(PWM4L+Incremental_P(j, 20)*3/2)>50? (PWM4L+Incremental_P(j, 20)*3/2):0;;//PWM delta value
+  69   5                                              set_LOAD;set_PWMRUN;
+  70   5                                              
+  71   5      //                                      PWM_Setting(PWM4L+(Incremental_P(j, 20)*3/2));
+  72   5                                              set_P00;                //Forward Relay open 
+  73   5      //                                      PWM4L=PWM4L>50?PWM4L-1:0;
+  74   5      //                                      set_LOAD;set_PWMRUN;
+  75   5                                              Timer0_Delay1ms(20);
+  76   5                                              j=0;
+  77   5                                      }
+  78   4                                      break;
+  79   4                                      default:
+  80   4                                              break;
+  81   4                              }
+  82   3                      }
+  83   2                      else
+  84   2                      {
+  85   3                              PWM_Setting(0x00);
+  86   3                              //PWM4L = 0x97;
+  87   3                              Timer0_Delay1ms(1000);
+  88   3                              clr_P00;
+  89   3                      }               
+  90   2      
+  91   2              }
+  92   1      }
+  93          
+  94          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    220    ----
+   CODE SIZE        =    303    ----
    CONSTANT SIZE    =   ----    ----
+C51 COMPILER V9.60.0.0   ADC                                                               11/01/2021 16:02:35 PAGE 3   
+
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-C51 COMPILER V9.60.0.0   ADC                                                               10/29/2021 17:12:47 PAGE 3   
-
    DATA SIZE        =   ----       4
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----

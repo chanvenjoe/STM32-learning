@@ -23,9 +23,9 @@ uint8_t  bgl;
 // In this motor control we use P
 // PWM = Kp[e(k) - e(k-1)]
 // Cbat == the current value  IO:P05 ADC value
-UINT8 Incremental_P(UINT8 Cbat, UINT8 CC_Value)
+int Incremental_P(UINT8 Cbat, UINT8 CC_Value)//int can have negative num
 {
-	UINT8 Kp=1, Bias,Last_bias;
+	static UINT8 Kp=1,Bias,Last_bias;
 	static float PWM;
 	Bias= Cbat-CC_Value;
 	PWM-= Kp*(Bias-Last_bias);// Decreasement output
