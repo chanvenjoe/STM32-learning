@@ -4,12 +4,14 @@
 #include "Common.h"
 #include "Delay.h"
 #include "Motor_control.h"
-#include "Delay.h"
 
-#define threshold 1000;
 //*****************  The Following is in define in Fucntion_define.h  ***************************
 //****** Always include Function_define.h call the define you want, detail see main(void) *******
 //***********************************************************************************************
+#define CCvalue 0x14; //change the current regulation value
+
+#define Not_Pressed PWM5_P03_OUTPUT_DISABLE; PWM4_P01_OUTPUT_DISABLE; set_P01; set_P03;
+#define Pressed PWM5_P03_OUTPUT_ENABLE; PWM4_P01_OUTPUT_ENABLE;
 #if 0
 //#define Enable_ADC_AIN0			ADCCON0&=0xF0;P17_Input_Mode;AINDIDS=0x00;AINDIDS|=SET_BIT0;ADCCON1|=SET_BIT0									//P17
 //#define Enable_ADC_AIN1			ADCCON0&=0xF0;ADCCON0|=0x01;P30_Input_Mode;AINDIDS=0x00;AINDIDS|=SET_BIT1;ADCCON1|=SET_BIT0		//P30
@@ -39,34 +41,57 @@ The main C function.  Program execution starts
 here after stack initialization.
 ******************************************************************************/
 
-void main (void)
+void main (void) 
 {
 	Set_All_GPIO_Quasi_Mode;				//For GPIO1 output, Find in "Function_define.h" - "GPIO INIT"
-//	P01_PushPull_Mode;
-	P17_Input_Mode;
-	clr_P10;	
 	InitialUART0_Timer1(115200);
 	ADC_Init();							//
-	GPIO_Init();
 										//reverved for timer_init   Sleep2
 	PWM_Init();
 	while(1)
 	{
-		UINT16 i = Get_HallValue();
-		UINT16 c = Get_CurrentValue();
-		if(i>1000)
+		UINT8 i = Get_HallValue();
+		UINT8 j = Get_CurrentValue();
+		UINT8 pwm_step = (i-51)>=0? (i-51)*2/3:0;  //return  %
+		if(i>62)// to prevent hall initial voltage is 1.0v
 		{
-			UINT16 pwm_step = (i-1000)/30;  //13.3KHz
-			set_P00;		//Forward Relay open 
-			Timer0_Delay1ms(20);
-			PWM_Setting(pwm_step);
+			Pressed
+			switch(j>57)//20A=57
+			{
+				case 0:
+				{	
+					//UINT16 pwm_step = (i-0x3e8)/0x1E; //1.0->4.0
+					set_P00;		//Forward Relay open 
+					Timer0_Delay1ms(100);
+					PWM_Setting(pwm_step);
+				}
+				break;
+				case 1:
+				{
+					j=j*0.35;// Current calculation from current shunt-> OA-> ADC j=actural current
+					PWM4L=(PWM4L+Incremental_P(j, 20)*3/2)>50? (PWM4L+Incremental_P(j, 20)*3/2):0;;//PWM delta value
+					set_LOAD;set_PWMRUN;
+					
+//					PWM_Setting(PWM4L+(Incremental_P(j, 20)*3/2));
+					set_P00;		//Forward Relay open 
+//					PWM4L=PWM4L>50?PWM4L-1:0;
+//					set_LOAD;set_PWMRUN;
+					Timer0_Delay1ms(20);
+					j=0;
+				}
+				break;
+				default:
+					break;
+			}
 		}
 		else
 		{
-			PWM_Setting(0x00);
-			Timer0_Delay1ms(1000);
+//			PWM_Setting(0x00);
+			Not_Pressed
+			Timer0_Delay1ms(500);
 			clr_P00;
-		}
+		}		
+
 	}
 }
 
