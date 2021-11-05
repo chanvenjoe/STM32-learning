@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     11/05/2021 18:41:41 PAGE 1   
+=======
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     11/05/2021 17:40:15 PAGE 1   
+>>>>>>> c548ccf3cf9bf155944ad87c21ee7a5ac83c4a3a
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MOTOR_CONTROL
@@ -62,7 +66,11 @@ line level    source
   52   1              P01_PushPull_Mode;
   53   1              P14_PushPull_Mode;
   54   1              P14_PushPull_Mode;
+<<<<<<< HEAD
 C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     11/05/2021 18:41:41 PAGE 2   
+=======
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     11/05/2021 17:40:15 PAGE 2   
+>>>>>>> c548ccf3cf9bf155944ad87c21ee7a5ac83c4a3a
 
   55   1              P00_PushPull_Mode;//Forward relay
   56   1              P10_PushPull_Mode;
@@ -126,7 +134,11 @@ line level    source
  114   2                      printf("ADC value:%d",ADCValue);
  115   2              }
  116   1      }
+<<<<<<< HEAD
 C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     11/05/2021 18:41:41 PAGE 3   
+=======
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     11/05/2021 17:40:15 PAGE 3   
+>>>>>>> c548ccf3cf9bf155944ad87c21ee7a5ac83c4a3a
 
  117          /* AD value= Voltage*255/5  20A=57*/
  118          UINT16 Get_CurrentValue(void)
@@ -190,7 +202,11 @@ line level    source
  176   1              PWMPH = 0x00;   //Period setting;
  177   1              PWMPL = 0xff;   //1.9KHz
  178   1              
+<<<<<<< HEAD
 C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     11/05/2021 18:41:41 PAGE 4   
+=======
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     11/05/2021 17:40:15 PAGE 4   
+>>>>>>> c548ccf3cf9bf155944ad87c21ee7a5ac83c4a3a
 
  179   1              set_SFRPAGE;
  180   1              PWM4H = 0x00;
@@ -243,6 +259,7 @@ line level    source
  227   3                      }
  228   2                      else
  229   2                      {
+<<<<<<< HEAD
  230   3                              PWM4L=i;
  231   3                              Ramp_up;
  232   3      //                      for(PWM4L;PWM4L>i;PWM4L--)
@@ -255,6 +272,20 @@ line level    source
  239   1      
  240   1      }
 C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     11/05/2021 18:41:41 PAGE 5   
+=======
+ 230   3                              for(PWM4L;PWM4L>i;PWM4L--)
+ 231   3                              {
+ 232   4                                      Ramp_up;
+ 233   4                              }
+ 234   3                      }
+ 235   2      //              PWM4L = (n*3/2);
+ 236   2              }
+ 237   1      
+ 238   1      }
+ 239          
+ 240          //void PinInterrupt (void) interrupt 7
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     11/05/2021 17:40:15 PAGE 5   
+>>>>>>> c548ccf3cf9bf155944ad87c21ee7a5ac83c4a3a
 
  241          
  242          //void PinInterrupt (void) interrupt 7

@@ -88,7 +88,11 @@ void main (void)
 		{
 			PWM4L=243;
 			set_LOAD;set_PWMRUN;
+<<<<<<< HEAD
 			Timer0_Delay1ms(100);
+=======
+			Timer0_Delay1ms(200);
+>>>>>>> c548ccf3cf9bf155944ad87c21ee7a5ac83c4a3a
 			Not_Pressed
 			Timer0_Delay1ms(400);
 			clr_P00;
