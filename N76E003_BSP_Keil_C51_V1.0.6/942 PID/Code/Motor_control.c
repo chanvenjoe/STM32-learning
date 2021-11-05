@@ -7,7 +7,7 @@
 #include "SFR_Macro.h"
 
 #define Vref  3072;
-#define Ramp_up Timer0_Delay1ms(10); set_LOAD;set_PWMRUN//from 0->0x97 150 step, 10ms*150=1.5s
+#define Ramp_up Timer0_Delay1ms(5); set_LOAD;set_PWMRUN//from 0->0x97 150 step, 10ms*150=1.5s
 #define set_IAPEN BIT_TMP=EA;EA=0;TA=0xAA;TA=0x55;CHPCON|=SET_BIT0 ;EA=BIT_TMP
 #define set_IAPGO BIT_TMP=EA;EA=0;TA=0xAA;TA=0x55;IAPTRG|=SET_BIT0 ;EA=BIT_TMP
 #define clr_IAPEN BIT_TMP=EA;EA=0;TA=0xAA;TA=0x55;CHPCON&=~SET_BIT0;EA=BIT_TMP
@@ -44,7 +44,7 @@ void ADC_Init(void)
 //	set_PIT3;//cHANNEL 3 Edge triggered
 //	clr_PIPEN3;//P13 falling triggered
 //	set_PINEN3;
-	clr_P12; //LED on
+	set_P12; //LED on
 	clr_P10;//BC
 	P17_Input_Mode;//Hall
 //	P05_Input_Mode; //current value
@@ -182,7 +182,7 @@ void PWM_Init()
 	clr_SFRPAGE;
 	
 	PWM45_DEADTIME_ENABLE;
-	PWM_DEAD_TIME_VALUE(64); //32=2us dead time	
+	PWM_DEAD_TIME_VALUE(64); //31=2us dead time	 95=6us 63=4us input PDTCNT value
 	set_LOAD;
 	set_PWMRUN;
 	/**********************************************************************
@@ -227,10 +227,12 @@ void PWM_Setting(UINT16 n)	//1n = 1%
 		}
 		else
 		{
-			for(PWM4L;PWM4L>i;PWM4L--)
-			{
-				Ramp_up;
-			}
+			PWM4L=i;
+			Ramp_up;
+//			for(PWM4L;PWM4L>i;PWM4L--)
+//			{
+//				Ramp_up;
+//			}
 		}
 //		PWM4L = (n*3/2);
 	}
