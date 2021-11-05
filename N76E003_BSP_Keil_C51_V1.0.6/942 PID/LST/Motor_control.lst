@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     11/04/2021 19:11:17 PAGE 1   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     11/05/2021 17:40:15 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MOTOR_CONTROL
@@ -54,7 +54,7 @@ line level    source
   44   1      //      set_PIT3;//cHANNEL 3 Edge triggered
   45   1      //      clr_PIPEN3;//P13 falling triggered
   46   1      //      set_PINEN3;
-  47   1              clr_P12; //LED on
+  47   1              set_P12; //LED on
   48   1              clr_P10;//BC
   49   1              P17_Input_Mode;//Hall
   50   1      //      P05_Input_Mode; //current value
@@ -62,7 +62,7 @@ line level    source
   52   1              P01_PushPull_Mode;
   53   1              P14_PushPull_Mode;
   54   1              P14_PushPull_Mode;
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     11/04/2021 19:11:17 PAGE 2   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     11/05/2021 17:40:15 PAGE 2   
 
   55   1              P00_PushPull_Mode;//Forward relay
   56   1              P10_PushPull_Mode;
@@ -126,7 +126,7 @@ line level    source
  114   2                      printf("ADC value:%d",ADCValue);
  115   2              }
  116   1      }
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     11/04/2021 19:11:17 PAGE 3   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     11/05/2021 17:40:15 PAGE 3   
 
  117          /* AD value= Voltage*255/5  20A=57*/
  118          UINT16 Get_CurrentValue(void)
@@ -190,7 +190,7 @@ line level    source
  176   1              PWMPH = 0x00;   //Period setting;
  177   1              PWMPL = 0xff;   //1.9KHz
  178   1              
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     11/04/2021 19:11:17 PAGE 4   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     11/05/2021 17:40:15 PAGE 4   
 
  179   1              set_SFRPAGE;
  180   1              PWM4H = 0x00;
@@ -198,7 +198,7 @@ line level    source
  182   1              clr_SFRPAGE;
  183   1              
  184   1              PWM45_DEADTIME_ENABLE;
- 185   1              PWM_DEAD_TIME_VALUE(64); //32=2us dead time     
+ 185   1              PWM_DEAD_TIME_VALUE(64); //31=2us dead time      95=6us 63=4us input PDTCNT value
  186   1              set_LOAD;
  187   1              set_PWMRUN;
  188   1              /**********************************************************************
@@ -254,7 +254,7 @@ line level    source
  238   1      }
  239          
  240          //void PinInterrupt (void) interrupt 7
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     11/04/2021 19:11:17 PAGE 5   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     11/05/2021 17:40:15 PAGE 5   
 
  241          //{
  242          //      printf("Falling edge intterrupt triggered");

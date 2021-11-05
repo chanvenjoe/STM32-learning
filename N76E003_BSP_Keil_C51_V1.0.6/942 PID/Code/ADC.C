@@ -10,7 +10,7 @@
 //***********************************************************************************************
 #define CCvalue 0x14; //change the current regulation value
 
-#define Not_Pressed PWM5_P03_OUTPUT_DISABLE; PWM4_P01_OUTPUT_DISABLE; set_P01; set_P03;
+#define Not_Pressed PWM5_P03_OUTPUT_DISABLE; PWM4_P01_OUTPUT_DISABLE; clr_P01; set_P03;
 #define Pressed PWM5_P03_OUTPUT_ENABLE; PWM4_P01_OUTPUT_ENABLE;
 #if 0
 //#define Enable_ADC_AIN0			ADCCON0&=0xF0;P17_Input_Mode;AINDIDS=0x00;AINDIDS|=SET_BIT0;ADCCON1|=SET_BIT0									//P17
@@ -86,9 +86,11 @@ void main (void)
 		}
 		else
 		{
-//			PWM_Setting(0x00);
+			PWM4L=243;
+			set_LOAD;set_PWMRUN;
+			Timer0_Delay1ms(200);
 			Not_Pressed
-			Timer0_Delay1ms(500);
+			Timer0_Delay1ms(400);
 			clr_P00;
 		}		
 

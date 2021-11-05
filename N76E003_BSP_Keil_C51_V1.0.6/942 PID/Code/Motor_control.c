@@ -44,7 +44,7 @@ void ADC_Init(void)
 //	set_PIT3;//cHANNEL 3 Edge triggered
 //	clr_PIPEN3;//P13 falling triggered
 //	set_PINEN3;
-	clr_P12; //LED on
+	set_P12; //LED on
 	clr_P10;//BC
 	P17_Input_Mode;//Hall
 //	P05_Input_Mode; //current value
@@ -182,7 +182,7 @@ void PWM_Init()
 	clr_SFRPAGE;
 	
 	PWM45_DEADTIME_ENABLE;
-	PWM_DEAD_TIME_VALUE(64); //32=2us dead time	
+	PWM_DEAD_TIME_VALUE(64); //31=2us dead time	 95=6us 63=4us input PDTCNT value
 	set_LOAD;
 	set_PWMRUN;
 	/**********************************************************************
