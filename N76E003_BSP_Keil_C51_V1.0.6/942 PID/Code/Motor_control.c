@@ -7,7 +7,7 @@
 #include "SFR_Macro.h"
 
 #define Vref  3072;
-#define Ramp_up Timer0_Delay1ms(5); set_LOAD;set_PWMRUN//from 0->0x97 150 step, 10ms*150=1.5s
+#define Ramp_up Timer0_Delay1ms(15); set_LOAD;set_PWMRUN//from 0->0x97 150 step, 10ms*150=1.5s
 #define set_IAPEN BIT_TMP=EA;EA=0;TA=0xAA;TA=0x55;CHPCON|=SET_BIT0 ;EA=BIT_TMP
 #define set_IAPGO BIT_TMP=EA;EA=0;TA=0xAA;TA=0x55;IAPTRG|=SET_BIT0 ;EA=BIT_TMP
 #define clr_IAPEN BIT_TMP=EA;EA=0;TA=0xAA;TA=0x55;CHPCON&=~SET_BIT0;EA=BIT_TMP
@@ -47,6 +47,7 @@ void ADC_Init(void)
 	set_P12; //LED on
 	clr_P10;//BC
 	P17_Input_Mode;//Hall
+//	P30_Input_Mode;//Speed shift
 //	P05_Input_Mode; //current value
 	clr_P05;
 	P01_PushPull_Mode;
@@ -120,8 +121,9 @@ UINT16 Get_CurrentValue(void)
 	Enable_ADC_AIN4;
 	clr_ADCF;
 	set_ADCS;
+	while(ADCF==0);
 //	ADCValue = (ADCRH<<4)+ADCRL;
-	printf("ADC value:%d",ADCValue);
+//	printf("ADC value:%d",ADCValue);
 	return ADCRH;
 }
 
@@ -129,15 +131,50 @@ UINT16 Get_HallValue(void)
 {
 	Enable_ADC_AIN0;
 	clr_ADCF;
-	set_ADCS;
+	set_ADCS;//Enable ADC transfer
 //	ADCValue = (ADCRH<<4)+ADCRL
 //	ADC_Vol = (bgvol*ADCValue/bgvalue);//All are decimal
-	printf("ADCRH:%x\n",ADCRH);
+//	printf("ADCRH:%x\n",ADCRH);
 //	printf("ADCRL:%d",ADCRL);
 //	printf("ADC_voltage:%gmV\n",ADC_Vol);//%g don't print no meaning 0
+	while(ADCF==0);//ADC transfer done
 	return ADCRH; //High 8 bits+ low 4 bits
 }
 
+UINT8 Get_Speedvalue(void)
+{
+	Enable_ADC_AIN1;
+	clr_ADCF;
+	set_ADCS;
+	while(ADCF==0);
+	if(ADCRH>100)
+		return 1;
+	else 
+		return 0;
+}
+
+void Relay_On(UINT8 On_FB)//1= F 0 = B
+{
+	if(On_FB==1)
+	{
+		clr_P10;
+		set_P00;
+	}
+	else
+	{
+		clr_P00;
+		set_P10;
+	}
+		
+}
+
+void Relay_Off(UINT8 Off_FB)
+{
+	if(Off_FB==1)
+		clr_P00;
+	else
+		clr_P10;
+}
 	/**********************************************************************
 							Dead time setting
 						DT=PDTCNT+1/Fsys  >Ton+Toff
@@ -166,8 +203,8 @@ void PWM_Init()
 {
 	PWM5_P03_OUTPUT_ENABLE;
 	PWM4_P01_OUTPUT_ENABLE;//Upper bridge
-//	PWM4_OUTPUT_INVERSE;
-	PWM5_OUTPUT_INVERSE;	
+	PWM4_OUTPUT_INVERSE;
+//	PWM5_OUTPUT_INVERSE;	
 	PWM_COMPLEMENTARY_MODE;//In this mode the dead time can work
 	
 	PWM_CLOCK_DIV_32;
@@ -201,7 +238,7 @@ void PWM_Setting(UINT16 n)	//1n = 1%
 	if(n>100)
 	{
 //		PWM4L = 0x97;
-		for(PWM4L;PWM4L>0X00;PWM4L--)
+		for(PWM4L;PWM4L<0Xff;PWM4L++)
 		{
 			Ramp_up;
 		}
@@ -209,7 +246,7 @@ void PWM_Setting(UINT16 n)	//1n = 1%
 	}
 	else if(n<=0)
 	{
-		for(PWM4L;PWM4L<0Xff;PWM4L++)
+		for(PWM4L;PWM4L>0X00;PWM4L--)
 		{
 			Ramp_up;
 		}
@@ -217,7 +254,7 @@ void PWM_Setting(UINT16 n)	//1n = 1%
 	else
 	{
 //		PWM4L = n&&0xf;
-		UINT8 i =255- n*5/2;
+		UINT8 i = n*5/2;
 		if(PWM4L<i)
 		{
 			for(PWM4L;PWM4L<i;PWM4L++)

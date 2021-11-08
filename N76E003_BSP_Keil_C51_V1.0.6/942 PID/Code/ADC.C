@@ -50,10 +50,11 @@ void main (void)
 	PWM_Init();
 	while(1)
 	{
-		UINT8 i = Get_HallValue();
+		UINT8 i = Get_HallValue();// can use public structure or ...
 		UINT8 j = Get_CurrentValue();
+		UINT8 k = Get_Speedvalue();
 		UINT8 pwm_step = (i-51)>=0? (i-51)*2/3:0;  //return  %
-		if(i>62)// to prevent hall initial voltage is 1.0v
+		if(i>52)// to prevent hall initial voltage is 1.0v
 		{
 			Pressed
 			switch(j>57)//20A=57
@@ -61,8 +62,8 @@ void main (void)
 				case 0:
 				{	
 					//UINT16 pwm_step = (i-0x3e8)/0x1E; //1.0->4.0
-					set_P00;		//Forward Relay open 
-					Timer0_Delay1ms(20);
+					Relay_On(k);
+					Timer0_Delay1ms(50);
 					PWM_Setting(pwm_step);
 				}
 				break;
@@ -73,7 +74,7 @@ void main (void)
 					set_LOAD;set_PWMRUN;
 					
 //					PWM_Setting(PWM4L+(Incremental_P(j, 20)*3/2));
-					set_P00;		//Forward Relay open 
+					Relay_On(k);		//Forward Relay open 
 //					PWM4L=PWM4L>50?PWM4L-1:0;
 //					set_LOAD;set_PWMRUN;
 					Timer0_Delay1ms(20);
@@ -86,16 +87,11 @@ void main (void)
 		}
 		else
 		{
-			PWM4L=243;
+			PWM4L=7;
 			set_LOAD;set_PWMRUN;
-<<<<<<< HEAD
-			Timer0_Delay1ms(100);
-=======
-			Timer0_Delay1ms(200);
->>>>>>> c548ccf3cf9bf155944ad87c21ee7a5ac83c4a3a
-			Not_Pressed
 			Timer0_Delay1ms(400);
-			clr_P00;
+			Not_Pressed
+			Relay_Off(k);
 		}		
 
 	}

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-C51 COMPILER V9.60.0.0   ADC                                                               11/05/2021 18:41:41 PAGE 1   
-=======
-C51 COMPILER V9.60.0.0   ADC                                                               11/05/2021 17:40:15 PAGE 1   
->>>>>>> c548ccf3cf9bf155944ad87c21ee7a5ac83c4a3a
+C51 COMPILER V9.60.0.0   ADC                                                               11/08/2021 21:18:30 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE ADC
@@ -66,11 +62,7 @@ line level    source
               //#define P13_RISINGEDGE_TRIG_ADC                       ADCCON0|=0x30;ADCCON1&=~SET_BIT3;ADCCON1|=SET_BIT2;ADCCON1|=SET_BIT1;A
              -DCCON1|=SET_BIT6
               #endif
-<<<<<<< HEAD
-C51 COMPILER V9.60.0.0   ADC                                                               11/05/2021 18:41:41 PAGE 2   
-=======
-C51 COMPILER V9.60.0.0   ADC                                                               11/05/2021 17:40:15 PAGE 2   
->>>>>>> c548ccf3cf9bf155944ad87c21ee7a5ac83c4a3a
+C51 COMPILER V9.60.0.0   ADC                                                               11/08/2021 21:18:30 PAGE 2   
 
   38          
   39          /******************************************************************************
@@ -87,72 +79,64 @@ line level    source
   50   1              PWM_Init();
   51   1              while(1)
   52   1              {
-  53   2                      UINT8 i = Get_HallValue();
+  53   2                      UINT8 i = Get_HallValue();// can use public structure or ...
   54   2                      UINT8 j = Get_CurrentValue();
-  55   2                      UINT8 pwm_step = (i-51)>=0? (i-51)*2/3:0;  //return  %
-  56   2                      if(i>62)// to prevent hall initial voltage is 1.0v
-  57   2                      {
-  58   3                              Pressed
-  59   3                              switch(j>57)//20A=57
-  60   3                              {
-  61   4                                      case 0:
-  62   4                                      {       
-  63   5                                              //UINT16 pwm_step = (i-0x3e8)/0x1E; //1.0->4.0
-  64   5                                              set_P00;                //Forward Relay open 
-  65   5                                              Timer0_Delay1ms(20);
-  66   5                                              PWM_Setting(pwm_step);
-  67   5                                      }
-  68   4                                      break;
-  69   4                                      case 1:
-  70   4                                      {
-  71   5                                              j=j*0.35;// Current calculation from current shunt-> OA-> ADC j=actural current
-  72   5                                              PWM4L=(PWM4L+Incremental_P(j, 20)*3/2)>50? (PWM4L+Incremental_P(j, 20)*3/2):0;;//PWM delta value
-  73   5                                              set_LOAD;set_PWMRUN;
-  74   5                                              
-  75   5      //                                      PWM_Setting(PWM4L+(Incremental_P(j, 20)*3/2));
-  76   5                                              set_P00;                //Forward Relay open 
-  77   5      //                                      PWM4L=PWM4L>50?PWM4L-1:0;
-  78   5      //                                      set_LOAD;set_PWMRUN;
-  79   5                                              Timer0_Delay1ms(20);
-  80   5                                              j=0;
-  81   5                                      }
-  82   4                                      break;
-  83   4                                      default:
-  84   4                                              break;
-  85   4                              }
-  86   3                      }
-  87   2                      else
-  88   2                      {
-  89   3                              PWM4L=243;
-  90   3                              set_LOAD;set_PWMRUN;
-<<<<<<< HEAD
-  91   3                              Timer0_Delay1ms(100);
-=======
-  91   3                              Timer0_Delay1ms(200);
->>>>>>> c548ccf3cf9bf155944ad87c21ee7a5ac83c4a3a
-  92   3                              Not_Pressed
-  93   3                              Timer0_Delay1ms(400);
-  94   3                              clr_P00;
+  55   2                      UINT8 k = Get_Speedvalue();
+  56   2                      UINT8 pwm_step = (i-51)>=0? (i-51)*2/3:0;  //return  %
+  57   2                      if(i>52)// to prevent hall initial voltage is 1.0v
+  58   2                      {
+  59   3                              Pressed
+  60   3                              switch(j>57)//20A=57
+  61   3                              {
+  62   4                                      case 0:
+  63   4                                      {       
+  64   5                                              //UINT16 pwm_step = (i-0x3e8)/0x1E; //1.0->4.0
+  65   5                                              Relay_On(k);
+  66   5                                              Timer0_Delay1ms(50);
+  67   5                                              PWM_Setting(pwm_step);
+  68   5                                      }
+  69   4                                      break;
+  70   4                                      case 1:
+  71   4                                      {
+  72   5                                              j=j*0.35;// Current calculation from current shunt-> OA-> ADC j=actural current
+  73   5                                              PWM4L=(PWM4L+Incremental_P(j, 20)*3/2)>50? (PWM4L+Incremental_P(j, 20)*3/2):0;;//PWM delta value
+  74   5                                              set_LOAD;set_PWMRUN;
+  75   5                                              
+  76   5      //                                      PWM_Setting(PWM4L+(Incremental_P(j, 20)*3/2));
+  77   5                                              Relay_On(k);            //Forward Relay open 
+  78   5      //                                      PWM4L=PWM4L>50?PWM4L-1:0;
+  79   5      //                                      set_LOAD;set_PWMRUN;
+  80   5                                              Timer0_Delay1ms(20);
+  81   5                                              j=0;
+  82   5                                      }
+  83   4                                      break;
+  84   4                                      default:
+  85   4                                              break;
+  86   4                              }
+  87   3                      }
+  88   2                      else
+  89   2                      {
+  90   3                              PWM4L=7;
+  91   3                              set_LOAD;set_PWMRUN;
+  92   3                              Timer0_Delay1ms(400);
+  93   3                              Not_Pressed
+  94   3                              Relay_Off(k);
   95   3                      }               
   96   2      
   97   2              }
   98   1      }
   99          
-<<<<<<< HEAD
-C51 COMPILER V9.60.0.0   ADC                                                               11/05/2021 18:41:41 PAGE 3   
-=======
-C51 COMPILER V9.60.0.0   ADC                                                               11/05/2021 17:40:15 PAGE 3   
->>>>>>> c548ccf3cf9bf155944ad87c21ee7a5ac83c4a3a
+C51 COMPILER V9.60.0.0   ADC                                                               11/08/2021 21:18:30 PAGE 3   
 
  100          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    353    ----
+   CODE SIZE        =    356    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =   ----       3
+   DATA SIZE        =   ----       4
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.
