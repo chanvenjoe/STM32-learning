@@ -7,15 +7,17 @@
 #include "SFR_Macro.h"
 
 #define Vref  3072;
-#define Ramp_up Timer0_Delay1ms(15); set_LOAD;set_PWMRUN//from 0->0x97 150 step, 10ms*150=1.5s
+#define Ramp_up Timer0_Delay1ms(10); set_LOAD;set_PWMRUN//from 0->0x97 150 step, 10ms*150=1.5s
 #define set_IAPEN BIT_TMP=EA;EA=0;TA=0xAA;TA=0x55;CHPCON|=SET_BIT0 ;EA=BIT_TMP
 #define set_IAPGO BIT_TMP=EA;EA=0;TA=0xAA;TA=0x55;IAPTRG|=SET_BIT0 ;EA=BIT_TMP
 #define clr_IAPEN BIT_TMP=EA;EA=0;TA=0xAA;TA=0x55;CHPCON&=~SET_BIT0;EA=BIT_TMP
+//#define TIM1_INIT  TH0 = 0XFC
 ////////////Variables////////////////
 double bgvalue, ADCValue, bgvol, ADC_Vol;
 uint8_t  bgmark;
 uint8_t  bgh;
 uint8_t  bgl;
+static uint8_t  flag=1;
 
 
 // PWM+=KP[e(k) -e(k-1)]+Ki*e(k)+Kd[e(k)-2e(k-1)+e(k-2)]
@@ -168,12 +170,10 @@ void Relay_On(UINT8 On_FB)//1= F 0 = B
 		
 }
 
-void Relay_Off(UINT8 Off_FB)
+void Relay_Off(void)
 {
-	if(Off_FB==1)
-		clr_P00;
-	else
-		clr_P10;
+	clr_P00;
+	clr_P10;
 }
 	/**********************************************************************
 							Dead time setting
@@ -231,49 +231,36 @@ void PWM_Init()
 	***********************************************************************/
 }
 
-void PWM_Setting(UINT16 n)	//1n = 1%
+void PWM_Setting(UINT8 n, UINT8 FB)	//1n = 1%
 {
 	set_SFRPAGE; //PWM4\5 SETTING
-//	PWM4H = (0xff00&n)>>8;//Lower bridge P01
-	if(n>100)
+	flag = 1;
+	n = n>100? 100: n;
+	if(flag)
 	{
-//		PWM4L = 0x97;
-		for(PWM4L;PWM4L<0Xff;PWM4L++)
-		{
-			Ramp_up;
-		}
-//		PWM4L = 0x00;  // In complementary mode it is inversed
-	}
-	else if(n<=0)
-	{
-		for(PWM4L;PWM4L>0X00;PWM4L--)
-		{
-			Ramp_up;
-		}
-	}
-	else
-	{
-//		PWM4L = n&&0xf;
 		UINT8 i = n*5/2;
-		if(PWM4L<i)
+		if(n>=0&&n<=100)
 		{
-			for(PWM4L;PWM4L<i;PWM4L++)
+			if(PWM4L<i)
 			{
-				Ramp_up;
+				PWM4L++;
+			}
+			else if(PWM4L==i)// jump out
+			{
+				flag = 0;
+			}
+			else
+			{
+				PWM4L=i;
 			}
 		}
+		if(PWM4L>10)
+			Relay_On(FB);
 		else
-		{
-			PWM4L=i;
-			Ramp_up;
-//			for(PWM4L;PWM4L>i;PWM4L--)
-//			{
-//				Ramp_up;
-//			}
-		}
-//		PWM4L = (n*3/2);
+			Relay_Off();
+		Ramp_up;// 10 = 2.55s ramp up
 	}
-
+	
 }
 
 //void PinInterrupt (void) interrupt 7

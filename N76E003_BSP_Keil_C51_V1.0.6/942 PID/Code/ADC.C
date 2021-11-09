@@ -43,7 +43,7 @@ here after stack initialization.
 
 void main (void) 
 {
-	Set_All_GPIO_Quasi_Mode;				//For GPIO1 output, Find in "Function_define.h" - "GPIO INIT"
+	Set_All_GPIO_Quasi_Mode;			//For GPIO1 output, Find in "Function_define.h" - "GPIO INIT"
 	InitialUART0_Timer1(115200);
 	ADC_Init();							//
 										//reverved for timer_init   Sleep2
@@ -60,11 +60,8 @@ void main (void)
 			switch(j>57)//20A=57
 			{
 				case 0:
-				{	
-					//UINT16 pwm_step = (i-0x3e8)/0x1E; //1.0->4.0
-					Relay_On(k);
-					Timer0_Delay1ms(50);
-					PWM_Setting(pwm_step);
+				{
+					PWM_Setting(pwm_step,k);// PWM first, or the moment relay on, PWM still 0 cause big inrush
 				}
 				break;
 				case 1:
@@ -72,11 +69,7 @@ void main (void)
 					j=j*0.35;// Current calculation from current shunt-> OA-> ADC j=actural current
 					PWM4L=(PWM4L+Incremental_P(j, 20)*3/2)>50? (PWM4L+Incremental_P(j, 20)*3/2):0;;//PWM delta value
 					set_LOAD;set_PWMRUN;
-					
-//					PWM_Setting(PWM4L+(Incremental_P(j, 20)*3/2));
-					Relay_On(k);		//Forward Relay open 
-//					PWM4L=PWM4L>50?PWM4L-1:0;
-//					set_LOAD;set_PWMRUN;
+//					Relay_On(k);		//Forward Relay open
 					Timer0_Delay1ms(20);
 					j=0;
 				}
@@ -90,8 +83,8 @@ void main (void)
 			PWM4L=7;
 			set_LOAD;set_PWMRUN;
 			Timer0_Delay1ms(400);
+			Relay_Off();
 			Not_Pressed
-			Relay_Off(k);
 		}		
 
 	}

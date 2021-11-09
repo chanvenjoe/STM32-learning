@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   ADC                                                               11/08/2021 21:18:30 PAGE 1   
+C51 COMPILER V9.60.0.0   ADC                                                               11/09/2021 19:04:08 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE ADC
@@ -62,7 +62,7 @@ line level    source
               //#define P13_RISINGEDGE_TRIG_ADC                       ADCCON0|=0x30;ADCCON1&=~SET_BIT3;ADCCON1|=SET_BIT2;ADCCON1|=SET_BIT1;A
              -DCCON1|=SET_BIT6
               #endif
-C51 COMPILER V9.60.0.0   ADC                                                               11/08/2021 21:18:30 PAGE 2   
+C51 COMPILER V9.60.0.0   ADC                                                               11/09/2021 19:04:08 PAGE 2   
 
   38          
   39          /******************************************************************************
@@ -72,7 +72,7 @@ line level    source
   43          
   44          void main (void) 
   45          {
-  46   1              Set_All_GPIO_Quasi_Mode;                                //For GPIO1 output, Find in "Function_define.h" - "GPIO INIT"
+  46   1              Set_All_GPIO_Quasi_Mode;                        //For GPIO1 output, Find in "Function_define.h" - "GPIO INIT"
   47   1              InitialUART0_Timer1(115200);
   48   1              ADC_Init();                                                     //
   49   1                                                                                      //reverved for timer_init   Sleep2
@@ -89,52 +89,45 @@ line level    source
   60   3                              switch(j>57)//20A=57
   61   3                              {
   62   4                                      case 0:
-  63   4                                      {       
-  64   5                                              //UINT16 pwm_step = (i-0x3e8)/0x1E; //1.0->4.0
-  65   5                                              Relay_On(k);
-  66   5                                              Timer0_Delay1ms(50);
-  67   5                                              PWM_Setting(pwm_step);
-  68   5                                      }
-  69   4                                      break;
-  70   4                                      case 1:
-  71   4                                      {
-  72   5                                              j=j*0.35;// Current calculation from current shunt-> OA-> ADC j=actural current
-  73   5                                              PWM4L=(PWM4L+Incremental_P(j, 20)*3/2)>50? (PWM4L+Incremental_P(j, 20)*3/2):0;;//PWM delta value
-  74   5                                              set_LOAD;set_PWMRUN;
-  75   5                                              
-  76   5      //                                      PWM_Setting(PWM4L+(Incremental_P(j, 20)*3/2));
-  77   5                                              Relay_On(k);            //Forward Relay open 
-  78   5      //                                      PWM4L=PWM4L>50?PWM4L-1:0;
-  79   5      //                                      set_LOAD;set_PWMRUN;
-  80   5                                              Timer0_Delay1ms(20);
-  81   5                                              j=0;
-  82   5                                      }
-  83   4                                      break;
-  84   4                                      default:
-  85   4                                              break;
-  86   4                              }
-  87   3                      }
-  88   2                      else
-  89   2                      {
-  90   3                              PWM4L=7;
-  91   3                              set_LOAD;set_PWMRUN;
-  92   3                              Timer0_Delay1ms(400);
-  93   3                              Not_Pressed
-  94   3                              Relay_Off(k);
-  95   3                      }               
-  96   2      
-  97   2              }
-  98   1      }
-  99          
-C51 COMPILER V9.60.0.0   ADC                                                               11/08/2021 21:18:30 PAGE 3   
-
- 100          
+  63   4                                      {
+  64   5                                              PWM_Setting(pwm_step,k);// PWM first, or the moment relay on, PWM still 0 cause big inrush
+  65   5                                      }
+  66   4                                      break;
+  67   4                                      case 1:
+  68   4                                      {
+  69   5                                              j=j*0.35;// Current calculation from current shunt-> OA-> ADC j=actural current
+  70   5                                              PWM4L=(PWM4L+Incremental_P(j, 20)*3/2)>50? (PWM4L+Incremental_P(j, 20)*3/2):0;;//PWM delta value
+  71   5                                              set_LOAD;set_PWMRUN;
+  72   5      //                                      Relay_On(k);            //Forward Relay open
+  73   5                                              Timer0_Delay1ms(20);
+  74   5                                              j=0;
+  75   5                                      }
+  76   4                                      break;
+  77   4                                      default:
+  78   4                                              break;
+  79   4                              }
+  80   3                      }
+  81   2                      else
+  82   2                      {
+  83   3                              PWM4L=7;
+  84   3                              set_LOAD;set_PWMRUN;
+  85   3                              Timer0_Delay1ms(400);
+  86   3                              Relay_Off();
+  87   3                              Not_Pressed
+  88   3                      }               
+  89   2      
+  90   2              }
+  91   1      }
+  92          
+  93          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    356    ----
+   CODE SIZE        =    333    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
+C51 COMPILER V9.60.0.0   ADC                                                               11/09/2021 19:04:08 PAGE 3   
+
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----       4
    IDATA SIZE       =   ----    ----
