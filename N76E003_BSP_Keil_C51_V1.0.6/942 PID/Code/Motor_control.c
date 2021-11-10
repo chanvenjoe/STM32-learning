@@ -256,8 +256,8 @@ void PWM_Setting(UINT8 n, UINT8 FB)	//1n = 1%
 		}
 		if(PWM4L>10)
 			Relay_On(FB);
-		else
-			Relay_Off();
+//		else
+//			Relay_Off();
 		Ramp_up;// 10 = 2.55s ramp up
 	}
 	

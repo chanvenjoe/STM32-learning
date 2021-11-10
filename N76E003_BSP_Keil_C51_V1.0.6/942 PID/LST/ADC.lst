@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   ADC                                                               11/09/2021 19:04:08 PAGE 1   
+C51 COMPILER V9.60.0.0   ADC                                                               11/10/2021 17:40:50 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE ADC
@@ -62,7 +62,7 @@ line level    source
               //#define P13_RISINGEDGE_TRIG_ADC                       ADCCON0|=0x30;ADCCON1&=~SET_BIT3;ADCCON1|=SET_BIT2;ADCCON1|=SET_BIT1;A
              -DCCON1|=SET_BIT6
               #endif
-C51 COMPILER V9.60.0.0   ADC                                                               11/09/2021 19:04:08 PAGE 2   
+C51 COMPILER V9.60.0.0   ADC                                                               11/10/2021 17:40:50 PAGE 2   
 
   38          
   39          /******************************************************************************
@@ -111,7 +111,7 @@ line level    source
   82   2                      {
   83   3                              PWM4L=7;
   84   3                              set_LOAD;set_PWMRUN;
-  85   3                              Timer0_Delay1ms(400);
+  85   3                              Timer0_Delay1ms(800);
   86   3                              Relay_Off();
   87   3                              Not_Pressed
   88   3                      }               
@@ -126,7 +126,7 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
    CODE SIZE        =    333    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
-C51 COMPILER V9.60.0.0   ADC                                                               11/09/2021 19:04:08 PAGE 3   
+C51 COMPILER V9.60.0.0   ADC                                                               11/10/2021 17:40:50 PAGE 3   
 
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----       4

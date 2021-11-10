@@ -82,7 +82,7 @@ void main (void)
 		{
 			PWM4L=7;
 			set_LOAD;set_PWMRUN;
-			Timer0_Delay1ms(400);
+			Timer0_Delay1ms(800);
 			Relay_Off();
 			Not_Pressed
 		}		
