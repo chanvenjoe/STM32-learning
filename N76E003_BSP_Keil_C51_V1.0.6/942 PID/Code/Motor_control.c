@@ -49,11 +49,11 @@ void ADC_Init(void)
 	set_P12; //LED on
 	clr_P10;//BC
 	P17_Input_Mode;//Hall
-//	P30_Input_Mode;//Speed shift
-//	P05_Input_Mode; //current value
+	P30_Input_Mode;//Speed shift
+	P05_Input_Mode; //current value
 	clr_P05;
 	P01_PushPull_Mode;
-	P14_PushPull_Mode;
+	P03_PushPull_Mode;
 	P14_PushPull_Mode;
 	P00_PushPull_Mode;//Forward relay
 	P10_PushPull_Mode;
@@ -215,7 +215,7 @@ void PWM_Init()
 	
 	set_SFRPAGE;
 	PWM4H = 0x00;
-	PWM4L = 0xff;
+	PWM4L = 0x00;
 	clr_SFRPAGE;
 	
 	PWM45_DEADTIME_ENABLE;

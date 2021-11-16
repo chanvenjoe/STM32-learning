@@ -78,14 +78,26 @@ void main (void)
 					break;
 			}
 		}
-		else
+		else//the brake should only works when pedal released
 		{
-			PWM4L=7;
-			set_LOAD;set_PWMRUN;
-			Timer0_Delay1ms(800);
-			Relay_Off();
-			Not_Pressed
-		}		
+			if(P00==1)
+			{
+				PWM4L=0;
+				set_LOAD;set_PWMRUN;
+				Timer0_Delay1ms(400);		
+				PWM4L=7;
+				set_LOAD;set_PWMRUN;
+				Timer0_Delay1ms(400);
+				Relay_Off();
+				Not_Pressed
+			}
+			else
+			{
+				PWM4L=0;
+				set_LOAD;set_PWMRUN;
+				Relay_Off();
+			}
+		}
 
 	}
 }

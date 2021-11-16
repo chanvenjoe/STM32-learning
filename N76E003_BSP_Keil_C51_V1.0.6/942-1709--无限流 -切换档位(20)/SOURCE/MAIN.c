@@ -111,7 +111,7 @@
 
 #define  Vol_1_88V     96//255*1.88/5	19.2V时IO电压为1.88V
 
-#define  Vol16V       134//         //欠压检测  低于27V
+#define  Vol16V       1//         //欠压检测  低于27V
 #define  Vol21_6V     161//     //32.7V  解除欠压   161
 
 

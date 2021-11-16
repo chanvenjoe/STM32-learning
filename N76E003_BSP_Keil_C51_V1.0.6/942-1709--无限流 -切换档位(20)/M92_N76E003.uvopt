@@ -132,16 +132,16 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>577</LineNumber>
+          <LineNumber>1851</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>-16774259</Address>
+          <Address>-16773641</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>C:\Users\Admin\Desktop\Project\STM32-learning\N76E003_BSP_Keil_C51_V1.0.6\942-1709--无限流 -切换档位(20)\SOURCE\MAIN.c</Filename>
+          <Filename>SOURCE\MAIN.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression></Expression>
         </Bp>
