@@ -66,12 +66,15 @@ void main (void)
 				break;
 				case 1:
 				{
-					j=j*0.35;// Current calculation from current shunt-> OA-> ADC j=actural current
-					PWM4L=(PWM4L+Incremental_P(j, 20)*3/2)>50? (PWM4L+Incremental_P(j, 20)*3/2):0;;//PWM delta value
-					set_LOAD;set_PWMRUN;
-//					Relay_On(k);		//Forward Relay open
-					Timer0_Delay1ms(20);
-					j=0;
+					if(PWM4L>125)// PWM>50%
+					{
+						j=j*0.35;// Current calculation from current shunt-> OA-> ADC j=actural current
+						PWM4L=(PWM4L+Incremental_P(j, 20)*3/2)>50? (PWM4L+Incremental_P(j, 20)*3/2):50;;//PWM delta value, if the 
+												//reserve for timer counting
+						set_LOAD;set_PWMRUN;
+	//					Relay_On(k);		//Forward Relay open
+						j=0;
+					}
 				}
 				break;
 				default:
@@ -80,7 +83,7 @@ void main (void)
 		}
 		else//the brake should only works when pedal released
 		{
-			if(P00==1)
+			if(P00==1||P10==1)
 			{
 				PWM4L=0;
 				set_LOAD;set_PWMRUN;
