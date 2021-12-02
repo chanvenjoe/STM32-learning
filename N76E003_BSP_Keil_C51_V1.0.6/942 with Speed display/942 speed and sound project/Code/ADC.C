@@ -9,6 +9,9 @@
 //****** Always include Function_define.h call the define you want, detail see main(void) *******
 //***********************************************************************************************
 #define CCvalue 0x14; //change the current regulation value
+
+#define Not_Pressed PWM5_P03_OUTPUT_DISABLE; PWM4_P01_OUTPUT_DISABLE; clr_P01; set_P03;
+#define Pressed PWM5_P03_OUTPUT_ENABLE; PWM4_P01_OUTPUT_ENABLE;
 #if 0
 //#define Enable_ADC_AIN0			ADCCON0&=0xF0;P17_Input_Mode;AINDIDS=0x00;AINDIDS|=SET_BIT0;ADCCON1|=SET_BIT0									//P17
 //#define Enable_ADC_AIN1			ADCCON0&=0xF0;ADCCON0|=0x01;P30_Input_Mode;AINDIDS=0x00;AINDIDS|=SET_BIT1;ADCCON1|=SET_BIT0		//P30
@@ -40,53 +43,64 @@ here after stack initialization.
 
 void main (void) 
 {
-	Set_All_GPIO_Quasi_Mode;				//For GPIO1 output, Find in "Function_define.h" - "GPIO INIT"
+	Set_All_GPIO_Quasi_Mode;			//For GPIO1 output, Find in "Function_define.h" - "GPIO INIT"
 	InitialUART0_Timer1(115200);
 	ADC_Init();							//
 										//reverved for timer_init   Sleep2
 	PWM_Init();
 	while(1)
 	{
-		UINT8 i = Get_HallValue();
+		UINT8 i = Get_HallValue();// can use public structure or ...
 		UINT8 j = Get_CurrentValue();
-		UINT16 pwm_step = (i-51)*2/3;  //13.3KHz
-		if(i>51)  //0x500 = 1280 = 1.56V
+		UINT8 k = Get_Speedvalue();
+		UINT8 pwm_step = (i-51)>=0? (i-51)*2/3:0;  //return  %
+		if(i>52)// to prevent hall initial voltage is 1.0v
 		{
+			Pressed
 			switch(j>57)//20A=57
 			{
 				case 0:
-				{	
-					//UINT16 pwm_step = (i-0x3e8)/0x1E; //1.0->4.0
-					PWM_Setting(pwm_step);
-					set_P00;		//Forward Relay open 
-					Timer0_Delay1ms(20);
+				{
+					PWM_Setting(pwm_step,k);// PWM first, or the moment relay on, PWM still 0 cause big inrush
 				}
 				break;
 				case 1:
 				{
-					j=j*0.35;// Current calculation from current shunt-> OA-> ADC j=actural current
-					PWM4L=(PWM4L+Incremental_P(j, 20)*3/2)>50? (PWM4L+Incremental_P(j, 20)*3/2):0;;//PWM delta value
-					set_LOAD;set_PWMRUN;
-					
-//					PWM_Setting(PWM4L+(Incremental_P(j, 20)*3/2));
-					set_P00;		//Forward Relay open 
-//					PWM4L=PWM4L>50?PWM4L-1:0;
-//					set_LOAD;set_PWMRUN;
-					Timer0_Delay1ms(20);
-					j=0;
+					if(PWM4L>125)// PWM>50%
+					{
+						j=j*0.35;// Current calculation from current shunt-> OA-> ADC j=actural current
+						PWM4L=(PWM4L+Incremental_P(j, 20)*3/2)>50? (PWM4L+Incremental_P(j, 20)*3/2):50;;//PWM delta value, if the 
+												//reserve for timer counting
+						set_LOAD;set_PWMRUN;
+	//					Relay_On(k);		//Forward Relay open
+						j=0;
+					}
 				}
 				break;
 				default:
 					break;
 			}
 		}
-		else
+		else//the brake should only works when pedal released
 		{
-			PWM_Setting(0x00);
-			//PWM4L = 0x97;
-			Timer0_Delay1ms(1000);
-			clr_P00;
-		}		
+			if(P00==1||P10==1)
+			{
+				PWM4L=0;
+				set_LOAD;set_PWMRUN;
+				Timer0_Delay1ms(400);		
+				PWM4L=7;
+				set_LOAD;set_PWMRUN;
+				Timer0_Delay1ms(400);
+				Relay_Off();
+				Not_Pressed
+			}
+			else
+			{
+				PWM4L=0;
+				set_LOAD;set_PWMRUN;
+				Relay_Off();
+			}
+		}
 
 	}
 }
