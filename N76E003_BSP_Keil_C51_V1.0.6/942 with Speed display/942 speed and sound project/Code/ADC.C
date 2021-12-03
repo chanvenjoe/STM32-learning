@@ -57,6 +57,8 @@ void main (void)
 		if(i>52)// to prevent hall initial voltage is 1.0v
 		{
 			Pressed
+			P02 = 0;
+			P13 = 1;
 			switch(j>57)//20A=57
 			{
 				case 0:
@@ -85,6 +87,8 @@ void main (void)
 		{
 			if(P00==1||P10==1)
 			{
+				P02 = 1; //engine off
+				P13 = 0; //Brake on
 				PWM4L=0;
 				set_LOAD;set_PWMRUN;
 				Timer0_Delay1ms(400);		

@@ -46,6 +46,8 @@ void ADC_Init(void)
 //	set_PIT3;//cHANNEL 3 Edge triggered
 //	clr_PIPEN3;//P13 falling triggered
 //	set_PINEN3;
+	set_P02;//off all sound
+	set_P13;
 	set_P12; //LED on
 	clr_P10;//BC
 	P17_Input_Mode;//Hall
