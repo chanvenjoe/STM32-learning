@@ -3,24 +3,39 @@
 #include "usart.h"
 #include "gpio_init.h"
 #include "WS2811.h"
+#include "Speed_display.h"
 
 int main(void)
 {
-	//NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
-	u32 temp;
 	GPIO_Conf();
 	delay_init(168);
-	temp=CapacitiveTouch_Init(8);
+	GPIO_ResetBits(GPIOC,0xff);
+//	GPIO_SetBits(GPIOF,0xff);
+
 	while(1)
 	{
-		while(TPAD_Scan(0,temp))
-		{	
-			WS_Key_RGB();
-			GPIO_ResetBits(GPIOF,GPIO_Pin_5);
-			delay_ms(100);
-			GPIO_SetBits(GPIOF,GPIO_Pin_5);
+		u8 c;
+		for(c=10;c<255;c++)
+		{
+			numb_show(c);
 		}
 	}
+	
+//	//NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
+//	u32 temp;
+//	GPIO_Conf();
+//	delay_init(168);
+//	temp=CapacitiveTouch_Init(8);
+//	while(1)
+//	{
+//		while(TPAD_Scan(0,temp))
+//		{	
+//			WS_Key_RGB();
+//			GPIO_ResetBits(GPIOF,GPIO_Pin_5);
+//			delay_ms(100);
+//			GPIO_SetBits(GPIOF,GPIO_Pin_5);
+//		}
+//	}
 
 
 }
