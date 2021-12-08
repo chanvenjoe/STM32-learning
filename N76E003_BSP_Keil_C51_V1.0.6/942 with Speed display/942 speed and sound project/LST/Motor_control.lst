@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     12/03/2021 15:35:29 PAGE 1   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     12/08/2021 17:57:04 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MOTOR_CONTROL
@@ -58,11 +58,11 @@ line level    source
   48   1      //      set_PINEN3;
   49   1              set_P02;//off all sound
   50   1              set_P13;
-  51   1              set_P12; //LED on
+  51   1              clr_P12; //LED on
   52   1              clr_P10;//BC
   53   1              P17_Input_Mode;//Hall
   54   1              P30_Input_Mode;//Speed shift
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     12/03/2021 15:35:29 PAGE 2   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     12/08/2021 17:57:04 PAGE 2   
 
   55   1              P05_Input_Mode; //current value
   56   1              clr_P05;
@@ -126,7 +126,7 @@ line level    source
  114   1              {
  115   2                      clr_ADCF;
  116   2                      set_ADCS;
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     12/03/2021 15:35:29 PAGE 3   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     12/08/2021 17:57:04 PAGE 3   
 
  117   2                      while(ADCF==0);
  118   2                      ADCValue = (ADCRH<<4)+ADCRL;
@@ -190,7 +190,7 @@ line level    source
  176          {
  177   1              clr_P00;
  178   1              clr_P10;
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     12/03/2021 15:35:29 PAGE 4   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     12/08/2021 17:57:04 PAGE 4   
 
  179   1      }
  180                  /**********************************************************************
@@ -254,7 +254,7 @@ line level    source
  238   1              set_SFRPAGE; //PWM4\5 SETTING
  239   1              flag = 1;
  240   1              n = n>100? 100: n;
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     12/03/2021 15:35:29 PAGE 5   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     12/08/2021 17:57:04 PAGE 5   
 
  241   1              if(flag)
  242   1              {

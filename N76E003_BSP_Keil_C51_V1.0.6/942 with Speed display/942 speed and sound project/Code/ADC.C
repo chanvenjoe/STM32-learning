@@ -4,6 +4,7 @@
 #include "Common.h"
 #include "Delay.h"
 #include "Motor_control.h"
+#include "Speed_display.h"
 
 //*****************  The Following is in define in Fucntion_define.h  ***************************
 //****** Always include Function_define.h call the define you want, detail see main(void) *******
@@ -12,6 +13,8 @@
 
 #define Not_Pressed PWM5_P03_OUTPUT_DISABLE; PWM4_P01_OUTPUT_DISABLE; clr_P01; set_P03;
 #define Pressed PWM5_P03_OUTPUT_ENABLE; PWM4_P01_OUTPUT_ENABLE;
+UINT8 arg;
+UINT16 sum;
 #if 0
 //#define Enable_ADC_AIN0			ADCCON0&=0xF0;P17_Input_Mode;AINDIDS=0x00;AINDIDS|=SET_BIT0;ADCCON1|=SET_BIT0									//P17
 //#define Enable_ADC_AIN1			ADCCON0&=0xF0;ADCCON0|=0x01;P30_Input_Mode;AINDIDS=0x00;AINDIDS|=SET_BIT1;ADCCON1|=SET_BIT0		//P30
@@ -63,7 +66,17 @@ void main (void)
 			{
 				case 0:
 				{
-					PWM_Setting(pwm_step,k);// PWM first, or the moment relay on, PWM still 0 cause big inrush
+					if(arg<8)
+					{
+						sum+=pwm_step;
+						arg++;
+					}
+					else 
+					{
+						arg=0;
+						sum=sum/8;
+						PWM_Setting(pwm_step,k);// PWM first, or the 55moment relay on, PWM still 0 cause big inrush
+					}
 				}
 				break;
 				case 1:
@@ -72,7 +85,7 @@ void main (void)
 					{
 						j=j*0.35;// Current calculation from current shunt-> OA-> ADC j=actural current
 						PWM4L=(PWM4L+Incremental_P(j, 20)*3/2)>50? (PWM4L+Incremental_P(j, 20)*3/2):50;;//PWM delta value, if the 
-												//reserve for timer counting
+							 					//reserve for timer counting
 						set_LOAD;set_PWMRUN;
 	//					Relay_On(k);		//Forward Relay open
 						j=0;
