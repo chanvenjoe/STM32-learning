@@ -1,9 +1,13 @@
+<<<<<<< Updated upstream
 AX51 MACRO ASSEMBLER  STARTUP                                                               12/06/21 13:46:54 PAGE     1
+=======
+AX51 MACRO ASSEMBLER  STARTUP                                                               12/08/21 17:28:17 PAGE     1
+>>>>>>> Stashed changes
 
 
 MACRO ASSEMBLER AX51 V3.15.3.0
 OBJECT MODULE PLACED IN STARTUP.OBJ
-ASSEMBLER INVOKED BY: C:\keil5\C51\BIN\AX51.EXE STARTUP.A51 SET(SMALL) DEBUG EP
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\AX51.EXE STARTUP.A51 SET(SMALL) DEBUG EP
 
 LOC    OBJ             LINE     SOURCE
 
@@ -65,7 +69,11 @@ LOC    OBJ             LINE     SOURCE
                          56     ;
                          57     ;  Page Definition for Using the Compact Model with 64 KByte xdata RAM
                          58     ;
+<<<<<<< Updated upstream
 AX51 MACRO ASSEMBLER  STARTUP                                                               12/06/21 13:46:54 PAGE     2
+=======
+AX51 MACRO ASSEMBLER  STARTUP                                                               12/08/21 17:28:17 PAGE     2
+>>>>>>> Stashed changes
 
                          59     ;  The following EQU statements define the xdata page used for pdata
                          60     ;  variables. The EQU PPAGE must conform with the PPAGE control used
@@ -133,7 +141,11 @@ LOC    OBJ             LINE     SOURCE
                                 ENDIF
                         123     
                         124     IF PDATALEN <> 0
+<<<<<<< Updated upstream
 AX51 MACRO ASSEMBLER  STARTUP                                                               12/06/21 13:46:54 PAGE     3
+=======
+AX51 MACRO ASSEMBLER  STARTUP                                                               12/08/21 17:28:17 PAGE     3
+>>>>>>> Stashed changes
 
                                                 MOV     R0,#LOW (PDATASTART)
                                                 MOV     R7,#LOW (PDATALEN)
@@ -168,7 +180,11 @@ LOC    OBJ             LINE     SOURCE
 000017 020000     E     155                     LJMP    ?C_START
                         156     
                         157                     END
+<<<<<<< Updated upstream
 AX51 MACRO ASSEMBLER  STARTUP                                                               12/06/21 13:46:54 PAGE     4
+=======
+AX51 MACRO ASSEMBLER  STARTUP                                                               12/08/21 17:28:17 PAGE     4
+>>>>>>> Stashed changes
 
 SYMBOL TABLE LISTING
 ------ ----- -------

@@ -159,7 +159,7 @@ void main (void)
 {
  
     P07_Input_Mode;
-		set_P0S_7;
+		set_P0S_7;//Schmitt trigger or TTL trigger
 		P00_Input_Mode;
 		P01_Input_Mode;
 		set_P0S_1;
@@ -173,7 +173,7 @@ void main (void)
 //  Keep P0.5 connect to VDD LED will tickle
 //  otherwise, MCU into power down mode.
 //----------------------------------------------------
-		Enable_INT_Port2;
+		Enable_INT_Port2; 
 //		Enable_BIT7_LowLevel_Trig;
 		Enable_BIT0_LowLevel_Trig;
 

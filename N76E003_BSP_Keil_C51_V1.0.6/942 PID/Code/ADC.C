@@ -41,15 +41,46 @@ The main C function.  Program execution starts
 here after stack initialization.
 ******************************************************************************/
 
+void WTD_Init()
+{
+	TA=0xAA;TA=0x55;WDCON=0x07;  		//Setting WDT prescale 
+	set_WDTR;                       //WDT run
+	set_WDCLR;											//Clear WDT timer
+	set_EWDT;// WTD inter_rupt enable
+	EA =1; //Global inter_rupt enable
+}
+
+void Pin_Interruput_Init()
+{
+	set_EA;
+	PICON = 0x21;// Port1 Pin3 edge trigger
+	PINEN = 0x04; //PIN3 falling/low trigger PIPEN: Rising/high trigger
+	EIE   = Ox02; // PIN interrupt enable
+	set_P0S_3;
+}
+
+void Pin_Interruput()
+{
+	PIF = 0x00; // clr interrupt flag
+	if(PIF==0x03)
+	{
+		Disable_ADC;
+		clr_P12;//LED off
+	}
+}
+
 void main (void) 
 {
 	Set_All_GPIO_Quasi_Mode;			//For GPIO1 output, Find in "Function_define.h" - "GPIO INIT"
 	InitialUART0_Timer1(115200);
 	ADC_Init();							//
+	WTD_Init();
+	Pin_Interruput_Init();
 										//reverved for timer_init   Sleep2
 	PWM_Init();
 	while(1)
 	{
+		set_WDCLR;
 		UINT8 i = Get_HallValue();// can use public structure or ...
 		UINT8 j = Get_CurrentValue();
 		UINT8 k = Get_Speedvalue();
