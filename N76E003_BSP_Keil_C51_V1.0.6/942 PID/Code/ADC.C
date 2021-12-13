@@ -12,6 +12,8 @@
 
 #define Not_Pressed PWM5_P03_OUTPUT_DISABLE; PWM4_P01_OUTPUT_DISABLE; clr_P01; set_P03;
 #define Pressed PWM5_P03_OUTPUT_ENABLE; PWM4_P01_OUTPUT_ENABLE;
+bit pwr_d=0;
+
 #if 0
 //#define Enable_ADC_AIN0			ADCCON0&=0xF0;P17_Input_Mode;AINDIDS=0x00;AINDIDS|=SET_BIT0;ADCCON1|=SET_BIT0									//P17
 //#define Enable_ADC_AIN1			ADCCON0&=0xF0;ADCCON0|=0x01;P30_Input_Mode;AINDIDS=0x00;AINDIDS|=SET_BIT1;ADCCON1|=SET_BIT0		//P30
@@ -48,43 +50,75 @@ void WTD_Init()
 	set_WDCLR;											//Clear WDT timer
 	set_EWDT;// WTD inter_rupt enable
 	EA =1; //Global inter_rupt enable
+	
+	TMOD = 0xff;
+	TIMER0_MODE1_ENABLE;//MODE1 16BITS timer/Counter
+	TIMER1_MODE1_ENABLE;
+	clr_T0M;// Timer 1 clock from sys_clk/12
+
+	
+	set_ET0;
+//	set_TR0;
+	
 }
 
 void Pin_Interruput_Init()
 {
 	set_EA;
 	PICON = 0x21;// Port1 Pin3 edge trigger
-	PINEN = 0x04; //PIN3 falling/low trigger PIPEN: Rising/high trigger
-	EIE   = Ox02; // PIN interrupt enable
+	PINEN = 0x08; //PIN3 falling/low trigger PIPEN: Rising/high trigger
+	PIPEN = 0X00;
+	EIE   = 0x02; // PIN interrupt enable
 	set_P0S_3;
+//	EIP = 0x02; //PRIORITY SETTING
+//	EIPH	 = 0x02;
 }
 
-void Pin_Interruput()
+void PD_Timer0() interrupt 1
 {
-	PIF = 0x00; // clr interrupt flag
-	if(PIF==0x03)
+	if(TF0)
 	{
-		Disable_ADC;
-		clr_P12;//LED off
+		if(P12==1)
+		{
+			Not_Pressed
+			pwr_d = 1;
+		}
 	}
 }
 
-void main (void) 
+void Pin_Interruput() interrupt 7
+{
+	
+	if(PIF==0x08)
+	{
+		PIF = 0x00; // clr interrupt flag
+		Timer0_Delay1ms(1);
+		if(P13==0)
+		{
+			P12=~P12;//LED on/off
+			TH0 = 0xff; // timer filter
+//			TL0 = 0xFF;
+			set_TR0;
+		}
+	}
+}
+
+void main (void)
 {
 	Set_All_GPIO_Quasi_Mode;			//For GPIO1 output, Find in "Function_define.h" - "GPIO INIT"
 	InitialUART0_Timer1(115200);
-	ADC_Init();							//
+	ADC_Init();							
 	WTD_Init();
 	Pin_Interruput_Init();
 										//reverved for timer_init   Sleep2
 	PWM_Init();
 	while(1)
 	{
-		set_WDCLR;
-		UINT8 i = Get_HallValue();// can use public structure or ...
+		UINT8 i = Get_HallValue();// can use public structure or ...		The variables should be define at the first line
 		UINT8 j = Get_CurrentValue();
 		UINT8 k = Get_Speedvalue();
 		UINT8 pwm_step = (i-51)>=0? (i-51)*2/3:0;  //return  %
+		set_WDCLR;
 		if(i>52)// to prevent hall initial voltage is 1.0v
 		{
 			Pressed
@@ -132,7 +166,11 @@ void main (void)
 				Relay_Off();
 			}
 		}
-
+		if(pwr_d==1)
+		{
+			pwr_d = 0;
+			set_PD;
+		}
 	}
 }
 

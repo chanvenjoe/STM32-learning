@@ -37,27 +37,22 @@ int Incremental_P(UINT8 Cbat, UINT8 CC_Value)//int can have negative num
 
 void ADC_Init(void)
 {
-//	set_EA;
-//	set_EPI;//Enable Pin interrupt
-//	P13_Input_Mode;
-//	
-//	clr_PIPS1;
-//	clr_PIPS0;//pin1.
-//	set_PIT3;//cHANNEL 3 Edge triggered
-//	clr_PIPEN3;//P13 falling triggered
-//	set_PINEN3;
-	set_P12; //LED on
+	clr_P12; //LED on
 	clr_P10;//BC
+	clr_P05;
 	P17_Input_Mode;//Hall
 	P30_Input_Mode;//Speed shift
 	P05_Input_Mode; //current value
-	clr_P05;
+//	P13_Input_Mode;
+	P12_PushPull_Mode;
 	P01_PushPull_Mode;
 	P03_PushPull_Mode;
 	P14_PushPull_Mode;
 	P00_PushPull_Mode;//Forward relay
 	P10_PushPull_Mode;
+	
 	set_P14; //Enable DCDC
+	set_P13;
 	clr_P00, clr_P10;
 	
 	set_IAPEN;
@@ -262,8 +257,3 @@ void PWM_Setting(UINT8 n, UINT8 FB)	//1n = 1%
 	}
 	
 }
-
-//void PinInterrupt (void) interrupt 7
-//{
-//	printf("Falling edge intterrupt triggered");
-//}
