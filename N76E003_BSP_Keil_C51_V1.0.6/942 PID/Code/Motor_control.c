@@ -34,7 +34,6 @@ int Incremental_P(UINT8 Cbat, UINT8 CC_Value)//int can have negative num
 	Last_bias = Bias;
 	return PWM; //The percentage of decreasment
 }
-
 void ADC_Init(void)
 {
 	clr_P12; //LED on

@@ -1,9 +1,9 @@
-C51 COMPILER V9.60.0.0   ADC                                                               12/13/2021 20:38:32 PAGE 1   
+C51 COMPILER V9.60.0.0   ADC                                                               12/14/2021 18:24:28 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE ADC
 OBJECT MODULE PLACED IN .\Output\ADC.obj
-COMPILER INVOKED BY: C:\keil5\C51\BIN\C51.EXE Code\ADC.C OPTIMIZE(2,SPEED) BROWSE INCDIR(..\Include) DEFINE(FOSC_160000)
+COMPILER INVOKED BY: C:\keil5\C51\BIN\C51.EXE Code\ADC.C OPTIMIZE(8,SPEED) BROWSE INCDIR(..\Include) DEFINE(FOSC_160000)
                     - DEBUG OBJECTEXTEND PRINT(.\LST\ADC.lst) OBJECT(.\Output\ADC.obj)
 
 line level    source
@@ -22,202 +22,160 @@ line level    source
   12          
   13          #define Not_Pressed PWM5_P03_OUTPUT_DISABLE; PWM4_P01_OUTPUT_DISABLE; clr_P01; set_P03;
   14          #define Pressed PWM5_P03_OUTPUT_ENABLE; PWM4_P01_OUTPUT_ENABLE;
-  15          bit pwr_d=0;
-  16          
-  17          #if 0
-              //#define Enable_ADC_AIN0                       ADCCON0&=0xF0;P17_Input_Mode;AINDIDS=0x00;AINDIDS|=SET_BIT0;ADCCON1|=SET_BIT0   
-             -                                                                //P17
-              //#define Enable_ADC_AIN1                       ADCCON0&=0xF0;ADCCON0|=0x01;P30_Input_Mode;AINDIDS=0x00;AINDIDS|=SET_BIT1;ADCC
-             -ON1|=SET_BIT0                //P30
-              //#define Enable_ADC_AIN2                       ADCCON0&=0xF0;ADCCON0|=0x02;P07_Input_Mode;AINDIDS=0x00;AINDIDS|=SET_BIT2;ADCC
-             -ON1|=SET_BIT0                //P07
-              //#define Enable_ADC_AIN3                       ADCCON0&=0xF0;ADCCON0|=0x03;P06_Input_Mode;AINDIDS=0x00;AINDIDS|=SET_BIT3;ADCC
-             -ON1|=SET_BIT0                //P06
-              //#define Enable_ADC_AIN4                       ADCCON0&=0xF0;ADCCON0|=0x04;P05_Input_Mode;AINDIDS=0x00;AINDIDS|=SET_BIT4;ADCC
-             -ON1|=SET_BIT0                //P05
-              //#define Enable_ADC_AIN5                       ADCCON0&=0xF0;ADCCON0|=0x05;P04_Input_Mode;AINDIDS=0x00;AINDIDS|=SET_BIT5;ADCC
-             -ON1|=SET_BIT0                //P04
-              //#define Enable_ADC_AIN6                       ADCCON0&=0xF0;ADCCON0|=0x06;P03_Input_Mode;AINDIDS=0x00;AINDIDS|=SET_BIT6;ADCC
-             -ON1|=SET_BIT0                //P03
-              //#define Enable_ADC_AIN7                       ADCCON0&=0xF0;ADCCON0|=0x07;P11_Input_Mode;AINDIDS=0x00;AINDIDS|=SET_BIT7;ADCC
-             -ON1|=SET_BIT0                //P11
-              //#define Enable_ADC_BandGap    ADCCON0|=SET_BIT3;ADCCON0&=0xF8;                                                                                                                                                                                                                                                        //Band-gap 1.2
-             -2V
-              
-              //#define PWM0_FALLINGEDGE_TRIG_ADC             ADCCON0&=~SET_BIT5;ADCCON0&=~SET_BIT4;ADCCON1&=~SET_BIT3;ADCCON1&=~SE
-             -T_BIT2;ADCCON1|=SET_BIT1
-              //#define PWM2_FALLINGEDGE_TRIG_ADC             ADCCON0&=~SET_BIT5;ADCCON0|=SET_BIT4;ADCCON1&=~SET_BIT3;ADCCON1&=~SET
-             -_BIT2;ADCCON1|=SET_BIT1
-              //#define PWM4_FALLINGEDGE_TRIG_ADC             ADCCON0|=SET_BIT5;ADCCON0&=~SET_BIT4;ADCCON1&=~SET_BIT3;ADCCON1&=~SET
-             -_BIT2;ADCCON1|=SET_BIT1
-              //#define PWM0_RISINGEDGE_TRIG_ADC              ADCCON0&=~SET_BIT5;ADCCON0&=~SET_BIT4;ADCCON1&=~SET_BIT3;ADCCON1|=SET_
-             -BIT2;ADCCON1|=SET_BIT1
-              //#define PWM2_RISINGEDGE_TRIG_ADC              ADCCON0&=~SET_BIT5;ADCCON0|=SET_BIT4;ADCCON1&=~SET_BIT3;ADCCON1|=SET_B
-             -IT2;ADCCON1|=SET_BIT1
-              //#define PWM4_RISINGEDGE_TRIG_ADC              ADCCON0|=SET_BIT5;ADCCON0&=~SET_BIT4;ADCCON1&=~SET_BIT3;ADCCON1|=SET_B
-             -IT2;ADCCON1|=SET_BIT1
-              
-              //#define P04_FALLINGEDGE_TRIG_ADC              ADCCON0|=0x30;ADCCON1&=0xF3;ADCCON1|=SET_BIT1;ADCCON1&=~SET_BIT6
-              //#define P13_FALLINGEDGE_TRIG_ADC              ADCCON0|=0x30;ADCCON1&=0xF3;ADCCON1|=SET_BIT1;ADCCON1|=SET_BIT6
-              //#define P04_RISINGEDGE_TRIG_ADC                       ADCCON0|=0x30;ADCCON1&=~SET_BIT3;ADCCON1|=SET_BIT2;ADCCON1|=SET_BIT1;A
-             -DCCON1&=~SET_BIT6
-              //#define P13_RISINGEDGE_TRIG_ADC                       ADCCON0|=0x30;ADCCON1&=~SET_BIT3;ADCCON1|=SET_BIT2;ADCCON1|=SET_BIT1;A
-C51 COMPILER V9.60.0.0   ADC                                                               12/13/2021 20:38:32 PAGE 2   
-
-             -DCCON1|=SET_BIT6
-              #endif
-  40          
-  41          /******************************************************************************
-  42          The main C function.  Program execution starts
-  43          here after stack initialization.
-  44          ******************************************************************************/
-  45          
-  46          void WTD_Init()
-  47          {
-  48   1              TA=0xAA;TA=0x55;WDCON=0x07;             //Setting WDT prescale 
-  49   1              set_WDTR;                       //WDT run
-  50   1              set_WDCLR;                                                                                      //Clear WDT timer
-  51   1              set_EWDT;// WTD inter_rupt enable
-  52   1              EA =1; //Global inter_rupt enable
-  53   1              
-  54   1              TMOD = 0xff;
-  55   1              TIMER0_MODE1_ENABLE;//MODE1 16BITS timer/Counter
-  56   1              TIMER1_MODE1_ENABLE;
-  57   1              clr_T0M;// Timer 1 clock from sys_clk/12
-  58   1      
-  59   1              
-  60   1              set_ET0;
-  61   1      //      set_TR0;
-  62   1              
-  63   1      }
-  64          
-  65          void Pin_Interruput_Init()
-  66          {
-  67   1              set_EA;
-  68   1              PICON = 0x21;// Port1 Pin3 edge trigger
-  69   1              PINEN = 0x08; //PIN3 falling/low trigger PIPEN: Rising/high trigger
-  70   1              PIPEN = 0X00;
-  71   1              EIE   = 0x02; // PIN interrupt enable
-  72   1              set_P0S_3;
-  73   1      //      EIP = 0x02; //PRIORITY SETTING
-  74   1      //      EIPH     = 0x02;
-  75   1      }
-  76          
-  77          void PD_Timer0() interrupt 1
-  78          {
-  79   1              if(TF0)
-  80   1              {
-  81   2                      if(P12==1)
-  82   2                      {
-  83   3                              Not_Pressed
-  84   3                              pwr_d = 1;
-  85   3                      }
-  86   2              }
-  87   1      }
-  88          
-  89          void Pin_Interruput() interrupt 7
-  90          {
-  91   1              
-  92   1              if(PIF==0x08)
-  93   1              {
-  94   2                      PIF = 0x00; // clr interrupt flag
-  95   2                      Timer0_Delay1ms(1);
-  96   2                      if(P13==0)
-  97   2                      {
-  98   3                              P12=~P12;//LED on/off
-  99   3                              TH0 = 0xff; // timer filter
-C51 COMPILER V9.60.0.0   ADC                                                               12/13/2021 20:38:32 PAGE 3   
-
- 100   3      //                      TL0 = 0xFF;
- 101   3                              set_TR0;
- 102   3                      }
- 103   2              }
- 104   1      }
- 105          
- 106          void main (void)
- 107          {
- 108   1              Set_All_GPIO_Quasi_Mode;                        //For GPIO1 output, Find in "Function_define.h" - "GPIO INIT"
- 109   1              InitialUART0_Timer1(115200);
- 110   1              ADC_Init();                                                     
- 111   1              WTD_Init();
- 112   1              Pin_Interruput_Init();
- 113   1                                                                                      //reverved for timer_init   Sleep2
- 114   1              PWM_Init();
- 115   1              while(1)
- 116   1              {
- 117   2                      UINT8 i = Get_HallValue();// can use public structure or ...            The variables should be define at the firs
+  15          #define TH0_INIT                55536           //(65536-55536=10000)= 7.5MS @16MHz/12==1.333333M =>0.00000075s/clock   =>10000 clo
+             -cks = 0.0075s= 7.5ms
+  16          #define TL0_INIT        50000
+  17          #define TH1_INIT        25000 
+  18          #define TL1_INIT        25000
+  19          
+  20          bit pwr_d=0;
+  21          
+  22          UINT8 u8TH0_Tmp,u8TL0_Tmp,u8TH1_Tmp,u8TL1_Tmp=0;
+  23          
+  24          
+  25          
+  26          /******************************************************************************
+  27          The main C function.  Program execution starts
+  28          here after stack initialization.
+  29          ******************************************************************************/
+  30          void WTD_Init();
+  31          void Timer_Init();
+  32          void Pin_Interruput_Init();
+  33          
+  34          void main (void)
+  35          {       
+  36   1              Set_All_GPIO_Quasi_Mode;                        //For GPIO1 output, Find in "Function_define.h" - "GPIO INIT"
+  37   1              InitialUART0_Timer1(115200);
+  38   1              Timer_Init();
+  39   1              WTD_Init();
+  40   1              Pin_Interruput_Init();
+  41   1              ADC_Init();                                                     
+  42   1              PWM_Init();
+  43   1              while(1)
+  44   1              {
+  45   2                      UINT8 i = Get_HallValue();// can use public structure or ...            The variables should be define at the firs
              -t line
- 118   2                      UINT8 j = Get_CurrentValue();
- 119   2                      UINT8 k = Get_Speedvalue();
- 120   2                      UINT8 pwm_step = (i-51)>=0? (i-51)*2/3:0;  //return  %
- 121   2                      set_WDCLR;
- 122   2                      if(i>52)// to prevent hall initial voltage is 1.0v
- 123   2                      {
- 124   3                              Pressed
- 125   3                              switch(j>57)//20A=57
- 126   3                              {
- 127   4                                      case 0:
- 128   4                                      {
- 129   5                                              PWM_Setting(pwm_step,k);// PWM first, or the moment relay on, PWM still 0 cause big inrush
- 130   5                                      }
- 131   4                                      break;
- 132   4                                      case 1:
- 133   4                                      {
- 134   5                                              if(PWM4L>125)// PWM>50%
- 135   5                                              {
- 136   6                                                      j=j*0.35;// Current calculation from current shunt-> OA-> ADC j=actural current
- 137   6                                                      PWM4L=(PWM4L+Incremental_P(j, 20)*3/2)>50? (PWM4L+Incremental_P(j, 20)*3/2):50;;//PWM delta value, i
-             -f the 
- 138   6                                                                                                      //reserve for timer counting
- 139   6                                                      set_LOAD;set_PWMRUN;
- 140   6              //                                      Relay_On(k);            //Forward Relay open
- 141   6                                                      j=0;
- 142   6                                              }
- 143   5                                      }
- 144   4                                      break;
- 145   4                                      default:
- 146   4                                              break;
- 147   4                              }
- 148   3                      }
- 149   2                      else//the brake should only works when pedal released
- 150   2                      {
- 151   3                              if(P00==1||P10==1)
- 152   3                              {
- 153   4                                      PWM4L=0;
- 154   4                                      set_LOAD;set_PWMRUN;
- 155   4                                      Timer0_Delay1ms(400);           
- 156   4                                      PWM4L=7;
- 157   4                                      set_LOAD;set_PWMRUN;
- 158   4                                      Timer0_Delay1ms(400);
- 159   4                                      Relay_Off();
-C51 COMPILER V9.60.0.0   ADC                                                               12/13/2021 20:38:32 PAGE 4   
+  46   2                      UINT8 j = Get_CurrentValue();
+  47   2                      UINT8 k = Get_Speedvalue();
+  48   2                      UINT8 pwm_step = (i-51)>=0? (i-51)*2/3:0;  //return  %
+  49   2                      set_WDCLR;
+  50   2                      if(i>52)// to prevent hall initial voltage is 1.0v
+  51   2                      {
+  52   3                              Pressed
+C51 COMPILER V9.60.0.0   ADC                                                               12/14/2021 18:24:28 PAGE 2   
 
- 160   4                                      Not_Pressed
- 161   4                              }
- 162   3                              else
- 163   3                              {
- 164   4                                      PWM4L=0;
- 165   4                                      set_LOAD;set_PWMRUN;
- 166   4                                      Relay_Off();
- 167   4                              }
- 168   3                      }
- 169   2                      if(pwr_d==1)
- 170   2                      {
- 171   3                              pwr_d = 0;
- 172   3                              set_PD;
- 173   3                      }
- 174   2              }
- 175   1      }
- 176          
- 177          
+  53   3                              switch(j>57)//20A=57
+  54   3                              {
+  55   4                                      case 0:
+  56   4                                      {
+  57   5                                              PWM_Setting(pwm_step,k);// PWM first, or the moment relay on, PWM still 0 cause big inrush
+  58   5                                      }
+  59   4                                      break;
+  60   4                                      case 1:
+  61   4                                      {
+  62   5                                              if(PWM4L>125)// PWM>50%
+  63   5                                              {
+  64   6                                                      j=j*0.35;// Current calculation from current shunt-> OA-> ADC j=actural current
+  65   6                                                      PWM4L=(PWM4L+Incremental_P(j, 20)*3/2)>50? (PWM4L+Incremental_P(j, 20)*3/2):50;;//PWM delta value, i
+             -f the 
+  66   6                                                                                                      //reserve for timer counting
+  67   6                                                      set_LOAD;set_PWMRUN;
+  68   6              //                                      Relay_On(k);            //Forward Relay open
+  69   6                                                      j=0;
+  70   6                                              }
+  71   5                                      }
+  72   4                                      break;
+  73   4                                      default:
+  74   4                                              break;
+  75   4                              }
+  76   3                      }
+  77   2                      else//the brake should only works when pedal released
+  78   2                      {
+  79   3                              if(P00==1||P10==1)
+  80   3                              {
+  81   4                                      PWM4L=0;
+  82   4                                      set_LOAD;set_PWMRUN;
+  83   4                                      Timer0_Delay1ms(400);           
+  84   4                                      PWM4L=7;
+  85   4                                      set_LOAD;set_PWMRUN;
+  86   4                                      Timer0_Delay1ms(400);
+  87   4                                      Relay_Off();
+  88   4                                      Not_Pressed
+  89   4                              }
+  90   3                              else
+  91   3                              {
+  92   4                                      PWM4L=0;
+  93   4                                      set_LOAD;set_PWMRUN;
+  94   4                                      Relay_Off();
+  95   4                              }
+  96   3                      }
+  97   2                      if(pwr_d==1)
+  98   2                      {
+  99   3                              pwr_d = 0;
+ 100   3                              set_PD;
+ 101   3                      }
+ 102   2              }
+ 103   1      }
+ 104          
+ 105          void WTD_Init()
+ 106          {
+ 107   1              EA =1; //Global inter_rupt enable
+ 108   1              TA=0xAA;TA=0x55;WDCON=0x07;             //Setting WDT prescale 
+ 109   1              set_WDTR;                       //WDT run
+ 110   1              set_WDCLR;                                              //Clear WDT timer
+ 111   1              set_EWDT;// WTD inter_rupt enable
+ 112   1      }
+ 113          
+C51 COMPILER V9.60.0.0   ADC                                                               12/14/2021 18:24:28 PAGE 3   
+
+ 114          void Timer_Init()
+ 115          {
+ 116   1              TMOD = 0x91;
+ 117   1              clr_T0M; //timer0 clk=Fsys/12
+ 118   1              TH0 = HIBYTE(TH0_INIT);
+ 119   1              TL0 = LOBYTE(TH0_INIT);
+ 120   1          set_ET0;                                    //enable Timer0 interrupt
+ 121   1          set_EA;                                     //enable interrupts
+ 122   1          set_TR0;                                    //Timer0 run
+ 123   1      }
+ 124          
+ 125          void Pin_Interruput_Init()
+ 126          {
+ 127   1              PICON = 0x21;// Port1 Pin3 edge trigger
+ 128   1              PINEN = 0x08; //PIN3 falling/low trigger PIPEN: Rising/high trigger
+ 129   1              PIPEN = 0X00; 
+ 130   1              EIE   = 0x02; // PIN interrupt enable
+ 131   1              EIP   = 0x02;           //Priority  1 1 (highest)
+ 132   1              EIPH  = 0X02;
+ 133   1      //      set_P1S_3; // Pin3 Schmitt trigger
+ 134   1      }
+ 135          
+ 136          void Timer0_IRS() interrupt 1
+ 137          {
+ 138   1              TF0 = 0;
+ 139   1              TH0 = HIBYTE(TH0_INIT);
+ 140   1              TL0 = LOBYTE(TH0_INIT);  
+ 141   1      //    if(u8TL1_Tmp++>99) //750ms
+ 142   1      //      {
+ 143   1              P12 = ~P12;   
+ 144   1      //              u8TL1_Tmp=0;
+ 145   1      //      }
+ 146   1      }
+ 147          
+ 148          void Pin_Interruput() interrupt 7
+ 149          {
+ 150   1              pwr_d = 1;
+ 151   1              clr_PIF3;
+ 152   1              
+ 153   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    636    ----
+   CODE SIZE        =    463    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =   ----       4
+   DATA SIZE        =      4       4
    IDATA SIZE       =   ----    ----
    BIT SIZE         =      1    ----
 END OF MODULE INFORMATION.

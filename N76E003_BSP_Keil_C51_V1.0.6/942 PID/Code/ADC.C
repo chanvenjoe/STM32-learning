@@ -12,105 +12,33 @@
 
 #define Not_Pressed PWM5_P03_OUTPUT_DISABLE; PWM4_P01_OUTPUT_DISABLE; clr_P01; set_P03;
 #define Pressed PWM5_P03_OUTPUT_ENABLE; PWM4_P01_OUTPUT_ENABLE;
+#define TH0_INIT		55536		//(65536-55536=10000)= 7.5MS @16MHz/12==1.333333M =>0.00000075s/clock	=>10000 clocks = 0.0075s= 7.5ms
+#define TL0_INIT        50000
+#define TH1_INIT        25000 
+#define TL1_INIT        25000
+
 bit pwr_d=0;
 
-#if 0
-//#define Enable_ADC_AIN0			ADCCON0&=0xF0;P17_Input_Mode;AINDIDS=0x00;AINDIDS|=SET_BIT0;ADCCON1|=SET_BIT0									//P17
-//#define Enable_ADC_AIN1			ADCCON0&=0xF0;ADCCON0|=0x01;P30_Input_Mode;AINDIDS=0x00;AINDIDS|=SET_BIT1;ADCCON1|=SET_BIT0		//P30
-//#define Enable_ADC_AIN2			ADCCON0&=0xF0;ADCCON0|=0x02;P07_Input_Mode;AINDIDS=0x00;AINDIDS|=SET_BIT2;ADCCON1|=SET_BIT0		//P07
-//#define Enable_ADC_AIN3			ADCCON0&=0xF0;ADCCON0|=0x03;P06_Input_Mode;AINDIDS=0x00;AINDIDS|=SET_BIT3;ADCCON1|=SET_BIT0		//P06
-//#define Enable_ADC_AIN4			ADCCON0&=0xF0;ADCCON0|=0x04;P05_Input_Mode;AINDIDS=0x00;AINDIDS|=SET_BIT4;ADCCON1|=SET_BIT0		//P05
-//#define Enable_ADC_AIN5			ADCCON0&=0xF0;ADCCON0|=0x05;P04_Input_Mode;AINDIDS=0x00;AINDIDS|=SET_BIT5;ADCCON1|=SET_BIT0		//P04
-//#define Enable_ADC_AIN6			ADCCON0&=0xF0;ADCCON0|=0x06;P03_Input_Mode;AINDIDS=0x00;AINDIDS|=SET_BIT6;ADCCON1|=SET_BIT0		//P03
-//#define Enable_ADC_AIN7			ADCCON0&=0xF0;ADCCON0|=0x07;P11_Input_Mode;AINDIDS=0x00;AINDIDS|=SET_BIT7;ADCCON1|=SET_BIT0		//P11
-//#define Enable_ADC_BandGap	ADCCON0|=SET_BIT3;ADCCON0&=0xF8;																															//Band-gap 1.22V
+UINT8 u8TH0_Tmp,u8TL0_Tmp,u8TH1_Tmp,u8TL1_Tmp=0;
 
-//#define PWM0_FALLINGEDGE_TRIG_ADC		ADCCON0&=~SET_BIT5;ADCCON0&=~SET_BIT4;ADCCON1&=~SET_BIT3;ADCCON1&=~SET_BIT2;ADCCON1|=SET_BIT1
-//#define PWM2_FALLINGEDGE_TRIG_ADC		ADCCON0&=~SET_BIT5;ADCCON0|=SET_BIT4;ADCCON1&=~SET_BIT3;ADCCON1&=~SET_BIT2;ADCCON1|=SET_BIT1
-//#define PWM4_FALLINGEDGE_TRIG_ADC		ADCCON0|=SET_BIT5;ADCCON0&=~SET_BIT4;ADCCON1&=~SET_BIT3;ADCCON1&=~SET_BIT2;ADCCON1|=SET_BIT1
-//#define PWM0_RISINGEDGE_TRIG_ADC		ADCCON0&=~SET_BIT5;ADCCON0&=~SET_BIT4;ADCCON1&=~SET_BIT3;ADCCON1|=SET_BIT2;ADCCON1|=SET_BIT1
-//#define PWM2_RISINGEDGE_TRIG_ADC		ADCCON0&=~SET_BIT5;ADCCON0|=SET_BIT4;ADCCON1&=~SET_BIT3;ADCCON1|=SET_BIT2;ADCCON1|=SET_BIT1
-//#define PWM4_RISINGEDGE_TRIG_ADC		ADCCON0|=SET_BIT5;ADCCON0&=~SET_BIT4;ADCCON1&=~SET_BIT3;ADCCON1|=SET_BIT2;ADCCON1|=SET_BIT1
 
-//#define P04_FALLINGEDGE_TRIG_ADC		ADCCON0|=0x30;ADCCON1&=0xF3;ADCCON1|=SET_BIT1;ADCCON1&=~SET_BIT6
-//#define P13_FALLINGEDGE_TRIG_ADC		ADCCON0|=0x30;ADCCON1&=0xF3;ADCCON1|=SET_BIT1;ADCCON1|=SET_BIT6
-//#define P04_RISINGEDGE_TRIG_ADC			ADCCON0|=0x30;ADCCON1&=~SET_BIT3;ADCCON1|=SET_BIT2;ADCCON1|=SET_BIT1;ADCCON1&=~SET_BIT6
-//#define P13_RISINGEDGE_TRIG_ADC			ADCCON0|=0x30;ADCCON1&=~SET_BIT3;ADCCON1|=SET_BIT2;ADCCON1|=SET_BIT1;ADCCON1|=SET_BIT6
-#endif
 
 /******************************************************************************
 The main C function.  Program execution starts
 here after stack initialization.
 ******************************************************************************/
-
-void WTD_Init()
-{
-	TA=0xAA;TA=0x55;WDCON=0x07;  		//Setting WDT prescale 
-	set_WDTR;                       //WDT run
-	set_WDCLR;											//Clear WDT timer
-	set_EWDT;// WTD inter_rupt enable
-	EA =1; //Global inter_rupt enable
-	
-	TMOD = 0xff;
-	TIMER0_MODE1_ENABLE;//MODE1 16BITS timer/Counter
-	TIMER1_MODE1_ENABLE;
-	clr_T0M;// Timer 1 clock from sys_clk/12
-
-	
-	set_ET0;
-//	set_TR0;
-	
-}
-
-void Pin_Interruput_Init()
-{
-	set_EA;
-	PICON = 0x21;// Port1 Pin3 edge trigger
-	PINEN = 0x08; //PIN3 falling/low trigger PIPEN: Rising/high trigger
-	PIPEN = 0X00;
-	EIE   = 0x02; // PIN interrupt enable
-	set_P0S_3;
-//	EIP = 0x02; //PRIORITY SETTING
-//	EIPH	 = 0x02;
-}
-
-void PD_Timer0() interrupt 1
-{
-	if(TF0)
-	{
-		if(P12==1)
-		{
-			Not_Pressed
-			pwr_d = 1;
-		}
-	}
-}
-
-void Pin_Interruput() interrupt 7
-{
-	
-	if(PIF==0x08)
-	{
-		PIF = 0x00; // clr interrupt flag
-		Timer0_Delay1ms(1);
-		if(P13==0)
-		{
-			P12=~P12;//LED on/off
-			TH0 = 0xff; // timer filter
-//			TL0 = 0xFF;
-			set_TR0;
-		}
-	}
-}
+void WTD_Init();
+void Timer_Init();
+void Pin_Interruput_Init();
 
 void main (void)
-{
+{	
 	Set_All_GPIO_Quasi_Mode;			//For GPIO1 output, Find in "Function_define.h" - "GPIO INIT"
 	InitialUART0_Timer1(115200);
-	ADC_Init();							
+	Timer_Init();
 	WTD_Init();
 	Pin_Interruput_Init();
-										//reverved for timer_init   Sleep2
+	ADC_Init();							
 	PWM_Init();
 	while(1)
 	{
@@ -174,4 +102,52 @@ void main (void)
 	}
 }
 
+void WTD_Init()
+{
+	EA =1; //Global inter_rupt enable
+	TA=0xAA;TA=0x55;WDCON=0x07;  		//Setting WDT prescale 
+	set_WDTR;                       //WDT run
+	set_WDCLR;						//Clear WDT timer
+	set_EWDT;// WTD inter_rupt enable
+}
 
+void Timer_Init()
+{
+	TMOD = 0x91;
+	clr_T0M; //timer0 clk=Fsys/12
+	TH0 = HIBYTE(TH0_INIT);
+	TL0 = LOBYTE(TH0_INIT);
+    set_ET0;                                    //enable Timer0 interrupt
+    set_EA;                                     //enable interrupts
+    set_TR0;                                    //Timer0 run
+}
+
+void Pin_Interruput_Init()
+{
+	PICON = 0x21;// Port1 Pin3 edge trigger
+	PINEN = 0x08; //PIN3 falling/low trigger PIPEN: Rising/high trigger
+	PIPEN = 0X00; 
+	EIE   = 0x02; // PIN interrupt enable
+	EIP   = 0x02;		//Priority  1 1 (highest)
+	EIPH  = 0X02;
+//	set_P1S_3; // Pin3 Schmitt trigger
+}
+
+void Timer0_IRS() interrupt 1
+{
+	TF0 = 0;
+	TH0 = HIBYTE(TH0_INIT);
+	TL0 = LOBYTE(TH0_INIT);  
+//    if(u8TL1_Tmp++>99) //750ms
+//	{
+	P12 = ~P12;   
+//		u8TL1_Tmp=0;
+//	}
+}
+
+void Pin_Interruput() interrupt 7
+{
+	pwr_d = 1;
+	clr_PIF3;
+	
+}
