@@ -36,13 +36,10 @@ int Incremental_P(UINT8 Cbat, UINT8 CC_Value)//int can have negative num
 }
 void ADC_Init(void)
 {
-	clr_P12; //LED on
-	clr_P10;//BC
-	clr_P05;
 	P17_Input_Mode;//Hall
 	P30_Input_Mode;//Speed shift
 	P05_Input_Mode; //current value
-//	P13_Input_Mode;
+	P13_Input_Mode;
 	P12_PushPull_Mode;
 	P01_PushPull_Mode;
 	P03_PushPull_Mode;
@@ -50,6 +47,9 @@ void ADC_Init(void)
 	P00_PushPull_Mode;//Forward relay
 	P10_PushPull_Mode;
 	
+	clr_P12; //LED on
+	clr_P10;//BC
+	clr_P05;
 	set_P14; //Enable DCDC
 	set_P13;
 	clr_P00, clr_P10;
@@ -98,10 +98,7 @@ void ADC_Init(void)
 	printf("\nBandgap value:%d\n", bgvalue);
 	printf("\nBandgap vo ltage:%dmV\n",bgvol);
 	clr_IAPEN;		// turn off IAP
-	
 	Enable_ADC_AIN0;		//P17 Hall pedal
-//	Enable_ADC_AIN4;		//P05 A_Det
-//	Enable_ADC_AIN1;		//P30 Speed
 	for(bgh =0;bgh<3;bgh++)
 	{
 		clr_ADCF;
@@ -118,8 +115,7 @@ UINT16 Get_CurrentValue(void)
 	clr_ADCF;
 	set_ADCS;
 	while(ADCF==0);
-//	ADCValue = (ADCRH<<4)+ADCRL;
-//	printf("ADC value:%d",ADCValue);
+	printf("ADC value:%d",ADCRH);
 	return ADCRH;
 }
 
@@ -128,11 +124,7 @@ UINT16 Get_HallValue(void)
 	Enable_ADC_AIN0;
 	clr_ADCF;
 	set_ADCS;//Enable ADC transfer
-//	ADCValue = (ADCRH<<4)+ADCRL
-//	ADC_Vol = (bgvol*ADCValue/bgvalue);//All are decimal
-//	printf("ADCRH:%x\n",ADCRH);
-//	printf("ADCRL:%d",ADCRL);
-//	printf("ADC_voltage:%gmV\n",ADC_Vol);//%g don't print no meaning 0
+	printf("ADC_voltage:%gmV\n",ADCRH);//%g don't print no meaning 0
 	while(ADCF==0);//ADC transfer done
 	return ADCRH; //High 8 bits+ low 4 bits
 }
@@ -198,12 +190,13 @@ void PWM_Init()
 	PWM5_P03_OUTPUT_ENABLE;
 	PWM4_P01_OUTPUT_ENABLE;//Upper bridge
 	PWM4_OUTPUT_INVERSE;
-//	PWM5_OUTPUT_INVERSE;	
 	PWM_COMPLEMENTARY_MODE;//In this mode the dead time can work
 	
 	PWM_CLOCK_DIV_32;
+//#if 0
 //	PWMPH = 0x07;
 //	PWMPL = 0xcf;	//1K
+//#endif
 	PWMPH = 0x00;   //Period setting;
 	PWMPL = 0xff;	//1.9KHz
 	

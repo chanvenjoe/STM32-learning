@@ -151,7 +151,7 @@
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>Code\PWM.C</Filename>
+          <Filename>C:\Users\Admin\Desktop\Project\STM32-learning\N76E003_BSP_Keil_C51_V1.0.6\Sample_Code\PWM_DeadTime\Code\PWM.C</Filename>
           <ExecCommand></ExecCommand>
           <Expression></Expression>
         </Bp>

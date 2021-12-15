@@ -12,10 +12,10 @@
 
 #define Not_Pressed PWM5_P03_OUTPUT_DISABLE; PWM4_P01_OUTPUT_DISABLE; clr_P01; set_P03;
 #define Pressed PWM5_P03_OUTPUT_ENABLE; PWM4_P01_OUTPUT_ENABLE;
-#define TH0_INIT		55536		//(65536-55536=10000)= 7.5MS @16MHz/12==1.333333M =>0.00000075s/clock	=>10000 clocks = 0.0075s= 7.5ms
-#define TL0_INIT        50000
-#define TH1_INIT        25000 
-#define TL1_INIT        25000
+#define TH0_INIT		(65536-1333)		//(65536-55536=10000)= 7.5MS @16MHz/12==1.333333M =>0.00000075s/clock	=>10000 clocks = 0.0075s= 7.5ms  1333=1ms
+#define TL0_INIT        (65536-1334)
+//#define TH1_INIT        25000
+//#define TL1_INIT        25000
 
 bit pwr_d=0;
 
@@ -113,13 +113,15 @@ void WTD_Init()
 
 void Timer_Init()
 {
-	TMOD = 0x91;
+	TMOD = 0x01;
 	clr_T0M; //timer0 clk=Fsys/12
 	TH0 = HIBYTE(TH0_INIT);
 	TL0 = LOBYTE(TH0_INIT);
     set_ET0;                                    //enable Timer0 interrupt
     set_EA;                                     //enable interrupts
     set_TR0;                                    //Timer0 run
+	IPH = 0X02;
+	IP=0X02;
 }
 
 void Pin_Interruput_Init()
@@ -130,24 +132,25 @@ void Pin_Interruput_Init()
 	EIE   = 0x02; // PIN interrupt enable
 	EIP   = 0x02;		//Priority  1 1 (highest)
 	EIPH  = 0X02;
-//	set_P1S_3; // Pin3 Schmitt trigger
+	set_P1S_3; // Pin3 Schmitt trigger
 }
 
 void Timer0_IRS() interrupt 1
 {
-	TF0 = 0;
+//	TF0 = 0;
 	TH0 = HIBYTE(TH0_INIT);
 	TL0 = LOBYTE(TH0_INIT);  
-//    if(u8TL1_Tmp++>99) //750ms
-//	{
-	P12 = ~P12;   
-//		u8TL1_Tmp=0;
-//	}
+    if(u8TL1_Tmp++>99)
+	{
+		P12 = ~P12;   
+		u8TL1_Tmp=0;
+	}
 }
 
 void Pin_Interruput() interrupt 7
 {
-	pwr_d = 1;
+	pwr_d =~ pwr_d;
 	clr_PIF3;
+	TR0=~TR0;
 	
 }

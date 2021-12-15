@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   ADC                                                               12/14/2021 18:24:28 PAGE 1   
+C51 COMPILER V9.60.0.0   ADC                                                               12/15/2021 18:16:01 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE ADC
@@ -22,11 +22,11 @@ line level    source
   12          
   13          #define Not_Pressed PWM5_P03_OUTPUT_DISABLE; PWM4_P01_OUTPUT_DISABLE; clr_P01; set_P03;
   14          #define Pressed PWM5_P03_OUTPUT_ENABLE; PWM4_P01_OUTPUT_ENABLE;
-  15          #define TH0_INIT                55536           //(65536-55536=10000)= 7.5MS @16MHz/12==1.333333M =>0.00000075s/clock   =>10000 clo
-             -cks = 0.0075s= 7.5ms
-  16          #define TL0_INIT        50000
-  17          #define TH1_INIT        25000 
-  18          #define TL1_INIT        25000
+  15          #define TH0_INIT                (65536-1333)            //(65536-55536=10000)= 7.5MS @16MHz/12==1.333333M =>0.00000075s/clock   =>10
+             -000 clocks = 0.0075s= 7.5ms  1333=1ms
+  16          #define TL0_INIT        (65536-1334)
+  17          //#define TH1_INIT        25000
+  18          //#define TL1_INIT        25000
   19          
   20          bit pwr_d=0;
   21          
@@ -62,7 +62,7 @@ line level    source
   50   2                      if(i>52)// to prevent hall initial voltage is 1.0v
   51   2                      {
   52   3                              Pressed
-C51 COMPILER V9.60.0.0   ADC                                                               12/14/2021 18:24:28 PAGE 2   
+C51 COMPILER V9.60.0.0   ADC                                                               12/15/2021 18:16:01 PAGE 2   
 
   53   3                              switch(j>57)//20A=57
   54   3                              {
@@ -126,52 +126,55 @@ line level    source
  111   1              set_EWDT;// WTD inter_rupt enable
  112   1      }
  113          
-C51 COMPILER V9.60.0.0   ADC                                                               12/14/2021 18:24:28 PAGE 3   
+C51 COMPILER V9.60.0.0   ADC                                                               12/15/2021 18:16:01 PAGE 3   
 
  114          void Timer_Init()
  115          {
- 116   1              TMOD = 0x91;
+ 116   1              TMOD = 0x01;
  117   1              clr_T0M; //timer0 clk=Fsys/12
  118   1              TH0 = HIBYTE(TH0_INIT);
  119   1              TL0 = LOBYTE(TH0_INIT);
  120   1          set_ET0;                                    //enable Timer0 interrupt
  121   1          set_EA;                                     //enable interrupts
  122   1          set_TR0;                                    //Timer0 run
- 123   1      }
- 124          
- 125          void Pin_Interruput_Init()
- 126          {
- 127   1              PICON = 0x21;// Port1 Pin3 edge trigger
- 128   1              PINEN = 0x08; //PIN3 falling/low trigger PIPEN: Rising/high trigger
- 129   1              PIPEN = 0X00; 
- 130   1              EIE   = 0x02; // PIN interrupt enable
- 131   1              EIP   = 0x02;           //Priority  1 1 (highest)
- 132   1              EIPH  = 0X02;
- 133   1      //      set_P1S_3; // Pin3 Schmitt trigger
- 134   1      }
- 135          
- 136          void Timer0_IRS() interrupt 1
- 137          {
- 138   1              TF0 = 0;
- 139   1              TH0 = HIBYTE(TH0_INIT);
- 140   1              TL0 = LOBYTE(TH0_INIT);  
- 141   1      //    if(u8TL1_Tmp++>99) //750ms
- 142   1      //      {
- 143   1              P12 = ~P12;   
- 144   1      //              u8TL1_Tmp=0;
- 145   1      //      }
- 146   1      }
- 147          
- 148          void Pin_Interruput() interrupt 7
- 149          {
- 150   1              pwr_d = 1;
- 151   1              clr_PIF3;
- 152   1              
- 153   1      }
+ 123   1      //      IPH = 0X02;
+ 124   1      //      IP=0X02;
+ 125   1      }
+ 126          
+ 127          void Pin_Interruput_Init()
+ 128          {
+ 129   1              PICON = 0x21;// Port1 Pin3 edge trigger
+ 130   1              PINEN = 0x08; //PIN3 falling/low trigger PIPEN: Rising/high trigger
+ 131   1              PIPEN = 0X00; 
+ 132   1              EIE   = 0x02; // PIN interrupt enable
+ 133   1              EIP   = 0x02;           //Priority  1 1 (highest)
+ 134   1              EIPH  = 0X02;
+ 135   1              set_P1S_3; // Pin3 Schmitt trigger
+ 136   1      }
+ 137          
+ 138          void Timer0_IRS() interrupt 1
+ 139          {
+ 140   1      //      TF0 = 0;
+ 141   1              TH0 = HIBYTE(TH0_INIT);
+ 142   1              TL0 = LOBYTE(TH0_INIT);  
+ 143   1          if(u8TL1_Tmp++>99)
+ 144   1              {
+ 145   2                      P12 = ~P12;   
+ 146   2                      u8TL1_Tmp=0;
+ 147   2              }
+ 148   1      }
+ 149          
+ 150          void Pin_Interruput() interrupt 7
+ 151          {
+ 152   1              pwr_d =~ pwr_d;
+ 153   1              clr_PIF3;
+ 154   1              TR0=~TR0;
+ 155   1              
+ 156   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    463    ----
+   CODE SIZE        =    523    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
