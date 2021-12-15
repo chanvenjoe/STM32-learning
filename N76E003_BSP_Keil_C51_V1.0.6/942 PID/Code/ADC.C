@@ -8,19 +8,15 @@
 //*****************  The Following is in define in Fucntion_define.h  ***************************
 //****** Always include Function_define.h call the define you want, detail see main(void) *******
 //***********************************************************************************************
-#define CCvalue 0x14; //change the current regulation value
+#define CCvalue 0x14 //change the current regulation value  if it is a number, don't use ";"
+#define TH0_INIT		(65536-65536)		//(65536-55536=10000)= 7.5MS @16MHz/12==1.333333M =>0.00000075s/clock	=>10000 clocks = 0.0075s= 7.5ms  1333=1ms
+#define TL0_INIT        (65536-1334)
 
 #define Not_Pressed PWM5_P03_OUTPUT_DISABLE; PWM4_P01_OUTPUT_DISABLE; clr_P01; set_P03;
 #define Pressed PWM5_P03_OUTPUT_ENABLE; PWM4_P01_OUTPUT_ENABLE;
-#define TH0_INIT		(65536-1333)		//(65536-55536=10000)= 7.5MS @16MHz/12==1.333333M =>0.00000075s/clock	=>10000 clocks = 0.0075s= 7.5ms  1333=1ms
-#define TL0_INIT        (65536-1334)
-//#define TH1_INIT        25000
-//#define TL1_INIT        25000
 
 bit pwr_d=0;
-
-UINT8 u8TH0_Tmp,u8TL0_Tmp,u8TH1_Tmp,u8TL1_Tmp=0;
-
+u8 u8TL1_Tmp;
 
 
 /******************************************************************************
@@ -62,7 +58,7 @@ void main (void)
 					if(PWM4L>125)// PWM>50%
 					{
 						j=j*0.35;// Current calculation from current shunt-> OA-> ADC j=actural current
-						PWM4L=(PWM4L+Incremental_P(j, 20)*3/2)>50? (PWM4L+Incremental_P(j, 20)*3/2):50;;//PWM delta value, if the 
+						PWM4L=(PWM4L+Incremental_P(j, CCvalue)*3/2)>50? (PWM4L+Incremental_P(j, 20)*3/2):50;;//PWM delta value, if the 
 												//reserve for timer counting
 						set_LOAD;set_PWMRUN;
 	//					Relay_On(k);		//Forward Relay open
@@ -80,10 +76,10 @@ void main (void)
 			{
 				PWM4L=0;
 				set_LOAD;set_PWMRUN;
-				Timer0_Delay1ms(400);		
+				Timer2_Delay500us(800);		
 				PWM4L=7;
 				set_LOAD;set_PWMRUN;
-				Timer0_Delay1ms(400);
+				Timer2_Delay500us(800);
 				Relay_Off();
 				Not_Pressed
 			}
@@ -140,7 +136,7 @@ void Timer0_IRS() interrupt 1
 //	TF0 = 0;
 	TH0 = HIBYTE(TH0_INIT);
 	TL0 = LOBYTE(TH0_INIT);  
-    if(u8TL1_Tmp++>99)
+    if(u8TL1_Tmp++>9)
 	{
 		P12 = ~P12;   
 		u8TL1_Tmp=0;

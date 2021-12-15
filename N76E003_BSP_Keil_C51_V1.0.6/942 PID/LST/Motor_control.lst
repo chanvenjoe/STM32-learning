@@ -1,10 +1,10 @@
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     12/15/2021 18:16:01 PAGE 1   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     12/15/2021 22:52:22 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MOTOR_CONTROL
 OBJECT MODULE PLACED IN .\Output\Motor_control.obj
-COMPILER INVOKED BY: C:\keil5\C51\BIN\C51.EXE Code\Motor_control.c OPTIMIZE(8,SPEED) BROWSE INCDIR(..\Include) DEFINE(FO
-                    -SC_160000) DEBUG OBJECTEXTEND PRINT(.\LST\Motor_control.lst) OBJECT(.\Output\Motor_control.obj)
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE Code\Motor_control.c OPTIMIZE(0,SPEED) BROWSE INCDIR(..\Include) DEFINE(
+                    -FOSC_160000) DEBUG OBJECTEXTEND PRINT(.\LST\Motor_control.lst) OBJECT(.\Output\Motor_control.obj)
 
 line level    source
 
@@ -17,7 +17,7 @@ line level    source
    7          #include "SFR_Macro.h"
    8          
    9          #define Vref  3072;
-  10          #define Ramp_up Timer0_Delay1ms(10); set_LOAD;set_PWMRUN//from 0->0x97 150 step, 10ms*150=1.5s
+  10          #define Ramp_up Timer2_Delay500us(20); set_LOAD;set_PWMRUN//from 0->0x97 150 step, 10ms*150=1.5s
   11          #define set_IAPEN BIT_TMP=EA;EA=0;TA=0xAA;TA=0x55;CHPCON|=SET_BIT0 ;EA=BIT_TMP
   12          #define set_IAPGO BIT_TMP=EA;EA=0;TA=0xAA;TA=0x55;IAPTRG|=SET_BIT0 ;EA=BIT_TMP
   13          #define clr_IAPEN BIT_TMP=EA;EA=0;TA=0xAA;TA=0x55;CHPCON&=~SET_BIT0;EA=BIT_TMP
@@ -62,7 +62,7 @@ line level    source
   52   1              clr_P05;
   53   1              set_P14; //Enable DCDC
   54   1              set_P13;
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     12/15/2021 18:16:01 PAGE 2   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     12/15/2021 22:52:22 PAGE 2   
 
   55   1              clr_P00, clr_P10;
   56   1              
@@ -126,7 +126,7 @@ line level    source
  114   1              Enable_ADC_AIN4;
  115   1              clr_ADCF;
  116   1              set_ADCS;
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     12/15/2021 18:16:01 PAGE 3   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     12/15/2021 22:52:22 PAGE 3   
 
  117   1              while(ADCF==0);
  118   1              printf("ADC value:%d",ADCRH);
@@ -190,7 +190,7 @@ line level    source
  176   1              {
  177   2                      EA = 0;
  178   2                      TA = 0xAA;
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     12/15/2021 18:16:01 PAGE 4   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     12/15/2021 22:52:22 PAGE 4   
 
  179   2                      TA = 0x55;
  180   2                      PDTEN|=0x10;
@@ -254,7 +254,7 @@ line level    source
  238   4                              }
  239   3                              else
  240   3                              {
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     12/15/2021 18:16:01 PAGE 5   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     12/15/2021 22:52:22 PAGE 5   
 
  241   4                                      PWM4L=i;
  242   4                              }
@@ -270,11 +270,11 @@ line level    source
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =   1118    ----
+   CODE SIZE        =   1281    ----
    CONSTANT SIZE    =     74    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =     27       1
+   DATA SIZE        =     37    ----
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.
