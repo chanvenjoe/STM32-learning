@@ -92,7 +92,7 @@ void main (void)
 		}
 		if(pwr_d==1)
 		{
-			pwr_d = 0;
+			set_P12;
 			set_PD;
 		}
 	}

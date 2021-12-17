@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     12/17/2021 14:52:08 PAGE 1   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     12/17/2021 18:19:47 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MOTOR_CONTROL
@@ -62,7 +62,7 @@ line level    source
   52   1              clr_P05;
   53   1              set_P14; //Enable DCDC
   54   1              set_P13;
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     12/17/2021 14:52:08 PAGE 2   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     12/17/2021 18:19:47 PAGE 2   
 
   55   1              clr_P00, clr_P10;
   56   1              
@@ -126,7 +126,7 @@ line level    source
  114   1              Enable_ADC_AIN4;
  115   1              clr_ADCF;
  116   1              set_ADCS;
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     12/17/2021 14:52:08 PAGE 3   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     12/17/2021 18:19:47 PAGE 3   
 
  117   1              while(ADCF==0);
  118   1      //      printf("ADC value:%d",ADCRH);
@@ -190,7 +190,7 @@ line level    source
  176   1              {
  177   2                      EA = 0;
  178   2                      TA = 0xAA;
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     12/17/2021 14:52:08 PAGE 4   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     12/17/2021 18:19:47 PAGE 4   
 
  179   2                      TA = 0x55;
  180   2                      PDTEN|=0x10;
@@ -254,7 +254,7 @@ line level    source
  238   4                              }
  239   3                              else
  240   3                              {
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     12/17/2021 14:52:08 PAGE 5   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     12/17/2021 18:19:47 PAGE 5   
 
  241   4                                      PWM4L=i;
  242   4                                      flag = 0;
