@@ -7,7 +7,7 @@
 #include "SFR_Macro.h"
 
 #define Vref  3072;
-#define Ramp_up Timer2_Delay500us(20); set_LOAD;set_PWMRUN//from 0->0x97 150 step, 10ms*150=1.5s
+#define Ramp_up 	Timer1_Delay10ms(1); set_LOAD;set_PWMRUN//from 0->0x97 150 step, 10ms*150=1.5s
 #define set_IAPEN BIT_TMP=EA;EA=0;TA=0xAA;TA=0x55;CHPCON|=SET_BIT0 ;EA=BIT_TMP
 #define set_IAPGO BIT_TMP=EA;EA=0;TA=0xAA;TA=0x55;IAPTRG|=SET_BIT0 ;EA=BIT_TMP
 #define clr_IAPEN BIT_TMP=EA;EA=0;TA=0xAA;TA=0x55;CHPCON&=~SET_BIT0;EA=BIT_TMP
@@ -95,8 +95,8 @@ void ADC_Init(void)
 		bgvalue = (bgh<<4)+bgl;
 		bgvol = bgvalue*3/4;
 	}
-	printf("\nBandgap value:%d\n", bgvalue);
-	printf("\nBandgap vo ltage:%dmV\n",bgvol);
+//	printf("\nBandgap value:%d\n", bgvalue);
+//	printf("\nBandgap vo ltage:%dmV\n",bgvol);
 	clr_IAPEN;		// turn off IAP
 	Enable_ADC_AIN0;		//P17 Hall pedal
 	for(bgh =0;bgh<3;bgh++)
@@ -105,7 +105,7 @@ void ADC_Init(void)
 		set_ADCS;
 		while(ADCF==0);
 		ADCValue = (ADCRH<<4)+ADCRL;
-		printf("ADC value:%d",ADCValue);
+//		printf("ADC value:%d",ADCValue);
 	}
 }
 /* AD value= Voltage*255/5  20A=57*/
@@ -115,7 +115,7 @@ UINT16 Get_CurrentValue(void)
 	clr_ADCF;
 	set_ADCS;
 	while(ADCF==0);
-	printf("ADC value:%d",ADCRH);
+//	printf("ADC value:%d",ADCRH);
 	return ADCRH;
 }
 
@@ -124,7 +124,7 @@ UINT16 Get_HallValue(void)
 	Enable_ADC_AIN0;
 	clr_ADCF;
 	set_ADCS;//Enable ADC transfer
-	printf("ADC_voltage:%gmV\n",ADCRH);//%g don't print no meaning 0
+//	printf("ADC_voltage:%gmV\n",ADCRH);//%g don't print no meaning 0
 	while(ADCF==0);//ADC transfer done
 	return ADCRH; //High 8 bits+ low 4 bits
 }
@@ -223,7 +223,7 @@ void PWM_Setting(UINT8 n, UINT8 FB)	//1n = 1%
 	set_SFRPAGE; //PWM4\5 SETTING
 	flag = 1;
 	n = n>100? 100: n;
-	if(flag)
+	while(flag)
 	{
 		UINT8 i = n*5/2;
 		if(n>=0&&n<=100)
@@ -239,13 +239,14 @@ void PWM_Setting(UINT8 n, UINT8 FB)	//1n = 1%
 			else
 			{
 				PWM4L=i;
+				flag = 0;
 			}
 		}
 		if(PWM4L>10)
 			Relay_On(FB);
 //		else
 //			Relay_Off();
-		Ramp_up;// 10 = 2.55s ramp up
+		Ramp_up;// 10ms = 2.55s ramp up
 	}
 	
 }

@@ -1,10 +1,10 @@
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     12/15/2021 22:52:22 PAGE 1   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     12/17/2021 14:52:08 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MOTOR_CONTROL
 OBJECT MODULE PLACED IN .\Output\Motor_control.obj
-COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE Code\Motor_control.c OPTIMIZE(0,SPEED) BROWSE INCDIR(..\Include) DEFINE(
-                    -FOSC_160000) DEBUG OBJECTEXTEND PRINT(.\LST\Motor_control.lst) OBJECT(.\Output\Motor_control.obj)
+COMPILER INVOKED BY: C:\keil5\C51\BIN\C51.EXE Code\Motor_control.c OPTIMIZE(0,SPEED) BROWSE INCDIR(..\Include) DEFINE(FO
+                    -SC_160000) DEBUG OBJECTEXTEND PRINT(.\LST\Motor_control.lst) OBJECT(.\Output\Motor_control.obj)
 
 line level    source
 
@@ -17,7 +17,7 @@ line level    source
    7          #include "SFR_Macro.h"
    8          
    9          #define Vref  3072;
-  10          #define Ramp_up Timer2_Delay500us(20); set_LOAD;set_PWMRUN//from 0->0x97 150 step, 10ms*150=1.5s
+  10          #define Ramp_up         Timer1_Delay10ms(1); set_LOAD;set_PWMRUN//from 0->0x97 150 step, 10ms*150=1.5s
   11          #define set_IAPEN BIT_TMP=EA;EA=0;TA=0xAA;TA=0x55;CHPCON|=SET_BIT0 ;EA=BIT_TMP
   12          #define set_IAPGO BIT_TMP=EA;EA=0;TA=0xAA;TA=0x55;IAPTRG|=SET_BIT0 ;EA=BIT_TMP
   13          #define clr_IAPEN BIT_TMP=EA;EA=0;TA=0xAA;TA=0x55;CHPCON&=~SET_BIT0;EA=BIT_TMP
@@ -62,7 +62,7 @@ line level    source
   52   1              clr_P05;
   53   1              set_P14; //Enable DCDC
   54   1              set_P13;
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     12/15/2021 22:52:22 PAGE 2   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     12/17/2021 14:52:08 PAGE 2   
 
   55   1              clr_P00, clr_P10;
   56   1              
@@ -107,8 +107,8 @@ line level    source
   95   2                      bgvalue = (bgh<<4)+bgl;
   96   2                      bgvol = bgvalue*3/4;
   97   2              }
-  98   1              printf("\nBandgap value:%d\n", bgvalue);
-  99   1              printf("\nBandgap vo ltage:%dmV\n",bgvol);
+  98   1      //      printf("\nBandgap value:%d\n", bgvalue);
+  99   1      //      printf("\nBandgap vo ltage:%dmV\n",bgvol);
  100   1              clr_IAPEN;              // turn off IAP
  101   1              Enable_ADC_AIN0;                //P17 Hall pedal
  102   1              for(bgh =0;bgh<3;bgh++)
@@ -117,7 +117,7 @@ line level    source
  105   2                      set_ADCS;
  106   2                      while(ADCF==0);
  107   2                      ADCValue = (ADCRH<<4)+ADCRL;
- 108   2                      printf("ADC value:%d",ADCValue);
+ 108   2      //              printf("ADC value:%d",ADCValue);
  109   2              }
  110   1      }
  111          /* AD value= Voltage*255/5  20A=57*/
@@ -126,10 +126,10 @@ line level    source
  114   1              Enable_ADC_AIN4;
  115   1              clr_ADCF;
  116   1              set_ADCS;
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     12/15/2021 22:52:22 PAGE 3   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     12/17/2021 14:52:08 PAGE 3   
 
  117   1              while(ADCF==0);
- 118   1              printf("ADC value:%d",ADCRH);
+ 118   1      //      printf("ADC value:%d",ADCRH);
  119   1              return ADCRH;
  120   1      }
  121          
@@ -138,7 +138,7 @@ line level    source
  124   1              Enable_ADC_AIN0;
  125   1              clr_ADCF;
  126   1              set_ADCS;//Enable ADC transfer
- 127   1              printf("ADC_voltage:%gmV\n",ADCRH);//%g don't print no meaning 0
+ 127   1      //      printf("ADC_voltage:%gmV\n",ADCRH);//%g don't print no meaning 0
  128   1              while(ADCF==0);//ADC transfer done
  129   1              return ADCRH; //High 8 bits+ low 4 bits
  130   1      }
@@ -190,7 +190,7 @@ line level    source
  176   1              {
  177   2                      EA = 0;
  178   2                      TA = 0xAA;
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     12/15/2021 22:52:22 PAGE 4   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     12/17/2021 14:52:08 PAGE 4   
 
  179   2                      TA = 0x55;
  180   2                      PDTEN|=0x10;
@@ -239,7 +239,7 @@ line level    source
  223   1              set_SFRPAGE; //PWM4\5 SETTING
  224   1              flag = 1;
  225   1              n = n>100? 100: n;
- 226   1              if(flag)
+ 226   1              while(flag)
  227   1              {
  228   2                      UINT8 i = n*5/2;
  229   2                      if(n>=0&&n<=100)
@@ -254,24 +254,25 @@ line level    source
  238   4                              }
  239   3                              else
  240   3                              {
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     12/15/2021 22:52:22 PAGE 5   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     12/17/2021 14:52:08 PAGE 5   
 
  241   4                                      PWM4L=i;
- 242   4                              }
- 243   3                      }
- 244   2                      if(PWM4L>10)
- 245   2                              Relay_On(FB);
- 246   2      //              else
- 247   2      //                      Relay_Off();
- 248   2                      Ramp_up;// 10 = 2.55s ramp up
- 249   2              }
- 250   1              
- 251   1      }
+ 242   4                                      flag = 0;
+ 243   4                              }
+ 244   3                      }
+ 245   2                      if(PWM4L>10)
+ 246   2                              Relay_On(FB);
+ 247   2      //              else
+ 248   2      //                      Relay_Off();
+ 249   2                      Ramp_up;// 10ms = 2.55s ramp up
+ 250   2              }
+ 251   1              
+ 252   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =   1281    ----
-   CONSTANT SIZE    =     74    ----
+   CODE SIZE        =   1187    ----
+   CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
    DATA SIZE        =     37    ----

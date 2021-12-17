@@ -8,7 +8,7 @@
 //*****************  The Following is in define in Fucntion_define.h  ***************************
 //****** Always include Function_define.h call the define you want, detail see main(void) *******
 //***********************************************************************************************
-#define CCvalue 0x14 //change the current regulation value  if it is a number, don't use ";"
+#define CCvalue 5 //  change the current regulation value  if it is a number, don't use ";"
 #define TH0_INIT		(65536-65536)		//(65536-55536=10000)= 7.5MS @16MHz/12==1.333333M =>0.00000075s/clock	=>10000 clocks = 0.0075s= 7.5ms  1333=1ms
 #define TL0_INIT        (65536-1334)
 
@@ -16,7 +16,7 @@
 #define Pressed PWM5_P03_OUTPUT_ENABLE; PWM4_P01_OUTPUT_ENABLE;
 
 bit pwr_d=0;
-u8 u8TL1_Tmp;
+static u8 u8TL1_Tmp;
 
 
 /******************************************************************************
@@ -43,7 +43,7 @@ void main (void)
 		UINT8 k = Get_Speedvalue();
 		UINT8 pwm_step = (i-51)>=0? (i-51)*2/3:0;  //return  %
 		set_WDCLR;
-		if(i>52)// to prevent hall initial voltage is 1.0v
+		if(i>80)// to prevent hall initial voltage is 1.0v
 		{
 			Pressed
 			switch(j>57)//20A=57
@@ -76,10 +76,10 @@ void main (void)
 			{
 				PWM4L=0;
 				set_LOAD;set_PWMRUN;
-				Timer2_Delay500us(800);		
+				Timer1_Delay10ms(40);	
 				PWM4L=7;
 				set_LOAD;set_PWMRUN;
-				Timer2_Delay500us(800);
+				Timer1_Delay10ms(40);
 				Relay_Off();
 				Not_Pressed
 			}
