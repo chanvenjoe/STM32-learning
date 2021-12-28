@@ -1,5 +1,5 @@
 #include "gpio_init.h"
-#include "stm32f0xx.h"
+#include "stm32f4xx.h"
 
 GPIO_InitTypeDef GPIO_Config;
 TIM_OCInitTypeDef Timer_init;

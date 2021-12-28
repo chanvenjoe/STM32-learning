@@ -20,7 +20,7 @@
 void delay_init(u8 SYSCLK);
 void delay_ms(u16 nms);
 void delay_us(u32 nus);
-void delay_47_6ns(u16 nns );
+void delay_20ns(u16 nns );
 
 #endif
 

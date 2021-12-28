@@ -27,6 +27,8 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "WS2811.h"
+#include "gpio_init.h"
 
 /** @addtogroup STM32F0xx_StdPeriph_Templates
   * @{
@@ -46,7 +48,8 @@
   */
 int main(void)
 {
-
+	delay_init(8);
+	GPIO_Conf();
   /*!< At this stage the microcontroller clock setting is already configured, 
        this is done through SystemInit() function which is called from startup
        file (startup_stm32f0xx.s) before to branch to application main.
@@ -58,10 +61,11 @@ int main(void)
      */
 
   /* Infinite loop */
-  while (1)
-  {
-
-  }
+	while (1)
+	{
+		WS_Key_RGB();
+		delay_ms(100);
+	}
 }
 
 

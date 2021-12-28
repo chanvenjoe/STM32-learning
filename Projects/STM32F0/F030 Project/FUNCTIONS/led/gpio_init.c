@@ -17,12 +17,6 @@ void GPIO_Conf(void)
 	GPIO_Config.GPIO_Speed= GPIO_Speed_Level_3; //related to the power consumption and reaction speed;
 	GPIO_Init(GPIOF, &GPIO_Config);
 	
-	GPIO_Config.GPIO_Mode = GPIO_Mode_IN;
-	GPIO_Config.GPIO_OType= GPIO_OType_PP;
-	GPIO_Config.GPIO_Pin  = GPIO_Pin_2 | GPIO_Pin_3;
-	GPIO_Config.GPIO_PuPd = GPIO_PuPd_UP;
-	GPIO_Config.GPIO_Speed= GPIO_Speed_Level_3; //related to the power consumption and reaction speed;
-	GPIO_Init(GPIOE, &GPIO_Config);
 	
 	GPIO_Config.GPIO_Mode = GPIO_Mode_OUT;
 	GPIO_Config.GPIO_OType= GPIO_OType_PP;

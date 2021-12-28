@@ -27,7 +27,7 @@ void WS_Send24bits(u32 color)//Be Careful about the direction of rope: Din->Dout
 //	sftcolor<<8;
 	for(i=0;i<24;i++)
 	{
-		if(color & 0x00800000)
+		if(color & 0x00800000)// 0000 0000 1000 0000... the highest bit & color, then the MCU can send 24bits data to WS2812
 		{
 			CODE_1
 		}
@@ -48,7 +48,7 @@ void WS_ColorSet_LED(u8 from, u8 to, u32 color)
 	{
 		temp=from; from=to; to=temp;
 	}
-	for(temp = from;temp<to; temp++)
+	for(temp = from;temp<=to; temp++)
 	{
 		WS_Color_copy(temp, color);
 	}
@@ -57,7 +57,8 @@ void WS_ColorSet_LED(u8 from, u8 to, u32 color)
 void WS_Refresh()
 {
 	u8 i;
-	for( i=0;i<LEDNUM;i++)
+	WS_Send24bits(dummy);
+	for( i=0;i<=LEDNUM+1;i++)
 	{
 		WS_Send24bits(LED_Buf[i].RGB);
 	}
@@ -71,21 +72,21 @@ void WS_Key_RGB(void)
 				switch (temp)
 				{
 					case 0:
-						WS_ColorSet_LED(0, 20, Black);
+						WS_ColorSet_LED(0, LEDNUM, Black);
 						WS_Refresh();
-						WS_ColorSet_LED(8, 13, Red);
+						WS_ColorSet_LED(0, 3, Red);
 						WS_Refresh();
 						break;
 					case 1:
-						WS_ColorSet_LED(0, 20, Black);
+						WS_ColorSet_LED(0, LEDNUM, Black);
 						WS_Refresh();
-						WS_ColorSet_LED(0, 7, Blue);
+						WS_ColorSet_LED(4, 6, Blue);
 						WS_Refresh();
 						break;
 					case 2:
-						WS_ColorSet_LED(0, 20, Black);
+						WS_ColorSet_LED(0, LEDNUM, Black);
 						WS_Refresh();
-						WS_ColorSet_LED(13,20, Green);
+						WS_ColorSet_LED(7,10, Green);
 						WS_Refresh();
 						break;
 				}

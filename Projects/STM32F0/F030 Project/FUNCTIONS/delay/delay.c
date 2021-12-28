@@ -118,9 +118,9 @@ void delay_init(u8 SYSCLK)
 #if SYSTEM_SUPPORT_OS 						//如果需要支持OS.
 	u32 reload;
 #endif
- 	SysTick_CLKSourceConfig(SysTick_CLKSource_HCLK_Div8); 
-	fac_us=SYSCLK/8;						//不论是否使用OS,fac_us都需要使用
-	fac_ns=SYSCLK/128;
+ 	SysTick_CLKSourceConfig(SysTick_CLKSource_HCLK); 
+	fac_us=SYSCLK/2;							//不论是否使用OS,fac_us都需要使用
+	fac_ns=SYSCLK/8;
 #if SYSTEM_SUPPORT_OS 						//如果需要支持OS.
 	reload=SYSCLK/8;						//每秒钟的计数次数 单位为M	   
 	reload*=1000000/delay_ostickspersec;	//根据delay_ostickspersec设定溢出时间
@@ -225,7 +225,7 @@ void delay_ms(u16 nms)
 	if(remain)delay_xms(remain);
 } 
 //Delay n 47.6ns
-void delay_47_6ns(u16 nns )
+void delay_20ns(u16 nns )
 {
 	u32 temp;		   
 	SysTick->LOAD=(u32)nns*fac_ns;			//时间加载 n * 390ns
