@@ -75,6 +75,10 @@
 //20210815    增加一二档堵转保护  23A   35A  ---1.5s保护
 
 //20210902    慢启动改为3s   最大占空比95   
+ 
+//20220117    1.堵转保护后 20s 关机
+//            2.二档堵转时间由2s减少至1.5s
+//            3.二档取消变速功能  和一档一样
 
 
 #include "N76E003.h"
@@ -111,8 +115,10 @@
 
 #define  Vol_1_88V     96//255*1.88/5	19.2V时IO电压为1.88V
 
-#define  Vol16V       1//         //欠压检测  低于27V
+#define  Vol16V       134//         //欠压检测  低于27V
 #define  Vol21_6V     161//     //32.7V  解除欠压   161
+
+#define     nun_n      6
 
 
 #define POWER_ON_TM	    100
@@ -137,7 +143,7 @@
 #define  PWM_65				 168//255*60
 #define  PWM_65_DV           (PWM_65-PWM_15)//115
 
-#define  PWM_98				 243//255*98     255=100%     243=95%      248=97%  237=91.9%
+#define  PWM_98				 243//255*98     255=100%     243=95%      248=97%
 #define  PWM_98_DV           (PWM_98-PWM_15)//212  
 
 
@@ -154,7 +160,7 @@
 #define  ELE32A         92                   //111
 #define  ELE35A         100       //255*1.781v/5               113---20200507
 	
-#define  ELE60A        173//130//230   173---3.4V--60A
+#define  ELE60A        143//130//230   173---3.4V--60A     3.1V=55A=158    50A=2.81V=143
 
 
 #define  ELE_1A         4
@@ -176,7 +182,7 @@
 #define  A_0_IO_SET              P05_Input_Mode     //电流检测口---ok
  
 #define  STOP_IO                  P02	  /*充电脚*///    ---ok
-#define  STOP_IO_SET              P02_Quasi_Mode//P00_Input_Mode ---已改
+#define  STOP_IO_SET             P02_Quasi_Mode	//P00_Input_Mode ---已改  P02_Quasi_Mode
   
 	
 #define  G_S_IO                  P17
@@ -220,7 +226,7 @@
 
 #define  MOS_DET_IO          	P04
 #define  MOS_DET_INPUT_SET	    P04_Input_Mode
-#define  MOS_DET_OUTPUT_SET	    P04_PushPull_Mode
+  #define  MOS_DET_OUTPUT_SET	    P04_PushPull_Mode
 
 
 #define  SW_IO           P13
@@ -397,7 +403,7 @@ unsigned char Count2_5MS;
 	 
 	 	 bit PWM_xianzhi_fl;
 	 
-	 unsigned char PWM_HUAN;
+	 
 	 
 	 	  bit SW_FL;
   unsigned char guanji_timer,guangji_1stimer,guangji_1mintimer;
@@ -412,8 +418,25 @@ unsigned char Count2_5MS;
 		unsigned char 		xiajiang_3dan_timer;
 		unsigned char 		xiajiang_2dan_timer;
 
+unsigned char PWM_HUAN;
+bit PWM_xianzhi_fl;
+ unsigned int xianliu65_same;
+bit xianliu_fl;
 
+unsigned char jinxianliuTM;
 
+bit  duZ_close_fl;
+
+bit duanlu_sw_fl;
+
+ //unsigned char deadtmphigh,deadtmplow;
+
+#define UINT16 unsigned int
+#define UINT8 unsigned char
+	
+//unsigned char A_P_ResultNew;
+unsigned char  A_P_CT,A_P_CT1,A_P_CT2,A_P_CT3,A_P_CT4,A_P_CT5;
+bit ELEAP_BIG_ERR_FL,ELEAP_BIG_ERR_FL1,ELEAP_BIG_ERR_FL2,ELEAP_BIG_ERR_FL3,ELEAP_BIG_ERR_FL4,ELEAP_BIG_ERR_FL5;
 
 //------------------------------------------------------------------------------------
 	
@@ -432,7 +455,7 @@ void Delay3us()		//@16MHz
 
 
 //----------------死区时间设置--------------------
-void PWM_DEAD_TIME_VALUE(UINT16	DeadTimeData)
+/*void PWM_DEAD_TIME_VALUE(UINT16	DeadTimeData)
 {
 	UINT8 deadtmphigh,deadtmplow;
 	deadtmplow = DeadTimeData;
@@ -449,7 +472,27 @@ void PWM_DEAD_TIME_VALUE(UINT16	DeadTimeData)
 	TA = 0x55;
 	PDTCNT = deadtmplow;
 	EA = BIT_TMP;
+}*/
+
+void PWM_DEAD_TIME_VALUE()
+{
+	UINT8 deadtmphigh,deadtmplow;
+	deadtmplow = 94;
+	deadtmphigh = 11;
+	BIT_TMP = EA;
+	if (deadtmphigh==0x01)
+	{
+		EA = 0;
+		TA = 0xAA;
+		TA = 0x55;
+		PDTEN|=0x10;
+	}
+	TA = 0xAA;
+	TA = 0x55;
+	PDTCNT = deadtmplow;
+	EA = BIT_TMP;
 }
+
 
 //---------------------------------
 
@@ -462,16 +505,12 @@ void init(void)
 	
 	SW_IO_SET;
 	NO_Connet_FL1=0;
-	
+	PWM_xianzhi_fl=0;
 	A_DET_IO_SET;
 	
 PWM_xianzhi_fl=0;
  STOP_IO_SET;
-// G_S_IO_SET;                                     
-// HIGH_LOWS_PEED_IO_SET;                
-// FRONT_BACK_IO_SET ;                   
-// POWER_SET;                  
-// PROT_SET; 
+ duZ_close_fl=0;      //堵转允许关机标志位
  A_0_IO_SET;           	        
  RELY_SET;                    
  BACK_CTRL_SET;  					   
@@ -500,7 +539,8 @@ MOS_DET_INPUT_SET;
 		PWM_CLOCK_DIV_32;//PWM_CLOCK_DIV_16=3.9k;	  PWM_CLOCK_DIV_32=2k PWM_CLOCK_DIV_64=1k
 		PWMPH = 0x00;
 		PWMPL = 0xFF;//F0=4.1K  FF=3.9K
-		PWM_DEAD_TIME_VALUE(94);   //死区时间设置   27=2us     81=5us     94=6us
+		//PWM_DEAD_TIME_VALUE(94);   //死区时间设置   27=2us     81=5us     94=6us
+		PWM_DEAD_TIME_VALUE();
 /**********************************************************************
 	PWM frequency = Fpwm/((PWMPH,PWMPL) + 1) <Fpwm = Fsys/PWM_CLOCK_DIV> 
 								= (16MHz/8)/(0x7CF + 1)
@@ -561,6 +601,13 @@ POWER_IO_SET;
 dang_23fl=0;
 xiajiang_3dan_timer=0;
 xiajiang_2dan_timer=0;
+xianliu_fl=0;
+	LED1_IO=0;	
+		jinxianliuTM=0;
+		duanlu_sw_fl=0;    //允许电源开关关机
+		ELEAP_BIG_ERR_FL=0;
+		
+
  }
 
 
@@ -579,8 +626,8 @@ xiajiang_2dan_timer=0;
        if(G_S_State==1)
        {					
             G_S_State=2;
-             MOS_Err=0;
-					 
+            MOS_Err=0;
+					 	LED1_IO=1;
 						MOS_DET_OUTPUT_SET;
 						MOS_DET_IO=0;//检测前先放电
 						count_500US_CT=0;
@@ -588,7 +635,6 @@ xiajiang_2dan_timer=0;
 						{
 						 ;
 						}
-         
               MOS_DET_INPUT_SET;
                count_500US_CT=0;
              while(count_500US_CT<=3)         //1.5ms  转变输入检测
@@ -622,9 +668,8 @@ xiajiang_2dan_timer=0;
                      G_S_State=0xff;
                   }
                } 
-					
-          			 
-											 
+							 	LED1_IO=0;
+															 
     }
   }
 		 else
@@ -725,7 +770,9 @@ void time_dsp(void)
 	  }
  ////////////////////////////////////////////////////           
                                                                                             
- if((MOS_Err)||(A_DET_FL==0)/*(A_DET_IO==0)*/||ELE25_BIG_ERR_FL||ELE35_BIG_ERR_FL||ELE28_BIG_ERR_FL||ELE30_BIG_ERR_FL||ELE20_BIG_ERR_FL||ELE40_BIG_FL||NO_Connet_FL||NO_Connet_FL1||ELE_InterruptDISP_TM)
+ if((MOS_Err)||(A_DET_FL==0)/*(A_DET_IO==0)*/||ELE25_BIG_ERR_FL||ELE35_BIG_ERR_FL||ELE28_BIG_ERR_FL
+	 ||ELE30_BIG_ERR_FL||ELE20_BIG_ERR_FL||ELE40_BIG_FL||NO_Connet_FL||NO_Connet_FL1
+ ||ELE_InterruptDISP_TM||ELEAP_BIG_ERR_FL||ELEAP_BIG_ERR_FL1||ELEAP_BIG_ERR_FL2||ELEAP_BIG_ERR_FL3||ELEAP_BIG_ERR_FL4||ELEAP_BIG_ERR_FL5)
  {
 	ELE_ERR_FL=1;   
 	TurnHighSpeed_FL=0;
@@ -882,7 +929,6 @@ if((CHANGE_Off_TM==0)&&G_S_FL&&(ELE_ERR_FL==0))           //脚踏板踏下
    }
    else
    {	 
-		  dang_23fl=0;      //恢复正常
 		 FRONT_FL=0;
 		 BACK_FL=0;
    } 
@@ -958,22 +1004,72 @@ if((CHANGE_Off_TM==0)&&G_S_FL&&(ELE_ERR_FL==0))           //脚踏板踏下
       {	
              if(PWM<25)          //最小启动占空比设置处
                PWM=25;//??
-				
-      if(dang_23fl==0)	
-			{				
-	        PWMADDTM++;                                //慢启动时间设置
-	  	if(PWMADDTM>27)//18=1.5S  //22==1.8s 11= 0.9s	   5=0.4s  3=0.2s  此处调整加速时间	 每0.1S =1.222值   12=1.2s    27=3s
-		   {
+							
+	         PWMADDTM++;                                //慢启动时间设置
+		if(PWMADDTM>PWM_HUAN)//18=1.5S  //22==1.8s 11= 0.9s	   5=0.4s  3=0.2s  此处调整加速时间	 每0.1S =1.222值   12=1.2s    27=3s
+		{
 			  PWMADDTM=0;
 	 			
+			if(PWM_xianzhi_fl==0)
+				{	
 				 if((PWM>PWM_HallSet)/*&&(PWM>PWM_Ele_Set)*/&&(PWM>25))         //最小启动占空比设置处   12=1.2s
 					PWM--;
 						
 					if((PWM<PWM_HallSet)/*&&(ELEbig25A_FL==0)*/)
 						PWM++;
-	   	 		   
-        }
-			}	 	  		  	    	 
+	   	 	}	   
+					//---------------限流-----------------
+					
+					 if(Cur_ResultNew>57&&DanWei==3)    //限流调整  电流大于20A     20A=1.125V
+						{
+							 if(PWM>204)    //PWM>80%
+							 {
+					     	// jinxianliuTM++;        //5ms自加一次     
+					   		//  if(jinxianliuTM>=100)   
+							//		{
+									    xianliu_fl=1;
+								//		jinxianliuTM=0;
+								//	}						  
+							 }
+							if(xianliu_fl)		  //限流开始
+             {								
+							 PWM_xianzhi_fl=1;
+							 PWM--;
+							 PWM_HUAN=10;
+							
+							if(PWM<101)         
+               PWM=101;       //30%
+						  
+							
+							if(PWM<=102&&DanWei==3)   //进入限流调整 25A 且PWM小于40%时 76=30%    102=40%
+							{
+								//LED1_IO=~LED1_IO;
+								xianliu65_same++;
+								 if(xianliu65_same>=500)     //5MS*500=2.5s
+								 {
+										ELE30_BIG_ERR_FL=1;
+										ELE_Wait_5s=40;//WAIT 20S
+									  xianliu65_same=0;
+								 }
+							}		
+					         							
+							if(PWM>102&&DanWei==3)    //计数清零
+							{
+							  xianliu65_same=0;							
+							}
+						}				
+				  }						
+						else
+						{
+							//xianliu65_same=0;
+						//	xianliu_fl=0;      //   限流进入条件解除
+						//	jinxianliuTM=0;
+							PWM_xianzhi_fl=0;   //  
+							PWM_HUAN=27;        //24=11ms    						
+						}
+										
+     }
+					 	  		  	    	 
 	   }
 	   else	 
        {
@@ -989,7 +1085,9 @@ if((CHANGE_Off_TM==0)&&G_S_FL&&(ELE_ERR_FL==0))           //脚踏板踏下
         if(POWER_on_TM<=POWER_ON_TM) //2000/20=100      
 		  	POWER_on_TM++;
                             //20200509
-			 if(A_DET_FL==0||ELE40_BIG_FL||ELE35_BIG_ERR_FL||ELE25_BIG_ERR_FL||ELE_InterruptDISP_TM) //短路控制灯快闪时间
+			 if(A_DET_FL==0||ELE40_BIG_FL||ELE35_BIG_ERR_FL||ELE25_BIG_ERR_FL
+				 ||ELE_InterruptDISP_TM||ELEAP_BIG_ERR_FL||ELEAP_BIG_ERR_FL1
+			   ||ELEAP_BIG_ERR_FL2||ELEAP_BIG_ERR_FL3||ELEAP_BIG_ERR_FL4||ELEAP_BIG_ERR_FL5) //短路控制灯快闪时间
         {
 					
 			   	if(++LED_TM>5)     //20*5=100ms   
@@ -1061,46 +1159,9 @@ if((CHANGE_Off_TM==0)&&G_S_FL&&(ELE_ERR_FL==0))           //脚踏板踏下
 								
 				  if(DanWei_AD>Vol_3_5V)       //档位AD值判断  三档
 						{
-							if(dang_23fl==0)
+				
 							   DanWei=3;
-							
-						  if(Cur_ResultNew>=86)       //连续50ms  高于20A  减为2档  且PWM>90%    1.125V=20A=58 1.687V=30A=86
-							{								                                          //25A=1.41V=73     30A=1.68V=85   35A=1.96V=100
-							   xiajiang_2dan_timer++;
-								 	
-								 if(xiajiang_2dan_timer>=5)      //20*5=100ms连续
-								 {
-								  //  DanWei=2;		
-								 
-									     PWM=76;              //PWM=30%    
-									   MoveCtrl();	
-									  dang_23fl=1;
-									 xiajiang_2dan_timer=33;   
-								 }
-							}
-							else
-								xiajiang_2dan_timer=0;     //低于20A  计时清零
-							
-							
-							
-							if(Cur_ResultNew<=46)     //16A=0.9V=46   小于16A  升回3档
-							{
-																
-								if(dang_23fl)      //是由2档升入3档
-								{
-								  xiajiang_3dan_timer++;
-								 if(xiajiang_3dan_timer>=50)    //20*50=2s 
-								 {
-								    	DanWei=3;		
-									  dang_23fl=0;
-									 xiajiang_3dan_timer=101;
-								 }
-								
-								}							
-							}
-							else
-								xiajiang_3dan_timer=0;      //大于16A   计时清零
-																	
+																								
 						}
 						 else
 	             if(DanWei_AD>Vol_2_5V)       //二档
@@ -1127,17 +1188,16 @@ if((CHANGE_Off_TM==0)&&G_S_FL&&(ELE_ERR_FL==0))           //脚踏板踏下
 								 }									 
 								
 								
-								
-								
-								
-						 if(ELE60_BIG_FL)               //60A过流保护生效标志     三档堵转
+				//------------------------------				
+															
+					/*if(ELE60_BIG_FL)               //60A过流保护生效标志     三档堵转
 						 {
-							 if(++ELE60_BIG_TM>=30)       //0.02*60=1.2s
-							 {
+							// if(++ELE60_BIG_TM>=10)       //0.02*10=0.2s
+							 //{
 								ELE40_BIG_FL=1;  	 //灯快闪
 							  ELE60_BIG_TM=0;
-								ELE_Wait_5s=80;
-							 }
+								ELE_Wait_5s=40;
+							 //}
 						 }
 							else
 							{
@@ -1145,7 +1205,7 @@ if((CHANGE_Off_TM==0)&&G_S_FL&&(ELE_ERR_FL==0))           //脚踏板踏下
 								if(ELE_Wait_5s==0)               
 								ELE40_BIG_FL=0;
 							} 	
-							
+							*/
   
        if(++time_500ms>25)//0.5s 进入调整一次    20ms自加一次
 			 {
@@ -1168,7 +1228,7 @@ if((CHANGE_Off_TM==0)&&G_S_FL&&(ELE_ERR_FL==0))           //脚踏板踏下
 										{
 											ELE30_BIG_ERR_FL=1;  //
 											ELE30_BIG_TM=0;
-											ELE_Wait_5s=40;//40 = WAIT 20S
+											ELE_Wait_5s=40;//WAIT 20S
 										}
 								 }
 							}
@@ -1274,46 +1334,59 @@ if((CHANGE_Off_TM==0)&&G_S_FL&&(ELE_ERR_FL==0))           //脚踏板踏下
     //---------------------------------------------
 					 if(ELE12_BIG_FL)                                   //一档堵转生效后  
 						 {                     
-								if(++ELE12_BIG_TM>=2)// 5S/0.5*5=2.5s        // 堵转时间保护设置
+								if(++ELE12_BIG_TM>=5)// 5S/0.5*5=2.5s        // 堵转时间保护设置
 							 {
+								    duanlu_sw_fl=1;    //禁止电源开关关机
 										 ELE25_BIG_ERR_FL=1;//
 										 ELE12_BIG_TM=0;
-										 ELE_Wait_5s=100;//40==WAIT 20S
+										 ELE_Wait_5s=60;//WAIT 30S
+								     duZ_close_fl=1;            //堵转后允许关机标志位
 								 }
 						 }
 						 else
 						 {
 								ELE12_BIG_TM=0;
 								if(ELE_Wait_5s==0)
-								ELE25_BIG_ERR_FL=0;              						
+								{
+								  ELE25_BIG_ERR_FL=0;   
+									if(duZ_close_fl)
+									  POWER_IO=0;     //关机
+								}									
 						 }
 						 
 						 
 					 if(ELE13_BIG_FL)                       //二档堵转生效后
 						 {                     
-								if(++ELE13_BIG_TM>=2)// 5S/0.5*4=2s      // 堵转时间保护设置
+								if(++ELE13_BIG_TM>=4)// 5S/0.5*4=2s      // 堵转时间保护设置
 							 {
+								  duanlu_sw_fl=1;    //禁止电源开关关机
 									 ELE35_BIG_ERR_FL=1;//
-								
+								  duZ_close_fl=1;            //堵转后允许关机标志位
 									 ELE13_BIG_TM=0;
-									 ELE_Wait_5s=100;//40=WAIT 20S
+									 ELE_Wait_5s=60;//WAIT 30S
+								 
 							 }
 						 }
 						 else
 						 {
 								  ELE13_BIG_TM=0;
-								 if(ELE_Wait_5s==0)
-									ELE35_BIG_ERR_FL=0;      			 
+								 if(ELE_Wait_5s==0)       //电流没有了，解除保护计时到了   才允许重启
+								 {
+								   ELE35_BIG_ERR_FL=0; 
+								  	if(duZ_close_fl)
+										  POWER_IO=0;     //关机
+								 }
+									     			 
 						 }	 
 						 
 						 
-						if(ELE60_BIG_FL)               //60A过流保护生效标志     三档堵转
+						/* if(ELE60_BIG_FL)               //60A过流保护生效标志     三档堵转
 						 {
-							 if(++ELE60_BIG_TM>=1)       //0.5*2=1
+							 if(++ELE60_BIG_TM>=2)       //0.5*2=1
 							 {
 								ELE40_BIG_FL=1;  	 //灯快闪
 							  ELE60_BIG_TM=0;
-								ELE_Wait_5s=100;
+								ELE_Wait_5s=40;
 							 }
 						 }
 							else
@@ -1321,15 +1394,170 @@ if((CHANGE_Off_TM==0)&&G_S_FL&&(ELE_ERR_FL==0))           //脚踏板踏下
 								ELE60_BIG_TM=0;
 								if(ELE_Wait_5s==0)               
 								ELE40_BIG_FL=0;
+							} */
+			
+			 					 
+   	//-----------------------------------      //先以70%测试   40A=2.25V=80	
+	if(xianliu_fl==0)		  //没有进入限流
+	{		
+		  if((PWM>=175&&PWM<204)&&(DanWei==3)&&Cur_ResultNew>114)    // //70%--79%
+					{
+					    if(++A_P_CT5>=nun_n)  //0.5s*6=3s 
+							{
+							  ELEAP_BIG_ERR_FL5=1;
+							   A_P_CT5=0;
+								 ELE_Wait_5s=60;//WAIT 30S
+								  duanlu_sw_fl=1;    //禁止电源开关关机
+									 duZ_close_fl=1;      //堵转允许关机标志位
 							}
+					 					
+					}
+         else
+				 {
+				      A_P_CT5=0;
+					if(ELE_Wait_5s==0)       //电流没有了，解除保护计时到了   才允许重启
+					{
+					   ELEAP_BIG_ERR_FL5=0; 
+						  if(duZ_close_fl)
+							   POWER_IO=0;     //关机
+					}			 
+				 }				 
 						 
+		//-----------------------------------      //先以60%测试   32A=1.8V=92	
 						 
-                 
+		  if((PWM>=150&&PWM<175)&&(DanWei==3||DanWei==2)&&Cur_ResultNew>92)    // //60%--69%
+					{
+					    if(++A_P_CT4>=nun_n)  //0.5s*2=1s 
+							{
+							  ELEAP_BIG_ERR_FL4=1;
+							   A_P_CT4=0;
+								 ELE_Wait_5s=60;//WAIT 30S
+								  duanlu_sw_fl=1;    //禁止电源开关关机
+									 duZ_close_fl=1;      //堵转允许关机标志位
+							}
+					 					
+					}
+         else
+				 {
+				      A_P_CT4=0;
+					if(ELE_Wait_5s==0)       //电流没有了，解除保护计时到了   才允许重启
+					{
+					  ELEAP_BIG_ERR_FL4=0; 
+						if(duZ_close_fl)
+						   POWER_IO=0;     //关机
+					}			 
+				 }				 
+						 
+															 
+			//-----------------------------------      //先以50%测试   28A=1.57v=80
+         					
+		//	A_P_ResultNew=((Cur_ResultNew/PWM_HallSet)*10);       //测各占空比50   		 
+						 
+				  if((PWM>=125&&PWM<150)&&(DanWei==3||DanWei==2)&&Cur_ResultNew>80)     //50%--59%
+					{
+					    if(++A_P_CT>=nun_n)  //0.5s*2=1s 
+							{
+							  ELEAP_BIG_ERR_FL=1;
+							   A_P_CT=0;
+								 ELE_Wait_5s=60;//WAIT 30S
+								  duanlu_sw_fl=1;    //禁止电源开关关机
+									 duZ_close_fl=1;      //堵转允许关机标志位
+							}
+					 					
+					}
+         else
+				 {
+				      A_P_CT=0;
+					if(ELE_Wait_5s==0)       //电流没有了，解除保护计时到了   才允许重启
+					{
+					  ELEAP_BIG_ERR_FL=0; 
+						if(duZ_close_fl)
+							POWER_IO=0;     //关机
+					}			 
+				 }
+
+				 //-----------------------------------      //先以40%测试   25A=1.40V=57
+         											 
+				  if((PWM>=102&&PWM<125)&&(DanWei==3||DanWei==2)&&Cur_ResultNew>72)    // //40%--49%
+					{
+					    if(++A_P_CT1>=nun_n)  //0.5s*2=1s 
+							{
+							  ELEAP_BIG_ERR_FL1=1;
+							   A_P_CT1=0;
+								 ELE_Wait_5s=60;//WAIT 30S
+								  duanlu_sw_fl=1;    //禁止电源开关关机
+									 duZ_close_fl=1;      //堵转允许关机标志位
+							}
+					 					
+					}
+         else
+				 {
+				      A_P_CT1=0;
+					if(ELE_Wait_5s==0)       //电流没有了，解除保护计时到了   才允许重启
+					{
+					  ELEAP_BIG_ERR_FL1=0; 
+						if(duZ_close_fl)
+						   POWER_IO=0;     //关机
+					}			 
+				 }
+				 
+			//-----------------------------------      //先以30%测试   20A=1.125V=57
+         											 
+				  if((PWM>=76&&PWM<102)&&(DanWei==3||DanWei==2)&&Cur_ResultNew>57)    // //30%--39%
+					{
+						 					
+					    if(++A_P_CT2>=nun_n)  //0.5s*2=1s 
+							{
+							  ELEAP_BIG_ERR_FL2=1;
+							   A_P_CT2=0;
+								 ELE_Wait_5s=60;//WAIT 30S
+								  duanlu_sw_fl=1;    //禁止电源开关关机
+									 duZ_close_fl=1;      //堵转允许关机标志位
+							}
+					 					
+					}
+         else
+				 {
+				      A_P_CT2=0;
+					if(ELE_Wait_5s==0)       //电流没有了，解除保护计时到了   才允许重启
+					{
+					  ELEAP_BIG_ERR_FL2=0; 
+						if(duZ_close_fl)
+							POWER_IO=0;     //关机
+					}			 
+				 }
+				 
+				 	//-----------------------------------      //先20%测试   15A=0.84V=42
+         											 
+				  if((PWM>=51&&PWM<76)&&(DanWei==3||DanWei==2)&&Cur_ResultNew>42)    // //20%--29%
+					{
+					    if(++A_P_CT3>=nun_n)  //0.5s*2=1s 
+							{
+							  ELEAP_BIG_ERR_FL3=1;
+							   A_P_CT3=0;
+								 ELE_Wait_5s=60;//WAIT 30S
+								  duanlu_sw_fl=1;    //禁止电源开关关机
+									 duZ_close_fl=1;      //堵转允许关机标志位
+							}
+					 					
+					}
+         else
+				 {
+				      A_P_CT3=0;
+					if(ELE_Wait_5s==0)       //电流没有了，解除保护计时到了   才允许重启
+					{
+					  ELEAP_BIG_ERR_FL3=0; 
+						if(duZ_close_fl)
+							 POWER_IO=0;     //关机
+					}			 
+				 }
+			 }    		
+	
 					if(ELE_Wait_5s)
 					ELE_Wait_5s--;
 
-                   if(VoltageLowWait)
-                    VoltageLowWait--;            //500ms自减一次
+					if(VoltageLowWait)
+					VoltageLowWait--;            //500ms自减一次
                    			
 			}
 			 
@@ -1512,49 +1740,28 @@ if(AD_CH==5)
 	   Cur_ResultNew=Hall_Add>>3;//??    //除8    //Cur_ResultNew---电流值
 	   Hall_Add=0;	
 	  ///////3.3v==>5v=====			
-		 
-  /* ADtemp=Cur_ResultNew>>2;  
-			 
-   Hall_Add=Cur_ResultNew+ADtemp;       
-   if(Hall_Add>0xff)
-   	Hall_Add=0xff;
-   Cur_ResultNew=Hall_Add;                 
-   Hall_Add=0;*/
-	 
+ 
 	//==============================  
 	    if(POWER_on_TM<POWER_ON_TM)
 	  	   Cur_ResultNew=0;
-
-	 /*  if(Cur_ResultNew>=ELE25A)
-	   {
-	       ELEbig25A_FL=1;
-		   ele_ct1=0;
-		   if(PWM>PWM_15)
-		   PWM-=5;
-	   }
-	   else
-	   {
-	       //if(++ele_ct1>3)
-	  	   ELEbig25A_FL=0;
-	   }
-		  */
-    
+  			
          if((Cur_ResultNew>=73)&&(DanWei==1))     //25A=73    73=1.41V      
-         {
-		        ELE12_BIG_ct++;
-				ELE12_Small_ct=0;
-				if(ELE12_BIG_ct>5)
-					ELE12_BIG_FL=1;                //一档堵转生效标志
-         }
-		 else
-		 {
-		    ELE12_BIG_ct=0;
-			ELE12_Small_ct++;           
-			if(ELE12_Small_ct>5)
-			ELE12_BIG_FL=0;
-		}  
+              {
+                    
+                ELE12_BIG_ct++;
+                ELE12_Small_ct=0;
+                if(ELE12_BIG_ct>5)
+                    ELE12_BIG_FL=1;                //一档堵转生效标志
+              }
+              else
+                {
+									ELE12_BIG_ct=0;
+									ELE12_Small_ct++;           
+									if(ELE12_Small_ct>5)
+									ELE12_BIG_FL=0;
+                }  
 								
-			  if((Cur_ResultNew>=115)&&(DanWei==2))     //35A=100   1.96V     40A=115
+					if((Cur_ResultNew>=115)&&(DanWei==2))     //35A=100   1.96V     40A=115=2.25V
               {
                 ELE13_BIG_ct++;
                 ELE13_Small_ct=0;
@@ -1562,34 +1769,62 @@ if(AD_CH==5)
                  ELE13_BIG_FL=1;            //二档堵转生效标志
               }
               else
-              {								
-				ELE13_Small_ct++;           
-				if(ELE13_Small_ct>5)      //30
-				{
-					ELE13_BIG_FL=0;
-					ELE13_BIG_ct=0;
-				}
-              } 		
+                {								
+									ELE13_Small_ct++;            
+									if(ELE13_Small_ct>5)      //30
+									{
+										ELE13_BIG_FL=0;
+										ELE13_BIG_ct=0;
+									}
+                } 		
 
-//      if(Cur_ResultNew > ELE60A&&(DanWei==3))//ELE40A)       //60A过流保护    173=3.4V
-//			{		
-//			 ELE40_BIG_ct++;
-//			 ELE40_Small_ct=0;
-//			 if(ELE40_BIG_ct>5)                   //三档堵转生效标志
-//			 {
-//				 ELE60_BIG_FL=1;				
-//			 }
-//			}
-//			else
-//			{		
-//				//  RELY=~ RELY;        //约500us自加一次   
-//				ELE40_BIG_ct=0;
-//				ELE40_Small_ct++;			
-//				if(ELE40_Small_ct>5)      //    3ms      
-//				 ELE60_BIG_FL=0;
-//			}
+    /*  if(Cur_ResultNew > ELE60A&&(DanWei==3))//ELE40A)       //60A过流保护    173=3.4V
+			{		
+			 ELE40_BIG_ct++;
+			 ELE40_Small_ct=0;
+			// if(ELE40_BIG_ct>5)                   //三档堵转生效标志
+			// {
+				 ELE60_BIG_FL=1;				
+			// }
+			 		 
+			}
+			else
+			{		
+				//  RELY=~ RELY;        //约500us自加一次   
+				ELE40_BIG_ct=0;
+				ELE40_Small_ct++;			
+				if(ELE40_Small_ct>5)      //    3ms      
+				 ELE60_BIG_FL=0;
+			}*/
 
-								
+	//------------------------------------------------------	
+  if(Cur_ResultNew > ELE60A&&DanWei==3)           //三档堵转保护
+  {
+		ELE40_BIG_FL=1;       //保护  灯快闪
+    ELE40_BIG_ct++;
+  	ELE40_Small_ct=0;
+ //  if(ELE40_BIG_ct>15)//20=200MS  5=50MS    15--130ms
+  // {
+		  //ELE40_BIG_FL=1;
+	  	ELE_Wait_5s=60;        //保护解除要60=30s   0.5s自减一次     120=1min
+	// }
+		 duZ_close_fl=1;      //堵转允许关机标志位
+		duanlu_sw_fl=1;    //禁止电源开关关机
+  }
+  else
+	{	
+	  ELE40_BIG_ct=0;
+		ELE40_Small_ct++;			
+		if((ELE40_Small_ct>5)&&(ELE_Wait_5s==0))  
+		{		
+		   ELE40_BIG_FL=0;
+			 if(duZ_close_fl)
+				  POWER_IO=0;     //关机
+		}			
+			
+	}
+
+//----------------------------------------------------------
 														
   if(Cur_ResultNew>ELE_BIG_SET2)
       {
@@ -1606,7 +1841,6 @@ if(AD_CH==5)
             if(ELE50_Small_ct>5)
                 ELE50_BIG_FL=0;
         }
-
   
   if(Cur_ResultNew>ELE_BIG_SET1)
     {
@@ -1688,13 +1922,10 @@ if(AD_CH==5)
 			ADtemp=HALL_DV;
 
 			if((HIGH_LOWS_PEED_FL)&&(DanWei==3))    //高速档
-			{
-				if(dang_23fl==0)
-			   PWM_HallSet=ADtemp*PWM_98_DV/HALL_DV; 
-			}
-			
+			PWM_HallSet=ADtemp*PWM_98_DV/HALL_DV; 
 
-		if((HIGH_LOWS_PEED_FL==0)&&(DanWei==2))    //二档
+		 if((HIGH_LOWS_PEED_FL==0)&&(DanWei==2))    //二档
+			// PWM_HallSet=143;
 			 PWM_HallSet=ADtemp*PWM_65_DV/HALL_DV; 
 
 			if((HIGH_LOWS_PEED_FL==0)&&(DanWei==1))    //一档
@@ -1704,11 +1935,10 @@ if(AD_CH==5)
 			if((HIGH_LOWS_PEED_FL==0)&&(DanWei==0))    //倒档
 			PWM_HallSet=ADtemp*PWM_40_DV/HALL_DV; 
 
-		  if(dang_23fl==0)
 			PWM_HallSet+=PWM_15;	
 		 
 	  }
-	  else         //放开脚踏
+	  else        //放开脚踏
 	  {
 	    if(ADtemp>HALL_0500MV)     //且大于0.5V  小于1.33V  
 			{
@@ -1723,6 +1953,7 @@ if(AD_CH==5)
 	        G_S_FL=0;
           G_S_State=0;
 					PWM_xianzhi_fl=0;
+					xianliu_fl=0;      //   限流进入条件解除
 			
 			 }						 
       }
@@ -1783,6 +2014,8 @@ void zidongguangji()
 	{
      FLAG_NMS=0;     //4ms自加一次
 	
+		if(duanlu_sw_fl==0)      //当堵转保护后，禁止手动关电源
+		{
 			if(SW_FL)
 				{
 						if(SW_IO)
@@ -1792,14 +2025,14 @@ void zidongguangji()
 						 {						 
 						   if(SW_IO)
 							 {
-						    	POWER_IO=0;
+						    	POWER_IO=0;     //关机
 								 SW_yanshi=5;
 							 }
-					   }		 
-					 }
-					                  						 
+					   }		      
+					 }					                  						 
 				}
-
+	  }
+				
   	 if(SW_IO==0)
 	   {  
 			 
@@ -1811,7 +2044,8 @@ void zidongguangji()
 						sw_timer=0;
 						SW_FL=1;	
 					}
-
+  				
+	   //----------------------------------				
 		   if(G_S_IO==0)
 		   {
 				if(STOP_IO)        //不充电时进入待机计时    
@@ -1819,7 +2053,7 @@ void zidongguangji()
 			    guanji_timer++;
 	            
 				 if(guanji_timer>=250)
-				 {
+				  {
 					 guanji_timer=0;				
 						guangji_1stimer++;
 					   if(guangji_1stimer>=60)      //1min
