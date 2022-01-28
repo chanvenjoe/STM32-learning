@@ -16,12 +16,11 @@ int main(void)
 	temp=CapacitiveTouch_Init(8);
 	while(1)
 	{
-		while(TPAD_Scan(0,temp))
+		while(1)
+		//while(TPAD_Scan(0,temp))
 		{	
-			WS_Key_RGB();
-			GPIO_ResetBits(GPIOF,GPIO_Pin_5);//Used to trigger the speaker
-			delay_ms(100);
-			GPIO_SetBits(GPIOF,GPIO_Pin_5);
+//		WS_Key_RGB();
+			WS_Hue_change();
 		}
 	}
 

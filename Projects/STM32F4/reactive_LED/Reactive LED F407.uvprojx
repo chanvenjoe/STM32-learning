@@ -10,7 +10,7 @@
       <TargetName>Learning</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060750::V5.06 update 6 (build 750)::.\ARMCC</pCCUsed>
+      <pCCUsed>5060960::V5.06 update 7 (build 960)::.\ARMCC</pCCUsed>
       <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F40_41xxx,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>.\CORE;.\FWLIB\inc;.\USER;.\FUNCTIONS\inc;.\Fast_LED;..\..\..\..\FastLED\FastLED\src</IncludePath>
+              <IncludePath>.\CORE;.\FWLIB\inc;.\USER;.\FUNCTIONS\inc;.\Fast_LED;..\..\..\..\..\FastLED\src</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -1816,12 +1816,7 @@
   <LayerInfo>
     <Layers>
       <Layer>
-        <LayName>&lt;Project Info&gt;</LayName>
-        <LayDesc></LayDesc>
-        <LayUrl></LayUrl>
-        <LayKeys></LayKeys>
-        <LayCat></LayCat>
-        <LayLic></LayLic>
+        <LayName>Reactive LED F407</LayName>
         <LayTarg>0</LayTarg>
         <LayPrjMark>1</LayPrjMark>
       </Layer>
