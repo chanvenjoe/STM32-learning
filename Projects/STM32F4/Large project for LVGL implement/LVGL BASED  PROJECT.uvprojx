@@ -10,7 +10,7 @@
       <TargetName>Learning</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060750::V5.06 update 6 (build 750)::.\ARMCC</pCCUsed>
+      <pCCUsed>5060960::V5.06 update 7 (build 960)::.\ARMCC</pCCUsed>
       <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F40_41xxx,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>.\CORE;.\FWLIB\inc;.\USER;.\FUNCTIONS\inc;.\LVGL;.\LVGL\lvgl;.\LVGL\LV_Driver;.\LVGL\lvgl\examples;.\LVGL\GUI_APP;..\2，标准例程-库函数版本\实验28 触摸屏实验\HARDWARE\TOUCH</IncludePath>
+              <IncludePath>.\CORE;.\FWLIB\inc;.\USER;.\FUNCTIONS\inc;.\LVGL;.\LVGL\lvgl;.\LVGL\LV_Driver;.\LVGL\lvgl\examples;.\LVGL\GUI_APP;..\2，标准例程-库函数版本\实验28 触摸屏实验\HARDWARE\TOUCH;..\F407-LVGL7.8.1\GUI\lvgl</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -1433,6 +1433,11 @@
               <FileName>gpio_init.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\FUNCTIONS\Init\gpio_init.c</FilePath>
+            </File>
+            <File>
+              <FileName>lcd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\FUNCTIONS\Init\lcd.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3527,11 +3532,6 @@
     <Layers>
       <Layer>
         <LayName>&lt;Project Info&gt;</LayName>
-        <LayDesc></LayDesc>
-        <LayUrl></LayUrl>
-        <LayKeys></LayKeys>
-        <LayCat></LayCat>
-        <LayLic></LayLic>
         <LayTarg>0</LayTarg>
         <LayPrjMark>1</LayPrjMark>
       </Layer>

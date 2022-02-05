@@ -2,7 +2,8 @@
 #include "delay.h"
 #include "usart.h"
 #include "gpio_init.h"
-#include "LCD_init.h"
+//#include "LCD_init.h"
+#include "lcd.h"
 #include "touch.h"
 #include "lv_port_disp.h"
 #include "lv_port_indev.h"
@@ -18,15 +19,21 @@ int main(void)
 //	Timer_PWM_Init(u32 arr, u16 psc);
 //	WWDG_Init(0x7f,0x5f,WWDG_Prescaler_8);
 //	General_Timer_Interrupt(999,83);//timer3 84M   time=arr*psc/84M = 1ms =>psc=8400 arr = 10 for LVGL
-	u32 temp=CapacitiveTouch_Init(8);
+//	u32 temp=CapacitiveTouch_Init(8);
 //	LCD_Init();
 
-	while(1)
-	{
-		LED00;
-		delay_ms(1000);
-		LED01;
-		delay_ms(1000);
+	u8 lcd_id[12];				//存放LCD ID字符串
+		LCD_Init();           //初始化LCD FSMC接口
+	POINT_COLOR=RED;      //画笔颜色：红色
+	sprintf((char*)lcd_id,"LCD ID:%04X",lcddev.id);//将LCD ID打印到lcd_id数组。				 	
+  	while(1) 
+	{		 
+		POINT_COLOR=RED;	  
+		LCD_ShowString(30,40,210,24,24,"Explorer STM32F4");	
+		LCD_ShowString(30,70,200,16,16,"TFTLCD TEST");
+		LCD_ShowString(30,90,200,16,16,"ATOM@ALIENTEK");
+		LCD_ShowString(30,110,200,16,16,lcd_id);		//显示LCD ID	      					 
+		LCD_ShowString(30,130,200,12,12,"2014/5/4");	      					 
 	}
 }
 
