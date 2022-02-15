@@ -1,0 +1,278 @@
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     12/07/2021 14:43:35 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MOTOR_CONTROL
+OBJECT MODULE PLACED IN .\Output\Motor_control.obj
+COMPILER INVOKED BY: C:\keil5\C51\BIN\C51.EXE Code\Motor_control.c OPTIMIZE(6,SPEED) BROWSE INCDIR(..\..\Include) DEFINE
+                    -(FOSC_160000) DEBUG OBJECTEXTEND PRINT(.\LST\Motor_control.lst) OBJECT(.\Output\Motor_control.obj)
+
+line level    source
+
+   1          #include "Motor_control.h"
+   2          #include "common.h"
+   3          #include "Function_define.h"
+   4          #include "N76E003.h"
+   5          #include "SFR_Macro.h"
+   6          #include "Delay.h" 
+   7          #include "SFR_Macro.h"
+   8          
+   9          #define Vref  3072;
+  10          #define Ramp_up Timer0_Delay1ms(10); set_LOAD;set_PWMRUN//from 0->0x97 150 step, 10ms*150=1.5s
+  11          #define set_IAPEN BIT_TMP=EA;EA=0;TA=0xAA;TA=0x55;CHPCON|=SET_BIT0 ;EA=BIT_TMP
+  12          #define set_IAPGO BIT_TMP=EA;EA=0;TA=0xAA;TA=0x55;IAPTRG|=SET_BIT0 ;EA=BIT_TMP
+  13          #define clr_IAPEN BIT_TMP=EA;EA=0;TA=0xAA;TA=0x55;CHPCON&=~SET_BIT0;EA=BIT_TMP
+  14          //#define TIM1_INIT  TH0 = 0XFC
+  15          ////////////Variables////////////////
+  16          double bgvalue, ADCValue, bgvol, ADC_Vol;
+  17          uint8_t  bgmark;
+  18          uint8_t  bgh;
+  19          uint8_t  bgl;
+  20          static uint8_t  flag=1;
+  21          
+  22          
+  23          // PWM+=KP[e(k) -e(k-1)]+Ki*e(k)+Kd[e(k)-2e(k-1)+e(k-2)]
+  24          // e(k) the value difference of actual and setting e(k-1) the last time difference
+  25          // In this motor control we use P
+  26          // PWM = Kp[e(k) - e(k-1)]
+  27          // Cbat == the current value  IO:P05 ADC value
+  28          int Incremental_P(UINT8 Cbat, UINT8 CC_Value)//int can have negative num
+  29          {
+  30   1              static UINT8 Kp=1,Bias,Last_bias;
+  31   1              static float PWM;
+  32   1              Bias= Cbat-CC_Value;
+  33   1              PWM-= Kp*(Bias-Last_bias);// Decreasement output
+  34   1              Last_bias = Bias;
+  35   1              return PWM; //The percentage of decreasment
+  36   1      }
+  37          
+  38          void ADC_Init(void)
+  39          {
+  40   1              set_IAPEN;
+  41   1              IAPAL = 0x0d; IAPAH = 0x00; IAPCN = 0x04;//0x04 =Read UID
+  42   1              set_IAPGO;
+  43   1              bgl = IAPFD;
+  44   1              bgmark = bgl&0xf0;
+  45   1              
+  46   1              if(bgmark == 0x80)
+  47   1              {
+  48   2                      bgl = bgl&0x0f;                 
+  49   2                      IAPAL = 0x0c;
+  50   2                      IAPAH = 0x00; 
+  51   2                      set_IAPGO;
+  52   2                      bgh = IAPFD;
+  53   2                      bgvalue = (bgh<<4)+bgl;
+  54   2                      bgvol = bgvalue*3/4;
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     12/07/2021 14:43:35 PAGE 2   
+
+  55   2                      bgvol = bgvol- 33;
+  56   2              }
+  57   1              if(bgmark==0x00)
+  58   1              {
+  59   2                      bgl = bgl&0x0f;
+  60   2                      IAPAL = 0X0C;
+  61   2                      IAPAH = 0X00;
+  62   2                      set_IAPGO;
+  63   2                      bgh = IAPFD;
+  64   2                      bgvalue = (bgh<<4)+bgl;
+  65   2                      bgvol = bgvalue*3/4;
+  66   2              }
+  67   1              if(bgmark==0x90)
+  68   1              {
+  69   2                      IAPAL = 0x0E;
+  70   2                      IAPAH = 0x00;
+  71   2                      set_IAPGO;
+  72   2                      bgh   = IAPFD;
+  73   2                      IAPAL = 0x0F;
+  74   2                      IAPAH = 0x00;
+  75   2                      set_IAPGO;
+  76   2                      bgl = IAPFD;
+  77   2                      bgl = bgl&0x0f; 
+  78   2                      bgvalue = (bgh<<4)+bgl;
+  79   2                      bgvol = bgvalue*3/4;
+  80   2              }
+  81   1              printf("\nBandgap value:%d\n", bgvalue);
+  82   1              printf("\nBandgap vo ltage:%dmV\n",bgvol);
+  83   1              clr_IAPEN;              // turn off IAP
+  84   1              
+  85   1              Enable_ADC_AIN0;                //P17 Hall pedal
+  86   1      //      Enable_ADC_AIN4;                //P05 A_Det
+  87   1      //      Enable_ADC_AIN1;                //P30 Speed
+  88   1              for(bgh =0;bgh<3;bgh++)
+  89   1              {
+  90   2                      clr_ADCF;
+  91   2                      set_ADCS;
+  92   2                      while(ADCF==0);
+  93   2                      ADCValue = (ADCRH<<4)+ADCRL;
+  94   2                      printf("ADC value:%d",ADCValue);
+  95   2              }
+  96   1      }
+  97          /* AD value= Voltage*255/5  20A=57*/
+  98          UINT16 Get_CurrentValue(void)
+  99          {
+ 100   1              Enable_ADC_AIN4;
+ 101   1              clr_ADCF;
+ 102   1              set_ADCS;
+ 103   1              while(ADCF==0);
+ 104   1      //      ADCValue = (ADCRH<<4)+ADCRL;
+ 105   1      //      printf("ADC value:%d",ADCValue);
+ 106   1              return ADCRH;
+ 107   1      }
+ 108          
+ 109          UINT16 Get_HallValue(void)
+ 110          {
+ 111   1              Enable_ADC_AIN0;
+ 112   1              clr_ADCF;
+ 113   1              set_ADCS;//Enable ADC transfer
+ 114   1      //      ADCValue = (ADCRH<<4)+ADCRL
+ 115   1      //      ADC_Vol = (bgvol*ADCValue/bgvalue);//All are decimal
+ 116   1      //      printf("ADCRH:%x\n",ADCRH);
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     12/07/2021 14:43:35 PAGE 3   
+
+ 117   1      //      printf("ADCRL:%d",ADCRL);
+ 118   1      //      printf("ADC_voltage:%gmV\n",ADC_Vol);//%g don't print no meaning 0
+ 119   1              while(ADCF==0);//ADC transfer done
+ 120   1              return ADCRH; //High 8 bits+ low 4 bits
+ 121   1      }
+ 122          
+ 123          UINT8 Get_Speedvalue(void)
+ 124          {
+ 125   1              Enable_ADC_AIN1;
+ 126   1              clr_ADCF;
+ 127   1              set_ADCS;
+ 128   1              while(ADCF==0);
+ 129   1              if(ADCRH>100)
+ 130   1                      return 1;
+ 131   1              else 
+ 132   1                      return 0;
+ 133   1      }
+ 134          
+ 135          void Relay_On(UINT8 On_FB)//1= F 0 = B
+ 136          {
+ 137   1              if(On_FB==1)
+ 138   1              {
+ 139   2                      clr_P10;
+ 140   2                      set_P00;
+ 141   2              }
+ 142   1              else
+ 143   1              {
+ 144   2                      clr_P00;
+ 145   2                      set_P10;
+ 146   2              }
+ 147   1                      
+ 148   1      }
+ 149          
+ 150          void Relay_Off(void)
+ 151          {
+ 152   1              clr_P00;
+ 153   1              clr_P10;
+ 154   1      }
+ 155                  /**********************************************************************
+ 156                                                                  Dead time setting
+ 157                                                          DT=PDTCNT+1/Fsys  >Ton+Toff
+ 158                                                          2us= 32/16M
+ 159                  ********************************** 3  5************************************/
+ 160          void PWM_DEAD_TIME_VALUE(UINT16 DeadTimeData) //problem:when the deadtemphigh!=1, there is no dead time
+ 161          {
+ 162   1              UINT8 deadtmphigh,deadtmplow;
+ 163   1              deadtmplow = DeadTimeData;
+ 164   1              deadtmphigh = DeadTimeData>>8;
+ 165   1              BIT_TMP = EA;
+ 166   1              if (deadtmphigh==0x01)
+ 167   1              {
+ 168   2                      EA = 0;
+ 169   2                      TA = 0xAA;
+ 170   2                      TA = 0x55;
+ 171   2                      PDTEN|=0x10;
+ 172   2              }
+ 173   1              TA = 0xAA;
+ 174   1              TA = 0x55;
+ 175   1              PDTCNT = deadtmplow;
+ 176   1              EA = BIT_TMP;
+ 177   1      }
+ 178          
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     12/07/2021 14:43:35 PAGE 4   
+
+ 179          void PWM_Init()
+ 180          {
+ 181   1              PWM5_P03_OUTPUT_ENABLE;
+ 182   1              PWM4_P01_OUTPUT_ENABLE;//Upper bridge
+ 183   1              PWM4_OUTPUT_INVERSE;
+ 184   1      //      PWM5_OUTPUT_INVERSE;    
+ 185   1              PWM_COMPLEMENTARY_MODE;//In this mode the dead time can work
+ 186   1              
+ 187   1              PWM_CLOCK_DIV_32;
+ 188   1      //      PWMPH = 0x07;
+ 189   1      //      PWMPL = 0xcf;   //1K
+ 190   1              PWMPH = 0x00;   //Period setting;
+ 191   1              PWMPL = 0xff;   //1.9KHz
+ 192   1              
+ 193   1              set_SFRPAGE;
+ 194   1              PWM4H = 0x00;
+ 195   1              PWM4L = 0x00;
+ 196   1              clr_SFRPAGE;
+ 197   1              
+ 198   1              PWM45_DEADTIME_ENABLE;
+ 199   1              PWM_DEAD_TIME_VALUE(64); //31=2us dead time      95=6us 63=4us input PDTCNT value
+ 200   1              set_LOAD;
+ 201   1              set_PWMRUN;
+ 202   1              /**********************************************************************
+ 203   1              PWM frequency = Fpwm/((PWMPH,PWMPL) + 1) <Fpwm = Fsys/PWM_CLOCK_DIV> 
+ 204   1                                                                      = (16MHz/8)/(0x7CF + 1)
+ 205   1                                                                      = 1KHz (1ms)
+ 206   1              =(16MHz/8)/(0x96+1)
+ 207   1      
+ 208   1              ***********************************************************************/
+ 209   1      }
+ 210          
+ 211          void PWM_Setting(UINT8 n, UINT8 FB)     //1n = 1%
+ 212          {
+ 213   1              set_SFRPAGE; //PWM4\5 SETTING
+ 214   1              flag = 1;
+ 215   1              n = n>100? 100: n;
+ 216   1              if(flag)
+ 217   1              {
+ 218   2                      UINT8 i = n*5/2;
+ 219   2                      if(n>=0&&n<=100)
+ 220   2                      {
+ 221   3                              if(PWM4L<i)
+ 222   3                              {
+ 223   4                                      PWM4L++;
+ 224   4                              }
+ 225   3                              else if(PWM4L==i)// jump out
+ 226   3                              {
+ 227   4                                      flag = 0;
+ 228   4                              }
+ 229   3                              else
+ 230   3                              {
+ 231   4                                      PWM4L=i;
+ 232   4                              }
+ 233   3                      }
+ 234   2                      if(PWM4L>10)
+ 235   2                              Relay_On(FB);
+ 236   2      //              else
+ 237   2      //                      Relay_Off();
+ 238   2                      Ramp_up;// 10 = 2.55s ramp up
+ 239   2              }
+ 240   1              
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     12/07/2021 14:43:35 PAGE 5   
+
+ 241   1      }
+ 242          
+ 243          //void PinInterrupt (void) interrupt 7
+ 244          //{
+ 245          //      printf("Falling edge intterrupt triggered");
+ 246          //}
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   1021    ----
+   CONSTANT SIZE    =     56    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     27       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
