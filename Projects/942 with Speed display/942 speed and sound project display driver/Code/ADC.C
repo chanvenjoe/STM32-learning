@@ -41,11 +41,16 @@
 The main C function.  Program execution starts
 here after stack initialization.
 ******************************************************************************/
-int IC0_value;
+static float IC0_value;
+unsigned int IC0_value_sum;
 void Capture_ISR(void) interrupt 12
 {
 	clr_CAPF0;
-	P1 = C0L;
+	IC0_value = (C0H<<8)+C0L; //uS value 
+	IC0_value = (1/(IC0_value*2/1000000))*0.05//3600/60.67*3.14*0.27/1000;
+	IC0_value_sum+=IC0_value;
+	clr_TF2;
+}
 void main (void) 
 {
 	Set_All_GPIO_Quasi_Mode;			//For GPIO1 output, Find in "Function_define.h" - "GPIO INIT"
@@ -66,7 +71,10 @@ void main (void)
 	P15=1;
 	
 	TIMER2_CAP0_Capture_Mode;
-	IC7_P15_CAP0_RisingEdge_Capture;
+	TIMER2_DIV_16;
+	//IC7_P15_CAP0_RisingEdge_Capture;
+	//IC7_P15_CAP0_BothEdge_Capture;
+	IC7_P15_CAP0_FallingEdge_Capture;
 	set_ECAP;
 	set_TR2;
 	set_EA;
@@ -76,9 +84,10 @@ void main (void)
 	while(1)
 	{
 		//UINT8 i = Get_HallValue();// can use public structure or ...
-		if(i>0)
+		IC0_value = 1/(IC0_value*2)*0.503;    //RPS*3600/60.67*0.27m*3.14/1000
+		if(IC0_value>0)
 		{
-			numb_show(i);
+			numb_show(IC0_value);
 		}
 		else
 		{

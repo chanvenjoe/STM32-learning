@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     02/21/2022 20:53:10 PAGE 1   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     02/22/2022 21:53:54 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MOTOR_CONTROL
@@ -62,7 +62,7 @@ line level    source
   52   2                      bgh = IAPFD;
   53   2                      bgvalue = (bgh<<4)+bgl;
   54   2                      bgvol = bgvalue*3/4;
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     02/21/2022 20:53:10 PAGE 2   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     02/22/2022 21:53:54 PAGE 2   
 
   55   2                      bgvol = bgvol- 33;
   56   2              }
@@ -126,7 +126,7 @@ line level    source
  114   1      //      ADCValue = (ADCRH<<4)+ADCRL
  115   1      //      ADC_Vol = (bgvol*ADCValue/bgvalue);//All are decimal
  116   1      //      printf("ADCRH:%x\n",ADCRH);
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     02/21/2022 20:53:10 PAGE 3   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     02/22/2022 21:53:54 PAGE 3   
 
  117   1      //      printf("ADCRL:%d",ADCRL);
  118   1      //      printf("ADC_voltage:%gmV\n",ADC_Vol);//%g don't print no meaning 0
@@ -145,123 +145,124 @@ line level    source
  131   1              else 
  132   1                      return 0;
  133   1      }
- 134          
- 135          void Relay_On(UINT8 On_FB)//1= F 0 = B
- 136          {
- 137   1              if(On_FB==1)
- 138   1              {
- 139   2                      clr_P10;
- 140   2                      set_P00;
- 141   2              }
- 142   1              else
- 143   1              {
- 144   2                      clr_P00;
- 145   2                      set_P10;
- 146   2              }
- 147   1                      
- 148   1      }
- 149          
- 150          void Relay_Off(void)
- 151          {
- 152   1              clr_P00;
- 153   1              clr_P10;
- 154   1      }
- 155                  /**********************************************************************
- 156                                                                  Dead time setting
- 157                                                          DT=PDTCNT+1/Fsys  >Ton+Toff
- 158                                                          2us= 32/16M
- 159                  ********************************** 3  5************************************/
- 160          void PWM_DEAD_TIME_VALUE(UINT16 DeadTimeData) //problem:when the deadtemphigh!=1, there is no dead time
- 161          {
- 162   1              UINT8 deadtmphigh,deadtmplow;
- 163   1              deadtmplow = DeadTimeData;
- 164   1              deadtmphigh = DeadTimeData>>8;
- 165   1              BIT_TMP = EA;
- 166   1              if (deadtmphigh==0x01)
- 167   1              {
- 168   2                      EA = 0;
- 169   2                      TA = 0xAA;
- 170   2                      TA = 0x55;
- 171   2                      PDTEN|=0x10;
- 172   2              }
- 173   1              TA = 0xAA;
- 174   1              TA = 0x55;
- 175   1              PDTCNT = deadtmplow;
- 176   1              EA = BIT_TMP;
- 177   1      }
- 178          
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     02/21/2022 20:53:10 PAGE 4   
+ 134                  
+ 135          
+ 136          void Relay_On(UINT8 On_FB)//1= F 0 = B
+ 137          {
+ 138   1              if(On_FB==1)
+ 139   1              {
+ 140   2                      clr_P10;
+ 141   2                      set_P00;
+ 142   2              }
+ 143   1              else
+ 144   1              {
+ 145   2                      clr_P00;
+ 146   2                      set_P10;
+ 147   2              }
+ 148   1                      
+ 149   1      }
+ 150          
+ 151          void Relay_Off(void)
+ 152          {
+ 153   1              clr_P00;
+ 154   1              clr_P10;
+ 155   1      }
+ 156                  /**********************************************************************
+ 157                                                                  Dead time setting
+ 158                                                          DT=PDTCNT+1/Fsys  >Ton+Toff
+ 159                                                          2us= 32/16M
+ 160                  ********************************** 3  5************************************/
+ 161          void PWM_DEAD_TIME_VALUE(UINT16 DeadTimeData) //problem:when the deadtemphigh!=1, there is no dead time
+ 162          {
+ 163   1              UINT8 deadtmphigh,deadtmplow;
+ 164   1              deadtmplow = DeadTimeData;
+ 165   1              deadtmphigh = DeadTimeData>>8;
+ 166   1              BIT_TMP = EA;
+ 167   1              if (deadtmphigh==0x01)
+ 168   1              {
+ 169   2                      EA = 0;
+ 170   2                      TA = 0xAA;
+ 171   2                      TA = 0x55;
+ 172   2                      PDTEN|=0x10;
+ 173   2              }
+ 174   1              TA = 0xAA;
+ 175   1              TA = 0x55;
+ 176   1              PDTCNT = deadtmplow;
+ 177   1              EA = BIT_TMP;
+ 178   1      }
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     02/22/2022 21:53:54 PAGE 4   
 
- 179          void PWM_Init()
- 180          {
- 181   1              PWM5_P03_OUTPUT_ENABLE;
- 182   1              PWM4_P01_OUTPUT_ENABLE;//Upper bridge
- 183   1              PWM4_OUTPUT_INVERSE;
- 184   1      //      PWM5_OUTPUT_INVERSE;    
- 185   1              PWM_COMPLEMENTARY_MODE;//In this mode the dead time can work
- 186   1              
- 187   1              PWM_CLOCK_DIV_32;
- 188   1      //      PWMPH = 0x07;
- 189   1      //      PWMPL = 0xcf;   //1K
- 190   1              PWMPH = 0x00;   //Period setting;
- 191   1              PWMPL = 0xff;   //1.9KHz
- 192   1              
- 193   1              set_SFRPAGE;
- 194   1              PWM4H = 0x00;
- 195   1              PWM4L = 0x00;
- 196   1              clr_SFRPAGE;
- 197   1              
- 198   1              PWM45_DEADTIME_ENABLE;
- 199   1              PWM_DEAD_TIME_VALUE(64); //31=2us dead time      95=6us 63=4us input PDTCNT value
- 200   1              set_LOAD;
- 201   1              set_PWMRUN;
- 202   1              /**********************************************************************
- 203   1              PWM frequency = Fpwm/((PWMPH,PWMPL) + 1) <Fpwm = Fsys/PWM_CLOCK_DIV> 
- 204   1                                                                      = (16MHz/8)/(0x7CF + 1)
- 205   1                                                                      = 1KHz (1ms)
- 206   1              =(16MHz/8)/(0x96+1)
- 207   1      
- 208   1              ***********************************************************************/
- 209   1      }
- 210          
- 211          void PWM_Setting(UINT8 n, UINT8 FB)     //1n = 1%
- 212          {
- 213   1              set_SFRPAGE; //PWM4\5 SETTING
- 214   1              flag = 1;
- 215   1              n = n>100? 100: n;
- 216   1              if(flag)
- 217   1              {
- 218   2                      UINT8 i = n*5/2;
- 219   2                      if(n>=0&&n<=100)
- 220   2                      {
- 221   3                              if(PWM4L<i)
- 222   3                              {
- 223   4                                      PWM4L++;
- 224   4                              }
- 225   3                              else if(PWM4L==i)// jump out
- 226   3                              {
- 227   4                                      flag = 0;
- 228   4                              }
- 229   3                              else
- 230   3                              {
- 231   4                                      PWM4L=i;
- 232   4                              }
- 233   3                      }
- 234   2                      if(PWM4L>10)
- 235   2                              Relay_On(FB);
- 236   2      //              else
- 237   2      //                      Relay_Off();
- 238   2                      Ramp_up;// 10 = 2.55s ramp up
- 239   2              }
- 240   1              
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     02/21/2022 20:53:10 PAGE 5   
+ 179          
+ 180          void PWM_Init()
+ 181          {
+ 182   1              PWM5_P03_OUTPUT_ENABLE;
+ 183   1              PWM4_P01_OUTPUT_ENABLE;//Upper bridge
+ 184   1              PWM4_OUTPUT_INVERSE;
+ 185   1      //      PWM5_OUTPUT_INVERSE;    
+ 186   1              PWM_COMPLEMENTARY_MODE;//In this mode the dead time can work
+ 187   1              
+ 188   1              PWM_CLOCK_DIV_32;
+ 189   1      //      PWMPH = 0x07;
+ 190   1      //      PWMPL = 0xcf;   //1K
+ 191   1              PWMPH = 0x00;   //Period setting;
+ 192   1              PWMPL = 0xff;   //1.9KHz
+ 193   1              
+ 194   1              set_SFRPAGE;
+ 195   1              PWM4H = 0x00;
+ 196   1              PWM4L = 0x00;
+ 197   1              clr_SFRPAGE;
+ 198   1              
+ 199   1              PWM45_DEADTIME_ENABLE;
+ 200   1              PWM_DEAD_TIME_VALUE(64); //31=2us dead time      95=6us 63=4us input PDTCNT value
+ 201   1              set_LOAD;
+ 202   1              set_PWMRUN;
+ 203   1              /**********************************************************************
+ 204   1              PWM frequency = Fpwm/((PWMPH,PWMPL) + 1) <Fpwm = Fsys/PWM_CLOCK_DIV> 
+ 205   1                                                                      = (16MHz/8)/(0x7CF + 1)
+ 206   1                                                                      = 1KHz (1ms)
+ 207   1              =(16MHz/8)/(0x96+1)
+ 208   1      
+ 209   1              ***********************************************************************/
+ 210   1      }
+ 211          
+ 212          void PWM_Setting(UINT8 n, UINT8 FB)     //1n = 1%
+ 213          {
+ 214   1              set_SFRPAGE; //PWM4\5 SETTING
+ 215   1              flag = 1;
+ 216   1              n = n>100? 100: n;
+ 217   1              if(flag)
+ 218   1              {
+ 219   2                      UINT8 i = n*5/2;
+ 220   2                      if(n>=0&&n<=100)
+ 221   2                      {
+ 222   3                              if(PWM4L<i)
+ 223   3                              {
+ 224   4                                      PWM4L++;
+ 225   4                              }
+ 226   3                              else if(PWM4L==i)// jump out
+ 227   3                              {
+ 228   4                                      flag = 0;
+ 229   4                              }
+ 230   3                              else
+ 231   3                              {
+ 232   4                                      PWM4L=i;
+ 233   4                              }
+ 234   3                      }
+ 235   2                      if(PWM4L>10)
+ 236   2                              Relay_On(FB);
+ 237   2      //              else
+ 238   2      //                      Relay_Off();
+ 239   2                      Ramp_up;// 10 = 2.55s ramp up
+ 240   2              }
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     02/22/2022 21:53:54 PAGE 5   
 
- 241   1      }
- 242          
- 243          //void PinInterrupt (void) interrupt 7
- 244          //{
- 245          //      printf("Falling edge intterrupt triggered");
- 246          //}
+ 241   1              
+ 242   1      }
+ 243          
+ 244          //void PinInterrupt (void) interrupt 7
+ 245          //{
+ 246          //      printf("Falling edge intterrupt triggered");
+ 247          //}
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE

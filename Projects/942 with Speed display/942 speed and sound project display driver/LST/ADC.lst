@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   ADC                                                               02/21/2022 20:53:10 PAGE 1   
+C51 COMPILER V9.60.0.0   ADC                                                               02/22/2022 22:03:45 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE ADC
@@ -62,7 +62,7 @@ line level    source
              -DCCON1&=~SET_BIT6
               //#define P13_RISINGEDGE_TRIG_ADC                       ADCCON0|=0x30;ADCCON1&=~SET_BIT3;ADCCON1|=SET_BIT2;ADCCON1|=SET_BIT1;A
              -DCCON1|=SET_BIT6
-C51 COMPILER V9.60.0.0   ADC                                                               02/21/2022 20:53:10 PAGE 2   
+C51 COMPILER V9.60.0.0   ADC                                                               02/22/2022 22:03:45 PAGE 2   
 
               #endif
   39          
@@ -70,49 +70,72 @@ line level    source
   41          The main C function.  Program execution starts
   42          here after stack initialization.
   43          ******************************************************************************/
-  44          
-  45          void main (void) 
-  46          {
-  47   1              Set_All_GPIO_Quasi_Mode;                        //For GPIO1 output, Find in "Function_define.h" - "GPIO INIT"
-  48   1              P00_PushPull_Mode;
-  49   1              P01_PushPull_Mode;
-  50   1              P02_PushPull_Mode;
-  51   1              P03_PushPull_Mode;
-  52   1              P04_PushPull_Mode;
-  53   1              P05_PushPull_Mode;
-  54   1              P06_PushPull_Mode;
-  55   1              P07_PushPull_Mode;
-  56   1              P10_PushPull_Mode;
-  57   1              P11_PushPull_Mode;
-  58   1              P12_PushPull_Mode;
-  59   1              P13_PushPull_Mode;
-  60   1              InitialUART0_Timer1(115200);
-  61   1              ADC_Init();                                                     //
-  62   1                                                                                      //reverved for timer_init   Sleep2
-  63   1      //      PWM_Init();
-  64   1              while(1)
-  65   1              {
-  66   2                      UINT8 i = Get_HallValue();// can use public structure or ...
-  67   2                      if(i>61)
-  68   2                      {
-  69   3                              numb_show(i);
-  70   3                      }
-  71   2                      else
-  72   2                      {
-  73   3                              numb_show(0);
-  74   3                      }
-  75   2              }
-  76   1      }
-  77          
-  78          
+  44          static float IC0_value;
+  45          unsigned int IC0_value_sum;
+  46          void Capture_ISR(void) interrupt 12
+  47          {
+  48   1              clr_CAPF0;
+  49   1              IC0_value = (C0H<<8)+C0L; //uS value 
+  50   1              IC0_value = (1/(IC0_value*2/1000000))*3600/60.67*3.14*0.27/1000;
+  51   1              IC0_value_sum+=IC0_value;
+  52   1              clr_TF2;
+  53   1      }
+  54          void main (void) 
+  55          {
+  56   1              Set_All_GPIO_Quasi_Mode;                        //For GPIO1 output, Find in "Function_define.h" - "GPIO INIT"
+  57   1              P00_PushPull_Mode;
+  58   1              P01_PushPull_Mode;
+  59   1              P02_PushPull_Mode;
+  60   1              P03_PushPull_Mode;
+  61   1              P04_PushPull_Mode;
+  62   1              P05_PushPull_Mode;
+  63   1              P06_PushPull_Mode;
+  64   1              P07_PushPull_Mode;
+  65   1              P10_PushPull_Mode;
+  66   1              P11_PushPull_Mode;
+  67   1              P12_PushPull_Mode;
+  68   1              P13_PushPull_Mode;
+  69   1              InitialUART0_Timer1(115200);
+  70   1              P15_Input_Mode;
+  71   1              P15=1;
+  72   1              
+  73   1              TIMER2_CAP0_Capture_Mode;
+  74   1              TIMER2_DIV_16;
+  75   1              //IC7_P15_CAP0_RisingEdge_Capture;
+  76   1              //IC7_P15_CAP0_BothEdge_Capture;
+  77   1              IC7_P15_CAP0_FallingEdge_Capture;
+  78   1              set_ECAP;
+  79   1              set_TR2;
+  80   1              set_EA;
+  81   1              ADC_Init();                                                     //
+  82   1                                                                                      //reverved for timer_init   Sleep2
+  83   1      //      PWM_Init();
+  84   1              while(1)
+  85   1              {
+  86   2                      //UINT8 i = Get_HallValue();// can use public structure or ...
+  87   2                      IC0_value = 1/(IC0_value*2)*0.503;    //RPS*3600/60.67*0.27m*3.14/1000
+  88   2                      if(IC0_value>0)
+  89   2                      {
+  90   3                              numb_show(IC0_value);
+  91   3                      }
+  92   2                      else
+  93   2                      {
+  94   3                              numb_show(0);
+  95   3                      }
+  96   2              }
+  97   1      }
+  98          
+  99          
+C51 COMPILER V9.60.0.0   ADC                                                               02/22/2022 22:03:45 PAGE 3   
+
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    128    ----
+   CODE SIZE        =    446    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =   ----       1
+   DATA SIZE        =      6    ----
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.
