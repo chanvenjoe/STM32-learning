@@ -1,10 +1,10 @@
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    12/07/2021  14:43:35  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    02/21/2022  20:53:12  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
-C:\KEIL5\C51\BIN\BL51.EXE .\Output\ADC.obj, .\Output\Motor_control.obj, .\Output\Delay.obj, .\Output\Common.obj, .\Outpu
->> t\Speed_display.obj, .\Output\STARTUP.obj TO .\Output\ADC_Bandgap PRINT (.\LST\ADC_Bandgap.m51) RAMSIZE (256) DISABLE
->> WARNING (16) XDATA (0X0000-0X02FF)
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Output\ADC.obj, .\Output\Motor_control.obj, .\Output\Delay.obj, .\Output\Common.obj, .\Out
+>> put\Speed_display.obj, .\Output\STARTUP.obj TO .\Output\ADC_Bandgap PRINT (.\LST\ADC_Bandgap.m51) RAMSIZE (256) DISAB
+>> LEWARNING (16) XDATA (0X0000-0X02FF)
 
 
 MEMORY MODEL: SMALL WITH FLOATING POINT ARITHMETIC
@@ -17,29 +17,29 @@ INPUT MODULES INCLUDED:
   .\Output\Common.obj (COMMON)
   .\Output\Speed_display.obj (SPEED_DISPLAY)
   .\Output\STARTUP.obj (?C_STARTUP)
-  C:\KEIL5\C51\LIB\C51FPS.LIB (?C?FPADD)
-  C:\KEIL5\C51\LIB\C51FPS.LIB (?C?FPMUL)
-  C:\KEIL5\C51\LIB\C51FPS.LIB (?C?FPDIV)
-  C:\KEIL5\C51\LIB\C51FPS.LIB (?C?FCAST)
-  C:\KEIL5\C51\LIB\C51FPS.LIB (?C?CASTF)
-  C:\KEIL5\C51\LIB\C51FPS.LIB (PRINTF)
-  C:\KEIL5\C51\LIB\C51FPS.LIB (?C?FPGETOPN)
-  C:\KEIL5\C51\LIB\C51FPS.LIB (?C?FPROUND)
-  C:\KEIL5\C51\LIB\C51FPS.LIB (?C?FPCONVERT)
-  C:\KEIL5\C51\LIB\C51FPS.LIB (?C?FTNPWR)
-  C:\KEIL5\C51\LIB\C51S.LIB (?C_INIT)
-  C:\KEIL5\C51\LIB\C51S.LIB (?C?CLDPTR)
-  C:\KEIL5\C51\LIB\C51S.LIB (?C?CLDOPTR)
-  C:\KEIL5\C51\LIB\C51S.LIB (?C?CSTPTR)
-  C:\KEIL5\C51\LIB\C51S.LIB (?C?IMUL)
-  C:\KEIL5\C51\LIB\C51S.LIB (?C?UIDIV)
-  C:\KEIL5\C51\LIB\C51S.LIB (?C?ULDIV)
-  C:\KEIL5\C51\LIB\C51S.LIB (?C?LNEG)
-  C:\KEIL5\C51\LIB\C51S.LIB (?C?ULCMP)
-  C:\KEIL5\C51\LIB\C51S.LIB (?C?ULSHR)
-  C:\KEIL5\C51\LIB\C51S.LIB (?C?PLDIIDATA)
-  C:\KEIL5\C51\LIB\C51S.LIB (?C?CCASE)
-  C:\KEIL5\C51\LIB\C51S.LIB (PUTCHAR)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPADD)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPMUL)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPDIV)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FCAST)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?CASTF)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (PRINTF)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPGETOPN)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPROUND)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPCONVERT)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FTNPWR)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_INIT)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?CLDPTR)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?CLDOPTR)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?CSTPTR)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?IMUL)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?UIDIV)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?ULDIV)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?LNEG)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?ULCMP)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?ULSHR)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?PLDIIDATA)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?CCASE)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (PUTCHAR)
 
 
 LINK MAP OF MODULE:  .\Output\ADC_Bandgap (ADC)
@@ -59,7 +59,7 @@ LINK MAP OF MODULE:  .\Output\ADC_Bandgap (ADC)
                     0021H.2   0000H.6                *** GAP ***
             DATA    0022H     001DH     UNIT         _DATA_GROUP_
             DATA    003FH     001BH     UNIT         ?DT?MOTOR_CONTROL
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/07/2021  14:43:35  PAGE 2
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  02/21/2022  20:53:12  PAGE 2
 
 
             DATA    005AH     0004H     UNIT         ?DT?_TIMER0_DELAY1MS?DELAY
@@ -78,33 +78,33 @@ LINK MAP OF MODULE:  .\Output\ADC_Bandgap (ADC)
             CODE    0D82H     00ACH     UNIT         ?C_C51STARTUP
             CODE    0E2EH     009DH     UNIT         ?PR?_NUMB_SHOW?SPEED_DISPLAY
             CODE    0ECBH     008AH     UNIT         ?PR?_PWM_SETTING?MOTOR_CONTROL
-            CODE    0F55H     0078H     UNIT         ?PR?MAIN?ADC
-            CODE    0FCDH     0075H     UNIT         ?PR?_INITIALUART0_TIMER3?COMMON
-            CODE    1042H     0070H     UNIT         ?PR?_INITIALUART1_TIMER3?COMMON
-            CODE    10B2H     0063H     UNIT         ?PR?PWM_INIT?MOTOR_CONTROL
-            CODE    1115H     0050H     UNIT         ?PR?_TIMER3_DELAY100MS?DELAY
-            CODE    1165H     0050H     UNIT         ?PR?_TIMER3_DELAY10US?DELAY
-            CODE    11B5H     004EH     UNIT         ?PR?_INCREMENTAL_P?MOTOR_CONTROL
-            CODE    1203H     004EH     UNIT         ?PR?_TIMER2_DELAY500US?DELAY
-            CODE    1251H     004BH     UNIT         ?PR?_TIMER0_DELAY100US?DELAY
-            CODE    129CH     004BH     UNIT         ?PR?_TIMER0_DELAY1MS?DELAY
-            CODE    12E7H     004BH     UNIT         ?PR?_TIMER1_DELAY10MS?DELAY
-            CODE    1332H     0039H     UNIT         ?PR?_INITIALUART0_TIMER1?COMMON
-            CODE    136BH     0039H     UNIT         ?PR?_DIGIT_SELC_SHOW?SPEED_DISPLAY
-            CODE    13A4H     0038H     UNIT         ?CO?MOTOR_CONTROL
-            CODE    13DCH     002EH     UNIT         ?PR?GET_SPEEDVALUE?MOTOR_CONTROL
-            CODE    140AH     0027H     UNIT         ?PR?PUTCHAR?PUTCHAR
-            CODE    1431H     0025H     UNIT         ?PR?_PWM_DEAD_TIME_VALUE?MOTOR_CONTROL
-            CODE    1456H     0021H     UNIT         ?PR?GET_CURRENTVALUE?MOTOR_CONTROL
-            CODE    1477H     001EH     UNIT         ?PR?GET_HALLVALUE?MOTOR_CONTROL
-            CODE    1495H     0019H     UNIT         ?C_INITSEG
-            CODE    14AEH     000FH     UNIT         ?PR?_RELAY_ON?MOTOR_CONTROL
-            CODE    14BDH     000DH     UNIT         ?PR?_GPIO_SETBITS?SPEED_DISPLAY
-            CODE    14CAH     0008H     UNIT         ?PR?RECEIVE_DATA_FROM_UART0?COMMON
-            CODE    14D2H     0008H     UNIT         ?PR?_SEND_DATA_TO_UART0?COMMON
-            CODE    14DAH     0008H     UNIT         ?PR?RECEIVE_DATA_FROM_UART1?COMMON
-            CODE    14E2H     0008H     UNIT         ?PR?_SEND_DATA_TO_UART1?COMMON
-            CODE    14EAH     0005H     UNIT         ?PR?RELAY_OFF?MOTOR_CONTROL
+            CODE    0F55H     0080H     UNIT         ?PR?MAIN?ADC
+            CODE    0FD5H     0075H     UNIT         ?PR?_INITIALUART0_TIMER3?COMMON
+            CODE    104AH     0070H     UNIT         ?PR?_INITIALUART1_TIMER3?COMMON
+            CODE    10BAH     0063H     UNIT         ?PR?PWM_INIT?MOTOR_CONTROL
+            CODE    111DH     0050H     UNIT         ?PR?_TIMER3_DELAY100MS?DELAY
+            CODE    116DH     0050H     UNIT         ?PR?_TIMER3_DELAY10US?DELAY
+            CODE    11BDH     004EH     UNIT         ?PR?_INCREMENTAL_P?MOTOR_CONTROL
+            CODE    120BH     004EH     UNIT         ?PR?_TIMER2_DELAY500US?DELAY
+            CODE    1259H     004BH     UNIT         ?PR?_TIMER0_DELAY100US?DELAY
+            CODE    12A4H     004BH     UNIT         ?PR?_TIMER0_DELAY1MS?DELAY
+            CODE    12EFH     004BH     UNIT         ?PR?_TIMER1_DELAY10MS?DELAY
+            CODE    133AH     0039H     UNIT         ?PR?_INITIALUART0_TIMER1?COMMON
+            CODE    1373H     0039H     UNIT         ?PR?_DIGIT_SELC_SHOW?SPEED_DISPLAY
+            CODE    13ACH     0038H     UNIT         ?CO?MOTOR_CONTROL
+            CODE    13E4H     002EH     UNIT         ?PR?GET_SPEEDVALUE?MOTOR_CONTROL
+            CODE    1412H     0027H     UNIT         ?PR?PUTCHAR?PUTCHAR
+            CODE    1439H     0025H     UNIT         ?PR?_PWM_DEAD_TIME_VALUE?MOTOR_CONTROL
+            CODE    145EH     0021H     UNIT         ?PR?GET_CURRENTVALUE?MOTOR_CONTROL
+            CODE    147FH     001EH     UNIT         ?PR?GET_HALLVALUE?MOTOR_CONTROL
+            CODE    149DH     0019H     UNIT         ?C_INITSEG
+            CODE    14B6H     000FH     UNIT         ?PR?_RELAY_ON?MOTOR_CONTROL
+            CODE    14C5H     000DH     UNIT         ?PR?_GPIO_SETBITS?SPEED_DISPLAY
+            CODE    14D2H     0008H     UNIT         ?PR?RECEIVE_DATA_FROM_UART0?COMMON
+            CODE    14DAH     0008H     UNIT         ?PR?_SEND_DATA_TO_UART0?COMMON
+            CODE    14E2H     0008H     UNIT         ?PR?RECEIVE_DATA_FROM_UART1?COMMON
+            CODE    14EAH     0008H     UNIT         ?PR?_SEND_DATA_TO_UART1?COMMON
+            CODE    14F2H     0005H     UNIT         ?PR?RELAY_OFF?MOTOR_CONTROL
 
 
 
@@ -119,7 +119,7 @@ SEGMENT                                           BIT_GROUP          DATA_GROUP
   +--> ?C_INITSEG
 
 ?PR?MAIN?ADC                                   -----    -----      0022H    0001H
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/07/2021  14:43:35  PAGE 3
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  02/21/2022  20:53:12  PAGE 3
 
 
   +--> ?PR?_INITIALUART0_TIMER1?COMMON
@@ -179,7 +179,7 @@ SYMBOL TABLE OF MODULE:  .\Output\ADC_Bandgap (ADC)
   -------         ENDDO         
   C:0F55H         LINE#         45
   C:0F55H         LINE#         46
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/07/2021  14:43:35  PAGE 4
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  02/21/2022  20:53:12  PAGE 4
 
 
   C:0F55H         LINE#         47
@@ -204,7 +204,10 @@ SYMBOL TABLE OF MODULE:  .\Output\ADC_Bandgap (ADC)
   C:0FC5H         LINE#         68
   C:0FC5H         LINE#         69
   C:0FCAH         LINE#         70
-  C:0FCAH         LINE#         71
+  C:0FCCH         LINE#         72
+  C:0FCCH         LINE#         73
+  C:0FD2H         LINE#         74
+  C:0FD2H         LINE#         75
   -------         ENDPROC       MAIN
   -------         ENDMOD        ADC
 
@@ -222,7 +225,7 @@ SYMBOL TABLE OF MODULE:  .\Output\ADC_Bandgap (ADC)
   D:00B0H         PUBLIC        P3
   D:00ADH         PUBLIC        P3M2
   B:00A8H.7       PUBLIC        EA
-  C:1477H         PUBLIC        Get_HallValue
+  C:147FH         PUBLIC        Get_HallValue
   D:00D8H         PUBLIC        PWMCON0
   D:00DFH         PUBLIC        PWMCON1
   D:00D1H         PUBLIC        PWMPH
@@ -230,18 +233,18 @@ SYMBOL TABLE OF MODULE:  .\Output\ADC_Bandgap (ADC)
   B:00E8H.7       PUBLIC        ADCF
   D:00D9H         PUBLIC        PWMPL
   D:00C7H         PUBLIC        TA
-  C:13DCH         PUBLIC        Get_Speedvalue
+  C:13E4H         PUBLIC        Get_Speedvalue
   D:00B8H         PUBLIC        IP
   D:0046H         SYMBOL        flag
   B:00E8H.6       PUBLIC        ADCS
   D:0047H         PUBLIC        bgvol
-  C:14AEH         PUBLIC        _Relay_On
+  C:14B6H         PUBLIC        _Relay_On
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  02/21/2022  20:53:12  PAGE 5
+
+
   B:00D8H.6       PUBLIC        LOAD
-  C:11B5H         PUBLIC        _Incremental_P
+  C:11BDH         PUBLIC        _Incremental_P
   B:0080H.0       PUBLIC        P00
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/07/2021  14:43:35  PAGE 5
-
-
   B:0090H.0       PUBLIC        P10
   D:004BH         PUBLIC        bgh
   D:0098H         PUBLIC        SCON
@@ -255,7 +258,7 @@ SYMBOL TABLE OF MODULE:  .\Output\ADC_Bandgap (ADC)
   D:004DH         PUBLIC        ADCValue
   D:00A4H         PUBLIC        IAPTRG
   D:00FAH         PUBLIC        PDTCNT
-  C:1431H         PUBLIC        _PWM_DEAD_TIME_VALUE
+  C:1439H         PUBLIC        _PWM_DEAD_TIME_VALUE
   D:00E8H         PUBLIC        ADCCON0
   D:0051H         PUBLIC        ADC_Vol
   D:00E1H         PUBLIC        ADCCON1
@@ -267,9 +270,9 @@ SYMBOL TABLE OF MODULE:  .\Output\ADC_Bandgap (ADC)
   D:00C2H         PUBLIC        ADCRL
   D:00A6H         PUBLIC        IAPAL
   D:0055H         PUBLIC        bgvalue
-  C:1456H         PUBLIC        Get_CurrentValue
+  C:145EH         PUBLIC        Get_CurrentValue
   B:00D8H.7       PUBLIC        PWMRUN
-  C:10B2H         PUBLIC        PWM_Init
+  C:10BAH         PUBLIC        PWM_Init
   D:00AFH         PUBLIC        IAPCN
   D:00D6H         PUBLIC        PNP
   D:00C4H         PUBLIC        PWM4H
@@ -278,7 +281,7 @@ SYMBOL TABLE OF MODULE:  .\Output\ADC_Bandgap (ADC)
   D:00DEH         PUBLIC        PIOCON0
   D:00D0H         PUBLIC        PSW
   D:00F9H         PUBLIC        PDTEN
-  C:14EAH         PUBLIC        Relay_Off
+  C:14F2H         PUBLIC        Relay_Off
   -------         PROC          _INCREMENTAL_P
   D:0007H         SYMBOL        Cbat
   D:0005H         SYMBOL        CC_Value
@@ -288,20 +291,20 @@ SYMBOL TABLE OF MODULE:  .\Output\ADC_Bandgap (ADC)
   D:0041H         SYMBOL        Last_bias
   D:0042H         SYMBOL        PWM
   -------         ENDDO         
-  C:11B5H         LINE#         28
-  C:11B5H         LINE#         29
-  C:11B5H         LINE#         32
-  C:11BAH         LINE#         33
-  C:11FCH         LINE#         34
-  C:11FFH         LINE#         35
-  C:1202H         LINE#         36
+  C:11BDH         LINE#         28
+  C:11BDH         LINE#         29
+  C:11BDH         LINE#         32
+  C:11C2H         LINE#         33
+  C:1204H         LINE#         34
+  C:1207H         LINE#         35
+  C:120AH         LINE#         36
   -------         ENDPROC       _INCREMENTAL_P
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  02/21/2022  20:53:12  PAGE 6
+
+
   -------         PROC          ADC_INIT
   C:0B66H         LINE#         38
   C:0B66H         LINE#         39
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/07/2021  14:43:35  PAGE 6
-
-
   C:0B66H         LINE#         40
   C:0B79H         LINE#         41
   C:0B82H         LINE#         42
@@ -356,109 +359,109 @@ SYMBOL TABLE OF MODULE:  .\Output\ADC_Bandgap (ADC)
   C:0D7DH         LINE#         95
   C:0D81H         LINE#         96
   -------         ENDPROC       ADC_INIT
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  02/21/2022  20:53:12  PAGE 7
+
+
   -------         PROC          GET_CURRENTVALUE
-  C:1456H         LINE#         98
-  C:1456H         LINE#         99
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/07/2021  14:43:35  PAGE 7
-
-
-  C:1456H         LINE#         100
-  C:146BH         LINE#         101
-  C:146DH         LINE#         102
-  C:146FH         LINE#         103
-  C:1472H         LINE#         106
-  C:1476H         LINE#         107
+  C:145EH         LINE#         98
+  C:145EH         LINE#         99
+  C:145EH         LINE#         100
+  C:1473H         LINE#         101
+  C:1475H         LINE#         102
+  C:1477H         LINE#         103
+  C:147AH         LINE#         106
+  C:147EH         LINE#         107
   -------         ENDPROC       GET_CURRENTVALUE
   -------         PROC          GET_HALLVALUE
-  C:1477H         LINE#         109
-  C:1477H         LINE#         110
-  C:1477H         LINE#         111
-  C:1489H         LINE#         112
-  C:148BH         LINE#         113
-  C:148DH         LINE#         119
-  C:1490H         LINE#         120
-  C:1494H         LINE#         121
+  C:147FH         LINE#         109
+  C:147FH         LINE#         110
+  C:147FH         LINE#         111
+  C:1491H         LINE#         112
+  C:1493H         LINE#         113
+  C:1495H         LINE#         119
+  C:1498H         LINE#         120
+  C:149CH         LINE#         121
   -------         ENDPROC       GET_HALLVALUE
   -------         PROC          GET_SPEEDVALUE
-  C:13DCH         LINE#         123
-  C:13DCH         LINE#         124
-  C:13DCH         LINE#         125
-  C:13F1H         LINE#         126
-  C:13F3H         LINE#         127
-  C:13F5H         LINE#         128
-  C:13F8H         LINE#         129
-  C:1404H         LINE#         130
-  C:1407H         LINE#         132
-  C:1409H         LINE#         133
+  C:13E4H         LINE#         123
+  C:13E4H         LINE#         124
+  C:13E4H         LINE#         125
+  C:13F9H         LINE#         126
+  C:13FBH         LINE#         127
+  C:13FDH         LINE#         128
+  C:1400H         LINE#         129
+  C:140CH         LINE#         130
+  C:140FH         LINE#         132
+  C:1411H         LINE#         133
   -------         ENDPROC       GET_SPEEDVALUE
   -------         PROC          _RELAY_ON
   D:0007H         SYMBOL        On_FB
-  C:14AEH         LINE#         135
-  C:14AEH         LINE#         136
-  C:14AEH         LINE#         137
-  C:14B3H         LINE#         138
-  C:14B3H         LINE#         139
-  C:14B5H         LINE#         140
-  C:14B7H         LINE#         141
-  C:14B8H         LINE#         143
-  C:14B8H         LINE#         144
-  C:14BAH         LINE#         145
-  C:14BCH         LINE#         146
-  C:14BCH         LINE#         148
+  C:14B6H         LINE#         135
+  C:14B6H         LINE#         136
+  C:14B6H         LINE#         137
+  C:14BBH         LINE#         138
+  C:14BBH         LINE#         139
+  C:14BDH         LINE#         140
+  C:14BFH         LINE#         141
+  C:14C0H         LINE#         143
+  C:14C0H         LINE#         144
+  C:14C2H         LINE#         145
+  C:14C4H         LINE#         146
+  C:14C4H         LINE#         148
   -------         ENDPROC       _RELAY_ON
   -------         PROC          RELAY_OFF
-  C:14EAH         LINE#         150
-  C:14EAH         LINE#         151
-  C:14EAH         LINE#         152
-  C:14ECH         LINE#         153
-  C:14EEH         LINE#         154
+  C:14F2H         LINE#         150
+  C:14F2H         LINE#         151
+  C:14F2H         LINE#         152
+  C:14F4H         LINE#         153
+  C:14F6H         LINE#         154
   -------         ENDPROC       RELAY_OFF
   -------         PROC          _PWM_DEAD_TIME_VALUE
   D:0006H         SYMBOL        DeadTimeData
   -------         DO            
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  02/21/2022  20:53:12  PAGE 8
+
+
   D:0007H         SYMBOL        deadtmphigh
   D:0005H         SYMBOL        deadtmplow
   -------         ENDDO         
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/07/2021  14:43:35  PAGE 8
-
-
-  C:1431H         LINE#         160
-  C:1431H         LINE#         161
-  C:1431H         LINE#         163
-  C:1433H         LINE#         164
-  C:1435H         LINE#         165
-  C:1439H         LINE#         166
-  C:143EH         LINE#         167
-  C:143EH         LINE#         168
-  C:1440H         LINE#         169
-  C:1443H         LINE#         170
-  C:1446H         LINE#         171
-  C:1449H         LINE#         172
-  C:1449H         LINE#         173
-  C:144CH         LINE#         174
-  C:144FH         LINE#         175
-  C:1451H         LINE#         176
-  C:1455H         LINE#         177
+  C:1439H         LINE#         160
+  C:1439H         LINE#         161
+  C:1439H         LINE#         163
+  C:143BH         LINE#         164
+  C:143DH         LINE#         165
+  C:1441H         LINE#         166
+  C:1446H         LINE#         167
+  C:1446H         LINE#         168
+  C:1448H         LINE#         169
+  C:144BH         LINE#         170
+  C:144EH         LINE#         171
+  C:1451H         LINE#         172
+  C:1451H         LINE#         173
+  C:1454H         LINE#         174
+  C:1457H         LINE#         175
+  C:1459H         LINE#         176
+  C:145DH         LINE#         177
   -------         ENDPROC       _PWM_DEAD_TIME_VALUE
   -------         PROC          PWM_INIT
-  C:10B2H         LINE#         179
-  C:10B2H         LINE#         180
-  C:10B2H         LINE#         181
-  C:10B5H         LINE#         182
-  C:10B8H         LINE#         183
-  C:10BBH         LINE#         185
-  C:10C1H         LINE#         187
-  C:10C7H         LINE#         190
-  C:10CAH         LINE#         191
-  C:10CDH         LINE#         193
-  C:10E0H         LINE#         194
-  C:10E2H         LINE#         195
-  C:10E4H         LINE#         196
-  C:10F7H         LINE#         198
-  C:110AH         LINE#         199
-  C:1110H         LINE#         200
-  C:1112H         LINE#         201
-  C:1114H         LINE#         209
+  C:10BAH         LINE#         179
+  C:10BAH         LINE#         180
+  C:10BAH         LINE#         181
+  C:10BDH         LINE#         182
+  C:10C0H         LINE#         183
+  C:10C3H         LINE#         185
+  C:10C9H         LINE#         187
+  C:10CFH         LINE#         190
+  C:10D2H         LINE#         191
+  C:10D5H         LINE#         193
+  C:10E8H         LINE#         194
+  C:10EAH         LINE#         195
+  C:10ECH         LINE#         196
+  C:10FFH         LINE#         198
+  C:1112H         LINE#         199
+  C:1118H         LINE#         200
+  C:111AH         LINE#         201
+  C:111CH         LINE#         209
   -------         ENDPROC       PWM_INIT
   -------         PROC          _PWM_SETTING
   D:0004H         SYMBOL        n
@@ -476,12 +479,12 @@ SYMBOL TABLE OF MODULE:  .\Output\ADC_Bandgap (ADC)
   C:0EF9H         LINE#         218
   C:0F07H         LINE#         219
   C:0F1CH         LINE#         220
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  02/21/2022  20:53:12  PAGE 9
+
+
   C:0F1CH         LINE#         221
   C:0F23H         LINE#         222
   C:0F23H         LINE#         223
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/07/2021  14:43:35  PAGE 9
-
-
   C:0F25H         LINE#         224
   C:0F27H         LINE#         225
   C:0F2CH         LINE#         226
@@ -504,20 +507,20 @@ SYMBOL TABLE OF MODULE:  .\Output\ADC_Bandgap (ADC)
   D:0080H         PUBLIC        P0
   D:0090H         PUBLIC        P1
   D:00A0H         PUBLIC        P2
-  C:1251H         PUBLIC        _Timer0_Delay100us
+  C:1259H         PUBLIC        _Timer0_Delay100us
   D:00B0H         PUBLIC        P3
   D:00D8H         PUBLIC        PWMCON0
-  C:1203H         PUBLIC        _Timer2_Delay500us
+  C:120BH         PUBLIC        _Timer2_Delay500us
   D:00A8H         PUBLIC        IE
   D:00B8H         PUBLIC        IP
-  C:129CH         PUBLIC        _Timer0_Delay1ms
+  C:12A4H         PUBLIC        _Timer0_Delay1ms
   B:0021H.1       PUBLIC        BIT_TMP
   D:0098H         PUBLIC        SCON
   D:0089H         PUBLIC        TMOD
   D:0088H         PUBLIC        TCON
   D:00F8H         PUBLIC        SCON_1
   B:0088H.5       PUBLIC        TF0
-  C:12E7H         PUBLIC        _Timer1_Delay10ms
+  C:12EFH         PUBLIC        _Timer1_Delay10ms
   B:0088H.7       PUBLIC        TF1
   B:00C8H.7       PUBLIC        TF2
   D:008CH         PUBLIC        TH0
@@ -528,7 +531,7 @@ SYMBOL TABLE OF MODULE:  .\Output\ADC_Bandgap (ADC)
   D:00C5H         PUBLIC        RL3
   D:008BH         PUBLIC        TL1
   D:00CCH         PUBLIC        TL2
-  C:1165H         PUBLIC        _Timer3_Delay10us
+  C:116DH         PUBLIC        _Timer3_Delay10us
   B:0088H.4       PUBLIC        TR0
   B:0088H.6       PUBLIC        TR1
   B:00C8H.2       PUBLIC        TR2
@@ -536,132 +539,132 @@ SYMBOL TABLE OF MODULE:  .\Output\ADC_Bandgap (ADC)
   D:00C0H         PUBLIC        I2CON
   D:00C9H         PUBLIC        T2MOD
   D:00C8H         PUBLIC        T2CON
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  02/21/2022  20:53:12  PAGE 10
+
+
   D:00C4H         PUBLIC        T3CON
   D:008EH         PUBLIC        CKCON
   D:00D0H         PUBLIC        PSW
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/07/2021  14:43:35  PAGE 10
-
-
-  C:1115H         PUBLIC        _Timer3_Delay100ms
+  C:111DH         PUBLIC        _Timer3_Delay100ms
   -------         PROC          _TIMER0_DELAY100US
   D:001AH         SYMBOL        u32CNT
-  C:1251H         LINE#         22
-  C:1259H         LINE#         23
-  C:1259H         LINE#         24
-  C:125CH         LINE#         25
-  C:125FH         LINE#         26
-  C:1261H         LINE#         27
-  C:1274H         LINE#         28
-  C:1274H         LINE#         29
-  C:1277H         LINE#         30
-  C:127AH         LINE#         31
-  C:127DH         LINE#         32
-  C:127FH         LINE#         33
-  C:1297H         LINE#         34
-  C:1299H         LINE#         35
-  C:129BH         LINE#         36
+  C:1259H         LINE#         22
+  C:1261H         LINE#         23
+  C:1261H         LINE#         24
+  C:1264H         LINE#         25
+  C:1267H         LINE#         26
+  C:1269H         LINE#         27
+  C:127CH         LINE#         28
+  C:127CH         LINE#         29
+  C:127FH         LINE#         30
+  C:1282H         LINE#         31
+  C:1285H         LINE#         32
+  C:1287H         LINE#         33
+  C:129FH         LINE#         34
+  C:12A1H         LINE#         35
+  C:12A3H         LINE#         36
   -------         ENDPROC       _TIMER0_DELAY100US
   -------         PROC          _TIMER0_DELAY1MS
   D:005AH         SYMBOL        u32CNT
-  C:129CH         LINE#         38
-  C:12A4H         LINE#         39
-  C:12A4H         LINE#         40
-  C:12A7H         LINE#         41
-  C:12AAH         LINE#         42
-  C:12ACH         LINE#         43
-  C:12BFH         LINE#         44
-  C:12BFH         LINE#         45
-  C:12C2H         LINE#         46
-  C:12C5H         LINE#         47
-  C:12C8H         LINE#         48
-  C:12CAH         LINE#         49
-  C:12E2H         LINE#         50
-  C:12E4H         LINE#         51
-  C:12E6H         LINE#         52
+  C:12A4H         LINE#         38
+  C:12ACH         LINE#         39
+  C:12ACH         LINE#         40
+  C:12AFH         LINE#         41
+  C:12B2H         LINE#         42
+  C:12B4H         LINE#         43
+  C:12C7H         LINE#         44
+  C:12C7H         LINE#         45
+  C:12CAH         LINE#         46
+  C:12CDH         LINE#         47
+  C:12D0H         LINE#         48
+  C:12D2H         LINE#         49
+  C:12EAH         LINE#         50
+  C:12ECH         LINE#         51
+  C:12EEH         LINE#         52
   -------         ENDPROC       _TIMER0_DELAY1MS
   -------         PROC          _TIMER1_DELAY10MS
   D:005EH         SYMBOL        u32CNT
-  C:12E7H         LINE#         55
-  C:12EFH         LINE#         56
-  C:12EFH         LINE#         57
-  C:12F2H         LINE#         58
-  C:12F5H         LINE#         59
-  C:12F7H         LINE#         60
-  C:130AH         LINE#         61
-  C:130AH         LINE#         62
-  C:130DH         LINE#         63
-  C:1310H         LINE#         64
-  C:1313H         LINE#         65
-  C:1315H         LINE#         66
-  C:132DH         LINE#         67
-  C:132FH         LINE#         68
-  C:1331H         LINE#         69
+  C:12EFH         LINE#         55
+  C:12F7H         LINE#         56
+  C:12F7H         LINE#         57
+  C:12FAH         LINE#         58
+  C:12FDH         LINE#         59
+  C:12FFH         LINE#         60
+  C:1312H         LINE#         61
+  C:1312H         LINE#         62
+  C:1315H         LINE#         63
+  C:1318H         LINE#         64
+  C:131BH         LINE#         65
+  C:131DH         LINE#         66
+  C:1335H         LINE#         67
+  C:1337H         LINE#         68
+  C:1339H         LINE#         69
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  02/21/2022  20:53:12  PAGE 11
+
+
   -------         ENDPROC       _TIMER1_DELAY10MS
   -------         PROC          _TIMER2_DELAY500US
   D:0062H         SYMBOL        u32CNT
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/07/2021  14:43:35  PAGE 11
-
-
-  C:1203H         LINE#         71
-  C:120BH         LINE#         72
-  C:120BH         LINE#         73
-  C:120EH         LINE#         74
-  C:1211H         LINE#         75
-  C:1214H         LINE#         76
-  C:1216H         LINE#         77
-  C:1229H         LINE#         78
-  C:1229H         LINE#         79
-  C:122CH         LINE#         80
-  C:122FH         LINE#         81
-  C:1232H         LINE#         82
-  C:1234H         LINE#         83
-  C:124CH         LINE#         84
-  C:124EH         LINE#         85
-  C:1250H         LINE#         86
+  C:120BH         LINE#         71
+  C:1213H         LINE#         72
+  C:1213H         LINE#         73
+  C:1216H         LINE#         74
+  C:1219H         LINE#         75
+  C:121CH         LINE#         76
+  C:121EH         LINE#         77
+  C:1231H         LINE#         78
+  C:1231H         LINE#         79
+  C:1234H         LINE#         80
+  C:1237H         LINE#         81
+  C:123AH         LINE#         82
+  C:123CH         LINE#         83
+  C:1254H         LINE#         84
+  C:1256H         LINE#         85
+  C:1258H         LINE#         86
   -------         ENDPROC       _TIMER2_DELAY500US
   -------         PROC          _TIMER3_DELAY100MS
   D:0066H         SYMBOL        u32CNT
-  C:1115H         LINE#         88
-  C:111DH         LINE#         89
-  C:111DH         LINE#         90
-  C:1120H         LINE#         91
-  C:1123H         LINE#         92
-  C:1136H         LINE#         93
-  C:1136H         LINE#         94
-  C:1139H         LINE#         95
-  C:113CH         LINE#         96
-  C:1144H         LINE#         97
-  C:1147H         LINE#         98
-  C:115FH         LINE#         99
-  C:1161H         LINE#         100
-  C:1164H         LINE#         101
+  C:111DH         LINE#         88
+  C:1125H         LINE#         89
+  C:1125H         LINE#         90
+  C:1128H         LINE#         91
+  C:112BH         LINE#         92
+  C:113EH         LINE#         93
+  C:113EH         LINE#         94
+  C:1141H         LINE#         95
+  C:1144H         LINE#         96
+  C:114CH         LINE#         97
+  C:114FH         LINE#         98
+  C:1167H         LINE#         99
+  C:1169H         LINE#         100
+  C:116CH         LINE#         101
   -------         ENDPROC       _TIMER3_DELAY100MS
   -------         PROC          _TIMER3_DELAY10US
   D:0024H         SYMBOL        u32CNT
-  C:1165H         LINE#         103
-  C:116DH         LINE#         104
-  C:116DH         LINE#         105
-  C:1170H         LINE#         106
-  C:1173H         LINE#         107
-  C:1186H         LINE#         108
-  C:1186H         LINE#         109
-  C:1189H         LINE#         110
-  C:118CH         LINE#         111
-  C:1194H         LINE#         112
-  C:1197H         LINE#         113
-  C:11AFH         LINE#         114
-  C:11B1H         LINE#         115
-  C:11B4H         LINE#         116
+  C:116DH         LINE#         103
+  C:1175H         LINE#         104
+  C:1175H         LINE#         105
+  C:1178H         LINE#         106
+  C:117BH         LINE#         107
+  C:118EH         LINE#         108
+  C:118EH         LINE#         109
+  C:1191H         LINE#         110
+  C:1194H         LINE#         111
+  C:119CH         LINE#         112
+  C:119FH         LINE#         113
+  C:11B7H         LINE#         114
+  C:11B9H         LINE#         115
+  C:11BCH         LINE#         116
   -------         ENDPROC       _TIMER3_DELAY10US
   -------         ENDMOD        DELAY
 
   -------         MODULE        COMMON
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  02/21/2022  20:53:12  PAGE 12
+
+
   C:0000H         SYMBOL        _ICE_DUMMY_
   D:00B1H         PUBLIC        P0M1
   D:00B3H         PUBLIC        P1M1
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/07/2021  14:43:35  PAGE 12
-
-
   D:00B2H         PUBLIC        P0M2
   D:0080H         PUBLIC        P0
   D:00B4H         PUBLIC        P1M2
@@ -685,113 +688,113 @@ SYMBOL TABLE OF MODULE:  .\Output\ADC_Bandgap (ADC)
   D:00C6H         PUBLIC        RH3
   D:008DH         PUBLIC        TH1
   D:00C5H         PUBLIC        RL3
-  C:1332H         PUBLIC        _InitialUART0_Timer1
-  C:0FCDH         PUBLIC        _InitialUART0_Timer3
-  C:1042H         PUBLIC        _InitialUART1_Timer3
+  C:133AH         PUBLIC        _InitialUART0_Timer1
+  C:0FD5H         PUBLIC        _InitialUART0_Timer3
+  C:104AH         PUBLIC        _InitialUART1_Timer3
   B:0088H.6       PUBLIC        TR1
   D:00E8H         PUBLIC        ADCCON0
-  C:14D2H         PUBLIC        _Send_Data_To_UART0
-  C:14E2H         PUBLIC        _Send_Data_To_UART1
+  C:14DAH         PUBLIC        _Send_Data_To_UART0
+  C:14EAH         PUBLIC        _Send_Data_To_UART1
   D:00C0H         PUBLIC        I2CON
   D:00C8H         PUBLIC        T2CON
   D:00C4H         PUBLIC        T3CON
-  C:14CAH         PUBLIC        Receive_Data_From_UART0
-  C:14DAH         PUBLIC        Receive_Data_From_UART1
+  C:14D2H         PUBLIC        Receive_Data_From_UART0
+  C:14E2H         PUBLIC        Receive_Data_From_UART1
   D:008EH         PUBLIC        CKCON
   D:00D0H         PUBLIC        PSW
   -------         PROC          _INITIALUART0_TIMER1
   D:0004H         SYMBOL        u32Baudrate
-  C:1332H         LINE#         23
-  C:1332H         LINE#         24
-  C:1332H         LINE#         25
-  C:1338H         LINE#         26
-  C:133EH         LINE#         28
-  C:1341H         LINE#         29
-  C:1344H         LINE#         31
-  C:1347H         LINE#         32
-  C:134AH         LINE#         33
-  C:134DH         LINE#         36
-  C:1366H         LINE#         41
-  C:1368H         LINE#         42
-  C:136AH         LINE#         43
+  C:133AH         LINE#         23
+  C:133AH         LINE#         24
+  C:133AH         LINE#         25
+  C:1340H         LINE#         26
+  C:1346H         LINE#         28
+  C:1349H         LINE#         29
+  C:134CH         LINE#         31
+  C:134FH         LINE#         32
+  C:1352H         LINE#         33
+  C:1355H         LINE#         36
+  C:136EH         LINE#         41
+  C:1370H         LINE#         42
+  C:1372H         LINE#         43
   -------         ENDPROC       _INITIALUART0_TIMER1
   -------         PROC          _INITIALUART0_TIMER3
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  02/21/2022  20:53:12  PAGE 13
+
+
   D:006AH         SYMBOL        u32Baudrate
-  C:0FCDH         LINE#         45
-  C:0FD5H         LINE#         46
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/07/2021  14:43:35  PAGE 13
-
-
-  C:0FD5H         LINE#         47
-  C:0FDBH         LINE#         48
-  C:0FE1H         LINE#         50
-  C:0FE4H         LINE#         51
-  C:0FE7H         LINE#         52
-  C:0FEAH         LINE#         53
-  C:0FEDH         LINE#         56
-  C:1016H         LINE#         57
-  C:103CH         LINE#         63
-  C:103FH         LINE#         64
-  C:1041H         LINE#         65
+  C:0FD5H         LINE#         45
+  C:0FDDH         LINE#         46
+  C:0FDDH         LINE#         47
+  C:0FE3H         LINE#         48
+  C:0FE9H         LINE#         50
+  C:0FECH         LINE#         51
+  C:0FEFH         LINE#         52
+  C:0FF2H         LINE#         53
+  C:0FF5H         LINE#         56
+  C:101EH         LINE#         57
+  C:1044H         LINE#         63
+  C:1047H         LINE#         64
+  C:1049H         LINE#         65
   -------         ENDPROC       _INITIALUART0_TIMER3
   -------         PROC          RECEIVE_DATA_FROM_UART0
   -------         DO            
   D:0007H         SYMBOL        c
   -------         ENDDO         
-  C:14CAH         LINE#         67
-  C:14CAH         LINE#         68
-  C:14CAH         LINE#         70
-  C:14CDH         LINE#         71
-  C:14CFH         LINE#         72
-  C:14D1H         LINE#         73
-  C:14D1H         LINE#         74
+  C:14D2H         LINE#         67
+  C:14D2H         LINE#         68
+  C:14D2H         LINE#         70
+  C:14D5H         LINE#         71
+  C:14D7H         LINE#         72
+  C:14D9H         LINE#         73
+  C:14D9H         LINE#         74
   -------         ENDPROC       RECEIVE_DATA_FROM_UART0
   -------         PROC          _SEND_DATA_TO_UART0
   D:0006H         SYMBOL        c
-  C:14D2H         LINE#         76
-  C:14D2H         LINE#         77
-  C:14D2H         LINE#         78
-  C:14D4H         LINE#         79
-  C:14D6H         LINE#         80
-  C:14D9H         LINE#         81
+  C:14DAH         LINE#         76
+  C:14DAH         LINE#         77
+  C:14DAH         LINE#         78
+  C:14DCH         LINE#         79
+  C:14DEH         LINE#         80
+  C:14E1H         LINE#         81
   -------         ENDPROC       _SEND_DATA_TO_UART0
   -------         PROC          _INITIALUART1_TIMER3
   D:006EH         SYMBOL        u32Baudrate
-  C:1042H         LINE#         87
-  C:104AH         LINE#         88
-  C:104AH         LINE#         89
-  C:1050H         LINE#         90
-  C:1056H         LINE#         92
-  C:1059H         LINE#         93
-  C:105CH         LINE#         94
-  C:105FH         LINE#         97
-  C:1088H         LINE#         98
-  C:10AEH         LINE#         104
-  C:10B1H         LINE#         105
+  C:104AH         LINE#         87
+  C:1052H         LINE#         88
+  C:1052H         LINE#         89
+  C:1058H         LINE#         90
+  C:105EH         LINE#         92
+  C:1061H         LINE#         93
+  C:1064H         LINE#         94
+  C:1067H         LINE#         97
+  C:1090H         LINE#         98
+  C:10B6H         LINE#         104
+  C:10B9H         LINE#         105
   -------         ENDPROC       _INITIALUART1_TIMER3
   -------         PROC          RECEIVE_DATA_FROM_UART1
   -------         DO            
   D:0007H         SYMBOL        c
   -------         ENDDO         
-  C:14DAH         LINE#         107
-  C:14DAH         LINE#         108
-  C:14DAH         LINE#         111
-  C:14DDH         LINE#         112
-  C:14DFH         LINE#         113
-  C:14E1H         LINE#         114
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/07/2021  14:43:35  PAGE 14
+  C:14E2H         LINE#         107
+  C:14E2H         LINE#         108
+  C:14E2H         LINE#         111
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  02/21/2022  20:53:12  PAGE 14
 
 
-  C:14E1H         LINE#         115
+  C:14E5H         LINE#         112
+  C:14E7H         LINE#         113
+  C:14E9H         LINE#         114
+  C:14E9H         LINE#         115
   -------         ENDPROC       RECEIVE_DATA_FROM_UART1
   -------         PROC          _SEND_DATA_TO_UART1
   D:0007H         SYMBOL        c
-  C:14E2H         LINE#         117
-  C:14E2H         LINE#         118
-  C:14E2H         LINE#         119
-  C:14E4H         LINE#         120
-  C:14E6H         LINE#         121
-  C:14E9H         LINE#         122
+  C:14EAH         LINE#         117
+  C:14EAH         LINE#         118
+  C:14EAH         LINE#         119
+  C:14ECH         LINE#         120
+  C:14EEH         LINE#         121
+  C:14F1H         LINE#         122
   -------         ENDPROC       _SEND_DATA_TO_UART1
   -------         ENDMOD        COMMON
 
@@ -809,9 +812,9 @@ SYMBOL TABLE OF MODULE:  .\Output\ADC_Bandgap (ADC)
   D:0088H         PUBLIC        TCON
   B:0080H.7       PUBLIC        P07
   D:000CH         PUBLIC        digit_arr
-  C:136BH         PUBLIC        _digit_selc_show
+  C:1373H         PUBLIC        _digit_selc_show
   D:00F8H         PUBLIC        SCON_1
-  C:14BDH         PUBLIC        _GPIO_SetBits
+  C:14C5H         PUBLIC        _GPIO_SetBits
   C:0E2EH         PUBLIC        _numb_show
   D:00E8H         PUBLIC        ADCCON0
   D:00C0H         PUBLIC        I2CON
@@ -821,37 +824,37 @@ SYMBOL TABLE OF MODULE:  .\Output\ADC_Bandgap (ADC)
   -------         PROC          _GPIO_SETBITS
   D:0007H         SYMBOL        GPIOx
   D:0005H         SYMBOL        GPIO
-  C:14BDH         LINE#         43
-  C:14BDH         LINE#         44
-  C:14BDH         LINE#         45
-  C:14C4H         LINE#         46
-  C:14C4H         LINE#         47
-  C:14C4H         LINE#         48
-  C:14C6H         LINE#         49
-  C:14C7H         LINE#         50
-  C:14C7H         LINE#         51
-  C:14C9H         LINE#         52
-  C:14C9H         LINE#         53
-  C:14C9H         LINE#         55
+  C:14C5H         LINE#         43
+  C:14C5H         LINE#         44
+  C:14C5H         LINE#         45
+  C:14CCH         LINE#         46
+  C:14CCH         LINE#         47
+  C:14CCH         LINE#         48
+  C:14CEH         LINE#         49
+  C:14CFH         LINE#         50
+  C:14CFH         LINE#         51
+  C:14D1H         LINE#         52
+  C:14D1H         LINE#         53
+  C:14D1H         LINE#         55
   -------         ENDPROC       _GPIO_SETBITS
   -------         PROC          _DIGIT_SELC_SHOW
   D:0006H         SYMBOL        bits
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  02/21/2022  20:53:12  PAGE 15
+
+
   D:0004H         SYMBOL        num
-  C:136BH         LINE#         57
-  C:136FH         LINE#         58
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/07/2021  14:43:35  PAGE 15
-
-
-  C:136FH         LINE#         59
-  C:1375H         LINE#         60
-  C:137BH         LINE#         61
-  C:1384H         LINE#         62
-  C:138FH         LINE#         63
-  C:1396H         LINE#         64
-  C:1396H         LINE#         65
-  C:1398H         LINE#         66
-  C:1398H         LINE#         67
-  C:13A3H         LINE#         68
+  C:1373H         LINE#         57
+  C:1377H         LINE#         58
+  C:1377H         LINE#         59
+  C:137DH         LINE#         60
+  C:1383H         LINE#         61
+  C:138CH         LINE#         62
+  C:1397H         LINE#         63
+  C:139EH         LINE#         64
+  C:139EH         LINE#         65
+  C:13A0H         LINE#         66
+  C:13A0H         LINE#         67
+  C:13ABH         LINE#         68
   -------         ENDPROC       _DIGIT_SELC_SHOW
   -------         PROC          _NUMB_SHOW
   D:0002H         SYMBOL        n
@@ -896,12 +899,12 @@ SYMBOL TABLE OF MODULE:  .\Output\ADC_Bandgap (ADC)
   D:00E0H         SYMBOL        ACC
   D:00F0H         SYMBOL        B
   D:0083H         SYMBOL        DPH
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  02/21/2022  20:53:12  PAGE 16
+
+
   D:0082H         SYMBOL        DPL
   N:0000H         SYMBOL        IBPSTACK
   N:0100H         SYMBOL        IBPSTACKTOP
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/07/2021  14:43:35  PAGE 16
-
-
   N:0080H         SYMBOL        IDATALEN
   C:0D97H         SYMBOL        IDATALOOP
   N:0000H         SYMBOL        PBPSTACK
@@ -956,12 +959,12 @@ SYMBOL TABLE OF MODULE:  .\Output\ADC_Bandgap (ADC)
 
   -------         MODULE        ?C?FCAST
   C:02ABH         PUBLIC        ?C?FCASTC
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  02/21/2022  20:53:12  PAGE 17
+
+
   C:02A6H         PUBLIC        ?C?FCASTI
   C:02A1H         PUBLIC        ?C?FCASTL
   -------         ENDMOD        ?C?FCAST
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/07/2021  14:43:35  PAGE 17
-
-
 
   -------         MODULE        ?C?CASTF
   C:02DFH         PUBLIC        ?C?CASTF
@@ -1016,12 +1019,12 @@ SYMBOL TABLE OF MODULE:  .\Output\ADC_Bandgap (ADC)
 
   -------         MODULE        ?C?ULCMP
   C:069DH         PUBLIC        ?C?ULCMP
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  02/21/2022  20:53:12  PAGE 18
+
+
   -------         ENDMOD        ?C?ULCMP
 
   -------         MODULE        ?C?ULSHR
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/07/2021  14:43:35  PAGE 18
-
-
   C:06AEH         PUBLIC        ?C?ULSHR
   -------         ENDMOD        ?C?ULSHR
 
@@ -1034,8 +1037,8 @@ SYMBOL TABLE OF MODULE:  .\Output\ADC_Bandgap (ADC)
   -------         ENDMOD        ?C?CCASE
 
   -------         MODULE        PUTCHAR
-  C:140AH         PUBLIC        _PUTCHAR
+  C:1412H         PUBLIC        _PUTCHAR
   -------         ENDMOD        PUTCHAR
 
-Program Size: data=113.2 xdata=0 code=5359
+Program Size: data=113.2 xdata=0 code=5367
 LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -41,7 +41,11 @@
 The main C function.  Program execution starts
 here after stack initialization.
 ******************************************************************************/
-
+int IC0_value;
+void Capture_ISR(void) interrupt 12
+{
+	clr_CAPF0;
+	P1 = C0L;
 void main (void) 
 {
 	Set_All_GPIO_Quasi_Mode;			//For GPIO1 output, Find in "Function_define.h" - "GPIO INIT"
@@ -58,13 +62,21 @@ void main (void)
 	P12_PushPull_Mode;
 	P13_PushPull_Mode;
 	InitialUART0_Timer1(115200);
+	P15_Input_Mode;
+	P15=1;
+	
+	TIMER2_CAP0_Capture_Mode;
+	IC7_P15_CAP0_RisingEdge_Capture;
+	set_ECAP;
+	set_TR2;
+	set_EA;
 	ADC_Init();							//
 										//reverved for timer_init   Sleep2
 //	PWM_Init();
 	while(1)
 	{
-		UINT8 i = Get_HallValue();// can use public structure or ...
-		if(i>61)
+		//UINT8 i = Get_HallValue();// can use public structure or ...
+		if(i>0)
 		{
 			numb_show(i);
 		}
