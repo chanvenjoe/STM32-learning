@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   ADC                                                               02/22/2022 22:03:45 PAGE 1   
+C51 COMPILER V9.60.0.0   ADC                                                               02/23/2022 14:16:58 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE ADC
@@ -62,7 +62,7 @@ line level    source
              -DCCON1&=~SET_BIT6
               //#define P13_RISINGEDGE_TRIG_ADC                       ADCCON0|=0x30;ADCCON1&=~SET_BIT3;ADCCON1|=SET_BIT2;ADCCON1|=SET_BIT1;A
              -DCCON1|=SET_BIT6
-C51 COMPILER V9.60.0.0   ADC                                                               02/22/2022 22:03:45 PAGE 2   
+C51 COMPILER V9.60.0.0   ADC                                                               02/23/2022 14:16:58 PAGE 2   
 
               #endif
   39          
@@ -70,13 +70,13 @@ line level    source
   41          The main C function.  Program execution starts
   42          here after stack initialization.
   43          ******************************************************************************/
-  44          static float IC0_value;
+  44          float IC0_value;
   45          unsigned int IC0_value_sum;
   46          void Capture_ISR(void) interrupt 12
   47          {
   48   1              clr_CAPF0;
   49   1              IC0_value = (C0H<<8)+C0L; //uS value 
-  50   1              IC0_value = (1/(IC0_value*2/1000000))*3600/60.67*3.14*0.27/1000;
+  50   1              //IC0_value = (1/(IC0_value*2/1000000))*0.05;//3600/60.67*3.14*0.27/1000;
   51   1              IC0_value_sum+=IC0_value;
   52   1              clr_TF2;
   53   1      }
@@ -112,33 +112,37 @@ line level    source
   83   1      //      PWM_Init();
   84   1              while(1)
   85   1              {
-  86   2                      //UINT8 i = Get_HallValue();// can use public structure or ...
-  87   2                      IC0_value = 1/(IC0_value*2)*0.503;    //RPS*3600/60.67*0.27m*3.14/1000
-  88   2                      if(IC0_value>0)
-  89   2                      {
-  90   3                              numb_show(IC0_value);
-  91   3                      }
-  92   2                      else
-  93   2                      {
-  94   3                              numb_show(0);
-  95   3                      }
-  96   2              }
-  97   1      }
-  98          
-  99          
-C51 COMPILER V9.60.0.0   ADC                                                               02/22/2022 22:03:45 PAGE 3   
+  86   2                      float IC0_value_show = IC0_value;
+  87   2                      float IC0_value_last;
+  88   2                      
+  89   2                      IC0_value_show = 1000000/IC0_value_show;
+  90   2      //              IC0_value_show = (1/(IC0_value_show*2/1000000))*0.05;//3600/60.67*3.14*0.27/1000;
+  91   2                      if(IC0_value_show>0&&IC0_value_show<0xfff)
+  92   2                      {
+  93   3                              numb_show(IC0_value_show);
+  94   3                      }
+  95   2                      else
+  96   2                      {
+  97   3                              numb_show(0);
+  98   3                      }
+  99   2              }
+C51 COMPILER V9.60.0.0   ADC                                                               02/23/2022 14:16:58 PAGE 3   
 
+ 100   1      }
+*** WARNING C280 IN LINE 87 OF Code\ADC.C: 'IC0_value_last': unreferenced local variable
+ 101          
+ 102          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    446    ----
+   CODE SIZE        =    356    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =      6    ----
+   DATA SIZE        =      6       8
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.
 
 
-C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

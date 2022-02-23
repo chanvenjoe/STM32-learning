@@ -41,13 +41,13 @@
 The main C function.  Program execution starts
 here after stack initialization.
 ******************************************************************************/
-static float IC0_value;
+float IC0_value;
 unsigned int IC0_value_sum;
-void Capture_ISR(void) interrupt 12
+void Capture_ISR(void) interrupt 12  //should sample the Value 1s a time, which doesn't take too much resource of MCU
 {
 	clr_CAPF0;
 	IC0_value = (C0H<<8)+C0L; //uS value 
-	IC0_value = (1/(IC0_value*2/1000000))*0.05//3600/60.67*3.14*0.27/1000;
+	//IC0_value = (1/(IC0_value*2/1000000))*0.05;//3600/60.67*3.14*0.27/1000;
 	IC0_value_sum+=IC0_value;
 	clr_TF2;
 }
@@ -83,11 +83,14 @@ void main (void)
 //	PWM_Init();
 	while(1)
 	{
-		//UINT8 i = Get_HallValue();// can use public structure or ...
-		IC0_value = 1/(IC0_value*2)*0.503;    //RPS*3600/60.67*0.27m*3.14/1000
-		if(IC0_value>0)
+		float IC0_value_show = IC0_value;
+		float IC0_value_last;
+		
+		IC0_value_show = 1000000/IC0_value_show;
+//		IC0_value_show = (1/(IC0_value_show*2/1000000))*0.05;//3600/60.67*3.14*0.27/1000;
+		if(IC0_value_show>0&&IC0_value_show<0xfff)
 		{
-			numb_show(IC0_value);
+			numb_show(IC0_value_show);
 		}
 		else
 		{

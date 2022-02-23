@@ -64,13 +64,13 @@ void digit_selc_show(u8 bits, u8 num)
 	{
 		P07=1;
 	}
-	Timer3_Delay10us(5);
+	Timer3_Delay10us(1);
 }
 
 void numb_show(u16 n)
 {
 	u8 i;
-	n = n*71/10;//m/h
+	//n = n*71/10;//m/h
 	speed.thousands = n/1000%10;
 	speed.hundreds 	= n/100%10;
 	speed.tens		= n/10%10;

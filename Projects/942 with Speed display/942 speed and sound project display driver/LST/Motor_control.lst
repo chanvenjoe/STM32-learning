@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     02/22/2022 21:53:54 PAGE 1   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     02/23/2022 14:16:59 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MOTOR_CONTROL
@@ -62,7 +62,7 @@ line level    source
   52   2                      bgh = IAPFD;
   53   2                      bgvalue = (bgh<<4)+bgl;
   54   2                      bgvol = bgvalue*3/4;
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     02/22/2022 21:53:54 PAGE 2   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     02/23/2022 14:16:59 PAGE 2   
 
   55   2                      bgvol = bgvol- 33;
   56   2              }
@@ -126,7 +126,7 @@ line level    source
  114   1      //      ADCValue = (ADCRH<<4)+ADCRL
  115   1      //      ADC_Vol = (bgvol*ADCValue/bgvalue);//All are decimal
  116   1      //      printf("ADCRH:%x\n",ADCRH);
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     02/22/2022 21:53:54 PAGE 3   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     02/23/2022 14:16:59 PAGE 3   
 
  117   1      //      printf("ADCRL:%d",ADCRL);
  118   1      //      printf("ADC_voltage:%gmV\n",ADC_Vol);//%g don't print no meaning 0
@@ -190,7 +190,7 @@ line level    source
  176   1              PDTCNT = deadtmplow;
  177   1              EA = BIT_TMP;
  178   1      }
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     02/22/2022 21:53:54 PAGE 4   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     02/23/2022 14:16:59 PAGE 4   
 
  179          
  180          void PWM_Init()
@@ -254,7 +254,7 @@ line level    source
  238   2      //                      Relay_Off();
  239   2                      Ramp_up;// 10 = 2.55s ramp up
  240   2              }
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     02/22/2022 21:53:54 PAGE 5   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     02/23/2022 14:16:59 PAGE 5   
 
  241   1              
  242   1      }
