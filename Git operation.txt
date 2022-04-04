@@ -7,6 +7,14 @@ git commit -m "  "
 git push
 
 
+HTTP to SSH：
+
+git remote -v
+git remote rm origin
+git remote add origin git@github.com:chanvenjoe/STM32-learning.git(SSH link)
+git push -u origin master
+
+
 Branch operation
 
 git branch  //create a local branch
