@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 A51 MACRO ASSEMBLER  STARTUP                                                              02/23/2022 14:16:59 PAGE     1
+=======
+A51 MACRO ASSEMBLER  STARTUP                                                              02/22/2022 16:08:50 PAGE     1
+>>>>>>> Stashed changes
 
 
 MACRO ASSEMBLER A51 V8.2.7.0
@@ -65,7 +69,11 @@ LOC  OBJ            LINE     SOURCE
                       55     ;------------------------------------------------------------------------------
                       56     ;
                       57     ;  Page Definition for Using the Compact Model with 64 KByte xdata RAM
+<<<<<<< Updated upstream
 A51 MACRO ASSEMBLER  STARTUP                                                              02/23/2022 14:16:59 PAGE     2
+=======
+A51 MACRO ASSEMBLER  STARTUP                                                              02/22/2022 16:08:50 PAGE     2
+>>>>>>> Stashed changes
 
                       58     ;
                       59     ;  The following EQU statements define the xdata page used for pdata
@@ -133,7 +141,11 @@ LOC  OBJ            LINE     SOURCE
                                              MOV     R6,#HIGH (XDATALEN)
                                ENDIF
 001F E4              123                     CLR     A
+<<<<<<< Updated upstream
 A51 MACRO ASSEMBLER  STARTUP                                                              02/23/2022 14:16:59 PAGE     3
+=======
+A51 MACRO ASSEMBLER  STARTUP                                                              02/22/2022 16:08:50 PAGE     3
+>>>>>>> Stashed changes
 
 0020 F0              124     XDATALOOP:      MOVX    @DPTR,A
 0021 A3              125                     INC     DPTR
@@ -179,7 +191,11 @@ LOC  OBJ            LINE     SOURCE
 0029 020000   F      165                     LJMP    ?C_START
                      166     
                      167                     END
+<<<<<<< Updated upstream
 A51 MACRO ASSEMBLER  STARTUP                                                              02/23/2022 14:16:59 PAGE     4
+=======
+A51 MACRO ASSEMBLER  STARTUP                                                              02/22/2022 16:08:50 PAGE     4
+>>>>>>> Stashed changes
 
 SYMBOL TABLE LISTING
 ------ ----- -------

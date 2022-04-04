@@ -41,6 +41,7 @@
 The main C function.  Program execution starts
 here after stack initialization.
 ******************************************************************************/
+<<<<<<< Updated upstream
 float IC0_value;
 unsigned int IC0_value_sum;
 void Capture_ISR(void) interrupt 12  //should sample the Value 1s a time, which doesn't take too much resource of MCU
@@ -51,6 +52,17 @@ void Capture_ISR(void) interrupt 12  //should sample the Value 1s a time, which 
 	IC0_value_sum+=IC0_value;
 	clr_TF2;
 }
+=======
+int IC0_value[10];
+void Capture_ISR(void) interrupt 12
+{
+	u8 i=0;
+	clr_CAPF0;//Clear capture flag
+	if(++i<=10) i=0;
+	IC0_value[i] = (C0H<<4)||C0L;
+}
+
+>>>>>>> Stashed changes
 void main (void) 
 {
 	Set_All_GPIO_Quasi_Mode;			//For GPIO1 output, Find in "Function_define.h" - "GPIO INIT"
@@ -67,6 +79,7 @@ void main (void)
 	P12_PushPull_Mode;
 	P13_PushPull_Mode;
 	InitialUART0_Timer1(115200);
+	
 	P15_Input_Mode;
 	P15=1;
 	
