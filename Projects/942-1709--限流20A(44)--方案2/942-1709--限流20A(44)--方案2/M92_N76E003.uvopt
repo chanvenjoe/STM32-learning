@@ -8,9 +8,9 @@
   <Extensions>
     <cExt>*.c</cExt>
     <aExt>*.s*; *.src; *.a*</aExt>
-    <oExt>*.obj</oExt>
+    <oExt>*.obj; *.o</oExt>
     <lExt>*.lib</lExt>
-    <tExt>*.txt; *.h; *.inc; *.md</tExt>
+    <tExt>*.txt; *.h; *.inc</tExt>
     <pExt>*.plm</pExt>
     <CppX>*.cpp</CppX>
     <nMigrate>0</nMigrate>
@@ -28,7 +28,7 @@
     <TargetOption>
       <CLK51>16000000</CLK51>
       <OPTTT>
-        <gFlags>1</gFlags>
+        <gFlags>0</gFlags>
         <BeepAtEnd>1</BeepAtEnd>
         <RunSim>1</RunSim>
         <RunTarget>0</RunTarget>
@@ -73,7 +73,7 @@
         <LExpSel>0</LExpSel>
       </OPTXL>
       <OPTFL>
-        <tvExp>1</tvExp>
+        <tvExp>0</tvExp>
         <tvExpOptDlg>0</tvExpOptDlg>
         <IsCurrentTarget>1</IsCurrentTarget>
       </OPTFL>
@@ -116,6 +116,7 @@
         <tIfile></tIfile>
         <pMon>BIN\Nuvoton_8051_Keil_uVision_Driver.dll</pMon>
       </DebugOpt>
+<<<<<<< Updated upstream:Projects/942-1709--限流20A(44)--方案2/942-1709--限流20A(44)--方案2/M92_N76E003.uvopt
       <TargetDriverDllRegistry>
         <SetRegEntry>
           <Number>0</Number>
@@ -136,18 +137,25 @@
           <ItemText>ADCRH</ItemText>
         </Ww>
       </WatchWindow1>
+=======
+      <Breakpoint/>
+>>>>>>> Stashed changes:N76E003_BSP_Keil_C51_V1.0.6/942-1709--无限流 -切换档位(20)/M92_N76E003.uvopt
       <Tracepoint>
         <THDelay>0</THDelay>
       </Tracepoint>
       <DebugFlag>
         <trace>0</trace>
+<<<<<<< Updated upstream:Projects/942-1709--限流20A(44)--方案2/942-1709--限流20A(44)--方案2/M92_N76E003.uvopt
         <periodic>1</periodic>
+=======
+        <periodic>0</periodic>
+>>>>>>> Stashed changes:N76E003_BSP_Keil_C51_V1.0.6/942-1709--无限流 -切换档位(20)/M92_N76E003.uvopt
         <aLwin>0</aLwin>
         <aCover>0</aCover>
         <aSer1>0</aSer1>
         <aSer2>0</aSer2>
         <aPa>0</aPa>
-        <viewmode>1</viewmode>
+        <viewmode>0</viewmode>
         <vrSel>0</vrSel>
         <aSym>0</aSym>
         <aTbox>0</aTbox>
@@ -183,7 +191,7 @@
 
   <Group>
     <GroupName>Source Group 1</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -203,7 +211,7 @@
 
   <Group>
     <GroupName>SOURCE</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
