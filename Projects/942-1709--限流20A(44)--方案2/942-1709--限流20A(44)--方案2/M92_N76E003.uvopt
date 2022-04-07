@@ -10,9 +10,9 @@
     <aExt>*.s*; *.src; *.a*</aExt>
     <oExt>*.obj; *.o</oExt>
     <lExt>*.lib</lExt>
-    <tExt>*.txt; *.h; *.inc</tExt>
+    <tExt>*.txt; *.h; *.inc; *.md</tExt>
     <pExt>*.plm</pExt>
-    <CppX>*.cpp</CppX>
+    <CppX>*.cpp; *.cc; *.cxx</CppX>
     <nMigrate>0</nMigrate>
   </Extensions>
 
@@ -116,40 +116,13 @@
         <tIfile></tIfile>
         <pMon>BIN\Nuvoton_8051_Keil_uVision_Driver.dll</pMon>
       </DebugOpt>
-<<<<<<< Updated upstream:Projects/942-1709--限流20A(44)--方案2/942-1709--限流20A(44)--方案2/M92_N76E003.uvopt
-      <TargetDriverDllRegistry>
-        <SetRegEntry>
-          <Number>0</Number>
-          <Key>DLGTP51</Key>
-          <Name>(98=-1,-1,-1,-1,0)(82=-1,-1,-1,-1,0)(83=-1,-1,-1,-1,0)(84=-1,-1,-1,-1,0)(85=-1,-1,-1,-1,0)(99=-1,-1,-1,-1,0)(91=-1,-1,-1,-1,0)(92=-1,-1,-1,-1,0)(93=-1,-1,-1,-1,0)</Name>
-        </SetRegEntry>
-        <SetRegEntry>
-          <Number>0</Number>
-          <Key>Nuvoton_8051_Keil_uVision_Driver</Key>
-          <Name>-S1 -B115200 -O1792</Name>
-        </SetRegEntry>
-      </TargetDriverDllRegistry>
       <Breakpoint/>
-      <WatchWindow1>
-        <Ww>
-          <count>0</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>ADCRH</ItemText>
-        </Ww>
-      </WatchWindow1>
-=======
-      <Breakpoint/>
->>>>>>> Stashed changes:N76E003_BSP_Keil_C51_V1.0.6/942-1709--无限流 -切换档位(20)/M92_N76E003.uvopt
       <Tracepoint>
         <THDelay>0</THDelay>
       </Tracepoint>
       <DebugFlag>
         <trace>0</trace>
-<<<<<<< Updated upstream:Projects/942-1709--限流20A(44)--方案2/942-1709--限流20A(44)--方案2/M92_N76E003.uvopt
-        <periodic>1</periodic>
-=======
         <periodic>0</periodic>
->>>>>>> Stashed changes:N76E003_BSP_Keil_C51_V1.0.6/942-1709--无限流 -切换档位(20)/M92_N76E003.uvopt
         <aLwin>0</aLwin>
         <aCover>0</aCover>
         <aSer1>0</aSer1>

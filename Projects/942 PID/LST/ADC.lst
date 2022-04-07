@@ -1,13 +1,14 @@
-C51 COMPILER V9.60.0.0   ADC                                                               04/06/2022 17:47:26 PAGE 1   
+C51 COMPILER V9.60.0.0   ADC                                                               04/07/2022 16:23:21 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE ADC
 OBJECT MODULE PLACED IN .\Output\ADC.obj
-COMPILER INVOKED BY: C:\keil5\C51\BIN\C51.EXE Code\ADC.C OPTIMIZE(0,SPEED) BROWSE INCDIR(..\Include) DEFINE(FOSC_160000)
-                    - DEBUG OBJECTEXTEND PRINT(.\LST\ADC.lst) OBJECT(.\Output\ADC.obj)
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE Code\ADC.C OPTIMIZE(0,SPEED) BROWSE INCDIR(..\Include) DEFINE(FOSC_16000
+                    -0) DEBUG OBJECTEXTEND PRINT(.\LST\ADC.lst) OBJECT(.\Output\ADC.obj)
 
 line level    source
 
+*** WARNING C500 IN LINE 1 OF Code\ADC.C: INCORRECT LICENSE ID CODE (LIC) IN 'TOOLS.INI'
    1          #include "N76E003.h"
    2          #include "SFR_Macro.h"
    3          #include "Function_define.h"
@@ -50,4 +51,4 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
 END OF MODULE INFORMATION.
 
 
-C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

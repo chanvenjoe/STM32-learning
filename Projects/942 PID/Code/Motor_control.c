@@ -18,6 +18,15 @@ u8  bgl;
 static u8  flag=1;
 static u8 u8TL1_Tmp;
 
+enum Speed
+{
+	Rev	,
+	S1	,
+	S2	,
+	S3	,
+	ERR
+};
+
 // PWM+=KP[e(k) -e(k-1)]+Ki*e(k)+Kd[e(k)-2e(k-1)+e(k-2)]
 // e(k) the value difference of actual and setting e(k-1) the last time difference
 // In this motor control we use P
@@ -178,6 +187,8 @@ void Timer_Init()
     set_TR0;                                    //Timer0 run
 	IPH = 0X02;
 	IP=0X02;
+	
+	
 }
 
 
@@ -199,7 +210,7 @@ void Movement_control(void)
 	UINT8 k = Get_Speedvalue();
 	UINT8 pwm_step = (i-51)>=0? (i-51)*2/3:0;  //return  %
 	set_WDCLR;
-	if(i>80)// to prevent hall initial voltage is 1.0v
+	if(i>80)// to prevent hall initial voltage is 1.0v 	1.0v = 51 
 	{
 		Pressed
 		switch(0/*j>57*/)//20A=57
@@ -278,15 +289,21 @@ UINT16 Get_HallValue(void)
 
 UINT8 Get_Speedvalue(void)
 {
-	
+//	enum Speed speed_sft;
 	Enable_ADC_AIN1;
 	clr_ADCF;
 	set_ADCS;
 	while(ADCF==0);
-	if(ADCRH>100)
-		return 1;
-	else 
-		return 0;
+	if((ADCRH>Speed3)&&(ADCRH<ADC_limit))
+		return S3;
+	else if((ADCRH>Speed2)&&(ADCRH<Speed3))
+		return S2;
+	else if((ADCRH>Speed1)&&(ADCRH<Speed2))
+		return S1;
+	else if((ADCRH>Reverse)&&(ADCRH<Speed1))
+		return Rev;
+	else
+		return ERR;
 }
 
 
@@ -368,8 +385,15 @@ void PWM_Setting(UINT8 n, UINT8 FB)	//1n = 1%
 	
 }
 
-
-void Timer0_IRS() interrupt 1
+void Timer0_IRS_OCP() interrupt 1
+{
+	TF0 = 0;		//clr T0 itrpt flag
+	TH0 = HIBYTE(TH0_INIT);
+	TL0 = LOBYTE(TH0_INIT); 
+	
+}
+	
+void Timer1_IRS() interrupt 3
 {
 //	TF0 = 0;
 	TH0 = HIBYTE(TH0_INIT);
