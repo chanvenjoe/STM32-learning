@@ -219,6 +219,7 @@ All function define inital setting file for Nuvoton N76E003
 		#define TIMER_DIV512_VALUE_1s				65536-21600	//43200*512/22118400 = 1 s			// Timer divider = 512
 #endif
 #ifdef FOSC_160000		// if Fsys = 16MHz 
+		#define TIMER_SYSCLK_VALUE_125ns		65536-2			//2/16000000 = 125ns,
 		#define TIMER_DIV12_VALUE_10us			65536-13		//13*12/16000000 = 10 uS,  			// Timer divider = 12 for TM0/TM1
 		#define TIMER_DIV12_VALUE_100us			65536-130		//130*12/16000000 = 10 uS,  		// Timer divider = 12 
 		#define TIMER_DIV12_VALUE_1ms				65536-1334	//1334*12/16000000 = 1 mS, 			// Timer divider = 12 

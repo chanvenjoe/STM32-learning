@@ -1,6 +1,8 @@
-
+#ifndef __WS2811_H
+#define __WS2811_H
 #define u8 unsigned char
 #define u16 unsigned int
+#define u32 unsigned long
 #define Not_Pressed PWM5_P03_OUTPUT_DISABLE; PWM4_P01_OUTPUT_DISABLE; clr_P01; set_P03;
 #define Pressed PWM5_P03_OUTPUT_ENABLE; PWM4_P01_OUTPUT_ENABLE;
 #define CCvalue 5 //  change the current regulation value  if it is a number, don't use ";"
@@ -16,6 +18,7 @@
 #define Speed2 	128
 #define Speed1	102
 #define Reverse 26
+
 
 void System_init();
 void ADC_Init(void);
@@ -36,3 +39,4 @@ void PWM_DEAD_TIME_VALUE(u16	DeadTimeData);
 int Incremental_P(u8 Cbat, u8 CC_value);
 void Relay_On(u8 On_FB);
 void Relay_Off(void);
+#endif

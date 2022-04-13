@@ -1,0 +1,9 @@
+".\Objects\main.obj",
+".\Objects\Common.obj",
+".\Objects\Delay.obj",
+".\Objects\Motor_control.obj",
+".\Objects\WS2811.obj",
+".\Objects\STARTUP.obj" 
+TO ".\Objects\LED driver" 
+PRINT(".\Listings\LED driver.m51") RAMSIZE(256) 
+DISABLEWARNING (16) 

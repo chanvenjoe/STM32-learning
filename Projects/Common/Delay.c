@@ -34,6 +34,22 @@ void Timer0_Delay100us(UINT32 u32CNT)
     }
     clr_TR0;                       			        //Stop Timer0
 }
+
+void Timer0_Delay125ns(UINT32 u32CNT)
+{
+	set_T0M;
+	TMOD |= 0x01;
+	set_TR0;
+	while(u32CNT != 0)
+	{
+		TL0 = LOBYTE(TIMER_SYSCLK_VALUE_125ns);
+		TH0 = HIBYTE(TIMER_SYSCLK_VALUE_125ns);
+		while(TF0!=1);
+		clr_TF0;
+		u32CNT--;
+	}
+	clr_TR0;
+}
 //------------------------------------------------------------------------------
 void Timer0_Delay1ms(UINT32 u32CNT)
 {
