@@ -13,29 +13,32 @@ void main()
 	System_init();
 	while(1)
 	{
-		if(i)
+		while(Get_HallValue>80)//Get mic signal
 		{
-			PWM2L++;
-			if(PWM2L==255)
-				i=0;
-			Ramp_up;
-		}
-		else
-		{
-			PWM2L--;
-			if(PWM2L==0)
-				i=1;
-			Ramp_up;
-		}
-		if(PWM1L<=255)
-		{
-			PWM1L++;
-			Ramp_up;
-		}
-		else
-		{
-			PWM2L--;
-			Ramp_up;
+			if(i)
+			{
+				PWM2L++;
+				if(PWM2L==255)
+					i=0;
+				Ramp_up;
+			}
+			else
+			{
+				PWM2L--;
+				if(PWM2L==0)
+					i=1;
+				Ramp_up;
+			}
+			if(PWM1L<=255)
+			{
+				PWM1L++;
+				Ramp_up;
+			}
+			else
+			{
+				PWM2L--;
+				Ramp_up;
+			}
 		}
 	}
 }

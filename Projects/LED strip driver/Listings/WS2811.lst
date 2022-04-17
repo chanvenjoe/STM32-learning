@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   WS2811                                                            04/13/2022 23:59:47 PAGE 1   
+C51 COMPILER V9.60.0.0   WS2811                                                            04/17/2022 16:55:35 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE WS2811
@@ -62,7 +62,7 @@ line level    source
   51   1              u8 i;
   52   1              WS_Send24bits(dummy);
   53   1              for( i=0;i<=LEDNUM+1;i++)
-C51 COMPILER V9.60.0.0   WS2811                                                            04/13/2022 23:59:47 PAGE 2   
+C51 COMPILER V9.60.0.0   WS2811                                                            04/17/2022 16:55:35 PAGE 2   
 
   54   1              {
   55   2                      WS_Send24bits(LED_Buf[i].RGB);
@@ -126,7 +126,7 @@ line level    source
  113          //u32 CapacitiveTouch_Init(u16 psc)
  114          //{
  115          //      u32 array[10];
-C51 COMPILER V9.60.0.0   WS2811                                                            04/13/2022 23:59:47 PAGE 3   
+C51 COMPILER V9.60.0.0   WS2811                                                            04/17/2022 16:55:35 PAGE 3   
 
  116          //      u16 temp;
  117          //      u8 i,j;
@@ -190,7 +190,7 @@ line level    source
  175          //u8 TPAD_Scan(u8 mode,u32 tpad_average1)
  176          //{
  177          //      static u8 keyen=0; //enable touch
-C51 COMPILER V9.60.0.0   WS2811                                                            04/13/2022 23:59:47 PAGE 4   
+C51 COMPILER V9.60.0.0   WS2811                                                            04/17/2022 16:55:35 PAGE 4   
 
  178          //      u8 res=0;
  179          //      u8 sample=3;
@@ -254,7 +254,7 @@ line level    source
  237          //      InputCapture_init.TIM_ICPrescaler = TIM_ICPSC_DIV1;
  238          //      InputCapture_init.TIM_ICSelection = TIM_ICSelection_DirectTI;
  239          //      TIM_ICInit(TIM2, &InputCapture_init);
-C51 COMPILER V9.60.0.0   WS2811                                                            04/13/2022 23:59:47 PAGE 5   
+C51 COMPILER V9.60.0.0   WS2811                                                            04/17/2022 16:55:35 PAGE 5   
 
  240          
  241          //      
@@ -318,7 +318,7 @@ line level    source
                       else if(Max==B)
                       {
                               Num=Fifth;
-C51 COMPILER V9.60.0.0   WS2811                                                            04/13/2022 23:59:47 PAGE 6   
+C51 COMPILER V9.60.0.0   WS2811                                                            04/17/2022 16:55:35 PAGE 6   
 
                       }
                       else
@@ -382,7 +382,7 @@ line level    source
  361   2                      case 5:
  362   2                              R=v; G=X; B=Y;
  363   2                              break;
-C51 COMPILER V9.60.0.0   WS2811                                                            04/13/2022 23:59:47 PAGE 7   
+C51 COMPILER V9.60.0.0   WS2811                                                            04/17/2022 16:55:35 PAGE 7   
 
  364   2              }
  365   1              R8=R*255;
