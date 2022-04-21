@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   MAIN                                                              04/17/2022 16:55:33 PAGE 1   
+C51 COMPILER V9.60.0.0   MAIN                                                              04/22/2022 00:08:40 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
@@ -14,56 +14,77 @@ line level    source
    4          #include "Common.h"
    5          #include "Delay.h"
    6          #include "Motor_control.h"
-   7          
-   8          
-   9          
-  10          void main()
-  11          {
-  12   1              u8 i=1;
-  13   1              System_init();
-  14   1              while(1)
-  15   1              {
-  16   2                      while(Get_HallValue>80)//Get mic signal
-  17   2                      {
-  18   3                              if(i)
-  19   3                              {
-  20   4                                      PWM2L++;
-  21   4                                      if(PWM2L==255)
-  22   4                                              i=0;
-  23   4                                      Ramp_up;
-  24   4                              }
-  25   3                              else
-  26   3                              {
-  27   4                                      PWM2L--;
-  28   4                                      if(PWM2L==0)
-  29   4                                              i=1;
-  30   4                                      Ramp_up;
-  31   4                              }
-  32   3                              if(PWM1L<=255)
+   7          #include "WS2811.h"
+   8          #define T0H     set_P00;                    //220-420
+   9          #define T0L     clr_P00;clr_P00;clr_P00;clr_P00;clr_P00;//1000ns   750-1.6us
+  10          #define T1L     clr_P00;                    //220-420
+  11          #define T1H     set_P00;set_P00;set_P00;set_P00;set_P00;//1000ns   750-1.6us
+  12          #define CODE_0  T0H T0H
+  13          #define CODE_1  T1H T1L
+  14          #define RESET   clr_P00;Timer0_Delay125ns(15);set_P00;
+  15          
+  16          WS_Hue_change();
+  17          
+  18          
+  19          void main()
+  20          {
+  21   1              u8 i=1;
+  22   1              System_init();
+  23   1              while(1)
+  24   1              {
+  25   2                      if(Get_HallValue()>100)
+  26   2                      {
+  27   3                              CODE_1
+  28   3      //                      CODE_0
+  29   3                      }
+  30   2                      else
+  31   2                      {
+  32   3                              for(i=0;i<25;i++)
   33   3                              {
-  34   4                                      PWM1L++;
-  35   4                                      Ramp_up;
-  36   4                              }
-  37   3                              else
-  38   3                              {
-  39   4                                      PWM2L--;
-  40   4                                      Ramp_up;
-  41   4                              }
-  42   3                      }
-  43   2              }
-  44   1      }
+  34   4                                      CODE_0
+  35   4                              }
+  36   3                              RESET
+  37   3                      }
+  38   2                                      
+  39   2      //              WS_Hue_change();
+  40   2      //              if(i)
+  41   2      //              {
+  42   2      //                      PWM2L++;
+  43   2      //                      if(PWM2L==255)
+  44   2      //                              i=0;
+  45   2      //                      Ramp_up;
+  46   2      //              }
+  47   2      //              else
+  48   2      //              {
+  49   2      //                      PWM2L--;
+  50   2      //                      if(PWM2L==0)
+  51   2      //                              i=1;
+  52   2      //                      Ramp_up;
+  53   2      //              }
+  54   2      //              if(PWM1L<=255)
+C51 COMPILER V9.60.0.0   MAIN                                                              04/22/2022 00:08:40 PAGE 2   
+
+  55   2      //              {
+  56   2      //                      PWM1L++;
+  57   2      //                      Ramp_up;
+  58   2      //              }
+  59   2      //              else
+  60   2      //              {
+  61   2      //                      PWM2L--;
+  62   2      //                      Ramp_up;
+  63   2      //              }
+  64   2              }
+  65   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    155    ----
+   CODE SIZE        =     84    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =      1    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
-C51 COMPILER V9.60.0.0   MAIN                                                              04/17/2022 16:55:33 PAGE 2   
-
 END OF MODULE INFORMATION.
 
 

@@ -192,9 +192,9 @@ void Timer_Init()
 	clr_T0M; //timer0 clk=Fsys/12
 	TH0 = HIBYTE(TH0_INIT);
 	TL0 = LOBYTE(TH0_INIT);
-    set_ET0;                                    //enable Timer0 interrupt
+ //   set_ET0;                                    //enable Timer0 interrupt
     set_EA;                                     //enable interrupts
-    set_TR0;                                    //Timer0 run
+ //   set_TR0;                                    //Timer0 run
 	IPH = 0X02;
 	IP=0X02;
 	

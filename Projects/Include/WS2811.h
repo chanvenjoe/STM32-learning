@@ -2,7 +2,7 @@
 #define __WS2811_H
 #include "Delay.h"
 #include "common.h"
-#include "Motor_control.h"
+//#include "Motor_control.h"
 #include "Function_define.h"
 #include "SFR_Macro.h"
 
