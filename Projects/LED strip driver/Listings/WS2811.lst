@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   WS2811                                                            04/24/2022 22:48:57 PAGE 1   
+C51 COMPILER V9.60.0.0   WS2811                                                            04/24/2022 23:17:24 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE WS2811
@@ -23,7 +23,7 @@ line level    source
   13          #define RGB_HSV 0               //1 to enable transformation  code
   14          /**************************************/
   15          
-  16          Color_Typedef LED_Buf[LEDNUM];
+  16          Color_Typedef LED_Buf[LEDNUM+1];
   17          
   18          void WS_Send24bits(u32 color)//Be Careful about the direction of rope: Din->Dout
   19          {
@@ -62,7 +62,7 @@ line level    source
   51          {
   52   1              u8 i;
   53   1              WS_Send24bits(dummy);
-C51 COMPILER V9.60.0.0   WS2811                                                            04/24/2022 22:48:57 PAGE 2   
+C51 COMPILER V9.60.0.0   WS2811                                                            04/24/2022 23:17:24 PAGE 2   
 
   54   1              for( i=0;i<=LEDNUM+1;i++)
   55   1              {
@@ -126,7 +126,7 @@ line level    source
  113   1      }
  114          
  115          
-C51 COMPILER V9.60.0.0   WS2811                                                            04/24/2022 22:48:57 PAGE 3   
+C51 COMPILER V9.60.0.0   WS2811                                                            04/24/2022 23:17:24 PAGE 3   
 
  116          #if(RGB_HSV)
               u8      Get_RGB_Max(u8 R, u8 G, u8 B)
@@ -190,7 +190,7 @@ line level    source
                               case 0:
                               break;
                               case 1:
-C51 COMPILER V9.60.0.0   WS2811                                                            04/24/2022 22:48:57 PAGE 4   
+C51 COMPILER V9.60.0.0   WS2811                                                            04/24/2022 23:17:24 PAGE 4   
 
                                       Hue=0;
                               break;
@@ -254,7 +254,7 @@ line level    source
  237   1              RGB<<=8;
  238   1              RGB|=B8;
  239   1              return RGB;
-C51 COMPILER V9.60.0.0   WS2811                                                            04/24/2022 22:48:57 PAGE 5   
+C51 COMPILER V9.60.0.0   WS2811                                                            04/24/2022 23:17:24 PAGE 5   
 
  240   1      }
  241          void WS_Color_Fio(void)
@@ -294,7 +294,7 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
    CODE SIZE        =   1931    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
-   PDATA SIZE       =    142    ----
+   PDATA SIZE       =    149    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----

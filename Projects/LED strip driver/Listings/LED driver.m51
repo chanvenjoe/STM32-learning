@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    04/24/2022  22:48:58  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    04/24/2022  23:17:25  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
@@ -59,7 +59,7 @@ LINK MAP OF MODULE:  .\Objects\LED driver (MAIN)
             XDATA   000DH     0001H     INPAGE       ?PD?RECEIVE_DATA_FROM_UART0?COMMON
             XDATA   000EH     0002H     INPAGE       ?PD?_SEND_DATA_TO_UART0?COMMON
             XDATA   0010H     0004H     INPAGE       ?PD?_INITIALUART1_TIMER3?COMMON
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/24/2022  22:48:58  PAGE 2
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/24/2022  23:17:25  PAGE 2
 
 
             XDATA   0014H     0001H     INPAGE       ?PD?RECEIVE_DATA_FROM_UART1?COMMON
@@ -79,12 +79,12 @@ LINK MAP OF MODULE:  .\Objects\LED driver (MAIN)
             XDATA   0059H     0003H     INPAGE       ?PD?_PWM_SETTING?MOTOR_CONTROL
             XDATA   005CH     0005H     INPAGE       ?PD?_WS_SEND24BITS?WS2811
             XDATA   0061H     0005H     INPAGE       ?PD?_WS_COLOR_COPY?WS2811
-            XDATA   0066H     004CH     INPAGE       ?PD?WS2811
-            XDATA   00B2H     0006H     INPAGE       ?PD?_WS_COLORSET_LED?WS2811
-            XDATA   00B8H     0001H     INPAGE       ?PD?WS_REFRESH?WS2811
-            XDATA   00B9H     0002H     INPAGE       ?PD?WS_HUE_CHANGE?WS2811
-            XDATA   00BBH     0028H     INPAGE       ?PD?_HSV_RGB?WS2811
-            XDATA   00E3H     0007H     INPAGE       ?PD?WS_COLOR_FIO?WS2811
+            XDATA   0066H     0053H     INPAGE       ?PD?WS2811
+            XDATA   00B9H     0006H     INPAGE       ?PD?_WS_COLORSET_LED?WS2811
+            XDATA   00BFH     0001H     INPAGE       ?PD?WS_REFRESH?WS2811
+            XDATA   00C0H     0002H     INPAGE       ?PD?WS_HUE_CHANGE?WS2811
+            XDATA   00C2H     0028H     INPAGE       ?PD?_HSV_RGB?WS2811
+            XDATA   00EAH     0007H     INPAGE       ?PD?WS_COLOR_FIO?WS2811
 
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
             CODE    0000H     0003H     ABSOLUTE     
@@ -119,7 +119,7 @@ LINK MAP OF MODULE:  .\Objects\LED driver (MAIN)
             CODE    1739H     005FH     UNIT         ?PR?_TIMER0_DELAY100US?DELAY
             CODE    1798H     005FH     UNIT         ?PR?_TIMER0_DELAY125NS?DELAY
             CODE    17F7H     005FH     UNIT         ?PR?_TIMER0_DELAY1MS?DELAY
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/24/2022  22:48:58  PAGE 3
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/24/2022  23:17:25  PAGE 3
 
 
             CODE    1856H     005FH     UNIT         ?PR?_TIMER1_DELAY10MS?DELAY
@@ -179,7 +179,7 @@ SEGMENT
   +--> ?PR?_TIMER0_DELAY125NS?DELAY
 
 
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/24/2022  22:48:58  PAGE 4
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/24/2022  23:17:25  PAGE 4
 
 
 
@@ -216,30 +216,30 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   C:0E09H         LINE#         16
   C:0E0CH         LINE#         17
   C:0E0CH         LINE#         18
-  C:0E0CH         LINE#         19
-  C:0E13H         LINE#         20
-  C:0E35H         LINE#         21
+  C:0E0CH         LINE#         21
+  C:0E13H         LINE#         22
   C:0E35H         LINE#         23
-  C:0E4AH         LINE#         24
-  C:0E63H         LINE#         25
-  C:0E66H         LINE#         26
-  C:0E71H         LINE#         33
-  C:0E73H         LINE#         34
-  C:0E84H         LINE#         35
-  C:0E84H         LINE#         36
-  C:0E8DH         LINE#         37
-  C:0EA6H         LINE#         38
-  C:0EA9H         LINE#         39
-  C:0EB4H         LINE#         40
-  C:0EB7H         LINE#         42
-  C:0EB7H         LINE#         43
-  C:0EC7H         LINE#         44
-  C:0ECAH         LINE#         45
-  C:0ED5H         LINE#         46
-  C:0ED5H         LINE#         48
+  C:0E35H         LINE#         25
+  C:0E4AH         LINE#         26
+  C:0E63H         LINE#         27
+  C:0E66H         LINE#         28
+  C:0E71H         LINE#         37
+  C:0E73H         LINE#         38
+  C:0E84H         LINE#         39
+  C:0E84H         LINE#         40
+  C:0E8DH         LINE#         41
+  C:0EA6H         LINE#         42
+  C:0EA9H         LINE#         43
+  C:0EB4H         LINE#         44
+  C:0EB7H         LINE#         46
+  C:0EB7H         LINE#         47
+  C:0EC7H         LINE#         48
+  C:0ECAH         LINE#         49
+  C:0ED5H         LINE#         50
+  C:0ED5H         LINE#         52
   -------         ENDPROC       MAIN
   -------         ENDMOD        MAIN
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/24/2022  22:48:58  PAGE 5
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/24/2022  23:17:25  PAGE 5
 
 
 
@@ -299,7 +299,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   C:1994H         LINE#         41
   C:1996H         LINE#         42
   C:1998H         LINE#         43
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/24/2022  22:48:58  PAGE 6
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/24/2022  23:17:25  PAGE 6
 
 
   -------         ENDPROC       _INITIALUART0_TIMER1
@@ -359,7 +359,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   X:0014H         SYMBOL        c
   -------         ENDDO         
   C:1B22H         LINE#         107
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/24/2022  22:48:58  PAGE 7
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/24/2022  23:17:25  PAGE 7
 
 
   C:1B22H         LINE#         108
@@ -419,7 +419,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   D:00C9H         PUBLIC        T2MOD
   D:00C8H         PUBLIC        T2CON
   D:00C4H         PUBLIC        T3CON
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/24/2022  22:48:58  PAGE 8
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/24/2022  23:17:25  PAGE 8
 
 
   D:008EH         PUBLIC        CKCON
@@ -479,7 +479,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   C:1853H         LINE#         67
   C:1855H         LINE#         68
   -------         ENDPROC       _TIMER0_DELAY1MS
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/24/2022  22:48:58  PAGE 9
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/24/2022  23:17:25  PAGE 9
 
 
   -------         PROC          _TIMER1_DELAY10MS
@@ -539,7 +539,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   -------         PROC          _TIMER3_DELAY10US
   X:002EH         SYMBOL        u32CNT
   C:166EH         LINE#         119
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/24/2022  22:48:58  PAGE 10
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/24/2022  23:17:25  PAGE 10
 
 
   C:1673H         LINE#         120
@@ -599,7 +599,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   D:0087H         PUBLIC        PCON
   X:003FH         PUBLIC        bgh
   B:0080H.3       PUBLIC        P03
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/24/2022  22:48:58  PAGE 11
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/24/2022  23:17:25  PAGE 11
 
 
   B:0090H.2       PUBLIC        P12
@@ -659,7 +659,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   X:004DH         PUBLIC        bgmark
   D:00E9H         PUBLIC        PICON
   D:00DEH         PUBLIC        PIOCON0
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/24/2022  22:48:58  PAGE 12
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/24/2022  23:17:25  PAGE 12
 
 
   D:00D0H         PUBLIC        PSW
@@ -719,7 +719,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   C:0A12H         LINE#         74
   C:0A14H         LINE#         75
   C:0A18H         LINE#         77
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/24/2022  22:48:58  PAGE 13
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/24/2022  23:17:25  PAGE 13
 
 
   C:0A2BH         LINE#         78
@@ -779,7 +779,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   C:159CH         LINE#         140
   C:159FH         LINE#         141
   C:15A2H         LINE#         145
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/24/2022  22:48:58  PAGE 14
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/24/2022  23:17:25  PAGE 14
 
 
   C:15A8H         LINE#         152
@@ -839,7 +839,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   X:0053H         SYMBOL        pwm_step
   -------         ENDDO         
   C:0C85H         LINE#         216
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/24/2022  22:48:58  PAGE 15
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/24/2022  23:17:25  PAGE 15
 
 
   C:0C85H         LINE#         217
@@ -899,7 +899,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   C:0DFFH         LINE#         275
   -------         ENDPROC       MOVEMENT_CONTROL
   -------         PROC          GET_CURRENTVALUE
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/24/2022  22:48:58  PAGE 16
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/24/2022  23:17:25  PAGE 16
 
 
   C:1A65H         LINE#         278
@@ -959,7 +959,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   C:1B31H         LINE#         337
   C:1B31H         LINE#         338
   C:1B33H         LINE#         339
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/24/2022  22:48:58  PAGE 17
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/24/2022  23:17:25  PAGE 17
 
 
   C:1B35H         LINE#         340
@@ -1019,7 +1019,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   C:0F7EH         LINE#         388
   C:0F7EH         LINE#         389
   C:0F8DH         LINE#         390
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/24/2022  22:48:58  PAGE 18
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/24/2022  23:17:25  PAGE 18
 
 
   C:0F94H         LINE#         393
@@ -1079,7 +1079,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   C:140BH         PUBLIC        _WS_ColorSet_LED
   C:1103H         PUBLIC        WS_Hue_change
   D:00D0H         PUBLIC        PSW
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/24/2022  22:48:58  PAGE 19
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/24/2022  23:17:25  PAGE 19
 
 
   -------         PROC          _WS_SEND24BITS
@@ -1109,9 +1109,9 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   C:1AA6H         LINE#         35
   -------         ENDPROC       _WS_COLOR_COPY
   -------         PROC          _WS_COLORSET_LED
-  X:00B2H         SYMBOL        from
-  X:00B3H         SYMBOL        to
-  X:00B4H         SYMBOL        color
+  X:00B9H         SYMBOL        from
+  X:00BAH         SYMBOL        to
+  X:00BBH         SYMBOL        color
   -------         DO            
   X:0066H         SYMBOL        temp
   -------         ENDDO         
@@ -1129,7 +1129,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   -------         ENDPROC       _WS_COLORSET_LED
   -------         PROC          WS_REFRESH
   -------         DO            
-  X:00B8H         SYMBOL        i
+  X:00BFH         SYMBOL        i
   -------         ENDDO         
   C:18B5H         LINE#         50
   C:18B5H         LINE#         51
@@ -1139,7 +1139,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   C:18D5H         LINE#         56
   C:18EFH         LINE#         57
   C:18F6H         LINE#         58
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/24/2022  22:48:58  PAGE 20
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/24/2022  23:17:25  PAGE 20
 
 
   C:1905H         LINE#         59
@@ -1179,8 +1179,8 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   -------         ENDPROC       WS_KEY_RGB
   -------         PROC          WS_HUE_CHANGE
   -------         DO            
-  X:00B9H         SYMBOL        cylon
-  X:00BAH         SYMBOL        cycle
+  X:00C0H         SYMBOL        cylon
+  X:00C1H         SYMBOL        cycle
   X:0069H         SYMBOL        h
   -------         ENDDO         
   C:1103H         LINE#         95
@@ -1199,26 +1199,26 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   C:11A1H         LINE#         112
   C:11A8H         LINE#         113
   -------         ENDPROC       WS_HUE_CHANGE
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/24/2022  22:48:58  PAGE 21
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/24/2022  23:17:25  PAGE 21
 
 
   -------         PROC          _HSV_RGB
-  X:00BBH         SYMBOL        h
-  X:00BDH         SYMBOL        s
-  X:00BEH         SYMBOL        v
-  X:00BFH         SYMBOL        R
-  X:00C3H         SYMBOL        G
-  X:00C7H         SYMBOL        B
+  X:00C2H         SYMBOL        h
+  X:00C4H         SYMBOL        s
+  X:00C5H         SYMBOL        v
+  X:00C6H         SYMBOL        R
+  X:00CAH         SYMBOL        G
+  X:00CEH         SYMBOL        B
   -------         DO            
-  X:00CBH         SYMBOL        RGB
-  X:00CFH         SYMBOL        R8
-  X:00D0H         SYMBOL        G8
-  X:00D1H         SYMBOL        B8
-  X:00D2H         SYMBOL        i
-  X:00D3H         SYMBOL        X
-  X:00D7H         SYMBOL        Y
-  X:00DBH         SYMBOL        Z
-  X:00DFH         SYMBOL        C
+  X:00D2H         SYMBOL        RGB
+  X:00D6H         SYMBOL        R8
+  X:00D7H         SYMBOL        G8
+  X:00D8H         SYMBOL        B8
+  X:00D9H         SYMBOL        i
+  X:00DAH         SYMBOL        X
+  X:00DEH         SYMBOL        Y
+  X:00E2H         SYMBOL        Z
+  X:00E6H         SYMBOL        C
   -------         ENDDO         
   C:05C3H         LINE#         196
   C:05D2H         LINE#         197
@@ -1259,17 +1259,17 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   C:0988H         LINE#         238
   C:09C0H         LINE#         239
   C:09CDH         LINE#         240
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/24/2022  22:48:58  PAGE 22
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/24/2022  23:17:25  PAGE 22
 
 
   -------         ENDPROC       _HSV_RGB
   -------         PROC          WS_COLOR_FIO
   -------         DO            
-  X:00E3H         SYMBOL        i
-  X:00E4H         SYMBOL        R
-  X:00E5H         SYMBOL        G
+  X:00EAH         SYMBOL        i
+  X:00EBH         SYMBOL        R
+  X:00ECH         SYMBOL        G
   X:006BH         SYMBOL        B
-  X:00E6H         SYMBOL        color
+  X:00EDH         SYMBOL        color
   -------         ENDDO         
   C:1058H         LINE#         241
   C:1058H         LINE#         242
@@ -1319,7 +1319,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   N:0000H         SYMBOL        PDATASTART
   N:0000H         SYMBOL        PPAGE
   N:0000H         SYMBOL        PPAGEENABLE
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/24/2022  22:48:58  PAGE 23
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/24/2022  23:17:25  PAGE 23
 
 
   D:00A0H         SYMBOL        PPAGE_SFR
@@ -1379,7 +1379,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
 
   -------         MODULE        ?C?LNEG
   C:0506H         PUBLIC        ?C?LNEG
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/24/2022  22:48:58  PAGE 24
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/24/2022  23:17:25  PAGE 24
 
 
   -------         ENDMOD        ?C?LNEG
@@ -1412,5 +1412,5 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   C:0596H         PUBLIC        ?C?ICASE
   -------         ENDMOD        ?C?ICASE
 
-Program Size: data=9.2 xdata=234 code=6959
+Program Size: data=9.2 xdata=241 code=6959
 LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

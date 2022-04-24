@@ -16,6 +16,8 @@ void main(void)
 	System_init();
 	while(1)
 	{
+//			WS_ColorSet_LED(0,9,0xff0000);
+//			WS_Refresh();
 		dB = Get_HallValue();
 		if(dB>=30&&dB<125)
 		{
@@ -27,13 +29,15 @@ void main(void)
 //			while(color)
 //			{
 //				color-=5;
+//				if(color<=0)
+//					color=0;
 //				WS_ColorSet_LED(0,10,color);
 //				WS_Refresh();
 //			}
 		}
 		else if(dB>=125)
 		{
-			color = Green;
+			color = Red;
 			WS_ColorSet_LED(0,10,color);
 			WS_Refresh();
 			Timer1_Delay10ms(5);
