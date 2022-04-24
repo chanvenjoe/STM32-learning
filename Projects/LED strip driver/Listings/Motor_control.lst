@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     04/22/2022 00:08:40 PAGE 1   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     04/24/2022 22:48:57 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MOTOR_CONTROL
@@ -14,55 +14,55 @@ line level    source
    4          #include "N76E003.h"
    5          #include "SFR_Macro.h"
    6          #include "Delay.h" 
-   7          #include "SFR_Macro.h"
+   7          
    8          
-   9          
-  10          //#define TIM1_INIT  TH0 = 0XFC
-  11          
-  12          ////////////Variables////////////////
-  13          bit pwr_d=0;
-  14          double bgvalue, ADCValue, bgvol, ADC_Vol;
-  15          
-  16          u8  bgmark;
-  17          u8  bgh;
-  18          u8  bgl;
-  19          static u8  flag=1;
-  20          static u8 u8TL1_Tmp;
-  21          
-  22          enum Speed
-  23          {
-  24                  Rev     ,
-  25                  S1      ,
-  26                  S2      ,
-  27                  S3      ,
-  28                  ERR
-  29          };
-  30          
-  31          // PWM+=KP[e(k) -e(k-1)]+Ki*e(k)+Kd[e(k)-2e(k-1)+e(k-2)]
-  32          // e(k) the value difference of actual and setting e(k-1) the last time difference
-  33          // In this motor control we use P
-  34          // PWM = Kp[e(k) - e(k-1)]
-  35          // Cbat == the current value  IO:P05 ADC value
-  36          int Incremental_P(UINT8 Cbat, UINT8 CC_Value)//int can have negative num
-  37          {
-  38   1              static UINT8 Kp=1,Bias,Last_bias;
-  39   1              static float PWM;
-  40   1              Bias= Cbat-CC_Value;
-  41   1              PWM-= Kp*(Bias-Last_bias);// Decreasement output
-  42   1              Last_bias = Bias;
-  43   1              return PWM; //The percentage of decreasment
-  44   1      }
-  45          
-  46          void System_init()
-  47          {
-  48   1              Set_All_GPIO_Quasi_Mode;                        //For GPIO1 output, Find in "Function_define.h" - "GPIO INIT"
+   9          //#define TIM1_INIT  TH0 = 0XFC
+  10          
+  11          ////////////Variables////////////////
+  12          bit pwr_d=0;
+  13          double bgvalue, ADCValue, bgvol, ADC_Vol;
+  14          
+  15          u8  bgmark;
+  16          u8  bgh;
+  17          u8  bgl;
+  18          static u8  flag=1;
+  19          static u8 u8TL1_Tmp;
+  20          
+  21          enum Speed
+  22          {
+  23                  Rev     ,
+  24                  S1      ,
+  25                  S2      ,
+  26                  S3      ,
+  27                  ERR
+  28          };
+  29          
+  30          // PWM+=KP[e(k) -e(k-1)]+Ki*e(k)+Kd[e(k)-2e(k-1)+e(k-2)]
+  31          // e(k) the value difference of actual and setting e(k-1) the last time difference
+  32          // In this motor control we use P
+  33          // PWM = Kp[e(k) - e(k-1)]
+  34          // Cbat == the current value  IO:P05 ADC value
+  35          int Incremental_P(UINT8 Cbat, UINT8 CC_Value)//int can have negative num
+  36          {
+  37   1              static UINT8 Kp=1,Bias,Last_bias;
+  38   1              static float PWM;
+  39   1              Bias= Cbat-CC_Value;
+  40   1              PWM-= Kp*(Bias-Last_bias);// Decreasement output
+  41   1              Last_bias = Bias;
+  42   1              return PWM; //The percentage of decreasment
+  43   1      }
+  44          
+  45          void System_init()
+  46          {
+  47   1              Set_All_GPIO_Quasi_Mode;                        //For GPIO1 output, Find in "Function_define.h" - "GPIO INIT"
+  48   1              P00_PushPull_Mode;
   49   1              InitialUART0_Timer1(115200);
   50   1              Timer_Init();
   51   1              WTD_Init();
   52   1              Pin_Interruput_Init();
   53   1              ADC_Init();                                                     
   54   1              PWM_Init();
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     04/22/2022 00:08:40 PAGE 2   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     04/24/2022 22:48:57 PAGE 2   
 
   55   1      }
   56          
@@ -126,7 +126,7 @@ line level    source
  114   2                      bgl = bgl&0x0f; 
  115   2                      bgvalue = (bgh<<4)+bgl;
  116   2                      bgvol = bgvalue*3/4;
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     04/22/2022 00:08:40 PAGE 3   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     04/24/2022 22:48:57 PAGE 3   
 
  117   2              }
  118   1      //      printf("\nBandgap value:%d\n", bgvalue);
@@ -190,7 +190,7 @@ line level    source
  176   1              ***********************************************************************/
  177   1      }
  178          
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     04/22/2022 00:08:40 PAGE 4   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     04/24/2022 22:48:57 PAGE 4   
 
  179          void WTD_Init()
  180          {
@@ -209,8 +209,8 @@ line level    source
  193   1              TH0 = HIBYTE(TH0_INIT);
  194   1              TL0 = LOBYTE(TH0_INIT);
  195   1       //   set_ET0;                                    //enable Timer0 interrupt
- 196   1          set_EA;                                     //enable interrupts
- 197   1       //   set_TR0;                                    //Timer0 run
+ 196   1        //  set_EA;                                     //enable interrupts
+ 197   1          set_TR0;                                    //Timer0 run
  198   1              IPH = 0X02;
  199   1              IP=0X02;
  200   1              
@@ -223,7 +223,7 @@ line level    source
  207   1              PICON = 0x21;// Port1 Pin3 edge trigger
  208   1              PINEN = 0x08; //PIN3 falling/low trigger PIPEN: Rising/high trigger
  209   1              PIPEN = 0X00; 
- 210   1              EIE   = 0x02; // PIN interrupt enable
+ 210   1      //      EIE   = 0x02; // PIN interrupt enable
  211   1              EIP   = 0x02;           //Priority  1 1 (highest)
  212   1              EIPH  = 0X02;
  213   1              set_P1S_3; // Pin3 Schmitt trigger
@@ -254,7 +254,7 @@ line level    source
  237   5                                              j=j*0.35;// Current calculation from current shunt-> OA-> ADC j=actural current
  238   5                                              PWM4L=(PWM4L+Incremental_P(j, CCvalue)*3/2)>50? (PWM4L+Incremental_P(j, 20)*3/2):50;;//PWM delta valu
              -e, if the 
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     04/22/2022 00:08:40 PAGE 5   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     04/24/2022 22:48:57 PAGE 5   
 
  239   5                                                                                              //reserve for timer counting
  240   5                                              set_LOAD;set_PWMRUN;
@@ -318,7 +318,7 @@ line level    source
  298          
  299          
  300          UINT8 Get_Speedvalue(void)
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     04/22/2022 00:08:40 PAGE 6   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     04/24/2022 22:48:57 PAGE 6   
 
  301          {
  302   1      //      enum Speed speed_sft;
@@ -382,7 +382,7 @@ line level    source
  360   1              TA = 0x55;
  361   1              PDTCNT = deadtmplow;
  362   1              EA = BIT_TMP;
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     04/22/2022 00:08:40 PAGE 7   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     04/24/2022 22:48:57 PAGE 7   
 
  363   1      }
  364          
@@ -446,12 +446,12 @@ line level    source
  422   1              TR0=~TR0;
  423   1      }
  424          
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     04/22/2022 00:08:40 PAGE 8   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     04/24/2022 22:48:57 PAGE 8   
 
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =   2091    ----
+   CODE SIZE        =   2094    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =     42    ----

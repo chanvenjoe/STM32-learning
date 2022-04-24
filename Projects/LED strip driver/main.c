@@ -5,61 +5,45 @@
 #include "Delay.h"
 #include "Motor_control.h"
 #include "WS2811.h"
-#define T0H 	set_P00;		    //220-420
-#define T0L 	clr_P00;clr_P00;clr_P00;clr_P00;clr_P00;//1000ns   750-1.6us
-#define T1L 	clr_P00;		    //220-420
-#define T1H 	set_P00;set_P00;set_P00;set_P00;set_P00;//1000ns   750-1.6us
-#define CODE_0	T0H T0H
-#define CODE_1	T1H T1L
-#define RESET   clr_P00;Timer0_Delay125ns(15);set_P00;
-
-WS_Hue_change();
 
 
-void main()
+
+
+void main(void)  
 {
-	u8 i=1;
+	u8 dB;
+	u32 color=0;
 	System_init();
 	while(1)
 	{
-		if(Get_HallValue()>100)
+		dB = Get_HallValue();
+		if(dB>=30&&dB<125)
 		{
-			CODE_1
-//			CODE_0
+			
+			color = Black|(dB*2);
+			WS_ColorSet_LED(0,10,color);
+			WS_Refresh();
+			Timer1_Delay10ms(5);
+//			while(color)
+//			{
+//				color-=5;
+//				WS_ColorSet_LED(0,10,color);
+//				WS_Refresh();
+//			}
+		}
+		else if(dB>=125)
+		{
+			color = Green;
+			WS_ColorSet_LED(0,10,color);
+			WS_Refresh();
+			Timer1_Delay10ms(5);
 		}
 		else
 		{
-			for(i=0;i<25;i++)
-			{
-				CODE_0
-			}
-			RESET
+			WS_ColorSet_LED(0,10,0x000000);
+			WS_Refresh();
+			Timer1_Delay10ms(5);			
 		}
-				
-//		WS_Hue_change();
-//		if(i)
-//		{
-//			PWM2L++;
-//			if(PWM2L==255)
-//				i=0;
-//			Ramp_up;
-//		}
-//		else
-//		{
-//			PWM2L--;
-//			if(PWM2L==0)
-//				i=1;
-//			Ramp_up;
-//		}
-//		if(PWM1L<=255)
-//		{
-//			PWM1L++;
-//			Ramp_up;
-//		}
-//		else
-//		{
-//			PWM2L--;
-//			Ramp_up;
-//		}
+
 	}
 }

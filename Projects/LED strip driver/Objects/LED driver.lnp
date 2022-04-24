@@ -7,3 +7,4 @@
 TO ".\Objects\LED driver" 
 PRINT(".\Listings\LED driver.m51") RAMSIZE(256) 
 DISABLEWARNING (16) 
+XDATA( 0X0000-0X02FF )

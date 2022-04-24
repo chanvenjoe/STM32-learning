@@ -1,5 +1,6 @@
 #include "WS2811.h"
 #include "N76E003.h"
+#include "Motor_control.h"
 
 /***********TYPE DEFINE****************/
 
@@ -103,7 +104,7 @@ void WS_Hue_change()
 		{
 			WS_ColorSet_LED(0, cycle, HSV_RGB(h, 1,1,0,0,0));
 			WS_Refresh();
-			Timer0_Delay1ms(50);
+			Timer0_Delay1ms(500);
 		}
 		h+=15;
 	}
@@ -237,5 +238,34 @@ u32 HSV_RGB(int h, char s, char v, float R, float G, float B)
 	RGB|=B8;
 	return RGB;
 }
-
+void WS_Color_Fio(void)
+{
+	u8 i;
+	u8 R=0;
+	u8 G=0;
+	static u8 B=0x00;
+	u32 color=0;
+	if(Get_HallValue>150)
+	{
+		if(i)
+		{
+			B+=5;
+			color = B;
+		}
+		else
+		{
+			B-=10;
+			color = B;
+		}
+		WS_ColorSet_LED(0,10,color);
+		if(B>=230)
+		{
+			i=0;
+		}
+		else if(B<10)
+			i=1;
+		WS_Refresh();
+		Timer0_Delay1ms(50);
+	}
+}
 #endif

@@ -4,7 +4,6 @@
 #include "N76E003.h"
 #include "SFR_Macro.h"
 #include "Delay.h" 
-#include "SFR_Macro.h"
 
 
 //#define TIM1_INIT  TH0 = 0XFC
@@ -46,6 +45,7 @@ int Incremental_P(UINT8 Cbat, UINT8 CC_Value)//int can have negative num
 void System_init()
 {
 	Set_All_GPIO_Quasi_Mode;			//For GPIO1 output, Find in "Function_define.h" - "GPIO INIT"
+	P00_PushPull_Mode;
 	InitialUART0_Timer1(115200);
 	Timer_Init();
 	WTD_Init();
@@ -193,8 +193,8 @@ void Timer_Init()
 	TH0 = HIBYTE(TH0_INIT);
 	TL0 = LOBYTE(TH0_INIT);
  //   set_ET0;                                    //enable Timer0 interrupt
-    set_EA;                                     //enable interrupts
- //   set_TR0;                                    //Timer0 run
+  //  set_EA;                                     //enable interrupts
+    set_TR0;                                    //Timer0 run
 	IPH = 0X02;
 	IP=0X02;
 	
@@ -207,7 +207,7 @@ void Pin_Interruput_Init()
 	PICON = 0x21;// Port1 Pin3 edge trigger
 	PINEN = 0x08; //PIN3 falling/low trigger PIPEN: Rising/high trigger
 	PIPEN = 0X00; 
-	EIE   = 0x02; // PIN interrupt enable
+//	EIE   = 0x02; // PIN interrupt enable
 	EIP   = 0x02;		//Priority  1 1 (highest)
 	EIPH  = 0X02;
 	set_P1S_3; // Pin3 Schmitt trigger
