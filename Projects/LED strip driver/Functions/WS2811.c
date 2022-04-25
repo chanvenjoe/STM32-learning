@@ -104,9 +104,9 @@ void WS_Hue_change()
 		{
 			WS_ColorSet_LED(0, cycle, HSV_RGB(h, 1,1,0,0,0));
 			WS_Refresh();
-			Timer0_Delay1ms(500);
+			Timer0_Delay1ms(10);
 		}
-		h+=15;
+		h+=5;
 	}
 		else
 			h=0;
@@ -238,34 +238,39 @@ u32 HSV_RGB(int h, char s, char v, float R, float G, float B)
 	RGB|=B8;
 	return RGB;
 }
-void WS_Color_Fio(void)
+void WS_voice_Pik(void)
 {
-	u8 i;
-	u8 R=0;
-	u8 G=0;
-	static u8 B=0x00;
+	u8 dB;
 	u32 color=0;
-	if(Get_HallValue>150)
+	dB = Get_HallValue();
+	if(dB>=50&&dB<125)
 	{
-		if(i)
-		{
-			B+=5;
-			color = B;
-		}
-		else
-		{
-			B-=10;
-			color = B;
-		}
-		WS_ColorSet_LED(0,10,color);
-		if(B>=230)
-		{
-			i=0;
-		}
-		else if(B<10)
-			i=1;
+		color = Black|(dB*2);
+		WS_ColorSet_LED(0,LEDNUM,color);
 		WS_Refresh();
-		Timer0_Delay1ms(50);
+		Timer1_Delay10ms(30);
+//			while(color)
+//			{
+//				color-=5;
+//				if(color<=0)
+//					color=0;
+//				WS_ColorSet_LED(0,10,color);
+//				WS_Refresh();
+//			}
+	}
+	else if(dB>=125)
+	{
+		color = Black|dB;
+		color = color<<16;
+		WS_ColorSet_LED(0,LEDNUM,color);
+		WS_Refresh();
+		Timer1_Delay10ms(30);
+	}
+	else
+	{
+		WS_ColorSet_LED(0,LEDNUM,0x000000);
+		WS_Refresh();
+		Timer1_Delay10ms(5);			
 	}
 }
 #endif
