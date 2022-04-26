@@ -37,6 +37,7 @@ void WS_Color_copy(u8 No, u32 color)
 void WS_ColorSet_LED(u8 from, u8 to, u32 color)
 {
 	static int temp;
+	color &= 0x00ffffff;// remove the effect of [32-25]
 	if(from>to)
 	{
 		temp=from; from=to; to=temp;
@@ -50,7 +51,7 @@ void WS_ColorSet_LED(u8 from, u8 to, u32 color)
 void WS_Refresh()
 {
 	u8 i;
-	WS_Send24bits(dummy);
+//	WS_Send24bits(dummy);
 	for( i=0;i<=LEDNUM+1;i++)
 	{
 		WS_Send24bits(LED_Buf[i].RGB);
@@ -106,7 +107,7 @@ void WS_Hue_change()
 			WS_Refresh();
 			Timer0_Delay1ms(10);
 		}
-		h+=5;
+		h+=10;
 	}
 		else
 			h=0;
@@ -205,7 +206,7 @@ u32 HSV_RGB(int h, char s, char v, float R, float G, float B)
 //	char X = C*(1- (abs((h/60)%2-1)));
 	X = v*(1-s);
 	Y = v*(1-(s*C));
-	Z = v*(1-s*(1-C));
+	Z = v*(1-s*(1-C)); 
 	
 	switch(i)
 	{
@@ -243,28 +244,34 @@ void WS_voice_Pik(void)
 	u8 dB;
 	u32 color=0;
 	dB = Get_HallValue();
-	if(dB>=50&&dB<125)
+	if(dB>=80&&dB<180)
 	{
 		color = Black|(dB*2);
 		WS_ColorSet_LED(0,LEDNUM,color);
 		WS_Refresh();
 		Timer1_Delay10ms(30);
-//			while(color)
-//			{
-//				color-=5;
-//				if(color<=0)
-//					color=0;
-//				WS_ColorSet_LED(0,10,color);
-//				WS_Refresh();
-//			}
+		while(color)
+		{
+			color = (color-5)>5? color-5:0;
+			WS_ColorSet_LED(0,LEDNUM,color);
+			WS_Refresh();
+		}
 	}
-	else if(dB>=125)
+	else if(dB>=180)
 	{
 		color = Black|dB;
-		color = color<<16;
+		color = LED_type? color<<8:color<<16;
 		WS_ColorSet_LED(0,LEDNUM,color);
 		WS_Refresh();
 		Timer1_Delay10ms(30);
+		while(dB)
+		{
+			dB = (dB-5)>5? dB-5:0;
+			color = Black|dB;
+			color = LED_type? color<<8:color<<16;
+			WS_ColorSet_LED(0,LEDNUM,color);
+			WS_Refresh();
+		}
 	}
 	else
 	{

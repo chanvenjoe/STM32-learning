@@ -11,7 +11,7 @@
 #define CODE_0	T0H T0L
 #define CODE_1	T1H T1L
 #define RES		clr_P00;Timer0_Delay125ns(3);set_P00;
-#define LEDNUM 		20
+#define LEDNUM 		64
 typedef struct color
 {
 	unsigned long RGB; 
@@ -27,6 +27,9 @@ typedef struct color
 #define Blue        0x0000ff
 #define cmp = 		0x00800000;
 #define dummy		0x000000
+#define WS2811		0
+#define WS2812B		1
+#define LED_type	WS2812B
 
 void WS_Send24bits(u32 color);
 void WS_ColorSet_LED(u8 from, u8 to, u32 color);
