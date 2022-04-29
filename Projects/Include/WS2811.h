@@ -30,6 +30,7 @@ typedef struct color
 #define WS2811		0
 #define WS2812B		1
 #define LED_type	WS2812B
+#define FadeoutTime	3
 
 void WS_Send24bits(u32 color);
 void WS_ColorSet_LED(u8 from, u8 to, u32 color);

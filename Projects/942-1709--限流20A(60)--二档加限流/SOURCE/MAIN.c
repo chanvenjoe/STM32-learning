@@ -256,6 +256,8 @@ unsigned char   ELE_InterruptDISP_TM;
 bit turn_zero_fl;
  bit  ELE40_BIG_FL;
  
+bit  xianliu_BIG_ERR_FL;
+
  bit G_S_old_FL;
  bit  G_S_L2H_FL;
  
@@ -448,6 +450,9 @@ bit jia_zheng_close_fl;
 unsigned char  A_P_CT,A_P_CT1,A_P_CT2,A_P_CT3,A_P_CT4,A_P_CT5;
 bit ELEAP_BIG_ERR_FL,ELEAP_BIG_ERR_FL1,ELEAP_BIG_ERR_FL2,ELEAP_BIG_ERR_FL3,ELEAP_BIG_ERR_FL4,ELEAP_BIG_ERR_FL5;
 
+bit xianliu_BIG_FL;
+
+unsigned char xianliu_Small_ct;
 //------------------------------------------------------------------------------------
 	
 void time_dsp(void);
@@ -634,6 +639,9 @@ xianliu_fl=0;
 		duzhuan_cishu_num=0;
 		duzhuan_cishu_fl=0;
 		jia_zheng_close_fl=0;
+		xianliu_BIG_FL=0;
+		 xianliu_BIG_ERR_FL=0;
+		 xianliu_Small_ct=0;
  }
 
 
@@ -798,7 +806,7 @@ void time_dsp(void)
                                                                                             
  if((MOS_Err)||(A_DET_FL==0)/*(A_DET_IO==0)*/||ELE25_BIG_ERR_FL||ELE35_BIG_ERR_FL||ELE28_BIG_ERR_FL
 	 ||ELE30_BIG_ERR_FL||ELE20_BIG_ERR_FL||ELE40_BIG_FL||NO_Connet_FL||NO_Connet_FL1
- ||ELE_InterruptDISP_TM||ELEAP_BIG_ERR_FL||ELEAP_BIG_ERR_FL1||ELEAP_BIG_ERR_FL2||ELEAP_BIG_ERR_FL3||ELEAP_BIG_ERR_FL4||ELEAP_BIG_ERR_FL5)
+ ||ELE_InterruptDISP_TM||ELEAP_BIG_ERR_FL||ELEAP_BIG_ERR_FL1||ELEAP_BIG_ERR_FL2||ELEAP_BIG_ERR_FL3||ELEAP_BIG_ERR_FL4||ELEAP_BIG_ERR_FL5||xianliu_BIG_ERR_FL)
  {
 	ELE_ERR_FL=1;   
 	TurnHighSpeed_FL=0;
@@ -1048,6 +1056,7 @@ if((CHANGE_Off_TM==0)&&G_S_FL&&(ELE_ERR_FL==0))           //脚踏板踏下
 					
 					 if((Cur_ResultNew>57&&DanWei==3)||(Cur_ResultNew>57&&DanWei==2))    //限流调整  电流大于20A     20A=1.125V
 						{
+							xianliu_Small_ct=0;
 							 if(PWM>204&&DanWei==3)    //PWM>80%
 							 {
 								  xianliu_fl=1;											  
@@ -1076,10 +1085,12 @@ if((CHANGE_Off_TM==0)&&G_S_FL&&(ELE_ERR_FL==0))           //脚踏板踏下
 								xianliu65_same++;
 								 if(xianliu65_same>=500)     //5MS*500=2.5s
 								 {
-										ELE30_BIG_ERR_FL=1;
-										ELE_Wait_5s=40;//WAIT 20S
+										//ELE30_BIG_ERR_FL=1;
+								//		ELE_Wait_5s=40;//WAIT 20S
+									  xianliu_BIG_FL=1;
 									  xianliu65_same=0;
 								 }
+															
 							}		
 					         							
 						/*	if((PWM>102&&DanWei==3)    //计数清零
@@ -1096,7 +1107,14 @@ if((CHANGE_Off_TM==0)&&G_S_FL&&(ELE_ERR_FL==0))           //脚踏板踏下
 						  //	jinxianliuTM=0;
 							xianliu65_same=0;		
 							PWM_xianzhi_fl=0;   //  
-							PWM_HUAN=27;        //24=11ms    						
+							PWM_HUAN=27;        //24=11ms    
+
+							/*xianliu_Small_ct++;            
+							if(xianliu_Small_ct>5)      
+							{
+                xianliu_BIG_FL=0;     //清限流标志位
+								xianliu_Small_ct=0;
+							}		*/						
 						} 
 										
      }
@@ -1104,7 +1122,18 @@ if((CHANGE_Off_TM==0)&&G_S_FL&&(ELE_ERR_FL==0))           //脚踏板踏下
 	   }
 	   else	 
        {
-	         PWM=0;
+			PWM=0;
+			if(Cur_ResultNew<=57)
+			{
+				xianliu_Small_ct++;
+				if(xianliu_Small_ct>5)
+				{
+					xianliu_BIG_FL=0;
+					xianliu_Small_ct=0;
+				}
+			}
+		   
+		   
        }	
 	
 	      	
@@ -1119,8 +1148,8 @@ if((CHANGE_Off_TM==0)&&G_S_FL&&(ELE_ERR_FL==0))           //脚踏板踏下
                            
 				if(jia_close_led_fl==0)
 				{
-				 if(A_DET_FL==0||ELE40_BIG_FL||ELE35_BIG_ERR_FL||ELE25_BIG_ERR_FL
-					 ||ELE_InterruptDISP_TM) //短路控制灯快闪时间
+				 if(A_DET_FL==0||ELE40_BIG_FL||ELE35_BIG_ERR_FL||ELE25_BIG_ERR_FL||xianliu_BIG_ERR_FL||ELE_InterruptDISP_TM) //短路控制灯快闪时间
+					 
 					{
 						
 						if(++LED_TM>5)     //20*5=100ms   
@@ -1361,7 +1390,7 @@ if((CHANGE_Off_TM==0)&&G_S_FL&&(ELE_ERR_FL==0))           //脚踏板踏下
 				}
 
     //---------------------------------------------
-					 if(ELE12_BIG_FL)                                   //一档堵转生效后  
+			 if(ELE12_BIG_FL)                                   //一档堵转生效后  
 						 {                     
 								if(++ELE12_BIG_TM>=5)// 5S/0.5*5=2.5s        // 堵转时间保护设置
 							 {
@@ -1373,12 +1402,12 @@ if((CHANGE_Off_TM==0)&&G_S_FL&&(ELE_ERR_FL==0))           //脚踏板踏下
 								 
 										 if(duzhuan_30min_fl==0)
 										 {
-											 ELE_Wait_5s=60;        //30s    //0.5s自加一次
+											 ELE_Wait_5s=6;        //30s    //0.5s自加一次
 											 jia_zheng_close_fl=0;
 										 }
 										 else
 										 {
-											 ELE_Wait_5s=3600;            //30min=3600
+											 ELE_Wait_5s=36;            //30min=3600
 											 jia_zheng_close_fl=1;
 										 }
 								 
@@ -1430,12 +1459,12 @@ if((CHANGE_Off_TM==0)&&G_S_FL&&(ELE_ERR_FL==0))           //脚踏板踏下
 								 
 								if(duzhuan_30min_fl==0)
 								 {
-								  ELE_Wait_5s=60;        //30s    //0.5s自加一次
+								  ELE_Wait_5s=6;        //30s    //0.5s自加一次
 									 jia_zheng_close_fl=0;
 								 }
 								 else
 								 {
-									 ELE_Wait_5s=3600; 
+									 ELE_Wait_5s=36; 
 									 jia_zheng_close_fl=1;
 								 }
 								 
@@ -1476,7 +1505,7 @@ if((CHANGE_Off_TM==0)&&G_S_FL&&(ELE_ERR_FL==0))           //脚踏板踏下
 									     			 
 						 }	 
 						 
-						 
+						//-------------------------------- 
 						 if(ELE60_BIG_FL)               //60A过流保护生效标志     三档堵转
 						 {
 							 if(++ELE60_BIG_TM>=1)       //0.5*1=1
@@ -1489,12 +1518,12 @@ if((CHANGE_Off_TM==0)&&G_S_FL&&(ELE_ERR_FL==0))           //脚踏板踏下
 								 
 								 if(duzhuan_30min_fl==0)
 								 {
-								  ELE_Wait_5s=60;        //30s    //0.5s自加一次
+								  ELE_Wait_5s=6;        //30s    //0.5s自加一次
 									 jia_zheng_close_fl=0;
 								 }
 								 else
 								 {
-									 ELE_Wait_5s=3600; 
+									 ELE_Wait_5s=36; 
 									 jia_zheng_close_fl=1;
 								 }							 
 								 duzhuan_cishu_fl=1;
@@ -1534,6 +1563,66 @@ if((CHANGE_Off_TM==0)&&G_S_FL&&(ELE_ERR_FL==0))           //脚踏板踏下
 								}									
 							
 							} 
+							
+					//--------------------------------------		
+						if(xianliu_BIG_FL)               //60A过流保护生效标志        限流保护的
+						 {
+							// if(++ELE60_BIG_TM>=1)       //0.5*1=1
+							// {
+								// LED1_IO=0;
+								duanlu_sw_fl=1;    //禁止电源开关关机
+								duZ_close_fl=1;            //堵转后允许关机标志位
+								xianliu_BIG_ERR_FL=1;  	 //灯快闪
+							//  ELE60_BIG_TM=0;
+								 
+								 if(duzhuan_30min_fl==0)
+								 {
+								  ELE_Wait_5s=60;        //30s    //0.5s自加一次
+									 jia_zheng_close_fl=0;
+								 }
+								 else
+								 {
+									 ELE_Wait_5s=3600; 
+									 jia_zheng_close_fl=1;
+								 }							 
+								 duzhuan_cishu_fl=1;
+							// }
+						 }
+							else
+							{
+							//	ELE60_BIG_TM=0;
+								if(ELE_Wait_5s==0) 
+								{
+								   //  ELE40_BIG_FL=0;
+									if(jia_zheng_close_fl==0)    //假关机
+									{
+										if(duZ_close_fl)
+										{
+											 //POWER_IO=0;     //关机											
+											 LED_IO=0;      //假关机  
+											 LED1_IO=1;
+											jia_close_led_fl=1;
+											if(duzhuan_cishu_fl)     //堵转计数
+											{
+													duzhuan_cishu_num++;
+													if(duzhuan_cishu_num>=3)
+													{
+														  duzhuan_30min_fl=1;
+														//duzhuan_cishu_num=0;
+													}
+													
+													duzhuan_cishu_fl=0;
+											}
+										}
+								  }
+									else
+									{
+									  POWER_IO=0;     //关机											
+									}
+								}									
+							
+							}
+							
 						 					 
    
 	  //-----------------------------------------------------------------
@@ -1831,7 +1920,7 @@ if(AD_CH==5)
           
       ELE30_BIG_ct++;
       ELE30_Small_ct=0;
-    if(ELE30_BIG_ct>10)
+      if(ELE30_BIG_ct>10)
           ELE30_BIG_FL=1;
     }
     else
@@ -2069,6 +2158,8 @@ void zidongguangji()
 						     LED_IO=1;      //开指示灯   亮
 								 duZ_close_fl=0;
 								 duanlu_sw_fl=0;
+								  xianliu_BIG_ERR_FL=0;
+								
 									ELE40_BIG_FL=0; 
 									ELE35_BIG_ERR_FL=0; 
 									ELE25_BIG_ERR_FL=0;   

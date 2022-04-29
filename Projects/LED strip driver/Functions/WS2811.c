@@ -244,7 +244,7 @@ void WS_voice_Pik(void)
 	u8 dB;
 	u32 color=0;
 	dB = Get_HallValue();
-	if(dB>=80&&dB<180)
+	if(dB>=30&&dB<100)
 	{
 		color = Black|(dB*2);
 		WS_ColorSet_LED(0,LEDNUM,color);
@@ -252,12 +252,12 @@ void WS_voice_Pik(void)
 		Timer1_Delay10ms(30);
 		while(color)
 		{
-			color = (color-5)>5? color-5:0;
+			color = (color-FadeoutTime)>FadeoutTime? color-FadeoutTime:0;
 			WS_ColorSet_LED(0,LEDNUM,color);
 			WS_Refresh();
 		}
 	}
-	else if(dB>=180)
+	else if(dB>=100)
 	{
 		color = Black|dB;
 		color = LED_type? color<<8:color<<16;
@@ -266,7 +266,7 @@ void WS_voice_Pik(void)
 		Timer1_Delay10ms(30);
 		while(dB)
 		{
-			dB = (dB-5)>5? dB-5:0;
+			dB = (dB-FadeoutTime)>FadeoutTime? dB-FadeoutTime:0;
 			color = Black|dB;
 			color = LED_type? color<<8:color<<16;
 			WS_ColorSet_LED(0,LEDNUM,color);
