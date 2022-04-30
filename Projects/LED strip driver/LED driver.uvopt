@@ -132,48 +132,16 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>249</LineNumber>
+          <LineNumber>287</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>-16774062</Address>
+          <Address>-16773730</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>C:\Users\kzhou\Desktop\RF projects\Git\C51\STM32-learning\Projects\LED strip driver\Functions\WS2811.C</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression></Expression>
-        </Bp>
-        <Bp>
-          <Number>1</Number>
-          <Type>0</Type>
-          <LineNumber>246</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>-16774095</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>C:\Users\kzhou\Desktop\RF projects\Git\C51\STM32-learning\Projects\LED strip driver\Functions\WS2811.C</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression></Expression>
-        </Bp>
-        <Bp>
-          <Number>2</Number>
-          <Type>0</Type>
-          <LineNumber>55</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>-16771057</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>C:\Users\kzhou\Desktop\RF projects\Git\C51\STM32-learning\Projects\LED strip driver\Functions\WS2811.C</Filename>
+          <Filename>Functions\WS2811.C</Filename>
           <ExecCommand></ExecCommand>
           <Expression></Expression>
         </Bp>

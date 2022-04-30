@@ -16,6 +16,6 @@ void main(void)
 	{
 //		while(Get_HallValue()>50)
 //			WS_Hue_change();
-		WS_voice_Pik();
+		WS_voice_Pik(1);
 	}
 }

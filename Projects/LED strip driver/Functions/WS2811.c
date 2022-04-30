@@ -239,45 +239,65 @@ u32 HSV_RGB(int h, char s, char v, float R, float G, float B)
 	RGB|=B8;
 	return RGB;
 }
-void WS_voice_Pik(void)
+void WS_voice_Pik(u8 mode) //Mode0: all LED together Mode1:LED light up corresponding number according to the dB
 {
 	u8 dB;
 	u32 color=0;
 	dB = Get_HallValue();
-	if(dB>=30&&dB<100)
+	if(mode==0)
 	{
-		color = Black|(dB*2);
-		WS_ColorSet_LED(0,LEDNUM,color);
-		WS_Refresh();
-		Timer1_Delay10ms(30);
-		while(color)
+		if(dB>=30&&dB<100)
 		{
-			color = (color-FadeoutTime)>FadeoutTime? color-FadeoutTime:0;
+			color = Black|(dB*2);
 			WS_ColorSet_LED(0,LEDNUM,color);
 			WS_Refresh();
+			Timer1_Delay10ms(30);
+			while(color)
+			{
+				color = (color-FadeoutTime)>FadeoutTime? color-FadeoutTime:0;
+				WS_ColorSet_LED(0,LEDNUM,color);
+				WS_Refresh();
+			}
 		}
-	}
-	else if(dB>=100)
-	{
-		color = Black|dB;
-		color = LED_type? color<<8:color<<16;
-		WS_ColorSet_LED(0,LEDNUM,color);
-		WS_Refresh();
-		Timer1_Delay10ms(30);
-		while(dB)
+		else if(dB>=100)
 		{
-			dB = (dB-FadeoutTime)>FadeoutTime? dB-FadeoutTime:0;
 			color = Black|dB;
 			color = LED_type? color<<8:color<<16;
 			WS_ColorSet_LED(0,LEDNUM,color);
 			WS_Refresh();
+			Timer1_Delay10ms(30);
+			while(dB)
+			{
+				dB = (dB-FadeoutTime)>FadeoutTime? dB-FadeoutTime:0;
+				color = Black|dB;
+				color = LED_type? color<<8:color<<16;
+				WS_ColorSet_LED(0,LEDNUM,color);
+				WS_Refresh();
+			}
+		}
+		else
+		{
+			WS_ColorSet_LED(0,LEDNUM,0x000000);
+			WS_Refresh();
+			Timer1_Delay10ms(5);			
 		}
 	}
 	else
 	{
-		WS_ColorSet_LED(0,LEDNUM,0x000000);
-		WS_Refresh();
-		Timer1_Delay10ms(5);			
+		if(dB>25)
+		{
+			dB=(dB*LEDNUM)/150;
+//			WS_ColorSet_LED(0, LEDNUM, Black);
+			WS_ColorSet_LED(0, dB, Blue);
+			WS_Refresh();
+		}
+		else
+		{
+			WS_ColorSet_LED(0, LEDNUM, Black);
+			WS_Refresh();
+		}
 	}
 }
+
+
 #endif

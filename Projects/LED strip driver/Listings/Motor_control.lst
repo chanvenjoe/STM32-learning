@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     04/29/2022 11:21:23 PAGE 1   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     04/30/2022 00:51:12 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MOTOR_CONTROL
@@ -62,7 +62,7 @@ line level    source
   51   1              WTD_Init();
   52   1              Pin_Interruput_Init();
   53   1              ADC_Init();                                                     
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     04/29/2022 11:21:23 PAGE 2   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     04/30/2022 00:51:12 PAGE 2   
 
   54   1              PWM_Init();
   55   1      }
@@ -126,7 +126,7 @@ line level    source
  113   2                      bgl = IAPFD;
  114   2                      bgl = bgl&0x0f; 
  115   2                      bgvalue = (bgh<<4)+bgl;
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     04/29/2022 11:21:23 PAGE 3   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     04/30/2022 00:51:12 PAGE 3   
 
  116   2                      bgvol = bgvalue*3/4;
  117   2              }
@@ -190,7 +190,7 @@ line level    source
  175   1      
  176   1              ***********************************************************************/
  177   1      }
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     04/29/2022 11:21:23 PAGE 4   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     04/30/2022 00:51:12 PAGE 4   
 
  178          
  179          void WTD_Init()
@@ -254,7 +254,7 @@ line level    source
  236   4                                      {
  237   5                                              j=j*0.35;// Current calculation from current shunt-> OA-> ADC j=actural current
  238   5                                              PWM4L=(PWM4L+Incremental_P(j, CCvalue)*3/2)>50? (PWM4L+Incremental_P(j, 20)*3/2):50;;//PWM delta valu
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     04/29/2022 11:21:23 PAGE 5   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     04/30/2022 00:51:12 PAGE 5   
 
              -e, if the 
  239   5                                                                                              //reserve for timer counting
@@ -318,7 +318,7 @@ line level    source
  297   1      }
  298          
  299          
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     04/29/2022 11:21:23 PAGE 6   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     04/30/2022 00:51:12 PAGE 6   
 
  300          UINT8 Get_Speedvalue(void)
  301          {
@@ -382,7 +382,7 @@ line level    source
  359   1              TA = 0xAA;
  360   1              TA = 0x55;
  361   1              PDTCNT = deadtmplow;
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     04/29/2022 11:21:23 PAGE 7   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     04/30/2022 00:51:12 PAGE 7   
 
  362   1              EA = BIT_TMP;
  363   1      }
@@ -446,7 +446,7 @@ line level    source
  421   1              clr_PIF3;
  422   1              TR0=~TR0;
  423   1      }
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     04/29/2022 11:21:23 PAGE 8   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     04/30/2022 00:51:12 PAGE 8   
 
  424          
 
