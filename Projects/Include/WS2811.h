@@ -1,3 +1,6 @@
+#ifndef __WS2811_H
+#define __WS2811_H
+
 #include "Delay.h"
 #include "Function_define.h"
 #include "SFR_Macro.h"
@@ -11,7 +14,7 @@
 #define CODE_0	T0H T0L
 #define CODE_1	T1H T1L
 #define RES		clr_P00;Timer0_Delay125ns(3);set_P00;
-#define LEDNUM 		11
+#define LEDNUM 		10
 typedef struct color
 {
 	unsigned long RGB; 
@@ -25,12 +28,14 @@ typedef struct color
 #define Green       0x00ff00
 #define Red	        0xff0000
 #define Blue        0x0000ff
+#define Test		0xFFDEAD
 #define cmp = 		0x00800000;
 #define dummy		0x000000
 #define WS2811		0
-#define WS2812B		1
+#define WS2812B		0
 #define LED_type	WS2812B
-#define FadeoutTime	3
+#define FadeoutTime	5
+#define HSV_fadoutTime 2
 #define LED_Number_mode 1
 
 void WS_Send24bits(u32 color);
@@ -50,3 +55,4 @@ enum Hue_formular
 	Non=0,First, Second, Third, Fourth, Fifth
 };
 
+#endif

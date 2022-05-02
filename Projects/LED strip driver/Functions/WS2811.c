@@ -13,7 +13,7 @@
 #define RGB_HSV 0		//1 to enable transformation  code
 /**************************************/
 
-Color_Typedef LED_Buf[LEDNUM+1];
+Color_Typedef LED_Buf[LEDNUM+2];
 
 void WS_Send24bits(u32 color)//Be Careful about the direction of rope: Din->Dout
 {
@@ -37,6 +37,11 @@ void WS_Color_copy(u8 No, u32 color)
 void WS_ColorSet_LED(u8 from, u8 to, u32 color)
 {
 	static int temp;
+	if(to>LEDNUM||from<0)
+	{
+		to=LEDNUM;
+		from=0;
+	}
 	color &= 0x00ffffff;// remove the effect of [32-25]
 	if(from>to)
 	{
@@ -96,21 +101,39 @@ void WS_Key_RGB(void)
 void WS_Hue_change()
 {
 	u8 cylon=160;
-	u8 cycle;
+	u8 cycle,flag=1;
 //	u32 temp;
 	static int h=160;
 	if(h>=0&&h<360)
 	{
-		for(cycle=0;cycle<=LEDNUM;cycle++)
+		if(flag)
 		{
-			WS_ColorSet_LED(0, cycle, HSV_RGB(h, 1,1,0,0,0));
-			WS_Refresh();
-			Timer0_Delay1ms(10);
+			for(cycle=0;cycle<=LEDNUM;cycle++)
+			{
+				WS_ColorSet_LED(0, cycle, HSV_RGB(h, 1,1,0,0,0));
+				WS_Refresh();
+//				Timer0_Delay1ms(10);
+			}
+			h+=HSV_fadoutTime;
+			if(h>=360)
+				flag=0;
 		}
-		h+=10;
-	}
 		else
-			h=0;
+		{
+			for(cycle=0;cycle<=LEDNUM;cycle++)
+			{
+				WS_ColorSet_LED(0, cycle, HSV_RGB(h, 1,1,0,0,0));
+				WS_Refresh();
+//				Timer0_Delay1ms(10);
+			}
+			h-=HSV_fadoutTime;
+			if(h<=0)
+				flag=1;
+		}
+			
+	}
+	else
+		h=0;
 }
 
 
@@ -284,17 +307,26 @@ void WS_voice_Pik(u8 mode) //Mode0: all LED together Mode1:LED light up correspo
 	}
 	else
 	{
-		if(dB>25)
+		WS_ColorSet_LED(0, LEDNUM, Black);
+		if(dB>=25)
 		{
-			dB=(dB*LEDNUM)/150;
-//			WS_ColorSet_LED(0, LEDNUM, Black);
-			WS_ColorSet_LED(0, dB, Blue);
+			u8 Light_up;
+			Light_up=(dB*LEDNUM)/150;
+			
+			WS_ColorSet_LED(0, Light_up, Blue);
 			WS_Refresh();
+			while(Light_up--)
+			{
+				WS_ColorSet_LED(0, LEDNUM, Black);
+				WS_ColorSet_LED(0, Light_up, Blue);
+				WS_Refresh();
+				Timer1_Delay10ms(5);
+			}
 		}
 		else
 		{
-			WS_ColorSet_LED(0, LEDNUM, Black);
-			WS_Refresh();
+//			WS_ColorSet_LED(0, LEDNUM, Black);
+//			WS_Refresh();
 		}
 	}
 }

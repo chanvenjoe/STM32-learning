@@ -12,10 +12,25 @@
 void main(void)  
 {
 	System_init();
+	P03_Quasi_Mode;
+	clr_P03;
 	while(1)
 	{
-//		while(Get_HallValue()>50)
-//			WS_Hue_change();
-		WS_voice_Pik(1);
+		switch((P03)==1)
+		{
+			case 0:
+			{
+				WS_Hue_change();
+			}
+			break;
+			case 1:
+			{
+				WS_voice_Pik(1);
+			}
+			break;
+			default:
+				break;
+		}
+		
 	}
 }

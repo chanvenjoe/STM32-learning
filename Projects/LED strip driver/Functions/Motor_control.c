@@ -4,6 +4,7 @@
 #include "N76E003.h"
 #include "SFR_Macro.h"
 #include "Delay.h" 
+#include "WS2811.h"
 
 
 //#define TIM1_INIT  TH0 = 0XFC
@@ -44,7 +45,7 @@ int Incremental_P(UINT8 Cbat, UINT8 CC_Value)//int can have negative num
 
 void System_init()
 {
-	Set_All_GPIO_Quasi_Mode;			//For GPIO1 output, Find in "Function_define.h" - "GPIO INIT"
+	GPIO_Init();
 	P00_PushPull_Mode;
 	InitialUART0_Timer1(115200);
 	Timer_Init();
@@ -54,8 +55,10 @@ void System_init()
 	PWM_Init();
 }
 
-void ADC_Init(void)/* AD value= Voltage*255/5  20A=57*/
+void GPIO_Init()
 {
+	Set_All_GPIO_Quasi_Mode;			//For GPIO1 output, Find in "Function_define.h" - "GPIO INIT"
+	
 	P17_Input_Mode;//Hall
 	P30_Input_Mode;//Speed shift
 	P05_Input_Mode; //current value
@@ -64,7 +67,7 @@ void ADC_Init(void)/* AD value= Voltage*255/5  20A=57*/
 	P01_PushPull_Mode;
 	P03_PushPull_Mode;
 	P14_PushPull_Mode;
-	P00_PushPull_Mode;//Forward relay
+	P00_PushPull_Mode;//Forward relay/LED din pin
 	P10_PushPull_Mode;
 	
 	clr_P12; //LED on
@@ -73,7 +76,10 @@ void ADC_Init(void)/* AD value= Voltage*255/5  20A=57*/
 	set_P14; //Enable DCDC
 	set_P13;
 	clr_P00, clr_P10;
-	
+}
+
+void ADC_Init(void)/* AD value= Voltage*255/5  20A=57*/
+{	
 	set_IAPEN;
 	IAPAL = 0x0d; IAPAH = 0x00; IAPCN = 0x04;//0x04 =Read UID
 	set_IAPGO;
@@ -192,9 +198,9 @@ void Timer_Init()
 	clr_T0M; //timer0 clk=Fsys/12
 	TH0 = HIBYTE(TH0_INIT);
 	TL0 = LOBYTE(TH0_INIT);
- //   set_ET0;                                    //enable Timer0 interrupt
-  //  set_EA;                                     //enable interrupts
-    set_TR0;                                    //Timer0 run
+//    set_ET0;                                    //enable Timer0 interrupt
+//    set_EA;                                     //enable interrupts
+//    set_TR0;                                    //Timer0 run
 	IPH = 0X02;
 	IP=0X02;
 	
@@ -400,7 +406,6 @@ void Timer0_IRS_OCP() interrupt 1
 	TF0 = 0;		//clr T0 itrpt flag
 	TH0 = HIBYTE(TH0_INIT);
 	TL0 = LOBYTE(TH0_INIT); 
-	
 }
 	
 void Timer1_IRS() interrupt 3
