@@ -13,7 +13,7 @@
 #define RGB_HSV 0		//1 to enable transformation  code
 /**************************************/
 
-Color_Typedef LED_Buf[LEDNUM+2];
+Color_Typedef LED_Buf[LEDNUM+10];
 
 void WS_Send24bits(u32 color)//Be Careful about the direction of rope: Din->Dout
 {
