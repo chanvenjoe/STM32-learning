@@ -1,0 +1,163 @@
+C51 COMPILER V9.60.0.0   INIT_MCU                                                          05/04/2022 17:22:54 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE INIT_MCU
+OBJECT MODULE PLACED IN .\Objects\Init_MCU.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE code\src\Init_MCU.c OPTIMIZE(8,SPEED) BROWSE INCDIR(.\code\inc) DEBUG OB
+                    -JECTEXTEND PRINT(.\Listings\Init_MCU.lst) OBJECT(.\Objects\Init_MCU.obj)
+
+line level    source
+
+   1          #include "Init_MCU.h"
+   2          
+   3          
+   4          void MCU_Init(void){
+   5   1                      GPIO_Init();
+   6   1                      POWER_SW=1;                                                                     //Set the power ON
+   7   1                      Timer_Init();
+   8   1                      PWM_Init();
+   9   1                      ADC_Init();
+  10   1      
+  11   1      
+  12   1              
+  13   1       }
+  14          
+  15           
+  16          static void PWM_DEAD_TIME_VALUE(void)
+  17          {
+  18   1                      UINT8 deadtmphigh,deadtmplow;
+  19   1                      deadtmplow = 94;
+  20   1                      deadtmphigh = 11;
+  21   1                      BIT_TMP = EA;
+  22   1                      if (deadtmphigh==0x01)
+  23   1                      {
+  24   2                              EA = 0;
+  25   2                              TA = 0xAA;
+  26   2                              TA = 0x55;
+  27   2                              PDTEN|=0x10;
+  28   2                      }
+  29   1                      TA = 0xAA;
+  30   1                      TA = 0x55;
+  31   1                      PDTCNT = deadtmplow;
+  32   1                      EA = BIT_TMP;
+  33   1      }
+  34          
+  35           static void PWM_Init(void){
+  36   1                      PWM5_P03_OUTPUT_ENABLE;                         //Enable PWM5 
+  37   1                      PWM4_P01_OUTPUT_ENABLE;                         //Enable PWM4
+  38   1                PWM_COMPLEMENTARY_MODE;            //???????
+  39   1      //               
+  40   1                      PWM5_OUTPUT_INVERSE;
+  41   1      //       
+  42   1                      set_PDT45EN;    //????
+  43   1                      PWM_CLOCK_DIV_32;//PWM_CLOCK_DIV_16=3.9k;         PWM_CLOCK_DIV_32=2k PWM_CLOCK_DIV_64=1k
+  44   1                      PWMPH = 0x00;
+  45   1                      PWMPL = 0xFF;//F0=4.1K  FF=3.9K
+  46   1                      //PWM_DEAD_TIME_VALUE(94);   //??????   27=2us     81=5us     94=6us
+  47   1                      PWM_DEAD_TIME_VALUE();
+  48   1      ///**********************************************************************
+  49   1      //      PWM frequency = Fpwm/((PWMPH,PWMPL) + 1) <Fpwm = Fsys/PWM_CLOCK_DIV> 
+  50   1      //                                                              = (16MHz/8)/(0x7CF + 1)
+  51   1      //                                                              = 1KHz (1ms)
+  52   1      //***********************************************************************/      
+  53   1                      set_SFRPAGE;                                         //PWM4 and PWM5 duty seting is in SFP page 1
+  54   1                      PWM4H = 0x00;                                           
+C51 COMPILER V9.60.0.0   INIT_MCU                                                          05/04/2022 17:22:54 PAGE 2   
+
+  55   1                      PWM4L = 0x00;
+  56   1                      clr_SFRPAGE;                                                                                    
+  57   1      
+  58   1      //-------- PWM start run--------------
+  59   1          set_LOAD;
+  60   1          set_PWMRUN;
+  61   1       
+  62   1       }
+  63           
+  64          static void ADC_Init(void){
+  65   1                      Enable_ADC_BandGap; 
+  66   1      //              Enable_ADC_AIN0;        //P17Ω≈Ã§∞Â”Õ√≈
+  67   1      //              AD_CH=5;
+  68   1                      clr_ADCF;                                                               //clear the ADC Flag
+  69   1                      set_ADCS;                                                       //A/D converting software start trigger
+  70   1                      EADC=0;                 //disable the ADC interrupt                                                          
+             -                                                                  // Each time ADC start trig signal
+  71   1                      // while(ADCF == 0);
+  72   1      }
+  73          
+  74          
+  75          static void Timer_Init(void){
+  76   1                      RH3 = RELOAD_VALUE_H;                       //initial counter values 
+  77   1          RL3 = RELOAD_VALUE_L;       
+  78   1          set_ET3;                                    //enable Timer3 interrupt
+  79   1          set_EA;                                     //enable interrupts
+  80   1          set_TR3;
+  81   1                      
+  82   1       }
+  83           
+  84          static void GPIO_Init(void){
+  85   1                      //P04 MOS Detection
+  86   1                              MOS_DET_INPUT_SET;      
+  87   1      
+  88   1                      //P05 Current detection
+  89   1                              Cur_DET_SET;
+  90   1      
+  91   1                      //P06 Short detection 
+  92   1                              Short_DET_SET;
+  93   1      
+  94   1                      //P30 Forward&Backward detection
+  95   1                              FW_BC_ADC_SET;
+  96   1      
+  97   1                      //P17 Pedal detection
+  98   1                              Pedal_DET_SET;
+  99   1                              
+ 100   1                              
+ 101   1                      //P15 external Power supply NC
+ 102   1      
+ 103   1                      //P03   Lower Bridge PWM output
+ 104   1                              LOW_MOS_PWM_OUTPUT_SET;
+ 105   1      
+ 106   1      
+ 107   1                      //P01 Upper Bridge PWM output   
+ 108   1                              UP_MOS_PWM_OUTPUT_SET;
+ 109   1      
+ 110   1                      //P02 Charger detection
+ 111   1                              CHG_DET_SET;
+ 112   1                              
+ 113   1                      //P00   Relay Control Forward
+ 114   1                              RELAY_FW_SET;
+ 115   1      
+C51 COMPILER V9.60.0.0   INIT_MCU                                                          05/04/2022 17:22:54 PAGE 3   
+
+ 116   1                      //P10   Relay Control Backward
+ 117   1                              RELAY_BW_SET;
+ 118   1                              
+ 119   1                      //P11 BUS Voltage ADC
+ 120   1                              BUS_VOL_ADC_SET;
+ 121   1                              
+ 122   1                      //P12 Error LED Indicator
+ 123   1                              ERR_LED_SET;
+ 124   1                               
+ 125   1                      //P13 Power Switch Detection
+ 126   1                              POWER_SW_DET_SET;
+ 127   1      
+ 128   1                      //P14 Power Switch Control
+ 129   1                              POWER_SW_SET;
+ 130   1              
+ 131   1       }
+ 132          
+ 133           
+ 134           
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    264    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      1    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

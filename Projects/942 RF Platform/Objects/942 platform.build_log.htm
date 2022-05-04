@@ -1,0 +1,81 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.27.1.0
+Copyright (C) 2019 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Kevin Zhou, Radio Flyer China Limited, LIC=YACY6-DTLQ6-GZQW3-8NL2I-GT95F-MY3IE
+ 
+Tool Versions:
+Toolchain:       PK51 Prof. Developers Kit  Version: 9.60.0.0
+Toolchain Path:  C:\Keil_v5\C51\BIN
+C Compiler:      C51.exe V9.60.0.0
+Assembler:       A51.exe V8.2.7.0
+Linker/Locator:  BL51.exe V6.22.2.0
+Library Manager: LIB51.exe V4.30.1.0
+Hex Converter:   OH51.exe V2.7.0.0
+CPU DLL:         S8051.DLL V3.122.0.0
+Dialog DLL:      DP51.DLL V2.67.0.0 
+<h2>Project:</h2>
+C:\Users\kzhou\Desktop\RF projects\Git\C51\STM32-learning\Projects\942 RF Platform\942 platform.uvproj
+Project File Date:  05/04/2022
+
+<h2>Output:</h2>
+Rebuild target '942 Platform'
+assembling STARTUP.A51...
+compiling main.c...
+compiling ADC.c...
+compiling Error_Code.c...
+compiling Flag_Init.c...
+compiling Init_MCU.c...
+compiling Input_Scan.c...
+compiling Motor_Control.c...
+compiling PWM.c...
+compiling System_Init.c...
+linking...
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  SYSTEM_INIT
+    MODULE:  .\Objects\System_Init.obj (SYSTEM_INIT)
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?UPDATE_INPUTSCAN?INPUT_SCAN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?SYSTEM_INIT?MOTOR_CONTROL
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MOVEMENT_CONTROL?MOTOR_CONTROL
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_PWM_SET?PWM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_PWM_GET?PWM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?SYSTEM_INIT?SYSTEM_INIT
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?SELF_CHECK?SYSTEM_INIT
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  _TIMER1_DELAY10MS
+    MODULE:  .\Objects\Motor_Control.obj (MOTOR_CONTROL)
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  _INITIALUART0_TIMER1
+    MODULE:  .\Objects\Motor_Control.obj (MOTOR_CONTROL)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  _INITIALUART0_TIMER1
+    MODULE:  .\Objects\Motor_Control.obj (MOTOR_CONTROL)
+    ADDRESS: 15B2H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  _TIMER1_DELAY10MS
+    MODULE:  .\Objects\Motor_Control.obj (MOTOR_CONTROL)
+    ADDRESS: 0FD5H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  _TIMER1_DELAY10MS
+    MODULE:  .\Objects\Motor_Control.obj (MOTOR_CONTROL)
+    ADDRESS: 0FE7H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  _TIMER1_DELAY10MS
+    MODULE:  .\Objects\Motor_Control.obj (MOTOR_CONTROL)
+    ADDRESS: 112AH
+Program Size: data=116.3 xdata=0 code=5810
+Target not created.
+Build Time Elapsed:  00:00:02
+</pre>
+</body>
+</html>
