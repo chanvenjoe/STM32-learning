@@ -1,0 +1,169 @@
+C51 COMPILER V9.60.0.0   DELAY                                                             05/04/2022 23:31:31 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE DELAY
+OBJECT MODULE PLACED IN .\Objects\Delay.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE code\src\Delay.c OPTIMIZE(8,SPEED) BROWSE INCDIR(.\code\inc) DEBUG OBJEC
+                    -TEXTEND PRINT(.\Listings\Delay.lst) OBJECT(.\Objects\Delay.obj)
+
+line level    source
+
+   1          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   2          /*                                                                                                        
+             - */
+   3          /* Copyright(c) 2016 Nuvoton Technology Corp. All rights reserved.                                        
+             - */
+   4          /*                                                                                                        
+             - */
+   5          /*--------------------------------------------------------------------------------------------------------
+             --*/
+   6          
+   7          //********************************************************************************************************
+             -***
+   8          //  Nuvoton Technoledge Corp. 
+   9          //  Website: http://www.nuvoton.com
+  10          //  E-Mail : MicroC-8bit@nuvoton.com
+  11          //  Date   : Apr/21/2016
+  12          //********************************************************************************************************
+             -***
+  13          
+  14          #include "N76E003.h"
+  15          #include "Common.h"
+  16          #include "Delay.h"
+  17          #include "SFR_Macro.h"
+  18          #include "Function_define.h"
+  19          bit BIT_TMP;
+  20          
+  21          //-------------------------------------------------------------------------
+  22          void Timer0_Delay100us(UINT32 u32CNT)
+  23          {
+  24   1          clr_T0M;                                            //T0M=0, Timer0 Clock = Fsys/12
+  25   1          TMOD |= 0x01;                                         //Timer0 is 16-bit mode
+  26   1          set_TR0;                                                //Start Timer0
+  27   1          while (u32CNT != 0)
+  28   1          {
+  29   2              TL0 = LOBYTE(TIMER_DIV12_VALUE_100us);  //Find  define in "Function_define.h" "TIMER VALUE"
+*** ERROR C202 IN LINE 29 OF code\src\Delay.c: 'TIMER_DIV12_VALUE_100us': undefined identifier
+  30   2              TH0 = HIBYTE(TIMER_DIV12_VALUE_100us);
+*** ERROR C202 IN LINE 30 OF code\src\Delay.c: 'TIMER_DIV12_VALUE_100us': undefined identifier
+  31   2              while (TF0 != 1);                                   //Check Timer0 Time-Out Flag
+  32   2              clr_TF0;
+  33   2              u32CNT --;
+  34   2          }
+  35   1          clr_TR0;                                                    //Stop Timer0
+  36   1      }
+  37          
+  38          void Timer0_Delay125ns(UINT32 u32CNT)
+  39          {
+  40   1              set_T0M;
+  41   1              TMOD |= 0x01;
+  42   1              set_TR0;
+  43   1              while(u32CNT != 0)
+  44   1              {
+  45   2                      TL0 = LOBYTE(TIMER_SYSCLK_VALUE_125ns);
+C51 COMPILER V9.60.0.0   DELAY                                                             05/04/2022 23:31:31 PAGE 2   
+
+*** ERROR C202 IN LINE 45 OF code\src\Delay.c: 'TIMER_SYSCLK_VALUE_125ns': undefined identifier
+  46   2                      TH0 = HIBYTE(TIMER_SYSCLK_VALUE_125ns);
+*** ERROR C202 IN LINE 46 OF code\src\Delay.c: 'TIMER_SYSCLK_VALUE_125ns': undefined identifier
+  47   2                      while(TF0!=1);
+  48   2                      clr_TF0;
+  49   2                      u32CNT--;
+  50   2              }
+  51   1              clr_TR0;
+  52   1      }
+  53          //------------------------------------------------------------------------------
+  54          void Timer0_Delay1ms(UINT32 u32CNT)
+  55          {
+  56   1          clr_T0M;                                            //T0M=0, Timer0 Clock = Fsys/12
+  57   1          TMOD |= 0x01;                                       //Timer0 is 16-bit mode
+  58   1          set_TR0;                                              //Start Timer0
+  59   1          while (u32CNT != 0)
+  60   1          {
+  61   2              TL0 = LOBYTE(TIMER_DIV12_VALUE_1ms);            //Find  define in "Function_define.h" "TIMER VALUE"
+*** ERROR C202 IN LINE 61 OF code\src\Delay.c: 'TIMER_DIV12_VALUE_1ms': undefined identifier
+  62   2              TH0 = HIBYTE(TIMER_DIV12_VALUE_1ms);
+*** ERROR C202 IN LINE 62 OF code\src\Delay.c: 'TIMER_DIV12_VALUE_1ms': undefined identifier
+  63   2              while (TF0 != 1);                               //Check Timer0 Time-Out Flag
+  64   2              clr_TF0;
+  65   2              u32CNT --;
+  66   2          }
+  67   1          clr_TR0;                                              //Stop Timer0
+  68   1      }
+  69          
+  70          //------------------------------------------------------------------------------
+  71          void Timer1_Delay10ms(UINT32 u32CNT)
+  72          {
+  73   1          clr_T1M;                                                                                                                                            //T1M=0, Timer1 Clock = Fsys/12
+  74   1          TMOD |= 0x10;                                                                                                                               //Timer1 is 16-bit mode
+  75   1          set_TR1;                                                                                                                                            //Start Timer1
+  76   1          while (u32CNT != 0)
+  77   1          {
+  78   2              TL1 = LOBYTE(TIMER_DIV12_VALUE_10ms);           //Find  define in "Function_define.h" "TIMER VALUE"
+*** ERROR C202 IN LINE 78 OF code\src\Delay.c: 'TIMER_DIV12_VALUE_10ms': undefined identifier
+  79   2              TH1 = HIBYTE(TIMER_DIV12_VALUE_10ms);
+*** ERROR C202 IN LINE 79 OF code\src\Delay.c: 'TIMER_DIV12_VALUE_10ms': undefined identifier
+  80   2              while (TF1 != 1);                                                                                               //Check Timer1 Time-Out Flag
+  81   2              clr_TF1;
+  82   2              u32CNT --;
+  83   2          }
+  84   1          clr_TR1;                                                    //Stop Timer1
+  85   1      }
+  86          //------------------------------------------------------------------------------
+  87          void Timer2_Delay500us(UINT32 u32CNT)
+  88          {
+  89   1          clr_T2DIV2;                                                                                                                                 //Timer2 Clock = Fsys/4 
+  90   1          clr_T2DIV1;
+  91   1          set_T2DIV0;
+  92   1          set_TR2;                                            //Start Timer2
+  93   1          while (u32CNT != 0)
+  94   1          {
+  95   2              TL2 = LOBYTE(TIMER_DIV4_VALUE_500us);           //Find  define in "Function_define.h" "TIMER VALUE"
+*** ERROR C202 IN LINE 95 OF code\src\Delay.c: 'TIMER_DIV4_VALUE_500us': undefined identifier
+  96   2              TH2 = HIBYTE(TIMER_DIV4_VALUE_500us);
+*** ERROR C202 IN LINE 96 OF code\src\Delay.c: 'TIMER_DIV4_VALUE_500us': undefined identifier
+  97   2              while (TF2 != 1);                               //Check Timer2 Time-Out Flag
+  98   2              clr_TF2;
+  99   2              u32CNT --;
+C51 COMPILER V9.60.0.0   DELAY                                                             05/04/2022 23:31:31 PAGE 3   
+
+ 100   2          }
+ 101   1          clr_TR2;                                            //Stop Timer2
+ 102   1      }
+ 103          //------------------------------------------------------------------------------
+ 104          void Timer3_Delay100ms(UINT32 u32CNT)
+ 105          {
+ 106   1          T3CON = 0x07;                                       //Timer3 Clock = Fsys/128
+ 107   1          set_TR3;                                            //Trigger Timer3
+ 108   1          while (u32CNT != 0)
+ 109   1          {
+ 110   2              RL3 = LOBYTE(TIMER_DIV128_VALUE_100ms); //Find  define in "Function_define.h" "TIMER VALUE"
+*** ERROR C202 IN LINE 110 OF code\src\Delay.c: 'TIMER_DIV128_VALUE_100ms': undefined identifier
+ 111   2              RH3 = HIBYTE(TIMER_DIV128_VALUE_100ms);
+*** ERROR C202 IN LINE 111 OF code\src\Delay.c: 'TIMER_DIV128_VALUE_100ms': undefined identifier
+ 112   2              while ((T3CON&SET_BIT4) != SET_BIT4);           //Check Timer3 Time-Out Flag
+ 113   2              clr_TF3;
+ 114   2              u32CNT --;
+ 115   2          }
+ 116   1          clr_TR3;                                            //Stop Timer3
+ 117   1      }
+ 118          //------------------------------------------------------------------------------
+ 119          void Timer3_Delay10us(UINT32 u32CNT)
+ 120          {
+ 121   1          T3CON = 0x07;                                       //Timer3 Clock = Fsys/128
+ 122   1          set_TR3;                                            //Trigger Timer3
+ 123   1          while (u32CNT != 0)
+ 124   1          {
+ 125   2              RL3 = LOBYTE(TIMER_DIV4_VALUE_10us); //Find  define in "Function_define.h" "TIMER VALUE"
+*** ERROR C202 IN LINE 125 OF code\src\Delay.c: 'TIMER_DIV4_VALUE_10us': undefined identifier
+ 126   2              RH3 = HIBYTE(TIMER_DIV4_VALUE_10us);
+*** ERROR C202 IN LINE 126 OF code\src\Delay.c: 'TIMER_DIV4_VALUE_10us': undefined identifier
+ 127   2              while ((T3CON&SET_BIT4) != SET_BIT4);           //Check Timer3 Time-Out Flag
+ 128   2              clr_TF3;
+ 129   2              u32CNT --;
+ 130   2          }
+ 131   1          clr_TR3;                                            //Stop Timer3
+ 132   1      }
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  14 ERROR(S)

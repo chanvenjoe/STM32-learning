@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   INIT_MCU                                                          05/04/2022 17:22:54 PAGE 1   
+C51 COMPILER V9.60.0.0   INIT_MCU                                                          05/04/2022 23:31:29 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE INIT_MCU
@@ -62,7 +62,7 @@ line level    source
   52   1      //***********************************************************************/      
   53   1                      set_SFRPAGE;                                         //PWM4 and PWM5 duty seting is in SFP page 1
   54   1                      PWM4H = 0x00;                                           
-C51 COMPILER V9.60.0.0   INIT_MCU                                                          05/04/2022 17:22:54 PAGE 2   
+C51 COMPILER V9.60.0.0   INIT_MCU                                                          05/04/2022 23:31:29 PAGE 2   
 
   55   1                      PWM4L = 0x00;
   56   1                      clr_SFRPAGE;                                                                                    
@@ -126,7 +126,7 @@ line level    source
  113   1                      //P00   Relay Control Forward
  114   1                              RELAY_FW_SET;
  115   1      
-C51 COMPILER V9.60.0.0   INIT_MCU                                                          05/04/2022 17:22:54 PAGE 3   
+C51 COMPILER V9.60.0.0   INIT_MCU                                                          05/04/2022 23:31:29 PAGE 3   
 
  116   1                      //P10   Relay Control Backward
  117   1                              RELAY_BW_SET;

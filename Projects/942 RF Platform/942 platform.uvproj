@@ -431,10 +431,35 @@
               <FileType>1</FileType>
               <FilePath>..\942 PID\Code\System_Init.c</FilePath>
             </File>
+            <File>
+              <FileName>Common.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\code\src\Common.c</FilePath>
+            </File>
+            <File>
+              <FileName>Delay.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\code\src\Delay.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
     </Target>
   </Targets>
+
+  <LayerInfo>
+    <Layers>
+      <Layer>
+        <LayName>&lt;Project Info&gt;</LayName>
+        <LayDesc></LayDesc>
+        <LayUrl></LayUrl>
+        <LayKeys></LayKeys>
+        <LayCat></LayCat>
+        <LayLic></LayLic>
+        <LayTarg>0</LayTarg>
+        <LayPrjMark>1</LayPrjMark>
+      </Layer>
+    </Layers>
+  </LayerInfo>
 
 </Project>
