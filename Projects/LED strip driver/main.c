@@ -6,7 +6,7 @@
 #include "Motor_control.h"
 #include "WS2811.h"
 
-
+u8 flag=0;
 
 
 void main(void)  
@@ -16,14 +16,23 @@ void main(void)
 	clr_P03;
 	while(1)
 	{
-		switch((P03)==1)
+		if(P03==1)
+		{
+			Timer1_Delay10ms(5);
+			if(P03==1)
+			{
+				flag=~flag;
+			}
+		}
+			
+		switch(flag)
 		{
 			case 0:
 			{
 				WS_Hue_change();
 			}
 			break;
-			case 1:
+			case 255:
 			{
 				WS_voice_Pik(1);
 			}
