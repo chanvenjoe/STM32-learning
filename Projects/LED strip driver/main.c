@@ -7,24 +7,25 @@
 #include "WS2811.h"
 
 u8 flag=0;
-
+u8 key_val;
 
 void main(void)  
 {
 	System_init();
 	P03_Quasi_Mode;
 	clr_P03;
+	key_val=P03;
 	while(1)
 	{
-		if(P03==1)
+		if(P03!=key_val)
 		{
 			Timer1_Delay10ms(5);
-			if(P03==1)
+			if(P03!=key_val)
 			{
 				flag=~flag;
+				key_val=P03;
 			}
 		}
-			
 		switch(flag)
 		{
 			case 0:

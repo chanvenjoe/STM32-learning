@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   MAIN                                                              05/06/2022 17:21:49 PAGE 1   
+C51 COMPILER V9.60.0.0   MAIN                                                              05/07/2022 20:20:13 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
@@ -17,53 +17,55 @@ line level    source
    7          #include "WS2811.h"
    8          
    9          u8 flag=0;
-  10          
+  10          u8 key_val;
   11          
   12          void main(void)  
   13          {
   14   1              System_init();
   15   1              P03_Quasi_Mode;
   16   1              clr_P03;
-  17   1              while(1)
-  18   1              {
-  19   2                      if(P03==1)
-  20   2                      {
-  21   3                              Timer1_Delay10ms(5);
-  22   3                              if(P03==1)
-  23   3                              {
-  24   4                                      flag=~flag;
-  25   4                              }
-  26   3                      }
-  27   2                              
-  28   2                      switch(flag)
-  29   2                      {
-  30   3                              case 0:
-  31   3                              {
-  32   4                                      WS_Hue_change();
-  33   4                              }
-  34   3                              break;
-  35   3                              case 255:
-  36   3                              {
-  37   4                                      WS_voice_Pik(1);
-  38   4                              }
-  39   3                              break;
-  40   3                              default:
-  41   3                                      break;
-  42   3                      }
-  43   2                      
-  44   2              }
-  45   1      }
+  17   1              key_val=P03;
+  18   1              while(1)
+  19   1              {
+  20   2                      if(P03!=key_val)
+  21   2                      {
+  22   3                              Timer1_Delay10ms(5);
+  23   3                              if(P03!=key_val)
+  24   3                              {
+  25   4                                      flag=~flag;
+  26   4                                      key_val=P03;
+  27   4                              }
+  28   3                      }
+  29   2                              
+  30   2                      switch(flag)
+  31   2                      {
+  32   3                              case 0:
+  33   3                              {
+  34   4                                      WS_Hue_change();
+  35   4                              }
+  36   3                              break;
+  37   3                              case 255:
+  38   3                              {
+  39   4                                      WS_voice_Pik(1);
+  40   4                              }
+  41   3                              break;
+  42   3                              default:
+  43   3                                      break;
+  44   3                      }
+  45   2                      
+  46   2              }
+  47   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =     59    ----
+   CODE SIZE        =     91    ----
    CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =      1    ----
+   XDATA SIZE       =      2    ----
    PDATA SIZE       =   ----    ----
+C51 COMPILER V9.60.0.0   MAIN                                                              05/07/2022 20:20:13 PAGE 2   
+
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----
-C51 COMPILER V9.60.0.0   MAIN                                                              05/06/2022 17:21:49 PAGE 2   
-
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.
 
