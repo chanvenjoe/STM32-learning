@@ -14,7 +14,8 @@
 #define CODE_0	T0H T0L
 #define CODE_1	T1H T1L
 #define RES		clr_P00;Timer0_Delay125ns(3);set_P00;
-#define LEDNUM 		10
+#define LEDNUM 		64
+#define LEDARR		8
 typedef struct color
 {
 	unsigned long RGB; 

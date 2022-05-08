@@ -13,7 +13,7 @@
 #define RGB_HSV 0		//1 to enable transformation  code
 /**************************************/
 
-Color_Typedef LED_Buf[LEDNUM+10];
+Color_Typedef LED_Buf[LEDNUM+1];
 
 void WS_Send24bits(u32 color)//Be Careful about the direction of rope: Din->Dout
 {
@@ -57,7 +57,7 @@ void WS_Refresh()
 {
 	u8 i;
 //	WS_Send24bits(dummy);
-	for( i=0;i<=LEDNUM+1;i++)
+	for( i=0;i<=LEDNUM;i++)
 	{
 		WS_Send24bits(LED_Buf[i].RGB);
 	}
@@ -311,9 +311,12 @@ void WS_voice_Pik(u8 mode) //Mode0: all LED together Mode1:LED light up correspo
 		if(dB>=25)
 		{
 			u8 Light_up;
-			Light_up=(dB*LEDNUM)/150;
-			
-			WS_ColorSet_LED(0, Light_up, Blue);
+			u8 arr;
+			Light_up=(dB*LEDARR)/255;
+			for(arr=0;arr<LEDARR;arr++)
+			{
+				WS_ColorSet_LED(0+arr*LEDARR, Light_up, Blue);
+			}
 			WS_Refresh();
 			while(Light_up--)
 			{
