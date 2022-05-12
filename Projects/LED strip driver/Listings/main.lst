@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   MAIN                                                              05/09/2022 07:59:11 PAGE 1   
+C51 COMPILER V9.60.0.0   MAIN                                                              05/12/2022 22:36:14 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
@@ -45,10 +45,10 @@ line level    source
   35   3                              break;
   36   3                              case 255:
   37   3                              {
-  38   4                                      WS_ColorSet_LED(0, 64, Black);
-  39   4                                      WS_ColorSet_LED(0, 3, Blue);
-  40   4                                      WS_Refresh();
-  41   4      //                              WS_voice_Pik(1);
+  38   4      //                              WS_ColorSet_LED(0, 64, Black);
+  39   4      //                              WS_ColorSet_LED(0, 3, Blue);
+  40   4      //                              WS_Refresh();
+  41   4                                      WS_voice_Pik(1);
   42   4                              }
   43   3                              break;
   44   3                              default:
@@ -60,9 +60,9 @@ line level    source
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    123    ----
+   CODE SIZE        =     91    ----
    CONSTANT SIZE    =   ----    ----
-C51 COMPILER V9.60.0.0   MAIN                                                              05/09/2022 07:59:11 PAGE 2   
+C51 COMPILER V9.60.0.0   MAIN                                                              05/12/2022 22:36:14 PAGE 2   
 
    XDATA SIZE       =      2    ----
    PDATA SIZE       =   ----    ----

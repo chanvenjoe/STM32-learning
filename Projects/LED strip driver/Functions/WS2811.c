@@ -305,25 +305,28 @@ void WS_voice_Pik(u8 mode) //Mode0: all LED together Mode1:LED light up correspo
 			Timer1_Delay10ms(5);			
 		}
 	}
-	else
+	else//Reactive mode
 	{
 		WS_ColorSet_LED(0, LEDNUM, Black);
 		if(dB>=25)
 		{
 			u8 Light_up;
 			u8 arr;
-			Light_up=(dB*LEDARR)/255;
+			Light_up=((dB*LEDARR)/150)>8?8:((dB*LEDARR)/150);//The power supply is not 5V so the ADC value can not reach 255
 			for(arr=0;arr<LEDARR;arr++)
 			{
-				WS_ColorSet_LED(0+arr*LEDARR, Light_up, Blue);
+				WS_ColorSet_LED(0+arr*LEDARR, Light_up+arr*LEDARR, Blue);
 			}
 			WS_Refresh();
 			while(Light_up--)
 			{
 				WS_ColorSet_LED(0, LEDNUM, Black);
-				WS_ColorSet_LED(0, Light_up, Blue);
+				for(arr=0;arr<LEDARR;arr++)
+				{
+					WS_ColorSet_LED(0+arr*LEDARR, Light_up+arr*LEDARR, Blue);
+				}
 				WS_Refresh();
-				Timer1_Delay10ms(5);
+				Timer1_Delay10ms(10);
 			}
 		}
 		else

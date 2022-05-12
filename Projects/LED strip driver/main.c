@@ -35,10 +35,10 @@ void main(void)
 			break;
 			case 255:
 			{
-				WS_ColorSet_LED(0, 64, Black);
-				WS_ColorSet_LED(0, 3, Blue);
-				WS_Refresh();
-//				WS_voice_Pik(1);
+//				WS_ColorSet_LED(0, 64, Black);
+//				WS_ColorSet_LED(0, 3, Blue);
+//				WS_Refresh();
+				WS_voice_Pik(1);
 			}
 			break;
 			default:
