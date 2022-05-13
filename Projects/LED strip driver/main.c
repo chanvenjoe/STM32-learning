@@ -30,15 +30,13 @@ void main(void)
 		{
 			case 0:
 			{
-				WS_Hue_change();
+				WS_voice_Pik(1);
+
 			}
 			break;
 			case 255:
 			{
-//				WS_ColorSet_LED(0, 64, Black);
-//				WS_ColorSet_LED(0, 3, Blue);
-//				WS_Refresh();
-				WS_voice_Pik(1);
+				WS_Hue_change();
 			}
 			break;
 			default:
