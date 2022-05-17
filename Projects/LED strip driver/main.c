@@ -9,7 +9,7 @@
 u8 flag=0;
 u8 key_val;
 
-void main(void)  
+void main(void)
 {
 	System_init();
 	P03_Quasi_Mode;
@@ -31,10 +31,9 @@ void main(void)
 			case 0:
 			{
 				WS_voice_Pik(1);
-
 			}
 			break;
-			case 255:
+			case 0xff:
 			{
 				WS_Hue_change();
 			}

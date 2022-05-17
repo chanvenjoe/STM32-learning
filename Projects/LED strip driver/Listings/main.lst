@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   MAIN                                                              05/12/2022 22:36:14 PAGE 1   
+C51 COMPILER V9.60.0.0   MAIN                                                              05/17/2022 21:38:52 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
@@ -19,7 +19,7 @@ line level    source
    9          u8 flag=0;
   10          u8 key_val;
   11          
-  12          void main(void)  
+  12          void main(void)
   13          {
   14   1              System_init();
   15   1              P03_Quasi_Mode;
@@ -40,33 +40,30 @@ line level    source
   30   2                      {
   31   3                              case 0:
   32   3                              {
-  33   4                                      WS_Hue_change();
+  33   4                                      WS_voice_Pik(1);
   34   4                              }
   35   3                              break;
-  36   3                              case 255:
+  36   3                              case 0xff:
   37   3                              {
-  38   4      //                              WS_ColorSet_LED(0, 64, Black);
-  39   4      //                              WS_ColorSet_LED(0, 3, Blue);
-  40   4      //                              WS_Refresh();
-  41   4                                      WS_voice_Pik(1);
-  42   4                              }
-  43   3                              break;
-  44   3                              default:
-  45   3                                      break;
-  46   3                      }
-  47   2                      
-  48   2              }
-  49   1      }
+  38   4                                      WS_Hue_change();
+  39   4                              }
+  40   3                              break;
+  41   3                              default:
+  42   3                                      break;
+  43   3                      }
+  44   2                      
+  45   2              }
+  46   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =     91    ----
+   CODE SIZE        =     93    ----
    CONSTANT SIZE    =   ----    ----
-C51 COMPILER V9.60.0.0   MAIN                                                              05/12/2022 22:36:14 PAGE 2   
-
-   XDATA SIZE       =      2    ----
+   XDATA SIZE       =      4    ----
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
+C51 COMPILER V9.60.0.0   MAIN                                                              05/17/2022 21:38:52 PAGE 2   
+
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.

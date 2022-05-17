@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   MAIN                                                              04/29/2022 12:00:43 PAGE 1   
+C51 COMPILER V9.60.0.0   MAIN                                                              05/15/2022 15:00:09 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
@@ -62,7 +62,7 @@ line level    source
   47            //20190717 去掉PWM_EN  同时将PWN改为PWM互补模式（P00为下桥输出  P05为上桥输出）-----ok
   48                  //20190725  加入看门狗程序------------ok
   49                  //20190731  将倒档和一档在6A保护，保护时间由2min改为30s  且二档和三档任保持2min保护-----ok
-C51 COMPILER V9.60.0.0   MAIN                                                              04/29/2022 12:00:43 PAGE 2   
+C51 COMPILER V9.60.0.0   MAIN                                                              05/15/2022 15:00:09 PAGE 2   
 
   50           //20190802  倒档电压是：0V--1V 改为：0V--0.5V ---------ok
   51           //          一档电压是：1V--2.5V 改为: 0.5V--2.5V--------ok
@@ -126,7 +126,7 @@ line level    source
  106          #define  Vol_5V       245       //255 
  107          #define  Vol_4_5V     244       //255    229=4.5
  108          
-C51 COMPILER V9.60.0.0   MAIN                                                              04/29/2022 12:00:43 PAGE 3   
+C51 COMPILER V9.60.0.0   MAIN                                                              05/15/2022 15:00:09 PAGE 3   
 
  109          #define  Vol_3_5V   178//255*3.5/5            //档位板电压设置
  110          
@@ -190,7 +190,7 @@ line level    source
  167          #define  ELE_2A         8//3A
  168          
  169          //#define  PWM_15         40 //255*15/100
-C51 COMPILER V9.60.0.0   MAIN                                                              04/29/2022 12:00:43 PAGE 4   
+C51 COMPILER V9.60.0.0   MAIN                                                              05/15/2022 15:00:09 PAGE 4   
 
  170          
  171          #define  PWM_55         140 //255*55/100
@@ -254,7 +254,7 @@ line level    source
  229            #define  MOS_DET_OUTPUT_SET       P04_PushPull_Mode
  230          
  231          
-C51 COMPILER V9.60.0.0   MAIN                                                              04/29/2022 12:00:43 PAGE 5   
+C51 COMPILER V9.60.0.0   MAIN                                                              05/15/2022 15:00:09 PAGE 5   
 
  232          #define  SW_IO           P13
  233          #define  SW_IO_SET          P13_Input_Mode
@@ -318,7 +318,7 @@ line level    source
  291          
  292            unsigned char ELE13_BIG_TM;
  293                  unsigned char ELE13_Small_ct;
-C51 COMPILER V9.60.0.0   MAIN                                                              04/29/2022 12:00:43 PAGE 6   
+C51 COMPILER V9.60.0.0   MAIN                                                              05/15/2022 15:00:09 PAGE 6   
 
  294                  unsigned char ELE13_BIG_ct;
  295          
@@ -382,7 +382,7 @@ line level    source
  353          unsigned char CHANGE_Off_TM;
  354          
  355           unsigned char  FrontOFFTime;
-C51 COMPILER V9.60.0.0   MAIN                                                              04/29/2022 12:00:43 PAGE 7   
+C51 COMPILER V9.60.0.0   MAIN                                                              05/15/2022 15:00:09 PAGE 7   
 
  356          unsigned char   BackOFFTime; 
  357          
@@ -446,7 +446,7 @@ line level    source
  415                   bit NO_Connet_FL1;
  416                                  
  417                   bit shache_4ms;
-C51 COMPILER V9.60.0.0   MAIN                                                              04/29/2022 12:00:43 PAGE 8   
+C51 COMPILER V9.60.0.0   MAIN                                                              05/15/2022 15:00:09 PAGE 8   
 
  418                  
  419           bit  dang_23fl;
@@ -510,7 +510,7 @@ line level    source
  476                  deadtmplow = DeadTimeData;
  477                  deadtmphigh = DeadTimeData>>8;
  478                  BIT_TMP = EA;
-C51 COMPILER V9.60.0.0   MAIN                                                              04/29/2022 12:00:43 PAGE 9   
+C51 COMPILER V9.60.0.0   MAIN                                                              05/15/2022 15:00:09 PAGE 9   
 
  479                  if (deadtmphigh==0x01)
  480                  {
@@ -574,7 +574,7 @@ line level    source
  538   1       Vol_IO_SET;            
  539   1      // POWER_SW_IO_SET; 
  540   1       LED_SET;
-C51 COMPILER V9.60.0.0   MAIN                                                              04/29/2022 12:00:43 PAGE 10  
+C51 COMPILER V9.60.0.0   MAIN                                                              05/15/2022 15:00:09 PAGE 10  
 
  541   1       LED1_SET;   
  542   1      MOS_DET_INPUT_SET;      
@@ -638,7 +638,7 @@ line level    source
  599   1      STOP_IO=1;
  600   1      CHANGE_FL=1;
  601   1      A_DET_FL=1;
-C51 COMPILER V9.60.0.0   MAIN                                                              04/29/2022 12:00:43 PAGE 11  
+C51 COMPILER V9.60.0.0   MAIN                                                              05/15/2022 15:00:09 PAGE 11  
 
  602   1      //I_Err_LED_FL=0;
  603   1      PWM_Ele_Set=128;
@@ -702,7 +702,7 @@ line level    source
  661   2             {                                        
  662   3                  G_S_State=2;
  663   3                  MOS_Err=0;
-C51 COMPILER V9.60.0.0   MAIN                                                              04/29/2022 12:00:43 PAGE 12  
+C51 COMPILER V9.60.0.0   MAIN                                                              05/15/2022 15:00:09 PAGE 12  
 
  664   3                                               
  665   3                                                      MOS_DET_OUTPUT_SET;
@@ -766,7 +766,7 @@ line level    source
  723   2                       set_LOAD;
  724   2            // if(PWM==0)//>=0xfe)
  725   2                       if(PWM>=0xfe)//==0)
-C51 COMPILER V9.60.0.0   MAIN                                                              04/29/2022 12:00:43 PAGE 13  
+C51 COMPILER V9.60.0.0   MAIN                                                              05/15/2022 15:00:09 PAGE 13  
 
  726   2                       {
  727   3                              PWM5_P03_OUTPUT_DISABLE;
@@ -830,7 +830,7 @@ line level    source
  785   2                      {
  786   3                        Count2_5MS=0;
  787   3                  Count1S++;
-C51 COMPILER V9.60.0.0   MAIN                                                              04/29/2022 12:00:43 PAGE 14  
+C51 COMPILER V9.60.0.0   MAIN                                                              05/15/2022 15:00:09 PAGE 14  
 
  788   3                                      FLAG_NMS=1;
  789   3                                 shache_4ms=1;
@@ -894,7 +894,7 @@ line level    source
  846   3                                                                              
  847   3                              }
  848   2              
-C51 COMPILER V9.60.0.0   MAIN                                                              04/29/2022 12:00:43 PAGE 15  
+C51 COMPILER V9.60.0.0   MAIN                                                              05/15/2022 15:00:09 PAGE 15  
 
  849   2      //--------------------------------------------------------------------  
  850   2                      
@@ -958,7 +958,7 @@ line level    source
  908   3         }
  909   2       //  else
  910   2               // if(DanWei_AD>Vol_1V)        //一档    
-C51 COMPILER V9.60.0.0   MAIN                                                              04/29/2022 12:00:43 PAGE 16  
+C51 COMPILER V9.60.0.0   MAIN                                                              05/15/2022 15:00:09 PAGE 16  
 
  911   2               if(DanWei==1)
  912   2         {
@@ -1022,7 +1022,7 @@ line level    source
  970   2      
  971   2              if(HIGH_LOWS_PEED_FLold!=HIGH_LOWS_PEED_FL)
  972   2              {
-C51 COMPILER V9.60.0.0   MAIN                                                              04/29/2022 12:00:43 PAGE 17  
+C51 COMPILER V9.60.0.0   MAIN                                                              05/15/2022 15:00:09 PAGE 17  
 
  973   3                      HIGH_LOWS_PEED_FLold=HIGH_LOWS_PEED_FL;
  974   3                      TurnHighSpeed_FL=0;
@@ -1086,7 +1086,7 @@ line level    source
 1032   3                                               {
 1033   4                                                               BeginMoveBackTM=0;
 1034   4                                                   BeginMoveFrontTM=0;
-C51 COMPILER V9.60.0.0   MAIN                                                              04/29/2022 12:00:43 PAGE 18  
+C51 COMPILER V9.60.0.0   MAIN                                                              05/15/2022 15:00:09 PAGE 18  
 
 1035   4                                               }   
 1036   3                        }
@@ -1150,7 +1150,7 @@ line level    source
 1091   8                                                                                xianliu65_same=0;
 1092   8                                                                       }
 1093   7                                                                                                                              
-C51 COMPILER V9.60.0.0   MAIN                                                              04/29/2022 12:00:43 PAGE 19  
+C51 COMPILER V9.60.0.0   MAIN                                                              05/15/2022 15:00:09 PAGE 19  
 
 1094   7                                                              }               
 1095   6                                                                                                              
@@ -1214,7 +1214,7 @@ line level    source
 1152   4                                               
 1153   4                                              {
 1154   5                                                      
-C51 COMPILER V9.60.0.0   MAIN                                                              04/29/2022 12:00:43 PAGE 20  
+C51 COMPILER V9.60.0.0   MAIN                                                              05/15/2022 15:00:09 PAGE 20  
 
 1155   5                                                      if(++LED_TM>5)     //20*5=100ms   
 1156   5                                                       {                                                       
@@ -1278,7 +1278,7 @@ line level    source
 1214   4                      }
 1215   3                       else
 1216   3                      {
-C51 COMPILER V9.60.0.0   MAIN                                                              04/29/2022 12:00:43 PAGE 21  
+C51 COMPILER V9.60.0.0   MAIN                                                              05/15/2022 15:00:09 PAGE 21  
 
 1217   4                       LED_CT=0;                                                      
 1218   4                      }
@@ -1342,7 +1342,7 @@ line level    source
 1276   4                                 if(ELE30_BIG_FL)
 1277   4                                      {
 1278   5                                                                                      
-C51 COMPILER V9.60.0.0   MAIN                                                              04/29/2022 12:00:43 PAGE 22  
+C51 COMPILER V9.60.0.0   MAIN                                                              05/15/2022 15:00:09 PAGE 22  
 
 1279   5                                                      //----------------------三级保护----------------------------------------        
 1280   5                                                                                                              
@@ -1406,7 +1406,7 @@ line level    source
 1338   6                                                                      {
 1339   7                                                                              ELE28_BIG_ERR_FL=1;//
 1340   7                                                                              ELE28_BIG_TM=0;
-C51 COMPILER V9.60.0.0   MAIN                                                              04/29/2022 12:00:43 PAGE 23  
+C51 COMPILER V9.60.0.0   MAIN                                                              05/15/2022 15:00:09 PAGE 23  
 
 1341   7                                                                                      ELE_Wait_5s=40;
 1342   7                                                                      }
@@ -1470,7 +1470,7 @@ line level    source
 1400   6                                                                                      // ELE_Wait_5s=10;//WAIT 30S
 1401   6                                                                           duZ_close_fl=1;            //堵转后允许关机标志位
 1402   6                                                                       
-C51 COMPILER V9.60.0.0   MAIN                                                              04/29/2022 12:00:43 PAGE 24  
+C51 COMPILER V9.60.0.0   MAIN                                                              05/15/2022 15:00:09 PAGE 24  
 
 1403   6                                                                                       if(duzhuan_30min_fl==0)
 1404   6                                                                                       {
@@ -1534,7 +1534,7 @@ line level    source
 1462   7                                                                        ELE_Wait_5s=6;        //30s    //0.5s自加一次
 1463   7                                                                               jia_zheng_close_fl=0;
 1464   7                                                                       }
-C51 COMPILER V9.60.0.0   MAIN                                                              04/29/2022 12:00:43 PAGE 25  
+C51 COMPILER V9.60.0.0   MAIN                                                              05/15/2022 15:00:09 PAGE 25  
 
 1465   6                                                                       else
 1466   6                                                                       {
@@ -1598,7 +1598,7 @@ line level    source
 1524   6                                                                       else
 1525   6                                                                       {
 1526   7                                                                               ELE_Wait_5s=36; 
-C51 COMPILER V9.60.0.0   MAIN                                                              04/29/2022 12:00:43 PAGE 26  
+C51 COMPILER V9.60.0.0   MAIN                                                              05/15/2022 15:00:09 PAGE 26  
 
 1527   7                                                                               jia_zheng_close_fl=1;
 1528   7                                                                       }                                                       
@@ -1662,7 +1662,7 @@ line level    source
 1586   6                                                                               jia_zheng_close_fl=1;
 1587   6                                                                       }                                                       
 1588   5                                                                       duzhuan_cishu_fl=1;
-C51 COMPILER V9.60.0.0   MAIN                                                              04/29/2022 12:00:43 PAGE 27  
+C51 COMPILER V9.60.0.0   MAIN                                                              05/15/2022 15:00:09 PAGE 27  
 
 1589   5                                                              // }
 1590   5                                                       }
@@ -1726,7 +1726,7 @@ line level    source
 1648   4      G_S_FL_CT=0;
 1649   4      
 1650   4        HallLowCT=0;
-C51 COMPILER V9.60.0.0   MAIN                                                              04/29/2022 12:00:43 PAGE 28  
+C51 COMPILER V9.60.0.0   MAIN                                                              05/15/2022 15:00:09 PAGE 28  
 
 1651   4       if(Stop_FL==0)
 1652   4       POWER_ON_IO=1;
@@ -1790,7 +1790,7 @@ line level    source
 1710   3                                 {
 1711   4                                 
 1712   4                                   if(RELYDelayTM)
-C51 COMPILER V9.60.0.0   MAIN                                                              04/29/2022 12:00:43 PAGE 29  
+C51 COMPILER V9.60.0.0   MAIN                                                              05/15/2022 15:00:09 PAGE 29  
 
 1713   4                                      RELYDelayTM--;
 1714   4                                    else                         
@@ -1854,7 +1854,7 @@ line level    source
 1772   5                                                                               PWM=0;         //再关PWM
 1773   5                                                                               MoveCtrl();                                                                                                                            
 1774   5                    }  
-C51 COMPILER V9.60.0.0   MAIN                                                              04/29/2022 12:00:43 PAGE 30  
+C51 COMPILER V9.60.0.0   MAIN                                                              05/15/2022 15:00:09 PAGE 30  
 
 1775   4                                                                               
 1776   4                                              FRONT_CTRL=0;
@@ -1918,7 +1918,7 @@ line level    source
 1833   4                                                                              ELE12_BIG_FL=0;
 1834   4                      }  
 1835   3                                                                      
-C51 COMPILER V9.60.0.0   MAIN                                                              04/29/2022 12:00:43 PAGE 31  
+C51 COMPILER V9.60.0.0   MAIN                                                              05/15/2022 15:00:09 PAGE 31  
 
 1836   3                                              if(((Cur_ResultNew>=115)&&(DanWei==2))||((Cur_ResultNew>=115)&&(DanWei3_65==1))) //二档    //35A=100 
              -  1.96V     40A=115=2.25V
@@ -1982,7 +1982,7 @@ line level    source
 1894   3                               if(duZ_close_fl)
 1895   3                                        POWER_IO=0;     //关机
 1896   3                      }                       
-C51 COMPILER V9.60.0.0   MAIN                                                              04/29/2022 12:00:43 PAGE 32  
+C51 COMPILER V9.60.0.0   MAIN                                                              05/15/2022 15:00:09 PAGE 32  
 
 1897   3                              
 1898   3              }*/
@@ -2046,7 +2046,7 @@ line level    source
 1956   1               {
 1957   2                  AD_CH=4;
 1958   2            Enable_ADC_AIN1;    //速度开关    P30
-C51 COMPILER V9.60.0.0   MAIN                                                              04/29/2022 12:00:43 PAGE 33  
+C51 COMPILER V9.60.0.0   MAIN                                                              05/15/2022 15:00:09 PAGE 33  
 
 1959   2            clr_ADCF;
 1960   2            set_ADCS; 
@@ -2110,7 +2110,7 @@ line level    source
 2018   3                      
 2019   3                       if((HIGH_LOWS_PEED_FL==0)&&(DanWei==2))    //二档  65%
 2020   3                       {
-C51 COMPILER V9.60.0.0   MAIN                                                              04/29/2022 12:00:43 PAGE 34  
+C51 COMPILER V9.60.0.0   MAIN                                                              05/15/2022 15:00:09 PAGE 34  
 
 2021   4                          if(ADtemp<95)       //10%--50%  统一40%
 2022   4                                      {
@@ -2174,7 +2174,7 @@ line level    source
 2080   2            Enable_ADC_AIN7;     //电压检测   P11
 2081   2            clr_ADCF;
 2082   2            set_ADCS; 
-C51 COMPILER V9.60.0.0   MAIN                                                              04/29/2022 12:00:43 PAGE 35  
+C51 COMPILER V9.60.0.0   MAIN                                                              05/15/2022 15:00:09 PAGE 35  
 
 2083   2            EADC=0;
 2084   2                 CurDanWei_AD=ADtemp;
@@ -2238,7 +2238,7 @@ line level    source
 2142   5                                      }
 2143   4                }
 2144   3              }
-C51 COMPILER V9.60.0.0   MAIN                                                              04/29/2022 12:00:43 PAGE 36  
+C51 COMPILER V9.60.0.0   MAIN                                                              05/15/2022 15:00:09 PAGE 36  
 
 2145   2              
 2146   2                      if(jia_close_led_fl)      //当堵转保护计时灯灭后   按一下重新唤醒
@@ -2302,7 +2302,7 @@ line level    source
 2204   3                         if(G_S_IO==0)
 2205   3                         {
 2206   4                                      if(STOP_IO)        //不充电时进入待机计时    
-C51 COMPILER V9.60.0.0   MAIN                                                              04/29/2022 12:00:43 PAGE 37  
+C51 COMPILER V9.60.0.0   MAIN                                                              05/15/2022 15:00:09 PAGE 37  
 
 2207   4                                      {
 2208   5                                              if(ELE_Wait_5s==0)     //
@@ -2366,7 +2366,7 @@ line level    source
 2266   2       
 2267   2        }
 2268   1      }
-C51 COMPILER V9.60.0.0   MAIN                                                              04/29/2022 12:00:43 PAGE 38  
+C51 COMPILER V9.60.0.0   MAIN                                                              05/15/2022 15:00:09 PAGE 38  
 
 2269          
 2270          

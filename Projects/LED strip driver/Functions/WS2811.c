@@ -101,32 +101,30 @@ void WS_Key_RGB(void)
 void WS_Hue_change()
 {
 	u8 cylon=160;
-	u8 cycle,flag=1;
+	u8 cycle;
+	static u8 flag=1;
 //	u32 temp;
-	static int h=160;
 	if(h>=0&&h<360)
 	{
 		if(flag)
 		{
-			for(cycle=0;cycle<=LEDNUM;cycle++)
-			{
-				WS_ColorSet_LED(0, cycle, HSV_RGB(h, 1,1,0,0,0));
-				WS_Refresh();
-//				Timer0_Delay1ms(10);
-			}
-			h+=HSV_fadoutTime;
-			if(h>=360)
+			WS_ColorSet_LED(0, LEDNUM, HSV_RGB(h, 1,1,0,0,0));
+			WS_Refresh();
+			h+=HSV_Ch_Sp;
+			Timer0_Delay1ms(50);
+			if(h>=360){
 				flag=0;
+			}
 		}
 		else
 		{
 			for(cycle=0;cycle<=LEDNUM;cycle++)
 			{
 				WS_ColorSet_LED(0, cycle, HSV_RGB(h, 1,1,0,0,0));
-				WS_Refresh();
-//				Timer0_Delay1ms(10);
+				Timer0_Delay1ms(HSV_Delay1ms);
 			}
-			h-=HSV_fadoutTime;
+			WS_Refresh();
+			h-=HSV_Ch_Sp;
 			if(h<=0)
 				flag=1;
 		}
@@ -226,7 +224,6 @@ u32 HSV_RGB(int h, char s, char v, float R, float G, float B)
 	i = h/60;		//char i
 	C = h;		//float C
 	C = C/60-i;
-//	char X = C*(1- (abs((h/60)%2-1)));
 	X = v*(1-s);
 	Y = v*(1-(s*C));
 	Z = v*(1-s*(1-C)); 
@@ -252,9 +249,16 @@ u32 HSV_RGB(int h, char s, char v, float R, float G, float B)
 			R=v; G=X; B=Y;
 			break;
 	}
-	R8=R*255;
-	G8=G*255;
-	B8=B*255;
+#if WS2812B
+		G8=R*255;
+		R8=G*255;
+		B8=B*255;
+#else
+		R8=R*255;
+		G8=G*255;
+		B8=B*255;
+#endif
+	RGB&=0x00000000;
 	RGB|=R8;
 	RGB<<=8;
 	RGB|=G8;
