@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   WS2811                                                            05/17/2022 21:38:53 PAGE 1   
+C51 COMPILER V9.60.0.0   WS2811                                                            05/22/2022 11:12:27 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE WS2811
@@ -25,132 +25,134 @@ line level    source
   15          
   16          Color_Typedef LED_Buf[LEDNUM+1];
   17          
-  18          void WS_Send24bits(u32 color)//Be Careful about the direction of rope: Din->Dout
-  19          {
-  20   1              u8 i;
-  21   1              for(i=0;i<24;i++)
-  22   1              {
-  23   2                      if(color & 0x00800000)// 0000 0000 1000 0000... the highest bit & color, then the MCU can send 24bits da
+  18          u16 sum;
+  19          
+  20          void WS_Send24bits(u32 color)//Be Careful about the direction of rope: Din->Dout
+  21          {
+  22   1              u8 i;
+  23   1              for(i=0;i<24;i++)
+  24   1              {
+  25   2                      if(color & 0x00800000)// 0000 0000 1000 0000... the highest bit & color, then the MCU can send 24bits da
              -ta to WS2812
-  24   2                      {
-  25   3                              CODE_1
-  26   3                      }
-  27   2                      else CODE_0
-  28   2                      color<<=1;
-  29   2              }
-  30   1      }
-  31          
-  32          void WS_Color_copy(u8 No, u32 color)
-  33          {
-  34   1              LED_Buf[No].RGB = color;
-  35   1      }
-  36          
-  37          void WS_ColorSet_LED(u8 from, u8 to, u32 color)
-  38          {
-  39   1              static int temp;
-  40   1              if(to>LEDNUM||from<0)
-  41   1              {
-  42   2                      to=LEDNUM;
-  43   2                      from=0;
-  44   2              }
-  45   1              color &= 0x00ffffff;// remove the effect of [32-25]
-  46   1              if(from>to)
-  47   1              {
-  48   2                      temp=from; from=to; to=temp;
-  49   2              }
-  50   1              for(temp = from;temp<=to; temp++)
-  51   1              {
-  52   2                      WS_Color_copy(temp, color);
-  53   2              }
-C51 COMPILER V9.60.0.0   WS2811                                                            05/17/2022 21:38:53 PAGE 2   
+  26   2                      {
+  27   3                              CODE_1
+  28   3                      }
+  29   2                      else CODE_0
+  30   2                      color<<=1;
+  31   2              }
+  32   1      }
+  33          
+  34          void WS_Color_copy(u8 No, u32 color)
+  35          {
+  36   1              LED_Buf[No].RGB = color;
+  37   1      }
+  38          
+  39          void WS_ColorSet_LED(u8 from, u8 to, u32 color)
+  40          {
+  41   1              static int temp;
+  42   1              if(to>LEDNUM||from<0)
+  43   1              {
+  44   2                      to=LEDNUM;
+  45   2                      from=0;
+  46   2              }
+  47   1              color &= 0x00ffffff;// remove the effect of [32-25]
+  48   1              if(from>to)
+  49   1              {
+  50   2                      temp=from; from=to; to=temp;
+  51   2              }
+  52   1              for(temp = from;temp<=to; temp++)
+  53   1              {
+C51 COMPILER V9.60.0.0   WS2811                                                            05/22/2022 11:12:27 PAGE 2   
 
-  54   1      }
-  55          
-  56          void WS_Refresh()
-  57          {
-  58   1              u8 i;
-  59   1      //      WS_Send24bits(dummy);
-  60   1              for( i=0;i<=LEDNUM;i++)
-  61   1              {
-  62   2                      WS_Send24bits(LED_Buf[i].RGB);
-  63   2              }
-  64   1              RES
-  65   1      }
-  66          
-  67          void WS_Key_RGB(void)
-  68          {
-  69   1              static u8 temp = 0;
-  70   1              switch (temp)
-  71   1              {
-  72   2                      case 0:
-  73   2                              WS_ColorSet_LED(0, LEDNUM, Black);
-  74   2                              WS_Refresh();
-  75   2                              WS_ColorSet_LED(0, 3, Red);
+  54   2                      WS_Color_copy(temp, color);
+  55   2              }
+  56   1      }
+  57          
+  58          void WS_Refresh()
+  59          {
+  60   1              u8 i;
+  61   1      //      WS_Send24bits(dummy);
+  62   1              for( i=0;i<=LEDNUM;i++)
+  63   1              {
+  64   2                      WS_Send24bits(LED_Buf[i].RGB);
+  65   2              }
+  66   1              RES
+  67   1      }
+  68          
+  69          void WS_Key_RGB(void)
+  70          {
+  71   1              static u8 temp = 0;
+  72   1              switch (temp)
+  73   1              {
+  74   2                      case 0:
+  75   2                              WS_ColorSet_LED(0, LEDNUM, Black);
   76   2                              WS_Refresh();
-  77   2                              break;
-  78   2                      case 1:
-  79   2                              WS_ColorSet_LED(0, LEDNUM, Black);
-  80   2                              WS_Refresh();
-  81   2                              WS_ColorSet_LED(4, 6, Blue);
+  77   2                              WS_ColorSet_LED(0, 3, Red);
+  78   2                              WS_Refresh();
+  79   2                              break;
+  80   2                      case 1:
+  81   2                              WS_ColorSet_LED(0, LEDNUM, Black);
   82   2                              WS_Refresh();
-  83   2                              break;
-  84   2                      case 2:
-  85   2                              WS_ColorSet_LED(0, LEDNUM, Black);
-  86   2                              WS_Refresh();
-  87   2                              WS_ColorSet_LED(7,10, Green);
+  83   2                              WS_ColorSet_LED(4, 6, Blue);
+  84   2                              WS_Refresh();
+  85   2                              break;
+  86   2                      case 2:
+  87   2                              WS_ColorSet_LED(0, LEDNUM, Black);
   88   2                              WS_Refresh();
-  89   2                              break;
-  90   2              }
-  91   1              temp++;
-  92   1              if(temp>2)
-  93   1                      temp = 0;
-  94   1                              
-  95   1                      
-  96   1      //              WS_Refresh();
-  97   1                      Timer0_Delay1ms(50);
-  98   1      }
-  99          
- 100          
- 101          void WS_Hue_change()
- 102          {
- 103   1              u8 cylon=160;
- 104   1              u8 cycle;
- 105   1              static u8 flag=1;
- 106   1      //      u32 temp;
- 107   1              if(h>=0&&h<360)
- 108   1              {
- 109   2                      if(flag)
- 110   2                      {
- 111   3                              WS_ColorSet_LED(0, LEDNUM, HSV_RGB(h, 1,1,0,0,0));
- 112   3                              WS_Refresh();
- 113   3                              h+=HSV_Ch_Sp;
- 114   3                              Timer0_Delay1ms(50);
- 115   3                              if(h>=360){
-C51 COMPILER V9.60.0.0   WS2811                                                            05/17/2022 21:38:53 PAGE 3   
+  89   2                              WS_ColorSet_LED(7,10, Green);
+  90   2                              WS_Refresh();
+  91   2                              break;
+  92   2              }
+  93   1              temp++;
+  94   1              if(temp>2)
+  95   1                      temp = 0;
+  96   1                              
+  97   1                      
+  98   1      //              WS_Refresh();
+  99   1                      Timer0_Delay1ms(50);
+ 100   1      }
+ 101          
+ 102          
+ 103          void WS_Hue_change()
+ 104          {
+ 105   1              u8 cylon=160;
+ 106   1              u8 cycle;
+ 107   1              static u8 flag=1;
+ 108   1      //      u32 temp;
+ 109   1              if(h>=0&&h<360)
+ 110   1              {
+ 111   2                      if(flag)
+ 112   2                      {
+ 113   3                              WS_ColorSet_LED(0, LEDNUM, HSV_RGB(h, 1,1,0,0,0));
+ 114   3                              WS_Refresh();
+ 115   3                              h+=HSV_Ch_Sp;
+C51 COMPILER V9.60.0.0   WS2811                                                            05/22/2022 11:12:27 PAGE 3   
 
- 116   4                                      flag=0;
- 117   4                              }
- 118   3                      }
- 119   2                      else
- 120   2                      {
- 121   3                              for(cycle=0;cycle<=LEDNUM;cycle++)
- 122   3                              {
- 123   4                                      WS_ColorSet_LED(0, cycle, HSV_RGB(h, 1,1,0,0,0));
- 124   4                                      Timer0_Delay1ms(HSV_Delay1ms);
- 125   4                              }
- 126   3                              WS_Refresh();
- 127   3                              h-=HSV_Ch_Sp;
- 128   3                              if(h<=0)
- 129   3                                      flag=1;
- 130   3                      }
- 131   2                              
- 132   2              }
- 133   1              else
- 134   1                      h=0;
- 135   1      }
- 136          
- 137          
- 138          #if(RGB_HSV)
+ 116   3                              Timer0_Delay1ms(50);
+ 117   3                              if(h>=360){
+ 118   4                                      flag=0;
+ 119   4                              }
+ 120   3                      }
+ 121   2                      else
+ 122   2                      {
+ 123   3                              for(cycle=0;cycle<=LEDNUM;cycle++)
+ 124   3                              {
+ 125   4                                      WS_ColorSet_LED(0, cycle, HSV_RGB(h, 1,1,0,0,0));
+ 126   4                                      Timer0_Delay1ms(HSV_Delay1ms);
+ 127   4                              }
+ 128   3                              WS_Refresh();
+ 129   3                              h-=HSV_Ch_Sp;
+ 130   3                              if(h<=0)
+ 131   3                                      flag=1;
+ 132   3                      }
+ 133   2                              
+ 134   2              }
+ 135   1              else
+ 136   1                      h=0;
+ 137   1      }
+ 138          
+ 139          
+ 140          #if(RGB_HSV)
               u8      Get_RGB_Max(u8 R, u8 G, u8 B)
               {
                       u8 Max=R;
@@ -188,10 +190,10 @@ line level    source
                               Num=First;
                       }
                       else if(Max==R&&(G>=B))
+C51 COMPILER V9.60.0.0   WS2811                                                            05/22/2022 11:12:27 PAGE 4   
+
                       {
                               Num=Second;
-C51 COMPILER V9.60.0.0   WS2811                                                            05/17/2022 21:38:53 PAGE 4   
-
                       }
                       else if(Max==R&&(G<B))
                       {
@@ -232,149 +234,156 @@ line level    source
                       return Hue;
               }
               #else
- 218          u32 HSV_RGB(int h, char s, char v, float R, float G, float B)
- 219          {
- 220   1              u32 RGB;
- 221   1              u8 R8,G8,B8;
- 222   1              char  i;
- 223   1              float X,Y,Z,C;
- 224   1              i = h/60;               //char i
- 225   1              C = h;          //float C
- 226   1              C = C/60-i;
- 227   1              X = v*(1-s);
- 228   1              Y = v*(1-(s*C));
- 229   1              Z = v*(1-s*(1-C)); 
- 230   1              
- 231   1              switch(i)
- 232   1              {
- 233   2                      case 0:
- 234   2                              R=v; G=Z; B=X;
- 235   2                              break;
- 236   2                      case 1:
- 237   2                              R=Y; G=v; B=X;
- 238   2                              break;
- 239   2                      case 2:
-C51 COMPILER V9.60.0.0   WS2811                                                            05/17/2022 21:38:53 PAGE 5   
+ 220          u32 HSV_RGB(int h, char s, char v, float R, float G, float B)
+ 221          {
+ 222   1              u32 RGB;
+ 223   1              u8 R8,G8,B8;
+ 224   1              char  i;
+ 225   1              float X,Y,Z,C;
+ 226   1              i = h/60;               //char i
+ 227   1              C = h;          //float C
+ 228   1              C = C/60-i;
+ 229   1              X = v*(1-s);
+ 230   1              Y = v*(1-(s*C));
+ 231   1              Z = v*(1-s*(1-C)); 
+ 232   1              
+ 233   1              switch(i)
+ 234   1              {
+ 235   2                      case 0:
+ 236   2                              R=v; G=Z; B=X;
+ 237   2                              break;
+ 238   2                      case 1:
+ 239   2                              R=Y; G=v; B=X;
+C51 COMPILER V9.60.0.0   WS2811                                                            05/22/2022 11:12:27 PAGE 5   
 
- 240   2                              R=X; G=v; B=Z;
- 241   2                              break;
- 242   2                      case 3:
- 243   2                              R=X; G=Y; B=v;
- 244   2                              break;
- 245   2                      case 4:
- 246   2                              R=Z; G=X; B=v;
- 247   2                              break;
- 248   2                      case 5:
- 249   2                              R=v; G=X; B=Y;
- 250   2                              break;
- 251   2              }
- 252   1      #if WS2812B
- 253   1                      G8=R*255;
- 254   1                      R8=G*255;
- 255   1                      B8=B*255;
- 256   1      #else
+ 240   2                              break;
+ 241   2                      case 2:
+ 242   2                              R=X; G=v; B=Z;
+ 243   2                              break;
+ 244   2                      case 3:
+ 245   2                              R=X; G=Y; B=v;
+ 246   2                              break;
+ 247   2                      case 4:
+ 248   2                              R=Z; G=X; B=v;
+ 249   2                              break;
+ 250   2                      case 5:
+ 251   2                              R=v; G=X; B=Y;
+ 252   2                              break;
+ 253   2              }
+ 254   1      #if WS2812B
+ 255   1                      G8=R*255;
+ 256   1                      R8=G*255;
+ 257   1                      B8=B*255;
+ 258   1      #else
                               R8=R*255;
                               G8=G*255;
                               B8=B*255;
               #endif
- 261   1              RGB&=0x00000000;
- 262   1              RGB|=R8;
- 263   1              RGB<<=8;
- 264   1              RGB|=G8;
+ 263   1              RGB&=0x00000000;
+ 264   1              RGB|=R8;
  265   1              RGB<<=8;
- 266   1              RGB|=B8;
- 267   1              return RGB;
- 268   1      }
- 269          void WS_voice_Pik(u8 mode) //Mode0: all LED together Mode1:LED light up corresponding number according to 
+ 266   1              RGB|=G8;
+ 267   1              RGB<<=8;
+ 268   1              RGB|=B8;
+ 269   1              return RGB;
+ 270   1      }
+ 271          void WS_voice_Pik(u8 mode) //Mode0: all LED together Mode1:LED light up corresponding number according to 
              -the dB
- 270          {
- 271   1              u8 dB;
- 272   1              u32 color=0;
- 273   1              dB = Get_HallValue();
- 274   1              if(mode==0)
- 275   1              {
- 276   2                      if(dB>=30&&dB<100)
- 277   2                      {
- 278   3                              color = Black|(dB*2);
- 279   3                              WS_ColorSet_LED(0,LEDNUM,color);
- 280   3                              WS_Refresh();
- 281   3                              Timer1_Delay10ms(30);
- 282   3                              while(color)
- 283   3                              {
- 284   4                                      color = (color-FadeoutTime)>FadeoutTime? color-FadeoutTime:0;
- 285   4                                      WS_ColorSet_LED(0,LEDNUM,color);
- 286   4                                      WS_Refresh();
- 287   4                              }
- 288   3                      }
- 289   2                      else if(dB>=100)
- 290   2                      {
- 291   3                              color = Black|dB;
- 292   3                              color = LED_type? color<<8:color<<16;
- 293   3                              WS_ColorSet_LED(0,LEDNUM,color);
- 294   3                              WS_Refresh();
- 295   3                              Timer1_Delay10ms(30);
- 296   3                              while(dB)
- 297   3                              {
- 298   4                                      dB = (dB-FadeoutTime)>FadeoutTime? dB-FadeoutTime:0;
- 299   4                                      color = Black|dB;
- 300   4                                      color = LED_type? color<<8:color<<16;
-C51 COMPILER V9.60.0.0   WS2811                                                            05/17/2022 21:38:53 PAGE 6   
+ 272          {
+ 273   1              u8 dB,i;
+ 274   1              u32 color=0;
+ 275   1              for(i=0;i<6;i++)
+ 276   1              {
+ 277   2                      sum+=Get_HallValue();
+ 278   2              }
+ 279   1              sum=sum/6;
+ 280   1              dB = sum;
+ 281   1              if(mode==0)
+ 282   1              {
+ 283   2                      if(dB>=30&&dB<100)
+ 284   2                      {
+ 285   3                              color = Black|(dB*2);
+ 286   3                              WS_ColorSet_LED(0,LEDNUM,color);
+ 287   3                              WS_Refresh();
+ 288   3                              Timer1_Delay10ms(30);
+ 289   3                              while(color)
+ 290   3                              {
+ 291   4                                      color = (color-FadeoutTime)>FadeoutTime? color-FadeoutTime:0;
+ 292   4                                      WS_ColorSet_LED(0,LEDNUM,color);
+ 293   4                                      WS_Refresh();
+ 294   4                              }
+ 295   3                      }
+ 296   2                      else if(dB>=100)
+ 297   2                      {
+ 298   3                              color = Black|dB;
+ 299   3                              color = LED_type? color<<8:color<<16;
+ 300   3                              WS_ColorSet_LED(0,LEDNUM,color);
+C51 COMPILER V9.60.0.0   WS2811                                                            05/22/2022 11:12:27 PAGE 6   
 
- 301   4                                      WS_ColorSet_LED(0,LEDNUM,color);
- 302   4                                      WS_Refresh();
- 303   4                              }
- 304   3                      }
- 305   2                      else
- 306   2                      {
- 307   3                              WS_ColorSet_LED(0,LEDNUM,0x000000);
- 308   3                              WS_Refresh();
- 309   3                              Timer1_Delay10ms(5);                    
- 310   3                      }
- 311   2              }
- 312   1              else//Reactive mode
- 313   1              {
- 314   2                      WS_ColorSet_LED(0, LEDNUM, Black);
- 315   2                      if(dB>=25)
- 316   2                      {
- 317   3                              u8 Light_up;
- 318   3                              u8 arr;
- 319   3                              Light_up=((dB*LEDARR)/150)>8?8:((dB*LEDARR)/150);//The power supply is not 5V so the ADC value can not 
+ 301   3                              WS_Refresh();
+ 302   3                              Timer1_Delay10ms(30);
+ 303   3                              while(dB)
+ 304   3                              {
+ 305   4                                      dB = (dB-FadeoutTime)>FadeoutTime? dB-FadeoutTime:0;
+ 306   4                                      color = Black|dB;
+ 307   4                                      color = LED_type? color<<8:color<<16;
+ 308   4                                      WS_ColorSet_LED(0,LEDNUM,color);
+ 309   4                                      WS_Refresh();
+ 310   4                              }
+ 311   3                      }
+ 312   2                      else
+ 313   2                      {
+ 314   3                              WS_ColorSet_LED(0,LEDNUM,0x000000);
+ 315   3                              WS_Refresh();
+ 316   3                              Timer1_Delay10ms(5);                    
+ 317   3                      }
+ 318   2              }
+ 319   1              else//Reactive mode
+ 320   1              {
+ 321   2                      WS_ColorSet_LED(0, LEDNUM, Black);
+ 322   2                      if(dB>=25)
+ 323   2                      {
+ 324   3                              u8 Light_up;
+ 325   3                              u8 arr;
+ 326   3                              Light_up=((dB*LEDARR)/150)>8?8:((dB*LEDARR)/150);//The power supply is not 5V so the ADC value can not 
              -reach 255
- 320   3                              for(arr=0;arr<LEDARR;arr++)
- 321   3                              {
- 322   4                                      WS_ColorSet_LED(0+arr*LEDARR, Light_up+arr*LEDARR, Blue);
- 323   4                              }
- 324   3                              WS_Refresh();
- 325   3                              while(Light_up--)
- 326   3                              {
- 327   4                                      WS_ColorSet_LED(0, LEDNUM, Black);
- 328   4                                      for(arr=0;arr<LEDARR;arr++)
- 329   4                                      {
- 330   5                                              WS_ColorSet_LED(0+arr*LEDARR, Light_up+arr*LEDARR, Blue);
- 331   5                                      }
- 332   4                                      WS_Refresh();
- 333   4                                      Timer1_Delay10ms(10);
- 334   4                              }
- 335   3                      }
- 336   2                      else
- 337   2                      {
- 338   3      //                      WS_ColorSet_LED(0, LEDNUM, Black);
- 339   3      //                      WS_Refresh();
- 340   3                      }
- 341   2              }
- 342   1      }
- 343          
- 344          
- 345          #endif
+ 327   3                              for(arr=0;arr<LEDARR;arr++)
+ 328   3                              {
+ 329   4                                      WS_ColorSet_LED(0+arr*LEDARR, Light_up+arr*LEDARR, Blue);
+ 330   4                              }
+ 331   3                              WS_Refresh();
+ 332   3                              while(Light_up--)
+ 333   3                              {
+ 334   4                                      WS_ColorSet_LED(0, LEDNUM, Black);
+ 335   4                                      for(arr=0;arr<LEDARR;arr++)
+ 336   4                                      {
+ 337   5                                              WS_ColorSet_LED(0+arr*LEDARR, Light_up+arr*LEDARR, Blue);
+ 338   5                                      }
+ 339   4                                      WS_Refresh();
+ 340   4                                      Timer1_Delay10ms(10);
+ 341   4                              }
+ 342   3                      }
+ 343   2                      else
+ 344   2                      {
+ 345   3      //                      WS_ColorSet_LED(0, LEDNUM, Black);
+ 346   3                              WS_Refresh();
+ 347   3                      }
+ 348   2              }
+ 349   1      }
+ 350          
+ 351          
+ 352          #endif
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =   2528    ----
+   CODE SIZE        =   2597    ----
    CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =    461      65
+   XDATA SIZE       =    463      66
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----
+C51 COMPILER V9.60.0.0   WS2811                                                            05/22/2022 11:12:27 PAGE 7   
+
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.
 

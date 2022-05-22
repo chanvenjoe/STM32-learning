@@ -15,6 +15,8 @@
 
 Color_Typedef LED_Buf[LEDNUM+1];
 
+u16 sum;
+
 void WS_Send24bits(u32 color)//Be Careful about the direction of rope: Din->Dout
 {
 	u8 i;
@@ -268,9 +270,14 @@ u32 HSV_RGB(int h, char s, char v, float R, float G, float B)
 }
 void WS_voice_Pik(u8 mode) //Mode0: all LED together Mode1:LED light up corresponding number according to the dB
 {
-	u8 dB;
+	u8 dB,i;
 	u32 color=0;
-	dB = Get_HallValue();
+	for(i=0;i<6;i++)
+	{
+		sum+=Get_HallValue();
+	}
+	sum=sum/6;
+	dB = sum;
 	if(mode==0)
 	{
 		if(dB>=30&&dB<100)
@@ -336,7 +343,7 @@ void WS_voice_Pik(u8 mode) //Mode0: all LED together Mode1:LED light up correspo
 		else
 		{
 //			WS_ColorSet_LED(0, LEDNUM, Black);
-//			WS_Refresh();
+			WS_Refresh();
 		}
 	}
 }
