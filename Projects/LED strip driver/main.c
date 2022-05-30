@@ -17,6 +17,7 @@ void main(void)
 	key_val=P03;
 	while(1)
 	{
+		set_WDCLR;
 		if(P03!=key_val)
 		{
 			Timer1_Delay10ms(5);

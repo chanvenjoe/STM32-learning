@@ -278,6 +278,7 @@ void WS_voice_Pik(u8 mode) //Mode0: all LED together Mode1:LED light up correspo
 	}
 	sum=sum/6;
 	dB = sum;
+	sum=0;
 	if(mode==0)
 	{
 		if(dB>=30&&dB<100)

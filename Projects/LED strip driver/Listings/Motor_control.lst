@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     05/22/2022 11:12:27 PAGE 1   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     05/30/2022 16:09:31 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MOTOR_CONTROL
@@ -62,7 +62,7 @@ line level    source
   51   1              Timer_Init();
   52   1              WTD_Init();
   53   1              Pin_Interruput_Init();
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     05/22/2022 11:12:27 PAGE 2   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     05/30/2022 16:09:31 PAGE 2   
 
   54   1              ADC_Init();                                                     
   55   1              PWM_Init();
@@ -126,7 +126,7 @@ line level    source
  113   2                      IAPAH = 0x00;
  114   2                      set_IAPGO;
  115   2                      bgh   = IAPFD;
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     05/22/2022 11:12:27 PAGE 3   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     05/30/2022 16:09:31 PAGE 3   
 
  116   2                      IAPAL = 0x0F;
  117   2                      IAPAH = 0x00;
@@ -190,7 +190,7 @@ line level    source
  175   1              set_PWMRUN;
  176   1              /**********************************************************************
  177   1              PWM frequency = Fpwm/((PWMPH,PWMPL) + 1) <Fpwm = Fsys/PWM_CLOCK_DIV> 
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     05/22/2022 11:12:27 PAGE 4   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     05/30/2022 16:09:31 PAGE 4   
 
  178   1                                                                      = (16MHz/8)/(0x7CF + 1)
  179   1                                                                      = 1KHz (1ms)
@@ -254,7 +254,7 @@ line level    source
  236   4                                      PWM_Setting(pwm_step,k);// PWM first, or the moment relay on, PWM still 0 cause big inrush
  237   4                              }
  238   3                              break;
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     05/22/2022 11:12:27 PAGE 5   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     05/30/2022 16:09:31 PAGE 5   
 
  239   3                              case 1:
  240   3                              {
@@ -318,7 +318,7 @@ line level    source
  297   1              Enable_ADC_AIN0;
  298   1              clr_ADCF;
  299   1              set_ADCS;//Enable ADC transfer
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     05/22/2022 11:12:27 PAGE 6   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     05/30/2022 16:09:31 PAGE 6   
 
  300   1      //      printf("ADC_voltage:%gmV\n",ADCRH);//%g don't print no meaning 0
  301   1              while(ADCF==0);//ADC transfer done
@@ -382,7 +382,7 @@ line level    source
  359   1              {
  360   2                      EA = 0;
  361   2                      TA = 0xAA;
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     05/22/2022 11:12:27 PAGE 7   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     05/30/2022 16:09:31 PAGE 7   
 
  362   2                      TA = 0x55;
  363   2                      PDTEN|=0x10;
@@ -446,7 +446,7 @@ line level    source
  421   1      }
  422          
  423          void Pin_Interruput() interrupt 7
-C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     05/22/2022 11:12:27 PAGE 8   
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     05/30/2022 16:09:31 PAGE 8   
 
  424          {
  425   1              pwr_d =~ pwr_d;
