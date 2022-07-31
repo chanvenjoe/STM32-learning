@@ -83,7 +83,7 @@ u16 BACK_COLOR=0xFFFF;  //背景色
   
 //管理LCD重要参数
 //默认为竖屏
-_lcd_dev lcddev;
+//_lcd_dev lcddev;
 	 
 //写寄存器函数
 //regval:寄存器值

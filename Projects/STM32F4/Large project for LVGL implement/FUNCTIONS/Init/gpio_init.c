@@ -19,6 +19,17 @@ u32 tpad_average;
 /***********Constant variable**********/
 #define TPAD_GATE_VAL 	100
 #define TPAD_ARR_MAX_VAL  0XFFFFFFFF  //define don't need ";"
+
+#if EN_USART1_RX   //如果使能了接收
+//串口1中断服务程序
+//注意,读取USARTx->SR能避免莫名其妙的错误   	
+u8 USART_RX_BUF[USART_REC_LEN];     //接收缓冲,最大USART_REC_LEN个字节.
+//接收状态
+//bit15，	接收完成标志
+//bit14，	接收到0x0d
+//bit13~0，	接收到的有效字节数目
+u16 USART_RX_STA=0;       //接收状态标记	
+#endif
 /**************************************/
 
 void GPIO_Conf(void)
@@ -31,7 +42,6 @@ void GPIO_Conf(void)
 	GPIO_Config.GPIO_PuPd = GPIO_PuPd_UP;
 	GPIO_Config.GPIO_Speed= GPIO_Speed_100MHz; //related to the power consumption and reaction speed;
 	GPIO_Init(GPIOF, &GPIO_Config);
-	//GPIO_SetBits(GPIOF, GPIO_Pin_7);
 	
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOE, ENABLE);
 	GPIO_Config.GPIO_Mode = GPIO_Mode_IN;
@@ -148,14 +158,39 @@ void usart_init(u32 baud_rate)
 #endif
 }
 
-void USART1_IRQHandler(void)
+void USART1_IRQHandler(void)                	//串口1中断服务程序
 {
-	if(USART_GetITStatus(USART1, USART_IT_RXNE))
+	u8 Res;
+#if SYSTEM_SUPPORT_OS 		//如果SYSTEM_SUPPORT_OS为真，则需要支持OS.
+	OSIntEnter();    
+#endif
+	if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)  //接收中断(接收到的数据必须是0x0d 0x0a结尾)
 	{
-		u8 res = USART_ReceiveData(USART1);
-		USART_SendData(USART1, res);
-	}
-}
+		Res =USART_ReceiveData(USART1);//(USART1->DR);	//读取接收到的数据
+		
+		if((USART_RX_STA&0x8000)==0)//接收未完成
+		{
+			if(USART_RX_STA&0x4000)//接收到了0x0d
+			{
+				if(Res!=0x0a)USART_RX_STA=0;//接收错误,重新开始
+				else USART_RX_STA|=0x8000;	//接收完成了 
+			}
+			else //还没收到0X0D
+			{	
+				if(Res==0x0d)USART_RX_STA|=0x4000;
+				else
+				{
+					USART_RX_BUF[USART_RX_STA&0X3FFF]=Res ;
+					USART_RX_STA++;
+					if(USART_RX_STA>(USART_REC_LEN-1))USART_RX_STA=0;//接收数据错误,重新开始接收	  
+				}		 
+			}
+		}   		 
+  } 
+#if SYSTEM_SUPPORT_OS 	//如果SYSTEM_SUPPORT_OS为真，则需要支持OS.
+	OSIntExit();  											 
+#endif
+} 
 
 void EXTI4_IRQHandler(void)	// change the LED (the one without timer)
 {
