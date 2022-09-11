@@ -53,7 +53,7 @@ int main(void)
 		if((t%20)==0)
 		{ 
 			LED0=!LED0;	//每200ms,翻转一次LED0 
-			random=RNG_Get_RandomRange(0,9);//获取[0,9]区间的随机数
+			random=RNG_Get_RandomRange(0,20);//获取[0,9]区间的随机数
 			LCD_ShowNum(30+8*16,210,random,1,16); //显示随机数
 		 }
 		delay_ms(10);

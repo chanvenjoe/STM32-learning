@@ -9,6 +9,7 @@
 //#include "lv_port_indev.h"
 #include "usmart.h"
 #include "rng.h"
+#include "adc.h"
 
 void led_set(u8 sta)
 {
@@ -35,6 +36,7 @@ int main(void)
 //	General_Timer_Interrupt(999,83);//timer3 84M   time=arr*psc/84M = 1ms =>psc=8400 arr = 10 for LVGL
 //	u32 temp=CapacitiveTouch_Init(8);
 	LCD_Init();           //初始化LCD FSMC接口
+	ADC_Init_Config();
 	u8 lcd_id[12];				//存放LCD ID字符串
 	while(RNG_Init())
 	{
@@ -50,11 +52,37 @@ int main(void)
 	u8 range;
   	while(1) 
 	{	
+		float temp;
+		int adc = Get_ADC_Average(ADC1,ADC_Channel_5,20);
+		LCD_ShowString(10,230,200,16,16,"ADC value:");
+		LCD_ShowxNum(134,230,adc,4,16,0);
+		//PA5 Voltage
+		temp = (float) adc*(3.3/4096);
+		adc = temp;//temp tens to ADC
+		LCD_ShowString(10,250,200,16,16,"ADC vol:");
+		LCD_ShowxNum(118,250,adc,4,16,0);//tens part
+//		LCD_ShowString(150,250,200,16,16,".");
+		adc = (temp-adc)*1000;
+		LCD_ShowxNum(150,250,adc,4,16,0);
+		LCD_ShowString(198,250,200,16,16,"V");
+		//Temperature sensor internal
+		adc = Get_ADC_Average(ADC1,ADC_Channel_TempSensor,20);
+		temp = (float) adc*(3.3/4096);
+		temp = (temp-0.76)/0.0025+25;
+		adc = temp;
+		LCD_ShowString(10,266,200,16,16,"Temperature:");
+		LCD_ShowxNum(216,266,adc,4,16,0);
+		LCD_ShowString(264,266,200,16,16,"degree");
+		//Light sensor
+		adc = Get_ADC_Average(ADC3, ADC_Channel_5,20);
+		LCD_ShowString(10,282,200,16,16,"Brightness:");
+		LCD_ShowxNum(216,282,adc,4,16,0);
+		
 		u8 key;
 		key = GPIO_ReadInputDataBit(GPIOE,GPIO_Pin_4);
 		if(key==0);
 		{
-			LCD_ShowNum(30+8*16,210,RNG_GetRandomNumber(),10,16);
+			LCD_ShowNum(30+8*16,300,RNG_GetRandomNumber(),10,16);
 		}
 		range = RNG_Get_RandomRange(20,30);
 		LCD_ShowNum(30+8*16,320,range ,1,16);
@@ -65,7 +93,7 @@ int main(void)
 
 /**
 *******************下面注释掉的代码是通过 位带 操作实现IO口控制**************************************
-	
+
 int main(void)
 { 
  
