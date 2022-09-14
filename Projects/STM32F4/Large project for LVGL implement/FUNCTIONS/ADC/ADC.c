@@ -7,7 +7,7 @@ void ADC_Init_Config()
 	GPIO_InitTypeDef GPIO_Config;
 	ADC_CommonInitTypeDef  ADC_CommonInit_Structure;
 	ADC_InitTypeDef ADC_InitStructure;
-	
+
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA,ENABLE);
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_ADC1, ENABLE);// ADC not AHB2 it is APB2
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_ADC3, ENABLE);

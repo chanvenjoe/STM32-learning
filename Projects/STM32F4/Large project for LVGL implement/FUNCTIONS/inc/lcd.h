@@ -150,6 +150,10 @@ typedef struct
 
 #define LGRAYBLUE        0XA651 //浅灰蓝色(中间层颜色)
 #define LBBLUE           0X2B12 //浅棕蓝色(选择条目的反色)
+
+//Define the position
+#define Text_x		10
+#define Text_Top_y	16
 	    															  
 void LCD_Init(void);													   	//初始化
 void LCD_DisplayOn(void);													//开显示

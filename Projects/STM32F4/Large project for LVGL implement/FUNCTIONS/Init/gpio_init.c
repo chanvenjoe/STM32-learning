@@ -276,7 +276,7 @@ void WWDG_IRQHandler(void)
 	LED00;
 }
 
-void General_Timer_Interrupt(u16 arr, u16 psc)  // cnt ARR
+void General_Timer_Interrupt(u16 arr, u16 psc)  // cnt ARR TIM3
 {
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3,ENABLE);
 	
