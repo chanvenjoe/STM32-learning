@@ -11,6 +11,7 @@
 #include "rng.h"
 #include "adc.h"
 #include "dac.h"
+#include "dma.h"
 
 void ADC_DAC_Display(void);
 	
@@ -42,6 +43,7 @@ int main(void)
 	ADC_Init_Config();
 	MDAC_Init();
 	TIM9_PWM_Init(255,0);//PWM DAC
+	MyDMA_Config(DMA2_Stream7,DMA_Channel_4, (u32)&USART1->DR
 	u8 lcd_id[12];				//´æ·ÅLCD ID×Ö·û´®
 	while(RNG_Init())
 	{
@@ -57,7 +59,6 @@ int main(void)
   	while(1) 
 	{	
 		ADC_DAC_Display();
-		
 		
 	}
 }
