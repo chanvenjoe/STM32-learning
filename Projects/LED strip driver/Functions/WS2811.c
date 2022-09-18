@@ -113,7 +113,7 @@ void WS_Hue_change()
 			WS_ColorSet_LED(0, LEDNUM, HSV_RGB(h, 1,1,0,0,0));
 			WS_Refresh();
 			h+=HSV_Ch_Sp;
-			Timer0_Delay1ms(50);
+			Timer0_Delay1ms(HSV_Delay1ms);
 			if(h>=360){
 				flag=0;
 			}

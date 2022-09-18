@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 C51 COMPILER V9.60.0.0   WS2811                                                            06/23/2022 12:06:43 PAGE 1   
+=======
+C51 COMPILER V9.60.0.0   WS2811                                                            09/10/2022 11:12:45 PAGE 1   
+>>>>>>> Stashed changes
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE WS2811
@@ -62,7 +66,11 @@ line level    source
   51   2              }
   52   1              for(temp = from;temp<=to; temp++)
   53   1              {
+<<<<<<< Updated upstream
 C51 COMPILER V9.60.0.0   WS2811                                                            06/23/2022 12:06:43 PAGE 2   
+=======
+C51 COMPILER V9.60.0.0   WS2811                                                            09/10/2022 11:12:45 PAGE 2   
+>>>>>>> Stashed changes
 
   54   2                      WS_Color_copy(temp, color);
   55   2              }
@@ -126,9 +134,13 @@ line level    source
  113   3                              WS_ColorSet_LED(0, LEDNUM, HSV_RGB(h, 1,1,0,0,0));
  114   3                              WS_Refresh();
  115   3                              h+=HSV_Ch_Sp;
+<<<<<<< Updated upstream
 C51 COMPILER V9.60.0.0   WS2811                                                            06/23/2022 12:06:43 PAGE 3   
+=======
+C51 COMPILER V9.60.0.0   WS2811                                                            09/10/2022 11:12:45 PAGE 3   
+>>>>>>> Stashed changes
 
- 116   3                              Timer0_Delay1ms(50);
+ 116   3                              Timer0_Delay1ms(HSV_Delay1ms);
  117   3                              if(h>=360){
  118   4                                      flag=0;
  119   4                              }
@@ -190,7 +202,11 @@ line level    source
                               Num=First;
                       }
                       else if(Max==R&&(G>=B))
+<<<<<<< Updated upstream
 C51 COMPILER V9.60.0.0   WS2811                                                            06/23/2022 12:06:43 PAGE 4   
+=======
+C51 COMPILER V9.60.0.0   WS2811                                                            09/10/2022 11:12:45 PAGE 4   
+>>>>>>> Stashed changes
 
                       {
                               Num=Second;
@@ -254,7 +270,11 @@ line level    source
  237   2                              break;
  238   2                      case 1:
  239   2                              R=Y; G=v; B=X;
+<<<<<<< Updated upstream
 C51 COMPILER V9.60.0.0   WS2811                                                            06/23/2022 12:06:43 PAGE 5   
+=======
+C51 COMPILER V9.60.0.0   WS2811                                                            09/10/2022 11:12:45 PAGE 5   
+>>>>>>> Stashed changes
 
  240   2                              break;
  241   2                      case 2:
@@ -298,6 +318,7 @@ line level    source
  278   2              }
  279   1              sum=sum/6;
  280   1              dB = sum;
+<<<<<<< Updated upstream
  281   1              sum=0;
  282   1              if(mode==0)
  283   1              {
@@ -319,6 +340,29 @@ line level    source
  299   3                              color = Black|dB;
  300   3                              color = LED_type? color<<8:color<<16;
 C51 COMPILER V9.60.0.0   WS2811                                                            06/23/2022 12:06:43 PAGE 6   
+=======
+ 281   1              if(mode==0)
+ 282   1              {
+ 283   2                      if(dB>=30&&dB<100)
+ 284   2                      {
+ 285   3                              color = Black|(dB*2);
+ 286   3                              WS_ColorSet_LED(0,LEDNUM,color);
+ 287   3                              WS_Refresh();
+ 288   3                              Timer1_Delay10ms(30);
+ 289   3                              while(color)
+ 290   3                              {
+ 291   4                                      color = (color-FadeoutTime)>FadeoutTime? color-FadeoutTime:0;
+ 292   4                                      WS_ColorSet_LED(0,LEDNUM,color);
+ 293   4                                      WS_Refresh();
+ 294   4                              }
+ 295   3                      }
+ 296   2                      else if(dB>=100)
+ 297   2                      {
+ 298   3                              color = Black|dB;
+ 299   3                              color = LED_type? color<<8:color<<16;
+ 300   3                              WS_ColorSet_LED(0,LEDNUM,color);
+C51 COMPILER V9.60.0.0   WS2811                                                            09/10/2022 11:12:45 PAGE 6   
+>>>>>>> Stashed changes
 
  301   3                              WS_ColorSet_LED(0,LEDNUM,color);
  302   3                              WS_Refresh();
@@ -382,7 +426,12 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
    XDATA SIZE       =    463      66
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
+<<<<<<< Updated upstream
 C51 COMPILER V9.60.0.0   WS2811                                                            06/23/2022 12:06:43 PAGE 7   
+=======
+   IDATA SIZE       =   ----    ----
+C51 COMPILER V9.60.0.0   WS2811                                                            09/10/2022 11:12:45 PAGE 7   
+>>>>>>> Stashed changes
 
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----

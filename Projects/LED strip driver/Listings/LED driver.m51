@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    06/23/2022  12:06:44  PAGE 1
+=======
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    09/10/2022  11:12:45  PAGE 1
+>>>>>>> Stashed changes
 
 
 BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
@@ -59,7 +63,11 @@ LINK MAP OF MODULE:  .\Objects\LED driver (MAIN)
             XDATA   021FH     0004H     UNIT         ?XD?_INITIALUART1_TIMER3?COMMON
             XDATA   0223H     0004H     UNIT         ?XD?_TIMER0_DELAY100US?DELAY
             XDATA   0227H     0004H     UNIT         ?XD?_TIMER2_DELAY500US?DELAY
+<<<<<<< Updated upstream
 BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  06/23/2022  12:06:44  PAGE 2
+=======
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/10/2022  11:12:45  PAGE 2
+>>>>>>> Stashed changes
 
 
             XDATA   022BH     0004H     UNIT         ?XD?_TIMER3_DELAY100MS?DELAY
@@ -102,6 +110,7 @@ LINK MAP OF MODULE:  .\Objects\LED driver (MAIN)
             CODE    1691H     0065H     INBLOCK      ?PR?PWM_INIT?MOTOR_CONTROL
             CODE    16F6H     0062H     INBLOCK      ?PR?_TIMER3_DELAY100MS?DELAY
             CODE    1758H     0062H     INBLOCK      ?PR?_TIMER3_DELAY10US?DELAY
+<<<<<<< Updated upstream
             CODE    17BAH     003BH     INBLOCK      ?PR?MAIN?MAIN
             CODE    17F5H     0008H     INBLOCK      ?PR?_SEND_DATA_TO_UART1?COMMON
                     17FDH     0003H                  *** GAP ***
@@ -125,6 +134,30 @@ LINK MAP OF MODULE:  .\Objects\LED driver (MAIN)
             CODE    1B54H     001EH     INBLOCK      ?PR?GET_HALLVALUE?MOTOR_CONTROL
             CODE    1B72H     0008H     INBLOCK      ?PR?PIN_INTERRUPUT?MOTOR_CONTROL
             CODE    1B7AH     0005H     INBLOCK      ?PR?RELAY_OFF?MOTOR_CONTROL
+=======
+            CODE    17BAH     0039H     INBLOCK      ?PR?_INITIALUART0_TIMER1?COMMON
+            CODE    17F3H     0008H     INBLOCK      ?PR?_SEND_DATA_TO_UART1?COMMON
+            CODE    17FBH     0005H     INBLOCK      ?PR?RELAY_OFF?MOTOR_CONTROL
+            CODE    1800H     005DH     INBLOCK      ?PR?MAIN?MAIN
+            CODE    185DH     005DH     INBLOCK      ?PR?_TIMER0_DELAY100US?DELAY
+            CODE    18BAH     005DH     INBLOCK      ?PR?_TIMER0_DELAY125NS?DELAY
+            CODE    1917H     005DH     INBLOCK      ?PR?_TIMER0_DELAY1MS?DELAY
+            CODE    1974H     005DH     INBLOCK      ?PR?_TIMER1_DELAY10MS?DELAY
+            CODE    19D1H     0058H     INBLOCK      ?PR?GPIO_INIT?MOTOR_CONTROL
+            CODE    1A29H     0035H     INBLOCK      ?PR?WTD_INIT?MOTOR_CONTROL
+            CODE    1A5EH     0033H     INBLOCK      ?PR?TIMER1_IRS?MOTOR_CONTROL
+            CODE    1A91H     002CH     INBLOCK      ?PR?PIN_INTERRUPUT_INIT?MOTOR_CONTROL
+            CODE    1ABDH     0026H     UNIT         ?C_INITSEG
+            CODE    1AE3H     0025H     INBLOCK      ?PR?_PWM_DEAD_TIME_VALUE?MOTOR_CONTROL
+            CODE    1B08H     0024H     INBLOCK      ?PR?SYSTEM_INIT?MOTOR_CONTROL
+            CODE    1B2CH     0023H     INBLOCK      ?PR?_WS_COLOR_COPY?WS2811
+            CODE    1B4FH     0021H     INBLOCK      ?PR?GET_CURRENTVALUE?MOTOR_CONTROL
+            CODE    1B70H     001EH     INBLOCK      ?PR?GET_HALLVALUE?MOTOR_CONTROL
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/10/2022  11:12:45  PAGE 3
+
+
+            CODE    1B8EH     0008H     INBLOCK      ?PR?PIN_INTERRUPUT?MOTOR_CONTROL
+>>>>>>> Stashed changes
 
 
 
@@ -179,7 +212,13 @@ SEGMENT                                          XDATA_GROUP
 
 ?PR?WS_HUE_CHANGE?WS2811                       01CFH    0002H
   +--> ?PR?_HSV_RGB?WS2811
+<<<<<<< Updated upstream
 BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  06/23/2022  12:06:44  PAGE 4
+=======
+  +--> ?PR?_WS_COLORSET_LED?WS2811
+  +--> ?PR?WS_REFRESH?WS2811
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/10/2022  11:12:45  PAGE 4
+>>>>>>> Stashed changes
 
 
   +--> ?PR?_WS_COLORSET_LED?WS2811
@@ -221,6 +260,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   X:021AH         PUBLIC        key_val
   D:00D0H         PUBLIC        PSW
   -------         PROC          MAIN
+<<<<<<< Updated upstream
   C:17BAH         LINE#         12
   C:17BAH         LINE#         13
   C:17BAH         LINE#         14
@@ -255,6 +295,44 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   C:17F2H         LINE#         41
   C:17F2H         LINE#         42
   C:17F2H         LINE#         44
+=======
+  C:1800H         LINE#         12
+  C:1800H         LINE#         13
+  C:1800H         LINE#         14
+  C:1803H         LINE#         15
+  C:1809H         LINE#         16
+  C:180BH         LINE#         17
+  C:1813H         LINE#         18
+  C:1813H         LINE#         19
+  C:1813H         LINE#         20
+  C:181FH         LINE#         21
+  C:181FH         LINE#         22
+  C:182AH         LINE#         23
+  C:1836H         LINE#         24
+  C:1836H         LINE#         25
+  C:183CH         LINE#         26
+  C:1844H         LINE#         27
+  C:1844H         LINE#         28
+  C:1844H         LINE#         29
+  C:184EH         LINE#         30
+  C:184EH         LINE#         31
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/10/2022  11:12:45  PAGE 5
+
+
+  C:184EH         LINE#         32
+  C:184EH         LINE#         33
+  C:1853H         LINE#         34
+  C:1853H         LINE#         35
+  C:1855H         LINE#         36
+  C:1855H         LINE#         37
+  C:1855H         LINE#         38
+  C:1858H         LINE#         39
+  C:1858H         LINE#         40
+  C:185AH         LINE#         41
+  C:185AH         LINE#         42
+  C:185AH         LINE#         43
+  C:185AH         LINE#         45
+>>>>>>> Stashed changes
   -------         ENDPROC       MAIN
   -------         ENDMOD        MAIN
 
@@ -299,7 +377,11 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   C:07F4H         PUBLIC        Receive_Data_From_UART1
   D:008EH         PUBLIC        CKCON
   D:00D0H         PUBLIC        PSW
+<<<<<<< Updated upstream
 BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  06/23/2022  12:06:44  PAGE 6
+=======
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/10/2022  11:12:45  PAGE 6
+>>>>>>> Stashed changes
 
 
   -------         PROC          _INITIALUART0_TIMER1
@@ -359,7 +441,11 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   X:021FH         SYMBOL        u32Baudrate
   C:153BH         LINE#         87
   C:1541H         LINE#         88
+<<<<<<< Updated upstream
 BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  06/23/2022  12:06:44  PAGE 7
+=======
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/10/2022  11:12:45  PAGE 7
+>>>>>>> Stashed changes
 
 
   C:1541H         LINE#         89
@@ -419,7 +505,11 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   B:00C8H.7       PUBLIC        TF2
   D:008CH         PUBLIC        TH0
   D:00C6H         PUBLIC        RH3
+<<<<<<< Updated upstream
 BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  06/23/2022  12:06:44  PAGE 8
+=======
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/10/2022  11:12:45  PAGE 8
+>>>>>>> Stashed changes
 
 
   D:008DH         PUBLIC        TH1
@@ -478,6 +568,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   -------         ENDPROC       _TIMER0_DELAY125NS
   -------         PROC          _TIMER0_DELAY1MS
   X:01D1H         SYMBOL        u32CNT
+<<<<<<< Updated upstream
   C:191AH         LINE#         54
 BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  06/23/2022  12:06:44  PAGE 9
 
@@ -496,6 +587,26 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   C:1972H         LINE#         66
   C:1974H         LINE#         67
   C:1976H         LINE#         68
+=======
+  C:1917H         LINE#         54
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/10/2022  11:12:45  PAGE 9
+
+
+  C:191DH         LINE#         55
+  C:191DH         LINE#         56
+  C:1920H         LINE#         57
+  C:1923H         LINE#         58
+  C:1925H         LINE#         59
+  C:193EH         LINE#         60
+  C:193EH         LINE#         61
+  C:1941H         LINE#         62
+  C:1944H         LINE#         63
+  C:1947H         LINE#         64
+  C:1949H         LINE#         65
+  C:196FH         LINE#         66
+  C:1971H         LINE#         67
+  C:1973H         LINE#         68
+>>>>>>> Stashed changes
   -------         ENDPROC       _TIMER0_DELAY1MS
   -------         PROC          _TIMER1_DELAY10MS
   X:01D8H         SYMBOL        u32CNT
@@ -539,7 +650,11 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   C:16F6H         LINE#         104
   C:16FCH         LINE#         105
   C:16FCH         LINE#         106
+<<<<<<< Updated upstream
 BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  06/23/2022  12:06:44  PAGE 10
+=======
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/10/2022  11:12:45  PAGE 10
+>>>>>>> Stashed changes
 
 
   C:16FFH         LINE#         107
@@ -599,7 +714,11 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   D:00C7H         PUBLIC        TA
   C:1435H         PUBLIC        Get_Speedvalue
   D:00B8H         PUBLIC        IP
+<<<<<<< Updated upstream
 BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  06/23/2022  12:06:44  PAGE 11
+=======
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/10/2022  11:12:45  PAGE 11
+>>>>>>> Stashed changes
 
 
   X:0201H         SYMBOL        flag
@@ -659,7 +778,11 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   X:0210H         SYMBOL        h
   D:00C8H         PUBLIC        T2CON
   D:00C2H         PUBLIC        ADCRL
+<<<<<<< Updated upstream
 BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  06/23/2022  12:06:44  PAGE 12
+=======
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/10/2022  11:12:45  PAGE 12
+>>>>>>> Stashed changes
 
 
   D:00A6H         PUBLIC        IAPAL
@@ -717,6 +840,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   C:1B0FH         LINE#         56
   -------         ENDPROC       SYSTEM_INIT
   -------         PROC          GPIO_INIT
+<<<<<<< Updated upstream
   C:0FA7H         LINE#         58
   C:0FA7H         LINE#         59
 BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  06/23/2022  12:06:44  PAGE 13
@@ -740,6 +864,31 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   C:0FF8H         LINE#         77
   C:0FFAH         LINE#         78
   C:0FFEH         LINE#         79
+=======
+  C:19D1H         LINE#         58
+  C:19D1H         LINE#         59
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/10/2022  11:12:45  PAGE 13
+
+
+  C:19D1H         LINE#         60
+  C:19DEH         LINE#         62
+  C:19E4H         LINE#         63
+  C:19EAH         LINE#         64
+  C:19F0H         LINE#         65
+  C:19F6H         LINE#         66
+  C:19FCH         LINE#         67
+  C:1A02H         LINE#         68
+  C:1A08H         LINE#         69
+  C:1A0EH         LINE#         70
+  C:1A14H         LINE#         71
+  C:1A1AH         LINE#         73
+  C:1A1CH         LINE#         74
+  C:1A1EH         LINE#         75
+  C:1A20H         LINE#         76
+  C:1A22H         LINE#         77
+  C:1A24H         LINE#         78
+  C:1A28H         LINE#         79
+>>>>>>> Stashed changes
   -------         ENDPROC       GPIO_INIT
   -------         PROC          ADC_INIT
   C:0588H         LINE#         81
@@ -779,7 +928,11 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   C:06E5H         LINE#         116
   C:06E8H         LINE#         117
   C:06EBH         LINE#         118
+<<<<<<< Updated upstream
 BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  06/23/2022  12:06:44  PAGE 14
+=======
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/10/2022  11:12:45  PAGE 14
+>>>>>>> Stashed changes
 
 
   C:06FEH         LINE#         119
@@ -839,7 +992,11 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   C:0024H         LINE#         199
   C:0027H         LINE#         200
   C:0029H         LINE#         204
+<<<<<<< Updated upstream
 BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  06/23/2022  12:06:44  PAGE 15
+=======
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/10/2022  11:12:45  PAGE 15
+>>>>>>> Stashed changes
 
 
   C:002CH         LINE#         205
@@ -899,7 +1056,11 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   C:10FAH         LINE#         258
   C:1100H         LINE#         259
   C:1100H         LINE#         260
+<<<<<<< Updated upstream
 BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  06/23/2022  12:06:44  PAGE 16
+=======
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/10/2022  11:12:45  PAGE 16
+>>>>>>> Stashed changes
 
 
   C:1103H         LINE#         261
@@ -959,7 +1120,11 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   C:149FH         LINE#         319
   C:14B6H         LINE#         320
   C:14B9H         LINE#         322
+<<<<<<< Updated upstream
 BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  06/23/2022  12:06:44  PAGE 17
+=======
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/10/2022  11:12:45  PAGE 17
+>>>>>>> Stashed changes
 
 
   C:14BBH         LINE#         323
@@ -1016,6 +1181,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   -------         DO            
   X:0235H         SYMBOL        i
   -------         ENDDO         
+<<<<<<< Updated upstream
   C:0EF9H         LINE#         371
   C:0F01H         LINE#         372
   C:0F01H         LINE#         373
@@ -1047,6 +1213,39 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   C:0F95H         LINE#         399
   C:0FA4H         LINE#         400
   C:0FA6H         LINE#         402
+=======
+  C:0EF2H         LINE#         371
+  C:0EFAH         LINE#         372
+  C:0EFAH         LINE#         373
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/10/2022  11:12:45  PAGE 18
+
+
+  C:0F0DH         LINE#         374
+  C:0F13H         LINE#         375
+  C:0F2CH         LINE#         376
+  C:0F32H         LINE#         377
+  C:0F32H         LINE#         378
+  C:0F46H         LINE#         379
+  C:0F5BH         LINE#         380
+  C:0F5BH         LINE#         381
+  C:0F63H         LINE#         382
+  C:0F63H         LINE#         383
+  C:0F65H         LINE#         384
+  C:0F67H         LINE#         385
+  C:0F6CH         LINE#         386
+  C:0F6CH         LINE#         387
+  C:0F71H         LINE#         388
+  C:0F73H         LINE#         390
+  C:0F73H         LINE#         391
+  C:0F75H         LINE#         392
+  C:0F7AH         LINE#         393
+  C:0F7AH         LINE#         394
+  C:0F7AH         LINE#         395
+  C:0F86H         LINE#         396
+  C:0F8EH         LINE#         399
+  C:0F9DH         LINE#         400
+  C:0F9FH         LINE#         402
+>>>>>>> Stashed changes
   -------         ENDPROC       _PWM_SETTING
   -------         PROC          TIMER0_IRS_OCP
   C:000EH         LINE#         404
@@ -1079,7 +1278,11 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   C:0000H         SYMBOL        _ICE_DUMMY_
   D:0080H         PUBLIC        P0
   D:0090H         PUBLIC        P1
+<<<<<<< Updated upstream
 BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  06/23/2022  12:06:44  PAGE 19
+=======
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/10/2022  11:12:45  PAGE 19
+>>>>>>> Stashed changes
 
 
   D:00A0H         PUBLIC        P2
@@ -1139,7 +1342,11 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   -------         DO            
   X:0000H         SYMBOL        temp
   -------         ENDDO         
+<<<<<<< Updated upstream
 BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  06/23/2022  12:06:44  PAGE 20
+=======
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/10/2022  11:12:45  PAGE 20
+>>>>>>> Stashed changes
 
 
   C:1315H         LINE#         39
@@ -1199,7 +1406,11 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   C:12E3H         LINE#         89
   C:12F4H         LINE#         90
   C:12F7H         LINE#         91
+<<<<<<< Updated upstream
 BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  06/23/2022  12:06:44  PAGE 21
+=======
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/10/2022  11:12:45  PAGE 21
+>>>>>>> Stashed changes
 
 
   C:12F7H         LINE#         92
@@ -1259,7 +1470,11 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   X:01E7H         SYMBOL        B8
   X:01E8H         SYMBOL        i
   X:01E9H         SYMBOL        X
+<<<<<<< Updated upstream
 BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  06/23/2022  12:06:44  PAGE 22
+=======
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/10/2022  11:12:45  PAGE 22
+>>>>>>> Stashed changes
 
 
   X:01EDH         SYMBOL        Y
@@ -1319,7 +1534,11 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   -------         ENDDO         
   -------         ENDDO         
   C:0BDEH         LINE#         271
+<<<<<<< Updated upstream
 BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  06/23/2022  12:06:44  PAGE 23
+=======
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/10/2022  11:12:45  PAGE 23
+>>>>>>> Stashed changes
 
 
   C:0BE3H         LINE#         272
@@ -1331,6 +1550,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   C:0C16H         LINE#         279
   C:0C2DH         LINE#         280
   C:0C31H         LINE#         281
+<<<<<<< Updated upstream
   C:0C38H         LINE#         282
   C:0C40H         LINE#         283
   C:0C40H         LINE#         284
@@ -1397,6 +1617,73 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   C:0EF8H         LINE#         348
   C:0EF8H         LINE#         349
   C:0EF8H         LINE#         350
+=======
+  C:0C39H         LINE#         282
+  C:0C39H         LINE#         283
+  C:0C54H         LINE#         284
+  C:0C54H         LINE#         285
+  C:0C65H         LINE#         286
+  C:0C80H         LINE#         287
+  C:0C83H         LINE#         288
+  C:0C8EH         LINE#         289
+  C:0CA4H         LINE#         290
+  C:0CA4H         LINE#         291
+  C:0CF2H         LINE#         292
+  C:0D0DH         LINE#         293
+  C:0D10H         LINE#         294
+  C:0D12H         LINE#         295
+  C:0D12H         LINE#         296
+  C:0D22H         LINE#         297
+  C:0D22H         LINE#         298
+  C:0D2CH         LINE#         299
+  C:0D45H         LINE#         300
+  C:0D60H         LINE#         301
+  C:0D63H         LINE#         302
+  C:0D6EH         LINE#         303
+  C:0D76H         LINE#         304
+  C:0D76H         LINE#         305
+  C:0D95H         LINE#         306
+  C:0D9FH         LINE#         307
+  C:0DB8H         LINE#         308
+  C:0DD3H         LINE#         309
+  C:0DD6H         LINE#         310
+  C:0DD8H         LINE#         311
+  C:0DD8H         LINE#         313
+  C:0DD8H         LINE#         314
+  C:0DE9H         LINE#         315
+  C:0DECH         LINE#         316
+  C:0DF7H         LINE#         317
+  C:0DF7H         LINE#         318
+  C:0DF8H         LINE#         320
+  C:0DF8H         LINE#         321
+  C:0E09H         LINE#         322
+  C:0E19H         LINE#         323
+  C:0E19H         LINE#         326
+  C:0E4AH         LINE#         327
+  C:0E5BH         LINE#         328
+  C:0E5BH         LINE#         329
+  C:0E7CH         LINE#         330
+  C:0E84H         LINE#         331
+  C:0E87H         LINE#         332
+  C:0E91H         LINE#         333
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/10/2022  11:12:45  PAGE 24
+
+
+  C:0E91H         LINE#         334
+  C:0EA2H         LINE#         335
+  C:0EB5H         LINE#         336
+  C:0EB5H         LINE#         337
+  C:0ED6H         LINE#         338
+  C:0EDEH         LINE#         339
+  C:0EE1H         LINE#         340
+  C:0EECH         LINE#         341
+  C:0EEEH         LINE#         342
+  C:0EEEH         LINE#         344
+  C:0EEEH         LINE#         346
+  C:0EF1H         LINE#         347
+  C:0EF1H         LINE#         348
+  C:0EF1H         LINE#         349
+>>>>>>> Stashed changes
   -------         ENDPROC       _WS_VOICE_PIK
   -------         ENDMOD        WS2811
 
@@ -1439,7 +1726,12 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   C:0041H         PUBLIC        ?C?FPSUB
   -------         ENDMOD        ?C?FPADD
 
+<<<<<<< Updated upstream
 BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  06/23/2022  12:06:44  PAGE 25
+=======
+  -------         MODULE        ?C?FPMUL
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/10/2022  11:12:45  PAGE 25
+>>>>>>> Stashed changes
 
 
   -------         MODULE        ?C?FPMUL
@@ -1501,6 +1793,10 @@ SYMBOL TABLE OF MODULE:  .\Objects\LED driver (MAIN)
   -------         ENDMOD        ?C?LSTKXDATA
 BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  06/23/2022  12:06:44  PAGE 26
 
+<<<<<<< Updated upstream
+=======
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/10/2022  11:12:45  PAGE 26
+>>>>>>> Stashed changes
 
 
 Program Size: data=9.2 xdata=568 code=7024
