@@ -35,7 +35,7 @@
 #include "Function_define.h"
 
 #define I2C_CLOCK               13
-#define EEPROM_SLA              0xA4
+#define EEPROM_SLA              0x52
 #define EEPROM_WR               0
 #define EEPROM_RD               1
 #define ERROR_CODE              0x78
@@ -95,16 +95,6 @@ void I2C_Process(UINT8 u8DAT)
         I2C_Error();
 
     /* Step5 */
-    for (u32Count = 0; u32Count < PAGE_SIZE; u32Count++)
-    {
-        I2DAT = u8DAT;
-        clr_SI;
-        while (!SI);                            //Check SI set or not
-        if (I2STAT != 0x28)              
-            I2C_Error();
-
-        u8DAT = ~u8DAT;        
-    }
 
 //--------------------------------------------------------------------------------------------
 //----  Waitting the ready for I2C write------------------------------------------------------
@@ -148,19 +138,6 @@ void I2C_Process(UINT8 u8DAT)
     if (I2STAT != 0x18)              
         I2C_Error();
 
-    /* Step10 */
-    I2DAT = 0x00;                               //address high for I2C EEPROM
-    clr_SI;
-    while (!SI);                                //Check SI set or not
-    if (I2STAT != 0x28)              
-        I2C_Error();
-
-    /* Step11 */
-    I2DAT = 0x00;                               //address low for I2C EEPROM
-    clr_SI;
-    while (!SI);                                //Check SI set or not
-    if (I2STAT != 0x28)              
-        I2C_Error();
 
     /* Step12 */
     /* Repeated START */
@@ -172,26 +149,31 @@ void I2C_Process(UINT8 u8DAT)
     
     /* Step13 */
     clr_STA;                                    //STA needs to be cleared after START codition is generated
-    I2DAT = (EEPROM_SLA | EEPROM_RD);
+    I2DAT = (EEPROM_SLA | EEPROM_RD);					//6 axel ID
     clr_SI;
     while (!SI);                                //Check SI set or not
     if (I2STAT != 0x40)              
         I2C_Error();
     
     /* Step14 */
-    for (u32Count = 0; u32Count <PAGE_SIZE-1; u32Count++)
-    {
+
         set_AA;
         clr_SI;        
         while (!SI);                            //Check SI set or not
+	
+	I2DAT = (0x12);					//6 axel ID
+    clr_SI;
 
         if (I2STAT != 0x50)              
-            I2C_Error();
+ //           I2C_Error();
+		
+	I2DAT = (0x12);					//6 axel ID
+    clr_SI;
+
+        if (I2STAT != 0x50)              
+ //           I2C_Error();
         
-        if (I2DAT != u8DAT)             
-            I2C_Error();
-        u8DAT = ~u8DAT; 
-    } 
+    
     
     /* Step15 */
     clr_AA;
@@ -214,10 +196,72 @@ void main(void)
     
     Set_All_GPIO_Quasi_Mode;	
     Init_I2C();                                 //initial I2C circuit
-    I2C_Process(0x55);                          /* I2C Master will send 0x55,0xAA,.... to slave */
+	
+	//Write
+	set_STA;
+    clr_SI;          
+    while (!SI);                                //Check SI set or not
+    if (I2STAT != 0x08)                         //Check status value after every step
+        I2C_Error();
+
+    /* Step9 */
+    I2DAT = (EEPROM_SLA | EEPROM_WR);
+    clr_STA;
+    clr_SI;
+    while (!SI);                                //Check SI set or not
+    if (I2STAT != 0x18)              
+
+
+    /* Step9 */
+    I2DAT = 0x12|0x80;
+    clr_STA;
+    clr_SI;
+    while (!SI);                                //Check SI set or not
+//    if (I2STAT != 0x18)       
+
+    I2DAT = 0x00|0x80;
+    clr_STA;
+    clr_SI;
+    while (!SI);                                //Check SI set or not
+//    if (I2STAT != 0x18)  	
+	
+	I2DAT = 0x12|0x80;
+    clr_STA;
+    clr_SI;
+    while (!SI);                                //Check SI set or not
+//    if (I2STAT != 0x18)         
+		
+	
+	
+	set_STA;                       
+    clr_SI;
+    while (!SI);                                //Check SI set or not
+    if (I2STAT != 0x10)                         //Check status value after every step
+
     
-    P0 = 0x00;
-    P3 = 0x00;
+    /* Step13 */
+    clr_STA;                                    //STA needs to be cleared after START codition is generated
+    I2DAT = (EEPROM_SLA | EEPROM_RD);					//6 axel ID
+    clr_SI;
+	set_AA;
+    while (!SI);                                //Check SI set or not
+    if (I2STAT != 0x40)              
+
+	I2DAT = 0x12|0x80;
+	clr_SI;
+
+	
+	I2DAT = 0x12|0x80;					//
+    clr_SI;         
+
+		
+
+	
+	
+//    I2C_Process(0x55);                          /* I2C Master will send 0x55,0xAA,.... to slave */
+//    
+//    P0 = 0x00;
+//    P3 = 0x00;
     
     while (1);
 /* =================== */
