@@ -1,0 +1,7 @@
+--c99 -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork -I .\CORE -I .\FWLIB\inc -I .\USER -I .\FUNCTIONS\inc -I .\LVGL -I .\LVGL\lvgl -I .\LVGL\LV_Driver -I .\LVGL\lvgl\examples -I .\LVGL\GUI_APP -I "..\2，标准例程-库函数版本\实验28 触摸屏实验\HARDWARE\TOUCH" -I ..\F407-LVGL7.8.1\GUI\lvgl
+-I.\RTE\_Learning
+-I"C:\Users\Daddy CHOU\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"
+-IC:\Keil_v5\ARM\CMSIS\Include
+-I"C:\Users\Daddy CHOU\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Device\Include"
+-D__UVISION_VERSION="530" -DSTM32F407xx -D_RTE_ -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER
+-o .\objects\stm32f4xx_ltdc.o --omf_browse .\objects\stm32f4xx_ltdc.crf --depend .\objects\stm32f4xx_ltdc.d --feedback ".\Objects\LVGL based projct.fed" "FWLIB\src\stm32f4xx_ltdc.c"

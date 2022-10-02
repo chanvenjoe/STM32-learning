@@ -13,7 +13,13 @@
 #include "dac.h"
 #include "dma.h"
 
+#define SEND_BUF_SIZE 80	//发送数据长度,最好等于sizeof(TEXT_TO_SEND)+2的整数倍.
+
+u8 SendBuff[SEND_BUF_SIZE];	//发送数据缓冲区
+const u8 TEXT_TO_SEND[]={"DMA->UART Experiment"};	 
+
 void ADC_DAC_Display(void);
+void LCD_Pre_display(void);
 	
 void led_set(u8 sta)
 {
@@ -43,73 +49,20 @@ int main(void)
 	ADC_Init_Config();
 	MDAC_Init();
 	TIM9_PWM_Init(255,0);//PWM DAC
-	MyDMA_Config(DMA2_Stream7,DMA_Channel_4, (u32)&USART1->DR
-	u8 lcd_id[12];				//存放LCD ID字符串
-	while(RNG_Init())
-	{
-		LCD_ShowString(Text_x,Text_Top_y,200,16,16, "RNG Init failed");
-		delay_ms(20);
-		LCD_ShowString(Text_x,Text_Top_y*1,200,16,16, "Rebooting");
-	}
-	LCD_ShowString(Text_x,Text_Top_y*0,200,16,16, "RNG Ready");
-	LCD_ShowString(Text_x,Text_Top_y*1,200,16,16, "Press Key0 to get a random number");
-
-	sprintf((char*)lcd_id,"LCD ID:%04x",lcddev.id);//将LCD ID打印到lcd_id数组。				 	
-	POINT_COLOR=BLACK; 
+	MyDMA_Config(DMA2_Stream7,DMA_Channel_4, (u32)&USART1->DR,(u32)SendBuff,SEND_BUF_SIZE);
+	LCD_Pre_display();
   	while(1) 
 	{	
 		ADC_DAC_Display();
-		
 	}
 }
 
 
-/**
-*******************下面注释掉的代码是通过 位带 操作实现IO口控制**************************************
-
-int main(void)
-{ 
- 
-	delay_init(168);		  //初始化延时函数
-	LED_Init();		        //初始化LED端口
-  while(1)
-	{
-     LED0=0;			  //LED0亮
-	   LED1=1;				//LED1灭
-		 delay_ms(500);
-		 LED0=1;				//LED0灭
-		 LED1=0;				//LED1亮
-		 delay_ms(500);
-	 }
-}
-**************************************************************************************************
- **/	
-	
-/**
-*******************下面注释掉的代码是通过 直接操作寄存器 方式实现IO口控制**************************************
-int main(void)
-{ 
- 
-	delay_init(168);		  //初始化延时函数
-	LED_Init();		        //初始化LED端口
-	while(1)
-	{
-     GPIOF->BSRRH=GPIO_Pin_9;//LED0亮
-	   GPIOF->BSRRL=GPIO_Pin_10;//LED1灭
-		 delay_ms(500);
-     GPIOF->BSRRL=GPIO_Pin_9;//LED0灭
-	   GPIOF->BSRRH=GPIO_Pin_10;//LED1亮
-		 delay_ms(500);
-
-	 }
- }	 
-**************************************************************************************************
-**/	
 void ADC_DAC_Display()
 {
+	static u16 adcx,pwmval=0;
 	u8 range;
 	double temp;
-	static u16 adcx,pwmval=0;
 	int adc = Get_ADC_Average(ADC1,ADC_Channel_5,20);
 	LCD_ShowString(Text_x,Text_Top_y*3,200,16,16,"ADC value:");
 	LCD_ShowxNum(134,Text_Top_y*3,adc,4,16,0);
@@ -137,8 +90,10 @@ void ADC_DAC_Display()
 	//DAC
 	
 	u8 key;
+	float pro=0;//proportion
 	static u16 dac_val=0;
 	key = GPIO_ReadInputDataBit(GPIOE,GPIO_Pin_4);
+	
 	if(key==0X00)
 	{
 		pwmval+=10;
@@ -153,7 +108,28 @@ void ADC_DAC_Display()
 		LCD_ShowString(10,Text_Top_y*12,200,16,16,"PWM DAC voltage:");
 		LCD_ShowNum(30+6*16,Text_Top_y*12,adcx,3,16);
 		LCD_ShowNum(30+10*16,Text_Top_y*12,temp,11,16);
-
+		
+		printf("\r\nDMA DATA:\r\n"); 	    
+		LCD_ShowString(10,Text_Top_y*13,200,16,16,"Start Transimit....");
+		LCD_ShowString(30,Text_Top_y*14,200,16,16,"   %") ;     //显示百分号       
+		USART_DMACmd(USART1,USART_DMAReq_Tx,ENABLE);  //使能串口1的DMA发送     
+		My_DMA_Enable(DMA2_Stream7,SEND_BUF_SIZE);     //开始一次DMA传输！	  
+		    //等待DMA传输完成，此时我们来做另外一些事，点灯
+		    //实际应用中，传输数据期间，可以执行另外的任务
+		while(1)
+		{
+			if(DMA_GetFlagStatus(DMA2_Stream7,DMA_FLAG_TCIF7)!=RESET)//等待DMA2_Steam7传输完成
+			{ 
+				DMA_ClearFlag(DMA2_Stream7,DMA_FLAG_TCIF7);//清除DMA2_Steam7传输完成标志
+				break; 
+			}
+			pro=DMA_GetCurrDataCounter(DMA2_Stream7);//得到当前还剩余多少个数据
+			pro=1-pro/SEND_BUF_SIZE;//得到百分比	  
+			pro*=100;      			    //扩大100倍
+			LCD_ShowNum(10,Text_Top_y*14,pro,3,16);	  
+		}			    
+		LCD_ShowNum(10,Text_Top_y*14,100,3,16);//显示100%	  
+		LCD_ShowString(30,Text_Top_y*13,200,16,16,"Transimit Finished!");//提示传送完成
 
 
 		if(pwmval>=250)
@@ -172,4 +148,44 @@ void ADC_DAC_Display()
 	LCD_ShowString(10,Text_Top_y*8,200,16,16,"DAC_VALUE:");
 	LCD_ShowxNum(216,Text_Top_y*8,dac_val,4,16,0);
 	delay_ms(300);
+}
+
+void LCD_Pre_display()
+{
+	u16 i;
+	u8 j,mask,t;
+	u8 lcd_id[12];				//存放LCD ID字符串
+	while(RNG_Init())
+	{
+		LCD_ShowString(Text_x,Text_Top_y,200,16,16, "RNG Init failed");
+		delay_ms(20);
+		LCD_ShowString(Text_x,Text_Top_y*1,200,16,16, "Rebooting");
+	}
+	LCD_ShowString(Text_x,Text_Top_y*0,200,16,16, "RNG Ready");
+	LCD_ShowString(Text_x,Text_Top_y*1,200,16,16, "Press Key0 to get a random number");
+	sprintf((char*)lcd_id,"LCD ID:%04x",lcddev.id);//将LCD ID打印到lcd_id数组。	
+	POINT_COLOR=BLACK; 
+	//DMA-uart
+	j=sizeof(TEXT_TO_SEND);	   
+	for(i=0;i<SEND_BUF_SIZE;i++)//填充ASCII字符集数据
+    {
+		if(t>=j)//加入换行符
+		{
+			if(mask)
+			{
+				SendBuff[i]=0x0a;
+				t=0;
+			}else 
+			{
+				SendBuff[i]=0x0d;
+				mask++;
+			}	
+		}else//复制TEXT_TO_SEND语句
+		{
+			mask=0;
+			SendBuff[i]=TEXT_TO_SEND[t];
+			t++;
+		}   	   
+    }
+	
 }

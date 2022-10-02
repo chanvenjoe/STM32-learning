@@ -1,0 +1,7 @@
+-c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\HARDWARE\LCD -I ..\HARDWARE\KEY -I ..\HARDWARE\DMA -I ..\FWLIB\inc
+-I.\RTE\_DMA
+-I"C:\Users\Daddy CHOU\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"
+-IC:\Keil_v5\ARM\CMSIS\Include
+-I"C:\Users\Daddy CHOU\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Device\Include"
+-D__UVISION_VERSION="530" -DSTM32F407xx -D_RTE_ -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER
+-o ..\obj\stm32f4xx_it.o --omf_browse ..\obj\stm32f4xx_it.crf --depend ..\obj\stm32f4xx_it.d --feedback "..\OBJ\DMA.fed" "stm32f4xx_it.c"
