@@ -22,7 +22,7 @@ const u8 TEXT_Buffer[]={"Explorer STM32F4 IIC TEST"};
 	
 int main(void)
 { 
-	u8 key;
+	u8 key,JJ;
 	u16 i=0;
 	u8 datatemp[SIZE];	
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);//设置系统中断优先级分组2
