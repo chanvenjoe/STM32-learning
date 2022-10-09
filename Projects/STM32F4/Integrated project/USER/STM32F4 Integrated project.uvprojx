@@ -7,10 +7,10 @@
 
   <Targets>
     <Target>
-      <TargetName>Learning</TargetName>
+      <TargetName>Integrated project</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5050041::5.06 update 6 (build 750)::.\ARMCC</pCCUsed>
+      <pCCUsed>5060750::V5.06 update 6 (build 750)::.\ARMCC</pCCUsed>
       <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
@@ -18,7 +18,7 @@
           <Vendor>STMicroelectronics</Vendor>
           <PackID>Keil.STM32F4xx_DFP.2.15.0</PackID>
           <PackURL>http://www.keil.com/pack/</PackURL>
-          <Cpu>IROM(0x08000000,0x100000) IRAM(0x20000000,0x20000) IRAM2(0x10000000,0x10000) CPUTYPE("Cortex-M4") FPU2 CLOCK(12000000) ELITTLE</Cpu>
+          <Cpu>IROM(0x08000000,0x100000) IRAM(0x20000000,0x20000) IRAM2(0x10000000,0x10000) CPUTYPE("Cortex-M4") FPU2 CLOCK(168000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
           <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD20000000 -FC1000 -FN1 -FF0STM32F4xx_1024 -FS08000000 -FL0100000 -FP0($$Device:STM32F407ZG$Flash\STM32F4xx_1024.FLM))</FlashDriverDll>
@@ -48,14 +48,14 @@
             <NotGenerated>0</NotGenerated>
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
-          <OutputDirectory>.\Objects\</OutputDirectory>
-          <OutputName>Reactive LED F407</OutputName>
+          <OutputDirectory>..\OBJ\</OutputDirectory>
+          <OutputName>STM32F4 Integrated project</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
           <DebugInformation>1</DebugInformation>
           <BrowseInformation>1</BrowseInformation>
-          <ListingPath>.\Listings\</ListingPath>
+          <ListingPath>..\OBJ\</ListingPath>
           <HexFormatSelection>1</HexFormatSelection>
           <Merge32K>0</Merge32K>
           <CreateBatchFile>0</CreateBatchFile>
@@ -133,12 +133,12 @@
             <UseExternalTool>0</UseExternalTool>
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
-            <Capability>0</Capability>
-            <DriverSelection>-1</DriverSelection>
+            <Capability>1</Capability>
+            <DriverSelection>4096</DriverSelection>
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2CM3.DLL</Flash2>
-          <Flash3></Flash3>
+          <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -185,6 +185,7 @@
             <uocXRam>0</uocXRam>
             <RvdsVP>2</RvdsVP>
             <RvdsMve>0</RvdsMve>
+            <RvdsCdeCp>0</RvdsCdeCp>
             <hadIRAM2>1</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -321,10 +322,10 @@
             <PlainCh>0</PlainCh>
             <Ropi>0</Ropi>
             <Rwpi>0</Rwpi>
-            <wLevel>2</wLevel>
+            <wLevel>0</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
-            <uC99>0</uC99>
+            <uC99>1</uC99>
             <uGnu>0</uGnu>
             <useXO>0</useXO>
             <v6Lang>1</v6Lang>
@@ -338,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F40_41xxx,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>.\CORE;.\FWLIB\inc;.\USER;.\FUNCTIONS\inc</IncludePath>
+              <IncludePath>..\FUNCTIONS\inc;..\FWLIB\inc;..\CORE;..\USER</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -351,7 +352,7 @@
             <NoWarn>0</NoWarn>
             <uSurpInc>0</uSurpInc>
             <useXO>0</useXO>
-            <uClangAs>0</uClangAs>
+            <ClangAsOpt>4</ClangAsOpt>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define></Define>
@@ -385,17 +386,17 @@
             <File>
               <FileName>main.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\USER\main.c</FilePath>
+              <FilePath>.\main.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_it.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\USER\stm32f4xx_it.c</FilePath>
+              <FilePath>.\stm32f4xx_it.c</FilePath>
             </File>
             <File>
               <FileName>system_stm32f4xx.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\USER\system_stm32f4xx.c</FilePath>
+              <FilePath>.\system_stm32f4xx.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -405,177 +406,233 @@
             <File>
               <FileName>misc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\FWLIB\src\misc.c</FilePath>
+              <FilePath>..\FWLIB\src\misc.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_adc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\FWLIB\src\stm32f4xx_adc.c</FilePath>
+              <FilePath>..\FWLIB\src\stm32f4xx_adc.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_can.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\FWLIB\src\stm32f4xx_can.c</FilePath>
+              <FilePath>..\FWLIB\src\stm32f4xx_can.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_crc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\FWLIB\src\stm32f4xx_crc.c</FilePath>
+              <FilePath>..\FWLIB\src\stm32f4xx_crc.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_cryp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\FWLIB\src\stm32f4xx_cryp.c</FilePath>
+              <FilePath>..\FWLIB\src\stm32f4xx_cryp.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_cryp_aes.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\FWLIB\src\stm32f4xx_cryp_aes.c</FilePath>
+              <FilePath>..\FWLIB\src\stm32f4xx_cryp_aes.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_cryp_des.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\FWLIB\src\stm32f4xx_cryp_des.c</FilePath>
+              <FilePath>..\FWLIB\src\stm32f4xx_cryp_des.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_cryp_tdes.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\FWLIB\src\stm32f4xx_cryp_tdes.c</FilePath>
+              <FilePath>..\FWLIB\src\stm32f4xx_cryp_tdes.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_dac.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\FWLIB\src\stm32f4xx_dac.c</FilePath>
+              <FilePath>..\FWLIB\src\stm32f4xx_dac.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_dbgmcu.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\FWLIB\src\stm32f4xx_dbgmcu.c</FilePath>
+              <FilePath>..\FWLIB\src\stm32f4xx_dbgmcu.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_dcmi.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\FWLIB\src\stm32f4xx_dcmi.c</FilePath>
+              <FilePath>..\FWLIB\src\stm32f4xx_dcmi.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\FWLIB\src\stm32f4xx_dma.c</FilePath>
+              <FilePath>..\FWLIB\src\stm32f4xx_dma.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_dma2d.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\FWLIB\src\stm32f4xx_dma2d.c</FilePath>
+              <FilePath>..\FWLIB\src\stm32f4xx_dma2d.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_exti.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\FWLIB\src\stm32f4xx_exti.c</FilePath>
+              <FilePath>..\FWLIB\src\stm32f4xx_exti.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_flash.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\FWLIB\src\stm32f4xx_flash.c</FilePath>
+              <FilePath>..\FWLIB\src\stm32f4xx_flash.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_flash_ramfunc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\FWLIB\src\stm32f4xx_flash_ramfunc.c</FilePath>
+              <FilePath>..\FWLIB\src\stm32f4xx_flash_ramfunc.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_fmc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FWLIB\src\stm32f4xx_fmc.c</FilePath>
+              <FileOption>
+                <CommonProperty>
+                  <UseCPPCompiler>2</UseCPPCompiler>
+                  <RVCTCodeConst>0</RVCTCodeConst>
+                  <RVCTZI>0</RVCTZI>
+                  <RVCTOtherData>0</RVCTOtherData>
+                  <ModuleSelection>0</ModuleSelection>
+                  <IncludeInBuild>0</IncludeInBuild>
+                  <AlwaysBuild>2</AlwaysBuild>
+                  <GenerateAssemblyFile>2</GenerateAssemblyFile>
+                  <AssembleAssemblyFile>2</AssembleAssemblyFile>
+                  <PublicsOnly>2</PublicsOnly>
+                  <StopOnExitCode>11</StopOnExitCode>
+                  <CustomArgument></CustomArgument>
+                  <IncludeLibraryModules></IncludeLibraryModules>
+                  <ComprImg>1</ComprImg>
+                </CommonProperty>
+                <FileArmAds>
+                  <Cads>
+                    <interw>2</interw>
+                    <Optim>0</Optim>
+                    <oTime>2</oTime>
+                    <SplitLS>2</SplitLS>
+                    <OneElfS>2</OneElfS>
+                    <Strict>2</Strict>
+                    <EnumInt>2</EnumInt>
+                    <PlainCh>2</PlainCh>
+                    <Ropi>2</Ropi>
+                    <Rwpi>2</Rwpi>
+                    <wLevel>0</wLevel>
+                    <uThumb>2</uThumb>
+                    <uSurpInc>2</uSurpInc>
+                    <uC99>2</uC99>
+                    <uGnu>2</uGnu>
+                    <useXO>2</useXO>
+                    <v6Lang>0</v6Lang>
+                    <v6LangP>0</v6LangP>
+                    <vShortEn>2</vShortEn>
+                    <vShortWch>2</vShortWch>
+                    <v6Lto>2</v6Lto>
+                    <v6WtE>2</v6WtE>
+                    <v6Rtti>2</v6Rtti>
+                    <VariousControls>
+                      <MiscControls></MiscControls>
+                      <Define></Define>
+                      <Undefine></Undefine>
+                      <IncludePath></IncludePath>
+                    </VariousControls>
+                  </Cads>
+                </FileArmAds>
+              </FileOption>
             </File>
             <File>
               <FileName>stm32f4xx_fsmc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\FWLIB\src\stm32f4xx_fsmc.c</FilePath>
+              <FilePath>..\FWLIB\src\stm32f4xx_fsmc.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\FWLIB\src\stm32f4xx_gpio.c</FilePath>
+              <FilePath>..\FWLIB\src\stm32f4xx_gpio.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hash.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\FWLIB\src\stm32f4xx_hash.c</FilePath>
+              <FilePath>..\FWLIB\src\stm32f4xx_hash.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hash_md5.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\FWLIB\src\stm32f4xx_hash_md5.c</FilePath>
+              <FilePath>..\FWLIB\src\stm32f4xx_hash_md5.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hash_sha1.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\FWLIB\src\stm32f4xx_hash_sha1.c</FilePath>
+              <FilePath>..\FWLIB\src\stm32f4xx_hash_sha1.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_i2c.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\FWLIB\src\stm32f4xx_i2c.c</FilePath>
+              <FilePath>..\FWLIB\src\stm32f4xx_i2c.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_iwdg.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\FWLIB\src\stm32f4xx_iwdg.c</FilePath>
+              <FilePath>..\FWLIB\src\stm32f4xx_iwdg.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_ltdc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\FWLIB\src\stm32f4xx_ltdc.c</FilePath>
+              <FilePath>..\FWLIB\src\stm32f4xx_ltdc.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_pwr.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\FWLIB\src\stm32f4xx_pwr.c</FilePath>
+              <FilePath>..\FWLIB\src\stm32f4xx_pwr.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_rcc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\FWLIB\src\stm32f4xx_rcc.c</FilePath>
+              <FilePath>..\FWLIB\src\stm32f4xx_rcc.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_rng.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\FWLIB\src\stm32f4xx_rng.c</FilePath>
+              <FilePath>..\FWLIB\src\stm32f4xx_rng.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_rtc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\FWLIB\src\stm32f4xx_rtc.c</FilePath>
+              <FilePath>..\FWLIB\src\stm32f4xx_rtc.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_sai.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\FWLIB\src\stm32f4xx_sai.c</FilePath>
+              <FilePath>..\FWLIB\src\stm32f4xx_sai.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_sdio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\FWLIB\src\stm32f4xx_sdio.c</FilePath>
+              <FilePath>..\FWLIB\src\stm32f4xx_sdio.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_spi.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\FWLIB\src\stm32f4xx_spi.c</FilePath>
+              <FilePath>..\FWLIB\src\stm32f4xx_spi.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_syscfg.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\FWLIB\src\stm32f4xx_syscfg.c</FilePath>
+              <FilePath>..\FWLIB\src\stm32f4xx_syscfg.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_tim.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\FWLIB\src\stm32f4xx_tim.c</FilePath>
+              <FilePath>..\FWLIB\src\stm32f4xx_tim.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_usart.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\FWLIB\src\stm32f4xx_usart.c</FilePath>
+              <FilePath>..\FWLIB\src\stm32f4xx_usart.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_wwdg.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\FWLIB\src\stm32f4xx_wwdg.c</FilePath>
+              <FilePath>..\FWLIB\src\stm32f4xx_wwdg.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -585,7 +642,7 @@
             <File>
               <FileName>startup_stm32f40_41xxx.s</FileName>
               <FileType>2</FileType>
-              <FilePath>.\CORE\startup_stm32f40_41xxx.s</FilePath>
+              <FilePath>..\CORE\startup_stm32f40_41xxx.s</FilePath>
             </File>
           </Files>
         </Group>
@@ -593,24 +650,150 @@
           <GroupName>FUNCTIONS</GroupName>
           <Files>
             <File>
+              <FileName>ADC.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FUNCTIONS\Src\ADC.c</FilePath>
+            </File>
+            <File>
+              <FileName>dac.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FUNCTIONS\Src\dac.c</FilePath>
+            </File>
+            <File>
               <FileName>delay.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\FUNCTIONS\delay\delay.c</FilePath>
+              <FilePath>..\FUNCTIONS\Src\delay.c</FilePath>
             </File>
             <File>
-              <FileName>sys.c</FileName>
+              <FileName>dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\FUNCTIONS\sys\sys.c</FilePath>
-            </File>
-            <File>
-              <FileName>usart.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\FUNCTIONS\usart\usart.c</FilePath>
+              <FilePath>..\FUNCTIONS\Src\dma.c</FilePath>
             </File>
             <File>
               <FileName>gpio_init.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\FUNCTIONS\led\gpio_init.c</FilePath>
+              <FilePath>..\FUNCTIONS\Src\gpio_init.c</FilePath>
+            </File>
+            <File>
+              <FileName>key.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FUNCTIONS\Src\key.c</FilePath>
+            </File>
+            <File>
+              <FileName>lcd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FUNCTIONS\Src\lcd.c</FilePath>
+            </File>
+            <File>
+              <FileName>LCD_init.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FUNCTIONS\Src\LCD_init.c</FilePath>
+              <FileOption>
+                <CommonProperty>
+                  <UseCPPCompiler>2</UseCPPCompiler>
+                  <RVCTCodeConst>0</RVCTCodeConst>
+                  <RVCTZI>0</RVCTZI>
+                  <RVCTOtherData>0</RVCTOtherData>
+                  <ModuleSelection>0</ModuleSelection>
+                  <IncludeInBuild>0</IncludeInBuild>
+                  <AlwaysBuild>2</AlwaysBuild>
+                  <GenerateAssemblyFile>2</GenerateAssemblyFile>
+                  <AssembleAssemblyFile>2</AssembleAssemblyFile>
+                  <PublicsOnly>2</PublicsOnly>
+                  <StopOnExitCode>11</StopOnExitCode>
+                  <CustomArgument></CustomArgument>
+                  <IncludeLibraryModules></IncludeLibraryModules>
+                  <ComprImg>1</ComprImg>
+                </CommonProperty>
+                <FileArmAds>
+                  <Cads>
+                    <interw>2</interw>
+                    <Optim>0</Optim>
+                    <oTime>2</oTime>
+                    <SplitLS>2</SplitLS>
+                    <OneElfS>2</OneElfS>
+                    <Strict>2</Strict>
+                    <EnumInt>2</EnumInt>
+                    <PlainCh>2</PlainCh>
+                    <Ropi>2</Ropi>
+                    <Rwpi>2</Rwpi>
+                    <wLevel>0</wLevel>
+                    <uThumb>2</uThumb>
+                    <uSurpInc>2</uSurpInc>
+                    <uC99>2</uC99>
+                    <uGnu>2</uGnu>
+                    <useXO>2</useXO>
+                    <v6Lang>0</v6Lang>
+                    <v6LangP>0</v6LangP>
+                    <vShortEn>2</vShortEn>
+                    <vShortWch>2</vShortWch>
+                    <v6Lto>2</v6Lto>
+                    <v6WtE>2</v6WtE>
+                    <v6Rtti>2</v6Rtti>
+                    <VariousControls>
+                      <MiscControls></MiscControls>
+                      <Define></Define>
+                      <Undefine></Undefine>
+                      <IncludePath></IncludePath>
+                    </VariousControls>
+                  </Cads>
+                </FileArmAds>
+              </FileOption>
+            </File>
+            <File>
+              <FileName>led.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FUNCTIONS\Src\led.c</FilePath>
+            </File>
+            <File>
+              <FileName>rng.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FUNCTIONS\Src\rng.c</FilePath>
+            </File>
+            <File>
+              <FileName>stbwaup.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FUNCTIONS\Src\stbwaup.c</FilePath>
+            </File>
+            <File>
+              <FileName>sys.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FUNCTIONS\Src\sys.c</FilePath>
+            </File>
+            <File>
+              <FileName>i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FUNCTIONS\i2c.c</FilePath>
+            </File>
+            <File>
+              <FileName>tcs34725.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\tcs34725.c</FilePath>
+            </File>
+            <File>
+              <FileName>WS2811.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FUNCTIONS\Src\WS2811.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>USMART</GroupName>
+          <Files>
+            <File>
+              <FileName>usmart_config.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FUNCTIONS\USMART\usmart_config.c</FilePath>
+            </File>
+            <File>
+              <FileName>usmart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FUNCTIONS\USMART\usmart.c</FilePath>
+            </File>
+            <File>
+              <FileName>usmart_str.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FUNCTIONS\USMART\usmart_str.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -623,5 +806,20 @@
     <components/>
     <files/>
   </RTE>
+
+  <LayerInfo>
+    <Layers>
+      <Layer>
+        <LayName>&lt;Project Info&gt;</LayName>
+        <LayDesc></LayDesc>
+        <LayUrl></LayUrl>
+        <LayKeys></LayKeys>
+        <LayCat></LayCat>
+        <LayLic></LayLic>
+        <LayTarg>0</LayTarg>
+        <LayPrjMark>1</LayPrjMark>
+      </Layer>
+    </Layers>
+  </LayerInfo>
 
 </Project>

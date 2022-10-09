@@ -129,14 +129,15 @@ void ADC_DAC_Display()
 		LCD_ShowString(30,Text_Top_y*14,200,16,16,"   %") ;     //显示百分号    
 		/*******Color sensor*********/
 		TCS34725_GetRawData(&rgb);
-		RGBtoHSL(&rgb,&hsl);
+		RGBtoHSL(&rgb,&hsl);	
 		printf("R=%d G=%d B=%d C=%d\r\n",rgb.r,rgb.g,rgb.b,rgb.c);
 		printf("H=%d S=%d L=%d\r\n",hsl.h,hsl.s,hsl.l);
+		color_hex = 0x00;
 		color_hex |= rgb.r; color_hex<<=8;
 		color_hex |= rgb.g; color_hex<<=8;
 		color_hex |= rgb.b;
-//		LCD_ShowString(10,Text_Top_y*15,200,16,16,"The color RGB value is:");
-//		LCD_ShowNum(30+10*16,Text_Top_y*15,rgb.r,11,16);
+		LCD_ShowString(10,Text_Top_y*15,200,16,16,"The color RGB value is:");
+		LCD_ShowNum(30+10*16,Text_Top_y*15,color_hex,11,16);
 		WS_ColorSet_LED(0,20, color_hex);
 		WS_Refresh();
 		USART_DMACmd(USART1,USART_DMAReq_Tx,ENABLE);  //使能串口1的DMA发送     

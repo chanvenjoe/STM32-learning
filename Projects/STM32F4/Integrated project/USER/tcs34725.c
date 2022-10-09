@@ -391,15 +391,27 @@ u16 TCS34725_GetChannelData(u8 reg)
 u8 TCS34725_GetRawData(COLOR_RGBC *rgbc)
 {
 	u8 status = TCS34725_STATUS_AVALID;
-	
+	float r,g,b,c;
 	TCS34725_Read(TCS34725_STATUS, &status, 1);
 	
 	if(status & TCS34725_STATUS_AVALID)
 	{
-		rgbc->c = TCS34725_GetChannelData(TCS34725_CDATAL);	
-		rgbc->r = TCS34725_GetChannelData(TCS34725_RDATAL);	
-		rgbc->g = TCS34725_GetChannelData(TCS34725_GDATAL);	
-		rgbc->b = TCS34725_GetChannelData(TCS34725_BDATAL);
+		c	= TCS34725_GetChannelData(TCS34725_CDATAL);//Read 2 bytes including high and low
+		rgbc->c = c;
+		r	= TCS34725_GetChannelData(TCS34725_RDATAL);
+		r = r/c;
+		r*=256;
+		rgbc->r = r;
+		
+		g	= TCS34725_GetChannelData(TCS34725_GDATAL);
+		g = g/c;
+		g*=256;
+		rgbc->g = g;
+		
+		b	= TCS34725_GetChannelData(TCS34725_BDATAL);
+		b = b/c;
+		b*=256;
+		rgbc->b = b;
 		return 1;
 	}
 	return 0;
