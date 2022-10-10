@@ -16,23 +16,27 @@
 #include "tcs34725.h"
 #include "ws2811.h"
 
-COLOR_RGBC rgb;
-COLOR_HSL  hsl;
-u32 color_hex;
-
-void delay_s(u32 i)
-{
-	while(i--);
-}
-
+/***************Define**************/
 #define SEND_BUF_SIZE 80	//发送数据长度,最好等于sizeof(TEXT_TO_SEND)+2的整数倍.
 
-u8 SendBuff[SEND_BUF_SIZE];	//发送数据缓冲区
-const u8 TEXT_TO_SEND[]={"DMA->UART Experiment"};	 
 
+
+/******Variables and constants******/
+u32 color_hex;
+u8 SendBuff[SEND_BUF_SIZE];	//发送数据缓冲区
+const u8 TEXT_TO_SEND[]={"DMA->UART Experiment"};
+
+
+/**************Structure************/
+COLOR_RGBC rgb;
+COLOR_HSL  hsl;
+
+
+
+/*********Function declair***********/
 void ADC_DAC_Display(void);
 void LCD_Pre_display(void);
-	
+
 void led_set(u8 sta)
 {
 	PFout(10)=sta;
@@ -43,6 +47,7 @@ void test_fun(void(*ledset)(u8),u8 sta)
 {
 	ledset(sta);
 }  
+/***********************************/
 
 int main(void)
 {

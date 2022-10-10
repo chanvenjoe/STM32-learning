@@ -188,7 +188,7 @@ void LCD_DisplayOn(void)
 	if(lcddev.id==0X9341||lcddev.id==0X6804||lcddev.id==0X5310||lcddev.id==0X1963)LCD_WR_REG(0X29);	//开启显示
 	else if(lcddev.id==0X5510)LCD_WR_REG(0X2900);	//开启显示
 	else LCD_WriteReg(0X07,0x0173); 				 	//开启显示
-}	 
+}
 //LCD关闭显示
 void LCD_DisplayOff(void)
 {	   

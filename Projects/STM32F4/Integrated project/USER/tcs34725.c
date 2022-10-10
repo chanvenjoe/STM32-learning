@@ -1,4 +1,5 @@
 #include "tcs34725.h"
+#include "lcd.h"
 /******************************************************************************/
 #define TCS34725_ADDRESS          (0x29)
 
@@ -66,6 +67,8 @@
 /******************************************************************************/
 extern void delay_s(u32 i);
 
+u16 color_fill;
+
 #define TCS_SDA_IN()  {GPIOB->MODER&=~(3<<(9*2));GPIOB->MODER|=0<<9*2;}	//PB9输入模式
 #define TCS_SDA_OUT() {GPIOB->MODER&=~(3<<(9*2));GPIOB->MODER|=1<<9*2;} //PB9输出模式
 #define TCS_SDA_READ  PBin(9)
@@ -79,6 +82,12 @@ extern void delay_s(u32 i);
 #define min3v(v1, v2, v3)   ((v1)>(v2)? ((v2)>(v3)?(v3):(v2)):((v1)>(v3)?(v3):(v1)))
 
 /******************************************************************************/
+
+void delay_s(u32 i)
+{
+	while(i--);
+}
+
 void TCS34725_I2C_Init()
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
@@ -396,22 +405,37 @@ u8 TCS34725_GetRawData(COLOR_RGBC *rgbc)
 	
 	if(status & TCS34725_STATUS_AVALID)
 	{
+//		rgbc->c = TCS34725_GetChannelData(TCS34725_CDATAL);
+//		rgbc->r = TCS34725_GetChannelData(TCS34725_RDATAL);
+//		rgbc->g	= TCS34725_GetChannelData(TCS34725_GDATAL);
+//		rgbc->b	= TCS34725_GetChannelData(TCS34725_BDATAL);
+		
 		c	= TCS34725_GetChannelData(TCS34725_CDATAL);//Read 2 bytes including high and low
 		rgbc->c = c;
 		r	= TCS34725_GetChannelData(TCS34725_RDATAL);
 		r = r/c;
-		r*=256;
+		r*=255;
 		rgbc->r = r;
 		
 		g	= TCS34725_GetChannelData(TCS34725_GDATAL);
 		g = g/c;
-		g*=256;
+		g*=255;
 		rgbc->g = g;
 		
 		b	= TCS34725_GetChannelData(TCS34725_BDATAL);
 		b = b/c;
-		b*=256;
+		b*=255;
 		rgbc->b = b;
+		
+		color_fill |= (u8)(r/255*32);
+		color_fill<<=6;
+		
+		color_fill |= (u8)(g/255*64);
+		color_fill<<=5;
+		
+		color_fill |= (u8)(b/255*32);
+		
+		LCD_Fill(80,300,280,480, color_fill);
 		return 1;
 	}
 	return 0;

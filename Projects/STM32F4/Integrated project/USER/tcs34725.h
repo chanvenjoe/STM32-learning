@@ -19,6 +19,7 @@ typedef struct{
 u8 TCS34725_Init(void);
 u8 TCS34725_GetRawData(COLOR_RGBC *rgbc);
 void RGBtoHSL(COLOR_RGBC *Rgb, COLOR_HSL *Hsl);
+void delay_s(u32 i);
 
 
 
