@@ -13,10 +13,10 @@
 
 #define COMMUTATION_TIMEOUT 5000
 
-#define HALL_PORT           GPIOA
-#define HALL_A_PIN          GPIO_Pin_0
-#define HALL_B_PIN          GPIO_Pin_1
-#define HALL_C_PIN          GPIO_Pin_2
+#define BEMF_PORT           GPIOA
+#define BEMF_A_PIN          GPIO_Pin_0
+#define BEMF_B_PIN          GPIO_Pin_1
+#define BEMF_C_PIN          GPIO_Pin_2
 
 
 

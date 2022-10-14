@@ -13,6 +13,9 @@ typedef struct
     uint16 current_bus_filter;
     uint16 current_a;
     uint16 current_b;
+	uint16 bemf_a;
+	uint16 bemf_b;
+	uint16 bemf_c;
 }adc_struct; 	
 
 extern adc_struct adc_information; 			

@@ -4,6 +4,7 @@
 #include "motor.h"
 #include "gpio.h"
 #include "hall.h"
+#include "adc.h"
 
 
 
@@ -49,14 +50,17 @@ uint16 commutation_delay_ratio = 6; //换相延时时间 = commutation_delay_ratio*com
 //-------------------------------------------------------------------------------------------------------------------
 void read_hall_value(void)
 {
-	uint8 hall_a;
-	uint8 hall_b;
-	uint8 hall_c;
+	adc_information.bemf_a = ADC1->ADDR0;
+	adc_information.bemf_b = ADC1->ADDR1;
+	adc_information.bemf_c = ADC1->ADDR2;
+//	uint16 hall_a;
+//	uint16 hall_b;
+//	uint16 hall_c;
 	
-	hall_a = GPIO_ReadInputDataBit(HALL_PORT, HALL_A_PIN);
-	hall_b = GPIO_ReadInputDataBit(HALL_PORT, HALL_B_PIN);
-	hall_c = GPIO_ReadInputDataBit(HALL_PORT, HALL_C_PIN);
-	hall_value_now = hall_a*4 + hall_b*2 + hall_c; 
+//	hall_a = GPIO_ReadInputDataBit(BEMF_PORT, BEMF_A_PIN);
+//	hall_b = GPIO_ReadInputDataBit(BEMF_PORT, BEMF_B_PIN);
+//	hall_c = GPIO_ReadInputDataBit(BEMF_PORT, BEMF_C_PIN);
+//	hall_value_now = hall_a*4 + hall_b*2 + hall_c; 
 }
 
 //-------------------------------------------------------------------------------------------------------------------
@@ -167,9 +171,13 @@ void hall_init(void)
 	
 	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE); 
     
-    GPIO_InitStructure.GPIO_Pin  =  HALL_A_PIN | HALL_B_PIN | HALL_C_PIN;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;
-	GPIO_Init(HALL_PORT, &GPIO_InitStructure);
+    GPIO_InitStructure.GPIO_Pin  =  BEMF_A_PIN | BEMF_B_PIN | BEMF_C_PIN;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;
+	GPIO_Init(BEMF_PORT, &GPIO_InitStructure);
+	
+	ADC_RegularChannelConfig(ADC1, 0, 4, ADC_SampleTime_7_5Cycles); //BEMF of Phase A B C
+	ADC_RegularChannelConfig(ADC1, 1, 5, ADC_SampleTime_7_5Cycles);
+	ADC_RegularChannelConfig(ADC1, 2, 6, ADC_SampleTime_7_5Cycles);
     
     //读取一下当前的霍尔值
     read_hall_value();

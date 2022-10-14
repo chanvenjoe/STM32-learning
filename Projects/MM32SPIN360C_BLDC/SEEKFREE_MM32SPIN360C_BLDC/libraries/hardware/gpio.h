@@ -5,14 +5,14 @@
 
 
 
-#define LED_RUN_PORT        GPIOC
-#define LED_RUN_PIN         GPIO_Pin_15
+//#define LED_RUN_PORT        GPIOC
+//#define LED_RUN_PIN         GPIO_Pin_15
 
-#define LED_FAULT_PORT      GPIOC
-#define LED_FAULT_PIN       GPIO_Pin_14
+//#define LED_FAULT_PORT      GPIOC
+//#define LED_FAULT_PIN       GPIO_Pin_14
 
 #define LED_EN_PORT         GPIOB
-#define LED_EN_PIN          GPIO_Pin_13
+#define LED_EN_PIN          GPIO_Pin_14
 
 
 

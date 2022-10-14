@@ -19,7 +19,7 @@ void adc_init(void)
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;		                    //ADC引脚需要设置为模拟输入
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
     
-    GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_2 | GPIO_Pin_10 | GPIO_Pin_15;
+    GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_2 | GPIO_Pin_10 | GPIO_Pin_15;	//Phase A current Phase C current Battery voltage
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;		
 	GPIO_Init(GPIOB, &GPIO_InitStructure);
 	
@@ -46,7 +46,7 @@ void adc_init(void)
 	ADC_Init(ADC2, &ADC_InitStructure);
 	ADC_Cmd(ADC2, ENABLE);//使能ADC
 
-    ADC_RegularChannelConfig(ADC2, 1, 0, ADC_SampleTime_7_5Cycles);     //B10引脚 检测B相电流
+    ADC_RegularChannelConfig(ADC2, 1, 0, ADC_SampleTime_7_5Cycles);     //Vbat
     ADC_ExternalTrigConvCmd(ADC2, ENABLE);              //ADC外部触发使能
     
 	ADC_ITConfig(ADC1,ADC_IT_EOC, ENABLE);              //使能ADC中断

@@ -14,7 +14,7 @@
 void uart_init(uint32 baudrate)
 {
     
-    RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOD, ENABLE);
+    RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOD, ENABLE);//PD0 PD1
 
     GPIO_PinAFConfig(UART_PORT, UART_TX_AFPIN, GPIO_AF_3);
     GPIO_PinAFConfig(UART_PORT, UART_RX_AFPIN, GPIO_AF_3);
@@ -27,7 +27,7 @@ void uart_init(uint32 baudrate)
     GPIO_Init(UART_PORT, &GPIO_InitStructure);
 
     GPIO_InitStructure.GPIO_Pin = UART_RX_PIN;
-    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;// In pull up
     GPIO_Init(UART_PORT, &GPIO_InitStructure);
 
     
