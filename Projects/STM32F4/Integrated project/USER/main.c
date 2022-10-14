@@ -15,12 +15,14 @@
 #include "i2c.h"
 #include "tcs34725.h"
 #include "ws2811.h"
+#include "w25qxx.h" 
+#include "led.h"
 
 /***************Define**************/
 #define SEND_BUF_SIZE 80	//发送数据长度,最好等于sizeof(TEXT_TO_SEND)+2的整数倍.
-
-
-
+const u8 TEXT_Buffer[]={"Explorer STM32F4 SPI TEST"};
+#define SIZE sizeof(TEXT_Buffer)	
+u32 FLASH_SIZE = 16*1024*1024;	//FLASH 大小为16字节
 /******Variables and constants******/
 u32 color_hex;
 u8 SendBuff[SEND_BUF_SIZE];	//发送数据缓冲区
@@ -69,7 +71,9 @@ int main(void)
 	MyDMA_Config(DMA2_Stream7,DMA_Channel_4, (u32)&USART1->DR,(u32)SendBuff,SEND_BUF_SIZE);
 //	MyI2C_Init();
 	TCS34725_Init();
+	W25QXX_Init();
 	LCD_Pre_display();
+
   	while(1) 
 	{	
 		ADC_DAC_Display();
@@ -83,6 +87,7 @@ void ADC_DAC_Display()
 	u8 range;
 	double temp;
 	u8 key;
+	u8 datatemp[SIZE];
 	float pro=0;//proportion
 	static u16 dac_val=0;
 	int adc = Get_ADC_Average(ADC1,ADC_Channel_5,20);
@@ -152,7 +157,7 @@ void ADC_DAC_Display()
 		while(1)
 		{
 			if(DMA_GetFlagStatus(DMA2_Stream7,DMA_FLAG_TCIF7)!=RESET)//等待DMA2_Steam7传输完成
-			{ 
+			{
 				DMA_ClearFlag(DMA2_Stream7,DMA_FLAG_TCIF7);//清除DMA2_Steam7传输完成标志
 				break; 
 			}
@@ -163,6 +168,14 @@ void ADC_DAC_Display()
 		}			    
 		LCD_ShowNum(10,Text_Top_y*14,100,3,16);//显示100%	  
 		LCD_ShowString(30,Text_Top_y*13,200,16,16,"Transimit Finished!");//提示传送完成
+		
+		LCD_ShowString(30,Text_Top_y*17,200,16,16,"Start Writing W25Q128....");
+		W25QXX_Write((u8*)TEXT_Buffer,FLASH_SIZE-100,SIZE);		//从倒数第100个地址处开始,写入SIZE长度的数据
+		LCD_ShowString(30,Text_Top_y*17,200,16,16,"W25Q128 Write Finished!");	//提示传送完成
+
+		LCD_ShowString(30,Text_Top_y*18,200,16,16,"Start Read W25Q128.... ");
+		W25QXX_Read(datatemp,FLASH_SIZE-100,SIZE);					//从倒数第100个地址处开始,读出SIZE个字节
+		LCD_ShowString(30+8*16,Text_Top_y*18,200,16,16,datatemp);					//显示读到的字符串
 
 
 		if(pwmval>=250)
@@ -180,6 +193,7 @@ void ADC_DAC_Display()
 	
 	LCD_ShowString(10,Text_Top_y*8,200,16,16,"DAC_VALUE:");
 	LCD_ShowxNum(216,Text_Top_y*8,dac_val,4,16,0);
+	
 	delay_ms(300);
 }
 
@@ -197,6 +211,7 @@ void LCD_Pre_display()
 	LCD_ShowString(Text_x,Text_Top_y*0,200,16,16, "RNG Ready");
 	LCD_ShowString(Text_x,Text_Top_y*1,200,16,16, "Press Key0 to get a random number");
 	sprintf((char*)lcd_id,"LCD ID:%04x",lcddev.id);//将LCD ID打印到lcd_id数组。	
+	LCD_ShowString(Text_x,Text_Top_y*16,200,16,16,"W25Q128 Ready!"); 
 	POINT_COLOR=BLACK; 
 	//DMA-uart
 	j=sizeof(TEXT_TO_SEND);	   

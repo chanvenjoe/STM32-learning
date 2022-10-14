@@ -775,6 +775,16 @@
               <FileType>1</FileType>
               <FilePath>..\FUNCTIONS\Src\WS2811.c</FilePath>
             </File>
+            <File>
+              <FileName>spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FUNCTIONS\Src\spi.c</FilePath>
+            </File>
+            <File>
+              <FileName>w25qxx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FUNCTIONS\Src\w25qxx.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
