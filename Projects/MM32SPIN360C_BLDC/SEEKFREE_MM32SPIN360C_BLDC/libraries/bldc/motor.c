@@ -258,7 +258,7 @@ void tim2_pwm_init(void)
 
 //-------------------------------------------------------------------------------------------------------------------
 //  @brief      电机使能状态查询
-//  @param      frequency   需要设置的频率 
+//  @param      frequency   需要设置的频率
 //  @return     void					
 //  @since      
 //-------------------------------------------------------------------------------------------------------------------
@@ -274,7 +274,7 @@ void tim2_pwm_frequency(uint16 frequency)
     {
         speed_out_period = 96000000/8/frequency;      //计算频率的周期值
         TIM_SetAutoreload(TIM2, speed_out_period);    //设置周期值
-        TIM_SetCompare2(TIM2, speed_out_period/2);    //设置占空比 
+        TIM_SetCompare2(TIM2, speed_out_period/4);    //设置占空比 
     }
 }
 
@@ -368,6 +368,26 @@ void motor_information_out_init(void)
 	GPIO_Init(MOTOR_EN_STATUS_PORT, &GPIO_InitStructure);
 }
 
+void led_wins_ctr_init()
+{
+	GPIO_InitTypeDef  GPIO_InitStructure;
+	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOB|RCC_AHBPeriph_GPIOC|RCC_AHBPeriph_GPIOD, ENABLE); 
+	
+	GPIO_InitStructure.GPIO_Pin  =  GPIO_Pin_13;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+	GPIO_Init(GPIOB, &GPIO_InitStructure);
+	
+	GPIO_InitStructure.GPIO_Pin  =  GPIO_Pin_14|GPIO_Pin_15;
+	GPIO_Init(GPIOC, &GPIO_InitStructure);
+	
+	GPIO_InitStructure.GPIO_Pin  =  GPIO_Pin_14|GPIO_Pin_2;
+	GPIO_Init(GPIOD, &GPIO_InitStructure);
+	
+	GPIO_ResetBits(GPIOB,GPIO_Pin_13);
+	GPIO_ResetBits(GPIOC,GPIO_Pin_14|GPIO_Pin_15);
+	GPIO_ResetBits(GPIOD,GPIO_Pin_2);
+}
 //-------------------------------------------------------------------------------------------------------------------
 //  @brief      电机速度曲线初始化
 //  @param      void 

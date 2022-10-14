@@ -20,6 +20,7 @@ extern int16 period, duty_low, duty_high;
 
 void pwm_input_init(void);
 uint8 pwm_dir_get(void);
+void Motor_swit_init(void);
 
 
 

@@ -32,5 +32,5 @@ extern uint32 commutation_time_sum;
 
 extern void scan_hall_status(void);
 extern void read_hall_value(void);
-extern void hall_init(void);
+extern void bemf_det_init(void);
 #endif

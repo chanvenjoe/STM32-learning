@@ -21,6 +21,9 @@
 #define MOTOR_EN_STATUS_PORT    GPIOB
 #define MOTOR_EN_STATUS_PIN     GPIO_Pin_14
 
+//Define 4 DC motors IO
+#define LED2W1_OUT_PORT			GPIOC
+
 
 
 
@@ -113,6 +116,7 @@ void motor_speed_out(void);
 void motor_dir_out(void);
 void motor_en(void);
 void motor_information_out_init(void);
+void led_wins_ctr_init(void);
 
 
 

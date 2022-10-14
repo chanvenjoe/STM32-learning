@@ -165,7 +165,7 @@ void scan_hall_status(void)
 	}
 }
 
-void hall_init(void)
+void bemf_det_init(void)
 {
     GPIO_InitTypeDef  GPIO_InitStructure;
 	

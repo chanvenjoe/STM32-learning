@@ -9,8 +9,17 @@ float duty_cycle;
 uint8 duty_flag;//当前占空比是否有效 1：有效  0；无效
 int16 period, duty_low, duty_high;
 
-
-
+//Using ESP8266 connector for enable switch RX/TX
+void Motor_swit_init(void)
+{
+	GPIO_InitTypeDef GPIO_InitStructure;
+	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOD, ENABLE);
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0|GPIO_Pin_1;      //PWM输入捕获引脚
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPD;
+    GPIO_Init(GPIOD, &GPIO_InitStructure);
+}
+	
+	
 void pwm_input_init(void)
 {
     GPIO_InitTypeDef GPIO_InitStructure;
