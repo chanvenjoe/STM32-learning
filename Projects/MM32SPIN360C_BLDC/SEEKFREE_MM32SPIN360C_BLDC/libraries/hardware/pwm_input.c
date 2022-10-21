@@ -22,17 +22,17 @@ void Motor_swit_init(void)
 	
 void pwm_input_init(void)
 {
-    GPIO_InitTypeDef GPIO_InitStructure;
+//    GPIO_InitTypeDef GPIO_InitStructure;
 
-    RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
-    GPIO_PinAFConfig(MOTOR_PWM_PORT, GPIO_PinSource10, GPIO_AF_6);
-    GPIO_InitStructure.GPIO_Pin = MOTOR_PWM_PIN;      //PWM输入捕获引脚
-    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPD;
-    GPIO_Init(MOTOR_PWM_PORT, &GPIO_InitStructure);
-    
-    GPIO_InitStructure.GPIO_Pin = MOTOR_DIR_PIN;       //方向引脚 引脚为低电平时电机正转，为高电平是电机反转
-    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPD;
-    GPIO_Init(MOTOR_DIR_PORT, &GPIO_InitStructure);
+//    RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
+//    GPIO_PinAFConfig(MOTOR_PWM_PORT, GPIO_PinSource10, GPIO_AF_6);
+//    GPIO_InitStructure.GPIO_Pin = MOTOR_PWM_PIN;      //PWM输入捕获引脚
+//    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPD;
+//    GPIO_Init(MOTOR_PWM_PORT, &GPIO_InitStructure);		//PA10 SDA
+//    
+//    GPIO_InitStructure.GPIO_Pin = MOTOR_DIR_PIN;       //方向引脚 引脚为低电平时电机正转，为高电平是电机反转
+//    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPD;
+//    GPIO_Init(MOTOR_DIR_PORT, &GPIO_InitStructure);
     
     
     NVIC_InitTypeDef NVIC_InitStructure;

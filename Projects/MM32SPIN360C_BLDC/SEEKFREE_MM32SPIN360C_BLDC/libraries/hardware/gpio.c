@@ -46,7 +46,7 @@ void led_init(void)
 //	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
 //	GPIO_Init(LED_FAULT_PORT, &GPIO_InitStructure);
     
-    GPIO_InitStructure.GPIO_Pin  =  LED_EN_PIN;
+    GPIO_InitStructure.GPIO_Pin  =  LED_EN_PIN; //PB14
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_10MHz;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
 	GPIO_Init(LED_EN_PORT, &GPIO_InitStructure);

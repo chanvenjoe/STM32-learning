@@ -16,7 +16,7 @@ void tim1_complementary_pwm(uint16 period,uint8 dead_time)
 
     //break信号输入引脚
     GPIO_InitStructure.GPIO_Pin  =  GPIO_Pin_11;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPD;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;//GPIO_Mode_IPD;
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
 	
 	GPIO_PinAFConfig(GPIOA, GPIO_PinSource11, GPIO_AF_6);
@@ -32,7 +32,7 @@ void tim1_complementary_pwm(uint16 period,uint8 dead_time)
 	GPIO_PinAFConfig(GPIOB, GPIO_PinSource3, GPIO_AF_7);
 	
 	//下桥引脚初始化为IO
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_15;
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_15;								//
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;						
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
@@ -90,7 +90,7 @@ void tim1_complementary_pwm(uint16 period,uint8 dead_time)
 	TIM_BDTRInitStruct.TIM_Break     = TIM_Break_Enable;                    //刹车使能
 	TIM_BDTRInitStruct.TIM_BreakPolarity   = TIM_BreakPolarity_High;        //刹车极性为高，高电平的时候刹车
 	TIM_BDTRInitStruct.TIM_AutomaticOutput = TIM_AutomaticOutput_Enable;    //当刹车信号无效的时候自动开启输出
-	TIM_BDTRConfig(TIM1, &TIM_BDTRInitStruct); 
+	TIM_BDTRConfig(TIM1, &TIM_BDTRInitStruct);								//PA11 as charge detection in the schematic
 
 	TIM_ARRPreloadConfig(TIM1, ENABLE);    		//使能自动重装载
     
