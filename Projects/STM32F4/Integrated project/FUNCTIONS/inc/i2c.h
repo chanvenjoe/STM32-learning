@@ -8,7 +8,22 @@
 
 #define I2C_SCL 	PBout(8)
 #define I2C_SDA		PBin(9)
+
 #define SDA_READ 	PBin(9)
+
+#define I2C_SCLH	GPIO_SetBits(GPIOB,GPIO_Pin_8)
+#define I2C_SCLL	GPIO_ResetBits(GPIOB,GPIO_Pin_8)
+#define I2C_SDAH	GPIO_SetBits(GPIOB,GPIO_Pin_9)
+#define I2C_SDAL	GPIO_ResetBits(GPIOB,GPIO_Pin_9)
+
+#define TCS_SDA_IN()  {GPIOB->MODER&=~(3<<(9*2));GPIOB->MODER|=0<<9*2;}	//PB9输入模式
+#define TCS_SDA_OUT() {GPIOB->MODER&=~(3<<(9*2));GPIOB->MODER|=1<<9*2;} //PB9输出模式
+#define TCS_SDA_READ  PBin(9)
+
+#define TCS_SCL_H     GPIO_SetBits(GPIOB,GPIO_Pin_8)
+#define TCS_SCL_L     GPIO_ResetBits(GPIOB,GPIO_Pin_8)
+#define TCS_SDA_H     GPIO_SetBits(GPIOB,GPIO_Pin_9)
+#define TCS_SDA_L     GPIO_ResetBits(GPIOB,GPIO_Pin_9)
 
 
 

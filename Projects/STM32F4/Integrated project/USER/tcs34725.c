@@ -1,5 +1,6 @@
 #include "tcs34725.h"
 #include "lcd.h"
+#include "i2c.h"
 /******************************************************************************/
 #define TCS34725_ADDRESS          (0x29)
 
@@ -92,7 +93,7 @@ void TCS34725_I2C_Init()
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);
-	
+
 	GPIO_InitStructure.GPIO_Pin 	= GPIO_Pin_8|GPIO_Pin_9;
 	GPIO_InitStructure.GPIO_Mode 	= GPIO_Mode_OUT;
 	GPIO_InitStructure.GPIO_OType	= GPIO_OType_PP;
@@ -116,8 +117,8 @@ void TCS34725_I2C_Start()
 	TCS_SCL_L;
 }
 /*********************************************/
-void TCS34725_I2C_Stop()
-{
+void TCS34725_I2C_Stop()   
+{						   
 	TCS_SDA_OUT();
 	TCS_SCL_L;
 	TCS_SDA_L;
@@ -132,7 +133,7 @@ void TCS34725_I2C_Stop()
 u8 TCS34725_I2C_Wait_ACK()
 {
 	u32 t=0;
-	
+
 	TCS_SDA_IN();//SDA设置为输入  
 	TCS_SDA_H; 
 	delay_s(10);//delay_us(1);
@@ -231,13 +232,14 @@ u8 TCS34725_I2C_Read_Byte(u8 ack)
 void TCS34725_I2C_Write(u8 slaveAddress, u8* dataBuffer,u8 bytesNumber, u8 stopBit)
 {
 	u8 i = 0;
-	
+
 	TCS34725_I2C_Start();
-	TCS34725_I2C_Send_Byte((slaveAddress << 1) | 0x00);	   //发送从机地址写命令
+	I2C_Send_Byte(TCS34725_ADDRESS<<1|0x00);//Write
+	//TCS34725_I2C_Send_Byte((slaveAddress << 1) | 0x00);	   //发送从机地址写命令
 	TCS34725_I2C_Wait_ACK();
 	for(i = 0; i < bytesNumber; i++)
 	{
-		TCS34725_I2C_Send_Byte(*(dataBuffer + i));
+		TCS34725_I2C_Send_Byte(TCS34725_ID|TCS34725_COMMAND_BIT);
 		TCS34725_I2C_Wait_ACK();
 	}
 	if(stopBit == 1) TCS34725_I2C_Stop();
@@ -255,7 +257,7 @@ void TCS34725_I2C_Write(u8 slaveAddress, u8* dataBuffer,u8 bytesNumber, u8 stopB
 void TCS34725_I2C_Read(u8 slaveAddress, u8* dataBuffer, u8 bytesNumber, u8 stopBit)
 {
 	u8 i = 0;
-	
+
 	TCS34725_I2C_Start();
 	TCS34725_I2C_Send_Byte((slaveAddress << 1) | 0x01);	   //发送从机地址读命令
 	TCS34725_I2C_Wait_ACK();
@@ -307,7 +309,7 @@ void TCS34725_Write(u8 subAddr, u8* dataBuffer, u8 bytesNumber)
 void TCS34725_Read(u8 subAddr, u8* dataBuffer, u8 bytesNumber)
 {
 	subAddr |= TCS34725_COMMAND_BIT;
-	
+
 	TCS34725_I2C_Write(TCS34725_ADDRESS, (u8*)&subAddr, 1, 0);
 	TCS34725_I2C_Read(TCS34725_ADDRESS, dataBuffer, bytesNumber, 1);
 }
@@ -337,7 +339,7 @@ void TCS34725_SetGain(u8 gain)
 void TCS34725_Enable(void)
 {
 	u8 cmd = TCS34725_ENABLE_PON;
-	
+
 	TCS34725_Write(TCS34725_ENABLE, &cmd, 1);
 	cmd = TCS34725_ENABLE_PON | TCS34725_ENABLE_AEN;
 	TCS34725_Write(TCS34725_ENABLE, &cmd, 1);
@@ -351,7 +353,7 @@ void TCS34725_Enable(void)
 void TCS34725_Disable(void)
 {
 	u8 cmd = 0;
-	
+
 	TCS34725_Read(TCS34725_ENABLE, &cmd, 1);
 	cmd = cmd & ~(TCS34725_ENABLE_PON | TCS34725_ENABLE_AEN);
 	TCS34725_Write(TCS34725_ENABLE, &cmd, 1);
@@ -364,7 +366,7 @@ void TCS34725_Disable(void)
 u8 TCS34725_Init(void)
 {
 	u8 id=0;
-	
+
 	TCS34725_I2C_Init(); 
 	TCS34725_Read(TCS34725_ID, &id, 1);  //TCS34725 的 ID 是 0x44 可以根据这个来判断是否成功连接,0x4D是TCS34727;
 	if(id==0x4D | id==0x44)
@@ -402,7 +404,7 @@ u8 TCS34725_GetRawData(COLOR_RGBC *rgbc)
 	u8 status = TCS34725_STATUS_AVALID;
 	float r,g,b,c;
 	TCS34725_Read(TCS34725_STATUS, &status, 1);
-	
+
 	if(status & TCS34725_STATUS_AVALID)
 	{
 //		rgbc->c = TCS34725_GetChannelData(TCS34725_CDATAL);

@@ -69,7 +69,7 @@ int main(void)
 	MDAC_Init();
 	TIM9_PWM_Init(255,0);//PWM DAC
 	MyDMA_Config(DMA2_Stream7,DMA_Channel_4, (u32)&USART1->DR,(u32)SendBuff,SEND_BUF_SIZE);
-//	MyI2C_Init();
+	MyI2C_Init();
 	TCS34725_Init();
 	W25QXX_Init();
 	LCD_Pre_display();

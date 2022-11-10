@@ -152,25 +152,25 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>114</LineNumber>
+          <LineNumber>147</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134248752</Address>
+          <Address>134220610</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\FUNCTIONS\Src\w25qxx.c</Filename>
+          <Filename>.\main.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\STM32F4_Integrated_project\../FUNCTIONS/Src/w25qxx.c\114</Expression>
+          <Expression>\\STM32F4_Integrated_project\main.c\147</Expression>
         </Bp>
         <Bp>
           <Number>1</Number>
           <Type>0</Type>
-          <LineNumber>430</LineNumber>
+          <LineNumber>147</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134245704</Address>
+          <Address>134247420</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -179,71 +179,55 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>.\tcs34725.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\STM32F4_Integrated_project\tcs34725.c\430</Expression>
+          <Expression>\\STM32F4_Integrated_project\tcs34725.c\147</Expression>
         </Bp>
         <Bp>
           <Number>2</Number>
           <Type>0</Type>
-          <LineNumber>438</LineNumber>
+          <LineNumber>141</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134245844</Address>
+          <Address>134224454</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>.\tcs34725.c</Filename>
+          <Filename>..\FUNCTIONS\i2c.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\STM32F4_Integrated_project\tcs34725.c\438</Expression>
+          <Expression>\\STM32F4_Integrated_project\../FUNCTIONS/i2c.c\141</Expression>
         </Bp>
         <Bp>
           <Number>3</Number>
           <Type>0</Type>
-          <LineNumber>126</LineNumber>
+          <LineNumber>92</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>0</Address>
+          <Address>134247652</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>0</BreakIfRCount>
-          <Filename>..\FUNCTIONS\Src\w25qxx.c</Filename>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>..\FUNCTIONS\i2c.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression></Expression>
+          <Expression>\\STM32F4_Integrated_project\../FUNCTIONS/i2c.c\92</Expression>
         </Bp>
         <Bp>
           <Number>4</Number>
           <Type>0</Type>
-          <LineNumber>424</LineNumber>
+          <LineNumber>96</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>0</Address>
+          <Address>134247668</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>0</BreakIfRCount>
-          <Filename>.\tcs34725.c</Filename>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>..\FUNCTIONS\i2c.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression></Expression>
-        </Bp>
-        <Bp>
-          <Number>5</Number>
-          <Type>0</Type>
-          <LineNumber>432</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>0</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>0</BreakIfRCount>
-          <Filename>.\tcs34725.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression></Expression>
+          <Expression>\\STM32F4_Integrated_project\../FUNCTIONS/i2c.c\96</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
