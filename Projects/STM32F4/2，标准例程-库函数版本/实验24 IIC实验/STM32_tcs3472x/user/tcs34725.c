@@ -1,6 +1,4 @@
-#include "tcs34725.h"
-#include "lcd.h"
-#include "i2c.h"
+
 /******************************************************************************/
 #define TCS34725_ADDRESS          (0x29)
 
@@ -68,42 +66,43 @@
 /******************************************************************************/
 extern void delay_s(u32 i);
 
-u16 color_fill;
+#define TCS_SDA_IN()  {GPIOB->CRH&=0xFFFF0FFF;GPIOB->CRH|=8<<12;}
+#define TCS_SDA_OUT() {GPIOB->CRH&=0xFFFF0FFF;GPIOB->CRH|=3<<12;}
+#define TCS_SDA_READ   GPIOB->IDR&(1<<11)
 
-#define TCS_SDA_IN()  {GPIOB->MODER&=~(3<<(9*2));GPIOB->MODER|=0<<9*2;}	//PB9输入模式
-#define TCS_SDA_OUT() {GPIOB->MODER&=~(3<<(9*2));GPIOB->MODER|=1<<9*2;} //PB9输出模式
-#define TCS_SDA_READ  PBin(9)
-
-#define TCS_SCL_H     GPIO_SetBits(GPIOB,GPIO_Pin_8)
-#define TCS_SCL_L     GPIO_ResetBits(GPIOB,GPIO_Pin_8)
-#define TCS_SDA_H     GPIO_SetBits(GPIOB,GPIO_Pin_9)
-#define TCS_SDA_L     GPIO_ResetBits(GPIOB,GPIO_Pin_9)
+#define TCS_SCL_H     GPIO_SetBits(GPIOB,GPIO_Pin_10)
+#define TCS_SCL_L     GPIO_ResetBits(GPIOB,GPIO_Pin_10)
+#define TCS_SDA_H     GPIO_SetBits(GPIOB,GPIO_Pin_11)
+#define TCS_SDA_L     GPIO_ResetBits(GPIOB,GPIO_Pin_11)
 /******************************************************************************/
 #define max3v(v1, v2, v3)   ((v1)<(v2)? ((v2)<(v3)?(v3):(v2)):((v1)<(v3)?(v3):(v1)))
 #define min3v(v1, v2, v3)   ((v1)>(v2)? ((v2)>(v3)?(v3):(v2)):((v1)>(v3)?(v3):(v1)))
 
+typedef struct{
+	unsigned short  c;      //[0-65536]
+	unsigned short  r;
+	unsigned short  g;
+	unsigned short  b;
+}COLOR_RGBC;//RGBC
+
+typedef struct{
+	unsigned short h;       //[0,360]
+	unsigned char  s;       //[0,100]
+	unsigned char  l;       //[0,100]
+}COLOR_HSL;//HSL
+
+COLOR_RGBC rgb;
+COLOR_HSL  hsl;
 /******************************************************************************/
-
-void delay_s(u32 i)
-{
-	while(i--);
-}
-
 void TCS34725_I2C_Init()
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
-	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);
-
-	GPIO_InitStructure.GPIO_Pin 	= GPIO_Pin_8|GPIO_Pin_9;
-	GPIO_InitStructure.GPIO_Mode 	= GPIO_Mode_OUT;
-	GPIO_InitStructure.GPIO_OType	= GPIO_OType_PP;
-	GPIO_InitStructure.GPIO_PuPd	= GPIO_PuPd_UP;
-	GPIO_InitStructure.GPIO_Speed 	= GPIO_Speed_100MHz;
-	GPIO_Init(GPIOB,&GPIO_InitStructure);
 	
-	TCS_SCL_H;
-	TCS_SDA_H;
-	
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_10|GPIO_Pin_11;//PB10/PB10=外接I2C
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;//通用推挽输出	
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;//速度
+	GPIO_Init(GPIOB, &GPIO_InitStructure);//对选中管脚初始化
+	GPIO_SetBits(GPIOB,GPIO_Pin_10|GPIO_Pin_11);   //高电平
 }
 /*********************************************/
 void TCS34725_I2C_Start()
@@ -117,8 +116,8 @@ void TCS34725_I2C_Start()
 	TCS_SCL_L;
 }
 /*********************************************/
-void TCS34725_I2C_Stop()   
-{						   
+void TCS34725_I2C_Stop()
+{
 	TCS_SDA_OUT();
 	TCS_SCL_L;
 	TCS_SDA_L;
@@ -133,7 +132,7 @@ void TCS34725_I2C_Stop()
 u8 TCS34725_I2C_Wait_ACK()
 {
 	u32 t=0;
-
+	
 	TCS_SDA_IN();//SDA设置为输入  
 	TCS_SDA_H; 
 	delay_s(10);//delay_us(1);
@@ -229,12 +228,12 @@ u8 TCS34725_I2C_Read_Byte(u8 ack)
  *                  Example: 0 - A stop condition will not be sent;
  *                           1 - A stop condition will be sent.
 *******************************************************************************/
- void TCS34725_I2C_Write(u8 slaveAddress, u8* dataBuffer,u8 bytesNumber, u8 stopBit)
+void TCS34725_I2C_Write(u8 slaveAddress, u8* dataBuffer,u8 bytesNumber, u8 stopBit)
 {
 	u8 i = 0;
 	
 	TCS34725_I2C_Start();
-	TCS34725_I2C_Send_Byte((slaveAddress << 1) | 0x00);// Slave Write
+	TCS34725_I2C_Send_Byte((slaveAddress << 1) | 0x00);	   //发送从机地址写命令
 	TCS34725_I2C_Wait_ACK();
 	for(i = 0; i < bytesNumber; i++)
 	{
@@ -256,7 +255,7 @@ u8 TCS34725_I2C_Read_Byte(u8 ack)
 void TCS34725_I2C_Read(u8 slaveAddress, u8* dataBuffer, u8 bytesNumber, u8 stopBit)
 {
 	u8 i = 0;
-
+	
 	TCS34725_I2C_Start();
 	TCS34725_I2C_Send_Byte((slaveAddress << 1) | 0x01);	   //发送从机地址读命令
 	TCS34725_I2C_Wait_ACK();
@@ -308,7 +307,7 @@ void TCS34725_Write(u8 subAddr, u8* dataBuffer, u8 bytesNumber)
 void TCS34725_Read(u8 subAddr, u8* dataBuffer, u8 bytesNumber)
 {
 	subAddr |= TCS34725_COMMAND_BIT;
-
+	
 	TCS34725_I2C_Write(TCS34725_ADDRESS, (u8*)&subAddr, 1, 0);
 	TCS34725_I2C_Read(TCS34725_ADDRESS, dataBuffer, bytesNumber, 1);
 }
@@ -338,7 +337,7 @@ void TCS34725_SetGain(u8 gain)
 void TCS34725_Enable(void)
 {
 	u8 cmd = TCS34725_ENABLE_PON;
-
+	
 	TCS34725_Write(TCS34725_ENABLE, &cmd, 1);
 	cmd = TCS34725_ENABLE_PON | TCS34725_ENABLE_AEN;
 	TCS34725_Write(TCS34725_ENABLE, &cmd, 1);
@@ -352,7 +351,7 @@ void TCS34725_Enable(void)
 void TCS34725_Disable(void)
 {
 	u8 cmd = 0;
-
+	
 	TCS34725_Read(TCS34725_ENABLE, &cmd, 1);
 	cmd = cmd & ~(TCS34725_ENABLE_PON | TCS34725_ENABLE_AEN);
 	TCS34725_Write(TCS34725_ENABLE, &cmd, 1);
@@ -365,7 +364,7 @@ void TCS34725_Disable(void)
 u8 TCS34725_Init(void)
 {
 	u8 id=0;
-
+	
 	TCS34725_I2C_Init(); 
 	TCS34725_Read(TCS34725_ID, &id, 1);  //TCS34725 的 ID 是 0x44 可以根据这个来判断是否成功连接,0x4D是TCS34727;
 	if(id==0x4D | id==0x44)
@@ -401,42 +400,15 @@ u16 TCS34725_GetChannelData(u8 reg)
 u8 TCS34725_GetRawData(COLOR_RGBC *rgbc)
 {
 	u8 status = TCS34725_STATUS_AVALID;
-	float r,g,b,c;
+	
 	TCS34725_Read(TCS34725_STATUS, &status, 1);
-
+	
 	if(status & TCS34725_STATUS_AVALID)
 	{
-//		rgbc->c = TCS34725_GetChannelData(TCS34725_CDATAL);
-//		rgbc->r = TCS34725_GetChannelData(TCS34725_RDATAL);
-//		rgbc->g	= TCS34725_GetChannelData(TCS34725_GDATAL);
-//		rgbc->b	= TCS34725_GetChannelData(TCS34725_BDATAL);
-		
-		c	= TCS34725_GetChannelData(TCS34725_CDATAL);//Read 2 bytes including high and low
-		rgbc->c = c;
-		r	= TCS34725_GetChannelData(TCS34725_RDATAL);
-		r = r/c;
-		r*=255;
-		rgbc->r = r;
-		
-		g	= TCS34725_GetChannelData(TCS34725_GDATAL);
-		g = g/c;
-		g*=255;
-		rgbc->g = g;
-		
-		b	= TCS34725_GetChannelData(TCS34725_BDATAL);
-		b = b/c;
-		b*=255;
-		rgbc->b = b;
-		
-		color_fill |= (u8)(r/255*32);
-		color_fill<<=6;
-		
-		color_fill |= (u8)(g/255*64);
-		color_fill<<=5;
-		
-		color_fill |= (u8)(b/255*32);
-		
-		LCD_Fill(80,300,280,480, color_fill);
+		rgbc->c = TCS34725_GetChannelData(TCS34725_CDATAL);	
+		rgbc->r = TCS34725_GetChannelData(TCS34725_RDATAL);	
+		rgbc->g = TCS34725_GetChannelData(TCS34725_GDATAL);	
+		rgbc->b = TCS34725_GetChannelData(TCS34725_BDATAL);
 		return 1;
 	}
 	return 0;

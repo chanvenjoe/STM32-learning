@@ -36,6 +36,8 @@ void I2C_NACK(void);
 void I2C_Send_Byte(u8 txd);
 u8 I2C_Read_Byte(u8 ack);
 u8 TCS34725_Ready(void);
+void I2C_Write(u8 slaveaddr, u8 *arrdata, u8 bytes, u8 stopbit);
+void I2C_Read(u8 slaveaddr, u8 regaddr, u8 bytes, u8 stopbit);
 
 #endif
 

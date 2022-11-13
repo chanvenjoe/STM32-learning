@@ -66,6 +66,7 @@
 #define TCS34725_GAIN_16X                0x02   /**<  16x gain */
 #define TCS34725_GAIN_60X                0x03   /**<  60x gain */
 
+u8 regarr[10] = { 0x00,0};
 void MyI2C_Init(void)
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
@@ -81,8 +82,47 @@ void MyI2C_Init(void)
 	I2C_SCLH;
 	I2C_SDAH;
 	
-	while(TCS34725_Ready()==0x44);
+	I2C_Read(TCS34725_ADDRESS, TCS34725_ID,1,1);
+	I2C_Read(TCS34725_ADDRESS, TCS34725_ENABLE_PON,1,1);
+	I2C_Write(TCS34725_ADDRESS,regarr,1,1);
+	I2C_Read(TCS34725_ADDRESS, TCS34725_ENABLE_PON,1,1);
+//	while(TCS34725_Ready()==0x44);
 }
+
+void I2C_Write(u8 slaveaddr, u8 *arrdata, u8 bytes, u8 stopbit)
+{
+	u8 i;
+	I2C_Start();
+	I2C_Send_Byte(slaveaddr<<1|0X00);
+	I2C_Wait_Ack();
+	
+	I2C_Send_Byte(TCS34725_ENABLE_PON|TCS34725_COMMAND_BIT);
+	I2C_Wait_Ack();
+	
+	for(i=0;i<bytes;i++)
+	{
+		I2C_Send_Byte(* arrdata+i);
+		I2C_Wait_Ack();
+	}
+	if(1==stopbit)
+		I2C_Stop();
+}
+
+void I2C_Read(u8 slaveaddr, u8 regaddr, u8 bytes, u8 stopbit)
+{
+	I2C_Start();
+	I2C_Send_Byte(slaveaddr<<1|0x00);//Write
+	while(I2C_Wait_Ack());
+	I2C_Send_Byte(regaddr|TCS34725_COMMAND_BIT);
+	I2C_Wait_Ack();
+	
+	I2C_Start();
+	I2C_Send_Byte(slaveaddr<<1|0x01);//Read
+	I2C_Wait_Ack();
+	
+	u8 rxd = I2C_Read_Byte(0);
+}
+	
 
 u8 TCS34725_Ready()
 {
@@ -133,11 +173,9 @@ u8 I2C_Wait_Ack()
 
 	SDA_IN();
 	I2C_SDAH;
-	delay_s(10);//delay_us(1);
-	//delay_us(1);
+	delay_us(1);
 	I2C_SCLH;
-	delay_s(10);//delay_us(1);
-	//delay_us(1);
+	delay_us(1);
 	while(SDA_READ)
 	{
 		Ack_ErrTim++;
