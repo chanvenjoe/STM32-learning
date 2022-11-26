@@ -99,7 +99,7 @@ void STMFLASH_Read(u32 ReadAddr,u32 *pBuffer,u32 NumToRead)
 	for(i=0;i<NumToRead;i++)
 	{
 		pBuffer[i]=STMFLASH_ReadWord(ReadAddr);//读取4个字节.
-		ReadAddr+=4;//偏移4个字节.	
+		ReadAddr+=4;//偏移4个字节.	 
 	}
 }
 
