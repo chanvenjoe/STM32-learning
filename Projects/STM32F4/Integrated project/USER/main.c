@@ -7,6 +7,7 @@
 //#include "touch.h"
 //#include "lv_port_disp.h"
 //#include "lv_port_indev.h"
+#include "key.h"
 #include "usmart.h"
 #include "rng.h"
 #include "adc.h"
@@ -19,6 +20,7 @@
 #include "led.h"
 #include "flash.h"
 #include "sram.h"
+#include "malloc.h"
 
 /***************Define**************/
 const u8 TEXT_Buffer[]={"Explorer STM32F4 SPI TEST"};
@@ -32,7 +34,7 @@ const u8 Flash_Text[] ={"STM32 FLASH TEST"};
 #define SIZE sizeof(TEXT_Buffer)	
 
 u32 FLASH_SIZE = 16*1024*1024;	//FLASH 大小为16字节
-u32 testsram[250000] __attribute__((at(0x68000000))); //250000*32/8 <1MB
+//u32 testsram[250000] __attribute__((at(0x68000000))); //250000*32/8 <1MB
 /******Variables and constants******/
 u32 color_hex;
 u8 SendBuff[SEND_BUF_SIZE];	//发送数据缓冲区
@@ -85,7 +87,7 @@ int main(void)
 	W25QXX_Init();
 	LCD_Pre_display();
 	FSMC_SRAM_Init();
-	fsmc_sram_test(0,400);
+	fsmc_sram_test(Text_x,Text_Top_y*FSMC_SRAM);
 
   	while(1) 
 	{
@@ -96,6 +98,7 @@ int main(void)
 
 void ADC_DAC_Display()
 {
+	
 	static u16 adcx,pwmval=0;
 	u8 range;
 	double temp;
@@ -129,8 +132,7 @@ void ADC_DAC_Display()
 	LCD_ShowxNum(216,Text_Top_y*BRIGHTNESS,adc,4,16,0);
 	//DAC
 	
-
-	key = GPIO_ReadInputDataBit(GPIOE,GPIO_Pin_4);
+	key = KEY_Scan(0);
 	
 	if(key==0X00)
 	{
@@ -187,7 +189,7 @@ void ADC_DAC_Display()
 		W25QXX_Write((u8*)TEXT_Buffer,FLASH_SIZE-100,SIZE);		//从倒数第100个地址处开始,写入SIZE长度的数据
 		LCD_ShowString(Text_x,Text_Top_y*W25Q128_STATUS,200,16,16,"W25Q128 Write Finished!");	//提示传送完成
 
-LCD_ShowString(Text_x,Text_Top_y*W25Q128_READ,200,16,16,"Read W25Q128:");
+		LCD_ShowString(Text_x,Text_Top_y*W25Q128_READ,200,16,16,"Read W25Q128:");
 		W25QXX_Read(datatemp,FLASH_SIZE-100,SIZE);					//从倒数第100个地址处开始,读出SIZE个字节
 		LCD_ShowString(Text_x+8*13,Text_Top_y*W25Q128_READ,200,16,16,datatemp);					//显示读到的字符串
 
@@ -202,6 +204,11 @@ LCD_ShowString(Text_x,Text_Top_y*W25Q128_READ,200,16,16,"Read W25Q128:");
 		LCD_ShowNum(30+8*16,Text_Top_y*RNG_NUM,RNG_GetRandomNumber(),10,16);	
 		DAC_SetChannel1Data(DAC_Align_12b_R,dac_val);	
 	}
+	else if(key == 1)
+	{
+		mymalloc(SRAMIN,1024);
+		
+	}
 	range = RNG_Get_RandomRange(20,30);
 	LCD_ShowString(Text_x,Text_Top_y*RNG_RANGE,200,16,16,"RNG Range:");
 	LCD_ShowNum(30+8*16,Text_Top_y*RNG_RANGE,range ,1,16);
@@ -209,7 +216,7 @@ LCD_ShowString(Text_x,Text_Top_y*W25Q128_READ,200,16,16,"Read W25Q128:");
 	LCD_ShowString(Text_x,Text_Top_y*DAC_VALUE,200,16,16,"DAC_VALUE:");
 	LCD_ShowxNum(216,Text_Top_y*DAC_VALUE,dac_val,4,16,0);
 	
-	delay_ms(300);
+	
 }
 
 void LCD_Pre_display()

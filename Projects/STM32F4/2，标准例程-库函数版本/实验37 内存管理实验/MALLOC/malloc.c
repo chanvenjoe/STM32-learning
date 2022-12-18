@@ -57,7 +57,7 @@ void mymemcpy(void *des,void *src,u32 n)
 //*s:内存首地址
 //c :要设置的值
 //count:需要设置的内存大小(字节为单位)
-void mymemset(void *s,u8 c,u32 count)  
+void mymemset(void *s,u8 c,u32 count)
 {  
     u8 *xs = s;  
     while(count--)*xs++=c;  
@@ -123,10 +123,10 @@ u8 my_mem_free(u8 memx,u32 offset)
 	{
 		mallco_dev.init(memx);    
         return 1;//未初始化  
-    }  
+    } 
     if(offset<memsize[memx])//偏移在内存池内. 
     {  
-        int index=offset/memblksize[memx];			//偏移所在内存块号码  
+        int index=offset/memblksize[memx];			//偏移所在内存块号码  32
         int nmemb=mallco_dev.memmap[memx][index];	//内存块数量
         for(i=0;i<nmemb;i++)  						//内存块清零
         {  
