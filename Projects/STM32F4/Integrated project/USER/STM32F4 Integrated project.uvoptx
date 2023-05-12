@@ -168,22 +168,6 @@
         <Bp>
           <Number>1</Number>
           <Type>0</Type>
-          <LineNumber>87</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134249468</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>.\main.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\STM32F4_Integrated_project\main.c\87</Expression>
-        </Bp>
-        <Bp>
-          <Number>2</Number>
-          <Type>0</Type>
           <LineNumber>147</LineNumber>
           <EnabledFlag>1</EnabledFlag>
           <Address>134249280</Address>
@@ -198,7 +182,7 @@
           <Expression>\\STM32F4_Integrated_project\../FUNCTIONS/Src/sram.c\147</Expression>
         </Bp>
         <Bp>
-          <Number>3</Number>
+          <Number>2</Number>
           <Type>0</Type>
           <LineNumber>147</LineNumber>
           <EnabledFlag>1</EnabledFlag>
@@ -214,7 +198,7 @@
           <Expression>\\STM32F4_Integrated_project\../FUNCTIONS/Src/sram.c\147</Expression>
         </Bp>
         <Bp>
-          <Number>4</Number>
+          <Number>3</Number>
           <Type>0</Type>
           <LineNumber>21</LineNumber>
           <EnabledFlag>1</EnabledFlag>
@@ -226,6 +210,22 @@
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>0</BreakIfRCount>
           <Filename>..\FUNCTIONS\Src\malloc.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression></Expression>
+        </Bp>
+        <Bp>
+          <Number>4</Number>
+          <Type>0</Type>
+          <LineNumber>87</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>0</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>0</BreakIfRCount>
+          <Filename>.\main.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression></Expression>
         </Bp>
@@ -820,7 +820,7 @@
 
   <Group>
     <GroupName>FUNCTIONS</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -1113,6 +1113,26 @@
       <bDave2>0</bDave2>
       <PathWithFileName>..\FUNCTIONS\Src\malloc.c</PathWithFileName>
       <FilenameWithoutPath>malloc.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+  </Group>
+
+  <Group>
+    <GroupName>DSP_LIB</GroupName>
+    <tvExp>0</tvExp>
+    <tvExpOptDlg>0</tvExpOptDlg>
+    <cbSel>0</cbSel>
+    <RteFlg>0</RteFlg>
+    <File>
+      <GroupNumber>7</GroupNumber>
+      <FileNumber>64</FileNumber>
+      <FileType>4</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\DSP_Lib\arm_cortexM4lf_math.lib</PathWithFileName>
+      <FilenameWithoutPath>arm_cortexM4lf_math.lib</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

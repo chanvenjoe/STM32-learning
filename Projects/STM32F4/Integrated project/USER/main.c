@@ -89,7 +89,7 @@ int main(void)
 	FSMC_SRAM_Init();
 	fsmc_sram_test(Text_x,Text_Top_y*FSMC_SRAM);
 
-  	while(1) 
+  while(1) 
 	{
 		ADC_DAC_Display();
 	}
@@ -206,7 +206,7 @@ void ADC_DAC_Display()
 	}
 	else if(key == 1)
 	{
-		mymalloc(SRAMIN,1024);
+	//	mymalloc(SRAMIN,1024);
 		
 	}
 	range = RNG_Get_RandomRange(20,30);

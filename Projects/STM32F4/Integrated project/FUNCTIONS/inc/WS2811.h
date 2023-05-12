@@ -11,7 +11,7 @@
 #define TEST_delay delay_47_6ns(1)
 #define CODE_0 T0H T0L
 #define CODE_1 T1H T1L
-#define LEDNUM 		30
+#define LEDNUM 		3
 
 typedef struct color
 {
