@@ -18,10 +18,8 @@
 #include "move_filter.h"
 #include "virsco.h"
 
-//特别说明：该开源项目仅用于各参赛同学在设计自己的小车时进行参考，硬件和软件都不能够直接拷贝使用在自己的作品中，请大家参考后重新完成硬件和软件的设计制作。
-//特别说明：该开源项目仅用于各参赛同学在设计自己的小车时进行参考，硬件和软件都不能够直接拷贝使用在自己的作品中，请大家参考后重新完成硬件和软件的设计制作。
-//特别说明：该开源项目仅用于各参赛同学在设计自己的小车时进行参考，硬件和软件都不能够直接拷贝使用在自己的作品中，请大家参考后重新完成硬件和软件的设计制作。
-void led_control(void)
+
+/*void led_control(void)
 {
     if(MOTOR_DISABLE == motor_control.en_status)
     {//电机已关闭
@@ -57,12 +55,12 @@ void led_control(void)
         }
         
     }
-}
+}*/
 
 int main(void)
 {
     //初始化LED引脚
-    led_init();
+    wins_init();
     
     //初始化串口并设置波特率
     uart_init(115200);
@@ -102,11 +100,11 @@ int main(void)
 	while(1)
 	{
         //发送数据到虚拟示波器 虚拟示波器下载链接 https://pan.baidu.com/s/198CMXTZsbI3HAEqNXDngBw
-		data_conversion(speed_filter.data_average/10, duty_cycle*1000, closed_loop.out, adc_information.current_bus_filter, virtual_scope_data);
-        write_buffer(virtual_scope_data, sizeof(virtual_scope_data));
+//		data_conversion(speed_filter.data_average/10, duty_cycle*1000, closed_loop.out, adc_information.current_bus_filter, virtual_scope_data);
+//       write_buffer(virtual_scope_data, sizeof(virtual_scope_data));
 
         //检查电机状态然后控制对应的LED灯点亮或熄灭
-        led_control();
+       //led_control();
 	}
 }
 

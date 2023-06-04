@@ -7,54 +7,57 @@ adc_struct adc_information;
 
 void adc_init(void)
 {
-	GPIO_InitTypeDef GPIO_InitStructure;
-	ADC_InitTypeDef  ADC_InitStructure;
-	NVIC_InitTypeDef NVIC_InitStructure;
-	
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_ADC1 | RCC_APB2Periph_ADC2, ENABLE);
-	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE); 
-    RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOB, ENABLE); 
-	
-	GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_3 | GPIO_Pin_6;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;		                    //ADC引脚需要设置为模拟输入
-	GPIO_Init(GPIOA, &GPIO_InitStructure);
-    
-    GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_2 | GPIO_Pin_10 | GPIO_Pin_15;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;		
-	GPIO_Init(GPIOB, &GPIO_InitStructure);
-	
-	
-	ADC_StructInit(&ADC_InitStructure);
-	ADC_InitStructure.ADC_Resolution = ADC_Resolution_12b;                  //adc分辨率设置为12位
-	ADC_InitStructure.ADC_PRESCARE = ADC_PCLK2_PRESCARE_8;                  //adc时钟=PCLK2/8
-	ADC_InitStructure.ADC_Mode = ADC_Mode_Single_Period;                    //单周期转换
-	ADC_InitStructure.ADC_DataAlign = ADC_DataAlign_Right;			        //数据右对齐
-	ADC_InitStructure.ADC_ExternalTrigConv = ADC_ExternalTrigConv_T1_CC4;   //使用定时器CC4通道触发ADC转换，即每个PWM周期触发一次ADC转换
-	ADC_Init(ADC1, &ADC_InitStructure);
-	ADC_Cmd(ADC1, ENABLE);//使能ADC
-    
-    ADC_RegularChannelConfig(ADC1, 3, 0, ADC_SampleTime_7_5Cycles);     //A3引脚  检测母线经过RC滤波之后的电流
-	ADC_RegularChannelConfig(ADC1, 6, 1, ADC_SampleTime_7_5Cycles);     //A6引脚  检测母线滤波 之前 的电流
-    ADC_RegularChannelConfig(ADC1, 10, 2, ADC_SampleTime_7_5Cycles);    //B2引脚  检测A相电流
-    ADC_RegularChannelConfig(ADC1, 11, 3, ADC_SampleTime_7_5Cycles);    //B10引脚 检测B相电流
-    
-	ADC_InitStructure.ADC_Resolution = ADC_Resolution_12b;                  //adc分辨率设置为12位
-	ADC_InitStructure.ADC_PRESCARE = ADC_PCLK2_PRESCARE_8;                  //adc时钟=PCLK2/8
-	ADC_InitStructure.ADC_Mode = ADC_Mode_Single_Period;                    //单周期转换
-	ADC_InitStructure.ADC_DataAlign = ADC_DataAlign_Right;			        //数据右对齐
-	ADC_InitStructure.ADC_ExternalTrigConv = ADC_ExternalTrigConv_T1_CC4;   //使用定时器CC4通道触发ADC转换，即每个PWM周期触发一次ADC转换
-	ADC_Init(ADC2, &ADC_InitStructure);
-	ADC_Cmd(ADC2, ENABLE);//使能ADC
+		GPIO_InitTypeDef GPIO_InitStructure;
+		ADC_InitTypeDef  ADC_InitStructure;
+		NVIC_InitTypeDef NVIC_InitStructure;
 
-    ADC_RegularChannelConfig(ADC2, 1, 0, ADC_SampleTime_7_5Cycles);     //B10引脚 检测B相电流
-    ADC_ExternalTrigConvCmd(ADC2, ENABLE);              //ADC外部触发使能
-    
-	ADC_ITConfig(ADC1,ADC_IT_EOC, ENABLE);              //使能ADC中断
-	ADC_ExternalTrigConvCmd(ADC1, ENABLE);              //ADC外部触发使能
-	NVIC_InitStructure.NVIC_IRQChannel = ADC1_IRQn;     //中断编号
-	NVIC_InitStructure.NVIC_IRQChannelPriority = 0x01;	//优先级设置 0:最高, 3:最低
-	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;		//中断使能
-	NVIC_Init(&NVIC_InitStructure);
+		RCC_APB2PeriphClockCmd(RCC_APB2Periph_ADC1 | RCC_APB2Periph_ADC2, ENABLE);
+		RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE); 
+		RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOB, ENABLE); 
+
+		GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_3 | GPIO_Pin_6;							//A3 as the filtered Isum, A6 is unfiltered A11 as the voltage detect pin
+		GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;		                    //ADC引脚需要设置为模拟输入
+		GPIO_Init(GPIOA, &GPIO_InitStructure);
+
+		GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_2 | GPIO_Pin_10; //B2/10 is the  IA/IC phase current
+		GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;		
+		GPIO_Init(GPIOB, &GPIO_InitStructure);
+
+
+		ADC_StructInit(&ADC_InitStructure);
+		ADC_InitStructure.ADC_Resolution = ADC_Resolution_12b;                  //adc分辨率设置为12位
+		ADC_InitStructure.ADC_PRESCARE = ADC_PCLK2_PRESCARE_8;                  //adc时钟=PCLK2/8
+		ADC_InitStructure.ADC_Mode = ADC_Mode_Single_Period;                    //单周期转换
+		ADC_InitStructure.ADC_DataAlign = ADC_DataAlign_Right;			        //数据右对齐
+		ADC_InitStructure.ADC_ExternalTrigConv = ADC_ExternalTrigConv_T1_CC4;   //使用定时器CC4通道触发ADC转换，即每个PWM周期触发一次ADC转换
+		ADC_Init(ADC1, &ADC_InitStructure);
+		ADC_Cmd(ADC1, ENABLE);//使能ADC
+		
+		// PB0:adc ch8 PB1:adc ch9 PB2:adc ch10 PB10: ch11
+		
+		ADC_RegularChannelConfig(ADC1, 3, 0, ADC_SampleTime_7_5Cycles);     //A3引脚  检测母线经过RC滤波之后的电流
+		ADC_RegularChannelConfig(ADC1, 6, 1, ADC_SampleTime_7_5Cycles);     //A6引脚  检测母线滤波 之前 的电流
+		ADC_RegularChannelConfig(ADC1, 10, 2, ADC_SampleTime_7_5Cycles);    //B2引脚  检测A相电流
+		ADC_RegularChannelConfig(ADC1, 11, 3, ADC_SampleTime_7_5Cycles);    //B10引脚 检测B相电流
+
+		ADC_InitStructure.ADC_Resolution = ADC_Resolution_12b;                  //adc分辨率设置为12位
+		ADC_InitStructure.ADC_PRESCARE = ADC_PCLK2_PRESCARE_8;                  //adc时钟=PCLK2/8
+		ADC_InitStructure.ADC_Mode = ADC_Mode_Single_Period;                    //单周期转换
+		ADC_InitStructure.ADC_DataAlign = ADC_DataAlign_Right;			        //数据右对齐
+		ADC_InitStructure.ADC_ExternalTrigConv = ADC_ExternalTrigConv_T1_CC4;   //使用定时器CC4通道触发ADC转换，即每个PWM周期触发一次ADC转换
+		ADC_Init(ADC2, &ADC_InitStructure);
+		ADC_Cmd(ADC2, ENABLE);//使能ADC
+
+//Refer to header file for channel information
+		ADC_RegularChannelConfig(ADC2, 1, 0, ADC_SampleTime_7_5Cycles);     //B15引脚 检测voltage AF WS2812
+		ADC_ExternalTrigConvCmd(ADC2, ENABLE);              //ADC外部触发使能
+
+		ADC_ITConfig(ADC1,ADC_IT_EOC, ENABLE);              //使能ADC中断
+		ADC_ExternalTrigConvCmd(ADC1, ENABLE);              //ADC外部触发使能
+		NVIC_InitStructure.NVIC_IRQChannel = ADC1_IRQn;     //中断编号
+		NVIC_InitStructure.NVIC_IRQChannelPriority = 0x01;	//优先级设置 0:最高, 3:最低
+		NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;		//中断使能
+		NVIC_Init(&NVIC_InitStructure);
 }
 
 void adc_read(void)
