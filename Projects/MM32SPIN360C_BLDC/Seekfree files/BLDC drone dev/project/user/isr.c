@@ -132,7 +132,7 @@ void ADC1_IRQHandler(void)
     if(1 > commutation_delay--)
     {//延时时间到 开始换相
         commutation_delay = 0;
-        motor_commutation(next_hall_value);
+        motor_commutation(hall_value_now);
     }
 }
 

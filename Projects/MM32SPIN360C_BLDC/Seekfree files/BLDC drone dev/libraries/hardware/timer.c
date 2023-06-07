@@ -29,7 +29,7 @@ void tim1_complementary_pwm(uint16 period,uint8 dead_time)
 	
 	GPIO_PinAFConfig(GPIOB, GPIO_PinSource7, GPIO_AF_7);
 	GPIO_PinAFConfig(GPIOB, GPIO_PinSource5, GPIO_AF_7);
-	GPIO_PinAFConfig(GPIOB, GPIO_PinSource3, GPIO_AF_7);
+	GPIO_PinAFConfig(GPIOB, GPIO_PinSource3, GPIO_AF_7); //AF7 is push and pull AF
 	
 	//下桥引脚初始化为IO
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_15;
