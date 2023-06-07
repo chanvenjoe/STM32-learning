@@ -32,7 +32,7 @@
 
 
 //========PWM1 2 3通道输出使能位操作===================================== 
-#define     PWMU_Enb            TIM1->CCER |= (uint16_t)(((uint16_t)TIM_CCER_CC1E)) 
+#define     PWMU_Enb            TIM1->CCER |= (uint16_t)(((uint16_t)TIM_CCER_CC1E)) //CC1 
 #define     PWMU_Dis            TIM1->CCER &= (uint16_t)(~((uint16_t)TIM_CCER_CC1E)) 
 #define     PWMV_Enb            TIM1->CCER |= (uint16_t)(((uint16_t)TIM_CCER_CC2E)) 
 #define     PWMV_Dis            TIM1->CCER &= (uint16_t)(~((uint16_t)TIM_CCER_CC2E)) 
@@ -51,13 +51,13 @@
 #define     UL_OFF              GPIO_ResetBits(GPIOB,GPIO_Pin_6);
 #define     VL_OFF              GPIO_ResetBits(GPIOB,GPIO_Pin_4);
 #define     WL_OFF              GPIO_ResetBits(GPIOA,GPIO_Pin_15);
-    
-#define     PWMUH_ON_VL_ON		UL_OFF; WL_OFF; PWMUVW_Dis; PWMU_Enb; VL_ON;  //注意I/O操作时的输出短时间的关闭打开
-#define     PWMUH_ON_WL_ON		UL_OFF; VL_OFF; PWMUVW_Dis; PWMU_Enb; WL_ON;
-#define     PWMVH_ON_WL_ON  	UL_OFF; VL_OFF; PWMUVW_Dis; PWMV_Enb; WL_ON;
-#define     PWMVH_ON_UL_ON   	VL_OFF; WL_OFF; PWMUVW_Dis; PWMV_Enb; UL_ON;
-#define     PWMWH_ON_UL_ON   	VL_OFF; WL_OFF; PWMUVW_Dis; PWMW_Enb; UL_ON;
-#define     PWMWH_ON_VL_ON   	UL_OFF; WL_OFF; PWMUVW_Dis; PWMW_Enb; VL_ON;
+
+#define     PWMUH_ON_VL_ON		UL_OFF; WL_OFF; PWMUVW_Dis; PWMU_Enb; VL_ON;  //注意I/O操作时的输出短时间的关闭打开    							AB	  2
+#define     PWMUH_ON_WL_ON		UL_OFF; VL_OFF; PWMUVW_Dis; PWMU_Enb; WL_ON;//																	AC	  3
+#define     PWMVH_ON_WL_ON  	UL_OFF; VL_OFF; PWMUVW_Dis; PWMV_Enb; WL_ON; //		PB6 PB7 VSA             PB4/5 VSB     PA15/PB3   VSC		BC    1
+#define     PWMVH_ON_UL_ON   	VL_OFF; WL_OFF; PWMUVW_Dis; PWMV_Enb; UL_ON;//																	BA    5
+#define     PWMWH_ON_UL_ON   	VL_OFF; WL_OFF; PWMUVW_Dis; PWMW_Enb; UL_ON;//																	CA	  4
+#define     PWMWH_ON_VL_ON   	UL_OFF; WL_OFF; PWMUVW_Dis; PWMW_Enb; VL_ON;//																	CB	  6
 #define     PWMUVWH_OFF_UVWL_ON PWMUVW_Dis; UL_ON; VL_ON; WL_ON;
 
 

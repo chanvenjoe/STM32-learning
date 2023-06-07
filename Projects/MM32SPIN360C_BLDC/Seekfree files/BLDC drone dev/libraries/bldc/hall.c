@@ -107,7 +107,7 @@ void scan_hall_status(void)
     commutation_time++;
 
     //换相超时保护
-    //如果换相超过了250ms则认为出现堵转，应该及时将速度设置为0
+    //如果换相超过了250ms则认为出现堵转，应该及时将速度设置为0 PWM frequency is 40KHz, but the ARR of  TIM1 is 80KHz, so it should be 125ms not 250ms?
     if(commutation_time >= COMMUTATION_TIMEOUT)		
 	{
 		commutation_time = COMMUTATION_TIMEOUT;
@@ -119,7 +119,7 @@ void scan_hall_status(void)
 		commutation_time_save[5] = COMMUTATION_TIMEOUT;
 		
         //滑动平均滤波初始化
-        move_filter_init(&speed_filter);
+//        move_filter_init(&speed_filter);
 
         //输出的速度清零
         tim2_pwm_frequency(0);
@@ -141,9 +141,9 @@ void scan_hall_status(void)
         calc_speed();
         
         //每次完成换相，速度输出引脚翻转一次电平状态
-        motor_speed_out();
+   //     motor_speed_out();
 
-        if((speed_filter.data_average > 4000) || (speed_filter.data_average < -4000))
+ /*       if((speed_filter.data_average > 4000) || (speed_filter.data_average < -4000))
         {
             //速度大于一定的时候，霍尔延迟较大
             //因此采用超前换相加延时的方式去匹配最佳的换相点
@@ -155,13 +155,15 @@ void scan_hall_status(void)
             //速度较低无需超前换相
             next_hall_value = hall_steps_normal[motor_control.dir][hall_value_now];
             commutation_delay = 0;
-        }
+        }*/
+		
+		commutation_delay = 0;
         
         hall_value_last = hall_value_now;
 	}
 }
 
-void hall_init(void)
+/*void hall_init(void)
 {
     GPIO_InitTypeDef  GPIO_InitStructure;
 	
@@ -173,5 +175,5 @@ void hall_init(void)
     
     //读取一下当前的霍尔值
     read_hall_value();
-}
+}*/
 

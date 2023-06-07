@@ -72,31 +72,31 @@ int main(void)
     adc_init();
 
     //初始化比较器，用于实现堵转保护，比较器触发时自动关闭PWM输出，无需代码手动关闭
-	comp_init();
+//	comp_init();
     
     //滑动平均滤波初始化
-	move_filter_init(&speed_filter);
+//	move_filter_init(&speed_filter);
 
-    //霍尔初始化
-	hall_init();
+	
+//	hall_init();
     
     //pi闭环初始化
-	closed_loop_pi_init();
+//	closed_loop_pi_init();
     
     //速度曲线初始化
-	motor_speed_curve_init();
+//	motor_speed_curve_init();
     
     //初始化输出速度与方向信息的引脚
-    motor_information_out_init();
+//    motor_information_out_init();
     
     //输入信号捕获初始化
-	pwm_input_init();
+//	pwm_input_init();
     
     //初始化定时器1，用于输出互补PWM
 	tim1_complementary_pwm(PWM_PRIOD_LOAD, DEADTIME_LOAD);
     
     //初始化定时器3，用于PI闭环计算
-	tim3_init(TIM3_PSC_LOAD, TIM3_PRIOD);
+//	tim3_init(TIM3_PSC_LOAD, TIM3_PRIOD);
 	while(1)
 	{
         //发送数据到虚拟示波器 虚拟示波器下载链接 https://pan.baidu.com/s/198CMXTZsbI3HAEqNXDngBw

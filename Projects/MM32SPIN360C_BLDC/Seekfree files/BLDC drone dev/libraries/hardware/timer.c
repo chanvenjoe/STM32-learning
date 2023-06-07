@@ -15,11 +15,11 @@ void tim1_complementary_pwm(uint16 period,uint8 dead_time)
 	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA | RCC_AHBPeriph_GPIOB, ENABLE);
 
     //break信号输入引脚
-    GPIO_InitStructure.GPIO_Pin  =  GPIO_Pin_11;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPD;
-	GPIO_Init(GPIOA, &GPIO_InitStructure);
+//    GPIO_InitStructure.GPIO_Pin  =  GPIO_Pin_11;
+//	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPD;
+//	GPIO_Init(GPIOA, &GPIO_InitStructure);
 	
-	GPIO_PinAFConfig(GPIOA, GPIO_PinSource11, GPIO_AF_6);
+//	GPIO_PinAFConfig(GPIOA, GPIO_PinSource11, GPIO_AF_6);
     
 	//定时器 CH1 CH2 CH3引脚初始化 用于控制上桥
 	GPIO_InitStructure.GPIO_Pin  =  GPIO_Pin_3|GPIO_Pin_5|GPIO_Pin_7;

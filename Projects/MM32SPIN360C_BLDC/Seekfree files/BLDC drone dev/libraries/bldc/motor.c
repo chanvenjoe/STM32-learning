@@ -129,7 +129,7 @@ void motor_duty_out(uint16 duty)
 void motor_power_out(void)
 {
     int16 duty;
-    duty = closed_loop.out;
+    duty = closed_loop.out_max;//closed_loop.out;
 
     if(motor_control.dir == FORWARD)
     {//电机正转
@@ -175,11 +175,11 @@ void motor_commutation(uint8 except_hall)
 {
     if(0 == closed_loop.target_speed && motor_control.brake_flag)
     {
-        motor_brake();
+//        motor_brake();
     }
     else if(MOTOR_DISABLE == motor_control.en_status)
     {
-        motor_brake();
+//        motor_brake();
     }
     else
     {

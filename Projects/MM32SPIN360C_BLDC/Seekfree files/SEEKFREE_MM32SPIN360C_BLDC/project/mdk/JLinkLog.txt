@@ -1,0 +1,111 @@
+T280C 000:151.445   SEGGER J-Link V6.88a Log File
+T280C 000:152.114   DLL Compiled: Nov 18 2020 15:09:23
+T280C 000:152.156   Logging started @ 2023-06-06 07:52
+T280C 000:152.191 - 152.210ms
+T280C 000:152.238 JLINK_SetWarnOutHandler(...)
+T280C 000:152.281 - 0.060ms
+T280C 000:152.320 JLINK_OpenEx(...)
+T280C 000:161.126   Firmware: J-Link V9 compiled Dec 13 2022 11:14:50
+T280C 000:161.949   Decompressing FW timestamp took 636 us
+T280C 000:174.664   Hardware: V9.20
+T280C 000:174.764   S/N: 25952305
+T280C 000:174.817   OEM: SEGGER
+T280C 000:174.869   Feature(s): RDI, GDB, FlashDL, FlashBP, JFlash
+T280C 000:178.941   TELNET listener socket opened on port 19021
+T280C 000:179.464   WEBSRV Starting webserver
+T280C 000:180.136   WEBSRV Webserver running on local port 19080
+T280C 000:180.174 - 27.860ms returns "O.K."
+T280C 000:180.218 JLINK_GetEmuCaps()
+T280C 000:180.237 - 0.026ms returns 0xB9FF7BBF
+T280C 000:180.264 JLINK_TIF_GetAvailable(...)
+T280C 000:180.960 - 0.722ms
+T280C 000:181.007 JLINK_SetErrorOutHandler(...)
+T280C 000:181.020 - 0.019ms
+T280C 000:181.054 JLINK_ExecCommand("ProjectFile = "C:\Users\Admin\Desktop\Project\STM32-learning\Projects\MM32SPIN360C_BLDC\Seekfree files\SEEKFREE_MM32SPIN360C_BLDC\project\mdk\JLinkSettings.ini"", ...). 
+T280C 000:212.786   Ref file found at: C:\keil5\ARM\Segger\JLinkDevices.ref
+T280C 000:212.845   XML referenced by ref file: C:\Program Files (x86)\SEGGER\JLink\JLinkDevices.xml
+T280C 000:214.009   C:\Program Files (x86)\SEGGER\JLink\JLinkDevices.xml evaluated successfully.
+T280C 000:246.981 - 65.933ms returns 0x00
+T280C 000:247.003 JLINK_ExecCommand("Device = MM32SPIN27PF", ...). 
+T280C 000:247.440   Device "MM32SPIN27PF" selected.
+T280C 000:247.540 - 0.534ms returns 0x00
+T280C 000:247.553 JLINK_GetHardwareVersion()
+T280C 000:247.556 - 0.004ms returns 92000
+T280C 000:247.560 JLINK_GetDLLVersion()
+T280C 000:247.563 - 0.004ms returns 68801
+T280C 000:247.567 JLINK_GetOEMString(...)
+T280C 000:247.571 JLINK_GetFirmwareString(...)
+T280C 000:247.574 - 0.004ms
+T280C 000:247.580 JLINK_GetDLLVersion()
+T280C 000:247.583 - 0.004ms returns 68801
+T280C 000:247.586 JLINK_GetCompileDateTime()
+T280C 000:247.589 - 0.004ms
+T280C 000:247.595 JLINK_GetFirmwareString(...)
+T280C 000:247.597 - 0.004ms
+T280C 000:247.601 JLINK_GetHardwareVersion()
+T280C 000:247.604 - 0.004ms returns 92000
+T280C 000:247.608 JLINK_GetSN()
+T280C 000:247.611 - 0.004ms returns 25952305
+T280C 000:247.616 JLINK_GetOEMString(...)
+T280C 000:247.621 JLINK_TIF_Select(JLINKARM_TIF_SWD)
+T280C 000:251.708 - 4.094ms returns 0x00
+T280C 000:251.721 JLINK_HasError()
+T280C 000:251.726 JLINK_SetSpeed(5000)
+T280C 000:252.730 - 1.007ms
+T280C 000:252.921 JLINK_HasError()
+T280C 000:252.929 JLINK_SetResetType(JLINKARM_RESET_TYPE_NORMAL)
+T280C 000:252.933 - 0.005ms returns JLINKARM_RESET_TYPE_NORMAL
+T280C 000:252.937 JLINK_Reset()
+T280C 000:256.628   ConfigTargetSettings() start
+T280C 000:256.645    J-Link Script File: Executing ConfigTargetSettings()
+T280C 000:256.650   [ConfigTargetSettings]
+T280C 000:257.751   ConfigTargetSettings() end
+T280C 000:257.762   InitTarget() start
+T280C 000:257.766    J-Link Script File: Executing InitTarget()
+T280C 000:361.374   InitTarget() end
+T280C 001:077.461   ConfigTargetSettings() start
+T280C 001:077.514    J-Link Script File: Executing ConfigTargetSettings()
+T280C 001:077.534   [ConfigTargetSettings]
+T280C 001:079.517   ConfigTargetSettings() end
+T280C 001:079.576   InitTarget() start
+T280C 001:079.593    J-Link Script File: Executing InitTarget()
+T280C 001:084.399   InitTarget() end
+T280C 001:192.059 - 939.157ms
+T280C 001:192.124 JLINK_GetId()
+T280C 001:193.418   ConfigTargetSettings() start
+T280C 001:193.457    J-Link Script File: Executing ConfigTargetSettings()
+T280C 001:193.477   [ConfigTargetSettings]
+T280C 001:195.987   ConfigTargetSettings() end
+T280C 001:196.043   InitTarget() start
+T280C 001:196.061    J-Link Script File: Executing InitTarget()
+T280C 001:199.394   InitTarget() end
+T280C 001:379.481   ConfigTargetSettings() start
+T280C 001:379.497    J-Link Script File: Executing ConfigTargetSettings()
+T280C 001:379.536   [ConfigTargetSettings]
+T280C 001:381.554   ConfigTargetSettings() end
+T280C 001:381.575   InitTarget() start
+T280C 001:381.580    J-Link Script File: Executing InitTarget()
+T280C 001:385.596   InitTarget() end
+T280C 001:493.091 - 301.012ms returns 0x00000000
+T280C 001:493.168 JLINK_GetId()
+T280C 001:493.573   ConfigTargetSettings() start
+T280C 001:493.615    J-Link Script File: Executing ConfigTargetSettings()
+T280C 001:493.635   [ConfigTargetSettings]
+T280C 001:495.672   ConfigTargetSettings() end
+T280C 001:495.730   InitTarget() start
+T280C 001:495.747    J-Link Script File: Executing InitTarget()
+T280C 001:500.601   InitTarget() end
+T280C 001:680.606   ConfigTargetSettings() start
+T280C 001:680.657    J-Link Script File: Executing ConfigTargetSettings()
+T280C 001:680.678   [ConfigTargetSettings]
+T280C 001:682.666   ConfigTargetSettings() end
+T280C 001:682.727   InitTarget() start
+T280C 001:682.745    J-Link Script File: Executing InitTarget()
+T280C 001:687.604   InitTarget() end
+T280C 001:795.096 - 301.973ms returns 0x00000000
+T280C 001:802.234 JLINK_GetFirmwareString(...)
+T280C 001:802.274 - 0.046ms
+T280C 006:342.202 JLINK_Close()
+T280C 006:347.385 - 5.191ms
+T280C 006:347.395   
+T280C 006:347.399   Closed

@@ -41,7 +41,7 @@ void pwm_input_init(void)
     TIM_TimeBaseStructInit(&TIM_TimeBaseStructure);
     TIM_TimeBaseStructure.TIM_Period = 20000;
     TIM_TimeBaseStructure.TIM_Prescaler = SystemCoreClock / 1000000 - 1;
-    TIM_TimeBaseStructure.TIM_ClockDivision = TIM_CKD_DIV1;
+    TIM_TimeBaseStructure.TIM_ClockDivision = TIM_CKD_DIV1; //no division
     TIM_TimeBaseStructure.TIM_RepetitionCounter = 0;
     TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
     TIM_TimeBaseInit(TIM16, &TIM_TimeBaseStructure);

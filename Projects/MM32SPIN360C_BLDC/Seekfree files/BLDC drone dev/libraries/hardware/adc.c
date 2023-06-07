@@ -15,7 +15,7 @@ void adc_init(void)
 		RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE); 
 		RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOB, ENABLE); 
 
-		GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_3 | GPIO_Pin_6;							//A3 as the filtered Isum, A6 is unfiltered A11 as the voltage detect pin
+		GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3 | GPIO_Pin_6;		//A3 as the filtered Isum, A6 is unfiltered A11 as the voltage detect pin 0/1/2 as BEMF detection pin
 		GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;		                    //ADC引脚需要设置为模拟输入
 		GPIO_Init(GPIOA, &GPIO_InitStructure);
 
@@ -35,6 +35,9 @@ void adc_init(void)
 		
 		// PB0:adc ch8 PB1:adc ch9 PB2:adc ch10 PB10: ch11
 		
+		ADC_RegularChannelConfig(ADC1, 0, 0, ADC_SampleTime_7_5Cycles);		//PA BEMF
+		ADC_RegularChannelConfig(ADC1, 1, 0, ADC_SampleTime_7_5Cycles);		//PB
+		ADC_RegularChannelConfig(ADC1, 2, 0, ADC_SampleTime_7_5Cycles);		//PC
 		ADC_RegularChannelConfig(ADC1, 3, 0, ADC_SampleTime_7_5Cycles);     //A3引脚  检测母线经过RC滤波之后的电流
 		ADC_RegularChannelConfig(ADC1, 6, 1, ADC_SampleTime_7_5Cycles);     //A6引脚  检测母线滤波 之前 的电流
 		ADC_RegularChannelConfig(ADC1, 10, 2, ADC_SampleTime_7_5Cycles);    //B2引脚  检测A相电流

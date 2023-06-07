@@ -11,7 +11,7 @@
 //定义一分钟内ADC中断次数
 #define ADC_NUM_PM          60*FPWM
 
-#define COMMUTATION_TIMEOUT 5000
+#define COMMUTATION_TIMEOUT 50000     //5000==125MS  
 
 #define HALL_PORT           GPIOA
 #define HALL_A_PIN          GPIO_Pin_0

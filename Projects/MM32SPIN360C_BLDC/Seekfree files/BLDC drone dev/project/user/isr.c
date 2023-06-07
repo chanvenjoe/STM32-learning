@@ -15,7 +15,7 @@
 #include "isr.h"
 
 
-void TIM16_IRQHandler(void)
+/*void TIM16_IRQHandler(void)  //For reading PWM dudy
 {
     static uint8 last_trigger_status;//1:上次为下降沿触发 2：上次为上升沿触发
     TIM16->CNT = 0;
@@ -61,10 +61,10 @@ void TIM16_IRQHandler(void)
         TIM16->SR = (uint32_t)~TIM_IT_Update;//TIM_ClearITPendingBit(TIM16, TIM_IT_Update);
         duty_flag = 2;//输入信号超时
     }
-}
+}*/
 
 
-void TIM3_IRQHandler(void)
+/*void TIM3_IRQHandler(void)
 {
     int8 dir;
 	if (TIM_GetITStatus(TIM3, TIM_IT_Update) != RESET) 
@@ -115,7 +115,7 @@ void TIM3_IRQHandler(void)
         //输出动力
         motor_power_out();
     }
-}
+}*/
 
 
 void ADC1_IRQHandler(void)
@@ -126,7 +126,7 @@ void ADC1_IRQHandler(void)
     //读取adc的值
     adc_read();
     
-	//霍尔扫描
+	//霍尔扫描-> BEMF_SCAN
 	scan_hall_status();
 
     if(1 > commutation_delay--)
