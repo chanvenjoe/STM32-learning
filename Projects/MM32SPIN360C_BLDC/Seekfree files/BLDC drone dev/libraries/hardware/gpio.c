@@ -15,7 +15,8 @@
 #define W4_RUN_PORT				GPIOD
 #define W4_RUN_PIN				GPIO_Pin_2
 
-
+//PB15 needs isolation resistor 
+//Motor need diode to keep current flow
 void w1_run_control(WIN_STATUS_enum status)
 {
     GPIO_WriteBit(W1_RUN_PORT, W1_RUN_PIN, (BitAction)status);

@@ -173,47 +173,50 @@ void motor_power_out(void)
 //-------------------------------------------------------------------------------------------------------------------
 void motor_commutation(uint8 except_hall)
 {
-    if(0 == closed_loop.target_speed && motor_control.brake_flag)
-    {
-//        motor_brake();
-    }
-    else if(MOTOR_DISABLE == motor_control.en_status)
-    {
-//        motor_brake();
-    }
-    else
-    {
+//    if(0 == closed_loop.target_speed && motor_control.brake_flag)
+//    {
+////        motor_brake();
+//    }
+//    else if(MOTOR_DISABLE == motor_control.en_status)
+//    {
+////        motor_brake();
+//    }
+//    else
+//    {
         switch(except_hall)
         {
-            case 1:
-                PWMVH_ON_WL_ON//1
+			case 0:
+				PWMVH_ON_WL_ON //test PWM output
+				break;
+            case 2:
+                PWMVH_ON_WL_ON//1   BC
                 break;
             
-            case 2:		
-                PWMUH_ON_VL_ON//2
+            case 1:		
+                PWMUH_ON_VL_ON//2		AB
                 break;
             
             case 3:		
-                PWMUH_ON_WL_ON//3
+                PWMUH_ON_WL_ON//3		AC
                 break;
             
             case 4:		
-                PWMWH_ON_UL_ON//4
-                break;
-            
-            case 5:		
-                PWMVH_ON_UL_ON//5
+                PWMWH_ON_UL_ON//4		CA
                 break;
             
             case 6:		
-                PWMWH_ON_VL_ON//6
+                PWMVH_ON_UL_ON//5		BA
+                break;
+            
+            case 5:		
+                PWMWH_ON_VL_ON//6		CB
                 break;
 
             default:
                 PWMH_OFF_PWML_OFF
                 break;
         }
-    }
+//    }
     
 }
 

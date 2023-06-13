@@ -122,7 +122,7 @@ void scan_hall_status(void)
 //        move_filter_init(&speed_filter);
 
         //输出的速度清零
-        tim2_pwm_frequency(0);
+//        tim2_pwm_frequency(0);
 	}
     
     if( (hall_value_now != hall_value_last) &&

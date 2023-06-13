@@ -61,7 +61,7 @@
 #define     PWMUVWH_OFF_UVWL_ON PWMUVW_Dis; UL_ON; VL_ON; WL_ON;
 
 
-#define     PWMH_OFF_PWML_ON    PWMUVW_Dis; 	PWMUVWN_Enb;
+#define     PWMH_OFF_PWML_ON    PWMUV W_Dis; 	PWMUVWN_Enb;
 #define     PWMH_ON_PWML_OFF    PWMUVWN_Dis;	PWMUVW_Enb;
 #define     PWMH_OFF_PWML_OFF   PWMUVWN_Dis;	PWMUVW_Dis;
 

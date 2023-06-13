@@ -134,6 +134,7 @@ void ADC1_IRQHandler(void)
         commutation_delay = 0;
         motor_commutation(hall_value_now);
     }
+		motor_commutation(hall_value_now);
 }
 
 

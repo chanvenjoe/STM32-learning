@@ -94,6 +94,7 @@ int main(void)
     
     //初始化定时器1，用于输出互补PWM
 	tim1_complementary_pwm(PWM_PRIOD_LOAD, DEADTIME_LOAD);
+	
     
     //初始化定时器3，用于PI闭环计算
 //	tim3_init(TIM3_PSC_LOAD, TIM3_PRIOD);
