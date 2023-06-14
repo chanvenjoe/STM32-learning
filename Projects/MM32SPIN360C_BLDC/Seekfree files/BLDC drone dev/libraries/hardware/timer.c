@@ -22,7 +22,7 @@ void tim1_complementary_pwm(uint16 period,uint8 dead_time)
 //	GPIO_PinAFConfig(GPIOA, GPIO_PinSource11, GPIO_AF_6);
     
 	//定时器 CH1 CH2 CH3引脚初始化 用于控制上桥
-	GPIO_InitStructure.GPIO_Pin  =  GPIO_Pin_3|GPIO_Pin_5|GPIO_Pin_7;
+	GPIO_InitStructure.GPIO_Pin  =  GPIO_Pin_3|GPIO_Pin_5|GPIO_Pin_7;//  VSC B A
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
 	GPIO_Init(GPIOB, &GPIO_InitStructure);
@@ -81,13 +81,13 @@ void tim1_complementary_pwm(uint16 period,uint8 dead_time)
     
 	TIM1->PSC = 0x00;   // 定时器时钟 = HSI/(PSC+1) = 96MHz/1 = 96MHz
 	
-	TIM_BDTRStructInit(&TIM_BDTRInitStruct);
+	TIM_BDTRStructInit(&TIM_BDTRInitStruct);								//Brake and deadtime register
 	TIM_BDTRInitStruct.TIM_OSSRState = TIM_OSSRState_Disable;
 	TIM_BDTRInitStruct.TIM_OSSIState = TIM_OSSIState_Disable;
 	TIM_BDTRInitStruct.TIM_LOCKLevel = TIM_LOCKLevel_2;    
 	TIM_BDTRInitStruct.TIM_DeadTime  = dead_time;        
 	
-	TIM_BDTRInitStruct.TIM_Break     = TIM_Break_Enable;                    //刹车使能
+	//TIM_BDTRInitStruct.TIM_Break     = TIM_Break_Enable;                    //刹车使能
 	TIM_BDTRInitStruct.TIM_BreakPolarity   = TIM_BreakPolarity_High;        //刹车极性为高，高电平的时候刹车
 	TIM_BDTRInitStruct.TIM_AutomaticOutput = TIM_AutomaticOutput_Enable;    //当刹车信号无效的时候自动开启输出
 	TIM_BDTRConfig(TIM1, &TIM_BDTRInitStruct); 
@@ -103,6 +103,7 @@ void tim1_complementary_pwm(uint16 period,uint8 dead_time)
     NVIC_Init(&NVIC_InitStructure);
     
 	TIM_Cmd(TIM1, ENABLE);  //使能定时器1
+	 tim1_complementary_pwm_control(ENABLE);
 
 }
 
