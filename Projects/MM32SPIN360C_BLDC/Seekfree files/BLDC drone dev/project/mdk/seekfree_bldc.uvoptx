@@ -103,7 +103,7 @@
         <bEvRecOn>1</bEvRecOn>
         <bSchkAxf>0</bSchkAxf>
         <bTchkAxf>0</bTchkAxf>
-        <nTsel>4</nTsel>
+        <nTsel>3</nTsel>
         <sDll></sDll>
         <sDllPa></sDllPa>
         <sDlgDll></sDlgDll>
@@ -114,18 +114,18 @@
         <tDlgDll></tDlgDll>
         <tDlgPa></tDlgPa>
         <tIfile></tIfile>
-        <pMon>Segger\JL2CM3.dll</pMon>
+        <pMon>BIN\CMSIS_AGDI.dll</pMon>
       </DebugOpt>
       <TargetDriverDllRegistry>
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGUARM</Key>
-          <Name>卢紈4鏻4鏻?衧</Name>
+          <Name></Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
           <Key>CMSIS_AGDI</Key>
-          <Name>-X"SEEKFREE CMSIS-DAP V1" -USF87610452811254 -O206 -S9 -C0 -P00 -N00("ARM CoreSight SW-DP") -D00(0BB11477) -L00(0) -TO65554 -TC10000000 -TT10000000 -TP20 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO15 -FD20000000 -FC1000 -FN1 -FF0MM32SPIN27_128 -FS08000000 -FL020000 -FP0($$Device:MM32SPIN27PF$Flash\MM32SPIN27_128.FLM)</Name>
+          <Name>-X"Any" -UAny -O206 -S8 -C0 -P00000000 -N00("ARM CoreSight SW-DP") -D00(0BB11477) -L00(0) -TO65554 -TC10000000 -TT10000000 -TP20 -TDS8009 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO31 -FD20000000 -FC1000 -FN1 -FF0MM32SPIN27_128.FLM -FS08000000 -FL020000 -FP0($$Device:MM32SPIN27PF$Flash\MM32SPIN27_128.FLM)</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -145,7 +145,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>JL2CM3</Key>
-          <Name>-U25952305 -O78 -S2 -ZTIFSpeedSel5000 -A0 -C0 -JU1 -JI127.0.0.1 -JP0 -RST0 -N00("ARM CoreSight SW-DP") -D00(0BB11477) -L00(0) -TO18 -TC10000000 -TP21 -TDS8001 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -TB1 -TFE0 -FO7 -FD20000000 -FC1000 -FN1 -FF0MM32SPIN27_128.FLM -FS08000000 -FL020000 -FP0($$Device:MM32SPIN27PF$Flash\MM32SPIN27_128.FLM)</Name>
+          <Name>-U59418243 -O78 -S2 -ZTIFSpeedSel5000 -A0 -C0 -JU1 -JI127.0.0.1 -JP0 -RST0 -N00("ARM CoreSight SW-DP") -D00(0BB11477) -L00(0) -TO18 -TC10000000 -TP21 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -TB1 -TFE0 -FO7 -FD20000000 -FC1000 -FN1 -FF0MM32xx_128.FLM -FS08000000 -FL020000 -FP0($$Device:MM32SPIN27PF$Flash\MM32xx_128.FLM)</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -157,9 +157,9 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>213</LineNumber>
+          <LineNumber>186</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134225232</Address>
+          <Address>10</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -168,23 +168,23 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>..\..\Libraries\bldc\motor.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\seekfree_bldc\../../Libraries/bldc/motor.c\213</Expression>
+          <Expression>\\seekfree_bldc\../../Libraries/bldc/motor.c\186</Expression>
         </Bp>
         <Bp>
           <Number>1</Number>
           <Type>0</Type>
-          <LineNumber>137</LineNumber>
+          <LineNumber>63</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134219262</Address>
+          <Address>134225990</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\USER\isr.c</Filename>
+          <Filename>..\..\Libraries\hardware\gpio.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\seekfree_bldc\../USER/isr.c\137</Expression>
+          <Expression>\\seekfree_bldc\../../Libraries/hardware/gpio.c\63</Expression>
         </Bp>
         <Bp>
           <Number>2</Number>
@@ -201,6 +201,38 @@
           <Filename>..\USER\isr.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\seekfree_bldc\../USER/isr.c\124</Expression>
+        </Bp>
+        <Bp>
+          <Number>3</Number>
+          <Type>0</Type>
+          <LineNumber>144</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134221714</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>..\USER\isr.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\seekfree_bldc\../USER/isr.c\144</Expression>
+        </Bp>
+        <Bp>
+          <Number>4</Number>
+          <Type>0</Type>
+          <LineNumber>189</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>0</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>0</BreakIfRCount>
+          <Filename>..\..\Libraries\bldc\motor.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression></Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -334,27 +366,12 @@
           <WinNumber>1</WinNumber>
           <ItemText>duty_high,0x0A</ItemText>
         </Ww>
-      </WatchWindow1>
-      <WatchWindow2>
         <Ww>
-          <count>0</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>TIM1-&gt;CCR1</ItemText>
-        </Ww>
-        <Ww>
-          <count>1</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>CCER</ItemText>
-        </Ww>
-      </WatchWindow2>
-      <MemoryWindow1>
-        <Mm>
+          <count>26</count>
           <WinNumber>1</WinNumber>
-          <SubType>1</SubType>
-          <ItemText>0x48000800</ItemText>
-          <AccSizeX>0</AccSizeX>
-        </Mm>
-      </MemoryWindow1>
+          <ItemText>hall_value_now</ItemText>
+        </Ww>
+      </WatchWindow1>
       <Tracepoint>
         <THDelay>0</THDelay>
       </Tracepoint>

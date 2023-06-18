@@ -73,7 +73,9 @@ int main(void)
 
 	//此处编写用户代码(例如：外设初始化代码等)
 	
-	pwm_init(PWM_TIM, PWM_CH1, 1000, 0);											// PWM 通道1 初始化频率1KHz 占空比初始为0
+	pwm_init(TIM_2, TIM_2_CH1_A11, 1000, 0);											// PWM 通道1 初始化频率1KHz 占空比初始为0
+//	pwm_init(TIM_3, TIM_3_CH1_B04, 1000, PWM_DUTY_MAX/2);
+//	pwm_init(TIM_2, TIM_2_CH1_A11, 1000, 0);
 	gpio_init(DIR_CH1, GPO, 0, GPO_PUSH_PUL);										//初始化电机方向输出引脚			
 
 	tim_counter_init(TIM_1, TIM_1_ENC2_A01);										//初始化编码器采值引脚及定时器
@@ -85,7 +87,8 @@ int main(void)
 		//此处编写需要循环执行的代码
 		if(duty >= 0)														// 正转
 		{
-			pwm_duty_updata(PWM_TIM, PWM_CH1, duty*(PWM_DUTY_MAX/100));		// 计算占空比
+			pwm_duty_updata(TIM_2, TIM_2_CH1_A11, duty*(PWM_DUTY_MAX/100));		// 计算占空比
+//			pwm_duty_updata(TIM_3, TIM_3_CH1_B04, duty*(PWM_DUTY_MAX/2));
 			gpio_set(DIR_CH1,1);
 		}
 		else																// 反转

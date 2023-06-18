@@ -14,16 +14,16 @@
       <uAC6>1</uAC6>
       <TargetOption>
         <TargetCommonOption>
-          <Device>MM32SPIN27PF</Device>
+          <Device>MM32SPIN27PS</Device>
           <Vendor>MindMotion</Vendor>
           <PackID>MindMotion.MM32SPIN2x_DFP.1.1.6</PackID>
           <PackURL>http://www.mindmotion.com.cn/Download/MDK_KEIL/</PackURL>
-          <Cpu>IRAM(0x20000000,0x2000) IROM(0x08000000,0x20000) CPUTYPE("Cortex-M0") CLOCK(12000000) ELITTLE</Cpu>
+          <Cpu>IRAM(0x20000000,0x00003000) IROM(0x08000000,0x00020000) CPUTYPE("Cortex-M0") CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
-          <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD20000000 -FC1000 -FN1 -FF0MM32SPIN2x_128K -FS08000000 -FL020000 -FP0($$Device:MM32SPIN27PF$Flash\MM32SPIN2x_128K.FLM))</FlashDriverDll>
+          <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD20000000 -FC1000 -FN1 -FF0MM32SPIN27_128 -FS08000000 -FL020000 -FP0($$Device:MM32SPIN27PS$Flash\MM32SPIN27_128.FLM))</FlashDriverDll>
           <DeviceId>0</DeviceId>
-          <RegisterFile>$$Device:MM32SPIN27PF$Device\MM32SPIN_XX\Include\HAL_device.h</RegisterFile>
+          <RegisterFile>$$Device:MM32SPIN27PS$Device\MM32SPIN2x\Include\HAL_device.h</RegisterFile>
           <MemoryEnv></MemoryEnv>
           <Cmp></Cmp>
           <Asm></Asm>
@@ -33,7 +33,7 @@
           <SLE66CMisc></SLE66CMisc>
           <SLE66AMisc></SLE66AMisc>
           <SLE66LinkerMisc></SLE66LinkerMisc>
-          <SFDFile>$$Device:MM32SPIN27PF$SVD\MM32SPIN2x.svd</SFDFile>
+          <SFDFile>$$Device:MM32SPIN27PS$SVD\MM32SPIN2x.svd</SFDFile>
           <bCustSvd>0</bCustSvd>
           <UseEnv>0</UseEnv>
           <BinPath></BinPath>
@@ -246,7 +246,7 @@
               <IRAM>
                 <Type>0</Type>
                 <StartAddress>0x20000000</StartAddress>
-                <Size>0x2000</Size>
+                <Size>0x3000</Size>
               </IRAM>
               <IROM>
                 <Type>1</Type>
@@ -301,7 +301,7 @@
               <OCR_RVCT9>
                 <Type>0</Type>
                 <StartAddress>0x20000000</StartAddress>
-                <Size>0x2000</Size>
+                <Size>0x3000</Size>
               </OCR_RVCT9>
               <OCR_RVCT10>
                 <Type>0</Type>
