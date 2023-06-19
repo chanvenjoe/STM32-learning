@@ -72,14 +72,15 @@ int main(void)
 	board_init(true);																// 初始化 debug 输出串口
 
 	//此处编写用户代码(例如：外设初始化代码等)
-	
-	pwm_init(TIM_2, TIM_2_CH1_A11, 1000, 0);											// PWM 通道1 初始化频率1KHz 占空比初始为0
-//	pwm_init(TIM_3, TIM_3_CH1_B04, 1000, PWM_DUTY_MAX/2);
-//	pwm_init(TIM_2, TIM_2_CH1_A11, 1000, 0);
+	duty = 10;
+	pwm_init(TIM_17, TIM_17_CH1_B13, 1000, 0);											// PWM 通道1 初始化频率1KHz 占空比初始为0
+	pwm_init(TIM_2, TIM_2_CH1_A11, 1000, 0);
+	pwm_init(TIM_1, TIM_1_CH2_B06, 1000, 0);
 	gpio_init(DIR_CH1, GPO, 0, GPO_PUSH_PUL);										//初始化电机方向输出引脚			
-
-	tim_counter_init(TIM_1, TIM_1_ENC2_A01);										//初始化编码器采值引脚及定时器
-	gpio_init(ENCODER1_DIR, GPI, 0, GPI_PULL_UP);									//初始化编码器方向端口
+	gpio_init(C12, GPO, 1, GPO_PUSH_PUL);
+	gpio_init(B15, GPO, 1, GPO_PUSH_PUL);
+//	tim_counter_init(TIM_1, TIM_1_ENC2_A01);										//初始化编码器采值引脚及定时器
+//	gpio_init(ENCODER1_DIR, GPI, 0, GPI_PULL_UP);									//初始化编码器方向端口
 	//此处编写用户代码(例如：外设初始化代码等)
 
 	while(1)
@@ -87,8 +88,9 @@ int main(void)
 		//此处编写需要循环执行的代码
 		if(duty >= 0)														// 正转
 		{
-			pwm_duty_updata(TIM_2, TIM_2_CH1_A11, duty*(PWM_DUTY_MAX/100));		// 计算占空比
-//			pwm_duty_updata(TIM_3, TIM_3_CH1_B04, duty*(PWM_DUTY_MAX/2));
+			pwm_duty_updata(TIM_17, TIM_17_CH1_B13, duty*(PWM_DUTY_MAX/100));		// 计算占空比
+			pwm_duty_updata(TIM_2, TIM_2_CH1_A11, duty*(PWM_DUTY_MAX/100));
+			pwm_duty_updata(TIM_1, TIM_1_CH2_B06, duty*(PWM_DUTY_MAX/100));
 			gpio_set(DIR_CH1,1);
 		}
 		else																// 反转
@@ -96,18 +98,18 @@ int main(void)
 			pwm_duty_updata(PWM_TIM, PWM_CH1, -duty*(PWM_DUTY_MAX/100));									
 			gpio_set(DIR_CH1,0);
 		}
-		if(dir)																// 根据方向判断计数方向 本例程仅作参考
-		{
-			duty++;															// 正向计数
-			if(duty >= MAX_DUTY)											// 达到最大值
-				dir = false;												// 变更计数方向
-		}
-		else
-		{
-			duty--;															// 反向计数
-			if(duty <= -MAX_DUTY)											// 达到最小值
-				dir = true;													// 变更计数方向
-		}
+//		if(dir)																// 根据方向判断计数方向 本例程仅作参考
+//		{
+//			duty++;															// 正向计数
+//			if(duty >= MAX_DUTY)											// 达到最大值
+//				dir = false;												// 变更计数方向
+//		}
+//		else
+//		{
+//			duty--;															// 反向计数
+//			if(duty <= -MAX_DUTY)											// 达到最小值
+//				dir = true;													// 变更计数方向
+//		}
 		
 		encoder = tim_counter_get_count(TIM_1);								// 采集对应编码器数据
 		tim_counter_rst(TIM_1);												// 清除对应计数
@@ -115,7 +117,7 @@ int main(void)
 		
 		printf("encoder counter: %d \r\n", encoder);				// 串口输出采集的数据
 		
-		systick_delay_ms(100);
+//		systick_delay_ms(100);
 		//此处编写需要循环执行的代码
 	}
 }

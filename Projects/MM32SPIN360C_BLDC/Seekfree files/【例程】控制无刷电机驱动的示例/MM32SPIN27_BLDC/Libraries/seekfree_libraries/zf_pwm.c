@@ -80,14 +80,14 @@ void pwm_init (TIM_enum tim, TIM_PWMPIN_enum pin, uint32 freq, uint32 duty)
 			tim_index[(tim&0x0f)]->CCMR2 |=														// OC1M [6:4] 110
 					TIM_CCMR2_IC3F_1 | TIM_CCMR2_IC3F_2;										// PWM 模式 1
 			tim_index[(tim&0x0f)]->CCMR2 |= TIM_CCMR2_OC3PEN;									// 允许输出比较值的预装载
-			tim_index[(tim&0x0f)]->CCER |= TIM_CCER_CC3EN;										// 使能通道 2
+			tim_index[(tim&0x0f)]->CCER |= TIM_CCER_CC3EN;										// 使能通道 3
 			tim_index[(tim&0x0f)]->CCR3 = match_temp;											// 装载比较值
 			break;
 		case 0x4000:
 			tim_index[(tim&0x0f)]->CCMR2 |=														// OC1M [6:4] 110
 					TIM_CCMR2_IC4F_1 | TIM_CCMR2_IC4F_2;										// PWM 模式 0
 			tim_index[(tim&0x0f)]->CCMR2 |= TIM_CCMR2_OC4PEN;									// 允许输出比较值的预装载
-			tim_index[(tim&0x0f)]->CCER |= TIM_CCER_CC4EN;										// 使能通道 2
+			tim_index[(tim&0x0f)]->CCER |= TIM_CCER_CC4EN;										// 使能通道 4
 			tim_index[(tim&0x0f)]->CCR4 = match_temp;											// 装载比较值
 			break;
 	}
