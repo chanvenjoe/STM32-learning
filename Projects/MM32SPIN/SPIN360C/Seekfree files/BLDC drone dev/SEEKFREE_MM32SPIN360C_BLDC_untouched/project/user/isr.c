@@ -124,7 +124,7 @@ void ADC1_IRQHandler(void)
 	//清除标志位
     ADC_ClearFlag(ADC1, ADC_IT_EOC);
 	
-    		TIM1->CCR1 = PWM_PRIOD_LOAD/5;
+    	TIM1->CCR1 = PWM_PRIOD_LOAD/5;
 		TIM1->CCR2 = PWM_PRIOD_LOAD/5;
 		TIM1->CCR3 = PWM_PRIOD_LOAD/5;
 //    //读取adc的值

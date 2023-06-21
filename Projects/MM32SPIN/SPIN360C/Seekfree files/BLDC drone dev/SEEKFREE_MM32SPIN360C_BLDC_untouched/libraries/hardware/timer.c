@@ -28,9 +28,9 @@ void tim1_complementary_pwm(uint16 period,uint8 dead_time)
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
 	GPIO_Init(GPIOB, &GPIO_InitStructure);
 	
-//	GPIO_PinAFConfig(GPIOB, GPIO_PinSource7, GPIO_AF_7);
-//	GPIO_PinAFConfig(GPIOB, GPIO_PinSource5, GPIO_AF_7);
-//	GPIO_PinAFConfig(GPIOB, GPIO_PinSource3, GPIO_AF_7);
+	GPIO_PinAFConfig(GPIOB, GPIO_PinSource7, GPIO_AF_7);
+	GPIO_PinAFConfig(GPIOB, GPIO_PinSource5, GPIO_AF_7);
+	GPIO_PinAFConfig(GPIOB, GPIO_PinSource3, GPIO_AF_7);
 	
 	//下桥引脚初始化为IO
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_15;

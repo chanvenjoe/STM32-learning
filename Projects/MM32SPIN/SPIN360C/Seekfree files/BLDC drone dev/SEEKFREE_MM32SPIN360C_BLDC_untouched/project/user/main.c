@@ -60,7 +60,7 @@
 int main(void)
 {
     //初始化LED引脚
-    wins_init();
+//    wins_init();
     
     //初始化串口并设置波特率
     uart_init(115200);
