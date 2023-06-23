@@ -1,0 +1,87 @@
+ Change List  for  MM32SPIN0x(q) Libraries 
+
+V1.1.0-2020/09/24
+
+1.设备目录下的代码:
+（1）代码优化:dtype.h删除未使用和带注释的代码；
+
+（2）结构优化:优化hal_xxx.c和hal_xxx.h的相关文件，函数局部变量格式统一:ADCx替换为adc等，类型定义名称分别为u32，u16，u8，s32，s16 ，s8等是统一的；
+
+（3）快速添加注册定义:在Include文件夹中添加不同IP的注册定义相关文件，
+    
+        先前的mm32_reg.h分为reg_common.h（包含公共部分和中断向量的定义）和reg_IP.h（相关ip基址，寄存器等的定义）。
+        
+        对于某个IP，只需调用单个IP的reg_xxx.h定义和reg_common.h文件即可。
+
+（4）hal_dbg，hal_uid的.c和.h文件，编辑相关函数的定义，hal_device.h调用相关寄存器的配置； hal_ver描述版本
+
+  (5)  将reg_xx.h文件中的IP基址优化为立即数形式，如：ADC1_BASE   (APB2PERIPH_BASE + 0x2400) 改为  ADC1_BASE   (0x40010000UL + 0x2400)
+
+2.应用程序目录中的代码:
+
+ （1）目录结构的优化:用示例实现的功能简单地命名文件夹，统一命名方式,以IP+功能的形式命名，例如ADC_Awdg；增加USER同级目录的HARDWARE目录；
+  
+ （2）将BLINK样例重命名为GPIO样例对应的IOKey、IOToggle改为GPIO_Key,GPIO_Toggle
+ 
+ （3）增加对MiniBoard和eMiniBoard的支持和区别
+   
+  Lib:在特定的代码中，例如GPIO，KEY，EXTI，I2C示例，添加Macro来定义MINIBOARD和EMINIBOARD，区分MiniBoard和eMiniBoard
+
+（3）代码优化:
+
+    对于Lib样例，简化每个样本中的main.c，以便main.c更直观地反映相关样例的功能和函数调用的逻辑，并优化某些功能，例如ADC_Awdg样例，功能函数在ADC_Awdg/HARDWARE/ADC/adc.c和adc.h；
+    
+    统一类型定义名称u32，u16，u8，s32，s16，s8等；
+    
+    统一变量，函数名命名方式；
+    
+（4）样例增加
+Lib:增加48个样例
+       ADC:   添加9个样例: ADC_Awdg, ADC_DMA_Interrupt, ADC_DMA_MultiChan_Interrupt, ADC_DMA_polling, ADC_DMA_TemperatureSensor, ADC_DMA_VrefSensor, ADC_ExtLinesTrigger, ADC_Interrupt,ADC_TIM1Trig_DMA_SingleChan_Interrupt, 
+      
+       FLASH：添加2个样例：FLASH_SetReadProtect,FLASH_SIM_EEPROM,						
+						    
+       I2C:   添加7个样例:  I2C_EEPROM_DMA_Master_Interrupt,I2C_EEPROM_Master_Interrupt,I2C_GPIO_SIM_EEPROM,I2C_Slave_DMA_Interrupt,I2C_Slave_DMA_Polling,I2C_Slave_Interrupt,I2C_Slave_Polling,
+						    
+       PWR:   添加5个样例:  PWR_CurrentConsumption,PWR_PVD_Polling,PWR_Sleep_WFI_Wakeup,PWR_Standby_IWDG_Wakeup,PWR_Stop_EXTI_GPIO_Wakeup,			
+
+       RCC：添加1个样例：RCC_CSR_Reset
+						    
+       SPI:   添加8个样例: SPI_1_32Bit_Loop,	SPI_DMA_Polling_LoopBack,SPI_FLASH_DMA_Polling,SPI_GPIO_SIM_FLASH,SPI_Slave_DMA_Interrupt,SPI_Slave_DMA_Polling,SPI_Slave_Interrupt,SPI_Slave_Polling,
+						    
+       TIM:   添加9个样例:  TIM1_6Steps,TIM1_7PWM_Outputs,TIM1_CC1_Interrupt,TIM1_Dma_Ccr3,TIM1_DMA_UPData,TIM1_Interrupt,TIM_Sync_1Master2Slave,TIM_Sync_Enable,TIM_Sync_Prescaler,
+						    
+       UART:  添加7个样例:  UART_AutoBaudRate,UART_DMA_Interrupt,UART_DMA_Polling,UART_Interrupt,UART_Polling,UART_Tx_DMA_Interrupt_Rx_Interrupt,UART_WakeUp,
+
+Reg:增加24个样例:
+      ADC:     添加1个样例:  ADC_BasicExample
+
+      COMP:  添加1个样例：COMP_Polling 						 
+
+      DIV：添加1个样例：    DIV_Operation
+
+      DMA:     添加1个样例:  DMA_M2M
+						 
+      EXTI:    添加1个样例:  EXTI_Key
+						 
+      GPIO:    添加2个样例:  GPIO_Key，GPIO_Toggle
+						  
+      I2C:     添加2个样例:  I2C_EEPROM_eMiniBoar，I2C_EEPROM_MiniBoard
+						  
+      IWDG:    添加2个样例:  IWDG_Reset
+						 
+      PWR:     添加1个样例:  PWR_Standby
+						  
+      RCC:     添加1个样例:  RCC_MCO
+						 
+      SPI:     添加2个样例:  SPI_FLASH_HardNSS，SPI_FLASH_SoftNSS
+
+      SYSTICK: 添加1个样例:   SYSTICK_System1msDelay
+						  
+      TIM:     添加3个样例:   TIM1_BasicExample，TIM2_BasicExample，TIM3_PWM_Output
+						 
+      UART:    添加4个样例:   UART_Print_DMA，UART_Print_Interrupt，UART_Print_Polling，UART_Receive_DMA
+						  
+      WFI:     添加1个样例:   WFI_Sleep
+						  
+      WWDG:    添加1个样例:   WWDG_Reset 
