@@ -36,8 +36,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-//MADC_Structure adc_buffer;
-uint16_t adc_buf[8];
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -94,47 +93,17 @@ int main(void)
   MX_SPI1_Init();
   MX_TIM1_Init();
   MX_TIM3_Init();
-  MX_TIM6_Init();
-  HAL_TIM_Base_Start_IT(&htim6);
   MX_USART1_UART_Init();
+  MX_TIM6_Init();
   /* USER CODE BEGIN 2 */
-  HAL_ADCEx_Calibration_Start(&hadc);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
-  {;
+  {
     /* USER CODE END WHILE */
-
-	  HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
-	  HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2);
-	  HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3);
-	  HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_1);
-	  HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_2);
-	  HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_3);
-	  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
-	  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2);
-	  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_3);
-	  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_4);
-
-
-
-	  HAL_ADC_Start(&hadc);
-	  HAL_ADC_PollForConversion(&hadc,500);
-	  if(HAL_IS_BIT_SET(HAL_ADC_GetState(&hadc), HAL_ADC_STATE_REG_EOC))
-	  {
-		  HAL_ADC_Start(&hadc);
-		  adc_buf[0] = HAL_ADC_GetValue(&hadc);
-	  }
-/*	  for(uint8_t i=0;i<8;i++)
-	  {
-		  HAL_ADC_PollForConversion(&hadc,200);
-		  if(HAL_IS_BIT_SET(HAL_ADC_GetState(&hadc), HAL_ADC_STATE_REG_EOC))
-				  {
-			  	  	  adc_buf[i]=HAL_ADC_GetValue(&hadc);
-				  }
-	  }*/
 
     /* USER CODE BEGIN 3 */
   }
@@ -154,9 +123,11 @@ void SystemClock_Config(void)
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
   */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI|RCC_OSCILLATORTYPE_HSI14;
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+  RCC_OscInitStruct.HSI14State = RCC_HSI14_ON;
   RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
+  RCC_OscInitStruct.HSI14CalibrationValue = 16;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
   RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL12;
@@ -221,14 +192,3 @@ void assert_failed(uint8_t *file, uint32_t line)
   /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */
-
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
-{
-	if(htim == &htim6)
-	{
-		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_0);
-	}
-}
-
-
-
