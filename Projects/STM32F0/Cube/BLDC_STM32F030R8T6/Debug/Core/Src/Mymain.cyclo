@@ -1,4 +1,5 @@
-Mymain.c:69:5:main	3
-Mymain.c:146:6:SystemClock_Config	4
-Mymain.c:195:6:Error_Handler	1
-Mymain.c:223:6:HAL_TIM_PeriodElapsedCallback	2
+Mymain.c:71:5:main	3
+Mymain.c:148:6:SystemClock_Config	4
+Mymain.c:195:1:__io_putchar	1
+Mymain.c:206:6:Error_Handler	1
+Mymain.c:234:6:HAL_TIM_PeriodElapsedCallback	3

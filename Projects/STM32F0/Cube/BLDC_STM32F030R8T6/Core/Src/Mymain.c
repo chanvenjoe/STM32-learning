@@ -26,7 +26,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <string.h>
+#include <stdio.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -37,7 +38,8 @@
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 //MADC_Structure adc_buffer;
-uint8_t adc_buf[9];
+#define CH_NUM 5
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -48,7 +50,7 @@ uint8_t adc_buf[9];
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-
+int adc_buf[CH_NUM];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -119,17 +121,17 @@ int main(void)
 	  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_4);
 
 
-
-//	  HAL_ADC_Start(&hadc);
-//	  HAL_ADC_PollForConversion(&hadc,500);
-	  for(uint8_t i=0;i<5;i++)
+	  //How to get the actual Vdda
+	  //VDDA = 3.3V * Vreint_cal/Vrefint_data
+	  //Then using the actual Vdda to get the actual Vrevint and Voltage of other channels
+	  for(uint8_t i=0;i<CH_NUM;i++)
 	  {
 		  HAL_ADC_Start(&hadc);
 		  HAL_ADC_PollForConversion(&hadc,500);
 		  if(HAL_IS_BIT_SET(HAL_ADC_GetState(&hadc), HAL_ADC_STATE_REG_EOC))
 		  {
 			  adc_buf[i] = HAL_ADC_GetValue(&hadc);
-			  HAL_UART_Transmit(&huart1,  &adc_buf[i], sizeof(adc_buf[0]), 100);
+			  //HAL_UART_Transmit(&huart1,  &adc_buf[i], sizeof(adc_buf[0]), 100);
 		  }
 	  }
 
@@ -185,7 +187,16 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-
+#ifdef __GNUC__                                    //串口重定向
+#define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
+#else
+#define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
+#endif
+PUTCHAR_PROTOTYPE
+{
+    HAL_UART_Transmit(&huart1 , (uint8_t *)&ch, 1, 0xFFFF);
+    return ch;
+}
 /* USER CODE END 4 */
 
 /**
@@ -222,12 +233,16 @@ void assert_failed(uint8_t *file, uint32_t line)
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-	static uint8_t i;
+	static char j=0;
+	int VREFINT_CAL = *(__IO uint16_t *)(0x1FFFF7BA);
 	if(htim == &htim6)
 	{
 		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_0);
-		i = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0);
-		HAL_UART_Transmit(&huart1, &i, sizeof(i), 100);
+		j = j==CH_NUM-1? 0: j+1;
+		printf("ADC_ch%d conversion:%d\r\n",j, adc_buf[j]);
+		printf("vref_cal:%d\r\n", VREFINT_CAL);
+		//printf("LED STATUS: %d\r\n", i);
+		//HAL_UART_Transmit(&huart1, &i, sizeof(i), 100);
 	}
 }
 

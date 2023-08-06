@@ -29,6 +29,8 @@
 #include <time.h>
 #include <sys/time.h>
 #include <sys/times.h>
+#include "main.h"
+#include "usart.h"
 
 
 /* Variables */
@@ -88,6 +90,15 @@ __attribute__((weak)) int _write(int file, char *ptr, int len)
   }
   return len;
 }
+
+/*__attribute__((weak)) int _write(int file, char *ptr, int len)
+{
+	if(HAL_UART_Transmit(&huart1,(uint8_t *)ptr,len, 0xffff) != HAL_OK)
+		{
+			Error_Handler();
+		}
+		return len;
+}*/
 
 int _close(int file)
 {
