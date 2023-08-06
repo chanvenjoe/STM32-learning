@@ -37,7 +37,7 @@
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 //MADC_Structure adc_buffer;
-uint16_t adc_buf[8];
+uint8_t adc_buf[9];
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -104,7 +104,7 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
-  {;
+  {
     /* USER CODE END WHILE */
 
 	  HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
@@ -120,21 +120,19 @@ int main(void)
 
 
 
-	  HAL_ADC_Start(&hadc);
-	  HAL_ADC_PollForConversion(&hadc,500);
-	  if(HAL_IS_BIT_SET(HAL_ADC_GetState(&hadc), HAL_ADC_STATE_REG_EOC))
+//	  HAL_ADC_Start(&hadc);
+//	  HAL_ADC_PollForConversion(&hadc,500);
+	  for(uint8_t i=0;i<5;i++)
 	  {
 		  HAL_ADC_Start(&hadc);
-		  adc_buf[0] = HAL_ADC_GetValue(&hadc);
-	  }
-/*	  for(uint8_t i=0;i<8;i++)
-	  {
-		  HAL_ADC_PollForConversion(&hadc,200);
+		  HAL_ADC_PollForConversion(&hadc,500);
 		  if(HAL_IS_BIT_SET(HAL_ADC_GetState(&hadc), HAL_ADC_STATE_REG_EOC))
-				  {
-			  	  	  adc_buf[i]=HAL_ADC_GetValue(&hadc);
-				  }
-	  }*/
+		  {
+			  adc_buf[i] = HAL_ADC_GetValue(&hadc);
+			  HAL_UART_Transmit(&huart1,  &adc_buf[i], sizeof(adc_buf[0]), 100);
+		  }
+	  }
+
 
     /* USER CODE BEGIN 3 */
   }
@@ -224,9 +222,12 @@ void assert_failed(uint8_t *file, uint32_t line)
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
+	static uint8_t i;
 	if(htim == &htim6)
 	{
 		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_0);
+		i = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0);
+		HAL_UART_Transmit(&huart1, &i, sizeof(i), 100);
 	}
 }
 
