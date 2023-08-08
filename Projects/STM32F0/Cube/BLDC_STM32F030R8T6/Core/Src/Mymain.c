@@ -26,8 +26,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include <string.h>
-#include <stdio.h>
+#include "BLDC.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -97,7 +96,9 @@ int main(void)
   MX_TIM1_Init();
   MX_TIM3_Init();
   MX_TIM6_Init();
+  MX_TIM14_Init();
   HAL_TIM_Base_Start_IT(&htim6);
+  HAL_TIM_Base_Start_IT(&htim14);
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
   HAL_ADCEx_Calibration_Start(&hadc);
@@ -109,20 +110,10 @@ int main(void)
   {
     /* USER CODE END WHILE */
 
-	  HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
-	  HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2);
-	  HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3);
-	  HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_1);
-	  HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_2);
-	  HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_3);
-	  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
-	  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2);
-	  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_3);
-	  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_4);
-
 
 	  //How to get the actual Vdda
-	  //VDDA = 3.3V * Vreint_cal/Vrefint_data
+	  //Vrefint_cal is based on 3.3V VDDA, while Vrefint_data is based on actual VDDA
+	  //Vref_int/Vref_cal == 3.3/4095	   Vref_int/Vrefint_data == VDDA/4095 ==> VDDA = 3.3V*Vreint_cal/Vrefint_data
 	  //Then using the actual Vdda to get the actual Vrevint and Voltage of other channels
 	  for(uint8_t i=0;i<CH_NUM;i++)
 	  {
@@ -233,16 +224,22 @@ void assert_failed(uint8_t *file, uint32_t line)
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-	static char j=0;
-	int VREFINT_CAL = *(__IO uint16_t *)(0x1FFFF7BA);
 	if(htim == &htim6)
 	{
+		static char j=0;
+		int VREFINT_CAL = *(__IO uint16_t *)(0x1FFFF7BA);
 		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_0);
 		j = j==CH_NUM-1? 0: j+1;
 		printf("ADC_ch%d conversion:%d\r\n",j, adc_buf[j]);
 		printf("vref_cal:%d\r\n", VREFINT_CAL);
 		//printf("LED STATUS: %d\r\n", i);
 		//HAL_UART_Transmit(&huart1, &i, sizeof(i), 100);
+	}
+	else if(htim == &htim14)
+	{
+		driving_test();
+//		printf("tim14 interrupt");
+
 	}
 }
 

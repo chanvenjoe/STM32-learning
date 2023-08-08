@@ -1,0 +1,19 @@
+/*
+ * BLDC.h
+ *
+ *  Created on: Aug 8, 2023
+ *      Author: kzhou
+ */
+
+#ifndef BLDC_H_
+#define BLDC_H_
+
+//Close all MOS-> open target mos
+#define AHBL_ON	 HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
+#define	AHCL_ON
+#define	BHAL_ON
+#define	BHCL_ON
+#define CHAL_ON
+#define CHBL_ON
+
+#endif /* BLDC_H_ */

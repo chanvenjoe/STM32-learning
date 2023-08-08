@@ -1,3 +1,4 @@
+"./Core/Src/BLDC.o"
 "./Core/Src/Mymain.o"
 "./Core/Src/adc.o"
 "./Core/Src/gpio.o"

@@ -1,0 +1,18 @@
+/*
+ * BLDC.h
+ *
+ *  Created on: Aug 8, 2023
+ *      Author: kzhou
+ */
+
+#ifndef BLDC_H_
+#define BLDC_H_
+
+#define AHBL_ON
+#define	AHCL_ON
+#define	BHAL_ON
+#define	BHCL_ON
+#define CHAL_ON
+#define CHBL_ON
+
+#endif /* BLDC_H_ */
