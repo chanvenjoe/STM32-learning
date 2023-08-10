@@ -100,9 +100,15 @@ int main(void)
   HAL_TIM_Base_Start_IT(&htim6);
   HAL_TIM_Base_Start_IT(&htim14);
   MX_USART1_UART_Init();
+  HAL_UART_Receive_IT(&huart1, &rxdata, sizeof(rxdata));
   /* USER CODE BEGIN 2 */
   HAL_ADCEx_Calibration_Start(&hadc);
   /* USER CODE END 2 */
+
+  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
+  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2);
+  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_3);
+  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_4);
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
@@ -232,14 +238,29 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		j = j==CH_NUM-1? 0: j+1;
 		printf("ADC_ch%d conversion:%d\r\n",j, adc_buf[j]);
 		printf("vref_cal:%d\r\n", VREFINT_CAL);
+		printf("rxdata:%c\r\n", rxbuf[j]);
 		//printf("LED STATUS: %d\r\n", i);
 		//HAL_UART_Transmit(&huart1, &i, sizeof(i), 100);
 	}
 	else if(htim == &htim14)
 	{
-		driving_test();
+		HAL_TIM_PWM_Start(&htim1, BH);// HAL_GPIO_WritePin(MOSL, CL, GPIO_PIN_SET);
+		HAL_TIM_PWM_Start(&htim1, AH);
+		HAL_TIM_PWM_Start(&htim1, CH);
+//		driving_test();
 //		printf("tim14 interrupt");
 
+	}
+}
+
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+	if(huart == &huart1)
+	{
+		rxbuf[cnt] = rxdata;
+//		printf("rxdata:%c\r\n", rxbuf[cnt]);
+		HAL_UART_Receive_IT(&huart1, &rxdata, sizeof(rxdata));
+		cnt++;
 	}
 }
 
