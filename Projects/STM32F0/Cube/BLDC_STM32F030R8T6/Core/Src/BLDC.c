@@ -11,7 +11,7 @@
 void driving_test()
 {
 	static int i=1;
-	switch(6)
+	switch(i)
 	{
 	case 1:
 		AHBL_ON;

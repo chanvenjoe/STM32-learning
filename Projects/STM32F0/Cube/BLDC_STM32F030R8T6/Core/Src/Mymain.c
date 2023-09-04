@@ -116,7 +116,6 @@ int main(void)
   {
     /* USER CODE END WHILE */
 
-
 	  //How to get the actual Vdda
 	  //Vrefint_cal is based on 3.3V VDDA, while Vrefint_data is based on actual VDDA
 	  //Vref_int/Vref_cal == 3.3/4095	   Vref_int/Vrefint_data == VDDA/4095 ==> VDDA = 3.3V*Vreint_cal/Vrefint_data
@@ -232,33 +231,52 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	if(htim == &htim6)
 	{
-		static char j=0;
-		int VREFINT_CAL = *(__IO uint16_t *)(0x1FFFF7BA);
+		static unsigned char j=0;
+		int VREFINT_CAL = *(__IO uint16_t *)(0x1FFFF7BA);//The system store value addr
 		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_0);
 		j = j==CH_NUM-1? 0: j+1;
 		printf("ADC_ch%d conversion:%d\r\n",j, adc_buf[j]);
-		printf("vref_cal:%d\r\n", VREFINT_CAL);
-		printf("rxdata:%c\r\n", rxbuf[j]);
-		//printf("LED STATUS: %d\r\n", i);
-		//HAL_UART_Transmit(&huart1, &i, sizeof(i), 100);
+//		printf("vref_cal:%d\r\n", VREFINT_CAL);
+//		printf("rxdata:%c\r\n", rxbuf[j]);
 	}
 	else if(htim == &htim14)
 	{
-		HAL_TIM_PWM_Start(&htim1, BH);// HAL_GPIO_WritePin(MOSL, CL, GPIO_PIN_SET);
-		HAL_TIM_PWM_Start(&htim1, AH);
-		HAL_TIM_PWM_Start(&htim1, CH);
-//		driving_test();
+		driving_test();
 //		printf("tim14 interrupt");
 
 	}
 }
 
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)//every byte transmit complete, enter this function
 {
 	if(huart == &huart1)
 	{
+		extern uint8_t cnt;
+		cnt=cnt==255?1:cnt+1;
 		rxbuf[cnt] = rxdata;
-//		printf("rxdata:%c\r\n", rxbuf[cnt]);
+		switch(rxbuf[cnt])
+		{
+		case	'1':
+			HAL_TIM_Base_Stop_IT(&htim6);
+			break;
+
+		case	'0':
+			HAL_TIM_Base_Start_IT(&htim6);
+			break;
+		case	'+':
+			BT_PWM_handle(TURE);
+			break;
+		case	'-':
+			BT_PWM_handle(FALSE);
+			break;
+		case	'p':
+		{
+			HAL_TIM_Base_Stop_IT(&htim1);
+			break;
+		}
+		default:
+			break;
+		}
 		HAL_UART_Receive_IT(&huart1, &rxdata, sizeof(rxdata));
 		cnt++;
 	}

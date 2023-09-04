@@ -24,6 +24,9 @@
 uint8_t rxbuf[255];
 uint8_t rxdata;
 uint8_t cnt;
+uint8_t* pwm_flag;
+
+
 /* USER CODE END 0 */
 
 UART_HandleTypeDef huart1;
@@ -119,9 +122,21 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
 }
 
 /* USER CODE BEGIN 1 */
-void My_uart_receive()
+void BT_PWM_handle(char flag)
 {
-
+	static signed char ch1=0;
+	if(flag == TURE)
+	{
+		ch1 = ch1+1>=10? 10:ch1+1;
+	}
+	else
+	{
+		ch1 = ch1-1<=0?0:ch1-1;
+	}
+	__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, ch1);
+	__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, ch1);
+	__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_3, ch1);
+	__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, ch1);
 }
 
 /* USER CODE END 1 */

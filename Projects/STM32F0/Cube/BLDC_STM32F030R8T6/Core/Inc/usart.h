@@ -35,6 +35,8 @@ extern "C" {
 extern UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN Private defines */
+#define TURE  1
+#define FALSE 0
 extern uint8_t rxbuf[255];
 extern uint8_t rxdata;
 extern uint8_t cnt;
@@ -43,7 +45,7 @@ extern uint8_t cnt;
 void MX_USART1_UART_Init(void);
 
 /* USER CODE BEGIN Prototypes */
-
+void BT_PWM_handle(char flag);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus
