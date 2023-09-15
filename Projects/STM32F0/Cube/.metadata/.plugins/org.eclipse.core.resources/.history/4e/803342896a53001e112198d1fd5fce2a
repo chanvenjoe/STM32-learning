@@ -23,13 +23,10 @@
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
-#include "dma.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "BLDC.h"
-#include <stdio.h>
-#include <string.h>
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -39,8 +36,6 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-//MADC_Structure adc_buffer;
-
 
 /* USER CODE END PD */
 
@@ -52,8 +47,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-uint16_t adc_buf[CH_NUM]={0};
-MADC_Structure adc_val = {1,1,1,1,1,1,1,1,1};
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -80,7 +74,7 @@ int main(void)
   /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-    HAL_Init();
+  HAL_Init();
 
   /* USER CODE BEGIN Init */
 
@@ -88,52 +82,32 @@ int main(void)
 
   /* Configure the system clock */
   SystemClock_Config();
+
   /* USER CODE BEGIN SysInit */
 
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_DMA_Init();
   MX_ADC_Init();
-//  MX_SPI1_Init();
+  MX_SPI1_Init();
   MX_TIM1_Init();
   MX_TIM3_Init();
+  MX_USART1_UART_Init();
   MX_TIM6_Init();
   MX_TIM14_Init();
-  MX_USART1_UART_Init();
-  HAL_TIM_Base_Start_IT(&htim6);
-  HAL_TIM_Base_Start_IT(&htim14);
-  HAL_UART_Receive_IT(&huart1, &rxdata, sizeof(rxdata));
-	if(HAL_ADC_Start_DMA(&hadc, (uint32_t*)adc_buf, sizeof(adc_buf))!=HAL_OK)//This
-	{
-	 Error_Handler(); //This function also enable the interruption
-	}
-
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
-
-//  HAL_TIM_OC_Start(&htim1,TIM_CHANNEL_4);
-
-  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
-  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2);
-  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_3);
-  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_4);
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-		My_ADC_getvalue(adc_buf, &adc_val);
-		for(char i=0; i<CH_NUM; i++)
-			printf("ADC_ch%d conversion:%d   Voltage:%0.2fV\r\n",i, *(adc_buf+i), (*(adc_buf+i)*(Vrefint*4095/adc_val.vref_data)/4095));
-
-  }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-
+  }
   /* USER CODE END 3 */
 }
 
@@ -150,9 +124,11 @@ void SystemClock_Config(void)
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
   */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI|RCC_OSCILLATORTYPE_HSI14;
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+  RCC_OscInitStruct.HSI14State = RCC_HSI14_ON;
   RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
+  RCC_OscInitStruct.HSI14CalibrationValue = 16;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
   RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL12;
@@ -183,16 +159,7 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-#ifdef __GNUC__                                    //串口重定向
-#define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
-#else
-#define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
-#endif
-PUTCHAR_PROTOTYPE
-{
-    HAL_UART_Transmit(&huart1 , (uint8_t *)&ch, 1, 0xFFFF);
-    return ch;
-}
+
 /* USER CODE END 4 */
 
 /**
@@ -226,64 +193,3 @@ void assert_failed(uint8_t *file, uint32_t line)
   /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */
-
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
-{
-	if(htim == &htim6)
-	{
-		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_0);
-
-	}
-	else if(htim == &htim14)
-	{
-		driving_test();
-	}
-}
-
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)//every byte transmit complete, enter this function
-{
-	if(huart == &huart1)
-	{
-		extern uint8_t cnt;
-		cnt=cnt==255?1:cnt+1;
-		rxbuf[cnt] = rxdata;
-		switch(rxbuf[cnt])
-		{
-		case	'1':
-			HAL_TIM_Base_Stop_IT(&htim6);
-			break;
-
-		case	'0':
-			HAL_TIM_Base_Start_IT(&htim6);
-			break;
-		case	'+':
-			BT_PWM_handle(TURE);
-			break;
-		case	'-':
-			BT_PWM_handle(FALSE);
-			break;
-		case	'p':
-		{
-			HAL_TIM_Base_Stop_IT(&htim1);
-			break;
-		}
-		default:
-			break;
-		}
-		HAL_UART_Receive_IT(&huart1, &rxdata, sizeof(rxdata));
-		cnt++;
-	}
-}
-
-void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
-{
-
-//	HAL_ADC_Stop_DMA(&hadc);
-//	printf("DMA conversion completed");
-//	My_ADC_getvalue(adc_buf, adc_val);
-//	HAL_ADC_Start_DMA(&hadc, adc_buf,CH_NUM);
-//	HAL_ADC_Stop_DMA(&hadc);
-}
-
-
-

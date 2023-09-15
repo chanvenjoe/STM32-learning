@@ -125,9 +125,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-		My_ADC_getvalue(adc_buf, &adc_val);
-		for(char i=0; i<CH_NUM; i++)
-			printf("ADC_ch%d conversion:%d   Voltage:%0.2fV\r\n",i, *(adc_buf+i), (*(adc_buf+i)*(Vrefint*4095/adc_val.vref_data)/4095));
+
 
   }
     /* USER CODE END WHILE */
@@ -232,7 +230,11 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	if(htim == &htim6)
 	{
 		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_0);
-
+//		My_ADC_getvalue(adc_buf, &adc_val);
+		for(char i=0; i<CH_NUM; i++)
+			printf("ADC_ch%d conversion:%d   Voltage:%0.2fV\r\n",i, *(adc_buf+i), (*(adc_buf+i)*(Vrefint*4095/adc_val.vref_data)/4095));
+//		My_ADC_getvalue(adc_buf, adc_val);
+//		printf("rxdata:%c\r\n", rxbuf[j]);
 	}
 	else if(htim == &htim14)
 	{
@@ -277,7 +279,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)//every byte transmit com
 
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 {
-
+	My_ADC_getvalue(adc_buf, &adc_val);
 //	HAL_ADC_Stop_DMA(&hadc);
 //	printf("DMA conversion completed");
 //	My_ADC_getvalue(adc_buf, adc_val);

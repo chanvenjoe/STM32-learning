@@ -1,7 +1,7 @@
-Mymain.c:74:5:main	2
-Mymain.c:143:6:SystemClock_Config	4
-Mymain.c:190:1:__io_putchar	1
-Mymain.c:201:6:Error_Handler	1
-Mymain.c:229:6:HAL_TIM_PeriodElapsedCallback	4
-Mymain.c:246:6:HAL_UART_RxCpltCallback	11
-Mymain.c:281:6:HAL_ADC_ConvCpltCallback	1
+Mymain.c:74:5:main	3
+Mymain.c:144:6:SystemClock_Config	4
+Mymain.c:191:1:__io_putchar	1
+Mymain.c:202:6:Error_Handler	1
+Mymain.c:230:6:HAL_TIM_PeriodElapsedCallback	3
+Mymain.c:243:6:HAL_UART_RxCpltCallback	11
+Mymain.c:278:6:HAL_ADC_ConvCpltCallback	1

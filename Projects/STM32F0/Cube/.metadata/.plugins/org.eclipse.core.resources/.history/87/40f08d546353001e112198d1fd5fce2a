@@ -259,5 +259,8 @@ MADC_Structure My_ADC_getvalue(uint16_t* adc_buf, MADC_Structure * adc_val)// th
 	return *adc_val;
 }
 
+unsigned int ADC_Data_handl()
+{
 
+}
 /* USER CODE END 1 */

@@ -126,8 +126,6 @@ int main(void)
   while (1)
   {
 		My_ADC_getvalue(adc_buf, &adc_val);
-		for(char i=0; i<CH_NUM; i++)
-			printf("ADC_ch%d conversion:%d   Voltage:%0.2fV\r\n",i, *(adc_buf+i), (*(adc_buf+i)*(Vrefint*4095/adc_val.vref_data)/4095));
 
   }
     /* USER CODE END WHILE */
@@ -232,6 +230,8 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	if(htim == &htim6)
 	{
 		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_0);
+		for(char i=0; i<CH_NUM; i++)
+			printf("ADC_ch%d conversion:%d   Voltage:%0.2fV\r\n",i, *(adc_buf+i), (*(adc_buf+i)*(Vrefint*4095/adc_val.vref_data)/4095));
 
 	}
 	else if(htim == &htim14)

@@ -53,7 +53,7 @@ enum ADC_SEQ{pa=0,pb,pc,ia,ib,isum,isum_filt,vb};
 
 #define CH_NUM 9
 #define Vrefint 	*(__IO uint16_t *)(0x1FFFF7BA) * 3.3/4095
-#define VBAT_FACTOR	0.12
+#define VBAT_FACTOR	0.2
 /* USER CODE END Private defines */
 
 void MX_ADC_Init(void);

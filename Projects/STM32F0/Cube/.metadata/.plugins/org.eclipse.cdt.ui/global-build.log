@@ -2194,3 +2194,295 @@ arm-none-eabi-size   BLDC_STM32F030R8T6.elf
   53012	    512	   2432	  55956	   da94	BLDC_STM32F030R8T6.elf
 Finished building: default.size.stdout
  
+09:00:58 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.o"
+arm-none-eabi-gcc "../Core/Src/BLDC.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/BLDC.d" -MT"Core/Src/BLDC.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/BLDC.o"
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+arm-none-eabi-gcc "../Core/Src/adc.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/adc.d" -MT"Core/Src/adc.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/adc.o"
+arm-none-eabi-gcc "../Core/Src/dma.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/dma.d" -MT"Core/Src/dma.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/dma.o"
+arm-none-eabi-gcc "../Core/Src/gpio.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/gpio.d" -MT"Core/Src/gpio.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/gpio.o"
+arm-none-eabi-gcc "../Core/Src/spi.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/spi.d" -MT"Core/Src/spi.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/spi.o"
+arm-none-eabi-gcc "../Core/Src/stm32f0xx_hal_msp.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f0xx_hal_msp.d" -MT"Core/Src/stm32f0xx_hal_msp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f0xx_hal_msp.o"
+../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.c:569:1: error: expected identifier or '(' before '{' token
+  569 | {
+      | ^
+make: *** [Drivers/STM32F0xx_HAL_Driver/Src/subdir.mk:79: Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.o] Error 1
+make: *** Waiting for unfinished jobs....
+../Core/Src/adc.c: In function 'My_ADC_getvalue':
+../Core/Src/adc.c:236:7: warning: unused variable 'i' [-Wunused-variable]
+  236 |  char i = 0;
+      |       ^
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+09:04:50 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.o"
+arm-none-eabi-gcc "../Core/Src/stm32f0xx_it.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f0xx_it.d" -MT"Core/Src/stm32f0xx_it.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f0xx_it.o"
+arm-none-eabi-gcc "../Core/Src/syscalls.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/syscalls.d" -MT"Core/Src/syscalls.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/syscalls.o"
+arm-none-eabi-gcc "../Core/Src/tim.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/tim.d" -MT"Core/Src/tim.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/tim.o"
+arm-none-eabi-gcc "../Core/Src/usart.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/usart.d" -MT"Core/Src/usart.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/usart.o"
+../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.c:569:1: error: expected identifier or '(' before '{' token
+  569 | {
+      | ^
+make: *** [Drivers/STM32F0xx_HAL_Driver/Src/subdir.mk:79: Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+09:05:28 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.o"
+arm-none-eabi-gcc "../Core/Src/BLDC.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/BLDC.d" -MT"Core/Src/BLDC.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/BLDC.o"
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+arm-none-eabi-gcc "../Core/Src/adc.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/adc.d" -MT"Core/Src/adc.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/adc.o"
+arm-none-eabi-gcc "../Core/Src/dma.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/dma.d" -MT"Core/Src/dma.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/dma.o"
+arm-none-eabi-gcc "../Core/Src/gpio.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/gpio.d" -MT"Core/Src/gpio.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/gpio.o"
+arm-none-eabi-gcc "../Core/Src/spi.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/spi.d" -MT"Core/Src/spi.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/spi.o"
+arm-none-eabi-gcc "../Core/Src/stm32f0xx_hal_msp.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f0xx_hal_msp.d" -MT"Core/Src/stm32f0xx_hal_msp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f0xx_hal_msp.o"
+../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.c: In function 'HAL_DMA_IRQHandler':
+../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.c:571:3: error: parameter 'flag_it' is initialized
+  571 |   uint32_t flag_it = hdma->DmaBaseAddress->ISR;
+      |   ^~~~~~~~
+../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.c:571:22: error: 'hdma' undeclared (first use in this function)
+  571 |   uint32_t flag_it = hdma->DmaBaseAddress->ISR;
+      |                      ^~~~
+../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.c:571:22: note: each undeclared identifier is reported only once for each function it appears in
+../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.c:572:3: error: parameter 'source_it' is initialized
+  572 |   uint32_t source_it = hdma->Instance->CCR;
+      |   ^~~~~~~~
+../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.c:575:3: error: expected declaration specifiers before 'if'
+  575 |   if ((RESET != (flag_it & (DMA_FLAG_HT1 << hdma->ChannelIndex))) && (RESET != (source_it & DMA_IT_HT)))
+      |   ^~
+../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.c:598:3: error: expected declaration specifiers before 'else'
+  598 |   else if ((RESET != (flag_it & (DMA_FLAG_TC1 << hdma->ChannelIndex))) && (RESET != (source_it & DMA_IT_TC)))
+      |   ^~~~
+../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.c:624:3: error: expected declaration specifiers before 'else'
+  624 |   else if ((RESET != (flag_it & (DMA_FLAG_TE1 << hdma->ChannelIndex))) && (RESET != (source_it & DMA_IT_TE)))
+      |   ^~~~
+../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.c:649:1: error: expected declaration specifiers before '}' token
+  649 | }
+      | ^
+../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.c:662:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+  662 | {
+      | ^
+../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.c:713:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+  713 | {
+      | ^
+../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.c:789:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+  789 | {
+      | ^
+../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.c:800:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+  800 | {
+      | ^
+../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.c:826:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+  826 | {
+      | ^
+../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.c:860:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+  860 | {
+      | ^
+../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.c:570:6: error: old-style parameter declarations in prototyped function definition
+  570 | void HAL_DMA_IRQHandler(DMA_HandleTypeDef *hdma)
+      |      ^~~~~~~~~~~~~~~~~~
+../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.c:900: error: expected '{' at end of input
+../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.c: At top level:
+../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.c:99:13: warning: 'DMA_SetConfig' used but never defined
+   99 | static void DMA_SetConfig(DMA_HandleTypeDef *hdma, uint32_t SrcAddress, uint32_t DstAddress, uint32_t DataLength);
+      |             ^~~~~~~~~~~~~
+../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.c:100:13: warning: 'DMA_CalcBaseAndBitshift' used but never defined
+  100 | static void DMA_CalcBaseAndBitshift(DMA_HandleTypeDef *hdma);
+      |             ^~~~~~~~~~~~~~~~~~~~~~~
+make: *** [Drivers/STM32F0xx_HAL_Driver/Src/subdir.mk:79: Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.o] Error 1
+make: *** Waiting for unfinished jobs....
+../Core/Src/adc.c: In function 'My_ADC_getvalue':
+../Core/Src/adc.c:236:7: warning: unused variable 'i' [-Wunused-variable]
+  236 |  char i = 0;
+      |       ^
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+09:06:09 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.o"
+arm-none-eabi-gcc "../Core/Src/stm32f0xx_it.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f0xx_it.d" -MT"Core/Src/stm32f0xx_it.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f0xx_it.o"
+arm-none-eabi-gcc "../Core/Src/syscalls.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/syscalls.d" -MT"Core/Src/syscalls.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/syscalls.o"
+arm-none-eabi-gcc "../Core/Src/tim.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/tim.d" -MT"Core/Src/tim.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/tim.o"
+arm-none-eabi-gcc "../Core/Src/usart.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/usart.d" -MT"Core/Src/usart.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/usart.o"
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  53012	    512	   2432	  55956	   da94	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+09:06:14 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+   text	   data	    bss	    dec	    hex	filename
+  53012	    512	   2432	  55956	   da94	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+09:06:53 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+   text	   data	    bss	    dec	    hex	filename
+  53012	    512	   2432	  55956	   da94	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+09:26:32 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+   text	   data	    bss	    dec	    hex	filename
+  53012	    512	   2432	  55956	   da94	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+09:26:54 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+   text	   data	    bss	    dec	    hex	filename
+  53012	    512	   2432	  55956	   da94	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+09:27:21 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+   text	   data	    bss	    dec	    hex	filename
+  53012	    512	   2432	  55956	   da94	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+09:29:51 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+   text	   data	    bss	    dec	    hex	filename
+  53012	    512	   2432	  55956	   da94	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+09:30:36 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+   text	   data	    bss	    dec	    hex	filename
+  53012	    512	   2432	  55956	   da94	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+09:32:36 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  52984	    512	   2432	  55928	   da78	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+09:42:28 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'HAL_TIM_PeriodElapsedCallback':
+../Core/Src/Mymain.c:232:3: warning: this 'for' clause does not guard... [-Wmisleading-indentation]
+  232 |   for(char i=0; i<CH_NUM; i++);
+      |   ^~~
+../Core/Src/Mymain.c:233:4: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'for'
+  233 |    printf("ADC_ch%d conversion:%d   Voltage:%0.2fV\r\n",i, *(adc_buf+i), (*(adc_buf+i)*(Vrefint*4095/adc_val.vref_data)/4095));
+      |    ^~~~~~
+../Core/Src/Mymain.c:233:57: error: 'i' undeclared (first use in this function); did you mean 'ib'?
+  233 |    printf("ADC_ch%d conversion:%d   Voltage:%0.2fV\r\n",i, *(adc_buf+i), (*(adc_buf+i)*(Vrefint*4095/adc_val.vref_data)/4095));
+      |                                                         ^
+      |                                                         ib
+../Core/Src/Mymain.c:233:57: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Core/Src/subdir.mk:55: Core/Src/Mymain.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+09:42:43 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  53040	    512	   2432	  55984	   dab0	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+09:48:16 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+   text	   data	    bss	    dec	    hex	filename
+  53040	    512	   2432	  55984	   dab0	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+09:49:30 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  53008	    512	   2432	  55952	   da90	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+09:52:35 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.o"
+arm-none-eabi-gcc "../Core/Src/dma.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/dma.d" -MT"Core/Src/dma.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/dma.o"
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  53008	    512	   2432	  55952	   da90	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+09:52:53 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+   text	   data	    bss	    dec	    hex	filename
+  53008	    512	   2432	  55952	   da90	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+09:53:00 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+   text	   data	    bss	    dec	    hex	filename
+  53008	    512	   2432	  55952	   da90	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+09:53:03 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+   text	   data	    bss	    dec	    hex	filename
+  53008	    512	   2432	  55952	   da90	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+09:53:30 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+   text	   data	    bss	    dec	    hex	filename
+  53008	    512	   2432	  55952	   da90	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+09:58:50 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  52996	    512	   2432	  55940	   da84	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
