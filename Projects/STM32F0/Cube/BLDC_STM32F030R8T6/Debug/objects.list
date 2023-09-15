@@ -1,6 +1,7 @@
 "./Core/Src/BLDC.o"
 "./Core/Src/Mymain.o"
 "./Core/Src/adc.o"
+"./Core/Src/dma.o"
 "./Core/Src/gpio.o"
 "./Core/Src/spi.o"
 "./Core/Src/stm32f0xx_hal_msp.o"

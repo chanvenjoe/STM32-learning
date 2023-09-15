@@ -1,3 +1,5 @@
-adc.c:30:6:MX_ADC_Init	7
-adc.c:111:6:HAL_ADC_MspInit	2
-adc.c:146:6:HAL_ADC_MspDeInit	2
+adc.c:31:6:MX_ADC_Init	11
+adc.c:144:6:HAL_ADC_MspInit	3
+adc.c:196:6:HAL_ADC_MspDeInit	2
+adc.c:234:16:My_ADC_getvalue	1
+adc.c:262:14:ADC_Data_handl	1

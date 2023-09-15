@@ -37,7 +37,8 @@ extern UART_HandleTypeDef huart1;
 /* USER CODE BEGIN Private defines */
 #define TURE  1
 #define FALSE 0
-extern uint8_t rxbuf[255];
+#define RX_BUF_NUM 255
+extern uint8_t rxbuf[RX_BUF_NUM];
 extern uint8_t rxdata;
 extern uint8_t cnt;
 /* USER CODE END Private defines */

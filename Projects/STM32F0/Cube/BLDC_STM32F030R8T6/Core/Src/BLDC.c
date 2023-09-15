@@ -15,27 +15,27 @@ void driving_test()
 	{
 	case 1:
 		AHBL_ON;
-		printf("AB");
+//		printf("AB");
 		break;
 	case 2:
 		CHBL_ON;
-		printf("CB");
+//		printf("CB");
 		break;
 	case 3:
 		CHAL_ON;
-		printf("CA");
+//		printf("CA");
 		break;
 	case 4:
 		BHAL_ON;
-		printf("BA");
+//		printf("BA");
 		break;
 	case 5:
 		BHCL_ON;
-		printf("BC");
+//		printf("BC");
 		break;
 	case 6:
 		AHCL_ON;
-		printf("AC");
+//		printf("AC");
 		break;
 	default:
 		break;

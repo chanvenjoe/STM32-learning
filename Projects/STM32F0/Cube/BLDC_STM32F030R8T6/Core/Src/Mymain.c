@@ -23,10 +23,13 @@
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
+#include "dma.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "BLDC.h"
+#include <stdio.h>
+#include <string.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -37,7 +40,7 @@
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 //MADC_Structure adc_buffer;
-#define CH_NUM 5
+
 
 /* USER CODE END PD */
 
@@ -49,7 +52,8 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-int adc_buf[CH_NUM];
+uint16_t adc_buf[CH_NUM]={0};
+MADC_Structure adc_val = {1,1,1,1,1,1,1,1,1};
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -76,7 +80,7 @@ int main(void)
   /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
+    HAL_Init();
 
   /* USER CODE BEGIN Init */
 
@@ -84,26 +88,34 @@ int main(void)
 
   /* Configure the system clock */
   SystemClock_Config();
-
   /* USER CODE BEGIN SysInit */
 
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_DMA_Init();
   MX_ADC_Init();
-  MX_SPI1_Init();
+//  MX_SPI1_Init();
   MX_TIM1_Init();
   MX_TIM3_Init();
   MX_TIM6_Init();
   MX_TIM14_Init();
+  MX_USART1_UART_Init();
   HAL_TIM_Base_Start_IT(&htim6);
   HAL_TIM_Base_Start_IT(&htim14);
-  MX_USART1_UART_Init();
+//  HAL_ADC_Start_IT(&hadc);
   HAL_UART_Receive_IT(&huart1, &rxdata, sizeof(rxdata));
+	if(HAL_ADC_Start_DMA(&hadc, (uint32_t*)adc_buf, sizeof(adc_buf))!=HAL_OK)//This
+	{
+	 Error_Handler(); //This function also enable the interruption
+	}
+
   /* USER CODE BEGIN 2 */
-  HAL_ADCEx_Calibration_Start(&hadc);
+
   /* USER CODE END 2 */
+
+//  HAL_TIM_OC_Start(&htim1,TIM_CHANNEL_4);
 
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2);
@@ -114,26 +126,13 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+
+
+  }
     /* USER CODE END WHILE */
 
-	  //How to get the actual Vdda
-	  //Vrefint_cal is based on 3.3V VDDA, while Vrefint_data is based on actual VDDA
-	  //Vref_int/Vref_cal == 3.3/4095	   Vref_int/Vrefint_data == VDDA/4095 ==> VDDA = 3.3V*Vreint_cal/Vrefint_data
-	  //Then using the actual Vdda to get the actual Vrevint and Voltage of other channels
-	  for(uint8_t i=0;i<CH_NUM;i++)
-	  {
-		  HAL_ADC_Start(&hadc);
-		  HAL_ADC_PollForConversion(&hadc,500);
-		  if(HAL_IS_BIT_SET(HAL_ADC_GetState(&hadc), HAL_ADC_STATE_REG_EOC))
-		  {
-			  adc_buf[i] = HAL_ADC_GetValue(&hadc);
-			  //HAL_UART_Transmit(&huart1,  &adc_buf[i], sizeof(adc_buf[0]), 100);
-		  }
-	  }
-
-
     /* USER CODE BEGIN 3 */
-  }
+
   /* USER CODE END 3 */
 }
 
@@ -231,19 +230,16 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	if(htim == &htim6)
 	{
-		static unsigned char j=0;
-		int VREFINT_CAL = *(__IO uint16_t *)(0x1FFFF7BA);//The system store value addr
 		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_0);
-		j = j==CH_NUM-1? 0: j+1;
-		printf("ADC_ch%d conversion:%d\r\n",j, adc_buf[j]);
-//		printf("vref_cal:%d\r\n", VREFINT_CAL);
+//		My_ADC_getvalue(adc_buf, &adc_val);
+		for(char i=0; i<CH_NUM; i++)
+			printf("ADC_ch%d conversion:%d   Voltage:%0.2fV\r\n",i, *(adc_buf+i), (*(adc_buf+i)*(Vrefint*4095/adc_val.vref_data)/4095));
+//		My_ADC_getvalue(adc_buf, adc_val);
 //		printf("rxdata:%c\r\n", rxbuf[j]);
 	}
 	else if(htim == &htim14)
 	{
 		driving_test();
-//		printf("tim14 interrupt");
-
 	}
 }
 
@@ -280,6 +276,16 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)//every byte transmit com
 		HAL_UART_Receive_IT(&huart1, &rxdata, sizeof(rxdata));
 		cnt++;
 	}
+}
+
+void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
+{
+	My_ADC_getvalue(adc_buf, &adc_val);
+//	HAL_ADC_Stop_DMA(&hadc);
+//	printf("DMA conversion completed");
+//	My_ADC_getvalue(adc_buf, adc_val);
+//	HAL_ADC_Start_DMA(&hadc, adc_buf,CH_NUM);
+//	HAL_ADC_Stop_DMA(&hadc);
 }
 
 

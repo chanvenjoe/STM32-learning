@@ -21,7 +21,7 @@
 #include "usart.h"
 
 /* USER CODE BEGIN 0 */
-uint8_t rxbuf[255];
+uint8_t rxbuf[RX_BUF_NUM];
 uint8_t rxdata;
 uint8_t cnt;
 uint8_t* pwm_flag;

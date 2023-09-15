@@ -44,16 +44,22 @@ typedef struct {
 	uint16_t isum;
 	uint16_t isum_filtered;
 	uint16_t vbat;
+	uint16_t vref_data;
+//	float 	 vdd;
 }MADC_Structure;
+
 
 enum ADC_SEQ{pa=0,pb,pc,ia,ib,isum,isum_filt,vb};
 
+#define CH_NUM 9
+#define Vrefint 	*(__IO uint16_t *)(0x1FFFF7BA) * 3.3/4095
+#define VBAT_FACTOR
 /* USER CODE END Private defines */
 
 void MX_ADC_Init(void);
 
 /* USER CODE BEGIN Prototypes */
-
+MADC_Structure My_ADC_getvalue(uint16_t * adc_buf, MADC_Structure *adc_val);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus
