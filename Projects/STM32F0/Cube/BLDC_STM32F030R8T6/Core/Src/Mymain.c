@@ -105,7 +105,7 @@ int main(void)
   HAL_TIM_Base_Start_IT(&htim6);
   HAL_TIM_Base_Start_IT(&htim14);
   HAL_UART_Receive_IT(&huart1, &rxdata, sizeof(rxdata));
-	if(HAL_ADC_Start_DMA(&hadc, (uint32_t*)adc_buf, sizeof(adc_buf))!=HAL_OK)//This
+	if(HAL_ADC_Start_DMA(&hadc, (uint32_t*)adc_buf, sizeof(adc_buf)/2)!=HAL_OK)//Remember that the length of DMA is half world and size of return bytes:that is double of the data transmited so the array overfllow!
 	{
 	 Error_Handler(); //This function also enable the interruption
 	}
@@ -114,7 +114,7 @@ int main(void)
 
   /* USER CODE END 2 */
 
-//  HAL_TIM_OC_Start(&htim1,TIM_CHANNEL_4);
+  HAL_TIM_OC_Start(&htim1,TIM_CHANNEL_4);
 
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2);

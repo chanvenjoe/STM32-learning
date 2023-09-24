@@ -1,10 +1,10 @@
 #MicroXplorer Configuration settings - do not modify
 ADC.ClockPrescaler=ADC_CLOCK_ASYNC_DIV1
-ADC.ContinuousConvMode=ENABLE
+ADC.ContinuousConvMode=DISABLE
 ADC.DMAContinuousRequests=ENABLE
 ADC.DiscontinuousConvMode=DISABLE
 ADC.EOCSelection=ADC_EOC_SEQ_CONV
-ADC.ExternalTrigConv=ADC_SOFTWARE_START
+ADC.ExternalTrigConv=ADC_EXTERNALTRIGCONV_T1_CC4
 ADC.IPParameters=SamplingTime,ContinuousConvMode,Overrun,EOCSelection,Resolution,DiscontinuousConvMode,ExternalTrigConv,DMAContinuousRequests,ClockPrescaler
 ADC.Overrun=ADC_OVR_DATA_PRESERVED
 ADC.Resolution=ADC_RESOLUTION_12B
