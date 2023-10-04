@@ -45,7 +45,9 @@ typedef struct {
 	uint16_t isum_filtered;
 	uint16_t vbat;
 	uint16_t vref_data;
-//	float 	 vdd;
+	uint8_t  	bemf_now;
+	uint8_t 	bemf_last;
+	uint8_t		bemf_next;
 }MADC_Structure;
 
 
@@ -53,7 +55,7 @@ enum ADC_SEQ{pa=0,pb,pc,ia,ib,isum,isum_filt,vb};
 
 #define CH_NUM 9
 #define Vrefint 	*(__IO uint16_t *)(0x1FFFF7BA) * 3.3/4095
-#define VBAT_FACTOR	0.12
+#define VBAT_FACTOR	0.126
 /* USER CODE END Private defines */
 
 void MX_ADC_Init(void);

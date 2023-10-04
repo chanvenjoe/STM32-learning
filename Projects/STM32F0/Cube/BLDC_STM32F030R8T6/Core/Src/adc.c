@@ -66,7 +66,7 @@ void MX_ADC_Init(void)
   */
   sConfig.Channel = ADC_CHANNEL_0;
   sConfig.Rank = ADC_RANK_CHANNEL_NUMBER;
-  sConfig.SamplingTime = ADC_SAMPLETIME_239CYCLES_5;
+  sConfig.SamplingTime = ADC_SAMPLETIME_55CYCLES_5;
   if (HAL_ADC_ConfigChannel(&hadc, &sConfig) != HAL_OK)
   {
     Error_Handler();
@@ -245,15 +245,20 @@ MADC_Structure My_ADC_getvalue(uint16_t* adc_buf, MADC_Structure * adc_val)// th
 		  //HAL_UART_Transmit(&huart1,  &adc_buf[i], sizeof(adc_buf[0]), 100);
 //	  }
 //	}
-	adc_val->bemf_pa = adc_buf[0];
-	adc_val->bemf_pb = adc_buf[1];
-	adc_val->bemf_pc = adc_buf[2];
-	adc_val->ia		= adc_buf[3];
-	adc_val->ib		= adc_buf[4];
-	adc_val->isum	= adc_buf[5];
-	adc_val->isum_filtered = adc_buf[6];
-	adc_val->vbat 	= adc_buf[7];
-	adc_val->vref_data = adc_buf[8];
+
+	adc_val->bemf_pa 		= adc_buf[0] / 620; //620 == 0.5V
+	adc_val->bemf_pb 		= adc_buf[1] / 620;
+	adc_val->bemf_pc 		= adc_buf[2] / 620;
+	adc_val->vbat 			= adc_buf[3];
+	adc_val->ia				= adc_buf[4];
+	adc_val->ib				= adc_buf[5];
+	adc_val->isum			= adc_buf[6];
+	adc_val->isum_filtered 	= adc_buf[7];
+	adc_val->vref_data 		= adc_buf[8];
+
+	adc_val->bemf_now = adc_val->bemf_pa * 4 + adc_val->bemf_pb * 2 + adc_val->bemf_pc * 1;
+	printf("%d   %d",adc_val->bemf_last, adc_val->bemf_now);
+
 
 	return *adc_val;
 }

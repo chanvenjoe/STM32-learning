@@ -1,1 +1,2 @@
-BLDC.c:11:6:driving_test	9
+BLDC.c:11:6:BLDC_Driving_test	9
+BLDC.c:46:6:BLDC_Phase_switching	11

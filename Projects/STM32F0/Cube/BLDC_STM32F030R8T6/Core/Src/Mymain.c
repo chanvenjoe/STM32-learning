@@ -121,13 +121,19 @@ int main(void)
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_3);
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_4);
 
+  /*******initial position reset**************/
+
+
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-		My_ADC_getvalue(adc_buf, &adc_val);
-		for(char i=0; i<CH_NUM; i++)
-			printf("ADC_ch%d conversion:%d   Voltage:%0.2fV\r\n",i, *(adc_buf+i), (*(adc_buf+i)*(Vrefint*4095/adc_val.vref_data)/4095));
+		BLDC_Phase_switching(&adc_val);
+//		for(char i=0; i<3/*CH_NUM*/; i++)
+//			if(i==3)
+//				printf("ADC_ch%d conversion:%d   Voltage:%0.2fV\r\n",i, *(adc_buf+i), (*(adc_buf+i)*(Vrefint*4095/adc_val.vref_data)/4095)/VBAT_FACTOR);
+//			else
+//				printf("ADC_ch%d conversion:%d   Voltage:%0.2fV\r\n",i, *(adc_buf+i), (*(adc_buf+i)*(Vrefint*4095/adc_val.vref_data)/4095));
 
   }
     /* USER CODE END WHILE */
@@ -231,12 +237,27 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	if(htim == &htim6)
 	{
+		static int period1 = 1000;
+		period1 = period1<50? 1000: period1-20;
+		TIM6->ARR=period1;
 		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_0);
 
 	}
 	else if(htim == &htim14)
 	{
-		driving_test();
+		static int period = 1000;
+		period = period<=20? 20: period-1;
+		TIM14->ARR =  period;
+		BLDC_Driving_test();
+/*		static int commutation_delay=0;
+		commutation_delay++;
+		if(commutation_delay>2)
+		{
+			CLOSE_ALL;
+			commutation_delay=0;
+			BLDC_Driving_test();
+		}*/
+		//commutation_delay = commutation_delay>20?0:commutation_delay;
 	}
 }
 
@@ -277,7 +298,8 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)//every byte transmit com
 
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 {
-
+	My_ADC_getvalue(adc_buf, &adc_val);
+//	BLDC_Phase_switching(&adc_val);
 //	HAL_ADC_Stop_DMA(&hadc);
 //	printf("DMA conversion completed");
 //	My_ADC_getvalue(adc_buf, adc_val);
