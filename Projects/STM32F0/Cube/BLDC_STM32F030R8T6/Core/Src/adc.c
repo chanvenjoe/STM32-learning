@@ -233,22 +233,10 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef* adcHandle)
 //Then using the actual Vdda to get the actual Vrevint and Voltage of other channels
 MADC_Structure My_ADC_getvalue(uint16_t* adc_buf, MADC_Structure * adc_val)// the local array addr is not valid after function done
 {
-//	char i = 0;
-//	for(uint8_t i=0;i<CH_NUM;i++)
-//	{
-//	  HAL_ADC_Start(&hadc);
-//	  HAL_ADC_PollForConversion(&hadc,500);
-//	  i= i == CH_NUM-1? 0: i+1;
-//	  if(HAL_IS_BIT_SET(HAL_ADC_GetState(&hadc), HAL_ADC_STATE_REG_EOC))
-//	  {
-//		  adc_buf[i] = HAL_ADC_GetValue(&hadc);
-		  //HAL_UART_Transmit(&huart1,  &adc_buf[i], sizeof(adc_buf[0]), 100);
-//	  }
-//	}
 
-	adc_val->bemf_pa 		= adc_buf[0] / 620; //620 == 0.5V
-	adc_val->bemf_pb 		= adc_buf[1] / 620;
-	adc_val->bemf_pc 		= adc_buf[2] / 620;
+	adc_val->bemf_pa 		= adc_buf[0] / 620>1?1:0; //620 == 0.5V
+	adc_val->bemf_pb 		= adc_buf[1] / 620>1?1:0;
+	adc_val->bemf_pc 		= adc_buf[2] / 620>1?1:0;
 	adc_val->vbat 			= adc_buf[3];
 	adc_val->ia				= adc_buf[4];
 	adc_val->ib				= adc_buf[5];
@@ -256,9 +244,9 @@ MADC_Structure My_ADC_getvalue(uint16_t* adc_buf, MADC_Structure * adc_val)// th
 	adc_val->isum_filtered 	= adc_buf[7];
 	adc_val->vref_data 		= adc_buf[8];
 
-	adc_val->bemf_now = adc_val->bemf_pa * 4 + adc_val->bemf_pb * 2 + adc_val->bemf_pc * 1;
-	printf("%d   %d",adc_val->bemf_last, adc_val->bemf_now);
-
+	adc_val->bemf_last = adc_val->bemf_now;
+	adc_val->bemf_now  = adc_val->bemf_pa * 4 + adc_val->bemf_pb * 2 + adc_val->bemf_pc * 1;
+//	printf("%d  ",adc_val->bemf_now);
 
 	return *adc_val;
 }

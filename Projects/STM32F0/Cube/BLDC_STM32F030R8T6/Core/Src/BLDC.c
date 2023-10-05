@@ -17,11 +17,11 @@ void BLDC_Driving_test()// The driving sequence is 1-5-4-6-2-3
 		AHBL_ON;
 //		printf("AB\r\n");
 		break;
-	case 2:
+	case 6:
 		AHCL_ON;
 //		printf("CB\r\n");
 		break;
-	case 3:
+	case 5:
 		BHCL_ON;
 //		printf("CA\r\n");
 		break;
@@ -29,11 +29,11 @@ void BLDC_Driving_test()// The driving sequence is 1-5-4-6-2-3
 		BHAL_ON;
 //		printf("BA\r\n");
 		break;
-	case 5:
+	case 3:
 		CHAL_ON;
 //		printf("BC\r\n");
 		break;
-	case 6:
+	case 2:
 		CHBL_ON;
 //		printf("AC\r\n");
 		break;
@@ -46,7 +46,9 @@ void BLDC_Driving_test()// The driving sequence is 1-5-4-6-2-3
 void BLDC_Phase_switching(MADC_Structure * adc_val)
 {
 	static char cross_zero_flag=0;
-	static char count = 0;
+	cross_zero_flag = adc_val->bemf_now ==0? 1: adc_val->bemf_now;
+//	adc_val->bemf_now  = adc_val->bemf_now ==0? adc_val->bemf_last : adc_val->bemf_now;
+/*	static char count = 0;
 	if(adc_val->bemf_now != adc_val->bemf_last)
 	{
 		count++;
@@ -56,11 +58,11 @@ void BLDC_Phase_switching(MADC_Structure * adc_val)
 			cross_zero_flag = 1;
 			printf("\r\ncross0");
 		}
-	}
+	}*/
 
-	if(cross_zero_flag==1) //filter
-	{
-		switch(adc_val->bemf_now)
+//	if(cross_zero_flag==1) //filter
+//	{
+		switch(cross_zero_flag)
 		{
 			case 5:
 				AHBL_ON;
@@ -93,10 +95,9 @@ void BLDC_Phase_switching(MADC_Structure * adc_val)
 				cross_zero_flag = 0;
 				break;
 			default:
-				CLOSE_ALL;
-				break;
+				BLDC_Driving_test();
 
 		}
-	}
+//	}
 
 }

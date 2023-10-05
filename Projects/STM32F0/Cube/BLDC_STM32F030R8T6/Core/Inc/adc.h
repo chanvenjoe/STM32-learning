@@ -48,6 +48,7 @@ typedef struct {
 	uint8_t  	bemf_now;
 	uint8_t 	bemf_last;
 	uint8_t		bemf_next;
+	uint16_t	commutation_delay;
 }MADC_Structure;
 
 
