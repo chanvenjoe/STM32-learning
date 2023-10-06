@@ -246,7 +246,6 @@ MADC_Structure My_ADC_getvalue(uint16_t* adc_buf, MADC_Structure * adc_val)// th
 
 	adc_val->bemf_last = adc_val->bemf_now;
 	adc_val->bemf_now  = adc_val->bemf_pa * 4 + adc_val->bemf_pb * 2 + adc_val->bemf_pc * 1;
-//	printf("%d  ",adc_val->bemf_now);
 
 	return *adc_val;
 }

@@ -40,7 +40,7 @@
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 //MADC_Structure adc_buffer;
-#define Phase_delay 5
+#define Phase_delay 5000
 
 /* USER CODE END PD */
 
@@ -126,44 +126,14 @@ int main(void)
   /*******initial position reset**************/
 
 
-	for(unsigned int i = 20;i>Phase_delay;i-=1)
-	{
-		AHBL_ON;
-		Delay_ms(i);//delay
-		AHCL_ON;
-		Delay_ms(i);
-		BHCL_ON;
-		Delay_ms(i);
-		BHAL_ON;
-		Delay_ms(i);
-		CHAL_ON;
-		Delay_ms(i);
-		CHBL_ON;
-		Delay_ms(i);
-	}
 
-	/****************************************/
+  /****************************************/
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-/*		AHBL_ON;
-		Delay_ms(Phase_delay);//delay
-		AHCL_ON;
-		Delay_ms(Phase_delay);
-		BHCL_ON;
-		Delay_ms(Phase_delay);
-		BHAL_ON;
-		Delay_ms(Phase_delay);
-		CHAL_ON;
-		Delay_ms(Phase_delay);
-		HAL_Delay()
-		CHBL_ON;
-		Delay_ms(Phase_delay);*/
-
-		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_0);
-		delay_us(10000);
-//		BLDC_Phase_switching(&adc_val);
+		printf("\r\n bemf now:%d", adc_val.bemf_now);
+		printf("\r\n commutation time:%d", adc_val.commutation_delay);
 //		for(char i=0; i<3/*CH_NUM*/; i++)
 //			if(i==3)
 //				printf("ADC_ch%d conversion:%d   Voltage:%0.2fV\r\n",i, *(adc_buf+i), (*(adc_buf+i)*(Vrefint*4095/adc_val.vref_data)/4095)/VBAT_FACTOR);
@@ -275,11 +245,16 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		static int period1 = 1000;
 		period1 = period1<50? 1000: period1-20;
 		TIM6->ARR=period1;
-//		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_0);
+		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_0);
 
 	}
 	else if(htim == &htim14)
 	{
+		if(adc_val.commutation_timeout >20000)//if 100ms no phase switching
+		{
+			adc_val.commutation_timeout = 0;
+			CLOSE_ALL;
+		}
 //		BLDC_Driving_test();
 	}
 }
@@ -322,7 +297,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)//every byte transmit com
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 {
 	My_ADC_getvalue(adc_buf, &adc_val);
-
+	BLDC_Phase_switching(&adc_val);
 //	BLDC_Phase_switching(&adc_val);
 //	printf("DMA conversion completed");
 }

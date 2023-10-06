@@ -28,7 +28,7 @@
 #define CHBL_ON		CLOSE_ALL; HAL_TIM_PWM_Start(&htim1, CH); HAL_GPIO_WritePin(MOSL, BL, GPIO_PIN_SET)
 
 
-void BLDC_Driving_test();
+void BLDC_Start_Up();
 void BLDC_Phase_switching(MADC_Structure * adc_val);
 
 #endif /* BLDC_H_ */

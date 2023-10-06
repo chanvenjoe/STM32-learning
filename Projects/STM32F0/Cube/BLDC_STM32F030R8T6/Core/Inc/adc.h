@@ -49,6 +49,7 @@ typedef struct {
 	uint8_t 	bemf_last;
 	uint8_t		bemf_next;
 	uint16_t	commutation_delay;
+	uint16_t	commutation_timeout; //Move to BLDC structure later
 }MADC_Structure;
 
 
