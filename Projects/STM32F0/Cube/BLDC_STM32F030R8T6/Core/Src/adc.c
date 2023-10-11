@@ -233,16 +233,30 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef* adcHandle)
 //Then using the actual Vdda to get the actual Vrevint and Voltage of other channels
 MADC_Structure My_ADC_getvalue(uint16_t* adc_buf, MADC_Structure * adc_val)// the local array addr is not valid after function done
 {
-
-	adc_val->bemf_pa 		= adc_buf[0] / 620>1?1:0; //620 == 0.5V
-	adc_val->bemf_pb 		= adc_buf[1] / 620>1?1:0;
-	adc_val->bemf_pc 		= adc_buf[2] / 620>1?1:0;
+	static int i=0;
+	if(adc_val->commutation_delay!=0)
+	{
+		if(++i==1000)
+		{	i=0;
+			adc_val->cross_zero_threshole = adc_val->cross_zero_threshole == 1240? 1240: adc_val->cross_zero_threshole+1 ;
+		}//
+	}
+	else
+		adc_val->cross_zero_threshole = 20;
+//	else
+//		cross_zero_threshole =
+//	cross_zero_threshole = adc_val->commutation_delay==0? cross_zero_threshole_avg:adc_val->vbat/1.26;
+	adc_val->bemf_pa 		= adc_buf[0] / adc_val->cross_zero_threshole>1?1:0; //620 == 0.5V
+	adc_val->bemf_pb 		= adc_buf[1] / adc_val->cross_zero_threshole>1?1:0;
+	adc_val->bemf_pc 		= adc_buf[2] / adc_val->cross_zero_threshole>1?1:0;
 	adc_val->vbat 			= adc_buf[3];
 	adc_val->ia				= adc_buf[4];
 	adc_val->ib				= adc_buf[5];
 	adc_val->isum			= adc_buf[6];
 	adc_val->isum_filtered 	= adc_buf[7];
 	adc_val->vref_data 		= adc_buf[8];
+
+
 
 	adc_val->bemf_last = adc_val->bemf_now;
 	adc_val->bemf_now  = adc_val->bemf_pa * 4 + adc_val->bemf_pb * 2 + adc_val->bemf_pc * 1;

@@ -7,7 +7,10 @@
 
 #include "BLDC.h"
 
-/*	for(unsigned int i = 60000;i>=5000;i-=100)
+
+void BLDC_Start_Up()
+{
+	for(unsigned int i = 10000;i>=1000;i-=100)
 	{
 		AHBL_ON;
 		delay_us(i);//delay
@@ -21,8 +24,8 @@
 		delay_us(i);
 		AHCL_ON;
 		delay_us(i);
-	}*/
-
+	}
+}
 void BLDC_Driving_test()// The driving sequence is 1-5-4-6-2-3
 {
 	static int i=1;
@@ -62,42 +65,35 @@ void BLDC_Driving_test()// The driving sequence is 1-5-4-6-2-3
 void BLDC_Phase_switching(MADC_Structure * adc_val)
 {
 		adc_val->commutation_timeout+=1;
+	//	adc_val->commutation_delay = 0;
 		switch(adc_val->bemf_now)
 		{
 			case 5:
 				AHBL_ON;
-				__HAL_TIM_SET_COUNTER(&htim15, 0);//the auto reload is set to 65535
+					__HAL_TIM_SET_COUNTER(&htim15, 0);//the auto reload is set to 65535
 					HAL_TIM_Base_Start(&htim15);
 					adc_val->commutation_timeout = 0;
-	//			printf("\r\nAB");
 				break;
 			case 4:
 				AHCL_ON;
-		//		printf("\r\nAC");
 				break;
 			case 6:
 				BHCL_ON;
-		//		printf("\r\nBC");
 				break;
 			case 2:
 				BHAL_ON;
-		//		printf("\r\nBA");
 				break;
 			case 3:
 				CHAL_ON;
-		//		printf("\r\nCA");
 				break;
 			case 1:
 				CHBL_ON;
 				adc_val->commutation_delay = __HAL_TIM_GET_COUNTER(&htim15);
 				HAL_TIM_Base_Stop(&htim15);
-
-		//		printf("\r\nCB");
 				break;
 //			default:
 //				BLDC_Driving_test();
 
 		}
-//		adc_val->commutation_delay = 10000;
 
 }

@@ -124,7 +124,7 @@ int main(void)
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_4);
 
   /*******initial position reset**************/
-
+ //  BLDC_Start_Up();
 
 
   /****************************************/
@@ -132,8 +132,12 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-		printf("\r\n bemf now:%d", adc_val.bemf_now);
+	  if(adc_buf[0] >=adc_val.cross_zero_threshole)
+	  {
+		printf("\r\n threshole:%d", adc_val.cross_zero_threshole);
 		printf("\r\n commutation time:%d", adc_val.commutation_delay);
+		printf("\r\n BEMF A:%0.2f B:%0.2f C:%0.2f", adc_buf[0]*3.3/4095, adc_buf[1]*3.3/4095, adc_buf[2]*3.3/4095);
+	  }
 //		for(char i=0; i<3/*CH_NUM*/; i++)
 //			if(i==3)
 //				printf("ADC_ch%d conversion:%d   Voltage:%0.2fV\r\n",i, *(adc_buf+i), (*(adc_buf+i)*(Vrefint*4095/adc_val.vref_data)/4095)/VBAT_FACTOR);
@@ -253,9 +257,11 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		if(adc_val.commutation_timeout >20000)//if 100ms no phase switching
 		{
 			adc_val.commutation_timeout = 0;
-			CLOSE_ALL;
+			adc_val.commutation_delay 	= 0;
+//			CLOSE_ALL;
 		}
-//		BLDC_Driving_test();
+
+			BLDC_Driving_test();
 	}
 }
 
@@ -297,9 +303,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)//every byte transmit com
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 {
 	My_ADC_getvalue(adc_buf, &adc_val);
-	BLDC_Phase_switching(&adc_val);
 //	BLDC_Phase_switching(&adc_val);
-//	printf("DMA conversion completed");
 }
 
 void Delay_ms(uint32_t delay)
