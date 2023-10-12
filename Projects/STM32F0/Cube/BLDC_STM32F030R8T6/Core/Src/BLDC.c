@@ -12,6 +12,7 @@ void BLDC_Start_Up()
 {
 	for(unsigned int i = 10000;i>=1000;i-=100)
 	{
+		delay_us(i);
 		AHBL_ON;
 		delay_us(i);//delay
 		CHBL_ON;
@@ -23,7 +24,7 @@ void BLDC_Start_Up()
 		BHCL_ON;
 		delay_us(i);
 		AHCL_ON;
-		delay_us(i);
+
 	}
 }
 void BLDC_Driving_test()// The driving sequence is 1-5-4-6-2-3

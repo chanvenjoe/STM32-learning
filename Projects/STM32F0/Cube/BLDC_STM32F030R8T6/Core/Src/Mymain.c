@@ -124,7 +124,7 @@ int main(void)
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_4);
 
   /*******initial position reset**************/
- //  BLDC_Start_Up();
+//   BLDC_Start_Up();
 
 
   /****************************************/
@@ -132,11 +132,12 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  if(adc_buf[0] >=adc_val.cross_zero_threshole)
+	  if(adc_buf[0]>100)//adc_val.commutation_delay!=0)
 	  {
 		printf("\r\n threshole:%d", adc_val.cross_zero_threshole);
+		printf("\r\n tim14 arr:%d", TIM14->ARR);
 		printf("\r\n commutation time:%d", adc_val.commutation_delay);
-		printf("\r\n BEMF A:%0.2f B:%0.2f C:%0.2f", adc_buf[0]*3.3/4095, adc_buf[1]*3.3/4095, adc_buf[2]*3.3/4095);
+		printf("\r\n BEMF A:%0.2f B:%0.2f C:%0.2f", adc_buf[0]*(Vrefint*4095/adc_val.vref_data)/4095, adc_buf[1]*(Vrefint*4095/adc_val.vref_data)/4095, adc_buf[2]*(Vrefint*4095/adc_val.vref_data)/4095);
 	  }
 //		for(char i=0; i<3/*CH_NUM*/; i++)
 //			if(i==3)
@@ -258,10 +259,17 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		{
 			adc_val.commutation_timeout = 0;
 			adc_val.commutation_delay 	= 0;
-//			CLOSE_ALL;
+			CLOSE_ALL;
 		}
 
 			BLDC_Driving_test();
+			static int period1 = 200;
+			if(period1>30)
+			{
+				period1--;
+				TIM14->ARR=period1;
+			}
+
 	}
 }
 
@@ -292,6 +300,10 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)//every byte transmit com
 			HAL_TIM_Base_Stop_IT(&htim1);
 			break;
 		}
+		case '4':
+		{
+			TIM14->ARR--;
+		}
 		default:
 			break;
 		}
@@ -300,7 +312,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)//every byte transmit com
 	}
 }
 
-void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
+void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)// Using tim15 to get a 88us between each trigger 38us to transfer data?
 {
 	My_ADC_getvalue(adc_buf, &adc_val);
 //	BLDC_Phase_switching(&adc_val);

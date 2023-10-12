@@ -10271,3 +10271,1271 @@ Finished building: default.size.stdout
  
 Finished building: BLDC_STM32F030R8T6.list
  
+01:46:38 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+arm-none-eabi-gcc "../Core/Src/tim.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/tim.d" -MT"Core/Src/tim.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/tim.o"
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54164	    520	   2504	  57188	   df64	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+01:48:14 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+arm-none-eabi-gcc "../Core/Src/adc.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/adc.d" -MT"Core/Src/adc.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/adc.o"
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54784	    520	   2504	  57808	   e1d0	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+01:48:23 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+   text	   data	    bss	    dec	    hex	filename
+  54784	    520	   2504	  57808	   e1d0	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+01:53:25 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54784	    520	   2504	  57808	   e1d0	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+01:53:38 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+   text	   data	    bss	    dec	    hex	filename
+  54784	    520	   2504	  57808	   e1d0	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+01:55:52 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54440	    520	   2504	  57464	   e078	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+01:56:56 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/BLDC.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/BLDC.d" -MT"Core/Src/BLDC.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/BLDC.o"
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54440	    520	   2504	  57464	   e078	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+03:10:50 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/BLDC.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/BLDC.d" -MT"Core/Src/BLDC.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/BLDC.o"
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54440	    520	   2504	  57464	   e078	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+03:18:05 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/BLDC.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/BLDC.d" -MT"Core/Src/BLDC.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/BLDC.o"
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54440	    520	   2504	  57464	   e078	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+03:20:32 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/BLDC.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/BLDC.d" -MT"Core/Src/BLDC.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/BLDC.o"
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54728	    520	   2504	  57752	   e198	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+03:21:58 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/BLDC.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/BLDC.d" -MT"Core/Src/BLDC.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/BLDC.o"
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54724	    520	   2504	  57748	   e194	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+03:23:47 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54376	    520	   2504	  57400	   e038	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+03:25:19 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'main':
+../Core/Src/Mymain.c:135:4: warning: implicit declaration of function 'BLDC_Driving_test' [-Wimplicit-function-declaration]
+  135 |    BLDC_Driving_test();
+      |    ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54432	    524	   2508	  57464	   e078	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+03:26:32 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'main':
+../Core/Src/Mymain.c:136:4: warning: implicit declaration of function 'BLDC_Driving_test' [-Wimplicit-function-declaration]
+  136 |    BLDC_Driving_test();
+      |    ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54448	    528	   2504	  57480	   e088	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+03:26:50 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'main':
+../Core/Src/Mymain.c:135:4: warning: implicit declaration of function 'BLDC_Driving_test' [-Wimplicit-function-declaration]
+  135 |    BLDC_Driving_test();
+      |    ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54448	    528	   2504	  57480	   e088	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+03:26:57 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'main':
+../Core/Src/Mymain.c:135:4: warning: implicit declaration of function 'BLDC_Driving_test' [-Wimplicit-function-declaration]
+  135 |    BLDC_Driving_test();
+      |    ^~~~~~~~~~~~~~~~~
+../Core/Src/Mymain.c:129:14: warning: unused variable 'i' [-Wunused-variable]
+  129 |   static int i = 30000;
+      |              ^
+At top level:
+../Core/Src/Mymain.c:129:14: warning: 'i' defined but not used [-Wunused-variable]
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54328	    524	   2508	  57360	   e010	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+03:27:14 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'main':
+../Core/Src/Mymain.c:136:4: warning: implicit declaration of function 'BLDC_Driving_test' [-Wimplicit-function-declaration]
+  136 |    BLDC_Driving_test();
+      |    ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54448	    528	   2504	  57480	   e088	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+03:27:24 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+   text	   data	    bss	    dec	    hex	filename
+  54448	    528	   2504	  57480	   e088	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+03:28:14 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'main':
+../Core/Src/Mymain.c:136:4: warning: implicit declaration of function 'BLDC_Driving_test' [-Wimplicit-function-declaration]
+  136 |    BLDC_Driving_test();
+      |    ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54448	    528	   2504	  57480	   e088	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+03:28:16 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+   text	   data	    bss	    dec	    hex	filename
+  54448	    528	   2504	  57480	   e088	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+03:29:29 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/BLDC.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/BLDC.d" -MT"Core/Src/BLDC.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/BLDC.o"
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'main':
+../Core/Src/Mymain.c:135:4: warning: implicit declaration of function 'BLDC_Driving_test' [-Wimplicit-function-declaration]
+  135 |    BLDC_Driving_test();
+      |    ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54956	    524	   2508	  57988	   e284	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+03:30:06 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'main':
+../Core/Src/Mymain.c:135:4: warning: implicit declaration of function 'BLDC_Driving_test' [-Wimplicit-function-declaration]
+  135 |    BLDC_Driving_test();
+      |    ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54952	    524	   2508	  57984	   e280	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+03:37:46 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'HAL_TIM_PeriodElapsedCallback':
+../Core/Src/Mymain.c:264:4: warning: implicit declaration of function 'BLDC_Driving_test' [-Wimplicit-function-declaration]
+  264 |    BLDC_Driving_test();
+      |    ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54668	    524	   2508	  57700	   e164	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+03:41:40 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/tim.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/tim.d" -MT"Core/Src/tim.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/tim.o"
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54668	    524	   2508	  57700	   e164	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+03:42:39 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/tim.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/tim.d" -MT"Core/Src/tim.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/tim.o"
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54668	    524	   2508	  57700	   e164	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+03:46:37 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'HAL_TIM_PeriodElapsedCallback':
+../Core/Src/Mymain.c:264:4: warning: implicit declaration of function 'BLDC_Driving_test' [-Wimplicit-function-declaration]
+  264 |    BLDC_Driving_test();
+      |    ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54704	    528	   2504	  57736	   e188	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+03:47:21 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'HAL_TIM_PeriodElapsedCallback':
+../Core/Src/Mymain.c:264:4: warning: implicit declaration of function 'BLDC_Driving_test' [-Wimplicit-function-declaration]
+  264 |    BLDC_Driving_test();
+      |    ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54704	    528	   2504	  57736	   e188	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+03:48:42 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+arm-none-eabi-gcc "../Core/Src/usart.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/usart.d" -MT"Core/Src/usart.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/usart.o"
+../Core/Src/Mymain.c: In function 'HAL_TIM_PeriodElapsedCallback':
+../Core/Src/Mymain.c:264:4: warning: implicit declaration of function 'BLDC_Driving_test' [-Wimplicit-function-declaration]
+  264 |    BLDC_Driving_test();
+      |    ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54708	    528	   2504	  57740	   e18c	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+00:34:01 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+arm-none-eabi-gcc "../Core/Src/tim.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/tim.d" -MT"Core/Src/tim.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/tim.o"
+../Core/Src/Mymain.c: In function 'HAL_TIM_PeriodElapsedCallback':
+../Core/Src/Mymain.c:264:4: warning: implicit declaration of function 'BLDC_Driving_test' [-Wimplicit-function-declaration]
+  264 |    BLDC_Driving_test();
+      |    ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54712	    528	   2504	  57744	   e190	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+00:36:44 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'HAL_TIM_PeriodElapsedCallback':
+../Core/Src/Mymain.c:264:4: warning: implicit declaration of function 'BLDC_Driving_test' [-Wimplicit-function-declaration]
+  264 |    BLDC_Driving_test();
+      |    ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  53940	    528	   2504	  56972	   de8c	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+00:37:55 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'HAL_TIM_PeriodElapsedCallback':
+../Core/Src/Mymain.c:264:4: warning: implicit declaration of function 'BLDC_Driving_test' [-Wimplicit-function-declaration]
+  264 |    BLDC_Driving_test();
+      |    ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  53940	    528	   2504	  56972	   de8c	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+00:39:28 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'HAL_TIM_PeriodElapsedCallback':
+../Core/Src/Mymain.c:264:4: warning: implicit declaration of function 'BLDC_Driving_test' [-Wimplicit-function-declaration]
+  264 |    BLDC_Driving_test();
+      |    ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  53940	    528	   2504	  56972	   de8c	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+00:43:04 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'HAL_TIM_PeriodElapsedCallback':
+../Core/Src/Mymain.c:264:4: warning: implicit declaration of function 'BLDC_Driving_test' [-Wimplicit-function-declaration]
+  264 |    BLDC_Driving_test();
+      |    ^~~~~~~~~~~~~~~~~
+../Core/Src/Mymain.c: In function 'HAL_UART_RxCpltCallback':
+../Core/Src/Mymain.c:298:3: error: case label does not reduce to an integer constant
+  298 |   case "4":
+      |   ^~~~
+make: *** [Core/Src/subdir.mk:55: Core/Src/Mymain.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+00:43:16 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'HAL_TIM_PeriodElapsedCallback':
+../Core/Src/Mymain.c:264:4: warning: implicit declaration of function 'BLDC_Driving_test' [-Wimplicit-function-declaration]
+  264 |    BLDC_Driving_test();
+      |    ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54000	    528	   2504	  57032	   dec8	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+00:44:32 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'main':
+../Core/Src/Mymain.c:138:27: warning: format '%d' expects argument of type 'int', but argument 2 has type 'uint32_t' {aka 'volatile long unsigned int'} [-Wformat=]
+  138 |   printf("\r\n tim14 arr:%d", TIM14->ARR);
+      |                          ~^
+      |                           |
+      |                           int
+      |                          %ld
+../Core/Src/Mymain.c: In function 'HAL_TIM_PeriodElapsedCallback':
+../Core/Src/Mymain.c:265:4: warning: implicit declaration of function 'BLDC_Driving_test' [-Wimplicit-function-declaration]
+  265 |    BLDC_Driving_test();
+      |    ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54040	    528	   2504	  57072	   def0	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+00:45:06 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+   text	   data	    bss	    dec	    hex	filename
+  54040	    528	   2504	  57072	   def0	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+00:48:37 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'main':
+../Core/Src/Mymain.c:138:27: warning: format '%d' expects argument of type 'int', but argument 2 has type 'uint32_t' {aka 'volatile long unsigned int'} [-Wformat=]
+  138 |   printf("\r\n tim14 arr:%d", TIM14->ARR);
+      |                          ~^
+      |                           |
+      |                           int
+      |                          %ld
+../Core/Src/Mymain.c: In function 'HAL_TIM_PeriodElapsedCallback':
+../Core/Src/Mymain.c:265:4: warning: implicit declaration of function 'BLDC_Driving_test' [-Wimplicit-function-declaration]
+  265 |    BLDC_Driving_test();
+      |    ^~~~~~~~~~~~~~~~~
+../Core/Src/Mymain.c:267:7: error: 'period' undeclared (first use in this function); did you mean 'period1'?
+  267 |    if(period>50)
+      |       ^~~~~~
+      |       period1
+../Core/Src/Mymain.c:267:7: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Core/Src/subdir.mk:55: Core/Src/Mymain.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+00:48:44 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'main':
+../Core/Src/Mymain.c:138:27: warning: format '%d' expects argument of type 'int', but argument 2 has type 'uint32_t' {aka 'volatile long unsigned int'} [-Wformat=]
+  138 |   printf("\r\n tim14 arr:%d", TIM14->ARR);
+      |                          ~^
+      |                           |
+      |                           int
+      |                          %ld
+../Core/Src/Mymain.c: In function 'HAL_TIM_PeriodElapsedCallback':
+../Core/Src/Mymain.c:265:4: warning: implicit declaration of function 'BLDC_Driving_test' [-Wimplicit-function-declaration]
+  265 |    BLDC_Driving_test();
+      |    ^~~~~~~~~~~~~~~~~
+../Core/Src/Mymain.c:269:5: error: 'period' undeclared (first use in this function); did you mean 'period1'?
+  269 |     period--;
+      |     ^~~~~~
+      |     period1
+../Core/Src/Mymain.c:269:5: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Core/Src/subdir.mk:55: Core/Src/Mymain.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+00:48:46 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'main':
+../Core/Src/Mymain.c:138:27: warning: format '%d' expects argument of type 'int', but argument 2 has type 'uint32_t' {aka 'volatile long unsigned int'} [-Wformat=]
+  138 |   printf("\r\n tim14 arr:%d", TIM14->ARR);
+      |                          ~^
+      |                           |
+      |                           int
+      |                          %ld
+../Core/Src/Mymain.c: In function 'HAL_TIM_PeriodElapsedCallback':
+../Core/Src/Mymain.c:265:4: warning: implicit declaration of function 'BLDC_Driving_test' [-Wimplicit-function-declaration]
+  265 |    BLDC_Driving_test();
+      |    ^~~~~~~~~~~~~~~~~
+../Core/Src/Mymain.c:269:5: error: 'period' undeclared (first use in this function); did you mean 'period1'?
+  269 |     period--;
+      |     ^~~~~~
+      |     period1
+../Core/Src/Mymain.c:269:5: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Core/Src/subdir.mk:55: Core/Src/Mymain.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+00:48:47 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'main':
+../Core/Src/Mymain.c:138:27: warning: format '%d' expects argument of type 'int', but argument 2 has type 'uint32_t' {aka 'volatile long unsigned int'} [-Wformat=]
+  138 |   printf("\r\n tim14 arr:%d", TIM14->ARR);
+      |                          ~^
+      |                           |
+      |                           int
+      |                          %ld
+../Core/Src/Mymain.c: In function 'HAL_TIM_PeriodElapsedCallback':
+../Core/Src/Mymain.c:265:4: warning: implicit declaration of function 'BLDC_Driving_test' [-Wimplicit-function-declaration]
+  265 |    BLDC_Driving_test();
+      |    ^~~~~~~~~~~~~~~~~
+../Core/Src/Mymain.c:269:5: error: 'period' undeclared (first use in this function); did you mean 'period1'?
+  269 |     period--;
+      |     ^~~~~~
+      |     period1
+../Core/Src/Mymain.c:269:5: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Core/Src/subdir.mk:55: Core/Src/Mymain.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+00:48:49 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'main':
+../Core/Src/Mymain.c:138:27: warning: format '%d' expects argument of type 'int', but argument 2 has type 'uint32_t' {aka 'volatile long unsigned int'} [-Wformat=]
+  138 |   printf("\r\n tim14 arr:%d", TIM14->ARR);
+      |                          ~^
+      |                           |
+      |                           int
+      |                          %ld
+../Core/Src/Mymain.c: In function 'HAL_TIM_PeriodElapsedCallback':
+../Core/Src/Mymain.c:265:4: warning: implicit declaration of function 'BLDC_Driving_test' [-Wimplicit-function-declaration]
+  265 |    BLDC_Driving_test();
+      |    ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54036	    528	   2504	  57068	   deec	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+00:48:59 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+   text	   data	    bss	    dec	    hex	filename
+  54036	    528	   2504	  57068	   deec	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+00:49:33 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+   text	   data	    bss	    dec	    hex	filename
+  54036	    528	   2504	  57068	   deec	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+00:51:07 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'main':
+../Core/Src/Mymain.c:138:27: warning: format '%d' expects argument of type 'int', but argument 2 has type 'uint32_t' {aka 'volatile long unsigned int'} [-Wformat=]
+  138 |   printf("\r\n tim14 arr:%d", TIM14->ARR);
+      |                          ~^
+      |                           |
+      |                           int
+      |                          %ld
+../Core/Src/Mymain.c: In function 'HAL_TIM_PeriodElapsedCallback':
+../Core/Src/Mymain.c:265:4: warning: implicit declaration of function 'BLDC_Driving_test' [-Wimplicit-function-declaration]
+  265 |    BLDC_Driving_test();
+      |    ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54036	    528	   2504	  57068	   deec	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+00:51:16 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+   text	   data	    bss	    dec	    hex	filename
+  54036	    528	   2504	  57068	   deec	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+01:08:07 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'main':
+../Core/Src/Mymain.c:138:27: warning: format '%d' expects argument of type 'int', but argument 2 has type 'uint32_t' {aka 'volatile long unsigned int'} [-Wformat=]
+  138 |   printf("\r\n tim14 arr:%d", TIM14->ARR);
+      |                          ~^
+      |                           |
+      |                           int
+      |                          %ld
+../Core/Src/Mymain.c: In function 'HAL_TIM_PeriodElapsedCallback':
+../Core/Src/Mymain.c:265:4: warning: implicit declaration of function 'BLDC_Driving_test' [-Wimplicit-function-declaration]
+  265 |    BLDC_Driving_test();
+      |    ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54036	    528	   2504	  57068	   deec	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+01:10:25 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/tim.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/tim.d" -MT"Core/Src/tim.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/tim.o"
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54036	    528	   2504	  57068	   deec	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+01:17:48 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'main':
+../Core/Src/Mymain.c:138:27: warning: format '%d' expects argument of type 'int', but argument 2 has type 'uint32_t' {aka 'volatile long unsigned int'} [-Wformat=]
+  138 |   printf("\r\n tim14 arr:%d", TIM14->ARR);
+      |                          ~^
+      |                           |
+      |                           int
+      |                          %ld
+../Core/Src/Mymain.c: In function 'HAL_TIM_PeriodElapsedCallback':
+../Core/Src/Mymain.c:265:4: warning: implicit declaration of function 'BLDC_Driving_test' [-Wimplicit-function-declaration]
+  265 |    BLDC_Driving_test();
+      |    ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54044	    528	   2504	  57076	   def4	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+01:22:24 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/adc.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/adc.d" -MT"Core/Src/adc.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/adc.o"
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54044	    528	   2504	  57076	   def4	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+01:22:44 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'main':
+../Core/Src/Mymain.c:138:27: warning: format '%d' expects argument of type 'int', but argument 2 has type 'uint32_t' {aka 'volatile long unsigned int'} [-Wformat=]
+  138 |   printf("\r\n tim14 arr:%d", TIM14->ARR);
+      |                          ~^
+      |                           |
+      |                           int
+      |                          %ld
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54304	    524	   2508	  57336	   dff8	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+01:25:30 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/adc.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/adc.d" -MT"Core/Src/adc.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/adc.o"
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54304	    524	   2508	  57336	   dff8	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+01:26:50 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/adc.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/adc.d" -MT"Core/Src/adc.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/adc.o"
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54304	    524	   2508	  57336	   dff8	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+01:27:27 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'main':
+../Core/Src/Mymain.c:138:27: warning: format '%d' expects argument of type 'int', but argument 2 has type 'uint32_t' {aka 'volatile long unsigned int'} [-Wformat=]
+  138 |   printf("\r\n tim14 arr:%d", TIM14->ARR);
+      |                          ~^
+      |                           |
+      |                           int
+      |                          %ld
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  53524	    524	   2508	  56556	   dcec	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+01:28:05 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+arm-none-eabi-gcc "../Core/Src/adc.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/adc.d" -MT"Core/Src/adc.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/adc.o"
+../Core/Src/Mymain.c: In function 'main':
+../Core/Src/Mymain.c:138:27: warning: format '%d' expects argument of type 'int', but argument 2 has type 'uint32_t' {aka 'volatile long unsigned int'} [-Wformat=]
+  138 |   printf("\r\n tim14 arr:%d", TIM14->ARR);
+      |                          ~^
+      |                           |
+      |                           int
+      |                          %ld
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54304	    524	   2508	  57336	   dff8	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+01:28:26 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+   text	   data	    bss	    dec	    hex	filename
+  54304	    524	   2508	  57336	   dff8	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+01:32:40 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'main':
+../Core/Src/Mymain.c:138:27: warning: format '%d' expects argument of type 'int', but argument 2 has type 'uint32_t' {aka 'volatile long unsigned int'} [-Wformat=]
+  138 |   printf("\r\n tim14 arr:%d", TIM14->ARR);
+      |                          ~^
+      |                           |
+      |                           int
+      |                          %ld
+../Core/Src/Mymain.c: In function 'HAL_TIM_PeriodElapsedCallback':
+../Core/Src/Mymain.c:265:4: warning: implicit declaration of function 'BLDC_Driving_test' [-Wimplicit-function-declaration]
+  265 |    BLDC_Driving_test();
+      |    ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54096	    528	   2504	  57128	   df28	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+01:44:49 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'main':
+../Core/Src/Mymain.c:138:27: warning: format '%d' expects argument of type 'int', but argument 2 has type 'uint32_t' {aka 'volatile long unsigned int'} [-Wformat=]
+  138 |   printf("\r\n tim14 arr:%d", TIM14->ARR);
+      |                          ~^
+      |                           |
+      |                           int
+      |                          %ld
+../Core/Src/Mymain.c: In function 'HAL_TIM_PeriodElapsedCallback':
+../Core/Src/Mymain.c:265:4: warning: implicit declaration of function 'BLDC_Driving_test' [-Wimplicit-function-declaration]
+  265 |    BLDC_Driving_test();
+      |    ^~~~~~~~~~~~~~~~~
+../Core/Src/Mymain.c: In function 'HAL_ADC_ConvCpltCallback':
+../Core/Src/Mymain.c:317:9: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'flag'
+  317 |  char i flag=0;
+      |         ^~~~
+../Core/Src/Mymain.c:317:9: error: 'flag' undeclared (first use in this function)
+../Core/Src/Mymain.c:317:9: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/Mymain.c:326:9: error: invalid type argument of '->' (have 'MADC_Structure')
+  326 |  adc_val->commutation_delay = __HAL_TIM_GET_COUNTER(&htim15);
+      |         ^~
+make: *** [Core/Src/subdir.mk:55: Core/Src/Mymain.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+01:45:01 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'main':
+../Core/Src/Mymain.c:138:27: warning: format '%d' expects argument of type 'int', but argument 2 has type 'uint32_t' {aka 'volatile long unsigned int'} [-Wformat=]
+  138 |   printf("\r\n tim14 arr:%d", TIM14->ARR);
+      |                          ~^
+      |                           |
+      |                           int
+      |                          %ld
+../Core/Src/Mymain.c: In function 'HAL_TIM_PeriodElapsedCallback':
+../Core/Src/Mymain.c:265:4: warning: implicit declaration of function 'BLDC_Driving_test' [-Wimplicit-function-declaration]
+  265 |    BLDC_Driving_test();
+      |    ^~~~~~~~~~~~~~~~~
+../Core/Src/Mymain.c: In function 'HAL_ADC_ConvCpltCallback':
+../Core/Src/Mymain.c:317:2: error: 'staitc' undeclared (first use in this function)
+  317 |  staitc char  flag=0;
+      |  ^~~~~~
+../Core/Src/Mymain.c:317:2: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/Mymain.c:317:8: error: expected ';' before 'char'
+  317 |  staitc char  flag=0;
+      |        ^~~~~
+      |        ;
+../Core/Src/Mymain.c:318:5: error: 'flag' undeclared (first use in this function)
+  318 |  if(flag == 0)
+      |     ^~~~
+../Core/Src/Mymain.c:326:9: error: invalid type argument of '->' (have 'MADC_Structure')
+  326 |  adc_val->commutation_delay = __HAL_TIM_GET_COUNTER(&htim15);
+      |         ^~
+make: *** [Core/Src/subdir.mk:55: Core/Src/Mymain.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+01:45:12 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'main':
+../Core/Src/Mymain.c:138:27: warning: format '%d' expects argument of type 'int', but argument 2 has type 'uint32_t' {aka 'volatile long unsigned int'} [-Wformat=]
+  138 |   printf("\r\n tim14 arr:%d", TIM14->ARR);
+      |                          ~^
+      |                           |
+      |                           int
+      |                          %ld
+../Core/Src/Mymain.c: In function 'HAL_TIM_PeriodElapsedCallback':
+../Core/Src/Mymain.c:265:4: warning: implicit declaration of function 'BLDC_Driving_test' [-Wimplicit-function-declaration]
+  265 |    BLDC_Driving_test();
+      |    ^~~~~~~~~~~~~~~~~
+../Core/Src/Mymain.c: In function 'HAL_ADC_ConvCpltCallback':
+../Core/Src/Mymain.c:326:9: error: invalid type argument of '->' (have 'MADC_Structure')
+  326 |  adc_val->commutation_delay = __HAL_TIM_GET_COUNTER(&htim15);
+      |         ^~
+make: *** [Core/Src/subdir.mk:55: Core/Src/Mymain.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+01:45:33 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'main':
+../Core/Src/Mymain.c:138:27: warning: format '%d' expects argument of type 'int', but argument 2 has type 'uint32_t' {aka 'volatile long unsigned int'} [-Wformat=]
+  138 |   printf("\r\n tim14 arr:%d", TIM14->ARR);
+      |                          ~^
+      |                           |
+      |                           int
+      |                          %ld
+../Core/Src/Mymain.c: In function 'HAL_TIM_PeriodElapsedCallback':
+../Core/Src/Mymain.c:265:4: warning: implicit declaration of function 'BLDC_Driving_test' [-Wimplicit-function-declaration]
+  265 |    BLDC_Driving_test();
+      |    ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54376	    528	   2504	  57408	   e040	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+01:46:05 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'main':
+../Core/Src/Mymain.c:138:27: warning: format '%d' expects argument of type 'int', but argument 2 has type 'uint32_t' {aka 'volatile long unsigned int'} [-Wformat=]
+  138 |   printf("\r\n tim14 arr:%d", TIM14->ARR);
+      |                          ~^
+      |                           |
+      |                           int
+      |                          %ld
+../Core/Src/Mymain.c: In function 'HAL_TIM_PeriodElapsedCallback':
+../Core/Src/Mymain.c:265:4: warning: implicit declaration of function 'BLDC_Driving_test' [-Wimplicit-function-declaration]
+  265 |    BLDC_Driving_test();
+      |    ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54044	    528	   2504	  57076	   def4	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+01:46:59 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+   text	   data	    bss	    dec	    hex	filename
+  54044	    528	   2504	  57076	   def4	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+01:49:13 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+   text	   data	    bss	    dec	    hex	filename
+  54044	    528	   2504	  57076	   def4	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+01:50:15 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'main':
+../Core/Src/Mymain.c:138:27: warning: format '%d' expects argument of type 'int', but argument 2 has type 'uint32_t' {aka 'volatile long unsigned int'} [-Wformat=]
+  138 |   printf("\r\n tim14 arr:%d", TIM14->ARR);
+      |                          ~^
+      |                           |
+      |                           int
+      |                          %ld
+../Core/Src/Mymain.c: In function 'HAL_TIM_PeriodElapsedCallback':
+../Core/Src/Mymain.c:265:4: warning: implicit declaration of function 'BLDC_Driving_test' [-Wimplicit-function-declaration]
+  265 |    BLDC_Driving_test();
+      |    ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54376	    528	   2504	  57408	   e040	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+02:01:34 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'main':
+../Core/Src/Mymain.c:138:27: warning: format '%d' expects argument of type 'int', but argument 2 has type 'uint32_t' {aka 'volatile long unsigned int'} [-Wformat=]
+  138 |   printf("\r\n tim14 arr:%d", TIM14->ARR);
+      |                          ~^
+      |                           |
+      |                           int
+      |                          %ld
+../Core/Src/Mymain.c: In function 'HAL_TIM_PeriodElapsedCallback':
+../Core/Src/Mymain.c:265:4: warning: implicit declaration of function 'BLDC_Driving_test' [-Wimplicit-function-declaration]
+  265 |    BLDC_Driving_test();
+      |    ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54868	    528	   2504	  57900	   e22c	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+02:02:28 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'main':
+../Core/Src/Mymain.c:138:27: warning: format '%d' expects argument of type 'int', but argument 2 has type 'uint32_t' {aka 'volatile long unsigned int'} [-Wformat=]
+  138 |   printf("\r\n tim14 arr:%d", TIM14->ARR);
+      |                          ~^
+      |                           |
+      |                           int
+      |                          %ld
+../Core/Src/Mymain.c: In function 'HAL_TIM_PeriodElapsedCallback':
+../Core/Src/Mymain.c:271:5: warning: implicit declaration of function 'BLDC_Driving_test' [-Wimplicit-function-declaration]
+  271 |     BLDC_Driving_test();
+      |     ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54868	    528	   2504	  57900	   e22c	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+02:09:38 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/tim.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/tim.d" -MT"Core/Src/tim.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/tim.o"
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54868	    528	   2504	  57900	   e22c	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+02:09:54 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'main':
+../Core/Src/Mymain.c:138:27: warning: format '%d' expects argument of type 'int', but argument 2 has type 'uint32_t' {aka 'volatile long unsigned int'} [-Wformat=]
+  138 |   printf("\r\n tim14 arr:%d", TIM14->ARR);
+      |                          ~^
+      |                           |
+      |                           int
+      |                          %ld
+../Core/Src/Mymain.c: In function 'HAL_TIM_PeriodElapsedCallback':
+../Core/Src/Mymain.c:265:4: warning: implicit declaration of function 'BLDC_Driving_test' [-Wimplicit-function-declaration]
+  265 |    BLDC_Driving_test();
+      |    ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54868	    528	   2504	  57900	   e22c	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+02:10:08 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'main':
+../Core/Src/Mymain.c:138:27: warning: format '%d' expects argument of type 'int', but argument 2 has type 'uint32_t' {aka 'volatile long unsigned int'} [-Wformat=]
+  138 |   printf("\r\n tim14 arr:%d", TIM14->ARR);
+      |                          ~^
+      |                           |
+      |                           int
+      |                          %ld
+../Core/Src/Mymain.c: In function 'HAL_TIM_PeriodElapsedCallback':
+../Core/Src/Mymain.c:265:4: warning: implicit declaration of function 'BLDC_Driving_test' [-Wimplicit-function-declaration]
+  265 |    BLDC_Driving_test();
+      |    ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54096	    528	   2504	  57128	   df28	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+02:20:48 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'main':
+../Core/Src/Mymain.c:138:27: warning: format '%d' expects argument of type 'int', but argument 2 has type 'uint32_t' {aka 'volatile long unsigned int'} [-Wformat=]
+  138 |   printf("\r\n tim14 arr:%d", TIM14->ARR);
+      |                          ~^
+      |                           |
+      |                           int
+      |                          %ld
+../Core/Src/Mymain.c:140:35: warning: format '%f' expects a matching 'double' argument [-Wformat=]
+  140 |   printf("\r\n BEMF A:%0.2f B:%0.2f C:%0.2f", adc_buf[0]*(Vrefint*4095/adc_val.vref_data)/4095), adc_buf[1]*(Vrefint*4095/adc_val.vref_data)/4095), adc_buf[2]*(Vrefint*4095/adc_val.vref_data)/4095));
+      |                               ~~~~^
+      |                                   |
+      |                                   double
+../Core/Src/Mymain.c:140:43: warning: format '%f' expects a matching 'double' argument [-Wformat=]
+  140 |   printf("\r\n BEMF A:%0.2f B:%0.2f C:%0.2f", adc_buf[0]*(Vrefint*4095/adc_val.vref_data)/4095), adc_buf[1]*(Vrefint*4095/adc_val.vref_data)/4095), adc_buf[2]*(Vrefint*4095/adc_val.vref_data)/4095));
+      |                                       ~~~~^
+      |                                           |
+      |                                           double
+../Core/Src/Mymain.c:140:146: error: expected ';' before ')' token
+  140 |   printf("\r\n BEMF A:%0.2f B:%0.2f C:%0.2f", adc_buf[0]*(Vrefint*4095/adc_val.vref_data)/4095), adc_buf[1]*(Vrefint*4095/adc_val.vref_data)/4095), adc_buf[2]*(Vrefint*4095/adc_val.vref_data)/4095));
+      |                                                                                                                                                  ^
+      |                                                                                                                                                  ;
+../Core/Src/Mymain.c:140:146: error: expected statement before ')' token
+../Core/Src/Mymain.c:140:147: error: expected expression before ',' token
+  140 |   printf("\r\n BEMF A:%0.2f B:%0.2f C:%0.2f", adc_buf[0]*(Vrefint*4095/adc_val.vref_data)/4095), adc_buf[1]*(Vrefint*4095/adc_val.vref_data)/4095), adc_buf[2]*(Vrefint*4095/adc_val.vref_data)/4095));
+      |                                                                                                                                                   ^
+../Core/Src/Mymain.c:140:147: warning: left-hand operand of comma expression has no effect [-Wunused-value]
+../Core/Src/Mymain.c:140:147: warning: statement with no effect [-Wunused-value]
+../Core/Src/Mymain.c:140:197: error: expected statement before ')' token
+  140 |   printf("\r\n BEMF A:%0.2f B:%0.2f C:%0.2f", adc_buf[0]*(Vrefint*4095/adc_val.vref_data)/4095), adc_buf[1]*(Vrefint*4095/adc_val.vref_data)/4095), adc_buf[2]*(Vrefint*4095/adc_val.vref_data)/4095));
+      |                                                                                                                                                                                                     ^
+../Core/Src/Mymain.c:140:198: error: expected statement before ')' token
+  140 |   printf("\r\n BEMF A:%0.2f B:%0.2f C:%0.2f", adc_buf[0]*(Vrefint*4095/adc_val.vref_data)/4095), adc_buf[1]*(Vrefint*4095/adc_val.vref_data)/4095), adc_buf[2]*(Vrefint*4095/adc_val.vref_data)/4095));
+      |                                                                                                                                                                                                      ^
+../Core/Src/Mymain.c: In function 'HAL_TIM_PeriodElapsedCallback':
+../Core/Src/Mymain.c:265:4: warning: implicit declaration of function 'BLDC_Driving_test' [-Wimplicit-function-declaration]
+  265 |    BLDC_Driving_test();
+      |    ^~~~~~~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:55: Core/Src/Mymain.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+02:21:39 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'main':
+../Core/Src/Mymain.c:138:27: warning: format '%d' expects argument of type 'int', but argument 2 has type 'uint32_t' {aka 'volatile long unsigned int'} [-Wformat=]
+  138 |   printf("\r\n tim14 arr:%d", TIM14->ARR);
+      |                          ~^
+      |                           |
+      |                           int
+      |                          %ld
+../Core/Src/Mymain.c: In function 'HAL_TIM_PeriodElapsedCallback':
+../Core/Src/Mymain.c:265:4: warning: implicit declaration of function 'BLDC_Driving_test' [-Wimplicit-function-declaration]
+  265 |    BLDC_Driving_test();
+      |    ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  54372	    528	   2504	  57404	   e03c	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+02:21:51 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+   text	   data	    bss	    dec	    hex	filename
+  54372	    528	   2504	  57404	   e03c	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
