@@ -132,13 +132,14 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  if(adc_buf[0]>100)//adc_val.commutation_delay!=0)
+	  if(adc_buf[0]>100||adc_buf[1]>100||adc_buf[2]>100)//adc_val.commutation_delay!=0)
 	  {
 		printf("\r\n threshole:%d", adc_val.cross_zero_threshole);
 		printf("\r\n tim14 arr:%d", TIM14->ARR);
 		printf("\r\n commutation time:%d", adc_val.commutation_delay);
-		printf("\r\n BEMF A:%0.2f B:%0.2f C:%0.2f", adc_buf[0]*(Vrefint*4095/adc_val.vref_data)/4095, adc_buf[1]*(Vrefint*4095/adc_val.vref_data)/4095, adc_buf[2]*(Vrefint*4095/adc_val.vref_data)/4095);
+		printf("\r\n BEMF A:%d B:%d C:%d", adc_buf[0], adc_buf[1], adc_buf[2]);
 	  }
+	  delay_us(1000);
 //		for(char i=0; i<3/*CH_NUM*/; i++)
 //			if(i==3)
 //				printf("ADC_ch%d conversion:%d   Voltage:%0.2fV\r\n",i, *(adc_buf+i), (*(adc_buf+i)*(Vrefint*4095/adc_val.vref_data)/4095)/VBAT_FACTOR);
@@ -259,14 +260,15 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		{
 			adc_val.commutation_timeout = 0;
 			adc_val.commutation_delay 	= 0;
-			CLOSE_ALL;
+	//		CLOSE_ALL;
 		}
-
+			static char count=0;
 			BLDC_Driving_test();
 			static int period1 = 200;
-			if(period1>30)
+			if(count++==6&&period1>25)
 			{
-				period1--;
+				count = 0;
+				period1-=1;
 				TIM14->ARR=period1;
 			}
 
@@ -315,7 +317,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)//every byte transmit com
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)// Using tim15 to get a 88us between each trigger 38us to transfer data?
 {
 	My_ADC_getvalue(adc_buf, &adc_val);
-//	BLDC_Phase_switching(&adc_val);
+	BLDC_Phase_switching(&adc_val);
 }
 
 void Delay_ms(uint32_t delay)

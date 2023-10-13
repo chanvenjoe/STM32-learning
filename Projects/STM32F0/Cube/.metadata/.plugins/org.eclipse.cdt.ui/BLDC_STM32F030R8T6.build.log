@@ -1,10 +1,10 @@
-02:21:51 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+23:39:23 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
 make -j8 all 
 arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
    text	   data	    bss	    dec	    hex	filename
-  54372	    528	   2504	  57404	   e03c	BLDC_STM32F030R8T6.elf
+  54812	    528	   2504	  57844	   e1f4	BLDC_STM32F030R8T6.elf
 Finished building: default.size.stdout
  
 
-02:21:51 Build Finished. 0 errors, 0 warnings. (took 242ms)
+23:39:23 Build Finished. 0 errors, 0 warnings. (took 236ms)
 

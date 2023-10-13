@@ -242,7 +242,7 @@ MADC_Structure My_ADC_getvalue(uint16_t* adc_buf, MADC_Structure * adc_val)// th
 		}//
 	}
 	else
-		adc_val->cross_zero_threshole = 150;
+		adc_val->cross_zero_threshole = 130;
 //	else
 //		cross_zero_threshole =
 //	cross_zero_threshole = adc_val->commutation_delay==0? cross_zero_threshole_avg:adc_val->vbat/1.26;
