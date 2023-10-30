@@ -1,8 +1,0 @@
-Mymain.c:75:5:main	5
-Mymain.c:161:6:SystemClock_Config	4
-Mymain.c:208:1:__io_putchar	1
-Mymain.c:219:6:Error_Handler	1
-Mymain.c:247:6:HAL_TIM_PeriodElapsedCallback	7
-Mymain.c:278:6:HAL_UART_RxCpltCallback	12
-Mymain.c:317:6:HAL_ADC_ConvCpltCallback	1
-Mymain.c:323:6:Delay_ms	2
