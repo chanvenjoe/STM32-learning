@@ -27,20 +27,22 @@ void BLDC_Start_Up()
 
 	}
 }
-void BLDC_Driving_test()// The driving sequence is 1-5-4-6-2-3
+void BLDC_Driving_test(MADC_Structure * adc_val)// The driving sequence is 1-5-4-6-2-3 CBA
 {
 	static int i=1;
 	switch(i)
 	{
 	case 1:
 		AHBL_ON;
+		__HAL_TIM_SET_COUNTER(&htim15, 0);//the auto reload is set to 65535 1us time base
+		HAL_TIM_Base_Start(&htim15);
 //		printf("AB\r\n");
 		break;
-	case 6:
+	case 2:
 		AHCL_ON;
 //		printf("CB\r\n");
 		break;
-	case 5:
+	case 3:
 		BHCL_ON;
 //		printf("CA\r\n");
 		break;
@@ -48,12 +50,14 @@ void BLDC_Driving_test()// The driving sequence is 1-5-4-6-2-3
 		BHAL_ON;
 //		printf("BA\r\n");
 		break;
-	case 3:
+	case 5:
 		CHAL_ON;
 //		printf("BC\r\n");
 		break;
-	case 2:
+	case 6:
 		CHBL_ON;
+		adc_val->speed = __HAL_TIM_GET_COUNTER(&htim15);//1us base
+		HAL_TIM_Base_Stop(&htim15);
 //		printf("AC\r\n");
 		break;
 	default:
@@ -65,45 +69,37 @@ void BLDC_Driving_test()// The driving sequence is 1-5-4-6-2-3
 
 void BLDC_Phase_switching(MADC_Structure * adc_val)
 {
+		static uint16_t delay;
+		delay = delay<=88? adc_val->commutation_delay: delay-88;
 		adc_val->commutation_timeout+=1;
-		if(adc_val->bemf_now==adc_val->bemf_last&&adc_val->bemf_now!=0)
+		if(delay<=88)
 		{
-			adc_val->zero_acrross_flag++;
-		}
-		else
-			adc_val->zero_acrross_flag = 0;
-	//	adc_val->commutation_delay = 0;
-		if(adc_val->zero_acrross_flag>3)
-		{
-		switch(adc_val->bemf_now)
-		{
-			case 5:
-				AHBL_ON;
-					__HAL_TIM_SET_COUNTER(&htim15, 0);//the auto reload is set to 65535 1us time base
-					HAL_TIM_Base_Start(&htim15);
-					adc_val->commutation_timeout = 0;
-				break;
-			case 4:
-				AHCL_ON;
-				break;
-			case 6:
-				BHCL_ON;
-				break;
-			case 2:
-				BHAL_ON;
-				break;
-			case 3:
-				CHAL_ON;
-				break;
-			case 1:
-				CHBL_ON;
-				adc_val->commutation_delay = __HAL_TIM_GET_COUNTER(&htim15);
-				HAL_TIM_Base_Stop(&htim15);
-				break;
-//			default:
-//				BLDC_Driving_test();
-
-		}
+			switch(adc_val->bemf_now)
+			{
+				case 5:
+					AHBL_ON;
+						__HAL_TIM_SET_COUNTER(&htim15, 0);//the auto reload is set to 65535 1us time base
+						HAL_TIM_Base_Start(&htim15);
+						adc_val->commutation_timeout = 0;
+					break;
+				case 4:
+					AHCL_ON;
+					break;
+				case 6:
+					BHCL_ON;
+					break;
+				case 2:
+					BHAL_ON;
+					break;
+				case 3:
+					CHAL_ON;
+					break;
+				case 1:
+					CHBL_ON;
+					adc_val->speed = __HAL_TIM_GET_COUNTER(&htim15);
+					HAL_TIM_Base_Stop(&htim15);
+					break;
+			}
 		}
 
 }

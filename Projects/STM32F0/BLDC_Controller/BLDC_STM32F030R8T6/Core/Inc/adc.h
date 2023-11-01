@@ -49,18 +49,27 @@ typedef struct {
 	uint8_t  	bemf_now;
 	uint8_t 	bemf_last;
 	uint8_t		bemf_next;
-	uint8_t 	zero_acrross_flag;
+	uint8_t 	zero_across_flag;
+	uint16_t	zero_across_count;
 	uint16_t	commutation_delay;
 	uint16_t	commutation_timeout; //Move to BLDC structure later
-	uint16_t	cross_zero_threshole;
+	uint16_t	zero_across_threshole;
+	uint16_t	speed;
 }MADC_Structure;
 
 
 enum ADC_SEQ{pa=0,pb,pc,ia,ib,isum,isum_filt,vb};
 
+enum BLDC_STATUS
+{
+	START_UP = 0,
+	BEMF_DETECTION
+};
+
 #define CH_NUM 10
 #define Vrefint 	*(__IO uint16_t *)(0x1FFFF7BA) * 3.3/4095
 #define VBAT_FACTOR	0.126
+#define ZERO_ACROSS_THR	20
 /* USER CODE END Private defines */
 
 void MX_ADC_Init(void);

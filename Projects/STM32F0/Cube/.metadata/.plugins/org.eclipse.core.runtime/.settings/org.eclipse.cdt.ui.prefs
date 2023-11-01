@@ -1,4 +1,6 @@
 eclipse.preferences.version=1
+scalability.numberOfLines=50000
+scalability.reconciler=false
 spelling_locale_initialized=true
 useAnnotationsPrefPage=true
 useQuickDiffPrefPage=true

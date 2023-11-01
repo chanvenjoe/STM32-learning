@@ -252,9 +252,9 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef* adcHandle)
 MADC_Structure My_ADC_getvalue(uint16_t* adc_buf, MADC_Structure * adc_val)// the local array addr is not valid after function done
 {
 
-	adc_val->bemf_pa 		= adc_buf[0] / 620>1?1:0; //620 == 0.5V
-	adc_val->bemf_pb 		= adc_buf[1] / 620>1?1:0;
-	adc_val->bemf_pc 		= adc_buf[2] / 620>1?1:0;
+	adc_val->bemf_pa 		= adc_buf[0] / 500>1?1:0; //620 == 0.5V
+	adc_val->bemf_pb 		= adc_buf[1] / 500>1?1:0;
+	adc_val->bemf_pc 		= adc_buf[2] / 500>1?1:0;
 	adc_val->vbat 			= adc_buf[3];
 	adc_val->ia				= adc_buf[4];
 	adc_val->ib				= adc_buf[5];
@@ -268,12 +268,12 @@ MADC_Structure My_ADC_getvalue(uint16_t* adc_buf, MADC_Structure * adc_val)// th
 	adc_val->bemf_last = adc_val->bemf_now;
 	adc_val->bemf_now  = adc_val->bemf_pa * 4 + adc_val->bemf_pb * 2 + adc_val->bemf_pc * 1;
 
-	if(adc_val->bemf_now==adc_val->bemf_last&&adc_val->bemf_now!=0)
+	if((adc_val->bemf_now==adc_val->bemf_last)&&adc_val->bemf_now!=0&&adc_val->zero_across_count<65500)
 	{
-		adc_val->zero_acrross_flag++;
+		adc_val->zero_across_count++;
 	}
-	else
-		adc_val->zero_acrross_flag = 0;
+//	else
+//		adc_val->zero_across_count = 0;
 
 	return *adc_val;
 }
