@@ -56,7 +56,7 @@ void BLDC_Driving_test(MADC_Structure * adc_val)// The driving sequence is 1-5-4
 		break;
 	case 6:
 		CHBL_ON;
-		adc_val->speed = __HAL_TIM_GET_COUNTER(&htim15);//1us base
+		adc_val->speed = __HAL_TIM_GET_COUNTER(&htim15);//1us base  //but only count 5 times
 		HAL_TIM_Base_Stop(&htim15);
 //		printf("AC\r\n");
 		break;
@@ -65,16 +65,18 @@ void BLDC_Driving_test(MADC_Structure * adc_val)// The driving sequence is 1-5-4
 		break;
 	}
 	i= i==6? 1:i+1;
+
 }
 
 void BLDC_Phase_switching(MADC_Structure * adc_val)
 {
 		static uint16_t delay;
-		delay = delay<=88? adc_val->commutation_delay: delay-88;
+		delay = delay<=100? adc_val->commutation_delay: delay-100;
 		adc_val->commutation_timeout+=1;
-		if(delay<=88)
+		if(1)//delay<=100)
 		{
-			switch(adc_val->bemf_now)
+
+			switch(adc_val->bemf_next)
 			{
 				case 5:
 					AHBL_ON;

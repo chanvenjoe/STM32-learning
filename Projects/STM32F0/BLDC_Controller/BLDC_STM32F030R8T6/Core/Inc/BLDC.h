@@ -27,6 +27,7 @@
 #define CHAL_ON		CLOSE_ALL; HAL_TIM_PWM_Start(&htim1, CH); HAL_GPIO_WritePin(MOSL, AL, GPIO_PIN_SET)
 #define CHBL_ON		CLOSE_ALL; HAL_TIM_PWM_Start(&htim1, CH); HAL_GPIO_WritePin(MOSL, BL, GPIO_PIN_SET)
 
+#define POLOAR_PARIRS 8
 
 void BLDC_Start_Up();
 void BLDC_Driving_test(MADC_Structure * adc_val);
