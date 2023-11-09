@@ -137,11 +137,14 @@ int main(void)
 	  {
 //		printf("\r\n threshole:%d", adc_val.cross_zero_threshole);
 //		printf("\r\n commutation time:%d", adc_val.commutation_delay);
-//		printf("\r\n BEMF now:%d", adc_val.bemf_now);
+		printf("\r\n BEMF now:%d", adc_val.bemf_now);
+		printf("\r\n BEMF next:%d", adc_val.bemf_next);
 		printf("\r\n STATUS:%d", adc_val.zero_across_flag);
-//		printf("\r\n zero_ac_COUNT:%d", adc_val.zero_across_count);
+		printf("\r\n zero_ac_COUNT:%d", adc_val.zero_across_count);
+		printf("\r\n zero_across_thr:%d",adc_val.zero_across_threshole);
 //		printf("\r\n A:%d B%d C%d M:%d", adc_buf[0], adc_buf[1], adc_buf[2], adc_val.bemf_mid);
 //		printf("\r\n Speed:%dms/round", adc_val.speed*POLOAR_PARIRS/1000);
+		printf("\r\n Vvat:%0.2f",	adc_val.vbat*(Vrefint*4095/adc_val.vref_data)/4095/VBAT_FACTOR);
 		printf("\r\n delay:%d",	adc_val.commutation_delay);
 		printf("\r\n BEMF A:%0.2f B:%0.2f C:%0.2f M:%0.2f",
 				adc_buf[0]*(Vrefint*4095/adc_val.vref_data)/4095, adc_buf[1]*(Vrefint*4095/adc_val.vref_data)/4095,
@@ -327,14 +330,14 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)//every byte transmit com
 
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)// Using tim15 to get a 88us between each trigger 50us as TIM1 cycle, 14MHz ADC(12.5+55.5 cycles) consume 4.37us to complete conversion
 {											  // The ADC sample time is for all channel, the DMA
-	My_ADC_getvalue(adc_buf, &adc_val);
+	adc_val = My_ADC_getvalue(adc_buf, &adc_val);
 	adc_val.commutation_delay = (adc_val.speed/10);// 10: since the speed is 5 phase switching time
-	if(adc_val.zero_across_count>20000||adc_val.zero_across_flag == BEMF_DETECTION)//make sure the speed is stable
+	if(adc_val.zero_across_count>10000)//make sure the speed is stable
 	{
 		adc_val.zero_across_flag = BEMF_DETECTION;
-		adc_val.zero_across_count = 0;
-		BLDC_Phase_switching(&adc_val);
+		BLDC_Phase_switching(&adc_val);//The real speed should be read from this function
 	}
+
 }
 
 void Delay_ms(uint32_t delay)

@@ -66,7 +66,7 @@ void MX_ADC_Init(void)
   */
   sConfig.Channel = ADC_CHANNEL_0;
   sConfig.Rank = ADC_RANK_CHANNEL_NUMBER;
-  sConfig.SamplingTime = ADC_SAMPLETIME_55CYCLES_5;
+  sConfig.SamplingTime = ADC_SAMPLETIME_239CYCLES_5;
   if (HAL_ADC_ConfigChannel(&hadc, &sConfig) != HAL_OK)
   {
     Error_Handler();
@@ -252,10 +252,13 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef* adcHandle)
 MADC_Structure My_ADC_getvalue(uint16_t* adc_buf, MADC_Structure * adc_val)// the local array addr is not valid after function done
 {
 	static uint8_t majority_temp = 0;
-
-	adc_val->bemf_pa 		= adc_buf[0] / 620>1?1:0; //620 == 0.5V
-	adc_val->bemf_pb 		= adc_buf[1] / 620>1?1:0;
-	adc_val->bemf_pc 		= adc_buf[2] / 620>1?1:0;
+	static uint8_t majority_count = 0;
+	adc_val->zero_across_threshole = adc_val->vbat*(Vrefint*4095/adc_val->vref_data)/4095*1000;//Why no need to /1000 back
+	adc_val->zero_across_threshole = adc_val->zero_across_threshole/0.126*0.1/1000*12.41;
+	adc_val->zero_across_threshole = adc_val->zero_across_threshole*(&htim1)->Instance->CCR1-100;
+	adc_val->bemf_pa 		= adc_buf[0] / adc_val->zero_across_threshole>1?1:0; //620 == 0.5V
+	adc_val->bemf_pb 		= adc_buf[1] / adc_val->zero_across_threshole>1?1:0;
+	adc_val->bemf_pc 		= adc_buf[2] / adc_val->zero_across_threshole>1?1:0;
 	adc_val->vbat 			= adc_buf[3];
 	adc_val->ia				= adc_buf[4];
 	adc_val->ib				= adc_buf[5];
@@ -264,17 +267,24 @@ MADC_Structure My_ADC_getvalue(uint16_t* adc_buf, MADC_Structure * adc_val)// th
 	adc_val->bemf_mid		= adc_buf[8];
 	adc_val->vref_data 		= adc_buf[9];
 
-	// zero_acrross_flag <<= adc_val_bemf_pa if(zero_acrross_flag==0xff) ,
 
 	adc_val->bemf_last = adc_val->bemf_now;
 	adc_val->bemf_now  = adc_val->bemf_pa * 4 + adc_val->bemf_pb * 2 + adc_val->bemf_pc * 1;
 
-	if((adc_val->bemf_now==adc_val->bemf_last)&&adc_val->bemf_now!=0&&adc_val->zero_across_count<65500)//Should allow 1 or 2 "0" in a sequence
+
+	if(majority_count==MAJORITY_CONST)//
 	{
-		if(majority_temp++==MAJORITY_CONST)
-			majority_temp = 0;
-		adc_val->zero_across_count++;
-		adc_val->bemf_next = majority_temp>=MAJORITY_CONST/2? adc_val->bemf_now : adc_val->bemf_next;
+		majority_count = 0;
+		adc_val->bemf_next = majority_temp>=MAJORITY_CONST/2? adc_val->bemf_now : 0;//Set the next hall
+	}
+	else
+	{
+		majority_count++;
+	}
+	if((adc_val->bemf_now==adc_val->bemf_last)&&adc_val->bemf_last!=0)//Zero_accross Should allow 1 or 2 "0" in a sequence
+	{
+		majority_temp++;
+		adc_val->zero_across_count = adc_val->zero_across_count<65500? adc_val->zero_across_count+1: adc_val->zero_across_count;
 	}
 	return *adc_val;
 }

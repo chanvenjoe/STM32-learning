@@ -73,7 +73,7 @@ void BLDC_Phase_switching(MADC_Structure * adc_val)
 		static uint16_t delay;
 		delay = delay<=100? adc_val->commutation_delay: delay-100;
 		adc_val->commutation_timeout+=1;
-		if(1)//delay<=100)
+		if(delay<=100)
 		{
 
 			switch(adc_val->bemf_next)
