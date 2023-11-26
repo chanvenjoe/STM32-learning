@@ -10,21 +10,38 @@
 
 void BLDC_Start_Up()
 {
-	for(unsigned int i = 10000;i>=1000;i-=500)
+	unsigned int j=0,i=0;
+	for( i = 0;i<273;i++)
 	{
-		delay_us(i);
+		j = 30000-i*100;
+		delay_us(j);
 		AHBL_ON;
-		delay_us(i);//delay
+		delay_us(j);//delay
 		CHBL_ON;
-		delay_us(i);
+		delay_us(j);
 		CHAL_ON;
-		delay_us(i);
+		delay_us(j);
 		BHAL_ON;
-		delay_us(i);
+		delay_us(j);
 		BHCL_ON;
-		delay_us(i);
+		delay_us(j);
 		AHCL_ON;
-
+	}
+	for(i=0;i<800;i++)
+	{
+		j = 2700;
+		delay_us(j);
+		AHBL_ON;
+		delay_us(j);//delay
+		CHBL_ON;
+		delay_us(j);
+		CHAL_ON;
+		delay_us(j);
+		BHAL_ON;
+		delay_us(j);
+		BHCL_ON;
+		delay_us(j);
+		AHCL_ON;
 	}
 }
 void BLDC_Driving_test(MADC_Structure * adc_val)// The driving sequence is 1-5-4-6-2-3 CBA
@@ -113,3 +130,4 @@ void BLDC_PWM_Handle(uint8_t duty)
 	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, duty);
 	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, duty);
 }
+

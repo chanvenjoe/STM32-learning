@@ -1,4 +1,4 @@
-BLDC.c:11:6:BLDC_Start_Up	2
-BLDC.c:30:6:BLDC_Driving_test	9
-BLDC.c:71:6:BLDC_Phase_switching	10
-BLDC.c:109:6:BLDC_PWM_Handle	2
+BLDC.c:11:6:BLDC_Start_Up	3
+BLDC.c:47:6:BLDC_Driving_test	9
+BLDC.c:88:6:BLDC_Phase_switching	10
+BLDC.c:126:6:BLDC_PWM_Handle	2

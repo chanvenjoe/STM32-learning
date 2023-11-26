@@ -36,9 +36,9 @@ extern ADC_HandleTypeDef hadc;
 
 /* USER CODE BEGIN Private defines */
 typedef struct {
-	uint16_t bemf_pa;
-	uint16_t bemf_pb;
-	uint16_t bemf_pc;
+	uint8_t bemf_pa;
+	uint8_t bemf_pb;
+	uint8_t bemf_pc;
 	uint16_t bemf_mid;
 	uint16_t ia;
 	uint16_t ib;

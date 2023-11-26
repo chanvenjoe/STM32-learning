@@ -1,10 +1,17 @@
-12:09:27 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+23:29:55 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
 make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\BLDC_Controller\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
 arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
    text	   data	    bss	    dec	    hex	filename
-  55688	    528	   2512	  58728	   e568	BLDC_STM32F030R8T6.elf
+  55276	    524	   2516	  58316	   e3cc	BLDC_STM32F030R8T6.elf
 Finished building: default.size.stdout
  
+Finished building: BLDC_STM32F030R8T6.list
+ 
 
-12:09:28 Build Finished. 0 errors, 0 warnings. (took 247ms)
+23:29:56 Build Finished. 0 errors, 0 warnings. (took 614ms)
 

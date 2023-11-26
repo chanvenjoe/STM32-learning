@@ -33,7 +33,6 @@ void BLDC_Start_Up();
 void BLDC_Driving_test(MADC_Structure * adc_val);
 void BLDC_Phase_switching(MADC_Structure * adc_val);
 void BLDC_PWM_Handle(uint8_t duty);
-
 #endif /* BLDC_H_ */
 
 /////bldc equations////
