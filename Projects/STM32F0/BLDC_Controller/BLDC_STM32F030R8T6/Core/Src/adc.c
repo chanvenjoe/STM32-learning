@@ -255,7 +255,7 @@ MADC_Structure My_ADC_getvalue(uint16_t* adc_buf, MADC_Structure * adc_val)// th
 	static uint8_t majority_count = 0;
 	adc_val->zero_across_threshole = adc_val->vbat*(Vrefint*4095/adc_val->vref_data)/4095*1000;//Why no need to /1000 back
 	adc_val->zero_across_threshole = adc_val->zero_across_threshole/0.126*0.1/1000*12.41;
-	adc_val->zero_across_threshole = adc_val->zero_across_threshole*(&htim1)->Instance->CCR1-100;
+	adc_val->zero_across_threshole = adc_val->zero_across_threshole*(&htim1)->Instance->CCR1;
 	adc_val->bemf_pa 		= adc_buf[0] / adc_val->zero_across_threshole>1?1:0; //620 == 0.5V
 	adc_val->bemf_pb 		= adc_buf[1] / adc_val->zero_across_threshole>1?1:0;
 	adc_val->bemf_pc 		= adc_buf[2] / adc_val->zero_across_threshole>1?1:0;

@@ -71,7 +71,7 @@ enum BLDC_STATUS
 #define Vrefint 	*(__IO uint16_t *)(0x1FFFF7BA) * 3.3/4095
 #define VBAT_FACTOR	0.126
 #define ZERO_ACROSS_THR	20
-#define MAJORITY_CONST	8
+#define MAJORITY_CONST	6
 /* USER CODE END Private defines */
 
 void MX_ADC_Init(void);

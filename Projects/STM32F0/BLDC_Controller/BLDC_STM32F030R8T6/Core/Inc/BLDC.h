@@ -20,18 +20,19 @@
 #define CL	 GPIO_PIN_15
 //Close all MOS-> open target mos
 #define CLOSE_ALL HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_1); HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_2); HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_3); HAL_GPIO_WritePin(MOSL, AL|BL|CL, GPIO_PIN_RESET)
-#define AHBL_ON		CLOSE_ALL; HAL_TIM_PWM_Start(&htim1, AH); HAL_GPIO_WritePin(MOSL, BL, GPIO_PIN_SET)
-#define	AHCL_ON	  	CLOSE_ALL; HAL_TIM_PWM_Start(&htim1, AH); HAL_GPIO_WritePin(MOSL, CL, GPIO_PIN_SET)
-#define	BHAL_ON		CLOSE_ALL; HAL_TIM_PWM_Start(&htim1, BH); HAL_GPIO_WritePin(MOSL, AL, GPIO_PIN_SET)
-#define	BHCL_ON		CLOSE_ALL; HAL_TIM_PWM_Start(&htim1, BH); HAL_GPIO_WritePin(MOSL, CL, GPIO_PIN_SET)
-#define CHAL_ON		CLOSE_ALL; HAL_TIM_PWM_Start(&htim1, CH); HAL_GPIO_WritePin(MOSL, AL, GPIO_PIN_SET)
-#define CHBL_ON		CLOSE_ALL; HAL_TIM_PWM_Start(&htim1, CH); HAL_GPIO_WritePin(MOSL, BL, GPIO_PIN_SET)
+#define AHBL_ON		HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_2);HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_3);HAL_GPIO_WritePin(MOSL, AL|CL, GPIO_PIN_RESET); HAL_TIM_PWM_Start(&htim1, AH); HAL_GPIO_WritePin(MOSL, BL, GPIO_PIN_SET)
+#define	AHCL_ON	  	HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_2);HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_3);HAL_GPIO_WritePin(MOSL, AL|BL, GPIO_PIN_RESET);; HAL_TIM_PWM_Start(&htim1, AH); HAL_GPIO_WritePin(MOSL, CL, GPIO_PIN_SET)
+#define	BHAL_ON		HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_1);HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_3);HAL_GPIO_WritePin(MOSL, BL|CL, GPIO_PIN_RESET);; HAL_TIM_PWM_Start(&htim1, BH); HAL_GPIO_WritePin(MOSL, AL, GPIO_PIN_SET)
+#define	BHCL_ON		HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_1);HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_3);HAL_GPIO_WritePin(MOSL, AL|BL, GPIO_PIN_RESET);; HAL_TIM_PWM_Start(&htim1, BH); HAL_GPIO_WritePin(MOSL, CL, GPIO_PIN_SET)
+#define CHAL_ON		HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_1);HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_2);HAL_GPIO_WritePin(MOSL, BL|CL, GPIO_PIN_RESET);; HAL_TIM_PWM_Start(&htim1, CH); HAL_GPIO_WritePin(MOSL, AL, GPIO_PIN_SET)
+#define CHBL_ON		HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_1);HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_2);HAL_GPIO_WritePin(MOSL, AL|CL, GPIO_PIN_RESET);; HAL_TIM_PWM_Start(&htim1, CH); HAL_GPIO_WritePin(MOSL, BL, GPIO_PIN_SET)
 
 #define POLOAR_PARIRS 8
 
 void BLDC_Start_Up();
 void BLDC_Driving_test(MADC_Structure * adc_val);
 void BLDC_Phase_switching(MADC_Structure * adc_val);
+void BLDC_PWM_Handle(uint8_t duty);
 
 #endif /* BLDC_H_ */
 

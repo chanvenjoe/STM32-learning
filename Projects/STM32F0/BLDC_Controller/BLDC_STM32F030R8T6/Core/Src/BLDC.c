@@ -10,7 +10,7 @@
 
 void BLDC_Start_Up()
 {
-	for(unsigned int i = 10000;i>=1000;i-=100)
+	for(unsigned int i = 10000;i>=1000;i-=500)
 	{
 		delay_us(i);
 		AHBL_ON;
@@ -61,7 +61,7 @@ void BLDC_Driving_test(MADC_Structure * adc_val)// The driving sequence is 1-5-4
 //		printf("AC\r\n");
 		break;
 	default:
-		CLOSE_ALL;
+//		CLOSE_ALL;
 		break;
 	}
 	i= i==6? 1:i+1;
@@ -104,4 +104,12 @@ void BLDC_Phase_switching(MADC_Structure * adc_val)
 			}
 		}
 
+}
+
+void BLDC_PWM_Handle(uint8_t duty)
+{
+	duty = duty>=0&&duty<=50? duty:0;//Value range confirm
+	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, duty);
+	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, duty);
+	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, duty);
 }

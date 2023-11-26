@@ -127,7 +127,6 @@ int main(void)
   /*******initial position reset**************/
 //   BLDC_Start_Up();
 
-
   /****************************************/
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
@@ -137,6 +136,7 @@ int main(void)
 	  {
 //		printf("\r\n threshole:%d", adc_val.cross_zero_threshole);
 //		printf("\r\n commutation time:%d", adc_val.commutation_delay);
+//		printf("\r\n TIM14 ARR:%d", TIM14->ARR);
 		printf("\r\n BEMF now:%d", adc_val.bemf_now);
 		printf("\r\n BEMF next:%d", adc_val.bemf_next);
 		printf("\r\n STATUS:%d", adc_val.zero_across_flag);
@@ -144,7 +144,7 @@ int main(void)
 		printf("\r\n zero_across_thr:%d",adc_val.zero_across_threshole);
 //		printf("\r\n A:%d B%d C%d M:%d", adc_buf[0], adc_buf[1], adc_buf[2], adc_val.bemf_mid);
 //		printf("\r\n Speed:%dms/round", adc_val.speed*POLOAR_PARIRS/1000);
-		printf("\r\n Vvat:%0.2f",	adc_val.vbat*(Vrefint*4095/adc_val.vref_data)/4095/VBAT_FACTOR);
+//		printf("\r\n Vvat:%0.2f",	adc_val.vbat*(Vrefint*4095/adc_val.vref_data)/4095/VBAT_FACTOR);
 		printf("\r\n delay:%d",	adc_val.commutation_delay);
 		printf("\r\n BEMF A:%0.2f B:%0.2f C:%0.2f M:%0.2f",
 				adc_buf[0]*(Vrefint*4095/adc_val.vref_data)/4095, adc_buf[1]*(Vrefint*4095/adc_val.vref_data)/4095,
@@ -247,17 +247,21 @@ void assert_failed(uint8_t *file, uint32_t line)
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
+	static char bldc_duty = 0;
 	if(htim == &htim6)//1s base
 	{
-/*		static int period1 = 1000;
-		period1 = period1<50? 1000: period1-20;
-		TIM6->ARR=period1;*/
+		if(bldc_duty<50)
+		{
+			bldc_duty+=1;
+			BLDC_PWM_Handle(bldc_duty);
+		}
 		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_0);
 
 	}
 	else if(htim == &htim14)//0.1ms base
 	{
-		static int period1 = 200;
+		static int period1;
+
 		if(adc_val.commutation_timeout >1000)//if 100ms no phase switching, 100us++
 		{
 			adc_val.commutation_timeout = 0;
@@ -267,8 +271,10 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		}
 		if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2)==0)//if 100ms no phase switching, 100us++ or button reset
 		{
+			bldc_duty = 10;
 			CLOSE_ALL;
-			period1=200;
+			BLDC_PWM_Handle(bldc_duty);
+			period1=150;
 			adc_val.zero_across_flag	= START_UP;
 			adc_val.commutation_timeout = 0;
 			adc_val.commutation_delay 	= 0;
@@ -278,9 +284,9 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		else if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2)==1 && adc_val.zero_across_flag==START_UP)
 		{
 			BLDC_Driving_test(&adc_val);
-			if(period1>45)
+			if(period1>20)					//200ms initial and 4.5ms stable are for the large motor
 			{
-				period1-=5;
+				period1-=1;
 				TIM14->ARR=period1;
 			}
 		}
@@ -311,15 +317,21 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)//every byte transmit com
 		case	'-':
 			BT_PWM_handle(FALSE);
 			break;
-/*		case	'p':
+		case	'p':
 		{
-			HAL_TIM_Base_Stop_IT(&htim14);
+			htim1.Instance->CCR1++;
+			htim1.Instance->CCR2++;
+			htim1.Instance->CCR3++;
 			break;
 		}
-		case '5':
+		case 	'k':
 		{
 			TIM14->ARR--;
-		}*/
+		}
+		case	'b':
+		{
+			adc_val.zero_across_flag = BEMF_DETECTION;
+		}
 		default:
 			break;
 		}
@@ -332,10 +344,10 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)// Using tim15 to get a 88
 {											  // The ADC sample time is for all channel, the DMA
 	adc_val = My_ADC_getvalue(adc_buf, &adc_val);
 	adc_val.commutation_delay = (adc_val.speed/10);// 10: since the speed is 5 phase switching time
-	if(adc_val.zero_across_count>10000)//make sure the speed is stable
+	if(adc_val.zero_across_count>30000)//adc_val.zero_across_flag == BEMF_DETECTION)//make sure the speed is stable
 	{
-		adc_val.zero_across_flag = BEMF_DETECTION;
-		BLDC_Phase_switching(&adc_val);//The real speed should be read from this function
+//		adc_val.zero_across_flag = BEMF_DETECTION;
+//		BLDC_Phase_switching(&adc_val);//The real speed should be read from this function
 	}
 
 }
