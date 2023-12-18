@@ -58,6 +58,8 @@ typedef struct {
 }MADC_Structure;
 
 
+
+
 enum ADC_SEQ{pa=0,pb,pc,ia,ib,isum,isum_filt,vb};
 
 enum BLDC_STATUS

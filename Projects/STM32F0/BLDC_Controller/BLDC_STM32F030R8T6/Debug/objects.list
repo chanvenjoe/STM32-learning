@@ -1,3 +1,4 @@
+"./Core/Motor control.o"
 "./Core/Src/BLDC.o"
 "./Core/Src/Mymain.o"
 "./Core/Src/adc.o"

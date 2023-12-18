@@ -55,6 +55,8 @@
 /* USER CODE BEGIN PV */
 uint16_t adc_buf[CH_NUM]={0};
 MADC_Structure adc_val = {1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0};
+FlagsStructure MFlag = {0,0,0};
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -132,23 +134,24 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  if(adc_buf[0]>0)//adc_val.commutation_delay!=0)
+	  if(1)//adc_val.commutation_delay!=0)
 	  {
 //		printf("\r\n threshole:%d", adc_val.cross_zero_threshole);
-//		printf("\r\n commutation time:%d", adc_val.commutation_delay);
-//		printf("\r\n TIM14 ARR:%d", TIM14->ARR);
-		printf("\r\n BEMF now:%d", adc_val.bemf_now);
-		printf("\r\n BEMF next:%d", adc_val.bemf_next);
-		printf("\r\n STATUS:%d", adc_val.zero_across_flag);
-		printf("\r\n zero_ac_COUNT:%d", adc_val.zero_across_count);
-		printf("\r\n zero_across_thr:%d",adc_val.zero_across_threshole);
-//		printf("\r\n A:%d B%d C%d M:%d", adc_buf[0], adc_buf[1], adc_buf[2], adc_val.bemf_mid);
+		Delay_ms(100);
+//		printf("TIM14 ARR:%d\r\n", (int)TIM14->ARR);
+//		printf("\r\n BEMF now:%d", adc_val.bemf_now);
+//		printf("\r\n BEMF next:%d", adc_val.bemf_next);
+//		printf("\r\n STATUS:%d", adc_val.zero_across_flag);
+//		printf("\r\n zero_ac_COUNT:%d", adc_val.zero_across_count);
+//		printf("\r\n zero_across_thr:%d",adc_val.zero_across_threshole);
 //		printf("\r\n Speed:%dms/round", adc_val.speed*POLOAR_PARIRS/1000);
-//		printf("\r\n Vvat:%0.2f",	adc_val.vbat*(Vrefint*4095/adc_val.vref_data)/4095/VBAT_FACTOR);
-		printf("\r\n delay:%d",	adc_val.commutation_delay);
-		printf("\r\n BEMF A:%0.2f B:%0.2f C:%0.2f M:%0.2f",
-				adc_buf[0]*(Vrefint*4095/adc_val.vref_data)/819, adc_buf[1]*(Vrefint*4095/adc_val.vref_data)/819,
-				adc_buf[2]*(Vrefint*4095/adc_val.vref_data)/819, adc_buf[8]*(Vrefint*4095/adc_val.vref_data)/819);
+		Delay_ms(100);
+		printf("%0.2fV\n",	adc_val.vbat*(Vrefint*4095/adc_val.vref_data)/4095/VBAT_FACTOR);
+		Delay_ms(100);
+		printf("%dRPM\n", (int)(3600/(adc_val.commutation_delay*6/1000)));//3 pair
+//		printf("\r\n BEMF A:%0.2f B:%0.2f C:%0.2f M:%0.2f",
+//				adc_buf[0]*(Vrefint*4095/adc_val.vref_data)/819, adc_buf[1]*(Vrefint*4095/adc_val.vref_data)/819,
+//				adc_buf[2]*(Vrefint*4095/adc_val.vref_data)/819, adc_buf[8]*(Vrefint*4095/adc_val.vref_data)/819);
 	  }
 
   }
@@ -261,6 +264,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 			period1-=1;
 			TIM14->ARR=period1;
 		}
+		MFlag.IsLEDOn = true;
 		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_0);
 
 	}
@@ -271,14 +275,17 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 			adc_val.commutation_timeout = 0;
 			adc_val.commutation_delay 	= 0;
 			adc_val.zero_across_flag	= TIMEOUT;
+			MFlag.IsPWMOutput			= false;
 			CLOSE_ALL;
 		}
-		if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2)==0)//if 100ms no phase switching, 100us++ or button reset
+		if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2)==0)//button reset, stop outputing
 		{
 			bldc_duty = 10;
 			CLOSE_ALL;
 			BLDC_PWM_Handle(bldc_duty);
 			period1=100;
+			MFlag.IsPWMOutput			= false;
+			MFlag.IsSwitchOn			= false;
 			adc_val.zero_across_flag	= START_UP;
 			adc_val.commutation_timeout = 0;
 			adc_val.commutation_delay 	= 0;
@@ -287,6 +294,8 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		}
 		else if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2)==1 && adc_val.zero_across_flag==START_UP)
 		{
+			MFlag.IsPWMOutput			= true;
+			MFlag.IsSwitchOn			= true;
 			BLDC_Driving_test(&adc_val);
 /*			if(period1>20)					//200ms initial and 4.5ms stable are for the large motor
 			{
@@ -304,43 +313,69 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)//every byte transmit com
 	if(huart == &huart1)
 	{
 		extern uint8_t cnt;
-		cnt=cnt==255?1:cnt+1;
 		rxbuf[cnt] = rxdata;
-		switch(rxbuf[cnt])
-		{
-		case	'1':
-			HAL_TIM_Base_Stop_IT(&htim6);
-			break;
+		char cat[] = "0x13";
+		cnt=cnt==RX_BUF_NUM?1:cnt+1;
 
-		case	'0':
-			HAL_TIM_Base_Start_IT(&htim6);
-			break;
-		case	'+':
-			BT_PWM_handle(TURE);
-			break;
-		case	'-':
-			BT_PWM_handle(FALSE);
-			break;
-		case	'p':
+		if(rxdata == '\n')
 		{
-			htim1.Instance->CCR1++;
-			htim1.Instance->CCR2++;
-			htim1.Instance->CCR3++;
-			break;
+			printf("sting:%s\r\n", rxbuf);
+
+			for(int t=cnt; t<RX_BUF_NUM; t++)
+				rxbuf[t]=0;
+			cnt = 0;
+
+			int temp = strcmp(rxbuf, cat);
+
+			if(0 == strcmp(rxbuf,"0x00"))
+			{
+				HAL_TIM_Base_Stop_IT(&htim6);
+			}
+			else if(0 == strcmp(rxbuf, "0x01"))
+			{
+				HAL_TIM_Base_Start_IT(&htim6);
+			}
+			else if(0 == strcmp(rxbuf, "0x02"))
+			{
+				BT_PWM_handle(TURE);
+			}
+			else if(0 == strcmp(cat, "0x03"))
+			{
+				BT_PWM_handle(FALSE);
+			}
+			else if(0 == strcmp(cat, "0x04"))
+			{
+				htim1.Instance->CCR1++;
+				htim1.Instance->CCR2++;
+				htim1.Instance->CCR3++;
+			}
+			else if(0 == strcmp(cat, "0x05"))
+			{
+				TIM14->ARR--;
+			}
+			else if(0 == strcmp(cat, "0x06"))
+			{
+				adc_val.zero_across_flag = BEMF_DETECTION;
+			}
+			else if(13 == strcmp(rxbuf, cat))
+			{
+				printf("communication ok");
+				if(true == MFlag.IsSwitchOn)
+				{
+					if(true == MFlag.IsPWMOutput)
+					{
+
+					}
+				}
+
+			}
 		}
-		case 	'k':
-		{
-			TIM14->ARR--;
-		}
-		case	'b':
-		{
-			adc_val.zero_across_flag = BEMF_DETECTION;
-		}
-		default:
-			break;
-		}
+
+
+
+
+
 		HAL_UART_Receive_IT(&huart1, &rxdata, sizeof(rxdata));
-		cnt++;
 	}
 }
 
