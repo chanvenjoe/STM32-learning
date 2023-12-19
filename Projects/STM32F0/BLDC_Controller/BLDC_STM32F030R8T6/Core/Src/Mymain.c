@@ -314,7 +314,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)//every byte transmit com
 	{
 		extern uint8_t cnt;
 		rxbuf[cnt] = rxdata;
-		char cat[] = "0x13";
+		const char cat[] = "0X13\r\n";
 		cnt=cnt==RX_BUF_NUM?1:cnt+1;
 
 		if(rxdata == '\n')
@@ -325,17 +325,17 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)//every byte transmit com
 				rxbuf[t]=0;
 			cnt = 0;
 
-			int temp = strcmp(rxbuf, cat);
+//			int temp = strcmp(rxbuf, cat);
 
-			if(0 == strcmp(rxbuf,"0x00"))
+			if(0 == strcmp((char*) rxbuf,"0x00"))
 			{
 				HAL_TIM_Base_Stop_IT(&htim6);
 			}
-			else if(0 == strcmp(rxbuf, "0x01"))
+			else if(0 == strcmp((char*) rxbuf, "0x01"))
 			{
 				HAL_TIM_Base_Start_IT(&htim6);
 			}
-			else if(0 == strcmp(rxbuf, "0x02"))
+			else if(0 == strcmp((char*)rxbuf, "0x02"))
 			{
 				BT_PWM_handle(TURE);
 			}
@@ -357,9 +357,9 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)//every byte transmit com
 			{
 				adc_val.zero_across_flag = BEMF_DETECTION;
 			}
-			else if(13 == strcmp(rxbuf, cat))
+			else if(0 == strcmp((char*) rxbuf, cat))
 			{
-				printf("communication ok");
+				printf("communication ok\n");
 				if(true == MFlag.IsSwitchOn)
 				{
 					if(true == MFlag.IsPWMOutput)

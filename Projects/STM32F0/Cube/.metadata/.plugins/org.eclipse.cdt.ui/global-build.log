@@ -8672,3 +8672,435 @@ Finished building: default.size.stdout
  
 Finished building: BLDC_STM32F030R8T6.list
  
+09:49:52 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+   text	   data	    bss	    dec	    hex	filename
+  55116	    524	   2284	  57924	   e244	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+09:49:55 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+   text	   data	    bss	    dec	    hex	filename
+  55116	    524	   2284	  57924	   e244	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+09:54:17 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'HAL_UART_RxCpltCallback':
+../Core/Src/Mymain.c:328:31: warning: pointer targets in passing argument 1 of 'strcmp' differ in signedness [-Wpointer-sign]
+  328 |    unsigned int temp = strcmp(rxbuf, cat);
+      |                               ^~~~~
+      |                               |
+      |                               uint8_t * {aka unsigned char *}
+In file included from ../Core/Src/Mymain.c:32:
+c:\st\stm32cubeide_1.12.1\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.200.202301161003\tools\arm-none-eabi\include\string.h:36:14: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+   36 | int  strcmp (const char *, const char *);
+      |              ^~~~~~~~~~~~
+../Core/Src/Mymain.c:330:19: warning: pointer targets in passing argument 1 of 'strcmp' differ in signedness [-Wpointer-sign]
+  330 |    if(0 == strcmp(rxbuf,"0x00"))
+      |                   ^~~~~
+      |                   |
+      |                   uint8_t * {aka unsigned char *}
+In file included from ../Core/Src/Mymain.c:32:
+c:\st\stm32cubeide_1.12.1\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.200.202301161003\tools\arm-none-eabi\include\string.h:36:14: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+   36 | int  strcmp (const char *, const char *);
+      |              ^~~~~~~~~~~~
+../Core/Src/Mymain.c:334:24: warning: pointer targets in passing argument 1 of 'strcmp' differ in signedness [-Wpointer-sign]
+  334 |    else if(0 == strcmp(rxbuf, "0x01"))
+      |                        ^~~~~
+      |                        |
+      |                        uint8_t * {aka unsigned char *}
+In file included from ../Core/Src/Mymain.c:32:
+c:\st\stm32cubeide_1.12.1\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.200.202301161003\tools\arm-none-eabi\include\string.h:36:14: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+   36 | int  strcmp (const char *, const char *);
+      |              ^~~~~~~~~~~~
+../Core/Src/Mymain.c:338:24: warning: pointer targets in passing argument 1 of 'strcmp' differ in signedness [-Wpointer-sign]
+  338 |    else if(0 == strcmp(rxbuf, "0x02"))
+      |                        ^~~~~
+      |                        |
+      |                        uint8_t * {aka unsigned char *}
+In file included from ../Core/Src/Mymain.c:32:
+c:\st\stm32cubeide_1.12.1\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.200.202301161003\tools\arm-none-eabi\include\string.h:36:14: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+   36 | int  strcmp (const char *, const char *);
+      |              ^~~~~~~~~~~~
+../Core/Src/Mymain.c:360:25: warning: pointer targets in passing argument 1 of 'strcmp' differ in signedness [-Wpointer-sign]
+  360 |    else if(13 == strcmp(rxbuf, cat))
+      |                         ^~~~~
+      |                         |
+      |                         uint8_t * {aka unsigned char *}
+In file included from ../Core/Src/Mymain.c:32:
+c:\st\stm32cubeide_1.12.1\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.200.202301161003\tools\arm-none-eabi\include\string.h:36:14: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+   36 | int  strcmp (const char *, const char *);
+      |              ^~~~~~~~~~~~
+../Core/Src/Mymain.c:328:17: warning: unused variable 'temp' [-Wunused-variable]
+  328 |    unsigned int temp = strcmp(rxbuf, cat);
+      |                 ^~~~
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\BLDC_Controller\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  55120	    524	   2284	  57928	   e248	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+09:54:58 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'HAL_UART_RxCpltCallback':
+../Core/Src/Mymain.c:328:22: warning: pointer targets in passing argument 1 of 'strcmp' differ in signedness [-Wpointer-sign]
+  328 |    int temp = strcmp(rxbuf, cat);
+      |                      ^~~~~
+      |                      |
+      |                      uint8_t * {aka unsigned char *}
+In file included from ../Core/Src/Mymain.c:32:
+c:\st\stm32cubeide_1.12.1\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.200.202301161003\tools\arm-none-eabi\include\string.h:36:14: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+   36 | int  strcmp (const char *, const char *);
+      |              ^~~~~~~~~~~~
+../Core/Src/Mymain.c:330:19: warning: pointer targets in passing argument 1 of 'strcmp' differ in signedness [-Wpointer-sign]
+  330 |    if(0 == strcmp(rxbuf,"0x00"))
+      |                   ^~~~~
+      |                   |
+      |                   uint8_t * {aka unsigned char *}
+In file included from ../Core/Src/Mymain.c:32:
+c:\st\stm32cubeide_1.12.1\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.200.202301161003\tools\arm-none-eabi\include\string.h:36:14: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+   36 | int  strcmp (const char *, const char *);
+      |              ^~~~~~~~~~~~
+../Core/Src/Mymain.c:334:24: warning: pointer targets in passing argument 1 of 'strcmp' differ in signedness [-Wpointer-sign]
+  334 |    else if(0 == strcmp(rxbuf, "0x01"))
+      |                        ^~~~~
+      |                        |
+      |                        uint8_t * {aka unsigned char *}
+In file included from ../Core/Src/Mymain.c:32:
+c:\st\stm32cubeide_1.12.1\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.200.202301161003\tools\arm-none-eabi\include\string.h:36:14: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+   36 | int  strcmp (const char *, const char *);
+      |              ^~~~~~~~~~~~
+../Core/Src/Mymain.c:338:24: warning: pointer targets in passing argument 1 of 'strcmp' differ in signedness [-Wpointer-sign]
+  338 |    else if(0 == strcmp(rxbuf, "0x02"))
+      |                        ^~~~~
+      |                        |
+      |                        uint8_t * {aka unsigned char *}
+In file included from ../Core/Src/Mymain.c:32:
+c:\st\stm32cubeide_1.12.1\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.200.202301161003\tools\arm-none-eabi\include\string.h:36:14: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+   36 | int  strcmp (const char *, const char *);
+      |              ^~~~~~~~~~~~
+../Core/Src/Mymain.c:360:25: warning: pointer targets in passing argument 1 of 'strcmp' differ in signedness [-Wpointer-sign]
+  360 |    else if(13 == strcmp(rxbuf, cat))
+      |                         ^~~~~
+      |                         |
+      |                         uint8_t * {aka unsigned char *}
+In file included from ../Core/Src/Mymain.c:32:
+c:\st\stm32cubeide_1.12.1\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.200.202301161003\tools\arm-none-eabi\include\string.h:36:14: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+   36 | int  strcmp (const char *, const char *);
+      |              ^~~~~~~~~~~~
+../Core/Src/Mymain.c:328:8: warning: unused variable 'temp' [-Wunused-variable]
+  328 |    int temp = strcmp(rxbuf, cat);
+      |        ^~~~
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\BLDC_Controller\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  55120	    524	   2284	  57928	   e248	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+10:03:28 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'HAL_UART_RxCpltCallback':
+../Core/Src/Mymain.c:328:22: warning: pointer targets in passing argument 1 of 'strcmp' differ in signedness [-Wpointer-sign]
+  328 |    int temp = strcmp(rxbuf, cat);
+      |                      ^~~~~
+      |                      |
+      |                      uint8_t * {aka unsigned char *}
+In file included from ../Core/Src/Mymain.c:32:
+c:\st\stm32cubeide_1.12.1\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.200.202301161003\tools\arm-none-eabi\include\string.h:36:14: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+   36 | int  strcmp (const char *, const char *);
+      |              ^~~~~~~~~~~~
+../Core/Src/Mymain.c:330:19: warning: pointer targets in passing argument 1 of 'strcmp' differ in signedness [-Wpointer-sign]
+  330 |    if(0 == strcmp(rxbuf,"0x00"))
+      |                   ^~~~~
+      |                   |
+      |                   uint8_t * {aka unsigned char *}
+In file included from ../Core/Src/Mymain.c:32:
+c:\st\stm32cubeide_1.12.1\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.200.202301161003\tools\arm-none-eabi\include\string.h:36:14: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+   36 | int  strcmp (const char *, const char *);
+      |              ^~~~~~~~~~~~
+../Core/Src/Mymain.c:334:24: warning: pointer targets in passing argument 1 of 'strcmp' differ in signedness [-Wpointer-sign]
+  334 |    else if(0 == strcmp(rxbuf, "0x01"))
+      |                        ^~~~~
+      |                        |
+      |                        uint8_t * {aka unsigned char *}
+In file included from ../Core/Src/Mymain.c:32:
+c:\st\stm32cubeide_1.12.1\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.200.202301161003\tools\arm-none-eabi\include\string.h:36:14: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+   36 | int  strcmp (const char *, const char *);
+      |              ^~~~~~~~~~~~
+../Core/Src/Mymain.c:338:24: warning: pointer targets in passing argument 1 of 'strcmp' differ in signedness [-Wpointer-sign]
+  338 |    else if(0 == strcmp(rxbuf, "0x02"))
+      |                        ^~~~~
+      |                        |
+      |                        uint8_t * {aka unsigned char *}
+In file included from ../Core/Src/Mymain.c:32:
+c:\st\stm32cubeide_1.12.1\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.200.202301161003\tools\arm-none-eabi\include\string.h:36:14: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+   36 | int  strcmp (const char *, const char *);
+      |              ^~~~~~~~~~~~
+../Core/Src/Mymain.c:360:25: warning: pointer targets in passing argument 1 of 'strcmp' differ in signedness [-Wpointer-sign]
+  360 |    else if(13 == strcmp(rxbuf, cat))
+      |                         ^~~~~
+      |                         |
+      |                         uint8_t * {aka unsigned char *}
+In file included from ../Core/Src/Mymain.c:32:
+c:\st\stm32cubeide_1.12.1\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.200.202301161003\tools\arm-none-eabi\include\string.h:36:14: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+   36 | int  strcmp (const char *, const char *);
+      |              ^~~~~~~~~~~~
+../Core/Src/Mymain.c:328:8: warning: unused variable 'temp' [-Wunused-variable]
+  328 |    int temp = strcmp(rxbuf, cat);
+      |        ^~~~
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\BLDC_Controller\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  55120	    524	   2284	  57928	   e248	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+10:05:57 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'HAL_UART_RxCpltCallback':
+../Core/Src/Mymain.c:330:19: warning: pointer targets in passing argument 1 of 'strcmp' differ in signedness [-Wpointer-sign]
+  330 |    if(0 == strcmp(rxbuf,"0x00"))
+      |                   ^~~~~
+      |                   |
+      |                   uint8_t * {aka unsigned char *}
+In file included from ../Core/Src/Mymain.c:32:
+c:\st\stm32cubeide_1.12.1\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.200.202301161003\tools\arm-none-eabi\include\string.h:36:14: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+   36 | int  strcmp (const char *, const char *);
+      |              ^~~~~~~~~~~~
+../Core/Src/Mymain.c:334:24: warning: pointer targets in passing argument 1 of 'strcmp' differ in signedness [-Wpointer-sign]
+  334 |    else if(0 == strcmp(rxbuf, "0x01"))
+      |                        ^~~~~
+      |                        |
+      |                        uint8_t * {aka unsigned char *}
+In file included from ../Core/Src/Mymain.c:32:
+c:\st\stm32cubeide_1.12.1\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.200.202301161003\tools\arm-none-eabi\include\string.h:36:14: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+   36 | int  strcmp (const char *, const char *);
+      |              ^~~~~~~~~~~~
+../Core/Src/Mymain.c:338:24: warning: pointer targets in passing argument 1 of 'strcmp' differ in signedness [-Wpointer-sign]
+  338 |    else if(0 == strcmp(rxbuf, "0x02"))
+      |                        ^~~~~
+      |                        |
+      |                        uint8_t * {aka unsigned char *}
+In file included from ../Core/Src/Mymain.c:32:
+c:\st\stm32cubeide_1.12.1\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.200.202301161003\tools\arm-none-eabi\include\string.h:36:14: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+   36 | int  strcmp (const char *, const char *);
+      |              ^~~~~~~~~~~~
+../Core/Src/Mymain.c:360:25: warning: pointer targets in passing argument 1 of 'strcmp' differ in signedness [-Wpointer-sign]
+  360 |    else if(13 == strcmp(rxbuf, cat))
+      |                         ^~~~~
+      |                         |
+      |                         uint8_t * {aka unsigned char *}
+In file included from ../Core/Src/Mymain.c:32:
+c:\st\stm32cubeide_1.12.1\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.200.202301161003\tools\arm-none-eabi\include\string.h:36:14: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+   36 | int  strcmp (const char *, const char *);
+      |              ^~~~~~~~~~~~
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\BLDC_Controller\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  55104	    524	   2284	  57912	   e238	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+10:07:43 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'HAL_UART_RxCpltCallback':
+../Core/Src/Mymain.c:330:19: warning: pointer targets in passing argument 1 of 'strcmp' differ in signedness [-Wpointer-sign]
+  330 |    if(0 == strcmp(rxbuf,"0x00"))
+      |                   ^~~~~
+      |                   |
+      |                   uint8_t * {aka unsigned char *}
+In file included from ../Core/Src/Mymain.c:32:
+c:\st\stm32cubeide_1.12.1\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.200.202301161003\tools\arm-none-eabi\include\string.h:36:14: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+   36 | int  strcmp (const char *, const char *);
+      |              ^~~~~~~~~~~~
+../Core/Src/Mymain.c:334:24: warning: pointer targets in passing argument 1 of 'strcmp' differ in signedness [-Wpointer-sign]
+  334 |    else if(0 == strcmp(rxbuf, "0x01"))
+      |                        ^~~~~
+      |                        |
+      |                        uint8_t * {aka unsigned char *}
+In file included from ../Core/Src/Mymain.c:32:
+c:\st\stm32cubeide_1.12.1\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.200.202301161003\tools\arm-none-eabi\include\string.h:36:14: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+   36 | int  strcmp (const char *, const char *);
+      |              ^~~~~~~~~~~~
+../Core/Src/Mymain.c:338:24: warning: pointer targets in passing argument 1 of 'strcmp' differ in signedness [-Wpointer-sign]
+  338 |    else if(0 == strcmp(rxbuf, "0x02"))
+      |                        ^~~~~
+      |                        |
+      |                        uint8_t * {aka unsigned char *}
+In file included from ../Core/Src/Mymain.c:32:
+c:\st\stm32cubeide_1.12.1\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.200.202301161003\tools\arm-none-eabi\include\string.h:36:14: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+   36 | int  strcmp (const char *, const char *);
+      |              ^~~~~~~~~~~~
+../Core/Src/Mymain.c:360:25: error: lvalue required as unary '&' operand
+  360 |    else if(13 == strcmp(&(char*)rxbuf, cat))
+      |                         ^
+make: *** [Core/Src/subdir.mk:55: Core/Src/Mymain.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+10:09:04 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'HAL_UART_RxCpltCallback':
+../Core/Src/Mymain.c:318:12: warning: pointer targets in assignment from 'uint8_t *' {aka 'unsigned char *'} to 'char *' differ in signedness [-Wpointer-sign]
+  318 |   rxbuffer = rxbuf;
+      |            ^
+../Core/Src/Mymain.c:332:19: warning: pointer targets in passing argument 1 of 'strcmp' differ in signedness [-Wpointer-sign]
+  332 |    if(0 == strcmp(rxbuf,"0x00"))
+      |                   ^~~~~
+      |                   |
+      |                   uint8_t * {aka unsigned char *}
+In file included from ../Core/Src/Mymain.c:32:
+c:\st\stm32cubeide_1.12.1\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.200.202301161003\tools\arm-none-eabi\include\string.h:36:14: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+   36 | int  strcmp (const char *, const char *);
+      |              ^~~~~~~~~~~~
+../Core/Src/Mymain.c:336:24: warning: pointer targets in passing argument 1 of 'strcmp' differ in signedness [-Wpointer-sign]
+  336 |    else if(0 == strcmp(rxbuf, "0x01"))
+      |                        ^~~~~
+      |                        |
+      |                        uint8_t * {aka unsigned char *}
+In file included from ../Core/Src/Mymain.c:32:
+c:\st\stm32cubeide_1.12.1\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.200.202301161003\tools\arm-none-eabi\include\string.h:36:14: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+   36 | int  strcmp (const char *, const char *);
+      |              ^~~~~~~~~~~~
+../Core/Src/Mymain.c:340:24: warning: pointer targets in passing argument 1 of 'strcmp' differ in signedness [-Wpointer-sign]
+  340 |    else if(0 == strcmp(rxbuf, "0x02"))
+      |                        ^~~~~
+      |                        |
+      |                        uint8_t * {aka unsigned char *}
+In file included from ../Core/Src/Mymain.c:32:
+c:\st\stm32cubeide_1.12.1\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.200.202301161003\tools\arm-none-eabi\include\string.h:36:14: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+   36 | int  strcmp (const char *, const char *);
+      |              ^~~~~~~~~~~~
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\BLDC_Controller\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  55108	    524	   2284	  57916	   e23c	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+10:22:23 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'HAL_UART_RxCpltCallback':
+../Core/Src/Mymain.c:332:19: warning: pointer targets in passing argument 1 of 'strcmp' differ in signedness [-Wpointer-sign]
+  332 |    if(0 == strcmp(rxbuf,"0x00"))
+      |                   ^~~~~
+      |                   |
+      |                   uint8_t * {aka unsigned char *}
+In file included from ../Core/Src/Mymain.c:32:
+c:\st\stm32cubeide_1.12.1\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.200.202301161003\tools\arm-none-eabi\include\string.h:36:14: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+   36 | int  strcmp (const char *, const char *);
+      |              ^~~~~~~~~~~~
+../Core/Src/Mymain.c:336:24: warning: pointer targets in passing argument 1 of 'strcmp' differ in signedness [-Wpointer-sign]
+  336 |    else if(0 == strcmp(rxbuf, "0x01"))
+      |                        ^~~~~
+      |                        |
+      |                        uint8_t * {aka unsigned char *}
+In file included from ../Core/Src/Mymain.c:32:
+c:\st\stm32cubeide_1.12.1\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.200.202301161003\tools\arm-none-eabi\include\string.h:36:14: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+   36 | int  strcmp (const char *, const char *);
+      |              ^~~~~~~~~~~~
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\BLDC_Controller\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  55108	    524	   2284	  57916	   e23c	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+10:22:52 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'HAL_UART_RxCpltCallback':
+../Core/Src/Mymain.c:316:15: warning: variable 'rxbuffer' set but not used [-Wunused-but-set-variable]
+  316 |   const char* rxbuffer;
+      |               ^~~~~~~~
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\BLDC_Controller\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  55108	    524	   2284	  57916	   e23c	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+10:23:06 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+../Core/Src/Mymain.c: In function 'HAL_UART_RxCpltCallback':
+../Core/Src/Mymain.c:317:3: error: 'rxbuffer' undeclared (first use in this function); did you mean 'setbuffer'?
+  317 |   rxbuffer = (char*) rxbuf;
+      |   ^~~~~~~~
+      |   setbuffer
+../Core/Src/Mymain.c:317:3: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Core/Src/subdir.mk:55: Core/Src/Mymain.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+10:23:13 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\BLDC_Controller\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  55104	    524	   2284	  57912	   e238	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+10:23:38 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+   text	   data	    bss	    dec	    hex	filename
+  55104	    524	   2284	  57912	   e238	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+10:25:27 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\BLDC_Controller\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  55100	    524	   2284	  57908	   e234	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
