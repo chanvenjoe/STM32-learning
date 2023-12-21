@@ -278,7 +278,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 			MFlag.IsPWMOutput			= false;
 			CLOSE_ALL;
 		}
-		if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2)==0)//button reset, stop outputing
+		if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2)==0||MFlag.IsAPPMotorOn==false)//button reset, stop outputing
 		{
 			bldc_duty = 10;
 			CLOSE_ALL;
@@ -292,7 +292,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 			adc_val.zero_across_count 	= 0;
 			adc_val.speed 				= 0;
 		}
-		else if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2)==1 && adc_val.zero_across_flag==START_UP)
+		else if((MFlag.IsAPPMotorOn&&HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2)==1) && adc_val.zero_across_flag==START_UP)
 		{
 			MFlag.IsPWMOutput			= true;
 			MFlag.IsSwitchOn			= true;
@@ -314,7 +314,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)//every byte transmit com
 	{
 		extern uint8_t cnt;
 		rxbuf[cnt] = rxdata;
-		const char cat[] = "0X13\r\n";
+		const char cat[] = "0X13\r\n"; //APP(A:1) to Controller(C:3)
 		cnt=cnt==RX_BUF_NUM?1:cnt+1;
 
 		if(rxdata == '\n')
@@ -324,8 +324,6 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)//every byte transmit com
 			for(int t=cnt; t<RX_BUF_NUM; t++)
 				rxbuf[t]=0;
 			cnt = 0;
-
-//			int temp = strcmp(rxbuf, cat);
 
 			if(0 == strcmp((char*) rxbuf,"0x00"))
 			{
@@ -357,18 +355,18 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)//every byte transmit com
 			{
 				adc_val.zero_across_flag = BEMF_DETECTION;
 			}
-			else if(0 == strcmp((char*) rxbuf, cat))
+			else if(0 == strcmp((char*) rxbuf, MotorOn))
 			{
-				printf("communication ok\n");
-				if(true == MFlag.IsSwitchOn)
-				{
-					if(true == MFlag.IsPWMOutput)
-					{
-
-					}
-				}
-
+				MFlag.IsAPPMotorOn = true;
+				printf("Start command correct\n");
 			}
+			else if(0 == strcmp((char*) rxbuf, MotorOff)) // 0X13MOff
+			{
+				printf("Stop command correct\n");
+				MFlag.IsAPPMotorOn = false;
+				MFlag.IsPWMOutput	= false;
+			}
+
 		}
 
 

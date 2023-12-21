@@ -41,6 +41,9 @@ extern UART_HandleTypeDef huart1;
 extern uint8_t rxbuf[RX_BUF_NUM];
 extern uint8_t rxdata;
 extern uint8_t cnt;
+
+#define MotorOn		"0X13MOn\r\n"
+#define MotorOff	"0X13MOff\r\n"
 /* USER CODE END Private defines */
 
 void MX_USART1_UART_Init(void);

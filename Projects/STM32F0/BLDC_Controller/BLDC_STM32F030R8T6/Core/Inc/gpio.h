@@ -38,6 +38,8 @@ typedef struct
 	bool	IsSwitchOn;
 	bool	IsPWMOutput;
 	bool	IsLEDOn;
+	bool	IsAPPMotorOn;
+	bool	IsAPPMotorOff;
 }FlagsStructure;
 
 /* USER CODE END Private defines */
