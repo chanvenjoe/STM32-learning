@@ -317,7 +317,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)//every byte transmit com
 		const char cat[] = "0X13\r\n"; //APP(A:1) to Controller(C:3)
 		cnt=cnt==RX_BUF_NUM?1:cnt+1;
 
-		if(rxdata == 'e')//'\n')
+		if(1)//rxdata == '\n')
 		{
 			printf("sting:%s\r\n", rxbuf);
 

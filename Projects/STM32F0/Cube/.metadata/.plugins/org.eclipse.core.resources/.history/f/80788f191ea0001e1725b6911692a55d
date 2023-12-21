@@ -146,9 +146,9 @@ int main(void)
 //		printf("\r\n zero_across_thr:%d",adc_val.zero_across_threshole);
 //		printf("\r\n Speed:%dms/round", adc_val.speed*POLOAR_PARIRS/1000);
 		Delay_ms(100);
-		printf("%0.2fV\n",	adc_val.vbat*(Vrefint*4095/adc_val.vref_data)/4095/VBAT_FACTOR);
+//		printf("%0.2fV\n",	adc_val.vbat*(Vrefint*4095/adc_val.vref_data)/4095/VBAT_FACTOR);
 		Delay_ms(100);
-		printf("%dRPM\n", (int)(3600/(adc_val.commutation_delay*6/1000)));//3 pair
+//		printf("%dRPM\n", (int)(3600/(adc_val.commutation_delay*6/1000)));//3 pair
 //		printf("\r\n BEMF A:%0.2f B:%0.2f C:%0.2f M:%0.2f",
 //				adc_buf[0]*(Vrefint*4095/adc_val.vref_data)/819, adc_buf[1]*(Vrefint*4095/adc_val.vref_data)/819,
 //				adc_buf[2]*(Vrefint*4095/adc_val.vref_data)/819, adc_buf[8]*(Vrefint*4095/adc_val.vref_data)/819);

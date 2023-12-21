@@ -4,6 +4,6 @@ Mymain.c:212:1:__io_putchar	1
 Mymain.c:223:6:Error_Handler	1
 Mymain.c:251:6:HAL_TIM_PeriodElapsedCallback	10
 Mymain.c:311:6:HAL_UART_RxCpltCallback	14
-Mymain.c:380:6:HAL_ADC_ConvCpltCallback	1
-Mymain.c:392:6:Delay_ms	2
-Mymain.c:400:6:HAL_GPIO_EXTI_Callback	1
+Mymain.c:375:6:HAL_ADC_ConvCpltCallback	1
+Mymain.c:387:6:Delay_ms	2
+Mymain.c:395:6:HAL_GPIO_EXTI_Callback	1

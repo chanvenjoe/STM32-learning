@@ -317,13 +317,9 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)//every byte transmit com
 		const char cat[] = "0X13\r\n"; //APP(A:1) to Controller(C:3)
 		cnt=cnt==RX_BUF_NUM?1:cnt+1;
 
-		if(rxdata == 'e')//'\n')
+		if(rxdata == '\n')
 		{
 			printf("sting:%s\r\n", rxbuf);
-
-			for(int t=cnt; t<RX_BUF_NUM; t++)
-				rxbuf[t]=0;
-			cnt = 0;
 
 			if(0 == strcmp((char*) rxbuf,"0x00"))
 			{
@@ -368,6 +364,9 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)//every byte transmit com
 			}
 
 		}
+		for(int t=cnt; t<RX_BUF_NUM; t++)
+			rxbuf[t]=0;
+		cnt = 0;
 		HAL_UART_Receive_IT(&huart1, &rxdata, sizeof(rxdata));
 	}
 }
