@@ -261,11 +261,11 @@ u32 HSV_RGB(int h, char s, char v, float R, float G, float B)
 		B8=B*255;
 #endif
 	RGB&=0x00000000;
-	RGB|=R8;
+	RGB|=(R8>>3);
 	RGB<<=8;
-	RGB|=G8;
+	RGB|=(G8>>3);
 	RGB<<=8;
-	RGB|=B8;
+	RGB|=(B8>>3);
 	return RGB;
 }
 void WS_voice_Pik(u8 mode) //Mode0: all LED together Mode1:LED light up corresponding number according to the dB

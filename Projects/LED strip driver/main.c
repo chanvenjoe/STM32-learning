@@ -25,14 +25,14 @@ void main(void)
 				flag=~flag;
 			}
 		}
-		switch(flag)
+		switch(P03==0)
 		{
 			case 0:
 			{
 				WS_voice_Pik(1);
 			}
 			break;
-			case 0xff:
+			case 1:
 			{
 				WS_Hue_change();
 			}
