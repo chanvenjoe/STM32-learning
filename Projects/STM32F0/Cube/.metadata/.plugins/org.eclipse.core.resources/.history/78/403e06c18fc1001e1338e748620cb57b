@@ -1,0 +1,45 @@
+/*
+ * sw_spi.c
+ *
+ *  Created on: Jan 31, 2024
+ *      Author: kzhou
+ */
+#include "sw_spi.h"
+
+unsigned int Get_24bit_Weight(char channel_gain)
+{
+	unsigned int weight=0;
+	SW_SPI_PWR_ON; //Pull down clk
+
+	while(SW_SPI_DAT_RDY)
+	{
+		SW_SPI_CLK_H;
+//		delay_us(1);
+		SW_SPI_CLK_L;
+	}
+
+	for(char i = 24; i!=0; i--)
+	{
+		SW_SPI_CLK_H;
+		weight = weight<<1;
+	//	delay_us(1);
+		SW_SPI_CLK_L;
+		if(SW_SPI_DAT_RDY)
+		{
+		 weight+=1;
+		}
+		delay_us(1);
+	}
+	SW_SPI_CLK_H;
+//	delay_us(1);
+	weight = weight^0x800000;
+	SW_SPI_CLK_L;
+
+	//Preserved for channel selection
+
+	return weight;
+}
+
+
+
+

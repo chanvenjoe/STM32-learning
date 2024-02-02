@@ -55,7 +55,7 @@
 /* USER CODE BEGIN PV */
 uint16_t adc_buf[CH_NUM]={0};
 MADC_Structure adc_val = {1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0};
-FlagsStructure MFlag = {0,0,0};
+FlagsStructure MFlag = {0,0,0,1};
 
 /* USER CODE END PV */
 
@@ -259,9 +259,9 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 			bldc_duty+=1;
 			BLDC_PWM_Handle(bldc_duty);
 		}*/
-		if(period1>20)					//200ms initial and 4.5ms stable are for the large motor
-		{
-			period1-=1;
+		if(period1>45)//20)					//200ms initial and 4.5ms stable are for the large motor
+		{								//100ms initial and 2ms		stable are for the Drone motor
+			period1-=5;					//-5
 			TIM14->ARR=period1;
 		}
 		MFlag.IsLEDOn = true;
@@ -280,10 +280,10 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		}
 		if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2)==0||MFlag.IsAPPMotorOn==false)//button reset, stop outputing
 		{
-			bldc_duty = 10;
+			bldc_duty = 50;
 			CLOSE_ALL;
 			BLDC_PWM_Handle(bldc_duty);
-			period1=100;
+			period1=200;
 			MFlag.IsPWMOutput			= false;
 			MFlag.IsSwitchOn			= false;
 			adc_val.zero_across_flag	= START_UP;
@@ -319,7 +319,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)//every byte transmit com
 
 		if(rxdata == 'e')//'\n')
 		{
-			printf("sting:%s\r\n", rxbuf);
+//			printf("sting:%s\r\n", rxbuf);
 
 			for(int t=cnt; t<RX_BUF_NUM; t++)
 				rxbuf[t]=0;
