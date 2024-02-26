@@ -5069,3 +5069,18 @@ org.eclipse.core.runtime.CoreException: Cannot determine URI for '/BLDC_STM32F03
 
 !ENTRY org.eclipse.cdt.core 1 0 2024-02-02 13:10:42.231
 !MESSAGE Indexed 'BLDC_STM32F030R8T6' (35 sources, 131 headers) in 3.74 sec: 11,453 declarations; 70,661 references; 7 unresolved inclusions; 1,042 syntax errors; 1,416 unresolved names (1.7%)
+!SESSION 2024-02-26 17:13:24.308 -----------------------------------------------
+eclipse.buildId=Version 1.12.1
+java.version=11.0.17
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-02-26 17:13:30.361
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-02-26 17:13:30.362
+!MESSAGE Log4j2 initialized with config file C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\Cube\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-02-26 17:13:35.518
+!MESSAGE Started RMI Server, listening on port 41337
