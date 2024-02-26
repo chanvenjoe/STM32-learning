@@ -136,8 +136,8 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  if(weight_par.weight>weight_par.gross_weight)
-		  printf("Net Weight is: %.02f g\r\n", (float)(weight_par.weight - weight_par.gross_weight)/LOAD_CELL_FACTOR );
+	  if(weight_par.calibration_flag)
+		  printf("Net Weight is: %.02f g\r\n", (float)weight_par.gram );
 	  Delay_ms(100);
   }
 
@@ -237,13 +237,28 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	if(htim == &htim6)
 	{
-		static int period1 = 1000;
-		period1 = period1<50? 1000: period1-20;
-		TIM6->ARR=period1;
+//		static int period1 = 1000;
+//		period1 = period1<50? 1000: period1-20;
+//		TIM6->ARR=period1;
+		static char dc_pwm;
 		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_0);
 		if(weight_par.calibration_flag == 1)
 		{
-			weight_par.weight = Get_24bit_Weight(CHA_128);
+			Get_weight(&weight_par);
+			//weight_par.weight = Get_24bit_Weight(CHA_128);
+			if(weight_par.gram>500)
+			{
+				AHBL_ON;
+				dc_pwm = dc_pwm>=99? 99:dc_pwm+1;
+				if(dc_pwm>10)
+					__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, dc_pwm);
+			}
+			else
+			{
+				CLOSE_ALL;
+				dc_pwm = 0;
+				__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, dc_pwm);
+			}
 		}
 
 	}
@@ -253,7 +268,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		{
 			adc_val.commutation_timeout = 0;
 			adc_val.commutation_delay 	= 0;
-			CLOSE_ALL;
+//			CLOSE_ALL;
 		}
 //		BLDC_Driving_test();
 
@@ -310,7 +325,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)//every byte transmit com
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)// Using tim15 to get a 88us between each trigger 50us as TIM1 cycle, 14MHz ADC(12.5+55.5 cycles) consume 4.37ms to complete conversion
 {													  // The ADC sample time is for all channel, the DMA
 	My_ADC_getvalue(adc_buf, &adc_val);
-	BLDC_Phase_switching(&adc_val);
+//	BLDC_Phase_switching(&adc_val);
 }
 
 void Delay_ms(uint32_t delay)
