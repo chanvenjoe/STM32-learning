@@ -1,3 +1,4 @@
 sw_spi.c:9:14:Get_24bit_Weight	4
 sw_spi.c:43:6:Get_weight	3
 sw_spi.c:57:6:HX711_Calibration	1
+sw_spi.c:72:6:PWM_Delegation	7

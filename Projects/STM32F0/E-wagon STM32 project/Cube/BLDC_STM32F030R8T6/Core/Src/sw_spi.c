@@ -69,5 +69,33 @@ void HX711_Calibration(HX711_Structure* weight_par)
 
 }
 
+void PWM_Delegation(HX711_Structure* weight_par)
+{
+	static char dc_pwm;
+	if(weight_par->gram>PULL_FORCE_THR)
+	{
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, RESET);
+		AHBL_ON;
+		weight_par->eps_flag = 1;
+		dc_pwm = dc_pwm>=90? 99:dc_pwm+10;
+		if(dc_pwm>20)
+			__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, dc_pwm);
+	}
+	else if(weight_par->gram>100&&(weight_par->eps_flag==1))
+	{
+		//dc_pwm = dc_pwm<=20? 99:dc_pwm-5;
+		__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, dc_pwm);
+
+	}
+	else
+	{
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, SET);
+		CLOSE_PWM;
+		weight_par->eps_flag = 0;
+		dc_pwm = dc_pwm<=10? 0:dc_pwm-5;
+		__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, dc_pwm);
+	}
+}
+
 
 

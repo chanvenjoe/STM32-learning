@@ -30,15 +30,21 @@
 #define CHA_64	27
 #define LOAD_CELL_FACTOR 225 //Example: A Kg * 3.24mV/10Kg => A*128 = 0.324*128AmV = 41.472AmV  => 41.472AmV/AD = 3.24V/0xffffff => AD = 214748.352A A g = AD/214.748
 									//If the real number is smaller than the tested value, then increase the factor, vice versa
+#define PULL_FORCE_THR	1000
+#define LOWER_LIMMIT	300
+
+
 typedef struct {
-	 int gram;
-	 int gross_weight;
-	 int calibrated_value;
-	char		 calibration_flag;
+	 int	gram;
+	 int	gross_weight;
+	 int	calibrated_value;
+	 char	calibration_flag;
+	 char	eps_flag;
 }HX711_Structure;
 
 unsigned int Get_24bit_Weight(char channel_gain);
 void HX711_Calibration( HX711_Structure* weight_par);
 void Get_weight(HX711_Structure* weight_par);
+void PWM_Delegation(HX711_Structure* weight_par);
 
 #endif /* INC_SW_SPI_H_ */

@@ -36,6 +36,7 @@ extern "C" {
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
+#include "BLDC.h"
 #include <stdio.h>
 /* USER CODE END Includes */
 
