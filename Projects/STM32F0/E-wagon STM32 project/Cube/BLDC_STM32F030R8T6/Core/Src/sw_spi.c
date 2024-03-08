@@ -64,16 +64,18 @@ void HX711_Calibration(HX711_Structure* weight_par)
 	  delay_us(2000);
 	  weight_par->calibrated_value = Get_24bit_Weight(CHA_128);
 
-	  if(weight_par->calibrated_value>= CALIBRATION_RANGE_L && weight_par->calibrated_value<=CALIBRATION_RANGE_H)
+	  while(!(weight_par->calibrated_value>= CALIBRATION_RANGE_L && weight_par->calibrated_value<=CALIBRATION_RANGE_H))
 	  {
-		  printf("calibration ok weight:%d", weight_par->calibrated_value);
-		  weight_par->calibration_flag = 1; //Calibration done
+		  printf("Sensor initial error, re-calibrating");
+		  SW_SPI_PWR_OFF;
+		  delay_us(200);
+		  SW_SPI_PWR_ON;
+		  weight_par->calibrated_value = Get_24bit_Weight(CHA_128);
+		  delay_us(2000);
+		  weight_par->calibrated_value = Get_24bit_Weight(CHA_128);
 	  }
-	  else
-	  {
-		  printf("Sensor initial error, please reboot");
-		  while(1);
-	  }
+	  printf("calibration ok weight:%d", weight_par->calibrated_value);
+	  weight_par->calibration_flag = 1; //Calibration done
 
 }
 

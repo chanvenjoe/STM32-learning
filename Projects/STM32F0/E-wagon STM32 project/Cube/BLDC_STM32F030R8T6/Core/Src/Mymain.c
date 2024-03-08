@@ -241,6 +241,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 //		period1 = period1<50? 1000: period1-20;
 //		TIM6->ARR=period1;
 //		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_0);
+
 		if(weight_par.calibration_flag == 1)
 		{
 			static char dc_pwm, pid_pwm;
