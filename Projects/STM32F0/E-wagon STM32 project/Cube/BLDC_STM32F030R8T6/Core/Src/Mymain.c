@@ -112,7 +112,7 @@ int main(void)
   HAL_UART_Receive_IT(&huart1, &rxdata, sizeof(rxdata));
 	if(HAL_ADC_Start_DMA(&hadc, (uint32_t*)adc_buf, sizeof(adc_buf)/2)!=HAL_OK)//Remember that the length of DMA is half world and size of return bytes:that is double of the data transmited so the array overfllow!
 	{
-	 Error_Handler(); //This function also enable the interruption
+		Error_Handler(); //This function also enable the interruption
 	}
 
   /* USER CODE BEGIN 2 */
@@ -137,8 +137,8 @@ int main(void)
   while (1)
   {
 	  if(weight_par.calibration_flag)
-		  printf("Net Weight is: %.02f g\r\n", (float)weight_par.gram );
-	  Delay_ms(100);
+		  printf("The Weight is: %.02f g\r\n", (float)weight_par.gram );
+//	  Delay_ms(100);
   }
 
 }
@@ -243,8 +243,32 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 //		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_0);
 		if(weight_par.calibration_flag == 1)
 		{
+			static char dc_pwm, pid_pwm;
 			Get_weight(&weight_par);
-			PWM_Delegation(&weight_par);
+			pid_pwm = Incremental_PID(&weight_par, PULL_FORCE_THR);
+			if(0<pid_pwm)
+			{
+				HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, RESET);
+				AHBL_ON;
+				weight_par.eps_flag = 1;
+				dc_pwm = dc_pwm>=pid_pwm? dc_pwm:dc_pwm+5;
+				if(dc_pwm>20)
+					__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, dc_pwm);
+			}
+			else
+			{
+				dc_pwm = dc_pwm<=pid_pwm? dc_pwm:dc_pwm-1;
+				__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, dc_pwm);
+			}
+			if(weight_par.gram<LOWER_LIMMIT)
+			{
+				HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, SET);
+				CLOSE_PWM;
+				weight_par.eps_flag = 0;
+				dc_pwm = dc_pwm<=10? 0:dc_pwm-5;
+				__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, dc_pwm);
+			}
+			//PWM_Delegation(&weight_par);
 		}
 
 	}
@@ -310,7 +334,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)//every byte transmit com
 
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)// Using tim15 to get a 88us between each trigger 50us as TIM1 cycle, 14MHz ADC(12.5+55.5 cycles) consume 4.37ms to complete conversion
 {													  // The ADC sample time is for all channel, the DMA
-	My_ADC_getvalue(adc_buf, &adc_val);
+//	My_ADC_getvalue(adc_buf, &adc_val);
 //	BLDC_Phase_switching(&adc_val);
 }
 

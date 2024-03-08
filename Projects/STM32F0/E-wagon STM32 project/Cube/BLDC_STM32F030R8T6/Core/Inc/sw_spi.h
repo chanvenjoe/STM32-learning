@@ -10,10 +10,10 @@
 
 #include "main.h"
 
-#define SW_SPI_PORT 	GPIOC
+#define SW_SPI_PORT 	GPIOF
 
-#define SW_SPI_PIN_CLK 	GPIO_PIN_14
-#define SW_SPI_PIN_DAT 	GPIO_PIN_15
+#define SW_SPI_PIN_CLK 	GPIO_PIN_4
+#define SW_SPI_PIN_DAT 	GPIO_PIN_5
 
 #define SW_SPI_PWR_OFF	HAL_GPIO_WritePin(SW_SPI_PORT, SW_SPI_PIN_CLK, GPIO_PIN_SET)
 #define SW_SPI_PWR_ON	HAL_GPIO_WritePin(SW_SPI_PORT, SW_SPI_PIN_CLK, GPIO_PIN_RESET)
@@ -31,7 +31,10 @@
 #define LOAD_CELL_FACTOR 225 //Example: A Kg * 3.24mV/10Kg => A*128 = 0.324*128AmV = 41.472AmV  => 41.472AmV/AD = 3.24V/0xffffff => AD = 214748.352A A g = AD/214.748
 									//If the real number is smaller than the tested value, then increase the factor, vice versa
 #define PULL_FORCE_THR	1000
-#define LOWER_LIMMIT	300
+#define LOWER_LIMMIT	150
+
+#define CALIBRATION_RANGE_L 8000000
+#define CALIBRATION_RANGE_H	8300000
 
 
 typedef struct {
@@ -46,5 +49,6 @@ unsigned int Get_24bit_Weight(char channel_gain);
 void HX711_Calibration( HX711_Structure* weight_par);
 void Get_weight(HX711_Structure* weight_par);
 void PWM_Delegation(HX711_Structure* weight_par);
+char Incremental_PID(HX711_Structure* weight_par, uint16_t pull_force_thr);
 
 #endif /* INC_SW_SPI_H_ */

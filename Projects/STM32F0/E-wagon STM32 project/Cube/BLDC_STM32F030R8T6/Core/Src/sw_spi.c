@@ -64,8 +64,16 @@ void HX711_Calibration(HX711_Structure* weight_par)
 	  delay_us(2000);
 	  weight_par->calibrated_value = Get_24bit_Weight(CHA_128);
 
-	  printf("calibration weight:%d", weight_par->calibrated_value);
-	  weight_par->calibration_flag = 1; //Calibration done
+	  if(weight_par->calibrated_value>= CALIBRATION_RANGE_L && weight_par->calibrated_value<=CALIBRATION_RANGE_H)
+	  {
+		  printf("calibration ok weight:%d", weight_par->calibrated_value);
+		  weight_par->calibration_flag = 1; //Calibration done
+	  }
+	  else
+	  {
+		  printf("Sensor initial error, please reboot");
+		  while(1);
+	  }
 
 }
 
@@ -77,7 +85,7 @@ void PWM_Delegation(HX711_Structure* weight_par)
 		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, RESET);
 		AHBL_ON;
 		weight_par->eps_flag = 1;
-		dc_pwm = dc_pwm>=90? 99:dc_pwm+10;
+		dc_pwm = dc_pwm>=70? 70:dc_pwm+5;
 		if(dc_pwm>20)
 			__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, dc_pwm);
 	}
@@ -95,6 +103,31 @@ void PWM_Delegation(HX711_Structure* weight_par)
 		dc_pwm = dc_pwm<=10? 0:dc_pwm-5;
 		__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, dc_pwm);
 	}
+}
+
+// PWM+=KP[e(k) -e(k-1)]+Ki*∑e(k)+Kd[e(k)-2e(k-1)+e(k-2)]
+// e(k) the value difference of actual and setting e(k-1) the last time difference
+// In this motor control we use P
+// PWM = Kp[e(k) - e(k-1)]
+
+char Incremental_PID(HX711_Structure* weight_par, uint16_t pull_force_thr)
+{
+	static float Kp = 0.05, Ki = 0.1, Kd = 0.5;
+	static int  sum_integral=0, Bias=0, Last_bias=0;
+	static int PWM;
+	Bias = weight_par->gram> LOWER_LIMMIT? weight_par->gram - pull_force_thr : 0;
+	//sum_integral +=Bias;
+	PWM += Kp*(Bias-Last_bias)/*+Ki*sum_integral + Kd*(Bias-2*Last_bias+*/;
+	if(PWM>=0)
+	{
+		PWM = PWM>=90? 100:PWM;
+	}
+	else
+	{
+		PWM = 0;
+	}
+	Last_bias = Bias;
+	return PWM;
 }
 
 
