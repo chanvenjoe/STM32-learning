@@ -253,7 +253,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 				AHBL_ON;
 				weight_par.eps_flag = 1;
 				dc_pwm = dc_pwm>=pid_pwm? dc_pwm:dc_pwm+5;
-				if(dc_pwm>20)
+				if(dc_pwm>10)
 					__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, dc_pwm);
 			}
 			else
