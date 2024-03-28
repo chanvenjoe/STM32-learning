@@ -61,7 +61,6 @@ HX711_Structure weight_par = {0};
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
-void Delay_ms(uint32_t delay);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -100,18 +99,23 @@ int main(void)
   MX_GPIO_Init();
   MX_DMA_Init();
   MX_ADC_Init();
-  MX_SPI1_Init();
+//  MX_SPI1_Init();
+  MX_USART1_UART_Init();
+  HAL_UART_Receive_IT(&huart1, &rxdata, sizeof(rxdata));
+
   MX_TIM1_Init();
   MX_TIM3_Init();
   MX_TIM6_Init();
   MX_TIM14_Init();
   MX_TIM15_Init();
   MX_TIM16_Init();
-  MX_USART1_UART_Init();
+
+  HAL_TIM_Base_Start_IT(&htim3);
   HAL_TIM_Base_Start_IT(&htim6);
   HAL_TIM_Base_Start_IT(&htim14);
   HAL_TIM_Base_Start_IT(&htim15);
-  HAL_UART_Receive_IT(&huart1, &rxdata, sizeof(rxdata));
+  HAL_TIM_Base_Start_IT(&htim16);
+
 	if(HAL_ADC_Start_DMA(&hadc, (uint32_t*)adc_buf, sizeof(adc_buf)/2)!=HAL_OK)//Remember that the length of DMA is half world and size of return bytes:that is double of the data transmited so the array overfllow!
 	{
 		Error_Handler(); //This function also enable the interruption
@@ -121,12 +125,8 @@ int main(void)
 	HX711_Calibration(&weight_par);
   /* USER CODE END 2 */
 
-  HAL_TIM_OC_Start(&htim1,TIM_CHANNEL_4);
+//  HAL_TIM_OC_Start(&htim1,TIM_CHANNEL_4);
 
-  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
-  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2);
-  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_3);
-  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_4);
 
   /*******initial position reset**************/
 //   BLDC_Start_Up();
@@ -141,16 +141,8 @@ int main(void)
 	  if(weight_par.calibration_flag)
 		  printf("0x31 %.02f g\r\n", (float)weight_par.gram );
 
-		adc_val.commutation_delay = 0;
-		__HAL_TIM_SET_COUNTER(&htim16, 0);//the auto reload is set to 65535 1us time base
-		HAL_TIM_Base_Start(&htim16);
-		Get_weight(&weight_par);
-		HAL_TIM_Base_Stop(&htim16);
-		adc_val.commutation_delay = __HAL_TIM_GET_COUNTER(&htim16);
-
-		printf("time laps: %d \r\n", adc_val.commutation_delay);
-
-		Delay_ms(100);
+	  printf("time laps: %d \r\n", adc_val.commutation_delay);
+	  delay_ms(100);
   }
 
 }
@@ -247,17 +239,19 @@ void assert_failed(uint8_t *file, uint32_t line)
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-	if(htim == &htim6)
+	if(htim == &htim3)
 	{
-//		static int period1 = 1000;
-//		period1 = period1<50? 1000: period1-20;
-//		TIM6->ARR=period1;
-//		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_0);
-
+//		TIMERTESTER
+		if(weight_par.calibration_flag)
+		{
+			FORCESAPTIME;
+		}
+	}
+	else if(htim == &htim6)
+	{
 		if(weight_par.calibration_flag == 1)
 		{
 			static char dc_pwm, pid_pwm;
-
 			pid_pwm = Incremental_PID(&weight_par, PULL_FORCE_THR);
 			if(0<pid_pwm)
 			{
@@ -281,38 +275,26 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 				dc_pwm = dc_pwm<=10? 0:dc_pwm-5;
 				__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, dc_pwm);
 			}
-			//PWM_Delegation(&weight_par);
 		}
 
 	}
-	else if(htim == &htim14)//10ms enter
+	else if(htim == &htim14)//10ms enter for E-wagon protection counting
 	{
+//		TIMERTESTER
 		if(adc_val.commutation_timeout >1000)//if 100ms no phase switching, 100us++
 		{
 			adc_val.commutation_timeout = 0;
 			adc_val.commutation_delay 	= 0;
 //			CLOSE_ALL;
 		}
-//		BLDC_Driving_test();
-
-/*			BLDC_Driving_test();
-			static int period1 = 200;
-			if(period1>30)
-			{
-				period1--;
-				TIM14->ARR=period1;
-			}*/
+	}
+	else if(htim == &htim15)//1us
+	{
 
 	}
-	else if(htim == &htim15)
+	else if(htim == &htim16)//1us interval
 	{
-		__HAL_TIM_SET_COUNTER(&htim15, 0);
-/*		adc_val.commutation_delay = 0;
-		__HAL_TIM_SET_COUNTER(&htim15, 0);//the auto reload is set to 65535 1us time base
-		HAL_TIM_Base_Start(&htim15);
 
-		adc_val.commutation_delay = __HAL_TIM_GET_COUNTER(&htim15);
-		HAL_TIM_Base_Stop(&htim15);*/
 	}
 }
 
@@ -360,13 +342,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)// Using tim15 to get a 88
 //	BLDC_Phase_switching(&adc_val);
 }
 
-void Delay_ms(uint32_t delay)
-{
-	uint32_t tick_start;
-	tick_start = HAL_GetTick();
-	while((HAL_GetTick()-tick_start)<delay)
-		__NOP();
-}
+
 
 /*void HAL_GPIO_EXTI_Callback(uint16_t GPIO_PIN)
 {
@@ -379,6 +355,5 @@ void Delay_ms(uint32_t delay)
 		HAL_TIM_Base_Start_IT(&htim6);
 	}
 }*/
-
 
 

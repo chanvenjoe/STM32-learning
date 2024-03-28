@@ -46,6 +46,17 @@ extern TIM_HandleTypeDef htim16;
 
 /* USER CODE BEGIN Private defines */
 //#define Ramp
+#define 	TIMERTESTER	weight_par.eps_flag = ! weight_par.eps_flag;\
+if(weight_par.eps_flag==0)\
+{\
+	__HAL_TIM_SET_COUNTER(&htim16, 0);/*the auto reload is set to 65535 1us time base*/\
+	HAL_TIM_Base_Start(&htim16);\
+}\
+else\
+{\
+	HAL_TIM_Base_Stop(&htim16);\
+	adc_val.commutation_delay = __HAL_TIM_GET_COUNTER(&htim16);\
+}
 /* USER CODE END Private defines */
 
 void MX_TIM1_Init(void);
@@ -59,6 +70,8 @@ void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
 
 /* USER CODE BEGIN Prototypes */
 void delay_us(uint16_t us);
+void delay_ms(uint32_t delay);
+
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

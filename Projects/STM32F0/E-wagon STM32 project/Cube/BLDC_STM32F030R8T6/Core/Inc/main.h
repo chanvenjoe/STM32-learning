@@ -67,6 +67,12 @@ void Error_Handler(void);
 #define BTWakeUp_GPIO_Port GPIOC
 
 /* USER CODE BEGIN Private defines */
+#define FORCESAPTIME 		adc_val.commutation_delay = 0;\
+__HAL_TIM_SET_COUNTER(&htim16, 0);/*the auto reload is set to 65535 1us time base*/\
+HAL_TIM_Base_Start(&htim16); \
+Get_weight(&weight_par);\
+HAL_TIM_Base_Stop(&htim16);\
+adc_val.commutation_delay = __HAL_TIM_GET_COUNTER(&htim16)
 
 /* USER CODE END Private defines */
 

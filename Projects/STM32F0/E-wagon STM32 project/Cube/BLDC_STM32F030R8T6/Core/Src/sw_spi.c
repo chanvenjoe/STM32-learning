@@ -14,7 +14,6 @@ unsigned int Get_24bit_Weight(char channel_gain)
 	while(SW_SPI_DAT_RDY)
 	{
 		SW_SPI_CLK_H;
-//		delay_us(1);
 		SW_SPI_CLK_L;
 	}
 
@@ -22,7 +21,6 @@ unsigned int Get_24bit_Weight(char channel_gain)
 	{
 		SW_SPI_CLK_H;
 		weight = weight<<1;
-	//	delay_us(1);
 		SW_SPI_CLK_L;
 		if(SW_SPI_DAT_RDY)
 		{
@@ -31,7 +29,6 @@ unsigned int Get_24bit_Weight(char channel_gain)
 		delay_us(1);
 	}
 	SW_SPI_CLK_H;
-//	delay_us(1);
 	weight = weight^0x800000;
 	SW_SPI_CLK_L;
 
@@ -66,7 +63,7 @@ void HX711_Calibration(HX711_Structure* weight_par)
 
 	  while(!(weight_par->calibrated_value>= CALIBRATION_RANGE_L && weight_par->calibrated_value<=CALIBRATION_RANGE_H))
 	  {
-		  printf("Sensor initial error, re-calibrating");
+		  printf("Sensor initial error, re-calibrating\r\n");
 		  SW_SPI_PWR_OFF;
 		  delay_us(200);
 		  SW_SPI_PWR_ON;
@@ -74,7 +71,7 @@ void HX711_Calibration(HX711_Structure* weight_par)
 		  delay_us(2000);
 		  weight_par->calibrated_value = Get_24bit_Weight(CHA_128);
 	  }
-	  printf("calibration ok weight:%d", weight_par->calibrated_value);
+	  printf("calibration ok weight:%d\r\n", weight_par->calibrated_value);
 	  weight_par->calibration_flag = 1; //Calibration done
 
 }

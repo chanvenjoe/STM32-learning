@@ -30,8 +30,8 @@
 #define CHA_64	27
 #define LOAD_CELL_FACTOR 55//225 //Example: A Kg * 3.24mV/10Kg => A*128 = 0.324*128AmV = 41.472AmV  => 41.472AmV/AD = 3.24V/0xffffff => AD = 214748.352A A g = AD/214.748
 									//If the real number is smaller than the tested value, then increase the factor, vice versa
-#define PULL_FORCE_THR	300
-#define LOWER_LIMMIT	150
+#define PULL_FORCE_THR	1000
+#define LOWER_LIMMIT	500
 #define TOP_LIMIT		2000
 
 #define CALIBRATION_RANGE_L 8000000
