@@ -100,15 +100,17 @@ int main(void)
   MX_GPIO_Init();
   MX_DMA_Init();
   MX_ADC_Init();
-//  MX_SPI1_Init();
+  MX_SPI1_Init();
   MX_TIM1_Init();
   MX_TIM3_Init();
   MX_TIM6_Init();
   MX_TIM14_Init();
   MX_TIM15_Init();
+  MX_TIM16_Init();
   MX_USART1_UART_Init();
   HAL_TIM_Base_Start_IT(&htim6);
   HAL_TIM_Base_Start_IT(&htim14);
+  HAL_TIM_Base_Start_IT(&htim15);
   HAL_UART_Receive_IT(&huart1, &rxdata, sizeof(rxdata));
 	if(HAL_ADC_Start_DMA(&hadc, (uint32_t*)adc_buf, sizeof(adc_buf)/2)!=HAL_OK)//Remember that the length of DMA is half world and size of return bytes:that is double of the data transmited so the array overfllow!
 	{
@@ -137,8 +139,18 @@ int main(void)
   while (1)
   {
 	  if(weight_par.calibration_flag)
-		  printf("The Weight is: %.02f g\r\n", (float)weight_par.gram );
-//	  Delay_ms(100);
+		  printf("0x31 %.02f g\r\n", (float)weight_par.gram );
+
+		adc_val.commutation_delay = 0;
+		__HAL_TIM_SET_COUNTER(&htim16, 0);//the auto reload is set to 65535 1us time base
+		HAL_TIM_Base_Start(&htim16);
+		Get_weight(&weight_par);
+		HAL_TIM_Base_Stop(&htim16);
+		adc_val.commutation_delay = __HAL_TIM_GET_COUNTER(&htim16);
+
+		printf("time laps: %d \r\n", adc_val.commutation_delay);
+
+		Delay_ms(100);
   }
 
 }
@@ -245,7 +257,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		if(weight_par.calibration_flag == 1)
 		{
 			static char dc_pwm, pid_pwm;
-			Get_weight(&weight_par);
+
 			pid_pwm = Incremental_PID(&weight_par, PULL_FORCE_THR);
 			if(0<pid_pwm)
 			{
@@ -258,7 +270,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 			}
 			else
 			{
-				dc_pwm = dc_pwm<=pid_pwm? dc_pwm:dc_pwm-1;
+				dc_pwm = dc_pwm<=pid_pwm? dc_pwm:dc_pwm-5;
 				__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, dc_pwm);
 			}
 			if(weight_par.gram<LOWER_LIMMIT)
@@ -292,6 +304,16 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 			}*/
 
 	}
+	else if(htim == &htim15)
+	{
+		__HAL_TIM_SET_COUNTER(&htim15, 0);
+/*		adc_val.commutation_delay = 0;
+		__HAL_TIM_SET_COUNTER(&htim15, 0);//the auto reload is set to 65535 1us time base
+		HAL_TIM_Base_Start(&htim15);
+
+		adc_val.commutation_delay = __HAL_TIM_GET_COUNTER(&htim15);
+		HAL_TIM_Base_Stop(&htim15);*/
+	}
 }
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)//every byte transmit complete, enter this function
@@ -306,7 +328,6 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)//every byte transmit com
 		case	'1':
 			HAL_TIM_Base_Stop_IT(&htim6);
 			break;
-
 		case	'0':
 			HAL_TIM_Base_Start_IT(&htim6);
 			break;
