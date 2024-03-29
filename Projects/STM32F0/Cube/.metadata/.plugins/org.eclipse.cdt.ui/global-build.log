@@ -2323,3 +2323,453 @@ Finished building: default.size.stdout
  
 Finished building: BLDC_STM32F030R8T6.list
  
+23:04:55 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/sw_spi.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/sw_spi.d" -MT"Core/Src/sw_spi.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/sw_spi.o"
+../Core/Src/sw_spi.c: In function 'Incremental_PID':
+../Core/Src/sw_spi.c:116:51: warning: variable 'Last1_bias' set but not used [-Wunused-but-set-variable]
+  116 |  static int  sum_integral=0, Bias=0, Last_bias=0, Last1_bias = 0;
+      |                                                   ^~~~~~~~~~
+../Core/Src/sw_spi.c:116:14: warning: unused variable 'sum_integral' [-Wunused-variable]
+  116 |  static int  sum_integral=0, Bias=0, Last_bias=0, Last1_bias = 0;
+      |              ^~~~~~~~~~~~
+../Core/Src/sw_spi.c:115:36: warning: unused variable 'Kd' [-Wunused-variable]
+  115 |  static float Kp = 0.05, Ki = 0.1, Kd = 0.5;
+      |                                    ^~
+../Core/Src/sw_spi.c:115:26: warning: unused variable 'Ki' [-Wunused-variable]
+  115 |  static float Kp = 0.05, Ki = 0.1, Kd = 0.5;
+      |                          ^~
+At top level:
+../Core/Src/sw_spi.c:115:26: warning: 'Ki' defined but not used [-Wunused-variable]
+../Core/Src/sw_spi.c:115:36: warning: 'Kd' defined but not used [-Wunused-variable]
+  115 |  static float Kp = 0.05, Ki = 0.1, Kd = 0.5;
+      |                                    ^~
+../Core/Src/sw_spi.c:116:14: warning: 'sum_integral' defined but not used [-Wunused-variable]
+  116 |  static int  sum_integral=0, Bias=0, Last_bias=0, Last1_bias = 0;
+      |              ^~~~~~~~~~~~
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\E-wagon STM32 project\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  56512	    524	   2612	  59648	   e900	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+23:06:31 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/tim.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/tim.d" -MT"Core/Src/tim.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/tim.o"
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\E-wagon STM32 project\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  56512	    524	   2612	  59648	   e900	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+23:08:39 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/sw_spi.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/sw_spi.d" -MT"Core/Src/sw_spi.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/sw_spi.o"
+../Core/Src/sw_spi.c: In function 'Incremental_PID':
+../Core/Src/sw_spi.c:117:51: warning: variable 'Last1_bias' set but not used [-Wunused-but-set-variable]
+  117 |  static int  sum_integral=0, Bias=0, Last_bias=0, Last1_bias = 0;
+      |                                                   ^~~~~~~~~~
+../Core/Src/sw_spi.c:117:14: warning: unused variable 'sum_integral' [-Wunused-variable]
+  117 |  static int  sum_integral=0, Bias=0, Last_bias=0, Last1_bias = 0;
+      |              ^~~~~~~~~~~~
+../Core/Src/sw_spi.c:116:36: warning: unused variable 'Kd' [-Wunused-variable]
+  116 |  static float Kp = 0.05, Ki = 0.1, Kd = 0.5;
+      |                                    ^~
+../Core/Src/sw_spi.c:116:26: warning: unused variable 'Ki' [-Wunused-variable]
+  116 |  static float Kp = 0.05, Ki = 0.1, Kd = 0.5;
+      |                          ^~
+At top level:
+../Core/Src/sw_spi.c:116:26: warning: 'Ki' defined but not used [-Wunused-variable]
+../Core/Src/sw_spi.c:116:36: warning: 'Kd' defined but not used [-Wunused-variable]
+  116 |  static float Kp = 0.05, Ki = 0.1, Kd = 0.5;
+      |                                    ^~
+../Core/Src/sw_spi.c:117:14: warning: 'sum_integral' defined but not used [-Wunused-variable]
+  117 |  static int  sum_integral=0, Bias=0, Last_bias=0, Last1_bias = 0;
+      |              ^~~~~~~~~~~~
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\E-wagon STM32 project\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  56520	    524	   2612	  59656	   e908	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+23:09:07 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+   text	   data	    bss	    dec	    hex	filename
+  56520	    524	   2612	  59656	   e908	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+23:09:19 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+   text	   data	    bss	    dec	    hex	filename
+  56520	    524	   2612	  59656	   e908	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+23:11:12 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+   text	   data	    bss	    dec	    hex	filename
+  56520	    524	   2612	  59656	   e908	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+23:11:38 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/sw_spi.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/sw_spi.d" -MT"Core/Src/sw_spi.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/sw_spi.o"
+../Core/Src/sw_spi.c: In function 'Incremental_PID':
+../Core/Src/sw_spi.c:116:51: warning: variable 'Last1_bias' set but not used [-Wunused-but-set-variable]
+  116 |  static int  sum_integral=0, Bias=0, Last_bias=0, Last1_bias = 0;
+      |                                                   ^~~~~~~~~~
+../Core/Src/sw_spi.c:116:14: warning: unused variable 'sum_integral' [-Wunused-variable]
+  116 |  static int  sum_integral=0, Bias=0, Last_bias=0, Last1_bias = 0;
+      |              ^~~~~~~~~~~~
+../Core/Src/sw_spi.c:115:36: warning: unused variable 'Kd' [-Wunused-variable]
+  115 |  static float Kp = 0.05, Ki = 0.1, Kd = 0.5;
+      |                                    ^~
+../Core/Src/sw_spi.c:115:26: warning: unused variable 'Ki' [-Wunused-variable]
+  115 |  static float Kp = 0.05, Ki = 0.1, Kd = 0.5;
+      |                          ^~
+At top level:
+../Core/Src/sw_spi.c:115:26: warning: 'Ki' defined but not used [-Wunused-variable]
+../Core/Src/sw_spi.c:115:36: warning: 'Kd' defined but not used [-Wunused-variable]
+  115 |  static float Kp = 0.05, Ki = 0.1, Kd = 0.5;
+      |                                    ^~
+../Core/Src/sw_spi.c:116:14: warning: 'sum_integral' defined but not used [-Wunused-variable]
+  116 |  static int  sum_integral=0, Bias=0, Last_bias=0, Last1_bias = 0;
+      |              ^~~~~~~~~~~~
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\E-wagon STM32 project\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  56512	    524	   2612	  59648	   e900	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+23:21:36 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+   text	   data	    bss	    dec	    hex	filename
+  56512	    524	   2612	  59648	   e900	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+23:23:13 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/tim.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/tim.d" -MT"Core/Src/tim.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/tim.o"
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\E-wagon STM32 project\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  56512	    524	   2612	  59648	   e900	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+23:24:29 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/sw_spi.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/sw_spi.d" -MT"Core/Src/sw_spi.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/sw_spi.o"
+../Core/Src/sw_spi.c: In function 'Incremental_PID':
+../Core/Src/sw_spi.c:117:51: warning: variable 'Last1_bias' set but not used [-Wunused-but-set-variable]
+  117 |  static int  sum_integral=0, Bias=0, Last_bias=0, Last1_bias = 0;
+      |                                                   ^~~~~~~~~~
+../Core/Src/sw_spi.c:117:14: warning: unused variable 'sum_integral' [-Wunused-variable]
+  117 |  static int  sum_integral=0, Bias=0, Last_bias=0, Last1_bias = 0;
+      |              ^~~~~~~~~~~~
+../Core/Src/sw_spi.c:116:36: warning: unused variable 'Kd' [-Wunused-variable]
+  116 |  static float Kp = 0.05, Ki = 0.1, Kd = 0.5;
+      |                                    ^~
+../Core/Src/sw_spi.c:116:26: warning: unused variable 'Ki' [-Wunused-variable]
+  116 |  static float Kp = 0.05, Ki = 0.1, Kd = 0.5;
+      |                          ^~
+At top level:
+../Core/Src/sw_spi.c:116:26: warning: 'Ki' defined but not used [-Wunused-variable]
+../Core/Src/sw_spi.c:116:36: warning: 'Kd' defined but not used [-Wunused-variable]
+  116 |  static float Kp = 0.05, Ki = 0.1, Kd = 0.5;
+      |                                    ^~
+../Core/Src/sw_spi.c:117:14: warning: 'sum_integral' defined but not used [-Wunused-variable]
+  117 |  static int  sum_integral=0, Bias=0, Last_bias=0, Last1_bias = 0;
+      |              ^~~~~~~~~~~~
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\E-wagon STM32 project\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  56520	    524	   2612	  59656	   e908	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+23:25:34 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/sw_spi.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/sw_spi.d" -MT"Core/Src/sw_spi.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/sw_spi.o"
+../Core/Src/sw_spi.c: In function 'Incremental_PID':
+../Core/Src/sw_spi.c:116:51: warning: variable 'Last1_bias' set but not used [-Wunused-but-set-variable]
+  116 |  static int  sum_integral=0, Bias=0, Last_bias=0, Last1_bias = 0;
+      |                                                   ^~~~~~~~~~
+../Core/Src/sw_spi.c:116:14: warning: unused variable 'sum_integral' [-Wunused-variable]
+  116 |  static int  sum_integral=0, Bias=0, Last_bias=0, Last1_bias = 0;
+      |              ^~~~~~~~~~~~
+../Core/Src/sw_spi.c:115:36: warning: unused variable 'Kd' [-Wunused-variable]
+  115 |  static float Kp = 0.05, Ki = 0.1, Kd = 0.5;
+      |                                    ^~
+../Core/Src/sw_spi.c:115:26: warning: unused variable 'Ki' [-Wunused-variable]
+  115 |  static float Kp = 0.05, Ki = 0.1, Kd = 0.5;
+      |                          ^~
+At top level:
+../Core/Src/sw_spi.c:115:26: warning: 'Ki' defined but not used [-Wunused-variable]
+../Core/Src/sw_spi.c:115:36: warning: 'Kd' defined but not used [-Wunused-variable]
+  115 |  static float Kp = 0.05, Ki = 0.1, Kd = 0.5;
+      |                                    ^~
+../Core/Src/sw_spi.c:116:14: warning: 'sum_integral' defined but not used [-Wunused-variable]
+  116 |  static int  sum_integral=0, Bias=0, Last_bias=0, Last1_bias = 0;
+      |              ^~~~~~~~~~~~
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\E-wagon STM32 project\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  56512	    524	   2612	  59648	   e900	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+23:27:41 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/tim.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/tim.d" -MT"Core/Src/tim.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/tim.o"
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\E-wagon STM32 project\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  56512	    524	   2612	  59648	   e900	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+23:32:55 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+arm-none-eabi-gcc "../Core/Src/tim.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/tim.d" -MT"Core/Src/tim.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/tim.o"
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\E-wagon STM32 project\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  56464	    524	   2612	  59600	   e8d0	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+23:34:51 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/sw_spi.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/sw_spi.d" -MT"Core/Src/sw_spi.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/sw_spi.o"
+arm-none-eabi-gcc "../Core/Src/tim.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/tim.d" -MT"Core/Src/tim.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/tim.o"
+../Core/Src/sw_spi.c: In function 'Incremental_PID':
+../Core/Src/sw_spi.c:117:51: warning: variable 'Last1_bias' set but not used [-Wunused-but-set-variable]
+  117 |  static int  sum_integral=0, Bias=0, Last_bias=0, Last1_bias = 0;
+      |                                                   ^~~~~~~~~~
+../Core/Src/sw_spi.c:117:14: warning: unused variable 'sum_integral' [-Wunused-variable]
+  117 |  static int  sum_integral=0, Bias=0, Last_bias=0, Last1_bias = 0;
+      |              ^~~~~~~~~~~~
+../Core/Src/sw_spi.c:116:36: warning: unused variable 'Kd' [-Wunused-variable]
+  116 |  static float Kp = 0.05, Ki = 0.1, Kd = 0.5;
+      |                                    ^~
+../Core/Src/sw_spi.c:116:26: warning: unused variable 'Ki' [-Wunused-variable]
+  116 |  static float Kp = 0.05, Ki = 0.1, Kd = 0.5;
+      |                          ^~
+At top level:
+../Core/Src/sw_spi.c:116:26: warning: 'Ki' defined but not used [-Wunused-variable]
+../Core/Src/sw_spi.c:116:36: warning: 'Kd' defined but not used [-Wunused-variable]
+  116 |  static float Kp = 0.05, Ki = 0.1, Kd = 0.5;
+      |                                    ^~
+../Core/Src/sw_spi.c:117:14: warning: 'sum_integral' defined but not used [-Wunused-variable]
+  117 |  static int  sum_integral=0, Bias=0, Last_bias=0, Last1_bias = 0;
+      |              ^~~~~~~~~~~~
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\E-wagon STM32 project\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  56472	    524	   2612	  59608	   e8d8	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+23:35:56 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/sw_spi.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/sw_spi.d" -MT"Core/Src/sw_spi.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/sw_spi.o"
+../Core/Src/sw_spi.c: In function 'Incremental_PID':
+../Core/Src/sw_spi.c:116:51: warning: variable 'Last1_bias' set but not used [-Wunused-but-set-variable]
+  116 |  static int  sum_integral=0, Bias=0, Last_bias=0, Last1_bias = 0;
+      |                                                   ^~~~~~~~~~
+../Core/Src/sw_spi.c:116:14: warning: unused variable 'sum_integral' [-Wunused-variable]
+  116 |  static int  sum_integral=0, Bias=0, Last_bias=0, Last1_bias = 0;
+      |              ^~~~~~~~~~~~
+../Core/Src/sw_spi.c:115:36: warning: unused variable 'Kd' [-Wunused-variable]
+  115 |  static float Kp = 0.05, Ki = 0.1, Kd = 0.5;
+      |                                    ^~
+../Core/Src/sw_spi.c:115:26: warning: unused variable 'Ki' [-Wunused-variable]
+  115 |  static float Kp = 0.05, Ki = 0.1, Kd = 0.5;
+      |                          ^~
+At top level:
+../Core/Src/sw_spi.c:115:26: warning: 'Ki' defined but not used [-Wunused-variable]
+../Core/Src/sw_spi.c:115:36: warning: 'Kd' defined but not used [-Wunused-variable]
+  115 |  static float Kp = 0.05, Ki = 0.1, Kd = 0.5;
+      |                                    ^~
+../Core/Src/sw_spi.c:116:14: warning: 'sum_integral' defined but not used [-Wunused-variable]
+  116 |  static int  sum_integral=0, Bias=0, Last_bias=0, Last1_bias = 0;
+      |              ^~~~~~~~~~~~
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\E-wagon STM32 project\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  56464	    524	   2612	  59600	   e8d0	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+23:36:35 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/tim.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/tim.d" -MT"Core/Src/tim.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/tim.o"
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\E-wagon STM32 project\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  56464	    524	   2612	  59600	   e8d0	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+23:40:14 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/tim.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/tim.d" -MT"Core/Src/tim.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/tim.o"
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\E-wagon STM32 project\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  56464	    524	   2612	  59600	   e8d0	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+23:43:08 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/tim.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/tim.d" -MT"Core/Src/tim.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/tim.o"
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\E-wagon STM32 project\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  56464	    524	   2612	  59600	   e8d0	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+23:43:36 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/tim.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/tim.d" -MT"Core/Src/tim.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/tim.o"
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\E-wagon STM32 project\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  56464	    524	   2612	  59600	   e8d0	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+23:46:12 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/sw_spi.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/sw_spi.d" -MT"Core/Src/sw_spi.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/sw_spi.o"
+../Core/Src/sw_spi.c: In function 'Incremental_PID':
+../Core/Src/sw_spi.c:116:51: warning: variable 'Last1_bias' set but not used [-Wunused-but-set-variable]
+  116 |  static int  sum_integral=0, Bias=0, Last_bias=0, Last1_bias = 0;
+      |                                                   ^~~~~~~~~~
+../Core/Src/sw_spi.c:116:14: warning: unused variable 'sum_integral' [-Wunused-variable]
+  116 |  static int  sum_integral=0, Bias=0, Last_bias=0, Last1_bias = 0;
+      |              ^~~~~~~~~~~~
+../Core/Src/sw_spi.c:115:36: warning: unused variable 'Kd' [-Wunused-variable]
+  115 |  static float Kp = 0.05, Ki = 0.1, Kd = 0.5;
+      |                                    ^~
+../Core/Src/sw_spi.c:115:26: warning: unused variable 'Ki' [-Wunused-variable]
+  115 |  static float Kp = 0.05, Ki = 0.1, Kd = 0.5;
+      |                          ^~
+At top level:
+../Core/Src/sw_spi.c:115:26: warning: 'Ki' defined but not used [-Wunused-variable]
+../Core/Src/sw_spi.c:115:36: warning: 'Kd' defined but not used [-Wunused-variable]
+  115 |  static float Kp = 0.05, Ki = 0.1, Kd = 0.5;
+      |                                    ^~
+../Core/Src/sw_spi.c:116:14: warning: 'sum_integral' defined but not used [-Wunused-variable]
+  116 |  static int  sum_integral=0, Bias=0, Last_bias=0, Last1_bias = 0;
+      |              ^~~~~~~~~~~~
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\E-wagon STM32 project\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  56440	    524	   2612	  59576	   e8b8	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+23:47:18 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\E-wagon STM32 project\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  56488	    524	   2612	  59624	   e8e8	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 
+23:50:50 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/tim.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/tim.d" -MT"Core/Src/tim.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/tim.o"
+arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\E-wagon STM32 project\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLDC_STM32F030R8T6.elf
+ 
+arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
+arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
+   text	   data	    bss	    dec	    hex	filename
+  56488	    524	   2612	  59624	   e8e8	BLDC_STM32F030R8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLDC_STM32F030R8T6.list
+ 

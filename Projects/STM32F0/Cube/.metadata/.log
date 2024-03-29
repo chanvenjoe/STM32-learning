@@ -6986,3 +6986,62 @@ java.lang.Exception: Cannot find bounds of current function
 !MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.debug.ui.actions.DsfSuspendCommand$4$1@64d26198): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Suspend operation timeout.' resulted in an error.
 !SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2024-03-28 15:25:56.537
 !MESSAGE Suspend operation timeout.
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2024-03-29 23:09:15.005
+!MESSAGE Error in final launch sequence:
+
+Failed to execute MI command:
+load "C:\\Users\\kzhou\\Desktop\\RF projects\\Git\\STM32\\STM32-learning\\Projects\\STM32F0\\E-wagon STM32 project\\Cube\\BLDC_STM32F030R8T6\\Debug\\BLDC_STM32F030R8T6.elf" 
+
+Error message from debugger back end:
+Cannot execute this command while the target is running.
+Use the "interrupt" command to stop the target
+and then try again.
+!STACK 1
+org.eclipse.core.runtime.CoreException: Failed to execute MI command:
+load "C:\\Users\\kzhou\\Desktop\\RF projects\\Git\\STM32\\STM32-learning\\Projects\\STM32F0\\E-wagon STM32 project\\Cube\\BLDC_STM32F030R8T6\\Debug\\BLDC_STM32F030R8T6.elf" 
+
+Error message from debugger back end:
+Cannot execute this command while the target is running.
+Use the "interrupt" command to stop the target
+and then try again.
+	at org.eclipse.cdt.dsf.concurrent.Query.get(Query.java:112)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugSession(GdbLaunchDelegate.java:252)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugger(GdbLaunchDelegate.java:109)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launch(GdbLaunchDelegate.java:97)
+	at com.st.stm32cube.ide.mcu.debug.launch.DSFDelegate.launch(DSFDelegate.java:336)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:803)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:716)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1021)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$2.run(DebugUIPlugin.java:1224)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Contains: Failed to execute MI command:
+load "C:\\Users\\kzhou\\Desktop\\RF projects\\Git\\STM32\\STM32-learning\\Projects\\STM32F0\\E-wagon STM32 project\\Cube\\BLDC_STM32F030R8T6\\Debug\\BLDC_STM32F030R8T6.elf" 
+
+Error message from debugger back end:
+Cannot execute this command while the target is running.
+Use the "interrupt" command to stop the target
+and then try again.
+java.lang.Exception: Cannot execute this command while the target is running.\nUse the "interrupt" command to stop the target\nand then try again.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10004 2024-03-29 23:09:15.005
+!MESSAGE Failed to execute MI command:
+load "C:\\Users\\kzhou\\Desktop\\RF projects\\Git\\STM32\\STM32-learning\\Projects\\STM32F0\\E-wagon STM32 project\\Cube\\BLDC_STM32F030R8T6\\Debug\\BLDC_STM32F030R8T6.elf" 
+
+Error message from debugger back end:
+Cannot execute this command while the target is running.
+Use the "interrupt" command to stop the target
+and then try again.
+!SUBENTRY 2 org.eclipse.cdt.dsf.gdb 4 10004 2024-03-29 23:09:15.006
+!MESSAGE Failed to execute MI command:
+load "C:\\Users\\kzhou\\Desktop\\RF projects\\Git\\STM32\\STM32-learning\\Projects\\STM32F0\\E-wagon STM32 project\\Cube\\BLDC_STM32F030R8T6\\Debug\\BLDC_STM32F030R8T6.elf" 
+
+Error message from debugger back end:
+Cannot execute this command while the target is running.
+Use the "interrupt" command to stop the target
+and then try again.
+!STACK 0
+java.lang.Exception: Cannot execute this command while the target is running.\nUse the "interrupt" command to stop the target\nand then try again.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)

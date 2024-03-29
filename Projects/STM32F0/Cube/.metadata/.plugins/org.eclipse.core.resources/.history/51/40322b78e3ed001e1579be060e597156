@@ -13,8 +13,8 @@ unsigned int Get_24bit_Weight(char channel_gain)
 
 	while(SW_SPI_DAT_RDY)
 	{
-//		SW_SPI_CLK_H;
-//		SW_SPI_CLK_L;
+		SW_SPI_CLK_H;
+		SW_SPI_CLK_L;
 		printf("Un-ready\r\n");
 	}
 

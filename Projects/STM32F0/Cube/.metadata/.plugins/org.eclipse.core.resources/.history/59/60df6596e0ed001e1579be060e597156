@@ -13,9 +13,10 @@ unsigned int Get_24bit_Weight(char channel_gain)
 
 	while(SW_SPI_DAT_RDY)
 	{
-//		SW_SPI_CLK_H;
-//		SW_SPI_CLK_L;
-		printf("Un-ready\r\n");
+		delay_ms(1);
+		SW_SPI_CLK_H;
+		SW_SPI_CLK_L;
+		printf("data not ready\r\n");
 	}
 
 	for(char i = 24; i!=0; i--)
