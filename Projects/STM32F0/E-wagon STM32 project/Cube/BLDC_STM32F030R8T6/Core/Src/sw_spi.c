@@ -47,7 +47,7 @@ void Get_weight(HX711_Structure* weight_par)		// AKg * AVDDmV/X Kg = Y   A:weigh
 			weight_par->gram = (weight_par->gross_weight - weight_par->calibrated_value)/LOAD_CELL_FACTOR;
 		else
 			weight_par->gram = 0;
-
+		weight_par->gram = weight_par->gram <3000? weight_par->gram : 3000;
 		//Kalman  filter
 	}
 }
@@ -110,17 +110,16 @@ void PWM_Delegation(HX711_Structure* weight_par)
 // In this motor control we use P
 // PWM = Kp[e(k) - e(k-1)]
 
-char Incremental_PID(HX711_Structure* weight_par, uint16_t pull_force_thr)
+char Incremental_PID(HX711_Structure* weight_par, uint16_t pull_force_thr, PID_ParameterStruct* PID_Parameters)
 {
-	static float Kp = 0.05, Ki = 0.1, Kd = 0.5;
-	static int  sum_integral=0, Bias=0, Last_bias=0, Last1_bias = 0;
-	static int PWM;
-	Bias = weight_par->gram> LOWER_LIMMIT/*&& weight_par->gram< TOP_LIMIT*/? weight_par->gram - pull_force_thr : 0;
+	static int   Bias=0, Last_bias=0, Last1_bias = 0;
+	int PWM = 0;
+	Bias = weight_par->gram> pull_force_thr/*&& weight_par->gram< TOP_LIMIT*/? weight_par->gram - pull_force_thr : 0;
 	//sum_integral +=Bias*Ki;
-	PWM += Kp*(Bias-Last_bias)/*+Ki*Bias + Kd*(Bias-2*Last_bias+Last2_bias)*/;
+	PWM = PID_Parameters->Kp*(Bias-Last_bias)+PID_Parameters->Ki*Bias + PID_Parameters->Kd*(Bias-2*Last_bias+Last1_bias);
 	if(PWM>=0)
 	{
-		PWM = PWM>=90? 100:PWM;
+		PWM = PWM>=95? 100:PWM;
 	}
 	else
 	{
@@ -130,6 +129,13 @@ char Incremental_PID(HX711_Structure* weight_par, uint16_t pull_force_thr)
 	Last_bias = Bias;
 	return PWM;
 }
+
+PID_ParameterStruct* PID_setting()
+{
+
+}
+
+
 
 
 

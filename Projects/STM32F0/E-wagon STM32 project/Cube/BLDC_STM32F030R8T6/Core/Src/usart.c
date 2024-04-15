@@ -144,4 +144,27 @@ void BT_PWM_handle(char flag)
 	__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, ch1);
 }
 
+void Print_Pooling(TimeFlagStruct* print_flag)
+{
+	if(TRUE == print_flag->Motor_Off)
+	{
+		printf("0x13Motor off\n");
+		print_flag->Motor_Off = FALSE;
+	}
+	else if(TRUE == print_flag->Motor_On)
+	{
+		printf("0x13Motor_on");
+		print_flag->Motor_On = FALSE;
+	}
+	else if(TRUE == print_flag->PID_Set)
+	{
+		printf("0x13PID set ok");
+		print_flag->PID_Set = FALSE;
+	}
+	else if(TRUE == print_flag->Voltage_Show)
+	{
+//		  printf("VBat%0.2fV\n",	adc_val.vbat*(Vrefint*4095/adc_val.vref_data)/4095/VBAT_FACTOR);
+	}
+}
+
 /* USER CODE END 1 */

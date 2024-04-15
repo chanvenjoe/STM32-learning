@@ -1,4 +1,4 @@
-18:06:00 **** Incremental Build of configuration Debug for project 4-Axile-Drone ****
+11:14:07 **** Incremental Build of configuration Debug for project 4-Axile-Drone ****
 make -j8 all 
 arm-none-eabi-size   4-Axile-Drone.elf 
    text	   data	    bss	    dec	    hex	filename
@@ -6,5 +6,5 @@ arm-none-eabi-size   4-Axile-Drone.elf
 Finished building: default.size.stdout
  
 
-18:06:01 Build Finished. 0 errors, 0 warnings. (took 300ms)
+11:14:08 Build Finished. 0 errors, 0 warnings. (took 575ms)
 

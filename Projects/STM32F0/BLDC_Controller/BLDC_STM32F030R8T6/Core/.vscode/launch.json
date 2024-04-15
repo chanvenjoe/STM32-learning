@@ -1,0 +1,24 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "cppdbg",
+      "request": "launch",
+      "args": [],
+      "stopAtEntry": false,
+      "externalConsole": true,
+      "cwd": "c:/Users/kzhou/Desktop/RF projects/Git/STM32/STM32-learning/Projects/STM32F0/BLDC_Controller/BLDC_STM32F030R8T6/Core",
+      "program": "c:/Users/kzhou/Desktop/RF projects/Git/STM32/STM32-learning/Projects/STM32F0/BLDC_Controller/BLDC_STM32F030R8T6/Core/build/Debug/outDebug",
+      "MIMode": "gdb",
+      "miDebuggerPath": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
+    }
+  ]
+}

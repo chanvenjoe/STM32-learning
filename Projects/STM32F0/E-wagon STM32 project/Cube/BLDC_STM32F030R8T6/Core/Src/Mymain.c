@@ -56,6 +56,8 @@
 uint16_t adc_buf[CH_NUM]={0};
 MADC_Structure adc_val = {1,1,1,1,1,1,1,1,1,1};
 HX711_Structure weight_par = {0};
+TimeFlagStruct printflag = {0};
+PID_ParameterStruct PID_Parameters = {0.05, 0/*0.01*/,0/*0.05*/};
 
 /* USER CODE END PV */
 
@@ -122,6 +124,7 @@ int main(void)
 	}
 
   /* USER CODE BEGIN 2 */
+	HAL_TIM_OC_Start(&htim1,TIM_CHANNEL_4);
 	HX711_Calibration(&weight_par);
   /* USER CODE END 2 */
 
@@ -139,10 +142,18 @@ int main(void)
   while (1)
   {
 	  if(weight_par.calibration_flag)
-		  printf("0x31 %.02f g\r\n", (float)weight_par.gram );
-
-	  printf("time laps: %d \r\n", adc_val.commutation_delay);
-	  delay_ms(100);
+	  {
+//		  HAL_UART_Transmit(&huart1 , &weight_par.gram, sizeof(weight_par.gram), 0xFFFF);
+		  printf("0x31 0x14%d\n\n", weight_par.gram );
+//	  printf("time laps: %d \r\n", adc_val.commutation_delay);
+		  printf("PWM%d\n\n", (int)htim1.Instance->CCR1);
+	  }
+//	  Print_Pooling(&printflag);
+	  if(1000 <= printflag.TimeCNT)
+	  {
+//		  printf("VBat%0.2fV\n",	adc_val.vbat*(Vrefint*4095/adc_val.vref_data)/4095/VBAT_FACTOR);
+	  }
+	  delay_ms(50);
   }
 
 }
@@ -241,7 +252,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	if(htim == &htim3)
 	{
-//		TIMERTESTER
 		if(weight_par.calibration_flag)
 		{
 			FORCESAPTIME;
@@ -252,47 +262,53 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		if(weight_par.calibration_flag == 1)
 		{
 			static char dc_pwm, pid_pwm;
-			pid_pwm = Incremental_PID(&weight_par, PULL_FORCE_THR);
-			if(0<pid_pwm)
+			pid_pwm += Incremental_PID(&weight_par, PULL_FORCE_THR, &PID_Parameters);
+			if(0<(pid_pwm-dc_pwm))
 			{
 				HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, RESET);
 				AHBL_ON;
 				weight_par.eps_flag = 1;
-				dc_pwm = dc_pwm>=pid_pwm? dc_pwm:dc_pwm+5;
-				if(dc_pwm>10)
-					__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, dc_pwm);
+				dc_pwm = dc_pwm + PWM_STEP>100? 100:dc_pwm+PWM_STEP;
 			}
-			else
+			else if(0>(pid_pwm-dc_pwm))
 			{
-				dc_pwm = dc_pwm<=pid_pwm? dc_pwm:dc_pwm-5;
+				dc_pwm = dc_pwm - PWM_STEP<0 ? 0:dc_pwm-PWM_STEP;
 				__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, dc_pwm);
 			}
+			if(dc_pwm>10)
+				__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, dc_pwm);
+
 			if(weight_par.gram<LOWER_LIMMIT)
 			{
-				HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, SET);
-				CLOSE_PWM;
+				if(dc_pwm<20)
+				{
+					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, SET);
+					CLOSE_PWM;
+				}
 				weight_par.eps_flag = 0;
-				dc_pwm = dc_pwm<=10? 0:dc_pwm-5;
-				__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, dc_pwm);
+				pid_pwm = 0;//if not, the PID_PWM will always be the same value and dc_pwm never be 0
+/*				dc_pwm = dc_pwm<=10? 0:dc_pwm-PWM_STEP;
+				__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, dc_pwm);*/
 			}
 		}
 
 	}
 	else if(htim == &htim14)//10ms enter for E-wagon protection counting
 	{
-//		TIMERTESTER
+		printflag.TimeCNT = printflag.TimeCNT>1100? 0:printflag.TimeCNT+1;
 		if(adc_val.commutation_timeout >1000)//if 100ms no phase switching, 100us++
 		{
 			adc_val.commutation_timeout = 0;
 			adc_val.commutation_delay 	= 0;
 //			CLOSE_ALL;
 		}
+
 	}
 	else if(htim == &htim15)//1us
 	{
 
 	}
-	else if(htim == &htim16)//1us interval
+	else if(htim == &htim16)//1us interval for time counting
 	{
 
 	}
@@ -303,42 +319,71 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)//every byte transmit com
 	if(huart == &huart1)
 	{
 		extern uint8_t cnt;
-		cnt=cnt==255?1:cnt+1;
 		rxbuf[cnt] = rxdata;
-		switch(rxbuf[cnt])
+		const char cat[] = "0X13\r\n"; //APP(A:1) to Controller(C:3)
+		cnt=cnt==RX_BUF_NUM?1:cnt+1;
+
+		if(rxdata == 'e')//'\n')
 		{
-		case	'1':
-			HAL_TIM_Base_Stop_IT(&htim6);
-			break;
-		case	'0':
-			HAL_TIM_Base_Start_IT(&htim6);
-			break;
-		case	'+':
-			BT_PWM_handle(TURE);
-			break;
-		case	'-':
-			BT_PWM_handle(FALSE);
-			break;
-		case	'p':
-		{
-			HAL_TIM_Base_Stop_IT(&htim1);
-			break;
-		}
-		case '4':
-		{
-			TIM14->ARR--;
-		}
-		default:
-			break;
+//			printf("sting:%s\r\n", rxbuf);
+
+			for(int t=cnt; t<RX_BUF_NUM; t++)
+				rxbuf[t]=0;
+			cnt = 0;
+
+			if(0 == strcmp((char*) rxbuf,"0x00"))
+			{
+				HAL_TIM_Base_Stop_IT(&htim6);
+			}
+			else if(0 == strcmp((char*) rxbuf, "0x01"))
+			{
+				HAL_TIM_Base_Start_IT(&htim6);
+			}
+			else if(0 == strcmp((char*)rxbuf, "0x02"))
+			{
+				BT_PWM_handle(TURE);
+			}
+			else if(0 == strcmp(cat, "0x03"))
+			{
+				BT_PWM_handle(FALSE);
+			}
+			else if(0 == strcmp(cat, "0x04"))
+			{
+				htim1.Instance->CCR1++;
+				htim1.Instance->CCR2++;
+				htim1.Instance->CCR3++;
+			}
+			else if(0 == strcmp(cat, "0x05"))
+			{
+				TIM14->ARR--;
+			}
+			else if(0 == strcmp(cat, "0x06"))
+			{
+
+			}
+			else if(0 == strcmp((char*) rxbuf, MotorOn))
+			{
+				printflag.Motor_On = TRUE;
+			}
+			else if(0 == strcmp((char*) rxbuf, MotorOff)) // 0X13MOff
+			{
+				printflag.Motor_Off = TRUE;
+
+			}
+			else if(0 == strcmp((char*) rxbuf, PID ))
+			{
+				printflag.PID_Set = TRUE;
+	//			PID_Parameters.Kp =
+				Incremental_PID(&weight_par, PULL_FORCE_THR, &PID_Parameters);
+			}
 		}
 		HAL_UART_Receive_IT(&huart1, &rxdata, sizeof(rxdata));
-		cnt++;
 	}
 }
 
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)// Using tim15 to get a 88us between each trigger 50us as TIM1 cycle, 14MHz ADC(12.5+55.5 cycles) consume 4.37ms to complete conversion
-{													  // The ADC sample time is for all channel, the DMA
-//	My_ADC_getvalue(adc_buf, &adc_val);
+{									  // The ADC sample time is for all channel, the DMA
+	My_ADC_getvalue(adc_buf, &adc_val);
 //	BLDC_Phase_switching(&adc_val);
 }
 

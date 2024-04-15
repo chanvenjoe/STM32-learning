@@ -74,6 +74,9 @@ Get_weight(&weight_par);\
 HAL_TIM_Base_Stop(&htim16);\
 adc_val.commutation_delay = __HAL_TIM_GET_COUNTER(&htim16)
 
+#define TRUE 1
+#define FALSE 0
+
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

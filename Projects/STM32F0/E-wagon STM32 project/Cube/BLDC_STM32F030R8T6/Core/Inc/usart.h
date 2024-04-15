@@ -29,7 +29,7 @@ extern "C" {
 #include "main.h"
 
 /* USER CODE BEGIN Includes */
-
+#include "adc.h"
 /* USER CODE END Includes */
 
 extern UART_HandleTypeDef huart1;
@@ -41,12 +41,27 @@ extern UART_HandleTypeDef huart1;
 extern uint8_t rxbuf[RX_BUF_NUM];
 extern uint8_t rxdata;
 extern uint8_t cnt;
+
+#define MotorOn		"0X13MOne"//\r\n"
+#define MotorOff	"0X13MOffe"//\r\n"
+#define PID			"0X13PID"
+
+
+typedef struct{
+	unsigned int TimeCNT;
+	char 	Voltage_Show;
+	char	PID_Set;
+	char	Motor_On;
+	char	Motor_Off;
+
+}TimeFlagStruct;
 /* USER CODE END Private defines */
 
 void MX_USART1_UART_Init(void);
 
 /* USER CODE BEGIN Prototypes */
 void BT_PWM_handle(char flag);
+void Print_Pooling(TimeFlagStruct* print_flag);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus
