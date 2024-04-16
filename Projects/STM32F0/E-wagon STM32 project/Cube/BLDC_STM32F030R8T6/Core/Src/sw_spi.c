@@ -40,14 +40,16 @@ unsigned int Get_24bit_Weight(char channel_gain)
 
 void Get_weight(HX711_Structure* weight_par)		// AKg * AVDDmV/X Kg = Y   A:weight AVDD:sensor power X:max weight of load cell Y:AD reading from module
 {													// Example: A Kg * 3.24mV/10Kg => A*128 = 0.324*128AmV = 41.472AmV  => 41.472AmV/AD = 3.24V/0xffffff => AD = 214748.352A(Kg)  A(g) = AD/214.748
-	weight_par->gross_weight = Get_24bit_Weight(CHA_128);
 	if(weight_par->calibration_flag)
 	{
-		if(weight_par->gross_weight - weight_par->calibrated_value>0)
+		weight_par->gross_weight = Get_24bit_Weight(CHA_128);
+//		if(weight_par->gross_weight - weight_par->calibrated_value>LOAD_CELL_FACTOR*5)
 			weight_par->gram = (weight_par->gross_weight - weight_par->calibrated_value)/LOAD_CELL_FACTOR;
-		else
-			weight_par->gram = 0;
-		weight_par->gram = weight_par->gram <3000? weight_par->gram : 3000;
+/*		else
+		{
+			weight_par->gram = 50;
+			printf("value is negtive %d \r\n" , (weight_par->gross_weight - weight_par->calibrated_value)/LOAD_CELL_FACTOR);
+		}*/
 		//Kalman  filter
 	}
 }
@@ -55,12 +57,16 @@ void Get_weight(HX711_Structure* weight_par)		// AKg * AVDDmV/X Kg = Y   A:weigh
 void HX711_Calibration(HX711_Structure* weight_par)
 {
 	  /*******Get gross weight**************/
-	  SW_SPI_PWR_OFF;
-	  delay_us(200);
-	  SW_SPI_PWR_ON;
-	  weight_par->calibrated_value = Get_24bit_Weight(CHA_128);
-	  delay_us(2000);
-	  weight_par->calibrated_value = Get_24bit_Weight(CHA_128);
+	for(char i=0;i<5;i++)
+	{
+		SW_SPI_PWR_OFF;
+		delay_us(2000);
+		SW_SPI_PWR_ON;
+		weight_par->calibrated_value+= Get_24bit_Weight(CHA_128);
+	}
+	weight_par->calibrated_value /=5;
+
+
 
 	  while(!(weight_par->calibrated_value>= CALIBRATION_RANGE_L && weight_par->calibrated_value<=CALIBRATION_RANGE_H))
 	  {

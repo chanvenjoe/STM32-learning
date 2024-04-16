@@ -55,9 +55,9 @@
 /* USER CODE BEGIN PV */
 uint16_t adc_buf[CH_NUM]={0};
 MADC_Structure adc_val = {1,1,1,1,1,1,1,1,1,1};
-HX711_Structure weight_par = {0};
+HX711_Structure weight_par = {0,0,0,0,0};
 TimeFlagStruct printflag = {0};
-PID_ParameterStruct PID_Parameters = {0.05, 0/*0.01*/,0/*0.05*/};
+PID_ParameterStruct PID_Parameters = {0.05, 0, 0.05};
 
 /* USER CODE END PV */
 
@@ -143,15 +143,15 @@ int main(void)
   {
 	  if(weight_par.calibration_flag)
 	  {
-//		  HAL_UART_Transmit(&huart1 , &weight_par.gram, sizeof(weight_par.gram), 0xFFFF);
-		  printf("0x31 0x14%d\n\n", weight_par.gram );
+		  printf("0x31 0x14%d\n\r", weight_par.gramAvgval );
+//		  printf("0x31 0x14%d\n\r", weight_par.gram );
 //	  printf("time laps: %d \r\n", adc_val.commutation_delay);
-		  printf("PWM%d\n\n", (int)htim1.Instance->CCR1);
+		  printf("PWM%d \r\n", (int)htim1.Instance->CCR1);
 	  }
 //	  Print_Pooling(&printflag);
 	  if(1000 <= printflag.TimeCNT)
 	  {
-//		  printf("VBat%0.2fV\n",	adc_val.vbat*(Vrefint*4095/adc_val.vref_data)/4095/VBAT_FACTOR);
+		  printf("VBat%0.2fVr\\n",	adc_val.vbat*(Vrefint*4095/adc_val.vref_data)/4095/VBAT_FACTOR);
 	  }
 	  delay_ms(50);
   }
@@ -254,7 +254,12 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	{
 		if(weight_par.calibration_flag)
 		{
-			FORCESAPTIME;
+			weight_par.cnt= weight_par.cnt == 5? 0:weight_par.cnt++;
+			Get_weight(&weight_par);
+			weight_par.gramAvg[weight_par.cnt] = weight_par.gram;
+			weight_par.gramAvgval = (weight_par.gramAvg[0] + weight_par.gramAvg[1] + weight_par.gramAvg[2] + weight_par.gramAvg[3] + weight_par.gramAvg[4])/5;
+
+//			FORCESAPTIME;
 		}
 	}
 	else if(htim == &htim6)
@@ -374,7 +379,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)//every byte transmit com
 			{
 				printflag.PID_Set = TRUE;
 	//			PID_Parameters.Kp =
-				Incremental_PID(&weight_par, PULL_FORCE_THR, &PID_Parameters);
+//				Incremental_PID(&weight_par, PULL_FORCE_THR, &PID_Parameters);
 			}
 		}
 		HAL_UART_Receive_IT(&huart1, &rxdata, sizeof(rxdata));

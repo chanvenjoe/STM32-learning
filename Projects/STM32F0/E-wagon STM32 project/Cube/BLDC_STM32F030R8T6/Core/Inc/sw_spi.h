@@ -45,6 +45,9 @@ typedef struct {
 	 int	calibrated_value;
 	 char	calibration_flag;
 	 char	eps_flag;
+	 int gramAvg[5];
+	 char cnt;
+	 int	gramAvgval;
 }HX711_Structure;
 
 typedef struct{
