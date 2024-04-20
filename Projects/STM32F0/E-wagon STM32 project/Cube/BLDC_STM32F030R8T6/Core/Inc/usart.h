@@ -44,7 +44,7 @@ extern uint8_t cnt;
 
 #define MotorOn		"0X13MOne"//\r\n"
 #define MotorOff	"0X13MOffe"//\r\n"
-#define PID			"0X13PID"
+#define PID			"0X13 0XPIDe"
 
 
 typedef struct{

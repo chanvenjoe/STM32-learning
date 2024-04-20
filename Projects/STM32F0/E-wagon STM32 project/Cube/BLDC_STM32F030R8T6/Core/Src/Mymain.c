@@ -31,6 +31,7 @@
 #include "BLDC.h"
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -57,7 +58,7 @@ uint16_t adc_buf[CH_NUM]={0};
 MADC_Structure adc_val = {1,1,1,1,1,1,1,1,1,1};
 HX711_Structure weight_par = {0,0,0,0,0};
 TimeFlagStruct printflag = {0};
-PID_ParameterStruct PID_Parameters = {0.05, 0, 0.05};
+PID_ParameterStruct PID_Parameters = {0.1, 0.05, 0.5};
 
 /* USER CODE END PV */
 
@@ -85,7 +86,8 @@ int main(void)
   /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-    HAL_Init();
+
+	HAL_Init();
 
   /* USER CODE BEGIN Init */
 
@@ -126,6 +128,19 @@ int main(void)
   /* USER CODE BEGIN 2 */
 	HAL_TIM_OC_Start(&htim1,TIM_CHANNEL_4);
 	HX711_Calibration(&weight_par);
+	printflag.PID_Set = FALSE;
+	while(printflag.PID_Set == FALSE)
+	{
+		printf("0X31P%0.2f\n",PID_Parameters.Kp);
+		delay_ms(10);
+	//	while(printflag.PID_Set == FALSE);
+		printf("0X31I%0.2f\n",PID_Parameters.Ki);
+		delay_ms(10);
+	//	while(printflag.PID_Set == FALSE);
+		printf("0X31D%0.2f\n",PID_Parameters.Kd);
+		delay_ms(10);
+	}
+//	while(printflag.PID_Set == FALSE);
   /* USER CODE END 2 */
 
 //  HAL_TIM_OC_Start(&htim1,TIM_CHANNEL_4);
@@ -143,15 +158,15 @@ int main(void)
   {
 	  if(weight_par.calibration_flag)
 	  {
-		  printf("0x31 0x14%d\n\r", weight_par.gramAvgval );
+		  printf("0x31 0x14%d\n", weight_par.gramAvgval );
 //		  printf("0x31 0x14%d\n\r", weight_par.gram );
 //	  printf("time laps: %d \r\n", adc_val.commutation_delay);
-		  printf("PWM%d \r\n", (int)htim1.Instance->CCR1);
+		  printf("PWM%d\n", (int)htim1.Instance->CCR1);
 	  }
 //	  Print_Pooling(&printflag);
 	  if(1000 <= printflag.TimeCNT)
 	  {
-		  printf("VBat%0.2fVr\\n",	adc_val.vbat*(Vrefint*4095/adc_val.vref_data)/4095/VBAT_FACTOR);
+		  printf("VBat%0.2fV\n",	adc_val.vbat*(Vrefint*4095/adc_val.vref_data)/4095/VBAT_FACTOR);
 	  }
 	  delay_ms(50);
   }
@@ -258,11 +273,11 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 			Get_weight(&weight_par);
 			weight_par.gramAvg[weight_par.cnt] = weight_par.gram;
 			weight_par.gramAvgval = (weight_par.gramAvg[0] + weight_par.gramAvg[1] + weight_par.gramAvg[2] + weight_par.gramAvg[3] + weight_par.gramAvg[4])/5;
-
+			weight_par.gram = weight_par.gramAvgval;
 //			FORCESAPTIME;
 		}
 	}
-	else if(htim == &htim6)
+	else if(htim == &htim6)//20ms enter
 	{
 		if(weight_par.calibration_flag == 1)
 		{
@@ -277,7 +292,8 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 			}
 			else if(0>(pid_pwm-dc_pwm))
 			{
-				dc_pwm = dc_pwm - PWM_STEP<0 ? 0:dc_pwm-PWM_STEP;
+				dc_pwm = pid_pwm;
+//				dc_pwm = dc_pwm - PWM_STEP<0 ? 0:dc_pwm-PWM_STEP;
 				__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, dc_pwm);
 			}
 			if(dc_pwm>10)
@@ -285,11 +301,8 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 
 			if(weight_par.gram<LOWER_LIMMIT)
 			{
-				if(dc_pwm<20)
-				{
-					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, SET);
-					CLOSE_PWM;
-				}
+				HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, SET);
+				CLOSE_PWM;
 				weight_par.eps_flag = 0;
 				pid_pwm = 0;//if not, the PID_PWM will always be the same value and dc_pwm never be 0
 /*				dc_pwm = dc_pwm<=10? 0:dc_pwm-PWM_STEP;
@@ -327,6 +340,9 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)//every byte transmit com
 		rxbuf[cnt] = rxdata;
 		const char cat[] = "0X13\r\n"; //APP(A:1) to Controller(C:3)
 		cnt=cnt==RX_BUF_NUM?1:cnt+1;
+		float PIDV;
+
+		char a[6];
 
 		if(rxdata == 'e')//'\n')
 		{
@@ -340,6 +356,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)//every byte transmit com
 			{
 				HAL_TIM_Base_Stop_IT(&htim6);
 			}
+
 			else if(0 == strcmp((char*) rxbuf, "0x01"))
 			{
 				HAL_TIM_Base_Start_IT(&htim6);
@@ -375,11 +392,44 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)//every byte transmit com
 				printflag.Motor_Off = TRUE;
 
 			}
-			else if(0 == strcmp((char*) rxbuf, PID ))
+		}
+		if(rxdata == 'P') // This code comsumes 3KB?
+		{
+			for(int t=cnt; t<RX_BUF_NUM; t++)
+				rxbuf[t]=0;
+			cnt = 0;
+			sscanf(rxbuf, "%[^P]", a);
+			PIDV = atof(a);
+			PID_Parameters.Kp = PIDV;
+//			printflag.PID_Set = TRUE;
+		}
+		else if(rxdata == 'I')
+		{
+			for(int t=cnt; t<RX_BUF_NUM; t++)
+				rxbuf[t]=0;
+			cnt = 0;
+			sscanf(rxbuf, "%[^I]", a);
+			PIDV = atof(a);
+			PID_Parameters.Ki = PIDV;
+//			printflag.PID_Set = TRUE;
+		}
+		else if(rxdata == 'D'|| rxdata == 'E')
+		{
+			for(int t=cnt; t<RX_BUF_NUM; t++)
+				rxbuf[t]=0;
+			cnt = 0;
+			if(rxdata == 'D')
+			{
+				sscanf(rxbuf, "%[^D]", a);
+				PIDV = atof(a);
+				PID_Parameters.Kd = PIDV;
+				printf("0X31 Set ok\n");
+			}
+			else
 			{
 				printflag.PID_Set = TRUE;
-	//			PID_Parameters.Kp =
-//				Incremental_PID(&weight_par, PULL_FORCE_THR, &PID_Parameters);
+				printf("0X31 PID align ok\n");
+
 			}
 		}
 		HAL_UART_Receive_IT(&huart1, &rxdata, sizeof(rxdata));

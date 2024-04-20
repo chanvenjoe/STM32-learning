@@ -1,3 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">&#x0A;<refactoring comment="Delete resource &apos;BLDC_STM32F030R8T6/Core/Src/111&apos;" deleteContents="false" description="Delete resource &apos;BLDC_STM32F030R8T6/Core/Src/111&apos;" element1="/BLDC_STM32F030R8T6/Core/Src/111" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1702625891455"/>&#x0A;<refactoring comment="Delete resource &apos;BLDC_STM32F030R8T6/Core/Motor control&apos;" deleteContents="false" description="Delete resource &apos;BLDC_STM32F030R8T6/Core/Motor control&apos;" element1="/BLDC_STM32F030R8T6/Core/Motor control" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1702625990124"/>
-</session>

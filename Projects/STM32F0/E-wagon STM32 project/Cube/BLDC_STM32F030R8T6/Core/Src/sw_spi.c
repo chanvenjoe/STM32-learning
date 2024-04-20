@@ -43,13 +43,14 @@ void Get_weight(HX711_Structure* weight_par)		// AKg * AVDDmV/X Kg = Y   A:weigh
 	if(weight_par->calibration_flag)
 	{
 		weight_par->gross_weight = Get_24bit_Weight(CHA_128);
-//		if(weight_par->gross_weight - weight_par->calibrated_value>LOAD_CELL_FACTOR*5)
+		weight_par->gram = (weight_par->gross_weight - weight_par->calibrated_value)/LOAD_CELL_FACTOR;
+		if(weight_par->gram > 2 && weight_par->gram <10000)
 			weight_par->gram = (weight_par->gross_weight - weight_par->calibrated_value)/LOAD_CELL_FACTOR;
-/*		else
+		else
 		{
-			weight_par->gram = 50;
-			printf("value is negtive %d \r\n" , (weight_par->gross_weight - weight_par->calibrated_value)/LOAD_CELL_FACTOR);
-		}*/
+			weight_par->gram = 5;
+			printf("value is abnormal: %d \r\n" , (weight_par->gross_weight - weight_par->calibrated_value)/LOAD_CELL_FACTOR);
+		}
 		//Kalman  filter
 	}
 }
@@ -118,28 +119,28 @@ void PWM_Delegation(HX711_Structure* weight_par)
 
 char Incremental_PID(HX711_Structure* weight_par, uint16_t pull_force_thr, PID_ParameterStruct* PID_Parameters)
 {
-	static int   Bias=0, Last_bias=0, Last1_bias = 0;
+	static signed int   Bias=0, Last_bias=0, Last1_bias = 0;
 	int PWM = 0;
-	Bias = weight_par->gram> pull_force_thr/*&& weight_par->gram< TOP_LIMIT*/? weight_par->gram - pull_force_thr : 0;
+	Bias = weight_par->gramAvgval> LOWER_LIMMIT? weight_par->gram - LOWER_LIMMIT : 0;
 	//sum_integral +=Bias*Ki;
-	PWM = PID_Parameters->Kp*(Bias-Last_bias)+PID_Parameters->Ki*Bias + PID_Parameters->Kd*(Bias-2*Last_bias+Last1_bias);
+	PWM = PID_Parameters->Kp*(Bias-Last_bias)+PID_Parameters->Ki*Bias + PID_Parameters->Kd*(Bias - Last_bias);//(Bias-2*Last_bias+Last1_bias);
 	if(PWM>=0)
 	{
 		PWM = PWM>=95? 100:PWM;
 	}
 	else
 	{
-		PWM = 0;
+		PWM = PWM;
 	}
 	Last1_bias = Last_bias;
 	Last_bias = Bias;
 	return PWM;
 }
 
-PID_ParameterStruct* PID_setting()
+/*PID_ParameterStruct* PID_setting()
 {
 
-}
+}*/
 
 
 
