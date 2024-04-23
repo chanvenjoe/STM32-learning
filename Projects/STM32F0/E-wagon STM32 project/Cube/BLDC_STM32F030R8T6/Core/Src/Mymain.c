@@ -269,7 +269,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	{
 		if(weight_par.calibration_flag)
 		{
-			weight_par.cnt= weight_par.cnt == 5? 0:weight_par.cnt++;
+			weight_par.cnt= weight_par.cnt >= 5? 0:weight_par.cnt+1;
 			Get_weight(&weight_par);
 			weight_par.gramAvg[weight_par.cnt] = weight_par.gram;
 			weight_par.gramAvgval = (weight_par.gramAvg[0] + weight_par.gramAvg[1] + weight_par.gramAvg[2] + weight_par.gramAvg[3] + weight_par.gramAvg[4])/5;
@@ -283,6 +283,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		{
 			static char dc_pwm, pid_pwm;
 			pid_pwm += Incremental_PID(&weight_par, PULL_FORCE_THR, &PID_Parameters);
+//			pid_pwm = pid_pwm>=100? 100 : pid_pwm;
 			if(0<(pid_pwm-dc_pwm))
 			{
 				HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, RESET);
@@ -299,7 +300,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 			if(dc_pwm>10)
 				__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, dc_pwm);
 
-			if(weight_par.gram<LOWER_LIMMIT)
+			if(weight_par.gramAvgval<LOWER_LIMMIT-100)
 			{
 				HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, SET);
 				CLOSE_PWM;

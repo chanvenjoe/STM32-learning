@@ -120,8 +120,8 @@ void PWM_Delegation(HX711_Structure* weight_par)
 char Incremental_PID(HX711_Structure* weight_par, uint16_t pull_force_thr, PID_ParameterStruct* PID_Parameters)
 {
 	static signed int   Bias=0, Last_bias=0, Last1_bias = 0;
-	int PWM = 0;
-	Bias = weight_par->gramAvgval> LOWER_LIMMIT? weight_par->gram - LOWER_LIMMIT : 0;
+	static int PWM = 0;
+	Bias = weight_par->gramAvgval> LOWER_LIMMIT? weight_par->gramAvgval - LOWER_LIMMIT : 0;
 	//sum_integral +=Bias*Ki;
 	PWM = PID_Parameters->Kp*(Bias-Last_bias)+PID_Parameters->Ki*Bias + PID_Parameters->Kd*(Bias - Last_bias);//(Bias-2*Last_bias+Last1_bias);
 	if(PWM>=0)
@@ -130,7 +130,11 @@ char Incremental_PID(HX711_Structure* weight_par, uint16_t pull_force_thr, PID_P
 	}
 	else
 	{
-		PWM = PWM;
+		PWM = 0;
+	}
+	if(PWM <=5)
+	{
+		printf("PWM droping");
 	}
 	Last1_bias = Last_bias;
 	Last_bias = Bias;
