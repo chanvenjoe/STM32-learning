@@ -18,7 +18,7 @@ uint8_t  bgh;
 uint8_t  bgl;
 
 
-// PWM+=KP[e(k) -e(k-1)]+Ki*e(k)+Kd[e(k)-2e(k-1)+e(k-2)]
+// PWM+=KP[e(k) -e(k-1)]+Ki*(sum of)e(k)+Kd[e(k)-2e(k-1)+e(k-2)]
 // e(k) the value difference of actual and setting e(k-1) the last time difference
 // In this motor control we use P
 // PWM = Kp[e(k) - e(k-1)]

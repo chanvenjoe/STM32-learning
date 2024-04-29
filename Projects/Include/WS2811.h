@@ -5,7 +5,8 @@
 #include "Function_define.h"
 #include "SFR_Macro.h"
 
-#define NOP_3	_nop_();_nop_();_nop_();_nop_();// 270ns
+//WS2812 SLOW MODE 
+/*#define NOP_3	_nop_();_nop_();_nop_();_nop_();// 270ns
 #define NOP_9	_nop_();_nop_();_nop_();_nop_();_nop_();_nop_();_nop_();_nop_();_nop_();_nop_();// 800ns
 #define T0H 	set_P00;NOP_3//		220-420
 #define T0L 	clr_P00;NOP_9//  	750-1000
@@ -13,8 +14,28 @@
 #define T1H 	set_P00;NOP_9//		750-1.6us
 #define CODE_0	T0H T0L
 #define CODE_1	T1H T1L
-#define RES		clr_P00;Timer0_Delay125ns(3);set_P00;
-#define LEDNUM 		64
+#define RES		clr_P00;Timer0_Delay125ns(3);set_P00;*/
+
+// ws2812s Fast mode 
+/*Fast mode:
+ * Period: 1.25us <-> 800 KHz
+ * T0H: 0.25us - 20%
+ * T1H: 0.6us  - 48%
+ * T0L: 1.0us
+ * T1L: 0.65us*/
+ 
+#define NOP_2	_nop_();_nop_();// 600ns
+#define NOP_11	_nop_();_nop_();_nop_();_nop_();_nop_();_nop_();_nop_();  _nop_();_nop_();  _nop_();_nop_();// 800ns
+#define NOP_6	_nop_();_nop_();_nop_();_nop_();_nop_();_nop_();//600ns
+#define T0H 	set_P00;NOP_2//		350ns
+#define T0L 	clr_P00;NOP_6//  	
+#define T1L 	clr_P00;NOP_2//		
+#define T1H 	set_P00;NOP_6//		600ns
+#define CODE_0	T0H T0L
+#define CODE_1	T1H T1L
+#define RES		clr_P00;Timer0_Delay125ns(3);set_P00; //
+
+#define LEDNUM 		10
 #define LEDARR		8
 typedef struct color
 {

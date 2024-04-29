@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   WS2811                                                            12/28/2023 12:06:46 PAGE 1   
+C51 COMPILER V9.60.0.0   WS2811                                                            04/29/2024 14:57:07 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE WS2811
@@ -62,7 +62,7 @@ line level    source
   51   2        }
   52   1        for(temp = from;temp<=to; temp++)
   53   1        {
-C51 COMPILER V9.60.0.0   WS2811                                                            12/28/2023 12:06:46 PAGE 2   
+C51 COMPILER V9.60.0.0   WS2811                                                            04/29/2024 14:57:07 PAGE 2   
 
   54   2          WS_Color_copy(temp, color);
   55   2        }
@@ -126,7 +126,7 @@ line level    source
  113   3            WS_ColorSet_LED(0, LEDNUM, HSV_RGB(h, 1,1,0,0,0));
  114   3            WS_Refresh();
  115   3            h+=HSV_Ch_Sp;
-C51 COMPILER V9.60.0.0   WS2811                                                            12/28/2023 12:06:46 PAGE 3   
+C51 COMPILER V9.60.0.0   WS2811                                                            04/29/2024 14:57:07 PAGE 3   
 
  116   3            Timer0_Delay1ms(HSV_Delay1ms);
  117   3            if(h>=360){
@@ -190,7 +190,7 @@ line level    source
                   Num=First;
                 }
                 else if(Max==R&&(G>=B))
-C51 COMPILER V9.60.0.0   WS2811                                                            12/28/2023 12:06:46 PAGE 4   
+C51 COMPILER V9.60.0.0   WS2811                                                            04/29/2024 14:57:07 PAGE 4   
 
                 {
                   Num=Second;
@@ -254,7 +254,7 @@ line level    source
  237   2            break;
  238   2          case 1:
  239   2            R=Y; G=v; B=X;
-C51 COMPILER V9.60.0.0   WS2811                                                            12/28/2023 12:06:46 PAGE 5   
+C51 COMPILER V9.60.0.0   WS2811                                                            04/29/2024 14:57:07 PAGE 5   
 
  240   2            break;
  241   2          case 2:
@@ -280,11 +280,11 @@ line level    source
                   B8=B*255;
               #endif
  263   1        RGB&=0x00000000;
- 264   1        RGB|=(R8>>2);
+ 264   1        RGB|=(R8>>4);
  265   1        RGB<<=8;
- 266   1        RGB|=(G8>>2);
+ 266   1        RGB|=(G8>>4);
  267   1        RGB<<=8;
- 268   1        RGB|=(B8>>2);
+ 268   1        RGB|=(B8>>4);
  269   1        return RGB;
  270   1      }
  271          void WS_voice_Pik(u8 mode) //Mode0: all LED together Mode1:LED light up corresponding number according to 
@@ -318,7 +318,7 @@ line level    source
  298   2          {
  299   3            color = Black|dB;
  300   3            color = LED_type? color<<8:color<<16;
-C51 COMPILER V9.60.0.0   WS2811                                                            12/28/2023 12:06:46 PAGE 6   
+C51 COMPILER V9.60.0.0   WS2811                                                            04/29/2024 14:57:07 PAGE 6   
 
  301   3            WS_ColorSet_LED(0,LEDNUM,color);
  302   3            WS_Refresh();
@@ -377,12 +377,12 @@ line level    source
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =   2619    ----
+   CODE SIZE        =   2602    ----
    CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =    463      66
+   XDATA SIZE       =     85      66
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
-C51 COMPILER V9.60.0.0   WS2811                                                            12/28/2023 12:06:46 PAGE 7   
+C51 COMPILER V9.60.0.0   WS2811                                                            04/29/2024 14:57:07 PAGE 7   
 
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
