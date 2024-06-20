@@ -1,0 +1,91 @@
+#include "N76E003.h"
+#include "SFR_Macro.h"
+#include "Function_define.h"
+#include "Common.h"
+#include "Delay.h"
+#include "Motor_control.h"
+
+
+#define CCvalue 0x14; //change the current regulation value
+#if 1
+#define Enable_ADC_AIN0			ADCCON0&=0xF0;P17_Input_Mode;AINDIDS=0x00;AINDIDS|=SET_BIT0;ADCCON1|=SET_BIT0									//P17
+#define Enable_ADC_AIN1			ADCCON0&=0xF0;ADCCON0|=0x01;P30_Input_Mode;AINDIDS=0x00;AINDIDS|=SET_BIT1;ADCCON1|=SET_BIT0		//P30
+#define Enable_ADC_AIN2			ADCCON0&=0xF0;ADCCON0|=0x02;P07_Input_Mode;AINDIDS=0x00;AINDIDS|=SET_BIT2;ADCCON1|=SET_BIT0		//P07
+#define Enable_ADC_AIN3			ADCCON0&=0xF0;ADCCON0|=0x03;P06_Input_Mode;AINDIDS=0x00;AINDIDS|=SET_BIT3;ADCCON1|=SET_BIT0		//P06
+#define Enable_ADC_AIN4			ADCCON0&=0xF0;ADCCON0|=0x04;P05_Input_Mode;AINDIDS=0x00;AINDIDS|=SET_BIT4;ADCCON1|=SET_BIT0		//P05
+#define Enable_ADC_AIN5			ADCCON0&=0xF0;ADCCON0|=0x05;P04_Input_Mode;AINDIDS=0x00;AINDIDS|=SET_BIT5;ADCCON1|=SET_BIT0		//P04
+#define Enable_ADC_AIN6			ADCCON0&=0xF0;ADCCON0|=0x06;P03_Input_Mode;AINDIDS=0x00;AINDIDS|=SET_BIT6;ADCCON1|=SET_BIT0		//P03
+#define Enable_ADC_AIN7			ADCCON0&=0xF0;ADCCON0|=0x07;P11_Input_Mode;AINDIDS=0x00;AINDIDS|=SET_BIT7;ADCCON1|=SET_BIT0		//P11
+#define Enable_ADC_BandGap	ADCCON0|=SET_BIT3;ADCCON0&=0xF8;																															//Band-gap 1.22V
+
+#define PWM0_FALLINGEDGE_TRIG_ADC		ADCCON0&=~SET_BIT5;ADCCON0&=~SET_BIT4;ADCCON1&=~SET_BIT3;ADCCON1&=~SET_BIT2;ADCCON1|=SET_BIT1
+#define PWM2_FALLINGEDGE_TRIG_ADC		ADCCON0&=~SET_BIT5;ADCCON0|=SET_BIT4;ADCCON1&=~SET_BIT3;ADCCON1&=~SET_BIT2;ADCCON1|=SET_BIT1
+#define PWM4_FALLINGEDGE_TRIG_ADC		ADCCON0|=SET_BIT5;ADCCON0&=~SET_BIT4;ADCCON1&=~SET_BIT3;ADCCON1&=~SET_BIT2;ADCCON1|=SET_BIT1
+#define PWM0_RISINGEDGE_TRIG_ADC		ADCCON0&=~SET_BIT5;ADCCON0&=~SET_BIT4;ADCCON1&=~SET_BIT3;ADCCON1|=SET_BIT2;ADCCON1|=SET_BIT1
+#define PWM2_RISINGEDGE_TRIG_ADC		ADCCON0&=~SET_BIT5;ADCCON0|=SET_BIT4;ADCCON1&=~SET_BIT3;ADCCON1|=SET_BIT2;ADCCON1|=SET_BIT1
+#define PWM4_RISINGEDGE_TRIG_ADC		ADCCON0|=SET_BIT5;ADCCON0&=~SET_BIT4;ADCCON1&=~SET_BIT3;ADCCON1|=SET_BIT2;ADCCON1|=SET_BIT1
+
+#define P04_FALLINGEDGE_TRIG_ADC		ADCCON0|=0x30;ADCCON1&=0xF3;ADCCON1|=SET_BIT1;ADCCON1&=~SET_BIT6
+#define P13_FALLINGEDGE_TRIG_ADC		ADCCON0|=0x30;ADCCON1&=0xF3;ADCCON1|=SET_BIT1;ADCCON1|=SET_BIT6
+#define P04_RISINGEDGE_TRIG_ADC			ADCCON0|=0x30;ADCCON1&=~SET_BIT3;ADCCON1|=SET_BIT2;ADCCON1|=SET_BIT1;ADCCON1&=~SET_BIT6
+#define P13_RISINGEDGE_TRIG_ADC			ADCCON0|=0x30;ADCCON1&=~SET_BIT3;ADCCON1|=SET_BIT2;ADCCON1|=SET_BIT1;ADCCON1|=SET_BIT6
+#endif
+
+/******************************************************************************
+942 controller main function for 20A current regulation with propotional control
+******************************************************************************/
+
+void main (void) 
+{
+	Set_All_GPIO_Quasi_Mode;
+	InitialUART0_Timer1(115200);
+	ADC_Init();							//
+										//reverved for timer_init   Sleep2
+	PWM_Init();
+	while(1)
+	{
+		UINT8 i = Get_HallValue();
+		UINT8 j = Get_CurrentValue();
+		UINT16 pwm_step = (i-51)*2/3;
+		if(i>51)  //0x500 = 1280 = 1.56V
+		{
+			switch(j>57)//20A=57
+			{
+				case 0:
+				{	
+					//UINT16 pwm_step = (i-0x3e8)/0x1E; //1.0->4.0
+					PWM_Setting(pwm_step);
+					set_P00;		//Forward Relay open 
+					Timer0_Delay1ms(20);
+				}
+				break;
+				case 1:
+				{
+					j=j*0.35;
+					PWM4L=(PWM4L+Incremental_P(j, 20)*3/2)>50? (PWM4L+Incremental_P(j, 20)*3/2):0;;//PWM delta value
+					set_LOAD;set_PWMRUN;
+					
+//					PWM_Setting(PWM4L+(Incremental_P(j, 20)*3/2));
+					set_P00;		//Forward Relay open 
+//					PWM4L=PWM4L>50?PWM4L-1:0;
+//					set_LOAD;set_PWMRUN;
+					Timer0_Delay1ms(20);
+					j=0;
+				}
+				break;
+				default:
+					break;
+			}
+		}
+		else
+		{
+			PWM_Setting(0x00);
+			//PWM4L = 0x97;
+			Timer0_Delay1ms(1000);
+			clr_P00;
+		}		
+
+	}
+}
+
+
