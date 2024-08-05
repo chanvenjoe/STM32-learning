@@ -1,52 +1,10 @@
-12:03:57 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
+11:35:38 **** Incremental Build of configuration Debug for project BLDC_STM32F030R8T6 ****
 make -j8 all 
-arm-none-eabi-gcc "../Core/Src/Mymain.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Mymain.d" -MT"Core/Src/Mymain.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/Mymain.o"
-../Core/Src/Mymain.c: In function 'HAL_TIM_PeriodElapsedCallback':
-../Core/Src/Mymain.c:274:33: warning: array subscript has type 'char' [-Wchar-subscripts]
-  274 |    weight_par.gramAvg[weight_par.cnt] = weight_par.gram;
-      |                       ~~~~~~~~~~^~~~
-../Core/Src/Mymain.c: In function 'HAL_UART_RxCpltCallback':
-../Core/Src/Mymain.c:402:11: warning: pointer targets in passing argument 1 of 'sscanf' differ in signedness [-Wpointer-sign]
-  402 |    sscanf(rxbuf, "%[^P]", a);
-      |           ^~~~~
-      |           |
-      |           uint8_t * {aka unsigned char *}
-In file included from ../Core/Inc/main.h:40,
-                 from ../Core/Src/Mymain.c:20:
-c:\st\stm32cubeide_1.12.1\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.200.202301161003\tools\arm-none-eabi\include\stdio.h:204:13: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
-  204 | int sscanf (const char *__restrict, const char *__restrict, ...)
-      |             ^
-../Core/Src/Mymain.c:412:11: warning: pointer targets in passing argument 1 of 'sscanf' differ in signedness [-Wpointer-sign]
-  412 |    sscanf(rxbuf, "%[^I]", a);
-      |           ^~~~~
-      |           |
-      |           uint8_t * {aka unsigned char *}
-In file included from ../Core/Inc/main.h:40,
-                 from ../Core/Src/Mymain.c:20:
-c:\st\stm32cubeide_1.12.1\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.200.202301161003\tools\arm-none-eabi\include\stdio.h:204:13: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
-  204 | int sscanf (const char *__restrict, const char *__restrict, ...)
-      |             ^
-../Core/Src/Mymain.c:424:12: warning: pointer targets in passing argument 1 of 'sscanf' differ in signedness [-Wpointer-sign]
-  424 |     sscanf(rxbuf, "%[^D]", a);
-      |            ^~~~~
-      |            |
-      |            uint8_t * {aka unsigned char *}
-In file included from ../Core/Inc/main.h:40,
-                 from ../Core/Src/Mymain.c:20:
-c:\st\stm32cubeide_1.12.1\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.200.202301161003\tools\arm-none-eabi\include\stdio.h:204:13: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
-  204 | int sscanf (const char *__restrict, const char *__restrict, ...)
-      |             ^
-arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\E-wagon STM32 project\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: BLDC_STM32F030R8T6.elf
- 
 arm-none-eabi-size   BLDC_STM32F030R8T6.elf 
-arm-none-eabi-objdump -h -S  BLDC_STM32F030R8T6.elf  > "BLDC_STM32F030R8T6.list"
    text	   data	    bss	    dec	    hex	filename
-  60448	    532	   2652	  63632	   f890	BLDC_STM32F030R8T6.elf
+  60732	    532	   2652	  63916	   f9ac	BLDC_STM32F030R8T6.elf
 Finished building: default.size.stdout
  
-Finished building: BLDC_STM32F030R8T6.list
- 
 
-12:03:58 Build Finished. 0 errors, 4 warnings. (took 779ms)
+11:35:39 Build Finished. 0 errors, 0 warnings. (took 511ms)
 

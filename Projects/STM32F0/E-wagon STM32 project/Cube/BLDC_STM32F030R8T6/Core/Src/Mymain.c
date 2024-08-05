@@ -44,6 +44,7 @@
 //MADC_Structure adc_buffer;
 #define Phase_delay 5000
 
+uint8_t rx_buff[] = "hell0,uart DMA\r\n";
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -58,7 +59,7 @@ uint16_t adc_buf[CH_NUM]={0};
 MADC_Structure adc_val = {1,1,1,1,1,1,1,1,1,1};
 HX711_Structure weight_par = {0,0,0,0,0};
 TimeFlagStruct printflag = {0};
-PID_ParameterStruct PID_Parameters = {0.1, 0.05, 0.5};
+PID_ParameterStruct PID_Parameters = {0.05, 0, 0}; //PID adjustment, ID = 0, increase P till the curve shaking
 
 /* USER CODE END PV */
 
@@ -129,7 +130,7 @@ int main(void)
 	HAL_TIM_OC_Start(&htim1,TIM_CHANNEL_4);
 	HX711_Calibration(&weight_par);
 	printflag.PID_Set = FALSE;
-	while(printflag.PID_Set == FALSE)
+/*	while(printflag.PID_Set == FALSE)
 	{
 		printf("0X31P%0.2f\n",PID_Parameters.Kp);
 		delay_ms(10);
@@ -139,8 +140,9 @@ int main(void)
 	//	while(printflag.PID_Set == FALSE);
 		printf("0X31D%0.2f\n",PID_Parameters.Kd);
 		delay_ms(10);
-	}
+	}*/
 //	while(printflag.PID_Set == FALSE);
+
   /* USER CODE END 2 */
 
 //  HAL_TIM_OC_Start(&htim1,TIM_CHANNEL_4);
@@ -152,23 +154,29 @@ int main(void)
   /****************************************/
 
 
+
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  if(weight_par.calibration_flag)
-	  {
-		  printf("0x31 0x14%d\n", weight_par.gramAvgval );
-//		  printf("0x31 0x14%d\n\r", weight_par.gram );
-//	  printf("time laps: %d \r\n", adc_val.commutation_delay);
-		  printf("PWM%d\n", (int)htim1.Instance->CCR1);
-	  }
-//	  Print_Pooling(&printflag);
-	  if(1000 <= printflag.TimeCNT)
-	  {
-		  printf("VBat%0.2fV\n",	adc_val.vbat*(Vrefint*4095/adc_val.vref_data)/4095/VBAT_FACTOR);
-	  }
-	  delay_ms(50);
+	//Kalman  filter
+	weight_par.gramAvgval = (weight_par.gramAvg[0] + weight_par.gramAvg[1] + weight_par.gramAvg[2] + weight_par.gramAvg[3] + weight_par.gramAvg[4])/5;
+	if(weight_par.calibration_flag)
+	{
+//		printf("%d, %d\n", weight_par.gramAvgval,(int)htim1.Instance->CCR1 );
+
+		HAL_UART_Transmit_DMA(&huart1, (uint8_t *)rx_buff, sizeof(rx_buff)+1);
+	//	printf("gram: %d\r\n", weight_par.gram );
+	//	  printf("time laps: %d \r\n", adc_val.commutation_delay);
+//		printf("PWM%d\r\n", (int)htim1.Instance->CCR1);
+
+	}
+	//	  Print_Pooling(&printflag);
+	if(1000 <= printflag.TimeCNT)
+	{
+	//		  printf("VBat%0.2fV\n",	adc_val.vbat*(Vrefint*4095/adc_val.vref_data)/4095/VBAT_FACTOR);
+	}
+	delay_ms(500);
   }
 
 }
@@ -226,6 +234,7 @@ void SystemClock_Config(void)
 #endif
 PUTCHAR_PROTOTYPE
 {
+//	HAL_UART_Transmit_DMA(&huart1 , (uint8_t *)&ch, 1);
     HAL_UART_Transmit(&huart1 , (uint8_t *)&ch, 1, 0xFFFF);
     return ch;
 }
@@ -267,47 +276,53 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	if(htim == &htim3)
 	{
-		if(weight_par.calibration_flag)
+		if(1 == weight_par.calibration_flag)
 		{
-			weight_par.cnt= weight_par.cnt >= 5? 0:weight_par.cnt+1;
 			Get_weight(&weight_par);
+			weight_par.cnt= weight_par.cnt >= 5? 0:weight_par.cnt+1;
 			weight_par.gramAvg[weight_par.cnt] = weight_par.gram;
-			weight_par.gramAvgval = (weight_par.gramAvg[0] + weight_par.gramAvg[1] + weight_par.gramAvg[2] + weight_par.gramAvg[3] + weight_par.gramAvg[4])/5;
-			weight_par.gram = weight_par.gramAvgval;
 //			FORCESAPTIME;
 		}
 	}
-	else if(htim == &htim6)//20ms enter
+	else if(htim == &htim6)// PWM step 1 for accurate acceleration, change the timer to modify the ramp time
 	{
-		if(weight_par.calibration_flag == 1)
+		if(1 == weight_par.calibration_flag)
 		{
-			static char dc_pwm, pid_pwm;
-			pid_pwm += Incremental_PID(&weight_par, PULL_FORCE_THR, &PID_Parameters);
-//			pid_pwm = pid_pwm>=100? 100 : pid_pwm;
+			static unsigned char dc_pwm, pid_pwm;
+			char temp;
+			temp = Incremental_PID(&weight_par, PULL_FORCE_THR, &PID_Parameters);
+			temp = (temp + pid_pwm)>100? 100: temp;
+			temp = (temp + pid_pwm)<0? 0: temp;
+
+			pid_pwm += temp;
+
 			if(0<(pid_pwm-dc_pwm))
 			{
-				HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, RESET);
-				AHBL_ON;
+				if(0 == weight_par.eps_flag)
+				{
+					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, RESET);// LED indicator
+					AHBL_ON;
+				}
 				weight_par.eps_flag = 1;
-				dc_pwm = dc_pwm + PWM_STEP>100? 100:dc_pwm+PWM_STEP;
+
+				dc_pwm = pid_pwm;
+				//dc_pwm = dc_pwm + PWM_STEP>100? 100:dc_pwm+PWM_STEP;
 			}
-			else if(0>(pid_pwm-dc_pwm))
+			else if(0>(pid_pwm-dc_pwm))//dc_pwm > pid_pwm,
 			{
 				dc_pwm = pid_pwm;
-//				dc_pwm = dc_pwm - PWM_STEP<0 ? 0:dc_pwm-PWM_STEP;
-				__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, dc_pwm);
 			}
-			if(dc_pwm>10)
+			if(dc_pwm>10) //When PWM>10%, start to drive
 				__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, dc_pwm);
 
-			if(weight_par.gramAvgval<LOWER_LIMMIT-100)
+			if(weight_par.gramAvgval<PULL_FORCE_THR)//LOWER_LIMMIT)// when release the handle, turn off all
 			{
 				HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, SET);
 				CLOSE_PWM;
 				weight_par.eps_flag = 0;
 				pid_pwm = 0;//if not, the PID_PWM will always be the same value and dc_pwm never be 0
-/*				dc_pwm = dc_pwm<=10? 0:dc_pwm-PWM_STEP;
-				__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, dc_pwm);*/
+				dc_pwm = dc_pwm<=10? 0:dc_pwm-PWM_STEP;
+				__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, dc_pwm);
 			}
 		}
 
@@ -437,11 +452,19 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)//every byte transmit com
 	}
 }
 
+void HAL_UART_TxCpltCallback(UART_HandleTypeDef* huart)
+{
+	HAL_UART_Transmit_IT(&huart1, rx_buff, sizeof(rx_buff)+1);
+}
+
+
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)// Using tim15 to get a 88us between each trigger 50us as TIM1 cycle, 14MHz ADC(12.5+55.5 cycles) consume 4.37ms to complete conversion
 {									  // The ADC sample time is for all channel, the DMA
 	My_ADC_getvalue(adc_buf, &adc_val);
 //	BLDC_Phase_switching(&adc_val);
 }
+
+
 
 
 

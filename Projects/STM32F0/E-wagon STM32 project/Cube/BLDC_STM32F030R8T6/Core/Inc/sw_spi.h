@@ -33,7 +33,7 @@
 #define PULL_FORCE_THR	1000
 #define LOWER_LIMMIT	500
 #define TOP_LIMIT		2000
-#define PWM_STEP		2
+#define PWM_STEP		1
 
 #define CALIBRATION_RANGE_L 8000000
 #define CALIBRATION_RANGE_H	8700000
@@ -46,7 +46,7 @@ typedef struct {
 	 char	calibration_flag;
 	 char	eps_flag;
 	 int gramAvg[6];
-	 char cnt;
+	 int cnt;
 	 int	gramAvgval;
 }HX711_Structure;
 
