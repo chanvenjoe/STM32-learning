@@ -38,6 +38,8 @@ extern UART_HandleTypeDef huart1;
 #define TURE  1
 #define FALSE 0
 #define RX_BUF_NUM 255
+#define TX_BUF_NUM 255
+extern uint8_t txbuf[TX_BUF_NUM];
 extern uint8_t rxbuf[RX_BUF_NUM];
 extern uint8_t rxdata;
 extern uint8_t cnt;

@@ -5,6 +5,7 @@
  *      Author: kzhou
  */
 #include "sw_spi.h"
+#include "main.h"
 
 unsigned int Get_24bit_Weight(char channel_gain)
 {
@@ -15,7 +16,7 @@ unsigned int Get_24bit_Weight(char channel_gain)
 	{
 //		SW_SPI_CLK_H;
 //		SW_SPI_CLK_L;
-//		printf("Un-ready\r\n");
+		printf_DMA("Data unready\n");
 
 	}
 
@@ -121,6 +122,10 @@ char Incremental_PID(HX711_Structure* weight_par, uint16_t pull_force_thr, PID_P
 
 	Last1_bias = Last_bias;
 	Last_bias = Bias;
+
+
+	PWM = PWM>10 ? 10:PWM;
+
 	return PWM;//Bit operation can lead to negtive value
 }
 

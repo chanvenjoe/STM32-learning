@@ -32,6 +32,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <stdarg.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -44,12 +45,11 @@
 //MADC_Structure adc_buffer;
 #define Phase_delay 5000
 
-uint8_t rx_buff[] = "hell0,uart DMA\r\n";
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
-
+//uint8_t tx_buff[];
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
@@ -59,14 +59,16 @@ uint16_t adc_buf[CH_NUM]={0};
 MADC_Structure adc_val = {1,1,1,1,1,1,1,1,1,1};
 HX711_Structure weight_par = {0,0,0,0,0};
 TimeFlagStruct printflag = {0};
-PID_ParameterStruct PID_Parameters = {0.05, 0, 0}; //PID adjustment, ID = 0, increase P till the curve shaking
+PID_ParameterStruct PID_Parameters = {0.02, 0, 0}; //PID adjustment, ID = 0, increase P till the curve shaking
 
 /* USER CODE END PV */
+
+uint8_t txbuff[] = "hellow worlds \r\n";
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
-
+void printf_DMA(const char *format,...);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -163,20 +165,16 @@ int main(void)
 	weight_par.gramAvgval = (weight_par.gramAvg[0] + weight_par.gramAvg[1] + weight_par.gramAvg[2] + weight_par.gramAvg[3] + weight_par.gramAvg[4])/5;
 	if(weight_par.calibration_flag)
 	{
-//		printf("%d, %d\n", weight_par.gramAvgval,(int)htim1.Instance->CCR1 );
+//		printf("%d, %d \n", weight_par.gramAvgval,(int)htim1.Instance->CCR1 );//VOFA curve
 
-		HAL_UART_Transmit_DMA(&huart1, (uint8_t *)rx_buff, sizeof(rx_buff)+1);
-	//	printf("gram: %d\r\n", weight_par.gram );
-	//	  printf("time laps: %d \r\n", adc_val.commutation_delay);
-//		printf("PWM%d\r\n", (int)htim1.Instance->CCR1);
+		printf_DMA("%d, %d\r\n",weight_par.gramAvgval, (int)htim1.Instance->CCR1);
 
+//		HAL_UART_Transmit_DMA(&huart1, (uint8_t *) txbuff, sizeof(txbuff)+1); // if it is (uint8_t) * txbuff, then it will be force the txbuff to char, not change the addr to char
 	}
-	//	  Print_Pooling(&printflag);
 	if(1000 <= printflag.TimeCNT)
 	{
 	//		  printf("VBat%0.2fV\n",	adc_val.vbat*(Vrefint*4095/adc_val.vref_data)/4095/VBAT_FACTOR);
 	}
-	delay_ms(500);
   }
 
 }
@@ -234,9 +232,26 @@ void SystemClock_Config(void)
 #endif
 PUTCHAR_PROTOTYPE
 {
-//	HAL_UART_Transmit_DMA(&huart1 , (uint8_t *)&ch, 1);
+//	HAL_UART_Transmit_DMA(&huart1, (uint8_t *)&ch, sizeof(ch));
+
     HAL_UART_Transmit(&huart1 , (uint8_t *)&ch, 1, 0xFFFF);
     return ch;
+}
+
+void printf_DMA(const char *format, ...)
+{
+	uint32_t length;
+	va_list args;
+//	uint8_t temp = 0;
+
+	va_start(args, format);
+	length = vsnprintf((char*)txbuf, sizeof(txbuf)+1, (char*)format, args);
+	va_end(args);
+
+	HAL_UART_Transmit_DMA(&huart1, txbuf, length);
+	while(!__HAL_UART_GET_FLAG(&huart1,UART_FLAG_TC));
+
+
 }
 /* USER CODE END 4 */
 
@@ -288,13 +303,12 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	{
 		if(1 == weight_par.calibration_flag)
 		{
-			static unsigned char dc_pwm, pid_pwm;
-			char temp;
+			static signed char dc_pwm, pid_pwm;
+			signed char temp;
 			temp = Incremental_PID(&weight_par, PULL_FORCE_THR, &PID_Parameters);
-			temp = (temp + pid_pwm)>100? 100: temp;
-			temp = (temp + pid_pwm)<0? 0: temp;
+			pid_pwm = (signed char)(temp + pid_pwm)>=100? 100	: 	temp + pid_pwm;
+			pid_pwm = (signed char)(temp + pid_pwm)<=0	? 0		: 	temp + pid_pwm;
 
-			pid_pwm += temp;
 
 			if(0<(pid_pwm-dc_pwm))
 			{
@@ -454,7 +468,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)//every byte transmit com
 
 void HAL_UART_TxCpltCallback(UART_HandleTypeDef* huart)
 {
-	HAL_UART_Transmit_IT(&huart1, rx_buff, sizeof(rx_buff)+1);
+
 }
 
 

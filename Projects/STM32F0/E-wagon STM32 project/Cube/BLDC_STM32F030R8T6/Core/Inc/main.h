@@ -59,7 +59,7 @@ extern "C" {
 void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
-
+void printf_DMA(const char *format, ...);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/

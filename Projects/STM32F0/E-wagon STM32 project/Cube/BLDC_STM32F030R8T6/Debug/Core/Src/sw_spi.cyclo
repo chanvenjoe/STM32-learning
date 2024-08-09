@@ -1,5 +1,5 @@
-../Core/Src/sw_spi.c:9:14:Get_24bit_Weight	4
-../Core/Src/sw_spi.c:42:6:Get_weight	3
-../Core/Src/sw_spi.c:52:6:HX711_Calibration	4
-../Core/Src/sw_spi.c:81:6:PWM_Delegation	7
-../Core/Src/sw_spi.c:114:6:Incremental_PID	2
+../Core/Src/sw_spi.c:10:14:Get_24bit_Weight	4
+../Core/Src/sw_spi.c:43:6:Get_weight	3
+../Core/Src/sw_spi.c:53:6:HX711_Calibration	4
+../Core/Src/sw_spi.c:82:6:PWM_Delegation	7
+../Core/Src/sw_spi.c:115:6:Incremental_PID	3
