@@ -47,6 +47,7 @@ void Get_weight(HX711_Structure* weight_par)		// AKg * AVDDmV/X Kg = Y   A:weigh
 		weight_par->gross_weight = Get_24bit_Weight(CHA_128);
 		if(weight_par->gross_weight >= weight_par->calibrated_value)
 			weight_par->gram = ((weight_par->gross_weight - weight_par->calibrated_value)/LOAD_CELL_FACTOR);
+//		weight_par->gram = weight_par->gram<10000? weight_par->gram:10000;
 	}
 }
 
@@ -74,7 +75,14 @@ void HX711_Calibration(HX711_Structure* weight_par)
 		  delay_us(2000);
 		  weight_par->calibrated_value = Get_24bit_Weight(CHA_128);
 	  }
-	  printf("calibration ok weight:%d\r\n", weight_par->calibrated_value);
+	  SW_SPI_PWR_OFF;
+	  delay_us(200);
+	  SW_SPI_PWR_ON;
+	  weight_par->calibrated_value = Get_24bit_Weight(CHA_128);
+	  delay_us(2000);
+	  weight_par->calibrated_value = Get_24bit_Weight(CHA_128);
+
+	  printf_DMA("calibration ok weight:%d\r\n", weight_par->calibrated_value);
 	  weight_par->calibration_flag = 1; //Calibration done
 
 }
@@ -111,21 +119,22 @@ void PWM_Delegation(HX711_Structure* weight_par)
 // e(k) the value difference of actual and setting e(k-1) the last time difference
 // In this motor control we use P
 // PWM = Kp[e(k) - e(k-1)]
+//Target is pull _force_thr, but keep calculating if the force is bigger than 500
 
-char Incremental_PID(HX711_Structure* weight_par, uint16_t pull_force_thr, PID_ParameterStruct* PID_Parameters)
+signed char Incremental_PID(HX711_Structure* weight_par, uint16_t pull_force_thr, PID_ParameterStruct* PID_Parameters)
 {
 	static signed int   Bias=0, Last_bias=0, Last1_bias = 0;
-	static int PWM = 0;
-	Bias = weight_par->gramAvgval> PULL_FORCE_THR? weight_par->gramAvgval - PULL_FORCE_THR : 0;
+	static signed int PWM = 0; //need to be static?
+	Bias = weight_par->gramAvgval> LOWER_LIMMIT? weight_par->gramAvgval - PULL_FORCE_THR : 0;
 	//sum_integral +=Bias*Ki;
-	PWM = PID_Parameters->Kp*(Bias-Last_bias)+PID_Parameters->Ki*Bias + PID_Parameters->Kd*(Bias - Last_bias);//(Bias-2*Last_bias+Last1_bias);
-
+	PWM = PID_Parameters->Kp*(Bias-Last_bias)+PID_Parameters->Ki*Bias + PID_Parameters->Kd*(Bias - Last_bias) + (Bias-2*Last_bias+Last1_bias);
 	Last1_bias = Last_bias;
 	Last_bias = Bias;
 
 
-	PWM = PWM>10 ? 10:PWM;
-
+/*	PWM = PWM>10 ? 10:PWM;
+	PWM = PWM<-10? -10: PWM;
+*/
 	return PWM;//Bit operation can lead to negtive value
 }
 

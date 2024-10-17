@@ -50,12 +50,13 @@ extern uint8_t cnt;
 
 
 typedef struct{
-	unsigned int TimeCNT;
+	int TimeCNT;
 	char 	Voltage_Show;
 	char	PID_Set;
 	char	Motor_On;
 	char	Motor_Off;
-
+	char		Motor_short_flag;
+	char	OCP_flag;
 }TimeFlagStruct;
 /* USER CODE END Private defines */
 

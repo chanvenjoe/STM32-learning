@@ -60,8 +60,8 @@ all: main-build
 main-build: BLDC_STM32F030R8T6.elf secondary-outputs
 
 # Tool invocations
-BLDC_STM32F030R8T6.elf BLDC_STM32F030R8T6.map: $(OBJS) $(USER_OBJS) C:\Users\kzhou\Desktop\RF\ projects\Git\STM32\STM32-learning\Projects\STM32F0\E-wagon\ STM32\ project\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF projects\Git\STM32\STM32-learning\Projects\STM32F0\E-wagon STM32 project\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+BLDC_STM32F030R8T6.elf BLDC_STM32F030R8T6.map: $(OBJS) $(USER_OBJS) C:\Users\kzhou\Desktop\RF_projects\Git\STM32\STM32-learning\Projects\STM32F0\E-wagon\ STM32\ project\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "BLDC_STM32F030R8T6.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0 -T"C:\Users\kzhou\Desktop\RF_projects\Git\STM32\STM32-learning\Projects\STM32F0\E-wagon STM32 project\Cube\BLDC_STM32F030R8T6\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLDC_STM32F030R8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
