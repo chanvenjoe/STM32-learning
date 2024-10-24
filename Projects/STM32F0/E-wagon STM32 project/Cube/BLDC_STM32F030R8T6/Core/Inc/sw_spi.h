@@ -32,7 +32,7 @@
 									//If the real number is smaller than the tested value, then increase the factor, vice versa
 #define PULL_FORCE_THR	1000
 #define LOWER_LIMMIT	500
-#define TOP_LIMIT		2000
+//#define TOP_LIMIT		2000
 #define PWM_STEP		1
 
 #define CALIBRATION_RANGE_L 8000000

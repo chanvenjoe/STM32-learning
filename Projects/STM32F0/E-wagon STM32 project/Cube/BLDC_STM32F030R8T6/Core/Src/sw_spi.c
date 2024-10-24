@@ -127,7 +127,7 @@ signed char Incremental_PID(HX711_Structure* weight_par, uint16_t pull_force_thr
 	static signed int PWM = 0; //need to be static?
 	Bias = weight_par->gramAvgval> LOWER_LIMMIT? weight_par->gramAvgval - PULL_FORCE_THR : 0;
 	//sum_integral +=Bias*Ki;
-	PWM = PID_Parameters->Kp*(Bias-Last_bias)+PID_Parameters->Ki*Bias + PID_Parameters->Kd*(Bias - Last_bias) + (Bias-2*Last_bias+Last1_bias);
+	PWM = PID_Parameters->Kp*(Bias-Last_bias)+PID_Parameters->Ki*Bias + PID_Parameters->Kd*((Bias - Last_bias) + (Bias-2*Last_bias+Last1_bias));
 	Last1_bias = Last_bias;
 	Last_bias = Bias;
 

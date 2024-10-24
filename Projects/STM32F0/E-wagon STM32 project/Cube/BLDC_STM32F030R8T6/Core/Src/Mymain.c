@@ -59,7 +59,7 @@ uint16_t adc_buf[CH_NUM]={0};
 MADC_Structure adc_val = {1,1,1,1,1,1,1,1,1,1};
 HX711_Structure weight_par = {0,0,0,0,0};
 TimeFlagStruct printflag = {0};
-PID_ParameterStruct PID_Parameters = {0.01, 0.01, 0.0}; //PID adjustment, ID = 0, increase P till the curve shaking
+PID_ParameterStruct PID_Parameters = {0.5, 0.0, 0.0}; //PID adjustment, ID = 0, increase P till the curve shaking
 
 /* USER CODE END PV */
 
@@ -162,19 +162,22 @@ int main(void)
   while (1)
   {
 	//Kalman  filter
-	weight_par.gramAvgval = (weight_par.gramAvg[0] + weight_par.gramAvg[1] + weight_par.gramAvg[2] + weight_par.gramAvg[3] + weight_par.gramAvg[4])/5;
 	if(weight_par.calibration_flag)
 	{
-		printf_DMA("%d, %d\r\n",weight_par.gramAvgval, (int)htim1.Instance->CCR1);//Vofa+ chart
+		printf_DMA("%d, %d, %d\r\n",weight_par.gramAvgval, (int)htim1.Instance->CCR1);//Vofa+ chart
 //		printf_DMA("%d\r\n", adc_val.isum_filtered);
-//		printf_DMA("0x31 0x14%d\n\r", weight_par.gramAvgval );
-//		printf("gram: %d\r\n", weight_par.gramAvgval );
-//		printf_DMA("PWM%d\n", (int)htim1.Instance->CCR1);
 //		HAL_UART_Transmit_DMA(&huart1, (uint8_t *) txbuff, sizeof(txbuff)+1); // if it is (uint8_t) * txbuff, then it will be force the txbuff to char, not change the addr to char
 	}
-	if(1000 <= printflag.TimeCNT)
+	if(1100 <= printflag.TimeCNT)
 	{
 		printf_DMA("VBat%0.2fV\n",	adc_val.vbat*(Vrefint*4095/adc_val.vref_data)/4095/VBAT_FACTOR);
+	}
+	while(printflag.OCP_flag)
+	{
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, RESET);
+		delay_ms(100);
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, SET);
+		delay_ms(100);
 	}
   }
 
@@ -295,52 +298,38 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		if(1 == weight_par.calibration_flag)
 		{
 			Get_weight(&weight_par);
-			weight_par.cnt= weight_par.cnt >= 5? 0:weight_par.cnt+1;
+			weight_par.cnt= weight_par.cnt >= 5? 0:weight_par.cnt+1;//Get average value of 5
 			weight_par.gramAvg[weight_par.cnt] = weight_par.gram;
+			weight_par.gramAvgval = (weight_par.gramAvg[0] + weight_par.gramAvg[1] + weight_par.gramAvg[2] + weight_par.gramAvg[3] + weight_par.gramAvg[4])/5;
 //			FORCESAPTIME;
 		}
 	}
 	else if(htim == &htim6)// PWM step 1 for accurate acceleration, change the timer to modify the ramp time
 	{
-		static signed char dc_pwm, pid_pwm;
-		signed char temp;
-		if(weight_par.gramAvgval<LOWER_LIMMIT|| (1==HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2)))//LOWER_LIMMIT)// when release the handle, turn off all
+		static signed int dc_pwm, pid_pwm;
+		signed int temp;
+		if(weight_par.gramAvgval<LOWER_LIMMIT)//LOWER_LIMMIT)// when release the handle, turn off all
 		{
-			if(weight_par.eps_flag == 1)
-			{
-				HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, SET);//Turn on LED
-				CLOSE_PWM;
-				weight_par.eps_flag = 0;
-				pid_pwm = 0;//if not, the PID_PWM will always be the same value and dc_pwm never be 0
-				dc_pwm = pid_pwm; //to set the PWM to 0 immediately
-				__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, dc_pwm);
-				printflag.Motor_short_flag = 1;
-			}
-
-			if((1==HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2)))
-			{
-				BRAKE; //After braking, before PWM implemented, you should turn off them to prevent short circuit
-				printf_DMA("brake\n");
-			}
+			CLOSE_PWM;
+			pid_pwm = 0;//if not, the PID_PWM will always be the same value and dc_pwm never be 0
+			dc_pwm = pid_pwm; //to set the PWM to 0 immediately
+			__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, dc_pwm);
+			if(printflag.OCP_flag == FALSE)
+				HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, SET);//Turn off LED
+			weight_par.eps_flag = FALSE;
+			printflag.Motor_short_flag = TRUE;
 		}
-		else if(1 == weight_par.calibration_flag)
+		else
 		{
-
+			printflag.Motor_short_flag = FALSE;// if keep pulling, stop shorting motor, if = true, H/L MOS will open together
 			temp = Incremental_PID(&weight_par, PULL_FORCE_THR, &PID_Parameters);
 			if((pid_pwm+temp) > MAX_PWM)
-				pid_pwm = (signed int)(temp + pid_pwm)>=MAX_PWM? MAX_PWM	: 	temp + pid_pwm;
+				pid_pwm = MAX_PWM;
 			else
 				pid_pwm = (signed int)(temp + pid_pwm)<=0	? 0		: 	temp + pid_pwm;
 
+			dc_pwm = (0<(pid_pwm-dc_pwm)) ? dc_pwm + 1 : dc_pwm - 1;
 
-			if(0<(pid_pwm-dc_pwm))
-			{
-				dc_pwm++;
-			}
-			else if(0>(pid_pwm-dc_pwm))//dc_pwm > pid_pwm,
-			{
-				dc_pwm--;
-			}
 			if(dc_pwm>10) //When PWM>10%, start to drive
 			{
 				HAL_GPIO_WritePin(MOSL, AL, GPIO_PIN_RESET);
@@ -349,23 +338,21 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 				if(0 == weight_par.eps_flag)
 				{
 					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, RESET);// Turn on LED indicator
+					weight_par.eps_flag = TRUE;
 				}
-				weight_par.eps_flag = 1;
 			}
-
 		}
-
 	}
 	else if(htim == &htim14)//10ms enter for E-wagon protection counting
 	{
-		printflag.TimeCNT = printflag.TimeCNT>1100? 0:printflag.TimeCNT+1;
+		printflag.TimeCNT = printflag.TimeCNT>1105? 0:printflag.TimeCNT+1;
 		if(adc_val.commutation_timeout >1000)//if 100ms no phase switching, 100us++
 		{
 			adc_val.commutation_timeout = 0;
 			adc_val.commutation_delay 	= 0;
 //			CLOSE_ALL;
 		}
-		if(1==printflag.Motor_short_flag)
+		if(1==printflag.Motor_short_flag || 1==HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2))
 		{
 			static char count;
 			count+=1;
@@ -376,7 +363,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 				printflag.Motor_short_flag = 0;
 			}
 		}
-		if(adc_val.isum_filtered>230)//25A
+		if(adc_val.isum_filtered>=120&& weight_par.calibration_flag==1 )// OCP
 		{
 			static char ocp_cnt = 0;
 			ocp_cnt++;
@@ -385,7 +372,8 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 				CLOSE_PWM;
 				BRKRLS;
 				cnt = 0;
-				weight_par.calibration_flag = 0;
+				weight_par.calibration_flag = FALSE;
+				printflag.OCP_flag = TRUE;
 			}
 		}
 
