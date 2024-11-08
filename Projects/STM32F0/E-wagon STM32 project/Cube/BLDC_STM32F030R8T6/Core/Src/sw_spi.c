@@ -16,8 +16,6 @@ unsigned int Get_24bit_Weight(char channel_gain)
 	{
 //		SW_SPI_CLK_H;
 //		SW_SPI_CLK_L;
-		printf_DMA("Data unready\n");
-
 	}
 
 	for(char i = 24; i!=0; i--)
@@ -46,8 +44,15 @@ void Get_weight(HX711_Structure* weight_par)		// AKg * AVDDmV/X Kg = Y   A:weigh
 	{
 		weight_par->gross_weight = Get_24bit_Weight(CHA_128);
 		if(weight_par->gross_weight >= weight_par->calibrated_value)
+		{
+			weight_par->sens_err_flag = FALSE;
 			weight_par->gram = ((weight_par->gross_weight - weight_par->calibrated_value)/LOAD_CELL_FACTOR);
-//		weight_par->gram = weight_par->gram<10000? weight_par->gram:10000;
+		}
+		else if(((weight_par->gross_weight - weight_par->calibrated_value)< -1000)||((weight_par->gross_weight - weight_par->calibrated_value)/LOAD_CELL_FACTOR>30000))//Sensor disconnected
+		{
+			weight_par->sens_err_flag = TRUE;
+			weight_par->gram  = 0;
+		}
 	}
 }
 
@@ -132,10 +137,18 @@ signed char Incremental_PID(HX711_Structure* weight_par, uint16_t pull_force_thr
 	Last_bias = Bias;
 
 
-/*	PWM = PWM>10 ? 10:PWM;
-	PWM = PWM<-10? -10: PWM;
-*/
+	PWM = PWM>50 ? 50:PWM;
+	PWM = PWM<-50? -50: PWM;
+
 	return PWM;//Bit operation can lead to negtive value
+}
+
+void error_code()
+{
+	IND_LED_ON;
+	delay_ms(500);
+	IND_LED_OFF;
+	delay_ms(500);
 }
 
 /*PID_ParameterStruct* PID_setting()

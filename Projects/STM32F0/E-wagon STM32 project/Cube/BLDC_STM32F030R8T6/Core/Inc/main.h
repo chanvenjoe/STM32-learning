@@ -67,12 +67,16 @@ void printf_DMA(const char *format, ...);
 #define BTWakeUp_GPIO_Port GPIOC
 
 /* USER CODE BEGIN Private defines */
-#define FORCESAPTIME 		adc_val.commutation_delay = 0;\
-__HAL_TIM_SET_COUNTER(&htim16, 0);/*the auto reload is set to 65535 1us time base*/\
-HAL_TIM_Base_Start(&htim16); \
-Get_weight(&weight_par);\
-HAL_TIM_Base_Stop(&htim16);\
-adc_val.commutation_delay = __HAL_TIM_GET_COUNTER(&htim16)
+#define FORCESAPTIME 			static char cnt = 0;\
+	cnt++;\
+	if(cnt == 1)\
+	{	__HAL_TIM_SET_COUNTER(&htim16, 0);\
+		HAL_TIM_Base_Start(&htim16);\
+	}\
+	if(cnt==2)\
+	{	adc_val.commutation_delay = __HAL_TIM_GET_COUNTER(&htim16);\
+		cnt = 0;\
+	}\
 
 #define TRUE 1
 #define FALSE 0

@@ -57,6 +57,7 @@ typedef struct{
 	char	Motor_Off;
 	char		Motor_short_flag;
 	char	OCP_flag;
+	char	sensor_err;
 }TimeFlagStruct;
 /* USER CODE END Private defines */
 

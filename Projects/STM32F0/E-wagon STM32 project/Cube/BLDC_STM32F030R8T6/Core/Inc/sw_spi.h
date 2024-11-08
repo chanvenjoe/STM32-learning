@@ -50,6 +50,7 @@ typedef struct {
 	 int cnt;
 	 int	gramAvgval;
 	 char	pw_flag;
+	 char	sens_err_flag;
 }HX711_Structure;
 
 typedef struct{
@@ -65,5 +66,6 @@ void HX711_Calibration( HX711_Structure* weight_par);
 void Get_weight(HX711_Structure* weight_par);
 void PWM_Delegation(HX711_Structure* weight_par);
 signed char Incremental_PID(HX711_Structure* weight_par, uint16_t pull_force_thr, PID_ParameterStruct* PID_Parameters);
+void error_code();
 
 #endif /* INC_SW_SPI_H_ */

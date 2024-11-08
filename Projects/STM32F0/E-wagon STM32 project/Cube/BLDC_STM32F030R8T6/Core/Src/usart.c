@@ -113,7 +113,7 @@ void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
     __HAL_LINKDMA(uartHandle,hdmatx,hdma_usart1_tx);
 
     /* USART1 interrupt Init */
-    HAL_NVIC_SetPriority(USART1_IRQn, 0, 0);
+    HAL_NVIC_SetPriority(USART1_IRQn, 1, 0);
     HAL_NVIC_EnableIRQ(USART1_IRQn);
   /* USER CODE BEGIN USART1_MspInit 1 */
 
@@ -189,5 +189,21 @@ void Print_Pooling(TimeFlagStruct* print_flag)
 //		  printf("VBat%0.2fV\n",	adc_val.vbat*(Vrefint*4095/adc_val.vref_data)/4095/VBAT_FACTOR);
 	}
 }
+
+void PID_APP_Calibration()
+{
+/*	while(printflag.PID_Set == FALSE) // Put it to BLE.c en enclose it
+	{
+		printf_DMA("0X31P%0.2f\n",PID_Parameters.Kp);
+		delay_ms(10);
+	//	while(printflag.PID_Set == FALSE);
+		printf_DMA("0X31I%0.2f\n",PID_Parameters.Ki);
+		delay_ms(10);
+	//	while(printflag.PID_Set == FALSE);
+		printf_DMA("0X31D%0.2f\n",PID_Parameters.Kd);
+		delay_ms(10);
+	}*/
+}
+
 
 /* USER CODE END 1 */
