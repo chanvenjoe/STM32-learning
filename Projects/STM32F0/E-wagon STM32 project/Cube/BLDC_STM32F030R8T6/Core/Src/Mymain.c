@@ -166,7 +166,6 @@ int main(void)
 	{
 		printf_DMA("OCP\n");
 		error_code();
-
 	}
 	if(printflag.sensor_err)
 	{
