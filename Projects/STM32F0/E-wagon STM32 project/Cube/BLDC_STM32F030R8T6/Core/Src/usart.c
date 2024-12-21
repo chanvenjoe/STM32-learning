@@ -205,5 +205,9 @@ void PID_APP_Calibration()
 	}*/
 }
 
+void Uart_RX_Handle(UART_HandleTypeDef *huart)
+{
+
+}
 
 /* USER CODE END 1 */

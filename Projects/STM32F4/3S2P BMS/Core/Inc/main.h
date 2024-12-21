@@ -57,6 +57,16 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define SYS_WAKE_Pin GPIO_PIN_12
+#define SYS_WAKE_GPIO_Port GPIOB
+#define RST_SCR_Pin GPIO_PIN_12
+#define RST_SCR_GPIO_Port GPIOA
+#define BKL_Pin GPIO_PIN_2
+#define BKL_GPIO_Port GPIOD
+#define CS_Pin GPIO_PIN_8
+#define CS_GPIO_Port GPIOB
+#define D_C_Pin GPIO_PIN_9
+#define D_C_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 

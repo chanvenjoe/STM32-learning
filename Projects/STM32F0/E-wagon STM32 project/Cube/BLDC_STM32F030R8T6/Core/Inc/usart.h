@@ -66,6 +66,7 @@ void MX_USART1_UART_Init(void);
 /* USER CODE BEGIN Prototypes */
 void BT_PWM_handle(char flag);
 void Print_Pooling(TimeFlagStruct* print_flag);
+void Uart_RX_Handle(UART_HandleTypeDef *huart);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

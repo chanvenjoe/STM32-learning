@@ -59,7 +59,7 @@ uint16_t adc_buf[CH_NUM]={0};
 MADC_Structure adc_val = {1,1,1,1,1,1,1,1,1,1};
 HX711_Structure weight_par = {0,0,0,0,0};
 TimeFlagStruct printflag = {0};
-PID_ParameterStruct PID_Parameters = {0.1, 0.001, 0.0}; //PID adjustment, ID = 0, increase P till the curve shaking
+PID_ParameterStruct PID_Parameters = {0.1, 0.001, 0.1}; //PID adjustment, ID = 0, increase P till the curve shaking
 
 /* USER CODE END PV */
 
@@ -155,7 +155,11 @@ int main(void)
 	if(weight_par.calibration_flag)
 	{
 		printf_DMA("%d, %d, %0.1f\r\n",weight_par.gramAvgval, (int)htim1.Instance->CCR2, (float)(adc_val.ia-1640)*0.015);//Vofa+ chart   3.3/4095/35/0.001 = 0.023
-		printf_DMA("%d\r\n", adc_val.commutation_delay);
+//		printf_DMA("0x31 0x14%d\n\r", weight_par.gramAvgval);
+//		printf_DMA("PWM%d\r\n", (int)htim1.Instance->CCR2);
+
+//		printf_DMA("gram: %d\r\n", weight_par.gramAvgval );
+		//		printf_DMA("%d\r\n", adc_val.commutation_delay);
 //		HAL_UART_Transmit_DMA(&huart1, (uint8_t *) txbuff, sizeof(txbuff)+1); // if it is (uint8_t) * txbuff, then it will be force the txbuff to char, not change the addr to char
 	}
 	if(1100 <= printflag.TimeCNT)
@@ -285,6 +289,8 @@ void assert_failed(uint8_t *file, uint32_t line)
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
+	static signed int dc_pwm, pid_pwm;
+	signed int temp;
 	if(htim == &htim3) // Get pull force value
 	{
 		if(1 == weight_par.calibration_flag)
@@ -293,19 +299,17 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 			weight_par.cnt= weight_par.cnt >= 5? 0:weight_par.cnt+1;//Get average value of 5
 			weight_par.gramAvg[weight_par.cnt] = weight_par.gram;
 			weight_par.gramAvgval = (weight_par.gramAvg[0] + weight_par.gramAvg[1] + weight_par.gramAvg[2] + weight_par.gramAvg[3] + weight_par.gramAvg[4])/5;
-			FORCESAPTIME;
+//			FORCESAPTIME;
 		}
 	}
 	else if(htim == &htim6)// PWM step 1 for accurate acceleration, change the timer to modify the ramp time
 	{
-		static signed int dc_pwm, pid_pwm;
-		signed int temp;
 		if((weight_par.gramAvgval<LOWER_LIMMIT&&weight_par.gramAvgval>=0)||weight_par.sens_err_flag==TRUE)//LOWER_LIMMIT)// when release the handle, turn off all
 		{
-			CLOSE_PWM;
+/*			CLOSE_PWM;
 			pid_pwm = 0;//if not, the PID_PWM will always be the same value and dc_pwm never be 0
 			dc_pwm = pid_pwm; //to set the PWM to 0 immediately
-			__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, dc_pwm);
+			__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, dc_pwm);*/
 			if(printflag.OCP_flag == FALSE)
 				IND_LED_OFF;//Turn off LED
 			weight_par.eps_flag = FALSE;
@@ -345,10 +349,14 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		}
 		if(1==printflag.Motor_short_flag || 1==HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2)) //Brake counting
 		{
-			static char count;
+			static char count; static char short_rls_cnt = 0;
 			count+=1;
 			if(count>100)//count 500ms to short the motor
 			{
+				CLOSE_PWM;
+				pid_pwm = 0;//if not, the PID_PWM will always be the same value and dc_pwm never be 0
+				dc_pwm = pid_pwm; //to set the PWM to 0 immediately
+				__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, dc_pwm);
 				BRAKE;
 				count = 0;
 				printflag.Motor_short_flag = 0;

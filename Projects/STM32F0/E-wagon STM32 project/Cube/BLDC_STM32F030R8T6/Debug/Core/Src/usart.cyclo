@@ -4,3 +4,4 @@
 ../Core/Src/usart.c:153:6:BT_PWM_handle	4
 ../Core/Src/usart.c:170:6:Print_Pooling	4
 ../Core/Src/usart.c:193:6:PID_APP_Calibration	1
+../Core/Src/usart.c:208:6:Uart_RX_Handle	1
