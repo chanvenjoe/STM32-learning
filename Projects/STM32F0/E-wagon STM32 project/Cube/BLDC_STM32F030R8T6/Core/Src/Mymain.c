@@ -59,7 +59,7 @@ uint16_t adc_buf[CH_NUM]={0};
 MADC_Structure adc_val = {1,1,1,1,1,1,1,1,1,1};
 HX711_Structure weight_par = {0,0,0,0,0};
 TimeFlagStruct printflag = {0};
-PID_ParameterStruct PID_Parameters = {0.1, 0.001, 0.1}; //PID adjustment, ID = 0, increase P till the curve shaking
+PID_ParameterStruct PID_Parameters = {0.1, 0.0002, 0.2}; //PID adjustment, ID = 0, increase P till the curve shaking
 
 /* USER CODE END PV */
 
@@ -351,7 +351,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		{
 			static char count; static char short_rls_cnt = 0;
 			count+=1;
-			if(count>100)//count 500ms to short the motor
+			if(count>150)//count 500ms to short the motor
 			{
 				CLOSE_PWM;
 				pid_pwm = 0;//if not, the PID_PWM will always be the same value and dc_pwm never be 0

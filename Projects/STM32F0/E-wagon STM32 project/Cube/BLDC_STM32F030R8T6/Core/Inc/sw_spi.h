@@ -28,10 +28,10 @@
 #define CHA_128	25
 #define CHB_32	26
 #define CHA_64	27
-#define LOAD_CELL_FACTOR 50//225 //Example: A Kg * 3.24mV/10Kg => A*128 = 0.324*128AmV = 41.472AmV  => 41.472AmV/AD = 3.24V/0xffffff => AD = 214748.352A A g = AD/214.748
+#define LOAD_CELL_FACTOR 25//50//225 //Example: A Kg * 3.24mV/10Kg => A*128 = 0.324*128AmV = 41.472AmV  => 41.472AmV/AD = 3.24V/0xffffff => AD = 214748.352A A g = AD/214.748
 									//If the real number is smaller than the tested value, then increase the factor, vice versa
-#define PULL_FORCE_THR	1000
-#define LOWER_LIMMIT	700
+#define PULL_FORCE_THR	2500
+#define LOWER_LIMMIT	500
 //#define TOP_LIMIT		2000
 #define PWM_STEP		1
 
