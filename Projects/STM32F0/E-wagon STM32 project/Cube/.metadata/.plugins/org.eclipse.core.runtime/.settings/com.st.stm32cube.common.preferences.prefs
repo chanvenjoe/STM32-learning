@@ -1,3 +1,4 @@
+DeviceConfigurationTool..OffLineMode=true
 DeviceConfigurationTool..UpdaterCheck=true
 DeviceConfigurationTool..UpdaterCheckInterval=5
 DeviceConfigurationTool..UpdaterDataRefresh=dataRefreshDataAndDocs

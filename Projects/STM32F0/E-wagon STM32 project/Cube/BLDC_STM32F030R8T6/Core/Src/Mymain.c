@@ -130,6 +130,12 @@ int main(void)
 
   /* USER CODE BEGIN 2 */
 	HAL_TIM_OC_Start(&htim1,TIM_CHANNEL_4);
+	HAL_TIM_PWM_Start(&htim1, AH);
+	HAL_TIM_PWM_Start(&htim1, BH);
+	HAL_TIM_PWM_Start(&htim1, CH);
+	HAL_TIMEx_PWMN_Start(&htim1, AH);
+	HAL_TIMEx_PWMN_Start(&htim1, BH);
+	HAL_TIMEx_PWMN_Start(&htim1, CH);
 	HX711_Calibration(&weight_par);
 	printflag.PID_Set = FALSE;
 
@@ -328,8 +334,10 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 
 			if(dc_pwm>10&&printflag.OCP_flag!=TRUE) //When PWM>10%, start to drive
 			{
-				BHALONBLOFF; //Drive MOTOR, open lower bridge first
+				//BHALONBLOFF; //Drive MOTOR, open lower bridge first
+				/*__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, dc_pwm);
 				__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, dc_pwm);
+				__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, dc_pwm);*/
 				if(0 == weight_par.eps_flag)
 				{
 					IND_LED_ON;// Turn on LED indicator
@@ -347,7 +355,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 			adc_val.commutation_delay 	= 0;
 //			CLOSE_ALL;
 		}
-		if(1==printflag.Motor_short_flag || 1==HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2)) //Brake counting
+	/*	if(1==printflag.Motor_short_flag || 1==HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2)) //Brake counting
 		{
 			static char count; static char short_rls_cnt = 0;
 			count+=1;
@@ -361,7 +369,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 				count = 0;
 				printflag.Motor_short_flag = 0;
 			}
-		}
+		}*/
 		if(adc_val.ia>=2240)// OCP 2973:20A 2240:9A 3640:30A Based on 0.015(53.7 times)
 		{
 			static char ocp_cnt = 0;

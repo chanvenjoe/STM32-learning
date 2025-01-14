@@ -1,0 +1,10 @@
+11:05:55 **** Incremental Build of configuration Debug for project 3S2P_BMS ****
+make -j8 all 
+arm-none-eabi-size  3S2P_BMS.elf 
+   text	   data	    bss	    dec	    hex	filename
+  23092	     96	  20976	  44164	   ac84	3S2P_BMS.elf
+Finished building: default.size.stdout
+ 
+
+11:05:56 Build Finished. 0 errors, 0 warnings. (took 965ms)
+
