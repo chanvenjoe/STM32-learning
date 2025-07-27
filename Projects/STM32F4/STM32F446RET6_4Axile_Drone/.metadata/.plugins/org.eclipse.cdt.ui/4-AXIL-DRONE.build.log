@@ -1,0 +1,10 @@
+00:17:08 **** Incremental Build of configuration Debug for project 4-AXIL-DRONE ****
+make -j32 all 
+arm-none-eabi-size   4-AXIL-DRONE.elf 
+   text	   data	    bss	    dec	    hex	filename
+  18408	     24	   6008	  24440	   5f78	4-AXIL-DRONE.elf
+Finished building: default.size.stdout
+ 
+
+00:17:09 Build Finished. 0 errors, 0 warnings. (took 373ms)
+

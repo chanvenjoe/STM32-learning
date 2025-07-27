@@ -1,0 +1,1460 @@
+2025-05-24 23:47:46,453 [INFO] Activator:176 - 
+
+
+2025-05-24 23:47:46,457 [INFO] Activator:177 - !SESSION log4j initialized
+2025-05-24 23:47:50,593 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] 
+2025-05-24 23:47:54,873 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:47:54,873 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:47:55,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:47:55,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:47:56,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:47:56,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:47:57,849 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:47:57,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:47:58,865 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:47:58,865 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:47:59,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:47:59,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:00,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:00,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:01,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:01,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:02,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:02,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:03,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:03,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:04,869 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:04,869 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:05,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:05,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:06,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:06,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:07,865 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:07,865 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:08,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:08,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:09,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:09,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:10,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:10,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:11,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:11,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:12,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:12,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:13,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:13,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:14,867 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:14,867 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:15,294 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+2025-05-24 23:48:15,294 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] SLF4J: Defaulting to no-operation (NOP) logger implementation
+2025-05-24 23:48:15,295 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+2025-05-24 23:48:15,866 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:15,866 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:16,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:16,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:17,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:17,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:18,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:18,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:19,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:19,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:20,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:20,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:21,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:21,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:22,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:22,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:23,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:23,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:24,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:24,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:25,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:25,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:26,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:26,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:27,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:27,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:28,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:28,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:29,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:29,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:30,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:30,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:31,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:31,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:32,848 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:32,849 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:33,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:33,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:34,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:34,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:35,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:35,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:36,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:36,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:37,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:37,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:38,849 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:38,849 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:39,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:39,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:40,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:40,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:41,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:41,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:42,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:42,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:43,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:43,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:44,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:44,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:45,849 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:45,849 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:46,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:46,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:47,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:47,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:48,866 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:48,866 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:49,865 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:49,865 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:50,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:50,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:51,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:51,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:52,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:52,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:53,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:53,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:54,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:54,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:55,868 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:55,868 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:56,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:56,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:57,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:57,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:58,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:58,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:48:59,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:48:59,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:00,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:00,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:01,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:01,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:02,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:02,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:03,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:03,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:04,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:04,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:05,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:05,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:06,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:06,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:07,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:07,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:08,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:08,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:09,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:09,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:10,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:10,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:11,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:11,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:12,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:12,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:13,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:13,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:14,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:14,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:15,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:15,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:16,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:16,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:17,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:17,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:18,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:18,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:19,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:19,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:20,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:20,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:21,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:21,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:22,870 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:22,870 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:23,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:23,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:24,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:24,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:25,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:25,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:26,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:26,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:27,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:27,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:28,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:28,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:29,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:29,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:30,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:30,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:31,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:31,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:32,866 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:32,866 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:33,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:33,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:34,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:34,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:35,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:35,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:36,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:36,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:37,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:37,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:38,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:38,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:39,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:39,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:40,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:40,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:41,866 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:41,866 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:42,876 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:42,876 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:43,869 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:43,869 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:44,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:44,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:45,867 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:45,867 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:46,870 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:46,870 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:47,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:47,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:48,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:48,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:49,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:49,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:50,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:50,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:51,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:51,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:52,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:52,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:53,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:53,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:54,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:54,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:55,866 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:55,867 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:56,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:56,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:57,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:57,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:58,869 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:58,870 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:49:59,872 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:49:59,873 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:00,867 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:00,868 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:01,871 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:01,872 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:02,866 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:02,866 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:03,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:03,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:04,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:04,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:05,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:05,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:06,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:06,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:07,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:07,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:08,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:08,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:09,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:09,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:10,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:10,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:11,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:11,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:12,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:12,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:13,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:13,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:14,866 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:14,867 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:15,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:15,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:16,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:16,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:17,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:17,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:18,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:18,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:19,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:19,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:20,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:20,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:21,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:21,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:22,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:22,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:23,865 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:23,865 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:24,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:24,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:25,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:25,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:26,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:26,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:27,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:27,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:28,849 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:28,849 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:29,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:29,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:30,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:30,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:31,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:31,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:32,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:32,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:33,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:33,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:34,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:34,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:35,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:35,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:36,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:36,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:37,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:37,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:38,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:38,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:39,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:39,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:40,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:40,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:41,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:41,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:42,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:42,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:43,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:43,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:44,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:44,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:45,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:45,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:46,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:46,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:47,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:47,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:48,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:48,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:49,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:49,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:50,867 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:50,867 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:51,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:51,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:52,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:52,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:53,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:53,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:54,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:54,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:55,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:55,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:56,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:56,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:57,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:57,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:58,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:58,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:50:59,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:50:59,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:00,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:00,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:01,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:01,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:02,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:02,865 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:03,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:03,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:04,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:04,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:05,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:05,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:06,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:06,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:07,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:07,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:08,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:08,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:09,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:09,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:10,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:10,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:11,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:11,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:12,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:12,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:13,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:13,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:14,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:14,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:15,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:15,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:16,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:16,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:17,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:17,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:18,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:18,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:19,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:19,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:20,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:20,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:21,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:21,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:22,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:22,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:23,868 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:23,868 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:24,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:24,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:25,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:25,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:26,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:26,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:27,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:27,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:28,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:28,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:29,849 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:29,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:30,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:30,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:31,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:31,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:32,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:32,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:33,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:33,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:34,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:34,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:35,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:35,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:36,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:36,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:37,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:37,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:38,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:38,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:39,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:39,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:40,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:40,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:41,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:41,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:42,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:42,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:43,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:43,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:44,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:44,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:45,849 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:45,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:46,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:46,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:47,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:47,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:48,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:48,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:49,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:49,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:50,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:50,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:51,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:51,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:52,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:52,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:53,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:53,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:54,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:54,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:55,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:55,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:56,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:56,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:57,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:57,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:58,867 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:58,867 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:51:59,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:51:59,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:00,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:00,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:01,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:01,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:02,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:02,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:03,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:03,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:04,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:04,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:05,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:05,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:06,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:06,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:07,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:07,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:08,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:08,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:09,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:09,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:10,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:10,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:11,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:11,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:12,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:12,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:13,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:13,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:14,849 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:14,849 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:15,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:15,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:16,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:16,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:17,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:17,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:18,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:18,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:19,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:19,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:20,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:20,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:21,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:21,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:22,849 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:22,849 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:23,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:23,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:24,849 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:24,849 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:25,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:25,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:26,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:26,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:27,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:27,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:28,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:28,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:29,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:29,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:30,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:30,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:31,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:31,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:32,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:32,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:33,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:33,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:34,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:34,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:35,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:35,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:36,869 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:36,870 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:37,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:37,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:38,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:38,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:39,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:39,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:40,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:40,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:41,865 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:41,865 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:42,849 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:42,849 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:43,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:43,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:44,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:44,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:45,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:45,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:46,849 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:46,849 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:47,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:47,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:48,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:48,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:49,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:49,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:50,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:50,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:51,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:51,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:52,865 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:52,866 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:53,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:53,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:54,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:54,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:55,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:55,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:56,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:56,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:57,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:57,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:58,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:58,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:52:59,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:52:59,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:00,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:00,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:01,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:01,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:02,849 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:02,849 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:03,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:03,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:04,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:04,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:05,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:05,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:06,866 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:06,866 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:07,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:07,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:08,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:08,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:09,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:09,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:10,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:10,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:11,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:11,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:12,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:12,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:13,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:13,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:14,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:14,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:15,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:15,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:16,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:16,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:17,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:17,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:18,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:18,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:19,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:19,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:20,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:20,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:21,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:21,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:22,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:22,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:23,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:23,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:24,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:24,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:25,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:25,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:26,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:26,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:27,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:27,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:28,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:28,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:29,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:29,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:30,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:30,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:31,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:31,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:32,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:32,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:33,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:33,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:34,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:34,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:35,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:35,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:36,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:36,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:37,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:37,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:38,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:38,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:39,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:39,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:40,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:40,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:41,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:41,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:42,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:42,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:43,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:43,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:44,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:44,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:45,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:45,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:46,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:46,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:47,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:47,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:48,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:48,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:49,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:49,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:50,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:50,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:51,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:51,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:52,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:52,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:53,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:53,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:54,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:54,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:55,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:55,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:56,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:56,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:57,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:57,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:58,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:58,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:53:59,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:53:59,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:00,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:00,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:01,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:01,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:02,866 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:02,866 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:03,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:03,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:04,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:04,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:05,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:05,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:06,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:06,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:07,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:07,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:08,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:08,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:09,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:09,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:10,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:10,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:11,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:11,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:12,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:12,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:13,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:13,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:14,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:14,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:15,849 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:15,849 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:16,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:16,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:17,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:17,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:18,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:18,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:19,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:19,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:20,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:20,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:21,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:21,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:22,849 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:22,849 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:23,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:23,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:24,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:24,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:25,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:25,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:26,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:26,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:27,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:27,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:28,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:28,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:29,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:29,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:30,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:30,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:31,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:31,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:32,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:32,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:33,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:33,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:34,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:34,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:35,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:35,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:36,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:36,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:37,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:37,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:38,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:38,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:39,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:39,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:40,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:40,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:41,849 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:41,849 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:42,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:42,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:43,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:43,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:44,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:44,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:45,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:45,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:46,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:46,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:47,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:47,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:48,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:48,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:49,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:49,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:50,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:50,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:51,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:51,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:52,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:52,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:53,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:53,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:54,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:54,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:55,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:55,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:56,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:56,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:57,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:57,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:58,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:58,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:54:59,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:54:59,865 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:00,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:00,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:01,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:01,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:02,868 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:02,868 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:03,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:03,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:04,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:04,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:05,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:05,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:06,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:06,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:07,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:07,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:08,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:08,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:09,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:09,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:10,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:10,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:11,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:11,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:12,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:12,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:13,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:13,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:14,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:14,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:15,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:15,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:16,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:16,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:17,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:17,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:18,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:18,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:19,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:19,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:20,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:20,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:21,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:21,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:22,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:22,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:23,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:23,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:24,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:24,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:25,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:25,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:26,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:26,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:27,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:27,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:28,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:28,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:29,865 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:29,865 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:30,865 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:30,865 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:31,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:31,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:32,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:32,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:33,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:33,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:34,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:34,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:35,866 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:35,866 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:36,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:36,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:37,865 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:37,865 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:38,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:38,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:39,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:39,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:40,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:40,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:41,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:41,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:42,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:42,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:43,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:43,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:44,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:44,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:45,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:45,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:46,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:46,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:47,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:47,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:48,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:48,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:49,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:49,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:50,866 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:50,866 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:51,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:51,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:52,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:52,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:53,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:53,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:54,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:54,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:55,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:55,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:56,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:56,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:57,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:57,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:58,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:58,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:55:59,849 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:55:59,849 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:00,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:00,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:01,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:01,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:02,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:02,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:03,849 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:03,849 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:04,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:04,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:05,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:05,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:06,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:06,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:07,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:07,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:08,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:08,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:09,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:09,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:10,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:10,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:11,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:11,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:12,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:12,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:13,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:13,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:14,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:14,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:15,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:15,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:16,866 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:16,866 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:17,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:17,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:18,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:18,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:19,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:19,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:20,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:20,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:21,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:21,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:22,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:22,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:23,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:23,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:24,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:24,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:25,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:25,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:26,866 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:26,866 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:27,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:27,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:28,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:28,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:29,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:29,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:30,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:30,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:31,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:31,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:32,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:32,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:33,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:33,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:34,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:34,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:35,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:35,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:36,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:36,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:37,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:37,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:38,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:38,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:39,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:39,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:40,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:40,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:41,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:41,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:42,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:42,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:43,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:43,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:44,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:44,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:45,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:45,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:46,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:46,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:47,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:47,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:48,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:48,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:49,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:49,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:50,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:50,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:51,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:51,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:52,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:52,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:53,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:53,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:54,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:54,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:55,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:55,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:56,865 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:56,865 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:57,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:57,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:58,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:58,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:56:59,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:56:59,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:00,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:00,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:01,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:01,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:02,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:02,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:03,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:03,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:04,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:04,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:05,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:05,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:06,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:06,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:07,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:07,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:08,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:08,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:09,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:09,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:10,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:10,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:11,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:11,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:12,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:12,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:13,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:13,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:14,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:14,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:15,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:15,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:16,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:16,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:17,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:17,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:18,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:18,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:19,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:19,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:20,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:20,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:21,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:21,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:22,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:22,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:23,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:23,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:24,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:24,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:25,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:25,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:26,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:26,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:27,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:27,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:28,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:28,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:29,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:29,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:30,865 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:30,865 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:31,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:31,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:32,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:32,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:33,865 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:33,865 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:34,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:34,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:35,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:35,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:36,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:36,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:37,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:37,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:38,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:38,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:39,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:39,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:40,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:40,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:41,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:41,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:42,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:42,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:43,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:43,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:44,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:44,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:45,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:45,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:46,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:46,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:47,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:47,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:48,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:48,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:49,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:49,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:50,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:50,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:51,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:51,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:52,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:52,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:53,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:53,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:54,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:54,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:55,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:55,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:56,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:56,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:57,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:57,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:58,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:58,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:57:59,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:57:59,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:00,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:00,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:01,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:01,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:02,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:02,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:03,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:03,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:04,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:04,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:05,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:05,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:06,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:06,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:07,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:07,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:08,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:08,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:09,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:09,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:10,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:10,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:11,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:11,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:12,849 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:12,849 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:13,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:13,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:14,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:14,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:15,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:15,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:16,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:16,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:17,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:17,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:18,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:18,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:19,849 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:19,849 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:20,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:20,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:21,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:21,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:22,849 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:22,849 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:23,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:23,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:24,849 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:24,849 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:25,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:25,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:26,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:26,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:27,849 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:27,849 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:28,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:28,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:29,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:29,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:30,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:30,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:31,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:31,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:32,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:32,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:33,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:33,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:34,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:34,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:35,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:35,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:36,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:36,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:37,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:37,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:38,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:38,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:39,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:39,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:40,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:40,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:41,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:41,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:42,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:42,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:43,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:43,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:44,870 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:44,870 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:45,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:45,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:46,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:46,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:47,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:47,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:48,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:48,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:49,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:49,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:50,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:50,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:51,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:51,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:52,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:52,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:53,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:53,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:54,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:54,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:55,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:55,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:56,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:56,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:57,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:57,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:58,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:58,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:58:59,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:58:59,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:00,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:00,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:01,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:01,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:02,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:02,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:03,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:03,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:04,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:04,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:05,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:05,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:06,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:06,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:07,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:07,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:08,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:08,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:09,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:09,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:10,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:10,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:11,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:11,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:12,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:12,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:13,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:13,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:14,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:14,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:15,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:15,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:16,866 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:16,866 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:17,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:17,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:18,849 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:18,849 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:19,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:19,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:20,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:20,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:21,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:21,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:22,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:22,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:23,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:23,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:24,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:24,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:25,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:25,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:26,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:26,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:27,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:27,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:28,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:28,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:29,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:29,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:30,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:30,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:31,848 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:31,848 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:32,865 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:32,865 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:33,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:33,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:34,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:34,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:35,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:35,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:36,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:36,856 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:37,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:37,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:38,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:38,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:39,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:39,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:40,853 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:40,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:41,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:41,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:42,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:42,864 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:43,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:43,863 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:44,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:44,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:45,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:45,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:46,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:46,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:47,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:47,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:48,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:48,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:49,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:49,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:50,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:50,852 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:51,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:51,858 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:52,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:52,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:53,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:53,857 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:54,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:54,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:55,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:55,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:56,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:56,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:57,860 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:57,861 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:58,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:58,859 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-05-24 23:59:59,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: ????????????
+2025-05-24 23:59:59,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 

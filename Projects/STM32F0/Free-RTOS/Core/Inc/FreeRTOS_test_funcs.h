@@ -1,7 +1,12 @@
 #ifndef _RTOS_TEST_H_
 #define _RTOS_TEST_H_
 
-
 void LED_Test(void);
+
+void Win1_Test(void);
+void Win2_Test(void);
+void Win3_Test(void);
+void Win4_Test(void);
+
 
 #endif

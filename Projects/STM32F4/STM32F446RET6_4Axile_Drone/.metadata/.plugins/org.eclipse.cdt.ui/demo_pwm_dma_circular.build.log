@@ -1,0 +1,10 @@
+16:54:27 **** Incremental Build of configuration Debug for project demo_pwm_dma_circular ****
+make -j32 all 
+arm-none-eabi-size   demo_pwm_dma_circular.elf 
+   text	   data	    bss	    dec	    hex	filename
+  42468	    124	   9780	  52372	   cc94	demo_pwm_dma_circular.elf
+Finished building: default.size.stdout
+ 
+
+16:54:28 Build Finished. 0 errors, 0 warnings. (took 674ms)
+

@@ -1,1 +1,5 @@
-FreeRTOS_test_funcs.c:4:6:LED_Test	1
+FreeRTOS_test_funcs.c:5:6:LED_Test	1
+FreeRTOS_test_funcs.c:16:6:Win1_Test	1
+FreeRTOS_test_funcs.c:21:6:Win2_Test	1
+FreeRTOS_test_funcs.c:26:6:Win3_Test	1
+FreeRTOS_test_funcs.c:31:6:Win4_Test	2

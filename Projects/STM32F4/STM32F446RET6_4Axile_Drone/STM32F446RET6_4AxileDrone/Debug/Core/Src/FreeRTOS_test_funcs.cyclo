@@ -1,0 +1,6 @@
+FreeRTOS_test_funcs.c:7:6:LED_Test	1
+FreeRTOS_test_funcs.c:18:6:Win1_Test	1
+FreeRTOS_test_funcs.c:23:6:Win2_Test	1
+FreeRTOS_test_funcs.c:28:6:Win3_Test	1
+FreeRTOS_test_funcs.c:33:6:Win4_Test	2
+FreeRTOS_test_funcs.c:50:6:WS2812_LEDStateUpdate	6

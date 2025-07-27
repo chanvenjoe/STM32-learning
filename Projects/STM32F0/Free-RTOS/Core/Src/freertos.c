@@ -22,11 +22,10 @@
 #include "task.h"
 #include "main.h"
 #include "cmsis_os.h"
-#include "FreeRTOS_test_funcs.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "FreeRTOS_test_funcs.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -94,6 +93,8 @@ void MX_FREERTOS_Init(void) {
   /* start timers, add new ones, ... */
   /* USER CODE END RTOS_TIMERS */
 
+
+
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
   /* USER CODE END RTOS_QUEUES */
@@ -110,8 +111,11 @@ void MX_FREERTOS_Init(void) {
 
   /*My_Drone WS2812 control*/
 
-  /*My_Drone Wins control*/
-  xLED_Task_Handel = xTaskCreateStatic(LED_Test, "WinTask",128,NULL, osPriorityNormal, g_pucStackOfWinTask, &g_TCBofWinTask);
+  /*My_Drone Win1 control*/
+  xWin_Task_Handel = xTaskCreateStatic(Win4_Test, "WinTask",128,NULL, osPriorityNormal, g_pucStackOfWinTask, &g_TCBofWinTask);
+
+  /*My_Drone Win2 control*/
+
   /* USER CODE END RTOS_THREADS */
 
   /* USER CODE BEGIN RTOS_EVENTS */
@@ -133,7 +137,7 @@ void StartDefaultTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
-//	LED_Test();
+	LED_Test();
     osDelay(1);
   }
   /* USER CODE END StartDefaultTask */
