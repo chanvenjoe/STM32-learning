@@ -2,7 +2,7 @@ WS2811.c:25:6:WS_Send24bits	7
 WS2811.c:41:6:WS_Color_copy	1
 WS2811.c:46:6:WS_ColorSet_LED	3
 WS2811.c:59:6:WS_Refresh	3
-WS2811.c:70:6:WS_Charging_LED	3
+WS2811.c:70:6:WS_Charging_LED	2
 WS2811.c:89:6:WS_Hue_change	4
 WS2811.c:113:6:WS_LED_State_Get	4
 WS2811.c:214:5:HSV_RGB	7

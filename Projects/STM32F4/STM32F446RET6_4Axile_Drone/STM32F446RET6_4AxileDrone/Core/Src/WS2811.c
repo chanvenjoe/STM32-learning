@@ -70,7 +70,7 @@ void WS_Refresh()
 void WS_Charging_LED()
 {
 	static char cycle = 0;
-	WS_ColorSet_LED(cycle = cycle>0?(cycle-1):0, cycle, 0x00ff00);
+	WS_ColorSet_LED(0, cycle, 0x00ff00);
 	WS_Refresh();
 	osDelay(CHARGING_CYCLE_TIME);
 	if(cycle==LEDNUM)

@@ -1,21 +1,10 @@
-17:01:30 **** Incremental Build of configuration Debug for project STM32F446RET6_4AxileDrone ****
+02:28:48 **** Incremental Build of configuration Debug for project STM32F446RET6_4AxileDrone ****
 make -j32 all 
-arm-none-eabi-gcc "../Core/Src/WS2811.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/WS2811.d" -MT"Core/Src/WS2811.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/WS2811.o"
-../Core/Src/WS2811.c: In function 'WS_Charging_LED':
-../Core/Src/WS2811.c:73:24: warning: operation on 'cycle' may be undefined [-Wsequence-point]
-   73 |  WS_ColorSet_LED(cycle = cycle>0?(cycle-1):0, cycle, 0x00ff00);
-      |                  ~~~~~~^~~~~~~~~~~~~~~~~~~~~
-arm-none-eabi-gcc -o "STM32F446RET6_4AxileDrone.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\64420\Desktop\Project\Embeded\STM32-learning\Projects\STM32F4\STM32F446RET6_4Axile_Drone\STM32F446RET6_4AxileDrone\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F446RET6_4AxileDrone.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: STM32F446RET6_4AxileDrone.elf
- 
 arm-none-eabi-size   STM32F446RET6_4AxileDrone.elf 
-arm-none-eabi-objdump -h -S  STM32F446RET6_4AxileDrone.elf  > "STM32F446RET6_4AxileDrone.list"
    text	   data	    bss	    dec	    hex	filename
-  27016	     28	  22828	  49872	   c2d0	STM32F446RET6_4AxileDrone.elf
+  31384	     28	  22908	  54320	   d430	STM32F446RET6_4AxileDrone.elf
 Finished building: default.size.stdout
  
-Finished building: STM32F446RET6_4AxileDrone.list
- 
 
-17:01:32 Build Finished. 0 errors, 1 warnings. (took 1s.334ms)
+02:28:49 Build Finished. 0 errors, 0 warnings. (took 835ms)
 
